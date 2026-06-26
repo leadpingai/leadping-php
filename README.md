@@ -3,7 +3,7 @@
 [![](https://img.shields.io/packagist/dt/leadpingai/sdk.svg?style=for-the-badge)](https://packagist.org/packages/leadpingai/sdk)
 [![](https://img.shields.io/github/actions/workflow/status/leadpingai/leadping-php/codeql.yml?label=CodeQL&style=for-the-badge)](https://github.com/leadpingai/leadping-php/actions/workflows/codeql.yml)
 
-# Leadping PHP SDK
+# ![Leadping](https://leadping.ai/favicon.ico) Leadping PHP SDK
 
 Type-safe PHP client for the Leadping API.
 
