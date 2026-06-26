@@ -1,0 +1,73 @@
+<?php
+
+namespace Leadping\OpenApiClient\Usage\Summary\My;
+
+use Exception;
+use Http\Promise\Promise;
+use Leadping\OpenApiClient\Models\UsageSummaryResponse;
+use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
+use Microsoft\Kiota\Abstractions\HttpMethod;
+use Microsoft\Kiota\Abstractions\RequestAdapter;
+use Microsoft\Kiota\Abstractions\RequestInformation;
+
+/**
+ * Builds and executes requests for operations under /usage/summary/my
+*/
+class MyRequestBuilder extends BaseRequestBuilder 
+{
+    /**
+     * Instantiates a new MyRequestBuilder and sets the default values.
+     * @param array<string, mixed>|string $pathParametersOrRawUrl Path parameters for the request or a String representing the raw URL.
+     * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
+    */
+    public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
+        parent::__construct($requestAdapter, [], '{+baseurl}/usage/summary/my{?periodEnd*,periodStart*}');
+        if (is_array($pathParametersOrRawUrl)) {
+            $this->pathParameters = $pathParametersOrRawUrl;
+        } else {
+            $this->pathParameters = ['request-raw-url' => $pathParametersOrRawUrl];
+        }
+    }
+
+    /**
+     * Returns current-business usage totals for the active billing period, including spend, limits, and event summary data.
+     * @param MyRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return Promise<UsageSummaryResponse|null>
+     * @throws Exception
+    */
+    public function get(?MyRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
+        $requestInfo = $this->toGetRequestInformation($requestConfiguration);
+        return $this->requestAdapter->sendAsync($requestInfo, [UsageSummaryResponse::class, 'createFromDiscriminatorValue'], null);
+    }
+
+    /**
+     * Returns current-business usage totals for the active billing period, including spend, limits, and event summary data.
+     * @param MyRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return RequestInformation
+    */
+    public function toGetRequestInformation(?MyRequestBuilderGetRequestConfiguration $requestConfiguration = null): RequestInformation {
+        $requestInfo = new RequestInformation();
+        $requestInfo->urlTemplate = $this->urlTemplate;
+        $requestInfo->pathParameters = $this->pathParameters;
+        $requestInfo->httpMethod = HttpMethod::GET;
+        if ($requestConfiguration !== null) {
+            $requestInfo->addHeaders($requestConfiguration->headers);
+            if ($requestConfiguration->queryParameters !== null) {
+                $requestInfo->setQueryParameters($requestConfiguration->queryParameters);
+            }
+            $requestInfo->addRequestOptions(...$requestConfiguration->options);
+        }
+        $requestInfo->tryAddHeader('Accept', "application/json");
+        return $requestInfo;
+    }
+
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param string $rawUrl The raw URL to use for the request builder.
+     * @return MyRequestBuilder
+    */
+    public function withUrl(string $rawUrl): MyRequestBuilder {
+        return new MyRequestBuilder($rawUrl, $this->requestAdapter);
+    }
+
+}

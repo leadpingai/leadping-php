@@ -1,0 +1,42 @@
+{
+  "name": "leadpingai/leadping-php",
+  "description": "Typed PHP client for the Leadping API, generated from the Leadping OpenAPI document with Microsoft Kiota.",
+  "type": "library",
+  "license": "proprietary",
+  "homepage": "https://leadping.ai",
+  "authors": [
+    {
+      "name": "Leadping",
+      "email": "support@leadping.ai"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/leadpingai/leadping-php/issues",
+    "source": "https://github.com/leadpingai/leadping-php"
+  },
+  "keywords": [
+    "leadping",
+    "sdk",
+    "api",
+    "openapi",
+    "kiota"
+  ],
+  "require": {
+    "php": ">=8.1",
+    "microsoft/kiota-bundle": "2.0.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Leadping\\OpenApiClient\\": ""
+    }
+  },
+  "archive": {
+    "exclude": [
+      "/.git",
+      "/.github",
+      "/vendor",
+      "/composer.lock",
+      "/artifacts"
+    ]
+  }
+}

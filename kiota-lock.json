@@ -1,0 +1,34 @@
+{
+  "descriptionHash": "E451361F845E7F0CED5AC0894F5B5FF592CE300B2621652CB70064BABD41FF4D5F33BCE0751FDC10F4C4BAB7106B84A4280D743FF4794B7D19D84DBDBB182880",
+  "descriptionLocation": "../leadping-docs/openapi.json",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "1.32.3",
+  "clientClassName": "LeadpingOpenApiClient",
+  "typeAccessModifier": "Public",
+  "clientNamespaceName": "Leadping\\OpenApiClient",
+  "language": "PHP",
+  "usesBackingStore": false,
+  "excludeBackwardCompatible": true,
+  "includeAdditionalData": true,
+  "disableSSLValidation": false,
+  "serializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Form.FormSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Multipart.MultipartSerializationWriterFactory"
+  ],
+  "deserializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Text.TextParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Form.FormParseNodeFactory"
+  ],
+  "structuredMimeTypes": [
+    "application/json",
+    "text/plain;q=0.9",
+    "application/x-www-form-urlencoded;q=0.2",
+    "multipart/form-data;q=0.1"
+  ],
+  "includePatterns": [],
+  "excludePatterns": [],
+  "disabledValidationRules": []
+}
