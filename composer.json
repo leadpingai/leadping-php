@@ -1,6 +1,6 @@
 {
   "name": "leadpingai/sdk",
-  "description": "Typed PHP client for the Leadping API, generated from the Leadping OpenAPI document with Microsoft Kiota.",
+  "description": "Official PHP SDK for the Leadping API.",
   "type": "library",
   "license": "proprietary",
   "homepage": "https://leadping.ai",
