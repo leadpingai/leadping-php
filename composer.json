@@ -2,7 +2,7 @@
   "name": "leadpingai/sdk",
   "description": "Official PHP SDK for the Leadping API.",
   "type": "library",
-  "license": "proprietary",
+  "license": "MIT",
   "homepage": "https://leadping.ai",
   "authors": [
     {
