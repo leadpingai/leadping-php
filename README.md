@@ -5,7 +5,7 @@ Type-safe PHP client for the Leadping API.
 ## Install
 
 ```bash
-composer require leadpingai/leadping-php
+composer require leadpingai/sdk
 ```
 
 The generated client uses a Kiota request adapter. Install the Kiota bundle in the application that will call Leadping:
