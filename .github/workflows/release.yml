@@ -88,4 +88,35 @@ jobs:
 
           gh release create "${TAG}" artifacts/* \
             --title "${TAG}" \
-            --notes "Generated Leadping PHP SDK ${TAG}. Composer consumers can install this version after the package is connected in Packagist."
+            --notes "Generated Leadping PHP SDK ${TAG}. Composer consumers can install this version with composer require leadpingai/sdk."
+
+      - name: Publish to Packagist
+        env:
+          PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
+          PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${PACKAGIST_USERNAME:-}" ] || [ -z "${PACKAGIST_TOKEN:-}" ]; then
+            echo "::error::PACKAGIST_USERNAME and PACKAGIST_TOKEN secrets are required."
+            exit 1
+          fi
+
+          repository_url="https://github.com/leadpingai/leadping-php"
+          package_metadata_url="https://packagist.org/packages/leadpingai/sdk.json"
+
+          if curl -fsSL "${package_metadata_url}" >/dev/null; then
+            endpoint="https://packagist.org/api/update-package"
+            payload="{\"repository\":\"${repository_url}\"}"
+          else
+            endpoint="https://packagist.org/api/create-package"
+            payload="{\"repository\":\"${repository_url}\"}"
+          fi
+
+          curl -fsSL \
+            -X POST \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${PACKAGIST_USERNAME}:${PACKAGIST_TOKEN}" \
+            -H "User-Agent: leadpingai/leadping-php-release (mailto=support@leadping.ai)" \
+            "${endpoint}" \
+            -d "${payload}"
