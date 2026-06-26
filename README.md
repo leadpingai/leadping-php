@@ -11,7 +11,7 @@ composer require leadpingai/sdk
 The generated client uses a Kiota request adapter. Install the Kiota bundle in the application that will call Leadping:
 
 ```bash
-composer require microsoft/kiota-bundle
+composer require microsoft/kiota-bundle:^2.0.2
 ```
 
 ## Use

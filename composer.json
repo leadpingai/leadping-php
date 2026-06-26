@@ -23,7 +23,7 @@
   ],
   "require": {
     "php": ">=8.1",
-    "microsoft/kiota-bundle": "2.0.2"
+    "microsoft/kiota-bundle": "^2.0.2"
   },
   "autoload": {
     "psr-4": {
