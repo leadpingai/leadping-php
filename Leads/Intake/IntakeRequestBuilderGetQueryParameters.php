@@ -130,7 +130,7 @@ class IntakeRequestBuilderGetQueryParameters
     public ?string $sellerLeadIdentifier = null;
     
     /**
-     * @var string|null $sourceKey The Leadping source key supplied as a query string parameter.
+     * @var string|null $sourceKey The Leadping source key supplied as a query string parameter, or omitted when supplied as Authorization: Bearer lp_src_...
     */
     public ?string $sourceKey = null;
     
@@ -234,7 +234,7 @@ class IntakeRequestBuilderGetQueryParameters
      * @param string|null $referrer Referring page or traffic source that sent the lead into Leadping.
      * @param string|null $sellerLeadId Seller-provided lead identifier used to deduplicate and reconcile lead delivery.
      * @param string|null $sellerLeadIdentifier Alternate seller-provided lead identifier used during intake normalization.
-     * @param string|null $sourceKey The Leadping source key supplied as a query string parameter.
+     * @param string|null $sourceKey The Leadping source key supplied as a query string parameter, or omitted when supplied as Authorization: Bearer lp_src_...
      * @param string|null $sourceMetadata Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
      * @param string|null $state State, province, or region for the lead or business postal address.
      * @param string|null $subId Affiliate or publisher sub ID captured for lead attribution.

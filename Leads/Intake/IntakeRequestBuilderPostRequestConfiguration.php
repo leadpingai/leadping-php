@@ -28,7 +28,7 @@ class IntakeRequestBuilderPostRequestConfiguration extends BaseRequestConfigurat
 
     /**
      * Instantiates a new IntakeRequestBuilderPostQueryParameters.
-     * @param string|null $sourceKey The Leadping source key supplied as a query string parameter.
+     * @param string|null $sourceKey The Leadping source key supplied as a query string parameter, or omitted when supplied as Authorization: Bearer lp_src_...
      * @return IntakeRequestBuilderPostQueryParameters
     */
     public static function createQueryParameters(?string $sourceKey = null): IntakeRequestBuilderPostQueryParameters {

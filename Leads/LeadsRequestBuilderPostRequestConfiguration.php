@@ -28,7 +28,7 @@ class LeadsRequestBuilderPostRequestConfiguration extends BaseRequestConfigurati
 
     /**
      * Instantiates a new LeadsRequestBuilderPostQueryParameters.
-     * @param string|null $sourceKey The Leadping source key supplied as a query string parameter.
+     * @param string|null $sourceKey The Leadping source key supplied as a query string parameter, or omitted when supplied as Authorization: Bearer lp_src_...
      * @return LeadsRequestBuilderPostQueryParameters
     */
     public static function createQueryParameters(?string $sourceKey = null): LeadsRequestBuilderPostQueryParameters {
