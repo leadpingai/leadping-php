@@ -48,6 +48,11 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     private ?PhoneNumberOptOutMetricsResponse $optOutMetrics = null;
     
     /**
+     * @var PhoneNumberStatusResponse_outboundCapacity|null $outboundCapacity Current outbound SMS and voice capacity for this phone number.
+    */
+    private ?PhoneNumberStatusResponse_outboundCapacity $outboundCapacity = null;
+    
+    /**
      * @var array<PhoneNumberMessagingEventResponse>|null $recentEvents Recent workflow events returned for timeline and troubleshooting.
     */
     private ?array $recentEvents = null;
@@ -120,6 +125,7 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
             'messagesWarmed' => fn(ParseNode $n) => $o->setMessagesWarmed($n->getIntegerValue()),
             'number' => fn(ParseNode $n) => $o->setNumber($n->getStringValue()),
             'optOutMetrics' => fn(ParseNode $n) => $o->setOptOutMetrics($n->getObjectValue([PhoneNumberOptOutMetricsResponse::class, 'createFromDiscriminatorValue'])),
+            'outboundCapacity' => fn(ParseNode $n) => $o->setOutboundCapacity($n->getObjectValue([PhoneNumberStatusResponse_outboundCapacity::class, 'createFromDiscriminatorValue'])),
             'recentEvents' => fn(ParseNode $n) => $o->setRecentEvents($n->getCollectionOfObjectValues([PhoneNumberMessagingEventResponse::class, 'createFromDiscriminatorValue'])),
             'smsWarmup' => fn(ParseNode $n) => $o->setSmsWarmup($n->getObjectValue([PhoneNumberStatusResponse_smsWarmup::class, 'createFromDiscriminatorValue'])),
             'trafficMetrics' => fn(ParseNode $n) => $o->setTrafficMetrics($n->getObjectValue([PhoneNumberTrafficMetricsResponse::class, 'createFromDiscriminatorValue'])),
@@ -157,6 +163,14 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     */
     public function getOptOutMetrics(): ?PhoneNumberOptOutMetricsResponse {
         return $this->optOutMetrics;
+    }
+
+    /**
+     * Gets the outboundCapacity property value. Current outbound SMS and voice capacity for this phone number.
+     * @return PhoneNumberStatusResponse_outboundCapacity|null
+    */
+    public function getOutboundCapacity(): ?PhoneNumberStatusResponse_outboundCapacity {
+        return $this->outboundCapacity;
     }
 
     /**
@@ -202,6 +216,7 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
         $writer->writeIntegerValue('messagesWarmed', $this->getMessagesWarmed());
         $writer->writeStringValue('number', $this->getNumber());
         $writer->writeObjectValue('optOutMetrics', $this->getOptOutMetrics());
+        $writer->writeObjectValue('outboundCapacity', $this->getOutboundCapacity());
         $writer->writeCollectionOfObjectValues('recentEvents', $this->getRecentEvents());
         $writer->writeObjectValue('smsWarmup', $this->getSmsWarmup());
         $writer->writeObjectValue('trafficMetrics', $this->getTrafficMetrics());
@@ -263,6 +278,14 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     */
     public function setOptOutMetrics(?PhoneNumberOptOutMetricsResponse $value): void {
         $this->optOutMetrics = $value;
+    }
+
+    /**
+     * Sets the outboundCapacity property value. Current outbound SMS and voice capacity for this phone number.
+     * @param PhoneNumberStatusResponse_outboundCapacity|null $value Value to set for the outboundCapacity property.
+    */
+    public function setOutboundCapacity(?PhoneNumberStatusResponse_outboundCapacity $value): void {
+        $this->outboundCapacity = $value;
     }
 
     /**

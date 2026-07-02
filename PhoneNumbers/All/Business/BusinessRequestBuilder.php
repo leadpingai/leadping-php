@@ -1,6 +1,6 @@
 <?php
 
-namespace Leadping\OpenApiClient\PhoneNumbers\All\My;
+namespace Leadping\OpenApiClient\PhoneNumbers\All\Business;
 
 use Exception;
 use Http\Promise\Promise;
@@ -13,17 +13,17 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
 
 /**
- * Builds and executes requests for operations under /phone-numbers/all/my
+ * Builds and executes requests for operations under /phone-numbers/all/business
 */
-class MyRequestBuilder extends BaseRequestBuilder 
+class BusinessRequestBuilder extends BaseRequestBuilder 
 {
     /**
-     * Instantiates a new MyRequestBuilder and sets the default values.
+     * Instantiates a new BusinessRequestBuilder and sets the default values.
      * @param array<string, mixed>|string $pathParametersOrRawUrl Path parameters for the request or a String representing the raw URL.
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/phone-numbers/all/my');
+        parent::__construct($requestAdapter, [], '{+baseurl}/phone-numbers/all/business');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {
@@ -32,13 +32,13 @@ class MyRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Lists phone numbers visible to the current user with paging, sorting, and filters for messaging, calling, and warmup management.
+     * Lists phone numbers visible to the current business with paging, sorting, and filters for messaging, calling, and warmup management.
      * @param RequestDataOptions $body Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
-     * @param MyRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param BusinessRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<PagedResultOfPhoneNumberTableRow|null>
      * @throws Exception
     */
-    public function post(RequestDataOptions $body, ?MyRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
+    public function post(RequestDataOptions $body, ?BusinessRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toPostRequestInformation($body, $requestConfiguration);
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
@@ -47,12 +47,12 @@ class MyRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Lists phone numbers visible to the current user with paging, sorting, and filters for messaging, calling, and warmup management.
+     * Lists phone numbers visible to the current business with paging, sorting, and filters for messaging, calling, and warmup management.
      * @param RequestDataOptions $body Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
-     * @param MyRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param BusinessRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
-    public function toPostRequestInformation(RequestDataOptions $body, ?MyRequestBuilderPostRequestConfiguration $requestConfiguration = null): RequestInformation {
+    public function toPostRequestInformation(RequestDataOptions $body, ?BusinessRequestBuilderPostRequestConfiguration $requestConfiguration = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
@@ -69,10 +69,10 @@ class MyRequestBuilder extends BaseRequestBuilder
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param string $rawUrl The raw URL to use for the request builder.
-     * @return MyRequestBuilder
+     * @return BusinessRequestBuilder
     */
-    public function withUrl(string $rawUrl): MyRequestBuilder {
-        return new MyRequestBuilder($rawUrl, $this->requestAdapter);
+    public function withUrl(string $rawUrl): BusinessRequestBuilder {
+        return new BusinessRequestBuilder($rawUrl, $this->requestAdapter);
     }
 
 }

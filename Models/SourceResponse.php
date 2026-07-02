@@ -35,11 +35,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     private ?array $allowedStates = null;
     
     /**
-     * @var DateTime|null $apiKeyIssuedAt UTC timestamp when Leadping issued the source API key.
-    */
-    private ?DateTime $apiKeyIssuedAt = null;
-    
-    /**
      * @var string|null $apiKeyPreview Masked preview of the source API key for display without exposing the secret.
     */
     private ?string $apiKeyPreview = null;
@@ -178,14 +173,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the apiKeyIssuedAt property value. UTC timestamp when Leadping issued the source API key.
-     * @return DateTime|null
-    */
-    public function getApiKeyIssuedAt(): ?DateTime {
-        return $this->apiKeyIssuedAt;
-    }
-
-    /**
      * Gets the apiKeyPreview property value. Masked preview of the source API key for display without exposing the secret.
      * @return string|null
     */
@@ -289,7 +276,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
                 /** @var array<string>|null $val */
                 $this->setAllowedStates($val);
             },
-            'apiKeyIssuedAt' => fn(ParseNode $n) => $o->setApiKeyIssuedAt($n->getDateTimeValue()),
             'apiKeyPreview' => fn(ParseNode $n) => $o->setApiKeyPreview($n->getStringValue()),
             'business' => fn(ParseNode $n) => $o->setBusiness($n->getObjectValue([SourceResponse_business::class, 'createFromDiscriminatorValue'])),
             'complianceApproved' => fn(ParseNode $n) => $o->setComplianceApproved($n->getBooleanValue()),
@@ -390,7 +376,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
         $writer->writeObjectValue('adminEnablementOverride', $this->getAdminEnablementOverride());
         $writer->writeCollectionOfPrimitiveValues('allowedProducts', $this->getAllowedProducts());
         $writer->writeCollectionOfPrimitiveValues('allowedStates', $this->getAllowedStates());
-        $writer->writeDateTimeValue('apiKeyIssuedAt', $this->getApiKeyIssuedAt());
         $writer->writeStringValue('apiKeyPreview', $this->getApiKeyPreview());
         $writer->writeObjectValue('business', $this->getBusiness());
         $writer->writeBooleanValue('complianceApproved', $this->getComplianceApproved());
@@ -442,14 +427,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     */
     public function setAllowedStates(?array $value): void {
         $this->allowedStates = $value;
-    }
-
-    /**
-     * Sets the apiKeyIssuedAt property value. UTC timestamp when Leadping issued the source API key.
-     * @param DateTime|null $value Value to set for the apiKeyIssuedAt property.
-    */
-    public function setApiKeyIssuedAt(?DateTime $value): void {
-        $this->apiKeyIssuedAt = $value;
     }
 
     /**

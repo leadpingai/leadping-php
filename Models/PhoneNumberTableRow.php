@@ -33,6 +33,26 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     private ?string $business = null;
     
     /**
+     * @var string|null $businessId Unique Leadping business identifier connected to this phone number table row.
+    */
+    private ?string $businessId = null;
+    
+    /**
+     * @var bool|null $callWarmupEnabled Indicates whether controlled voice call warmup is enabled for this phone number.
+    */
+    private ?bool $callWarmupEnabled = null;
+    
+    /**
+     * @var PhoneNumberTableRow_callWarmupStage|null $callWarmupStage Defines the supported voice call warmup stages for a Leadping-managed phone number.
+    */
+    private ?PhoneNumberTableRow_callWarmupStage $callWarmupStage = null;
+    
+    /**
+     * @var PhoneNumberTableRow_callWarmupState|null $callWarmupState Defines the supported health states for controlled internal voice call warmup.
+    */
+    private ?PhoneNumberTableRow_callWarmupState $callWarmupState = null;
+    
+    /**
      * @var string|null $capabilities SMS and voice capabilities available on this phone number.
     */
     private ?string $capabilities = null;
@@ -211,6 +231,38 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the businessId property value. Unique Leadping business identifier connected to this phone number table row.
+     * @return string|null
+    */
+    public function getBusinessId(): ?string {
+        return $this->businessId;
+    }
+
+    /**
+     * Gets the callWarmupEnabled property value. Indicates whether controlled voice call warmup is enabled for this phone number.
+     * @return bool|null
+    */
+    public function getCallWarmupEnabled(): ?bool {
+        return $this->callWarmupEnabled;
+    }
+
+    /**
+     * Gets the callWarmupStage property value. Defines the supported voice call warmup stages for a Leadping-managed phone number.
+     * @return PhoneNumberTableRow_callWarmupStage|null
+    */
+    public function getCallWarmupStage(): ?PhoneNumberTableRow_callWarmupStage {
+        return $this->callWarmupStage;
+    }
+
+    /**
+     * Gets the callWarmupState property value. Defines the supported health states for controlled internal voice call warmup.
+     * @return PhoneNumberTableRow_callWarmupState|null
+    */
+    public function getCallWarmupState(): ?PhoneNumberTableRow_callWarmupState {
+        return $this->callWarmupState;
+    }
+
+    /**
      * Gets the capabilities property value. SMS and voice capabilities available on this phone number.
      * @return string|null
     */
@@ -236,6 +288,10 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
             'adminEnablementOverride' => fn(ParseNode $n) => $o->setAdminEnablementOverride($n->getObjectValue([PhoneNumberTableRow_adminEnablementOverride::class, 'createFromDiscriminatorValue'])),
             'billingAttribution' => fn(ParseNode $n) => $o->setBillingAttribution($n->getStringValue()),
             'business' => fn(ParseNode $n) => $o->setBusiness($n->getStringValue()),
+            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
+            'callWarmupEnabled' => fn(ParseNode $n) => $o->setCallWarmupEnabled($n->getBooleanValue()),
+            'callWarmupStage' => fn(ParseNode $n) => $o->setCallWarmupStage($n->getEnumValue(PhoneNumberTableRow_callWarmupStage::class)),
+            'callWarmupState' => fn(ParseNode $n) => $o->setCallWarmupState($n->getEnumValue(PhoneNumberTableRow_callWarmupState::class)),
             'capabilities' => fn(ParseNode $n) => $o->setCapabilities($n->getStringValue()),
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'healthStatus' => fn(ParseNode $n) => $o->setHealthStatus($n->getEnumValue(PhoneNumberTableRow_healthStatus::class)),
@@ -465,6 +521,10 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
         $writer->writeObjectValue('adminEnablementOverride', $this->getAdminEnablementOverride());
         $writer->writeStringValue('billingAttribution', $this->getBillingAttribution());
         $writer->writeStringValue('business', $this->getBusiness());
+        $writer->writeStringValue('businessId', $this->getBusinessId());
+        $writer->writeBooleanValue('callWarmupEnabled', $this->getCallWarmupEnabled());
+        $writer->writeEnumValue('callWarmupStage', $this->getCallWarmupStage());
+        $writer->writeEnumValue('callWarmupState', $this->getCallWarmupState());
         $writer->writeStringValue('capabilities', $this->getCapabilities());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeEnumValue('healthStatus', $this->getHealthStatus());
@@ -524,6 +584,38 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     */
     public function setBusiness(?string $value): void {
         $this->business = $value;
+    }
+
+    /**
+     * Sets the businessId property value. Unique Leadping business identifier connected to this phone number table row.
+     * @param string|null $value Value to set for the businessId property.
+    */
+    public function setBusinessId(?string $value): void {
+        $this->businessId = $value;
+    }
+
+    /**
+     * Sets the callWarmupEnabled property value. Indicates whether controlled voice call warmup is enabled for this phone number.
+     * @param bool|null $value Value to set for the callWarmupEnabled property.
+    */
+    public function setCallWarmupEnabled(?bool $value): void {
+        $this->callWarmupEnabled = $value;
+    }
+
+    /**
+     * Sets the callWarmupStage property value. Defines the supported voice call warmup stages for a Leadping-managed phone number.
+     * @param PhoneNumberTableRow_callWarmupStage|null $value Value to set for the callWarmupStage property.
+    */
+    public function setCallWarmupStage(?PhoneNumberTableRow_callWarmupStage $value): void {
+        $this->callWarmupStage = $value;
+    }
+
+    /**
+     * Sets the callWarmupState property value. Defines the supported health states for controlled internal voice call warmup.
+     * @param PhoneNumberTableRow_callWarmupState|null $value Value to set for the callWarmupState property.
+    */
+    public function setCallWarmupState(?PhoneNumberTableRow_callWarmupState $value): void {
+        $this->callWarmupState = $value;
     }
 
     /**

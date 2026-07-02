@@ -38,6 +38,16 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
     private ?bool $autoRefillEnabled = null;
     
     /**
+     * @var BusinessRequest_billingAddress|null $billingAddress Postal address used for invoices, receipts, and payment processor billing records.
+    */
+    private ?BusinessRequest_billingAddress $billingAddress = null;
+    
+    /**
+     * @var string|null $billingName Name used for invoices, receipts, and payment processor billing records.
+    */
+    private ?string $billingName = null;
+    
+    /**
      * @var BusinessRequest_billingPlan|null $billingPlan Defines the supported Billing Plan values.
     */
     private ?BusinessRequest_billingPlan $billingPlan = null;
@@ -184,6 +194,22 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the billingAddress property value. Postal address used for invoices, receipts, and payment processor billing records.
+     * @return BusinessRequest_billingAddress|null
+    */
+    public function getBillingAddress(): ?BusinessRequest_billingAddress {
+        return $this->billingAddress;
+    }
+
+    /**
+     * Gets the billingName property value. Name used for invoices, receipts, and payment processor billing records.
+     * @return string|null
+    */
+    public function getBillingName(): ?string {
+        return $this->billingName;
+    }
+
+    /**
      * Gets the billingPlan property value. Defines the supported Billing Plan values.
      * @return BusinessRequest_billingPlan|null
     */
@@ -242,6 +268,8 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
             'address' => fn(ParseNode $n) => $o->setAddress($n->getObjectValue([BusinessRequest_address::class, 'createFromDiscriminatorValue'])),
             'adminEnablementOverride' => fn(ParseNode $n) => $o->setAdminEnablementOverride($n->getObjectValue([BusinessRequest_adminEnablementOverride::class, 'createFromDiscriminatorValue'])),
             'autoRefillEnabled' => fn(ParseNode $n) => $o->setAutoRefillEnabled($n->getBooleanValue()),
+            'billingAddress' => fn(ParseNode $n) => $o->setBillingAddress($n->getObjectValue([BusinessRequest_billingAddress::class, 'createFromDiscriminatorValue'])),
+            'billingName' => fn(ParseNode $n) => $o->setBillingName($n->getStringValue()),
             'billingPlan' => fn(ParseNode $n) => $o->setBillingPlan($n->getEnumValue(BusinessRequest_billingPlan::class)),
             'compliancePolicy' => fn(ParseNode $n) => $o->setCompliancePolicy($n->getObjectValue([BusinessRequest_compliancePolicy::class, 'createFromDiscriminatorValue'])),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
@@ -368,6 +396,8 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
         $writer->writeObjectValue('address', $this->getAddress());
         $writer->writeObjectValue('adminEnablementOverride', $this->getAdminEnablementOverride());
         $writer->writeBooleanValue('autoRefillEnabled', $this->getAutoRefillEnabled());
+        $writer->writeObjectValue('billingAddress', $this->getBillingAddress());
+        $writer->writeStringValue('billingName', $this->getBillingName());
         $writer->writeEnumValue('billingPlan', $this->getBillingPlan());
         $writer->writeObjectValue('compliancePolicy', $this->getCompliancePolicy());
         $writer->writeStringValue('description', $this->getDescription());
@@ -427,6 +457,22 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
     */
     public function setAutoRefillEnabled(?bool $value): void {
         $this->autoRefillEnabled = $value;
+    }
+
+    /**
+     * Sets the billingAddress property value. Postal address used for invoices, receipts, and payment processor billing records.
+     * @param BusinessRequest_billingAddress|null $value Value to set for the billingAddress property.
+    */
+    public function setBillingAddress(?BusinessRequest_billingAddress $value): void {
+        $this->billingAddress = $value;
+    }
+
+    /**
+     * Sets the billingName property value. Name used for invoices, receipts, and payment processor billing records.
+     * @param string|null $value Value to set for the billingName property.
+    */
+    public function setBillingName(?string $value): void {
+        $this->billingName = $value;
     }
 
     /**

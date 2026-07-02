@@ -39,7 +39,7 @@ class WithLeadItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Lists disposition history for one lead so users can review outcomes, notes, and follow-up context.
+     * Lists disposition outcome history for one lead, including prior outcomes, notes, follow-up context, timestamps, and actor details used for audit review.
      * @param WithLeadItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<array<DispositionResponse>|null>
      * @throws Exception
@@ -53,7 +53,7 @@ class WithLeadItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Lists disposition history for one lead so users can review outcomes, notes, and follow-up context.
+     * Lists disposition outcome history for one lead, including prior outcomes, notes, follow-up context, timestamps, and actor details used for audit review.
      * @param WithLeadItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

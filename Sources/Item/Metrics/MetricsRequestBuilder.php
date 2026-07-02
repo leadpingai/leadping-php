@@ -31,7 +31,7 @@ class MetricsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * The source lead creation metrics.
+     * Returns lead creation metrics for one business intake source, including accepted, rejected, duplicate, validation, and recent activity counts for monitoring.
      * @param MetricsRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<SourceMetricsResponse|null>
      * @throws Exception
@@ -45,7 +45,7 @@ class MetricsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * The source lead creation metrics.
+     * Returns lead creation metrics for one business intake source, including accepted, rejected, duplicate, validation, and recent activity counts for monitoring.
      * @param MetricsRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

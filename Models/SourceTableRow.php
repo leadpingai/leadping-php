@@ -35,11 +35,6 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     private ?array $allowedStates = null;
     
     /**
-     * @var DateTime|null $apiKeyIssuedAt UTC timestamp when Leadping issued the source API key.
-    */
-    private ?DateTime $apiKeyIssuedAt = null;
-    
-    /**
      * @var DateTime|null $apiKeyLastUsedAt UTC timestamp when the source API key was last used.
     */
     private ?DateTime $apiKeyLastUsedAt = null;
@@ -188,14 +183,6 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the apiKeyIssuedAt property value. UTC timestamp when Leadping issued the source API key.
-     * @return DateTime|null
-    */
-    public function getApiKeyIssuedAt(): ?DateTime {
-        return $this->apiKeyIssuedAt;
-    }
-
-    /**
      * Gets the apiKeyLastUsedAt property value. UTC timestamp when the source API key was last used.
      * @return DateTime|null
     */
@@ -315,7 +302,6 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
                 /** @var array<string>|null $val */
                 $this->setAllowedStates($val);
             },
-            'apiKeyIssuedAt' => fn(ParseNode $n) => $o->setApiKeyIssuedAt($n->getDateTimeValue()),
             'apiKeyLastUsedAt' => fn(ParseNode $n) => $o->setApiKeyLastUsedAt($n->getDateTimeValue()),
             'apiKeyPreview' => fn(ParseNode $n) => $o->setApiKeyPreview($n->getStringValue()),
             'apiKeyTotalUses' => fn(ParseNode $n) => $o->setApiKeyTotalUses($n->getIntegerValue()),
@@ -418,7 +404,6 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
         $writer->writeObjectValue('adminEnablementOverride', $this->getAdminEnablementOverride());
         $writer->writeCollectionOfPrimitiveValues('allowedProducts', $this->getAllowedProducts());
         $writer->writeCollectionOfPrimitiveValues('allowedStates', $this->getAllowedStates());
-        $writer->writeDateTimeValue('apiKeyIssuedAt', $this->getApiKeyIssuedAt());
         $writer->writeDateTimeValue('apiKeyLastUsedAt', $this->getApiKeyLastUsedAt());
         $writer->writeStringValue('apiKeyPreview', $this->getApiKeyPreview());
         $writer->writeIntegerValue('apiKeyTotalUses', $this->getApiKeyTotalUses());
@@ -472,14 +457,6 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     */
     public function setAllowedStates(?array $value): void {
         $this->allowedStates = $value;
-    }
-
-    /**
-     * Sets the apiKeyIssuedAt property value. UTC timestamp when Leadping issued the source API key.
-     * @param DateTime|null $value Value to set for the apiKeyIssuedAt property.
-    */
-    public function setApiKeyIssuedAt(?DateTime $value): void {
-        $this->apiKeyIssuedAt = $value;
     }
 
     /**
