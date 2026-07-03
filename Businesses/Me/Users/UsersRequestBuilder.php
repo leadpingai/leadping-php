@@ -52,7 +52,10 @@ class UsersRequestBuilder extends BaseRequestBuilder
     */
     public function get(?UsersRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
-        return $this->requestAdapter->sendCollectionAsync($requestInfo, [BusinessUserTableRow::class, 'createFromDiscriminatorValue'], null);
+        $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+        ];
+        return $this->requestAdapter->sendCollectionAsync($requestInfo, [BusinessUserTableRow::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
 
     /**
@@ -66,6 +69,7 @@ class UsersRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toPostRequestInformation($body, $requestConfiguration);
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [BusinessUserResponse::class, 'createFromDiscriminatorValue'], $errorMappings);

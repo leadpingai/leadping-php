@@ -56,6 +56,7 @@ class MeRequestBuilder extends BaseRequestBuilder
     public function get(?MeRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [UserResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
@@ -72,6 +73,7 @@ class MeRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toPutRequestInformation($body, $requestConfiguration);
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [UserResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }

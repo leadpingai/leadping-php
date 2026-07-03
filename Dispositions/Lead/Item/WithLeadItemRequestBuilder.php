@@ -47,6 +47,7 @@ class WithLeadItemRequestBuilder extends BaseRequestBuilder
     public function get(?WithLeadItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendCollectionAsync($requestInfo, [DispositionResponse::class, 'createFromDiscriminatorValue'], $errorMappings);

@@ -48,6 +48,7 @@ class SourcesItemRequestBuilder extends BaseRequestBuilder
     public function delete(?SourcesItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toDeleteRequestInformation($requestConfiguration);
         $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendNoContentAsync($requestInfo, $errorMappings);
@@ -62,6 +63,7 @@ class SourcesItemRequestBuilder extends BaseRequestBuilder
     public function get(?SourcesItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [SourceResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
@@ -77,6 +79,7 @@ class SourcesItemRequestBuilder extends BaseRequestBuilder
     public function put(SourceRequest $body, ?SourcesItemRequestBuilderPutRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toPutRequestInformation($body, $requestConfiguration);
         $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [SourceResponse::class, 'createFromDiscriminatorValue'], $errorMappings);

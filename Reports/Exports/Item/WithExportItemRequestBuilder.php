@@ -4,6 +4,7 @@ namespace Leadping\OpenApiClient\Reports\Exports\Item;
 
 use Exception;
 use Http\Promise\Promise;
+use Leadping\OpenApiClient\Models\ProblemDetails;
 use Leadping\OpenApiClient\Models\UserDataExportResponse;
 use Leadping\OpenApiClient\Reports\Exports\Item\Download\DownloadRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
@@ -45,7 +46,10 @@ class WithExportItemRequestBuilder extends BaseRequestBuilder
     */
     public function get(?WithExportItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
-        return $this->requestAdapter->sendAsync($requestInfo, [UserDataExportResponse::class, 'createFromDiscriminatorValue'], null);
+        $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+        ];
+        return $this->requestAdapter->sendAsync($requestInfo, [UserDataExportResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
 
     /**

@@ -47,6 +47,7 @@ class WithInvitationItemRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toDeleteRequestInformation($requestConfiguration);
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendNoContentAsync($requestInfo, $errorMappings);
     }

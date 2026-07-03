@@ -119,6 +119,11 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     private ?array $tags = null;
     
     /**
+     * @var DateTime|null $updatedAt UTC timestamp when this lead table row was last updated.
+    */
+    private ?DateTime $updatedAt = null;
+    
+    /**
      * Instantiates a new LeadTableRow and sets the default values.
     */
     public function __construct() {
@@ -249,6 +254,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
             'status' => fn(ParseNode $n) => $o->setStatus($n->getStringValue()),
             'statusTone' => fn(ParseNode $n) => $o->setStatusTone($n->getStringValue()),
             'tags' => fn(ParseNode $n) => $o->setTags($n->getCollectionOfObjectValues([TagSummary::class, 'createFromDiscriminatorValue'])),
+            'updatedAt' => fn(ParseNode $n) => $o->setUpdatedAt($n->getDateTimeValue()),
         ];
     }
 
@@ -333,6 +339,14 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the updatedAt property value. UTC timestamp when this lead table row was last updated.
+     * @return DateTime|null
+    */
+    public function getUpdatedAt(): ?DateTime {
+        return $this->updatedAt;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -357,6 +371,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('status', $this->getStatus());
         $writer->writeStringValue('statusTone', $this->getStatusTone());
         $writer->writeCollectionOfObjectValues('tags', $this->getTags());
+        $writer->writeDateTimeValue('updatedAt', $this->getUpdatedAt());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -526,6 +541,14 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     */
     public function setTags(?array $value): void {
         $this->tags = $value;
+    }
+
+    /**
+     * Sets the updatedAt property value. UTC timestamp when this lead table row was last updated.
+     * @param DateTime|null $value Value to set for the updatedAt property.
+    */
+    public function setUpdatedAt(?DateTime $value): void {
+        $this->updatedAt = $value;
     }
 
 }

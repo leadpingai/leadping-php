@@ -52,7 +52,10 @@ class InvitationsRequestBuilder extends BaseRequestBuilder
     */
     public function get(?InvitationsRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
-        return $this->requestAdapter->sendCollectionAsync($requestInfo, [BusinessInvitationTableRow::class, 'createFromDiscriminatorValue'], null);
+        $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+        ];
+        return $this->requestAdapter->sendCollectionAsync($requestInfo, [BusinessInvitationTableRow::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
 
     /**
@@ -66,6 +69,7 @@ class InvitationsRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toPostRequestInformation($body, $requestConfiguration);
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [BusinessInvitationResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }

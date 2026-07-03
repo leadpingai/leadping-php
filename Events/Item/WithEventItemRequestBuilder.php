@@ -47,6 +47,7 @@ class WithEventItemRequestBuilder extends BaseRequestBuilder
     public function get(?WithEventItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [EventTableRow::class, 'createFromDiscriminatorValue'], $errorMappings);

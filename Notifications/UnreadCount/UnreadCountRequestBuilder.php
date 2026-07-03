@@ -39,6 +39,7 @@ class UnreadCountRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         /** @var Promise<int|null> $result */

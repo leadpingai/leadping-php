@@ -40,6 +40,7 @@ class TagsItemRequestBuilder extends BaseRequestBuilder
     public function delete(?TagsItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toDeleteRequestInformation($requestConfiguration);
         $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         /** @var Promise<bool|null> $result */
@@ -58,6 +59,7 @@ class TagsItemRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toPutRequestInformation($body, $requestConfiguration);
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [TagResponse::class, 'createFromDiscriminatorValue'], $errorMappings);

@@ -4,8 +4,10 @@ namespace Leadping\OpenApiClient\Feedback\Admin;
 
 use Exception;
 use Http\Promise\Promise;
+use Leadping\OpenApiClient\Feedback\Admin\All\AllRequestBuilder;
 use Leadping\OpenApiClient\Feedback\Admin\Item\AdminItemRequestBuilder;
 use Leadping\OpenApiClient\Models\PagedResultOfFeedbackResponse;
+use Leadping\OpenApiClient\Models\ProblemDetails;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
@@ -16,6 +18,13 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 */
 class AdminRequestBuilder extends BaseRequestBuilder 
 {
+    /**
+     * The all property
+    */
+    public function all(): AllRequestBuilder {
+        return new AllRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
     /**
      * Gets an item from the Leadping/OpenApiClient.feedback.admin.item collection
      * @param string $id Unique identifier of the item
@@ -49,7 +58,10 @@ class AdminRequestBuilder extends BaseRequestBuilder
     */
     public function get(?AdminRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
-        return $this->requestAdapter->sendAsync($requestInfo, [PagedResultOfFeedbackResponse::class, 'createFromDiscriminatorValue'], null);
+        $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+        ];
+        return $this->requestAdapter->sendAsync($requestInfo, [PagedResultOfFeedbackResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
 
     /**

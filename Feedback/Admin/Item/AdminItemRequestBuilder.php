@@ -40,6 +40,7 @@ class AdminItemRequestBuilder extends BaseRequestBuilder
     public function get(?AdminItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [FeedbackResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
@@ -56,6 +57,7 @@ class AdminItemRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toPutRequestInformation($body, $requestConfiguration);
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [FeedbackResponse::class, 'createFromDiscriminatorValue'], $errorMappings);

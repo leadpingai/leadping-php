@@ -39,6 +39,7 @@ class MarkReadRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toPostRequestInformation($requestConfiguration);
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];

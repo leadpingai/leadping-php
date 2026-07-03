@@ -70,6 +70,7 @@ class AutomationsRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toPostRequestInformation($body, $requestConfiguration);
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [AutomationResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }

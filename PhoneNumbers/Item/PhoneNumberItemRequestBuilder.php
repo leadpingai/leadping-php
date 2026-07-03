@@ -57,6 +57,7 @@ class PhoneNumberItemRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toDeleteRequestInformation($requestConfiguration);
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
@@ -72,6 +73,7 @@ class PhoneNumberItemRequestBuilder extends BaseRequestBuilder
     public function get(?PhoneNumberItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [PhoneNumberResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
@@ -88,6 +90,7 @@ class PhoneNumberItemRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toPutRequestInformation($body, $requestConfiguration);
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];

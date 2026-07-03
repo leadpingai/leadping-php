@@ -40,6 +40,7 @@ class AutomationsItemRequestBuilder extends BaseRequestBuilder
     public function delete(?AutomationsItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toDeleteRequestInformation($requestConfiguration);
         $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         /** @var Promise<bool|null> $result */
@@ -56,6 +57,7 @@ class AutomationsItemRequestBuilder extends BaseRequestBuilder
     public function get(?AutomationsItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [AutomationResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
@@ -72,6 +74,7 @@ class AutomationsItemRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toPutRequestInformation($body, $requestConfiguration);
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [AutomationResponse::class, 'createFromDiscriminatorValue'], $errorMappings);

@@ -51,7 +51,10 @@ class TagsRequestBuilder extends BaseRequestBuilder
     */
     public function get(?TagsRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
-        return $this->requestAdapter->sendCollectionAsync($requestInfo, [TagResponse::class, 'createFromDiscriminatorValue'], null);
+        $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+        ];
+        return $this->requestAdapter->sendCollectionAsync($requestInfo, [TagResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
 
     /**
@@ -65,6 +68,7 @@ class TagsRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toPostRequestInformation($body, $requestConfiguration);
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [TagResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }

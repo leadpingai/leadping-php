@@ -40,6 +40,7 @@ class CancelRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toPostRequestInformation($requestConfiguration);
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [SmsResponse::class, 'createFromDiscriminatorValue'], $errorMappings);

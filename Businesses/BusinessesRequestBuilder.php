@@ -2,6 +2,7 @@
 
 namespace Leadping\OpenApiClient\Businesses;
 
+use Leadping\OpenApiClient\Businesses\ApiKeys\ApiKeysRequestBuilder;
 use Leadping\OpenApiClient\Businesses\Invitations\InvitationsRequestBuilder;
 use Leadping\OpenApiClient\Businesses\Me\MeRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
@@ -12,6 +13,13 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 */
 class BusinessesRequestBuilder extends BaseRequestBuilder 
 {
+    /**
+     * The apiKeys property
+    */
+    public function apiKeys(): ApiKeysRequestBuilder {
+        return new ApiKeysRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
     /**
      * The invitations property
     */

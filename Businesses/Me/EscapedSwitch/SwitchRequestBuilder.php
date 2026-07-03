@@ -41,6 +41,7 @@ class SwitchRequestBuilder extends BaseRequestBuilder
     public function post(BusinessSwitchRequest $body, ?SwitchRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toPostRequestInformation($body, $requestConfiguration);
         $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [BusinessResponse::class, 'createFromDiscriminatorValue'], $errorMappings);

@@ -5,6 +5,7 @@ namespace Leadping\OpenApiClient\Businesses\Me\Options;
 use Exception;
 use Http\Promise\Promise;
 use Leadping\OpenApiClient\Models\BusinessSwitchOption;
+use Leadping\OpenApiClient\Models\ProblemDetails;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
@@ -37,7 +38,10 @@ class OptionsRequestBuilder extends BaseRequestBuilder
     */
     public function get(?OptionsRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
-        return $this->requestAdapter->sendCollectionAsync($requestInfo, [BusinessSwitchOption::class, 'createFromDiscriminatorValue'], null);
+        $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+        ];
+        return $this->requestAdapter->sendCollectionAsync($requestInfo, [BusinessSwitchOption::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
 
     /**

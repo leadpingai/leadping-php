@@ -39,6 +39,7 @@ class WithCallEventItemRequestBuilder extends BaseRequestBuilder
     public function get(?WithCallEventItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [CallEventTableRow::class, 'createFromDiscriminatorValue'], $errorMappings);
