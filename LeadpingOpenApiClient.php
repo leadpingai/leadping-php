@@ -14,11 +14,14 @@ use Leadping\OpenApiClient\Leads\LeadsRequestBuilder;
 use Leadping\OpenApiClient\Notifications\NotificationsRequestBuilder;
 use Leadping\OpenApiClient\Outbound\OutboundRequestBuilder;
 use Leadping\OpenApiClient\PaymentMethods\PaymentMethodsRequestBuilder;
+use Leadping\OpenApiClient\PhoneCall\PhoneCallRequestBuilder;
 use Leadping\OpenApiClient\PhoneNumbers\PhoneNumbersRequestBuilder;
 use Leadping\OpenApiClient\Reports\ReportsRequestBuilder;
 use Leadping\OpenApiClient\Sms\SmsRequestBuilder;
 use Leadping\OpenApiClient\Sources\SourcesRequestBuilder;
+use Leadping\OpenApiClient\Suppressions\SuppressionsRequestBuilder;
 use Leadping\OpenApiClient\Tags\TagsRequestBuilder;
+use Leadping\OpenApiClient\Telephony\TelephonyRequestBuilder;
 use Leadping\OpenApiClient\Transactions\TransactionsRequestBuilder;
 use Leadping\OpenApiClient\Usage\UsageRequestBuilder;
 use Leadping\OpenApiClient\Users\UsersRequestBuilder;
@@ -124,6 +127,13 @@ class LeadpingOpenApiClient extends BaseRequestBuilder
     }
     
     /**
+     * The phoneCall property
+    */
+    public function phoneCall(): PhoneCallRequestBuilder {
+        return new PhoneCallRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
      * The phoneNumbers property
     */
     public function phoneNumbers(): PhoneNumbersRequestBuilder {
@@ -152,10 +162,24 @@ class LeadpingOpenApiClient extends BaseRequestBuilder
     }
     
     /**
+     * The suppressions property
+    */
+    public function suppressions(): SuppressionsRequestBuilder {
+        return new SuppressionsRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
      * The tags property
     */
     public function tags(): TagsRequestBuilder {
         return new TagsRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The telephony property
+    */
+    public function telephony(): TelephonyRequestBuilder {
+        return new TelephonyRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**
