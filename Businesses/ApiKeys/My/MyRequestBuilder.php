@@ -32,7 +32,7 @@ class MyRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns a paged result of current-business API keys.
+     * Retrieves a paged list of API keys owned by the caller's current Leadping business, with support for filtering, sorting, and pagination.
      * @param RequestDataOptions $body Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
      * @param MyRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<PagedResultOfBusinessTableRow|null>
@@ -48,7 +48,7 @@ class MyRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns a paged result of current-business API keys.
+     * Retrieves a paged list of API keys owned by the caller's current Leadping business, with support for filtering, sorting, and pagination.
      * @param RequestDataOptions $body Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
      * @param MyRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

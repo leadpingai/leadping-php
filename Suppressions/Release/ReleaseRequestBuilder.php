@@ -32,7 +32,7 @@ class ReleaseRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns the suppression entry response.
+     * Releases an active Leadping suppression entry so a recipient can be contacted again, returning the updated suppression record when available.
      * @param SuppressionEntryRequest $body Request payload for suppression entry.
      * @param ReleaseRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<SuppressionEntryResponse|null>
@@ -48,7 +48,7 @@ class ReleaseRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns the suppression entry response.
+     * Releases an active Leadping suppression entry so a recipient can be contacted again, returning the updated suppression record when available.
      * @param SuppressionEntryRequest $body Request payload for suppression entry.
      * @param ReleaseRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

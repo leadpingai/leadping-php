@@ -32,7 +32,7 @@ class LoginRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns the telephony login response with a 200 status code.
+     * Generates a Leadping WebRTC login token so authenticated agents can connect to telephony services and place or receive browser-based calls.
      * @param TelephonyLoginRequest $body Request model for telephony login token generation.
      * @param LoginRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<TelephonyLoginResponse|null>
@@ -48,7 +48,7 @@ class LoginRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns the telephony login response with a 200 status code.
+     * Generates a Leadping WebRTC login token so authenticated agents can connect to telephony services and place or receive browser-based calls.
      * @param TelephonyLoginRequest $body Request model for telephony login token generation.
      * @param LoginRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

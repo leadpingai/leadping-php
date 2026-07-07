@@ -32,7 +32,7 @@ class CheckRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns the suppression check result.
+     * Checks whether a recipient is blocked by an active Leadping suppression entry before sending messages or placing calls through the selected channel.
      * @param SuppressionEntryRequest $body Request payload for suppression entry.
      * @param CheckRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<SuppressionCheckResult|null>
@@ -48,7 +48,7 @@ class CheckRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns the suppression check result.
+     * Checks whether a recipient is blocked by an active Leadping suppression entry before sending messages or placing calls through the selected channel.
      * @param SuppressionEntryRequest $body Request payload for suppression entry.
      * @param CheckRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

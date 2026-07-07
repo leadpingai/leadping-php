@@ -31,7 +31,7 @@ class TransferRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns the call details with a 200 status code.
+     * Transfers an active Leadping phone call to a new phone number and returns the updated call record with status and routing details.
      * @param TransferRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<PhoneCallResponse|null>
      * @throws Exception
@@ -47,7 +47,7 @@ class TransferRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns the call details with a 200 status code.
+     * Transfers an active Leadping phone call to a new phone number and returns the updated call record with status and routing details.
      * @param TransferRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

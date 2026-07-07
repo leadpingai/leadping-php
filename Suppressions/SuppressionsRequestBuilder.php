@@ -48,7 +48,7 @@ class SuppressionsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * The suppression entry response was created successfully.
+     * Creates or reactivates a Leadping suppression entry that blocks future outreach to a recipient across the selected communication channel.
      * @param SuppressionEntryRequest $body Request payload for suppression entry.
      * @param SuppressionsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<SuppressionEntryResponse|null>
@@ -64,7 +64,7 @@ class SuppressionsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * The suppression entry response was created successfully.
+     * Creates or reactivates a Leadping suppression entry that blocks future outreach to a recipient across the selected communication channel.
      * @param SuppressionEntryRequest $body Request payload for suppression entry.
      * @param SuppressionsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

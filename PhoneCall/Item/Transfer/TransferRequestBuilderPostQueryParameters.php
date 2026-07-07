@@ -3,7 +3,7 @@
 namespace Leadping\OpenApiClient\PhoneCall\Item\Transfer;
 
 /**
- * Returns the call details with a 200 status code.
+ * Transfers an active Leadping phone call to a new phone number and returns the updated call record with status and routing details.
 */
 class TransferRequestBuilderPostQueryParameters 
 {

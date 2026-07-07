@@ -31,7 +31,7 @@ class HangupRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns the call details with a 200 status code.
+     * Ends an active Leadping phone call by call ID and returns the updated call record, including status and provider routing details.
      * @param HangupRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<PhoneCallResponse|null>
      * @throws Exception
@@ -47,7 +47,7 @@ class HangupRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns the call details with a 200 status code.
+     * Ends an active Leadping phone call by call ID and returns the updated call record, including status and provider routing details.
      * @param HangupRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
