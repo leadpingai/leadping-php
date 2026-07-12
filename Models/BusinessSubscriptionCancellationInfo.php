@@ -11,7 +11,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 /**
  * Captured subscription cancellation feedback for retention and churn analysis.
 */
-class UserSubscriptionCancellationInfo implements AdditionalDataHolder, Parsable 
+class BusinessSubscriptionCancellationInfo implements AdditionalDataHolder, Parsable 
 {
     /**
      * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -64,7 +64,7 @@ class UserSubscriptionCancellationInfo implements AdditionalDataHolder, Parsable
     private ?string $technicalIssues = null;
     
     /**
-     * Instantiates a new UserSubscriptionCancellationInfo and sets the default values.
+     * Instantiates a new BusinessSubscriptionCancellationInfo and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);
@@ -73,10 +73,10 @@ class UserSubscriptionCancellationInfo implements AdditionalDataHolder, Parsable
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
-     * @return UserSubscriptionCancellationInfo
+     * @return BusinessSubscriptionCancellationInfo
     */
-    public static function createFromDiscriminatorValue(ParseNode $parseNode): UserSubscriptionCancellationInfo {
-        return new UserSubscriptionCancellationInfo();
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): BusinessSubscriptionCancellationInfo {
+        return new BusinessSubscriptionCancellationInfo();
     }
 
     /**

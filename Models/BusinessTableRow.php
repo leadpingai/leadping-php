@@ -59,6 +59,11 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     private ?int $apiKeyTotalUses = null;
     
     /**
+     * @var BusinessTableRow_billingPlan|null $billingPlan Defines the supported Billing Plan values.
+    */
+    private ?BusinessTableRow_billingPlan $billingPlan = null;
+    
+    /**
      * @var string|null $businessId The business ID that owns this row when the row represents a child business resource.
     */
     private ?string $businessId = null;
@@ -84,6 +89,11 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     private ?string $industry = null;
     
     /**
+     * @var DateTime|null $lastSubscriptionEventAt The lastSubscriptionEventAt property
+    */
+    private ?DateTime $lastSubscriptionEventAt = null;
+    
+    /**
      * @var DateTime|null $modifiedAt The date and time for the modified at value on this business.
     */
     private ?DateTime $modifiedAt = null;
@@ -99,6 +109,11 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     private ?bool $needsAdminReview = null;
     
     /**
+     * @var DateTime|null $paymentFailedAt The paymentFailedAt property
+    */
+    private ?DateTime $paymentFailedAt = null;
+    
+    /**
      * @var string|null $phone The phone number associated with this business.
     */
     private ?string $phone = null;
@@ -112,6 +127,16 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
      * @var BusinessTableRow_status|null $status Defines the supported Business Status values.
     */
     private ?BusinessTableRow_status $status = null;
+    
+    /**
+     * @var DateTime|null $subscriptionCancelAt The subscriptionCancelAt property
+    */
+    private ?DateTime $subscriptionCancelAt = null;
+    
+    /**
+     * @var BusinessTableRow_subscriptionStatus|null $subscriptionStatus Defines the supported Subscription Status values.
+    */
+    private ?BusinessTableRow_subscriptionStatus $subscriptionStatus = null;
     
     /**
      * @var BusinessTableRow_tenDlcStatus|null $tenDlcStatus Defines the supported 10DLC Application Status values.
@@ -232,6 +257,14 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the billingPlan property value. Defines the supported Billing Plan values.
+     * @return BusinessTableRow_billingPlan|null
+    */
+    public function getBillingPlan(): ?BusinessTableRow_billingPlan {
+        return $this->billingPlan;
+    }
+
+    /**
      * Gets the businessId property value. The business ID that owns this row when the row represents a child business resource.
      * @return string|null
     */
@@ -270,17 +303,22 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
             'apiKeyLastUsedAt' => fn(ParseNode $n) => $o->setApiKeyLastUsedAt($n->getDateTimeValue()),
             'apiKeyPreview' => fn(ParseNode $n) => $o->setApiKeyPreview($n->getStringValue()),
             'apiKeyTotalUses' => fn(ParseNode $n) => $o->setApiKeyTotalUses($n->getIntegerValue()),
+            'billingPlan' => fn(ParseNode $n) => $o->setBillingPlan($n->getEnumValue(BusinessTableRow_billingPlan::class)),
             'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'businessName' => fn(ParseNode $n) => $o->setBusinessName($n->getStringValue()),
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'industry' => fn(ParseNode $n) => $o->setIndustry($n->getStringValue()),
+            'lastSubscriptionEventAt' => fn(ParseNode $n) => $o->setLastSubscriptionEventAt($n->getDateTimeValue()),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'needsAdminReview' => fn(ParseNode $n) => $o->setNeedsAdminReview($n->getBooleanValue()),
+            'paymentFailedAt' => fn(ParseNode $n) => $o->setPaymentFailedAt($n->getDateTimeValue()),
             'phone' => fn(ParseNode $n) => $o->setPhone($n->getStringValue()),
             'setupStep' => fn(ParseNode $n) => $o->setSetupStep($n->getEnumValue(BusinessTableRow_setupStep::class)),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(BusinessTableRow_status::class)),
+            'subscriptionCancelAt' => fn(ParseNode $n) => $o->setSubscriptionCancelAt($n->getDateTimeValue()),
+            'subscriptionStatus' => fn(ParseNode $n) => $o->setSubscriptionStatus($n->getEnumValue(BusinessTableRow_subscriptionStatus::class)),
             'tenDlcStatus' => fn(ParseNode $n) => $o->setTenDlcStatus($n->getEnumValue(BusinessTableRow_tenDlcStatus::class)),
             'userCount' => fn(ParseNode $n) => $o->setUserCount($n->getIntegerValue()),
             'userId' => fn(ParseNode $n) => $o->setUserId($n->getStringValue()),
@@ -304,6 +342,14 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     */
     public function getIndustry(): ?string {
         return $this->industry;
+    }
+
+    /**
+     * Gets the lastSubscriptionEventAt property value. The lastSubscriptionEventAt property
+     * @return DateTime|null
+    */
+    public function getLastSubscriptionEventAt(): ?DateTime {
+        return $this->lastSubscriptionEventAt;
     }
 
     /**
@@ -331,6 +377,14 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the paymentFailedAt property value. The paymentFailedAt property
+     * @return DateTime|null
+    */
+    public function getPaymentFailedAt(): ?DateTime {
+        return $this->paymentFailedAt;
+    }
+
+    /**
      * Gets the phone property value. The phone number associated with this business.
      * @return string|null
     */
@@ -352,6 +406,22 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     */
     public function getStatus(): ?BusinessTableRow_status {
         return $this->status;
+    }
+
+    /**
+     * Gets the subscriptionCancelAt property value. The subscriptionCancelAt property
+     * @return DateTime|null
+    */
+    public function getSubscriptionCancelAt(): ?DateTime {
+        return $this->subscriptionCancelAt;
+    }
+
+    /**
+     * Gets the subscriptionStatus property value. Defines the supported Subscription Status values.
+     * @return BusinessTableRow_subscriptionStatus|null
+    */
+    public function getSubscriptionStatus(): ?BusinessTableRow_subscriptionStatus {
+        return $this->subscriptionStatus;
     }
 
     /**
@@ -415,17 +485,22 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('apiKeyLastUsedAt', $this->getApiKeyLastUsedAt());
         $writer->writeStringValue('apiKeyPreview', $this->getApiKeyPreview());
         $writer->writeIntegerValue('apiKeyTotalUses', $this->getApiKeyTotalUses());
+        $writer->writeEnumValue('billingPlan', $this->getBillingPlan());
         $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeStringValue('businessName', $this->getBusinessName());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeStringValue('industry', $this->getIndustry());
+        $writer->writeDateTimeValue('lastSubscriptionEventAt', $this->getLastSubscriptionEventAt());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeBooleanValue('needsAdminReview', $this->getNeedsAdminReview());
+        $writer->writeDateTimeValue('paymentFailedAt', $this->getPaymentFailedAt());
         $writer->writeStringValue('phone', $this->getPhone());
         $writer->writeEnumValue('setupStep', $this->getSetupStep());
         $writer->writeEnumValue('status', $this->getStatus());
+        $writer->writeDateTimeValue('subscriptionCancelAt', $this->getSubscriptionCancelAt());
+        $writer->writeEnumValue('subscriptionStatus', $this->getSubscriptionStatus());
         $writer->writeEnumValue('tenDlcStatus', $this->getTenDlcStatus());
         $writer->writeIntegerValue('userCount', $this->getUserCount());
         $writer->writeStringValue('userId', $this->getUserId());
@@ -508,6 +583,14 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the billingPlan property value. Defines the supported Billing Plan values.
+     * @param BusinessTableRow_billingPlan|null $value Value to set for the billingPlan property.
+    */
+    public function setBillingPlan(?BusinessTableRow_billingPlan $value): void {
+        $this->billingPlan = $value;
+    }
+
+    /**
      * Sets the businessId property value. The business ID that owns this row when the row represents a child business resource.
      * @param string|null $value Value to set for the businessId property.
     */
@@ -548,6 +631,14 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the lastSubscriptionEventAt property value. The lastSubscriptionEventAt property
+     * @param DateTime|null $value Value to set for the lastSubscriptionEventAt property.
+    */
+    public function setLastSubscriptionEventAt(?DateTime $value): void {
+        $this->lastSubscriptionEventAt = $value;
+    }
+
+    /**
      * Sets the modifiedAt property value. The date and time for the modified at value on this business.
      * @param DateTime|null $value Value to set for the modifiedAt property.
     */
@@ -572,6 +663,14 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the paymentFailedAt property value. The paymentFailedAt property
+     * @param DateTime|null $value Value to set for the paymentFailedAt property.
+    */
+    public function setPaymentFailedAt(?DateTime $value): void {
+        $this->paymentFailedAt = $value;
+    }
+
+    /**
      * Sets the phone property value. The phone number associated with this business.
      * @param string|null $value Value to set for the phone property.
     */
@@ -593,6 +692,22 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     */
     public function setStatus(?BusinessTableRow_status $value): void {
         $this->status = $value;
+    }
+
+    /**
+     * Sets the subscriptionCancelAt property value. The subscriptionCancelAt property
+     * @param DateTime|null $value Value to set for the subscriptionCancelAt property.
+    */
+    public function setSubscriptionCancelAt(?DateTime $value): void {
+        $this->subscriptionCancelAt = $value;
+    }
+
+    /**
+     * Sets the subscriptionStatus property value. Defines the supported Subscription Status values.
+     * @param BusinessTableRow_subscriptionStatus|null $value Value to set for the subscriptionStatus property.
+    */
+    public function setSubscriptionStatus(?BusinessTableRow_subscriptionStatus $value): void {
+        $this->subscriptionStatus = $value;
     }
 
     /**

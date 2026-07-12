@@ -23,11 +23,6 @@ class UserRequest implements AdditionalDataHolder, Parsable
     private ?UserRequest_billingPlan $billingPlan = null;
     
     /**
-     * @var UserRequest_business|null $business Business summary connected to this user profile request.
-    */
-    private ?UserRequest_business $business = null;
-    
-    /**
      * @var UserRequest_compliance|null $compliance User compliance settings and attestations captured for Leadping account review.
     */
     private ?UserRequest_compliance $compliance = null;
@@ -78,11 +73,6 @@ class UserRequest implements AdditionalDataHolder, Parsable
     private ?string $phone = null;
     
     /**
-     * @var UserRequest_subscriptionStatus|null $subscriptionStatus Defines the supported Subscription Status values.
-    */
-    private ?UserRequest_subscriptionStatus $subscriptionStatus = null;
-    
-    /**
      * Instantiates a new UserRequest and sets the default values.
     */
     public function __construct() {
@@ -112,14 +102,6 @@ class UserRequest implements AdditionalDataHolder, Parsable
     */
     public function getBillingPlan(): ?UserRequest_billingPlan {
         return $this->billingPlan;
-    }
-
-    /**
-     * Gets the business property value. Business summary connected to this user profile request.
-     * @return UserRequest_business|null
-    */
-    public function getBusiness(): ?UserRequest_business {
-        return $this->business;
     }
 
     /**
@@ -154,7 +136,6 @@ class UserRequest implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'billingPlan' => fn(ParseNode $n) => $o->setBillingPlan($n->getEnumValue(UserRequest_billingPlan::class)),
-            'business' => fn(ParseNode $n) => $o->setBusiness($n->getObjectValue([UserRequest_business::class, 'createFromDiscriminatorValue'])),
             'compliance' => fn(ParseNode $n) => $o->setCompliance($n->getObjectValue([UserRequest_compliance::class, 'createFromDiscriminatorValue'])),
             'currentBusiness' => fn(ParseNode $n) => $o->setCurrentBusiness($n->getObjectValue([UserRequest_currentBusiness::class, 'createFromDiscriminatorValue'])),
             'email' => fn(ParseNode $n) => $o->setEmail($n->getStringValue()),
@@ -165,7 +146,6 @@ class UserRequest implements AdditionalDataHolder, Parsable
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'notificationPreferences' => fn(ParseNode $n) => $o->setNotificationPreferences($n->getObjectValue([UserRequest_notificationPreferences::class, 'createFromDiscriminatorValue'])),
             'phone' => fn(ParseNode $n) => $o->setPhone($n->getStringValue()),
-            'subscriptionStatus' => fn(ParseNode $n) => $o->setSubscriptionStatus($n->getEnumValue(UserRequest_subscriptionStatus::class)),
         ];
     }
 
@@ -226,20 +206,11 @@ class UserRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the subscriptionStatus property value. Defines the supported Subscription Status values.
-     * @return UserRequest_subscriptionStatus|null
-    */
-    public function getSubscriptionStatus(): ?UserRequest_subscriptionStatus {
-        return $this->subscriptionStatus;
-    }
-
-    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeEnumValue('billingPlan', $this->getBillingPlan());
-        $writer->writeObjectValue('business', $this->getBusiness());
         $writer->writeObjectValue('compliance', $this->getCompliance());
         $writer->writeObjectValue('currentBusiness', $this->getCurrentBusiness());
         $writer->writeStringValue('email', $this->getEmail());
@@ -250,7 +221,6 @@ class UserRequest implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('name', $this->getName());
         $writer->writeObjectValue('notificationPreferences', $this->getNotificationPreferences());
         $writer->writeStringValue('phone', $this->getPhone());
-        $writer->writeEnumValue('subscriptionStatus', $this->getSubscriptionStatus());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -268,14 +238,6 @@ class UserRequest implements AdditionalDataHolder, Parsable
     */
     public function setBillingPlan(?UserRequest_billingPlan $value): void {
         $this->billingPlan = $value;
-    }
-
-    /**
-     * Sets the business property value. Business summary connected to this user profile request.
-     * @param UserRequest_business|null $value Value to set for the business property.
-    */
-    public function setBusiness(?UserRequest_business $value): void {
-        $this->business = $value;
     }
 
     /**
@@ -356,14 +318,6 @@ class UserRequest implements AdditionalDataHolder, Parsable
     */
     public function setPhone(?string $value): void {
         $this->phone = $value;
-    }
-
-    /**
-     * Sets the subscriptionStatus property value. Defines the supported Subscription Status values.
-     * @param UserRequest_subscriptionStatus|null $value Value to set for the subscriptionStatus property.
-    */
-    public function setSubscriptionStatus(?UserRequest_subscriptionStatus $value): void {
-        $this->subscriptionStatus = $value;
     }
 
 }

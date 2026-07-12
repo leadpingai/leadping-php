@@ -6,6 +6,7 @@ use Exception;
 use Http\Promise\Promise;
 use Leadping\OpenApiClient\Models\ProblemDetails;
 use Leadping\OpenApiClient\Models\StripePaymentMethodResponse;
+use Leadping\OpenApiClient\PaymentMethods\Item\EscapedDefault\DefaultRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
@@ -16,6 +17,13 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 */
 class PaymentMethodsItemRequestBuilder extends BaseRequestBuilder 
 {
+    /**
+     * The default property
+    */
+    public function escapedDefault(): DefaultRequestBuilder {
+        return new DefaultRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
     /**
      * Instantiates a new PaymentMethodsItemRequestBuilder and sets the default values.
      * @param array<string, mixed>|string $pathParametersOrRawUrl Path parameters for the request or a String representing the raw URL.

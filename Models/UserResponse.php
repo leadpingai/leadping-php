@@ -24,11 +24,6 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?UserResponse_billingPlan $billingPlan = null;
     
     /**
-     * @var UserResponse_business|null $business The business value for this user.
-    */
-    private ?UserResponse_business $business = null;
-    
-    /**
      * @var UserResponse_compliance|null $compliance The compliance value for this user.
     */
     private ?UserResponse_compliance $compliance = null;
@@ -119,7 +114,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?string $phone = null;
     
     /**
-     * @var UserResponse_stripeInfo|null $stripeInfo The Stripe info value for this user.
+     * @var UserResponse_stripeInfo|null $stripeInfo Stripe state for the user's currently selected business.
     */
     private ?UserResponse_stripeInfo $stripeInfo = null;
     
@@ -158,14 +153,6 @@ class UserResponse implements AdditionalDataHolder, Parsable
     */
     public function getBillingPlan(): ?UserResponse_billingPlan {
         return $this->billingPlan;
-    }
-
-    /**
-     * Gets the business property value. The business value for this user.
-     * @return UserResponse_business|null
-    */
-    public function getBusiness(): ?UserResponse_business {
-        return $this->business;
     }
 
     /**
@@ -208,7 +195,6 @@ class UserResponse implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'billingPlan' => fn(ParseNode $n) => $o->setBillingPlan($n->getEnumValue(UserResponse_billingPlan::class)),
-            'business' => fn(ParseNode $n) => $o->setBusiness($n->getObjectValue([UserResponse_business::class, 'createFromDiscriminatorValue'])),
             'compliance' => fn(ParseNode $n) => $o->setCompliance($n->getObjectValue([UserResponse_compliance::class, 'createFromDiscriminatorValue'])),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'currentBusiness' => fn(ParseNode $n) => $o->setCurrentBusiness($n->getObjectValue([UserResponse_currentBusiness::class, 'createFromDiscriminatorValue'])),
@@ -345,7 +331,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the stripeInfo property value. The Stripe info value for this user.
+     * Gets the stripeInfo property value. Stripe state for the user's currently selected business.
      * @return UserResponse_stripeInfo|null
     */
     public function getStripeInfo(): ?UserResponse_stripeInfo {
@@ -366,7 +352,6 @@ class UserResponse implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeEnumValue('billingPlan', $this->getBillingPlan());
-        $writer->writeObjectValue('business', $this->getBusiness());
         $writer->writeObjectValue('compliance', $this->getCompliance());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeObjectValue('currentBusiness', $this->getCurrentBusiness());
@@ -404,14 +389,6 @@ class UserResponse implements AdditionalDataHolder, Parsable
     */
     public function setBillingPlan(?UserResponse_billingPlan $value): void {
         $this->billingPlan = $value;
-    }
-
-    /**
-     * Sets the business property value. The business value for this user.
-     * @param UserResponse_business|null $value Value to set for the business property.
-    */
-    public function setBusiness(?UserResponse_business $value): void {
-        $this->business = $value;
     }
 
     /**
@@ -559,7 +536,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the stripeInfo property value. The Stripe info value for this user.
+     * Sets the stripeInfo property value. Stripe state for the user's currently selected business.
      * @param UserResponse_stripeInfo|null $value Value to set for the stripeInfo property.
     */
     public function setStripeInfo(?UserResponse_stripeInfo $value): void {

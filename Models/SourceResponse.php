@@ -35,7 +35,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     private ?array $allowedStates = null;
     
     /**
-     * @var string|null $apiKeyPreview Masked preview of the source API key for display without exposing the secret.
+     * @var string|null $apiKeyPreview Masked preview of the source API key for compact display.
     */
     private ?string $apiKeyPreview = null;
     
@@ -173,7 +173,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the apiKeyPreview property value. Masked preview of the source API key for display without exposing the secret.
+     * Gets the apiKeyPreview property value. Masked preview of the source API key for compact display.
      * @return string|null
     */
     public function getApiKeyPreview(): ?string {
@@ -430,7 +430,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the apiKeyPreview property value. Masked preview of the source API key for display without exposing the secret.
+     * Sets the apiKeyPreview property value. Masked preview of the source API key for compact display.
      * @param string|null $value Value to set for the apiKeyPreview property.
     */
     public function setApiKeyPreview(?string $value): void {

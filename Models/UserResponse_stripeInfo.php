@@ -7,9 +7,9 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * The Stripe info value for this user.
+ * Stripe state for the user's currently selected business.
 */
-class UserResponse_stripeInfo extends UserStripeInfo implements Parsable 
+class UserResponse_stripeInfo extends BusinessStripeInfo implements Parsable 
 {
     /**
      * Instantiates a new UserResponse_stripeInfo and sets the default values.

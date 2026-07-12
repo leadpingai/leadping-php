@@ -6,7 +6,6 @@ use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
-use Microsoft\Kiota\Abstractions\Types\TypeUtils;
 
 /**
  * API DTO containing user compliance data used by Leadping API contracts.
@@ -42,16 +41,6 @@ class UserCompliance implements AdditionalDataHolder, Parsable
      * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     */
     private ?array $additionalData = null;
-    
-    /**
-     * @var array<string>|null $licensedProducts The licensed products included with this user compliance.
-    */
-    private ?array $licensedProducts = null;
-    
-    /**
-     * @var array<string>|null $licensedStates The licensed states included with this user compliance.
-    */
-    private ?array $licensedStates = null;
     
     /**
      * @var array<TrustedFormCertificate>|null $trustedFormCertificates The TrustedForm certificates included with this user compliance.
@@ -134,40 +123,8 @@ class UserCompliance implements AdditionalDataHolder, Parsable
             'acceptedSms' => fn(ParseNode $n) => $o->setAcceptedSms($n->getBooleanValue()),
             'acceptedTerms' => fn(ParseNode $n) => $o->setAcceptedTerms($n->getBooleanValue()),
             'acceptedToSubscription' => fn(ParseNode $n) => $o->setAcceptedToSubscription($n->getBooleanValue()),
-            'licensedProducts' => function (ParseNode $n) {
-                $val = $n->getCollectionOfPrimitiveValues();
-                if (is_array($val)) {
-                    TypeUtils::validateCollectionValues($val, 'string');
-                }
-                /** @var array<string>|null $val */
-                $this->setLicensedProducts($val);
-            },
-            'licensedStates' => function (ParseNode $n) {
-                $val = $n->getCollectionOfPrimitiveValues();
-                if (is_array($val)) {
-                    TypeUtils::validateCollectionValues($val, 'string');
-                }
-                /** @var array<string>|null $val */
-                $this->setLicensedStates($val);
-            },
             'trustedFormCertificates' => fn(ParseNode $n) => $o->setTrustedFormCertificates($n->getCollectionOfObjectValues([TrustedFormCertificate::class, 'createFromDiscriminatorValue'])),
         ];
-    }
-
-    /**
-     * Gets the licensedProducts property value. The licensed products included with this user compliance.
-     * @return array<string>|null
-    */
-    public function getLicensedProducts(): ?array {
-        return $this->licensedProducts;
-    }
-
-    /**
-     * Gets the licensedStates property value. The licensed states included with this user compliance.
-     * @return array<string>|null
-    */
-    public function getLicensedStates(): ?array {
-        return $this->licensedStates;
     }
 
     /**
@@ -188,8 +145,6 @@ class UserCompliance implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('acceptedSms', $this->getAcceptedSms());
         $writer->writeBooleanValue('acceptedTerms', $this->getAcceptedTerms());
         $writer->writeBooleanValue('acceptedToSubscription', $this->getAcceptedToSubscription());
-        $writer->writeCollectionOfPrimitiveValues('licensedProducts', $this->getLicensedProducts());
-        $writer->writeCollectionOfPrimitiveValues('licensedStates', $this->getLicensedStates());
         $writer->writeCollectionOfObjectValues('trustedFormCertificates', $this->getTrustedFormCertificates());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -240,22 +195,6 @@ class UserCompliance implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the licensedProducts property value. The licensed products included with this user compliance.
-     * @param array<string>|null $value Value to set for the licensedProducts property.
-    */
-    public function setLicensedProducts(?array $value): void {
-        $this->licensedProducts = $value;
-    }
-
-    /**
-     * Sets the licensedStates property value. The licensed states included with this user compliance.
-     * @param array<string>|null $value Value to set for the licensedStates property.
-    */
-    public function setLicensedStates(?array $value): void {
-        $this->licensedStates = $value;
     }
 
     /**

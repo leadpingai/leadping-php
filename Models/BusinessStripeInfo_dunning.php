@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 /**
  * Dunning state recorded after a failed recurring payment.
 */
-class BusinessStripeInfo_dunning extends UserDunningInfo implements Parsable 
+class BusinessStripeInfo_dunning extends BusinessDunningInfo implements Parsable 
 {
     /**
      * Instantiates a new BusinessStripeInfo_dunning and sets the default values.

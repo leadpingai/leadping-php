@@ -28,6 +28,11 @@ class Phone implements AdditionalDataHolder, Parsable
     private ?string $number = null;
     
     /**
+     * @var string|null $phoneIdentityId Identifier of the canonical phone identity stored by Leadping.
+    */
+    private ?string $phoneIdentityId = null;
+    
+    /**
      * @var string|null $type Type classification used to route and interpret this lead phone number in the Leadping API.
     */
     private ?string $type = null;
@@ -65,6 +70,7 @@ class Phone implements AdditionalDataHolder, Parsable
         return  [
             'lookup' => fn(ParseNode $n) => $o->setLookup($n->getObjectValue([Phone_lookup::class, 'createFromDiscriminatorValue'])),
             'number' => fn(ParseNode $n) => $o->setNumber($n->getStringValue()),
+            'phoneIdentityId' => fn(ParseNode $n) => $o->setPhoneIdentityId($n->getStringValue()),
             'type' => fn(ParseNode $n) => $o->setType($n->getStringValue()),
         ];
     }
@@ -86,6 +92,14 @@ class Phone implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the phoneIdentityId property value. Identifier of the canonical phone identity stored by Leadping.
+     * @return string|null
+    */
+    public function getPhoneIdentityId(): ?string {
+        return $this->phoneIdentityId;
+    }
+
+    /**
      * Gets the type property value. Type classification used to route and interpret this lead phone number in the Leadping API.
      * @return string|null
     */
@@ -100,6 +114,7 @@ class Phone implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeObjectValue('lookup', $this->getLookup());
         $writer->writeStringValue('number', $this->getNumber());
+        $writer->writeStringValue('phoneIdentityId', $this->getPhoneIdentityId());
         $writer->writeStringValue('type', $this->getType());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -126,6 +141,14 @@ class Phone implements AdditionalDataHolder, Parsable
     */
     public function setNumber(?string $value): void {
         $this->number = $value;
+    }
+
+    /**
+     * Sets the phoneIdentityId property value. Identifier of the canonical phone identity stored by Leadping.
+     * @param string|null $value Value to set for the phoneIdentityId property.
+    */
+    public function setPhoneIdentityId(?string $value): void {
+        $this->phoneIdentityId = $value;
     }
 
     /**

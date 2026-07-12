@@ -34,6 +34,11 @@ class BusinessSwitchOption implements AdditionalDataHolder, Parsable
     private ?BusinessSwitchOption_businessStatus $businessStatus = null;
     
     /**
+     * @var bool|null $hasPaymentMethod Whether the business has a default billing payment method.
+    */
+    private ?bool $hasPaymentMethod = null;
+    
+    /**
      * @var string|null $id The unique ID for this business switch option.
     */
     private ?string $id = null;
@@ -126,6 +131,7 @@ class BusinessSwitchOption implements AdditionalDataHolder, Parsable
             'activationStatus' => fn(ParseNode $n) => $o->setActivationStatus($n->getEnumValue(BusinessSwitchOption_activationStatus::class)),
             'activationSummary' => fn(ParseNode $n) => $o->setActivationSummary($n->getStringValue()),
             'businessStatus' => fn(ParseNode $n) => $o->setBusinessStatus($n->getEnumValue(BusinessSwitchOption_businessStatus::class)),
+            'hasPaymentMethod' => fn(ParseNode $n) => $o->setHasPaymentMethod($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isCurrent' => fn(ParseNode $n) => $o->setIsCurrent($n->getBooleanValue()),
             'lastUsedAt' => fn(ParseNode $n) => $o->setLastUsedAt($n->getDateTimeValue()),
@@ -134,6 +140,14 @@ class BusinessSwitchOption implements AdditionalDataHolder, Parsable
             'readyForCustomerTraffic' => fn(ParseNode $n) => $o->setReadyForCustomerTraffic($n->getBooleanValue()),
             'role' => fn(ParseNode $n) => $o->setRole($n->getEnumValue(BusinessUserRole::class)),
         ];
+    }
+
+    /**
+     * Gets the hasPaymentMethod property value. Whether the business has a default billing payment method.
+     * @return bool|null
+    */
+    public function getHasPaymentMethod(): ?bool {
+        return $this->hasPaymentMethod;
     }
 
     /**
@@ -200,6 +214,7 @@ class BusinessSwitchOption implements AdditionalDataHolder, Parsable
         $writer->writeEnumValue('activationStatus', $this->getActivationStatus());
         $writer->writeStringValue('activationSummary', $this->getActivationSummary());
         $writer->writeEnumValue('businessStatus', $this->getBusinessStatus());
+        $writer->writeBooleanValue('hasPaymentMethod', $this->getHasPaymentMethod());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isCurrent', $this->getIsCurrent());
         $writer->writeDateTimeValue('lastUsedAt', $this->getLastUsedAt());
@@ -240,6 +255,14 @@ class BusinessSwitchOption implements AdditionalDataHolder, Parsable
     */
     public function setBusinessStatus(?BusinessSwitchOption_businessStatus $value): void {
         $this->businessStatus = $value;
+    }
+
+    /**
+     * Sets the hasPaymentMethod property value. Whether the business has a default billing payment method.
+     * @param bool|null $value Value to set for the hasPaymentMethod property.
+    */
+    public function setHasPaymentMethod(?bool $value): void {
+        $this->hasPaymentMethod = $value;
     }
 
     /**

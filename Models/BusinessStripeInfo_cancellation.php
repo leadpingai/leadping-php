@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 /**
  * Captured subscription cancellation feedback for retention and churn analysis.
 */
-class BusinessStripeInfo_cancellation extends UserSubscriptionCancellationInfo implements Parsable 
+class BusinessStripeInfo_cancellation extends BusinessSubscriptionCancellationInfo implements Parsable 
 {
     /**
      * Instantiates a new BusinessStripeInfo_cancellation and sets the default values.

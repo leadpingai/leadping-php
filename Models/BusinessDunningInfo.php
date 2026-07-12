@@ -11,7 +11,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 /**
  * Dunning state recorded after a failed recurring payment.
 */
-class UserDunningInfo implements AdditionalDataHolder, Parsable 
+class BusinessDunningInfo implements AdditionalDataHolder, Parsable 
 {
     /**
      * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -74,7 +74,7 @@ class UserDunningInfo implements AdditionalDataHolder, Parsable
     private ?string $stage = null;
     
     /**
-     * Instantiates a new UserDunningInfo and sets the default values.
+     * Instantiates a new BusinessDunningInfo and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);
@@ -83,10 +83,10 @@ class UserDunningInfo implements AdditionalDataHolder, Parsable
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
-     * @return UserDunningInfo
+     * @return BusinessDunningInfo
     */
-    public static function createFromDiscriminatorValue(ParseNode $parseNode): UserDunningInfo {
-        return new UserDunningInfo();
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): BusinessDunningInfo {
+        return new BusinessDunningInfo();
     }
 
     /**

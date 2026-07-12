@@ -18,9 +18,19 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var bool|null $automationFailedEmailEnabled The automationFailedEmailEnabled property
+    */
+    private ?bool $automationFailedEmailEnabled = null;
+    
+    /**
      * @var bool|null $automationFailedEnabled Whether automation failed notifications are enabled for this user notification preferences.
     */
     private ?bool $automationFailedEnabled = null;
+    
+    /**
+     * @var bool|null $automationFailedSmsEnabled The automationFailedSmsEnabled property
+    */
+    private ?bool $automationFailedSmsEnabled = null;
     
     /**
      * @var bool|null $billingEmailEnabled Whether billing email is enabled for this user notification preferences.
@@ -33,14 +43,34 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     private ?bool $billingSmsEnabled = null;
     
     /**
+     * @var bool|null $lowWalletBalanceEmailEnabled The lowWalletBalanceEmailEnabled property
+    */
+    private ?bool $lowWalletBalanceEmailEnabled = null;
+    
+    /**
      * @var bool|null $lowWalletBalanceEnabled Whether low wallet balance notifications are enabled for this user notification preferences.
     */
     private ?bool $lowWalletBalanceEnabled = null;
     
     /**
+     * @var bool|null $lowWalletBalanceSmsEnabled The lowWalletBalanceSmsEnabled property
+    */
+    private ?bool $lowWalletBalanceSmsEnabled = null;
+    
+    /**
+     * @var bool|null $missedCallEmailEnabled The missedCallEmailEnabled property
+    */
+    private ?bool $missedCallEmailEnabled = null;
+    
+    /**
      * @var bool|null $missedCallEnabled Whether missed call notifications are enabled for this user notification preferences.
     */
     private ?bool $missedCallEnabled = null;
+    
+    /**
+     * @var bool|null $missedCallSmsEnabled The missedCallSmsEnabled property
+    */
+    private ?bool $missedCallSmsEnabled = null;
     
     /**
      * @var bool|null $newLeadEmailEnabled Whether new lead email is enabled for this user notification preferences.
@@ -63,9 +93,24 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     private ?bool $paymentFailedEnabled = null;
     
     /**
+     * @var bool|null $paymentFailedSmsEnabled The paymentFailedSmsEnabled property
+    */
+    private ?bool $paymentFailedSmsEnabled = null;
+    
+    /**
+     * @var bool|null $subscriptionRenewingEmailEnabled The subscriptionRenewingEmailEnabled property
+    */
+    private ?bool $subscriptionRenewingEmailEnabled = null;
+    
+    /**
      * @var bool|null $subscriptionRenewingEnabled Whether subscription renewing notifications are enabled for this user notification preferences.
     */
     private ?bool $subscriptionRenewingEnabled = null;
+    
+    /**
+     * @var bool|null $subscriptionRenewingSmsEnabled The subscriptionRenewingSmsEnabled property
+    */
+    private ?bool $subscriptionRenewingSmsEnabled = null;
     
     /**
      * @var bool|null $tenDlcStatusEnabled Whether 10DLC status notifications are enabled for this user notification preferences.
@@ -73,9 +118,19 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     private ?bool $tenDlcStatusEnabled = null;
     
     /**
+     * @var bool|null $unreadSmsEmailEnabled The unreadSmsEmailEnabled property
+    */
+    private ?bool $unreadSmsEmailEnabled = null;
+    
+    /**
      * @var bool|null $unreadSmsEnabled Whether unread SMS notifications are enabled for this user notification preferences.
     */
     private ?bool $unreadSmsEnabled = null;
+    
+    /**
+     * @var bool|null $unreadSmsSmsEnabled The unreadSmsSmsEnabled property
+    */
+    private ?bool $unreadSmsSmsEnabled = null;
     
     /**
      * @var bool|null $usageLimitHitEnabled Whether usage limit hit notifications are enabled for this user notification preferences.
@@ -107,11 +162,27 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the automationFailedEmailEnabled property value. The automationFailedEmailEnabled property
+     * @return bool|null
+    */
+    public function getAutomationFailedEmailEnabled(): ?bool {
+        return $this->automationFailedEmailEnabled;
+    }
+
+    /**
      * Gets the automationFailedEnabled property value. Whether automation failed notifications are enabled for this user notification preferences.
      * @return bool|null
     */
     public function getAutomationFailedEnabled(): ?bool {
         return $this->automationFailedEnabled;
+    }
+
+    /**
+     * Gets the automationFailedSmsEnabled property value. The automationFailedSmsEnabled property
+     * @return bool|null
+    */
+    public function getAutomationFailedSmsEnabled(): ?bool {
+        return $this->automationFailedSmsEnabled;
     }
 
     /**
@@ -137,20 +208,39 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'automationFailedEmailEnabled' => fn(ParseNode $n) => $o->setAutomationFailedEmailEnabled($n->getBooleanValue()),
             'automationFailedEnabled' => fn(ParseNode $n) => $o->setAutomationFailedEnabled($n->getBooleanValue()),
+            'automationFailedSmsEnabled' => fn(ParseNode $n) => $o->setAutomationFailedSmsEnabled($n->getBooleanValue()),
             'billingEmailEnabled' => fn(ParseNode $n) => $o->setBillingEmailEnabled($n->getBooleanValue()),
             'billingSmsEnabled' => fn(ParseNode $n) => $o->setBillingSmsEnabled($n->getBooleanValue()),
+            'lowWalletBalanceEmailEnabled' => fn(ParseNode $n) => $o->setLowWalletBalanceEmailEnabled($n->getBooleanValue()),
             'lowWalletBalanceEnabled' => fn(ParseNode $n) => $o->setLowWalletBalanceEnabled($n->getBooleanValue()),
+            'lowWalletBalanceSmsEnabled' => fn(ParseNode $n) => $o->setLowWalletBalanceSmsEnabled($n->getBooleanValue()),
+            'missedCallEmailEnabled' => fn(ParseNode $n) => $o->setMissedCallEmailEnabled($n->getBooleanValue()),
             'missedCallEnabled' => fn(ParseNode $n) => $o->setMissedCallEnabled($n->getBooleanValue()),
+            'missedCallSmsEnabled' => fn(ParseNode $n) => $o->setMissedCallSmsEnabled($n->getBooleanValue()),
             'newLeadEmailEnabled' => fn(ParseNode $n) => $o->setNewLeadEmailEnabled($n->getBooleanValue()),
             'newLeadEnabled' => fn(ParseNode $n) => $o->setNewLeadEnabled($n->getBooleanValue()),
             'newLeadSmsEnabled' => fn(ParseNode $n) => $o->setNewLeadSmsEnabled($n->getBooleanValue()),
             'paymentFailedEnabled' => fn(ParseNode $n) => $o->setPaymentFailedEnabled($n->getBooleanValue()),
+            'paymentFailedSmsEnabled' => fn(ParseNode $n) => $o->setPaymentFailedSmsEnabled($n->getBooleanValue()),
+            'subscriptionRenewingEmailEnabled' => fn(ParseNode $n) => $o->setSubscriptionRenewingEmailEnabled($n->getBooleanValue()),
             'subscriptionRenewingEnabled' => fn(ParseNode $n) => $o->setSubscriptionRenewingEnabled($n->getBooleanValue()),
+            'subscriptionRenewingSmsEnabled' => fn(ParseNode $n) => $o->setSubscriptionRenewingSmsEnabled($n->getBooleanValue()),
             'tenDlcStatusEnabled' => fn(ParseNode $n) => $o->setTenDlcStatusEnabled($n->getBooleanValue()),
+            'unreadSmsEmailEnabled' => fn(ParseNode $n) => $o->setUnreadSmsEmailEnabled($n->getBooleanValue()),
             'unreadSmsEnabled' => fn(ParseNode $n) => $o->setUnreadSmsEnabled($n->getBooleanValue()),
+            'unreadSmsSmsEnabled' => fn(ParseNode $n) => $o->setUnreadSmsSmsEnabled($n->getBooleanValue()),
             'usageLimitHitEnabled' => fn(ParseNode $n) => $o->setUsageLimitHitEnabled($n->getBooleanValue()),
         ];
+    }
+
+    /**
+     * Gets the lowWalletBalanceEmailEnabled property value. The lowWalletBalanceEmailEnabled property
+     * @return bool|null
+    */
+    public function getLowWalletBalanceEmailEnabled(): ?bool {
+        return $this->lowWalletBalanceEmailEnabled;
     }
 
     /**
@@ -162,11 +252,35 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the lowWalletBalanceSmsEnabled property value. The lowWalletBalanceSmsEnabled property
+     * @return bool|null
+    */
+    public function getLowWalletBalanceSmsEnabled(): ?bool {
+        return $this->lowWalletBalanceSmsEnabled;
+    }
+
+    /**
+     * Gets the missedCallEmailEnabled property value. The missedCallEmailEnabled property
+     * @return bool|null
+    */
+    public function getMissedCallEmailEnabled(): ?bool {
+        return $this->missedCallEmailEnabled;
+    }
+
+    /**
      * Gets the missedCallEnabled property value. Whether missed call notifications are enabled for this user notification preferences.
      * @return bool|null
     */
     public function getMissedCallEnabled(): ?bool {
         return $this->missedCallEnabled;
+    }
+
+    /**
+     * Gets the missedCallSmsEnabled property value. The missedCallSmsEnabled property
+     * @return bool|null
+    */
+    public function getMissedCallSmsEnabled(): ?bool {
+        return $this->missedCallSmsEnabled;
     }
 
     /**
@@ -202,11 +316,35 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the paymentFailedSmsEnabled property value. The paymentFailedSmsEnabled property
+     * @return bool|null
+    */
+    public function getPaymentFailedSmsEnabled(): ?bool {
+        return $this->paymentFailedSmsEnabled;
+    }
+
+    /**
+     * Gets the subscriptionRenewingEmailEnabled property value. The subscriptionRenewingEmailEnabled property
+     * @return bool|null
+    */
+    public function getSubscriptionRenewingEmailEnabled(): ?bool {
+        return $this->subscriptionRenewingEmailEnabled;
+    }
+
+    /**
      * Gets the subscriptionRenewingEnabled property value. Whether subscription renewing notifications are enabled for this user notification preferences.
      * @return bool|null
     */
     public function getSubscriptionRenewingEnabled(): ?bool {
         return $this->subscriptionRenewingEnabled;
+    }
+
+    /**
+     * Gets the subscriptionRenewingSmsEnabled property value. The subscriptionRenewingSmsEnabled property
+     * @return bool|null
+    */
+    public function getSubscriptionRenewingSmsEnabled(): ?bool {
+        return $this->subscriptionRenewingSmsEnabled;
     }
 
     /**
@@ -218,11 +356,27 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the unreadSmsEmailEnabled property value. The unreadSmsEmailEnabled property
+     * @return bool|null
+    */
+    public function getUnreadSmsEmailEnabled(): ?bool {
+        return $this->unreadSmsEmailEnabled;
+    }
+
+    /**
      * Gets the unreadSmsEnabled property value. Whether unread SMS notifications are enabled for this user notification preferences.
      * @return bool|null
     */
     public function getUnreadSmsEnabled(): ?bool {
         return $this->unreadSmsEnabled;
+    }
+
+    /**
+     * Gets the unreadSmsSmsEnabled property value. The unreadSmsSmsEnabled property
+     * @return bool|null
+    */
+    public function getUnreadSmsSmsEnabled(): ?bool {
+        return $this->unreadSmsSmsEnabled;
     }
 
     /**
@@ -238,18 +392,29 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeBooleanValue('automationFailedEmailEnabled', $this->getAutomationFailedEmailEnabled());
         $writer->writeBooleanValue('automationFailedEnabled', $this->getAutomationFailedEnabled());
+        $writer->writeBooleanValue('automationFailedSmsEnabled', $this->getAutomationFailedSmsEnabled());
         $writer->writeBooleanValue('billingEmailEnabled', $this->getBillingEmailEnabled());
         $writer->writeBooleanValue('billingSmsEnabled', $this->getBillingSmsEnabled());
+        $writer->writeBooleanValue('lowWalletBalanceEmailEnabled', $this->getLowWalletBalanceEmailEnabled());
         $writer->writeBooleanValue('lowWalletBalanceEnabled', $this->getLowWalletBalanceEnabled());
+        $writer->writeBooleanValue('lowWalletBalanceSmsEnabled', $this->getLowWalletBalanceSmsEnabled());
+        $writer->writeBooleanValue('missedCallEmailEnabled', $this->getMissedCallEmailEnabled());
         $writer->writeBooleanValue('missedCallEnabled', $this->getMissedCallEnabled());
+        $writer->writeBooleanValue('missedCallSmsEnabled', $this->getMissedCallSmsEnabled());
         $writer->writeBooleanValue('newLeadEmailEnabled', $this->getNewLeadEmailEnabled());
         $writer->writeBooleanValue('newLeadEnabled', $this->getNewLeadEnabled());
         $writer->writeBooleanValue('newLeadSmsEnabled', $this->getNewLeadSmsEnabled());
         $writer->writeBooleanValue('paymentFailedEnabled', $this->getPaymentFailedEnabled());
+        $writer->writeBooleanValue('paymentFailedSmsEnabled', $this->getPaymentFailedSmsEnabled());
+        $writer->writeBooleanValue('subscriptionRenewingEmailEnabled', $this->getSubscriptionRenewingEmailEnabled());
         $writer->writeBooleanValue('subscriptionRenewingEnabled', $this->getSubscriptionRenewingEnabled());
+        $writer->writeBooleanValue('subscriptionRenewingSmsEnabled', $this->getSubscriptionRenewingSmsEnabled());
         $writer->writeBooleanValue('tenDlcStatusEnabled', $this->getTenDlcStatusEnabled());
+        $writer->writeBooleanValue('unreadSmsEmailEnabled', $this->getUnreadSmsEmailEnabled());
         $writer->writeBooleanValue('unreadSmsEnabled', $this->getUnreadSmsEnabled());
+        $writer->writeBooleanValue('unreadSmsSmsEnabled', $this->getUnreadSmsSmsEnabled());
         $writer->writeBooleanValue('usageLimitHitEnabled', $this->getUsageLimitHitEnabled());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -263,11 +428,27 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the automationFailedEmailEnabled property value. The automationFailedEmailEnabled property
+     * @param bool|null $value Value to set for the automationFailedEmailEnabled property.
+    */
+    public function setAutomationFailedEmailEnabled(?bool $value): void {
+        $this->automationFailedEmailEnabled = $value;
+    }
+
+    /**
      * Sets the automationFailedEnabled property value. Whether automation failed notifications are enabled for this user notification preferences.
      * @param bool|null $value Value to set for the automationFailedEnabled property.
     */
     public function setAutomationFailedEnabled(?bool $value): void {
         $this->automationFailedEnabled = $value;
+    }
+
+    /**
+     * Sets the automationFailedSmsEnabled property value. The automationFailedSmsEnabled property
+     * @param bool|null $value Value to set for the automationFailedSmsEnabled property.
+    */
+    public function setAutomationFailedSmsEnabled(?bool $value): void {
+        $this->automationFailedSmsEnabled = $value;
     }
 
     /**
@@ -287,6 +468,14 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the lowWalletBalanceEmailEnabled property value. The lowWalletBalanceEmailEnabled property
+     * @param bool|null $value Value to set for the lowWalletBalanceEmailEnabled property.
+    */
+    public function setLowWalletBalanceEmailEnabled(?bool $value): void {
+        $this->lowWalletBalanceEmailEnabled = $value;
+    }
+
+    /**
      * Sets the lowWalletBalanceEnabled property value. Whether low wallet balance notifications are enabled for this user notification preferences.
      * @param bool|null $value Value to set for the lowWalletBalanceEnabled property.
     */
@@ -295,11 +484,35 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the lowWalletBalanceSmsEnabled property value. The lowWalletBalanceSmsEnabled property
+     * @param bool|null $value Value to set for the lowWalletBalanceSmsEnabled property.
+    */
+    public function setLowWalletBalanceSmsEnabled(?bool $value): void {
+        $this->lowWalletBalanceSmsEnabled = $value;
+    }
+
+    /**
+     * Sets the missedCallEmailEnabled property value. The missedCallEmailEnabled property
+     * @param bool|null $value Value to set for the missedCallEmailEnabled property.
+    */
+    public function setMissedCallEmailEnabled(?bool $value): void {
+        $this->missedCallEmailEnabled = $value;
+    }
+
+    /**
      * Sets the missedCallEnabled property value. Whether missed call notifications are enabled for this user notification preferences.
      * @param bool|null $value Value to set for the missedCallEnabled property.
     */
     public function setMissedCallEnabled(?bool $value): void {
         $this->missedCallEnabled = $value;
+    }
+
+    /**
+     * Sets the missedCallSmsEnabled property value. The missedCallSmsEnabled property
+     * @param bool|null $value Value to set for the missedCallSmsEnabled property.
+    */
+    public function setMissedCallSmsEnabled(?bool $value): void {
+        $this->missedCallSmsEnabled = $value;
     }
 
     /**
@@ -335,11 +548,35 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the paymentFailedSmsEnabled property value. The paymentFailedSmsEnabled property
+     * @param bool|null $value Value to set for the paymentFailedSmsEnabled property.
+    */
+    public function setPaymentFailedSmsEnabled(?bool $value): void {
+        $this->paymentFailedSmsEnabled = $value;
+    }
+
+    /**
+     * Sets the subscriptionRenewingEmailEnabled property value. The subscriptionRenewingEmailEnabled property
+     * @param bool|null $value Value to set for the subscriptionRenewingEmailEnabled property.
+    */
+    public function setSubscriptionRenewingEmailEnabled(?bool $value): void {
+        $this->subscriptionRenewingEmailEnabled = $value;
+    }
+
+    /**
      * Sets the subscriptionRenewingEnabled property value. Whether subscription renewing notifications are enabled for this user notification preferences.
      * @param bool|null $value Value to set for the subscriptionRenewingEnabled property.
     */
     public function setSubscriptionRenewingEnabled(?bool $value): void {
         $this->subscriptionRenewingEnabled = $value;
+    }
+
+    /**
+     * Sets the subscriptionRenewingSmsEnabled property value. The subscriptionRenewingSmsEnabled property
+     * @param bool|null $value Value to set for the subscriptionRenewingSmsEnabled property.
+    */
+    public function setSubscriptionRenewingSmsEnabled(?bool $value): void {
+        $this->subscriptionRenewingSmsEnabled = $value;
     }
 
     /**
@@ -351,11 +588,27 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the unreadSmsEmailEnabled property value. The unreadSmsEmailEnabled property
+     * @param bool|null $value Value to set for the unreadSmsEmailEnabled property.
+    */
+    public function setUnreadSmsEmailEnabled(?bool $value): void {
+        $this->unreadSmsEmailEnabled = $value;
+    }
+
+    /**
      * Sets the unreadSmsEnabled property value. Whether unread SMS notifications are enabled for this user notification preferences.
      * @param bool|null $value Value to set for the unreadSmsEnabled property.
     */
     public function setUnreadSmsEnabled(?bool $value): void {
         $this->unreadSmsEnabled = $value;
+    }
+
+    /**
+     * Sets the unreadSmsSmsEnabled property value. The unreadSmsSmsEnabled property
+     * @param bool|null $value Value to set for the unreadSmsSmsEnabled property.
+    */
+    public function setUnreadSmsSmsEnabled(?bool $value): void {
+        $this->unreadSmsSmsEnabled = $value;
     }
 
     /**
