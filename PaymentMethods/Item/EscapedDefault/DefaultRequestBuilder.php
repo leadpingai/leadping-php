@@ -31,7 +31,7 @@ class DefaultRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Makes a card the default payment method for the current business.
+     * Set default payment method
      * @param DefaultRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<StripePaymentMethodResponse|null>
      * @throws Exception
@@ -46,7 +46,7 @@ class DefaultRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Makes a card the default payment method for the current business.
+     * Set default payment method
      * @param DefaultRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
