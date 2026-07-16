@@ -15,77 +15,77 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var PhoneNumberOutboundHealthStatus|null $healthStatus Defines phone-number outbound health states used by pacing.
+     * @var PhoneNumberOutboundHealthStatus|null $healthStatus Current health status for this Leadping outbound phone number capacity.
     */
     private ?PhoneNumberOutboundHealthStatus $healthStatus = null;
     
     /**
-     * @var string|null $phoneNumber The phoneNumber property
+     * @var string|null $phoneNumber Phone number associated with this Leadping outbound phone number capacity.
     */
     private ?string $phoneNumber = null;
     
     /**
-     * @var string|null $phoneNumberId The phoneNumberId property
+     * @var string|null $phoneNumberId Unique identifier of the phone number associated with this Leadping outbound phone number capacity.
     */
     private ?string $phoneNumberId = null;
     
     /**
-     * @var int|null $smsLimitThisHour The smsLimitThisHour property
+     * @var int|null $smsLimitThisHour Number of SMS limit this hour represented by this Leadping outbound phone number capacity.
     */
     private ?int $smsLimitThisHour = null;
     
     /**
-     * @var int|null $smsLimitToday The smsLimitToday property
+     * @var int|null $smsLimitToday Number of SMS limit today represented by this Leadping outbound phone number capacity.
     */
     private ?int $smsLimitToday = null;
     
     /**
-     * @var int|null $smsRemainingThisHour The smsRemainingThisHour property
+     * @var int|null $smsRemainingThisHour SMS remaining this hour for the applicable messaging or voice capacity window.
     */
     private ?int $smsRemainingThisHour = null;
     
     /**
-     * @var int|null $smsRemainingToday The smsRemainingToday property
+     * @var int|null $smsRemainingToday SMS remaining today for the applicable messaging or voice capacity window.
     */
     private ?int $smsRemainingToday = null;
     
     /**
-     * @var int|null $smsUsedThisHour The smsUsedThisHour property
+     * @var int|null $smsUsedThisHour SMS used this hour for the applicable messaging or voice capacity window.
     */
     private ?int $smsUsedThisHour = null;
     
     /**
-     * @var int|null $smsUsedToday The smsUsedToday property
+     * @var int|null $smsUsedToday SMS used today for the applicable messaging or voice capacity window.
     */
     private ?int $smsUsedToday = null;
     
     /**
-     * @var int|null $voiceLimitThisHour The voiceLimitThisHour property
+     * @var int|null $voiceLimitThisHour Voice limit this hour associated with this Leadping outbound phone number capacity.
     */
     private ?int $voiceLimitThisHour = null;
     
     /**
-     * @var int|null $voiceLimitToday The voiceLimitToday property
+     * @var int|null $voiceLimitToday Voice limit today associated with this Leadping outbound phone number capacity.
     */
     private ?int $voiceLimitToday = null;
     
     /**
-     * @var int|null $voiceRemainingThisHour The voiceRemainingThisHour property
+     * @var int|null $voiceRemainingThisHour Voice remaining this hour for the applicable messaging or voice capacity window.
     */
     private ?int $voiceRemainingThisHour = null;
     
     /**
-     * @var int|null $voiceRemainingToday The voiceRemainingToday property
+     * @var int|null $voiceRemainingToday Voice remaining today for the applicable messaging or voice capacity window.
     */
     private ?int $voiceRemainingToday = null;
     
     /**
-     * @var int|null $voiceUsedThisHour The voiceUsedThisHour property
+     * @var int|null $voiceUsedThisHour Voice used this hour for the applicable messaging or voice capacity window.
     */
     private ?int $voiceUsedThisHour = null;
     
     /**
-     * @var int|null $voiceUsedToday The voiceUsedToday property
+     * @var int|null $voiceUsedToday Voice used today for the applicable messaging or voice capacity window.
     */
     private ?int $voiceUsedToday = null;
     
@@ -139,7 +139,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the healthStatus property value. Defines phone-number outbound health states used by pacing.
+     * Gets the healthStatus property value. Current health status for this Leadping outbound phone number capacity.
      * @return PhoneNumberOutboundHealthStatus|null
     */
     public function getHealthStatus(): ?PhoneNumberOutboundHealthStatus {
@@ -147,7 +147,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the phoneNumber property value. The phoneNumber property
+     * Gets the phoneNumber property value. Phone number associated with this Leadping outbound phone number capacity.
      * @return string|null
     */
     public function getPhoneNumber(): ?string {
@@ -155,7 +155,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the phoneNumberId property value. The phoneNumberId property
+     * Gets the phoneNumberId property value. Unique identifier of the phone number associated with this Leadping outbound phone number capacity.
      * @return string|null
     */
     public function getPhoneNumberId(): ?string {
@@ -163,7 +163,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the smsLimitThisHour property value. The smsLimitThisHour property
+     * Gets the smsLimitThisHour property value. Number of SMS limit this hour represented by this Leadping outbound phone number capacity.
      * @return int|null
     */
     public function getSmsLimitThisHour(): ?int {
@@ -171,7 +171,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the smsLimitToday property value. The smsLimitToday property
+     * Gets the smsLimitToday property value. Number of SMS limit today represented by this Leadping outbound phone number capacity.
      * @return int|null
     */
     public function getSmsLimitToday(): ?int {
@@ -179,7 +179,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the smsRemainingThisHour property value. The smsRemainingThisHour property
+     * Gets the smsRemainingThisHour property value. SMS remaining this hour for the applicable messaging or voice capacity window.
      * @return int|null
     */
     public function getSmsRemainingThisHour(): ?int {
@@ -187,7 +187,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the smsRemainingToday property value. The smsRemainingToday property
+     * Gets the smsRemainingToday property value. SMS remaining today for the applicable messaging or voice capacity window.
      * @return int|null
     */
     public function getSmsRemainingToday(): ?int {
@@ -195,7 +195,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the smsUsedThisHour property value. The smsUsedThisHour property
+     * Gets the smsUsedThisHour property value. SMS used this hour for the applicable messaging or voice capacity window.
      * @return int|null
     */
     public function getSmsUsedThisHour(): ?int {
@@ -203,7 +203,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the smsUsedToday property value. The smsUsedToday property
+     * Gets the smsUsedToday property value. SMS used today for the applicable messaging or voice capacity window.
      * @return int|null
     */
     public function getSmsUsedToday(): ?int {
@@ -211,7 +211,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the voiceLimitThisHour property value. The voiceLimitThisHour property
+     * Gets the voiceLimitThisHour property value. Voice limit this hour associated with this Leadping outbound phone number capacity.
      * @return int|null
     */
     public function getVoiceLimitThisHour(): ?int {
@@ -219,7 +219,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the voiceLimitToday property value. The voiceLimitToday property
+     * Gets the voiceLimitToday property value. Voice limit today associated with this Leadping outbound phone number capacity.
      * @return int|null
     */
     public function getVoiceLimitToday(): ?int {
@@ -227,7 +227,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the voiceRemainingThisHour property value. The voiceRemainingThisHour property
+     * Gets the voiceRemainingThisHour property value. Voice remaining this hour for the applicable messaging or voice capacity window.
      * @return int|null
     */
     public function getVoiceRemainingThisHour(): ?int {
@@ -235,7 +235,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the voiceRemainingToday property value. The voiceRemainingToday property
+     * Gets the voiceRemainingToday property value. Voice remaining today for the applicable messaging or voice capacity window.
      * @return int|null
     */
     public function getVoiceRemainingToday(): ?int {
@@ -243,7 +243,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the voiceUsedThisHour property value. The voiceUsedThisHour property
+     * Gets the voiceUsedThisHour property value. Voice used this hour for the applicable messaging or voice capacity window.
      * @return int|null
     */
     public function getVoiceUsedThisHour(): ?int {
@@ -251,7 +251,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the voiceUsedToday property value. The voiceUsedToday property
+     * Gets the voiceUsedToday property value. Voice used today for the applicable messaging or voice capacity window.
      * @return int|null
     */
     public function getVoiceUsedToday(): ?int {
@@ -290,7 +290,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the healthStatus property value. Defines phone-number outbound health states used by pacing.
+     * Sets the healthStatus property value. Current health status for this Leadping outbound phone number capacity.
      * @param PhoneNumberOutboundHealthStatus|null $value Value to set for the healthStatus property.
     */
     public function setHealthStatus(?PhoneNumberOutboundHealthStatus $value): void {
@@ -298,7 +298,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the phoneNumber property value. The phoneNumber property
+     * Sets the phoneNumber property value. Phone number associated with this Leadping outbound phone number capacity.
      * @param string|null $value Value to set for the phoneNumber property.
     */
     public function setPhoneNumber(?string $value): void {
@@ -306,7 +306,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the phoneNumberId property value. The phoneNumberId property
+     * Sets the phoneNumberId property value. Unique identifier of the phone number associated with this Leadping outbound phone number capacity.
      * @param string|null $value Value to set for the phoneNumberId property.
     */
     public function setPhoneNumberId(?string $value): void {
@@ -314,7 +314,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the smsLimitThisHour property value. The smsLimitThisHour property
+     * Sets the smsLimitThisHour property value. Number of SMS limit this hour represented by this Leadping outbound phone number capacity.
      * @param int|null $value Value to set for the smsLimitThisHour property.
     */
     public function setSmsLimitThisHour(?int $value): void {
@@ -322,7 +322,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the smsLimitToday property value. The smsLimitToday property
+     * Sets the smsLimitToday property value. Number of SMS limit today represented by this Leadping outbound phone number capacity.
      * @param int|null $value Value to set for the smsLimitToday property.
     */
     public function setSmsLimitToday(?int $value): void {
@@ -330,7 +330,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the smsRemainingThisHour property value. The smsRemainingThisHour property
+     * Sets the smsRemainingThisHour property value. SMS remaining this hour for the applicable messaging or voice capacity window.
      * @param int|null $value Value to set for the smsRemainingThisHour property.
     */
     public function setSmsRemainingThisHour(?int $value): void {
@@ -338,7 +338,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the smsRemainingToday property value. The smsRemainingToday property
+     * Sets the smsRemainingToday property value. SMS remaining today for the applicable messaging or voice capacity window.
      * @param int|null $value Value to set for the smsRemainingToday property.
     */
     public function setSmsRemainingToday(?int $value): void {
@@ -346,7 +346,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the smsUsedThisHour property value. The smsUsedThisHour property
+     * Sets the smsUsedThisHour property value. SMS used this hour for the applicable messaging or voice capacity window.
      * @param int|null $value Value to set for the smsUsedThisHour property.
     */
     public function setSmsUsedThisHour(?int $value): void {
@@ -354,7 +354,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the smsUsedToday property value. The smsUsedToday property
+     * Sets the smsUsedToday property value. SMS used today for the applicable messaging or voice capacity window.
      * @param int|null $value Value to set for the smsUsedToday property.
     */
     public function setSmsUsedToday(?int $value): void {
@@ -362,7 +362,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the voiceLimitThisHour property value. The voiceLimitThisHour property
+     * Sets the voiceLimitThisHour property value. Voice limit this hour associated with this Leadping outbound phone number capacity.
      * @param int|null $value Value to set for the voiceLimitThisHour property.
     */
     public function setVoiceLimitThisHour(?int $value): void {
@@ -370,7 +370,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the voiceLimitToday property value. The voiceLimitToday property
+     * Sets the voiceLimitToday property value. Voice limit today associated with this Leadping outbound phone number capacity.
      * @param int|null $value Value to set for the voiceLimitToday property.
     */
     public function setVoiceLimitToday(?int $value): void {
@@ -378,7 +378,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the voiceRemainingThisHour property value. The voiceRemainingThisHour property
+     * Sets the voiceRemainingThisHour property value. Voice remaining this hour for the applicable messaging or voice capacity window.
      * @param int|null $value Value to set for the voiceRemainingThisHour property.
     */
     public function setVoiceRemainingThisHour(?int $value): void {
@@ -386,7 +386,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the voiceRemainingToday property value. The voiceRemainingToday property
+     * Sets the voiceRemainingToday property value. Voice remaining today for the applicable messaging or voice capacity window.
      * @param int|null $value Value to set for the voiceRemainingToday property.
     */
     public function setVoiceRemainingToday(?int $value): void {
@@ -394,7 +394,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the voiceUsedThisHour property value. The voiceUsedThisHour property
+     * Sets the voiceUsedThisHour property value. Voice used this hour for the applicable messaging or voice capacity window.
      * @param int|null $value Value to set for the voiceUsedThisHour property.
     */
     public function setVoiceUsedThisHour(?int $value): void {
@@ -402,7 +402,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the voiceUsedToday property value. The voiceUsedToday property
+     * Sets the voiceUsedToday property value. Voice used today for the applicable messaging or voice capacity window.
      * @param int|null $value Value to set for the voiceUsedToday property.
     */
     public function setVoiceUsedToday(?int $value): void {

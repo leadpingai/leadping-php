@@ -23,19 +23,9 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     private ?int $callsPossible = null;
     
     /**
-     * @var PhoneNumberStatusResponse_callWarmup|null $callWarmup Voice call warmup status for this phone number.
-    */
-    private ?PhoneNumberStatusResponse_callWarmup $callWarmup = null;
-    
-    /**
      * @var int|null $messagesPossible Indicates whether this phone number can currently send SMS messages.
     */
     private ?int $messagesPossible = null;
-    
-    /**
-     * @var int|null $messagesWarmed Number of warmup SMS messages completed for this sender.
-    */
-    private ?int $messagesWarmed = null;
     
     /**
      * @var string|null $number E.164 phone number exposed by this phone number readiness status.
@@ -66,11 +56,6 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
      * @var PhoneNumberTrafficMetricsResponse|null $trafficMetrics Phone number traffic metrics for recent SMS and call activity.
     */
     private ?PhoneNumberTrafficMetricsResponse $trafficMetrics = null;
-    
-    /**
-     * @var int|null $warmupCallsMade Number of voice warmup calls completed for this phone number.
-    */
-    private ?int $warmupCallsMade = null;
     
     /**
      * Instantiates a new PhoneNumberStatusResponse and sets the default values.
@@ -105,14 +90,6 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the callWarmup property value. Voice call warmup status for this phone number.
-     * @return PhoneNumberStatusResponse_callWarmup|null
-    */
-    public function getCallWarmup(): ?PhoneNumberStatusResponse_callWarmup {
-        return $this->callWarmup;
-    }
-
-    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
@@ -120,16 +97,13 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'callsPossible' => fn(ParseNode $n) => $o->setCallsPossible($n->getIntegerValue()),
-            'callWarmup' => fn(ParseNode $n) => $o->setCallWarmup($n->getObjectValue([PhoneNumberStatusResponse_callWarmup::class, 'createFromDiscriminatorValue'])),
             'messagesPossible' => fn(ParseNode $n) => $o->setMessagesPossible($n->getIntegerValue()),
-            'messagesWarmed' => fn(ParseNode $n) => $o->setMessagesWarmed($n->getIntegerValue()),
             'number' => fn(ParseNode $n) => $o->setNumber($n->getStringValue()),
             'optOutMetrics' => fn(ParseNode $n) => $o->setOptOutMetrics($n->getObjectValue([PhoneNumberOptOutMetricsResponse::class, 'createFromDiscriminatorValue'])),
             'outboundCapacity' => fn(ParseNode $n) => $o->setOutboundCapacity($n->getObjectValue([PhoneNumberStatusResponse_outboundCapacity::class, 'createFromDiscriminatorValue'])),
             'recentEvents' => fn(ParseNode $n) => $o->setRecentEvents($n->getCollectionOfObjectValues([PhoneNumberMessagingEventResponse::class, 'createFromDiscriminatorValue'])),
             'smsWarmup' => fn(ParseNode $n) => $o->setSmsWarmup($n->getObjectValue([PhoneNumberStatusResponse_smsWarmup::class, 'createFromDiscriminatorValue'])),
             'trafficMetrics' => fn(ParseNode $n) => $o->setTrafficMetrics($n->getObjectValue([PhoneNumberTrafficMetricsResponse::class, 'createFromDiscriminatorValue'])),
-            'warmupCallsMade' => fn(ParseNode $n) => $o->setWarmupCallsMade($n->getIntegerValue()),
         ];
     }
 
@@ -139,14 +113,6 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     */
     public function getMessagesPossible(): ?int {
         return $this->messagesPossible;
-    }
-
-    /**
-     * Gets the messagesWarmed property value. Number of warmup SMS messages completed for this sender.
-     * @return int|null
-    */
-    public function getMessagesWarmed(): ?int {
-        return $this->messagesWarmed;
     }
 
     /**
@@ -198,29 +164,18 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the warmupCallsMade property value. Number of voice warmup calls completed for this phone number.
-     * @return int|null
-    */
-    public function getWarmupCallsMade(): ?int {
-        return $this->warmupCallsMade;
-    }
-
-    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeIntegerValue('callsPossible', $this->getCallsPossible());
-        $writer->writeObjectValue('callWarmup', $this->getCallWarmup());
         $writer->writeIntegerValue('messagesPossible', $this->getMessagesPossible());
-        $writer->writeIntegerValue('messagesWarmed', $this->getMessagesWarmed());
         $writer->writeStringValue('number', $this->getNumber());
         $writer->writeObjectValue('optOutMetrics', $this->getOptOutMetrics());
         $writer->writeObjectValue('outboundCapacity', $this->getOutboundCapacity());
         $writer->writeCollectionOfObjectValues('recentEvents', $this->getRecentEvents());
         $writer->writeObjectValue('smsWarmup', $this->getSmsWarmup());
         $writer->writeObjectValue('trafficMetrics', $this->getTrafficMetrics());
-        $writer->writeIntegerValue('warmupCallsMade', $this->getWarmupCallsMade());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -241,27 +196,11 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the callWarmup property value. Voice call warmup status for this phone number.
-     * @param PhoneNumberStatusResponse_callWarmup|null $value Value to set for the callWarmup property.
-    */
-    public function setCallWarmup(?PhoneNumberStatusResponse_callWarmup $value): void {
-        $this->callWarmup = $value;
-    }
-
-    /**
      * Sets the messagesPossible property value. Indicates whether this phone number can currently send SMS messages.
      * @param int|null $value Value to set for the messagesPossible property.
     */
     public function setMessagesPossible(?int $value): void {
         $this->messagesPossible = $value;
-    }
-
-    /**
-     * Sets the messagesWarmed property value. Number of warmup SMS messages completed for this sender.
-     * @param int|null $value Value to set for the messagesWarmed property.
-    */
-    public function setMessagesWarmed(?int $value): void {
-        $this->messagesWarmed = $value;
     }
 
     /**
@@ -310,14 +249,6 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     */
     public function setTrafficMetrics(?PhoneNumberTrafficMetricsResponse $value): void {
         $this->trafficMetrics = $value;
-    }
-
-    /**
-     * Sets the warmupCallsMade property value. Number of voice warmup calls completed for this phone number.
-     * @param int|null $value Value to set for the warmupCallsMade property.
-    */
-    public function setWarmupCallsMade(?int $value): void {
-        $this->warmupCallsMade = $value;
     }
 
 }

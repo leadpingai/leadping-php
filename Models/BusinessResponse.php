@@ -34,11 +34,6 @@ class BusinessResponse implements AdditionalDataHolder, Parsable
     private ?BusinessResponse_address $address = null;
     
     /**
-     * @var BusinessResponse_adminEnablementOverride|null $adminEnablementOverride Admin override that can enable or disable this record independently of normal status checks.
-    */
-    private ?BusinessResponse_adminEnablementOverride $adminEnablementOverride = null;
-    
-    /**
      * @var bool|null $autoRefillEnabled Indicates whether automatic wallet refill is enabled for the business.
     */
     private ?bool $autoRefillEnabled = null;
@@ -139,11 +134,6 @@ class BusinessResponse implements AdditionalDataHolder, Parsable
     private ?BusinessResponse_status $status = null;
     
     /**
-     * @var BusinessResponse_stripeInfo|null $stripeInfo Stripe customer and subscription state associated with this business or user.
-    */
-    private ?BusinessResponse_stripeInfo $stripeInfo = null;
-    
-    /**
      * @var BusinessResponse_subscriptionStatus|null $subscriptionStatus Defines the supported Subscription Status values.
     */
     private ?BusinessResponse_subscriptionStatus $subscriptionStatus = null;
@@ -209,14 +199,6 @@ class BusinessResponse implements AdditionalDataHolder, Parsable
     */
     public function getAddress(): ?BusinessResponse_address {
         return $this->address;
-    }
-
-    /**
-     * Gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-     * @return BusinessResponse_adminEnablementOverride|null
-    */
-    public function getAdminEnablementOverride(): ?BusinessResponse_adminEnablementOverride {
-        return $this->adminEnablementOverride;
     }
 
     /**
@@ -317,7 +299,6 @@ class BusinessResponse implements AdditionalDataHolder, Parsable
             'accountBalance' => fn(ParseNode $n) => $o->setAccountBalance($n->getFloatValue()),
             'activation' => fn(ParseNode $n) => $o->setActivation($n->getObjectValue([BusinessResponse_activation::class, 'createFromDiscriminatorValue'])),
             'address' => fn(ParseNode $n) => $o->setAddress($n->getObjectValue([BusinessResponse_address::class, 'createFromDiscriminatorValue'])),
-            'adminEnablementOverride' => fn(ParseNode $n) => $o->setAdminEnablementOverride($n->getObjectValue([BusinessResponse_adminEnablementOverride::class, 'createFromDiscriminatorValue'])),
             'autoRefillEnabled' => fn(ParseNode $n) => $o->setAutoRefillEnabled($n->getBooleanValue()),
             'billingAddress' => fn(ParseNode $n) => $o->setBillingAddress($n->getObjectValue([BusinessResponse_billingAddress::class, 'createFromDiscriminatorValue'])),
             'billingName' => fn(ParseNode $n) => $o->setBillingName($n->getStringValue()),
@@ -338,7 +319,6 @@ class BusinessResponse implements AdditionalDataHolder, Parsable
             'setupStep' => fn(ParseNode $n) => $o->setSetupStep($n->getEnumValue(BusinessResponse_setupStep::class)),
             'site' => fn(ParseNode $n) => $o->setSite($n->getObjectValue([BusinessResponse_site::class, 'createFromDiscriminatorValue'])),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(BusinessResponse_status::class)),
-            'stripeInfo' => fn(ParseNode $n) => $o->setStripeInfo($n->getObjectValue([BusinessResponse_stripeInfo::class, 'createFromDiscriminatorValue'])),
             'subscriptionStatus' => fn(ParseNode $n) => $o->setSubscriptionStatus($n->getEnumValue(BusinessResponse_subscriptionStatus::class)),
             'user' => fn(ParseNode $n) => $o->setUser($n->getObjectValue([BusinessResponse_user::class, 'createFromDiscriminatorValue'])),
             'vertical' => fn(ParseNode $n) => $o->setVertical($n->getStringValue()),
@@ -419,14 +399,6 @@ class BusinessResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the stripeInfo property value. Stripe customer and subscription state associated with this business or user.
-     * @return BusinessResponse_stripeInfo|null
-    */
-    public function getStripeInfo(): ?BusinessResponse_stripeInfo {
-        return $this->stripeInfo;
-    }
-
-    /**
      * Gets the subscriptionStatus property value. Defines the supported Subscription Status values.
      * @return BusinessResponse_subscriptionStatus|null
     */
@@ -466,7 +438,6 @@ class BusinessResponse implements AdditionalDataHolder, Parsable
         $writer->writeFloatValue('accountBalance', $this->getAccountBalance());
         $writer->writeObjectValue('activation', $this->getActivation());
         $writer->writeObjectValue('address', $this->getAddress());
-        $writer->writeObjectValue('adminEnablementOverride', $this->getAdminEnablementOverride());
         $writer->writeBooleanValue('autoRefillEnabled', $this->getAutoRefillEnabled());
         $writer->writeObjectValue('billingAddress', $this->getBillingAddress());
         $writer->writeStringValue('billingName', $this->getBillingName());
@@ -487,7 +458,6 @@ class BusinessResponse implements AdditionalDataHolder, Parsable
         $writer->writeEnumValue('setupStep', $this->getSetupStep());
         $writer->writeObjectValue('site', $this->getSite());
         $writer->writeEnumValue('status', $this->getStatus());
-        $writer->writeObjectValue('stripeInfo', $this->getStripeInfo());
         $writer->writeEnumValue('subscriptionStatus', $this->getSubscriptionStatus());
         $writer->writeObjectValue('user', $this->getUser());
         $writer->writeStringValue('vertical', $this->getVertical());
@@ -525,14 +495,6 @@ class BusinessResponse implements AdditionalDataHolder, Parsable
     */
     public function setAddress(?BusinessResponse_address $value): void {
         $this->address = $value;
-    }
-
-    /**
-     * Sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-     * @param BusinessResponse_adminEnablementOverride|null $value Value to set for the adminEnablementOverride property.
-    */
-    public function setAdminEnablementOverride(?BusinessResponse_adminEnablementOverride $value): void {
-        $this->adminEnablementOverride = $value;
     }
 
     /**
@@ -693,14 +655,6 @@ class BusinessResponse implements AdditionalDataHolder, Parsable
     */
     public function setStatus(?BusinessResponse_status $value): void {
         $this->status = $value;
-    }
-
-    /**
-     * Sets the stripeInfo property value. Stripe customer and subscription state associated with this business or user.
-     * @param BusinessResponse_stripeInfo|null $value Value to set for the stripeInfo property.
-    */
-    public function setStripeInfo(?BusinessResponse_stripeInfo $value): void {
-        $this->stripeInfo = $value;
     }
 
     /**

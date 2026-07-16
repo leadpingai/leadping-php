@@ -29,11 +29,6 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * @var string|null $providerEventId The provider event ID associated with this ion entry audit.
-    */
-    private ?string $providerEventId = null;
-    
-    /**
      * @var string|null $reason The human-readable reason explaining this ion entry audit.
     */
     private ?string $reason = null;
@@ -47,11 +42,6 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
      * @var string|null $source The source value for this ion entry audit.
     */
     private ?string $source = null;
-    
-    /**
-     * @var string|null $sourceEventId The source event ID associated with this ion entry audit.
-    */
-    private ?string $sourceEventId = null;
     
     /**
      * @var string|null $status The current status for this ion entry audit.
@@ -104,11 +94,9 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
         return  [
             'actorId' => fn(ParseNode $n) => $o->setActorId($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
-            'providerEventId' => fn(ParseNode $n) => $o->setProviderEventId($n->getStringValue()),
             'reason' => fn(ParseNode $n) => $o->setReason($n->getStringValue()),
             'safeMetadata' => fn(ParseNode $n) => $o->setSafeMetadata($n->getObjectValue([SuppressionEntryAudit_safeMetadata::class, 'createFromDiscriminatorValue'])),
             'source' => fn(ParseNode $n) => $o->setSource($n->getStringValue()),
-            'sourceEventId' => fn(ParseNode $n) => $o->setSourceEventId($n->getStringValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getStringValue()),
             'timestamp' => fn(ParseNode $n) => $o->setTimestamp($n->getDateTimeValue()),
         ];
@@ -120,14 +108,6 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
     */
     public function getId(): ?string {
         return $this->id;
-    }
-
-    /**
-     * Gets the providerEventId property value. The provider event ID associated with this ion entry audit.
-     * @return string|null
-    */
-    public function getProviderEventId(): ?string {
-        return $this->providerEventId;
     }
 
     /**
@@ -155,14 +135,6 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the sourceEventId property value. The source event ID associated with this ion entry audit.
-     * @return string|null
-    */
-    public function getSourceEventId(): ?string {
-        return $this->sourceEventId;
-    }
-
-    /**
      * Gets the status property value. The current status for this ion entry audit.
      * @return string|null
     */
@@ -185,11 +157,9 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('actorId', $this->getActorId());
         $writer->writeStringValue('id', $this->getId());
-        $writer->writeStringValue('providerEventId', $this->getProviderEventId());
         $writer->writeStringValue('reason', $this->getReason());
         $writer->writeObjectValue('safeMetadata', $this->getSafeMetadata());
         $writer->writeStringValue('source', $this->getSource());
-        $writer->writeStringValue('sourceEventId', $this->getSourceEventId());
         $writer->writeStringValue('status', $this->getStatus());
         $writer->writeDateTimeValue('timestamp', $this->getTimestamp());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -220,14 +190,6 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the providerEventId property value. The provider event ID associated with this ion entry audit.
-     * @param string|null $value Value to set for the providerEventId property.
-    */
-    public function setProviderEventId(?string $value): void {
-        $this->providerEventId = $value;
-    }
-
-    /**
      * Sets the reason property value. The human-readable reason explaining this ion entry audit.
      * @param string|null $value Value to set for the reason property.
     */
@@ -249,14 +211,6 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
     */
     public function setSource(?string $value): void {
         $this->source = $value;
-    }
-
-    /**
-     * Sets the sourceEventId property value. The source event ID associated with this ion entry audit.
-     * @param string|null $value Value to set for the sourceEventId property.
-    */
-    public function setSourceEventId(?string $value): void {
-        $this->sourceEventId = $value;
     }
 
     /**

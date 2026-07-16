@@ -7,6 +7,9 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
+/**
+ * Lead trend associated with this Leadping customer analytics.
+*/
 class CustomerLeadTrend implements AdditionalDataHolder, Parsable 
 {
     /**
@@ -15,17 +18,17 @@ class CustomerLeadTrend implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var AnalyticsComparison|null $comparison The comparison property
+     * @var AnalyticsComparison|null $comparison Date and time when this Leadping customer lead trend was comparison.
     */
     private ?AnalyticsComparison $comparison = null;
     
     /**
-     * @var array<AnalyticsTrendPointOfint>|null $points The points property
+     * @var array<AnalyticsTrendPointOfint>|null $points Collection of points included with this Leadping customer lead trend.
     */
     private ?array $points = null;
     
     /**
-     * @var int|null $total The total property
+     * @var int|null $total Total number of total records represented by this Leadping customer lead trend.
     */
     private ?int $total = null;
     
@@ -54,7 +57,7 @@ class CustomerLeadTrend implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the comparison property value. The comparison property
+     * Gets the comparison property value. Date and time when this Leadping customer lead trend was comparison.
      * @return AnalyticsComparison|null
     */
     public function getComparison(): ?AnalyticsComparison {
@@ -75,7 +78,7 @@ class CustomerLeadTrend implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the points property value. The points property
+     * Gets the points property value. Collection of points included with this Leadping customer lead trend.
      * @return array<AnalyticsTrendPointOfint>|null
     */
     public function getPoints(): ?array {
@@ -83,7 +86,7 @@ class CustomerLeadTrend implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the total property value. The total property
+     * Gets the total property value. Total number of total records represented by this Leadping customer lead trend.
      * @return int|null
     */
     public function getTotal(): ?int {
@@ -110,7 +113,7 @@ class CustomerLeadTrend implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the comparison property value. The comparison property
+     * Sets the comparison property value. Date and time when this Leadping customer lead trend was comparison.
      * @param AnalyticsComparison|null $value Value to set for the comparison property.
     */
     public function setComparison(?AnalyticsComparison $value): void {
@@ -118,7 +121,7 @@ class CustomerLeadTrend implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the points property value. The points property
+     * Sets the points property value. Collection of points included with this Leadping customer lead trend.
      * @param array<AnalyticsTrendPointOfint>|null $value Value to set for the points property.
     */
     public function setPoints(?array $value): void {
@@ -126,7 +129,7 @@ class CustomerLeadTrend implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the total property value. The total property
+     * Sets the total property value. Total number of total records represented by this Leadping customer lead trend.
      * @param int|null $value Value to set for the total property.
     */
     public function setTotal(?int $value): void {

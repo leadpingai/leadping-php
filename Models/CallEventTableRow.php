@@ -24,11 +24,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     private ?DateTime $answeredAt = null;
     
     /**
-     * @var string|null $billingPhoneNumberId Phone number identifier used for billing reconciliation.
-    */
-    private ?string $billingPhoneNumberId = null;
-    
-    /**
      * @var string|null $billingStatus Billing state for this communication, charge, or transaction.
     */
     private ?string $billingStatus = null;
@@ -89,16 +84,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     private ?string $leadId = null;
     
     /**
-     * @var CallEventTableRow_metadata|null $metadata Structured metadata used for attribution, integrations, and reporting on this call event table row.
-    */
-    private ?CallEventTableRow_metadata $metadata = null;
-    
-    /**
-     * @var string|null $providerStatus Provider lifecycle or delivery status for this call event table row.
-    */
-    private ?string $providerStatus = null;
-    
-    /**
      * @var string|null $recordingUrl URL for the call recording, when the provider makes one available.
     */
     private ?string $recordingUrl = null;
@@ -112,11 +97,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
      * @var string|null $statusReason Human-readable reason explaining the current status of this call event table row.
     */
     private ?string $statusReason = null;
-    
-    /**
-     * @var string|null $telnyxId Telnyx identifier connected to this phone number, call, or SMS event.
-    */
-    private ?string $telnyxId = null;
     
     /**
      * @var string|null $toPhoneNumber Recipient phone number used for this communication.
@@ -163,14 +143,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function getAnsweredAt(): ?DateTime {
         return $this->answeredAt;
-    }
-
-    /**
-     * Gets the billingPhoneNumberId property value. Phone number identifier used for billing reconciliation.
-     * @return string|null
-    */
-    public function getBillingPhoneNumberId(): ?string {
-        return $this->billingPhoneNumberId;
     }
 
     /**
@@ -245,7 +217,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'answeredAt' => fn(ParseNode $n) => $o->setAnsweredAt($n->getDateTimeValue()),
-            'billingPhoneNumberId' => fn(ParseNode $n) => $o->setBillingPhoneNumberId($n->getStringValue()),
             'billingStatus' => fn(ParseNode $n) => $o->setBillingStatus($n->getStringValue()),
             'business' => fn(ParseNode $n) => $o->setBusiness($n->getStringValue()),
             'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
@@ -258,12 +229,9 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
             'fromPhoneNumberId' => fn(ParseNode $n) => $o->setFromPhoneNumberId($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
-            'metadata' => fn(ParseNode $n) => $o->setMetadata($n->getObjectValue([CallEventTableRow_metadata::class, 'createFromDiscriminatorValue'])),
-            'providerStatus' => fn(ParseNode $n) => $o->setProviderStatus($n->getStringValue()),
             'recordingUrl' => fn(ParseNode $n) => $o->setRecordingUrl($n->getStringValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(CallEventTableRow_status::class)),
             'statusReason' => fn(ParseNode $n) => $o->setStatusReason($n->getStringValue()),
-            'telnyxId' => fn(ParseNode $n) => $o->setTelnyxId($n->getStringValue()),
             'toPhoneNumber' => fn(ParseNode $n) => $o->setToPhoneNumber($n->getStringValue()),
             'user' => fn(ParseNode $n) => $o->setUser($n->getStringValue()),
             'userId' => fn(ParseNode $n) => $o->setUserId($n->getStringValue()),
@@ -303,22 +271,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this call event table row.
-     * @return CallEventTableRow_metadata|null
-    */
-    public function getMetadata(): ?CallEventTableRow_metadata {
-        return $this->metadata;
-    }
-
-    /**
-     * Gets the providerStatus property value. Provider lifecycle or delivery status for this call event table row.
-     * @return string|null
-    */
-    public function getProviderStatus(): ?string {
-        return $this->providerStatus;
-    }
-
-    /**
      * Gets the recordingUrl property value. URL for the call recording, when the provider makes one available.
      * @return string|null
     */
@@ -340,14 +292,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function getStatusReason(): ?string {
         return $this->statusReason;
-    }
-
-    /**
-     * Gets the telnyxId property value. Telnyx identifier connected to this phone number, call, or SMS event.
-     * @return string|null
-    */
-    public function getTelnyxId(): ?string {
-        return $this->telnyxId;
     }
 
     /**
@@ -380,7 +324,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeDateTimeValue('answeredAt', $this->getAnsweredAt());
-        $writer->writeStringValue('billingPhoneNumberId', $this->getBillingPhoneNumberId());
         $writer->writeStringValue('billingStatus', $this->getBillingStatus());
         $writer->writeStringValue('business', $this->getBusiness());
         $writer->writeStringValue('businessId', $this->getBusinessId());
@@ -393,12 +336,9 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('fromPhoneNumberId', $this->getFromPhoneNumberId());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeStringValue('leadId', $this->getLeadId());
-        $writer->writeObjectValue('metadata', $this->getMetadata());
-        $writer->writeStringValue('providerStatus', $this->getProviderStatus());
         $writer->writeStringValue('recordingUrl', $this->getRecordingUrl());
         $writer->writeEnumValue('status', $this->getStatus());
         $writer->writeStringValue('statusReason', $this->getStatusReason());
-        $writer->writeStringValue('telnyxId', $this->getTelnyxId());
         $writer->writeStringValue('toPhoneNumber', $this->getToPhoneNumber());
         $writer->writeStringValue('user', $this->getUser());
         $writer->writeStringValue('userId', $this->getUserId());
@@ -419,14 +359,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setAnsweredAt(?DateTime $value): void {
         $this->answeredAt = $value;
-    }
-
-    /**
-     * Sets the billingPhoneNumberId property value. Phone number identifier used for billing reconciliation.
-     * @param string|null $value Value to set for the billingPhoneNumberId property.
-    */
-    public function setBillingPhoneNumberId(?string $value): void {
-        $this->billingPhoneNumberId = $value;
     }
 
     /**
@@ -526,22 +458,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this call event table row.
-     * @param CallEventTableRow_metadata|null $value Value to set for the metadata property.
-    */
-    public function setMetadata(?CallEventTableRow_metadata $value): void {
-        $this->metadata = $value;
-    }
-
-    /**
-     * Sets the providerStatus property value. Provider lifecycle or delivery status for this call event table row.
-     * @param string|null $value Value to set for the providerStatus property.
-    */
-    public function setProviderStatus(?string $value): void {
-        $this->providerStatus = $value;
-    }
-
-    /**
      * Sets the recordingUrl property value. URL for the call recording, when the provider makes one available.
      * @param string|null $value Value to set for the recordingUrl property.
     */
@@ -563,14 +479,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setStatusReason(?string $value): void {
         $this->statusReason = $value;
-    }
-
-    /**
-     * Sets the telnyxId property value. Telnyx identifier connected to this phone number, call, or SMS event.
-     * @param string|null $value Value to set for the telnyxId property.
-    */
-    public function setTelnyxId(?string $value): void {
-        $this->telnyxId = $value;
     }
 
     /**

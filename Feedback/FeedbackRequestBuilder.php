@@ -4,7 +4,6 @@ namespace Leadping\OpenApiClient\Feedback;
 
 use Exception;
 use Http\Promise\Promise;
-use Leadping\OpenApiClient\Feedback\Admin\AdminRequestBuilder;
 use Leadping\OpenApiClient\Models\FeedbackCreateRequest;
 use Leadping\OpenApiClient\Models\FeedbackResponse;
 use Leadping\OpenApiClient\Models\ProblemDetails;
@@ -18,13 +17,6 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 */
 class FeedbackRequestBuilder extends BaseRequestBuilder 
 {
-    /**
-     * The admin property
-    */
-    public function admin(): AdminRequestBuilder {
-        return new AdminRequestBuilder($this->pathParameters, $this->requestAdapter);
-    }
-    
     /**
      * Instantiates a new FeedbackRequestBuilder and sets the default values.
      * @param array<string, mixed>|string $pathParametersOrRawUrl Path parameters for the request or a String representing the raw URL.

@@ -8,6 +8,9 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
+/**
+ * Last failure associated with this Leadping customer automation health.
+*/
 class CustomerFailingAutomation implements AdditionalDataHolder, Parsable 
 {
     /**
@@ -16,22 +19,22 @@ class CustomerFailingAutomation implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $automationId The automationId property
+     * @var string|null $automationId Unique identifier of the automation associated with this Leadping customer failing automation.
     */
     private ?string $automationId = null;
     
     /**
-     * @var string|null $error The error property
+     * @var string|null $error Error associated with this Leadping customer failing automation.
     */
     private ?string $error = null;
     
     /**
-     * @var DateTime|null $failedAt The failedAt property
+     * @var DateTime|null $failedAt Date and time when the customer failing automation failed.
     */
     private ?DateTime $failedAt = null;
     
     /**
-     * @var string|null $name The name property
+     * @var string|null $name Human-readable name of the customer failing automation.
     */
     private ?string $name = null;
     
@@ -60,7 +63,7 @@ class CustomerFailingAutomation implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the automationId property value. The automationId property
+     * Gets the automationId property value. Unique identifier of the automation associated with this Leadping customer failing automation.
      * @return string|null
     */
     public function getAutomationId(): ?string {
@@ -68,7 +71,7 @@ class CustomerFailingAutomation implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the error property value. The error property
+     * Gets the error property value. Error associated with this Leadping customer failing automation.
      * @return string|null
     */
     public function getError(): ?string {
@@ -76,7 +79,7 @@ class CustomerFailingAutomation implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the failedAt property value. The failedAt property
+     * Gets the failedAt property value. Date and time when the customer failing automation failed.
      * @return DateTime|null
     */
     public function getFailedAt(): ?DateTime {
@@ -98,7 +101,7 @@ class CustomerFailingAutomation implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the name property value. The name property
+     * Gets the name property value. Human-readable name of the customer failing automation.
      * @return string|null
     */
     public function getName(): ?string {
@@ -126,7 +129,7 @@ class CustomerFailingAutomation implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the automationId property value. The automationId property
+     * Sets the automationId property value. Unique identifier of the automation associated with this Leadping customer failing automation.
      * @param string|null $value Value to set for the automationId property.
     */
     public function setAutomationId(?string $value): void {
@@ -134,7 +137,7 @@ class CustomerFailingAutomation implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the error property value. The error property
+     * Sets the error property value. Error associated with this Leadping customer failing automation.
      * @param string|null $value Value to set for the error property.
     */
     public function setError(?string $value): void {
@@ -142,7 +145,7 @@ class CustomerFailingAutomation implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the failedAt property value. The failedAt property
+     * Sets the failedAt property value. Date and time when the customer failing automation failed.
      * @param DateTime|null $value Value to set for the failedAt property.
     */
     public function setFailedAt(?DateTime $value): void {
@@ -150,7 +153,7 @@ class CustomerFailingAutomation implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the name property value. The name property
+     * Sets the name property value. Human-readable name of the customer failing automation.
      * @param string|null $value Value to set for the name property.
     */
     public function setName(?string $value): void {

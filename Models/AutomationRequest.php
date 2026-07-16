@@ -23,24 +23,9 @@ class AutomationRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var AutomationRequest_adminEnablementOverride|null $adminEnablementOverride Admin override that can enable or disable this record independently of normal status checks.
-    */
-    private ?AutomationRequest_adminEnablementOverride $adminEnablementOverride = null;
-    
-    /**
-     * @var string|null $businessId Business ID that owns this automation configuration.
-    */
-    private ?string $businessId = null;
-    
-    /**
      * @var array<AutomationConditionGroup>|null $conditionGroups Grouped automation conditions used to decide whether this workflow should run.
     */
     private ?array $conditionGroups = null;
-    
-    /**
-     * @var string|null $createdByUserId User ID of the person who created this automation configuration request.
-    */
-    private ?string $createdByUserId = null;
     
     /**
      * @var string|null $description Human-readable description that explains this automation configuration request to API users.
@@ -56,16 +41,6 @@ class AutomationRequest implements AdditionalDataHolder, Parsable
      * @var string|null $id The unique identifier for the entity, when updating an existing entity.
     */
     private ?string $id = null;
-    
-    /**
-     * @var bool|null $isSystemManaged Indicates whether Leadping manages this automation configuration request automatically instead of a user.
-    */
-    private ?bool $isSystemManaged = null;
-    
-    /**
-     * @var string|null $managementLevel Management level that controls whether Leadping or the business owns this automation setting.
-    */
-    private ?string $managementLevel = null;
     
     /**
      * @var string|null $name The display name for the entity.
@@ -125,35 +100,11 @@ class AutomationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-     * @return AutomationRequest_adminEnablementOverride|null
-    */
-    public function getAdminEnablementOverride(): ?AutomationRequest_adminEnablementOverride {
-        return $this->adminEnablementOverride;
-    }
-
-    /**
-     * Gets the businessId property value. Business ID that owns this automation configuration.
-     * @return string|null
-    */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
-    }
-
-    /**
      * Gets the conditionGroups property value. Grouped automation conditions used to decide whether this workflow should run.
      * @return array<AutomationConditionGroup>|null
     */
     public function getConditionGroups(): ?array {
         return $this->conditionGroups;
-    }
-
-    /**
-     * Gets the createdByUserId property value. User ID of the person who created this automation configuration request.
-     * @return string|null
-    */
-    public function getCreatedByUserId(): ?string {
-        return $this->createdByUserId;
     }
 
     /**
@@ -180,15 +131,10 @@ class AutomationRequest implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'actions' => fn(ParseNode $n) => $o->setActions($n->getCollectionOfObjectValues([AutomationAction::class, 'createFromDiscriminatorValue'])),
-            'adminEnablementOverride' => fn(ParseNode $n) => $o->setAdminEnablementOverride($n->getObjectValue([AutomationRequest_adminEnablementOverride::class, 'createFromDiscriminatorValue'])),
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'conditionGroups' => fn(ParseNode $n) => $o->setConditionGroups($n->getCollectionOfObjectValues([AutomationConditionGroup::class, 'createFromDiscriminatorValue'])),
-            'createdByUserId' => fn(ParseNode $n) => $o->setCreatedByUserId($n->getStringValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
-            'isSystemManaged' => fn(ParseNode $n) => $o->setIsSystemManaged($n->getBooleanValue()),
-            'managementLevel' => fn(ParseNode $n) => $o->setManagementLevel($n->getStringValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'scope' => fn(ParseNode $n) => $o->setScope($n->getStringValue()),
             'triggers' => fn(ParseNode $n) => $o->setTriggers($n->getCollectionOfObjectValues([AutomationTrigger::class, 'createFromDiscriminatorValue'])),
@@ -203,22 +149,6 @@ class AutomationRequest implements AdditionalDataHolder, Parsable
     */
     public function getId(): ?string {
         return $this->id;
-    }
-
-    /**
-     * Gets the isSystemManaged property value. Indicates whether Leadping manages this automation configuration request automatically instead of a user.
-     * @return bool|null
-    */
-    public function getIsSystemManaged(): ?bool {
-        return $this->isSystemManaged;
-    }
-
-    /**
-     * Gets the managementLevel property value. Management level that controls whether Leadping or the business owns this automation setting.
-     * @return string|null
-    */
-    public function getManagementLevel(): ?string {
-        return $this->managementLevel;
     }
 
     /**
@@ -267,15 +197,10 @@ class AutomationRequest implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeCollectionOfObjectValues('actions', $this->getActions());
-        $writer->writeObjectValue('adminEnablementOverride', $this->getAdminEnablementOverride());
-        $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeCollectionOfObjectValues('conditionGroups', $this->getConditionGroups());
-        $writer->writeStringValue('createdByUserId', $this->getCreatedByUserId());
         $writer->writeStringValue('description', $this->getDescription());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeStringValue('id', $this->getId());
-        $writer->writeBooleanValue('isSystemManaged', $this->getIsSystemManaged());
-        $writer->writeStringValue('managementLevel', $this->getManagementLevel());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeStringValue('scope', $this->getScope());
         $writer->writeCollectionOfObjectValues('triggers', $this->getTriggers());
@@ -301,35 +226,11 @@ class AutomationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-     * @param AutomationRequest_adminEnablementOverride|null $value Value to set for the adminEnablementOverride property.
-    */
-    public function setAdminEnablementOverride(?AutomationRequest_adminEnablementOverride $value): void {
-        $this->adminEnablementOverride = $value;
-    }
-
-    /**
-     * Sets the businessId property value. Business ID that owns this automation configuration.
-     * @param string|null $value Value to set for the businessId property.
-    */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
-    }
-
-    /**
      * Sets the conditionGroups property value. Grouped automation conditions used to decide whether this workflow should run.
      * @param array<AutomationConditionGroup>|null $value Value to set for the conditionGroups property.
     */
     public function setConditionGroups(?array $value): void {
         $this->conditionGroups = $value;
-    }
-
-    /**
-     * Sets the createdByUserId property value. User ID of the person who created this automation configuration request.
-     * @param string|null $value Value to set for the createdByUserId property.
-    */
-    public function setCreatedByUserId(?string $value): void {
-        $this->createdByUserId = $value;
     }
 
     /**
@@ -354,22 +255,6 @@ class AutomationRequest implements AdditionalDataHolder, Parsable
     */
     public function setId(?string $value): void {
         $this->id = $value;
-    }
-
-    /**
-     * Sets the isSystemManaged property value. Indicates whether Leadping manages this automation configuration request automatically instead of a user.
-     * @param bool|null $value Value to set for the isSystemManaged property.
-    */
-    public function setIsSystemManaged(?bool $value): void {
-        $this->isSystemManaged = $value;
-    }
-
-    /**
-     * Sets the managementLevel property value. Management level that controls whether Leadping or the business owns this automation setting.
-     * @param string|null $value Value to set for the managementLevel property.
-    */
-    public function setManagementLevel(?string $value): void {
-        $this->managementLevel = $value;
     }
 
     /**

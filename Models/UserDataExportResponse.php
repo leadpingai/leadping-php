@@ -16,72 +16,72 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var DateTime|null $completedAt The completedAt property
+     * @var DateTime|null $completedAt Date and time when the user data export completed.
     */
     private ?DateTime $completedAt = null;
     
     /**
-     * @var string|null $contentType The contentType property
+     * @var string|null $contentType Media type of the generated file or response content.
     */
     private ?string $contentType = null;
     
     /**
-     * @var int|null $downloadCount The downloadCount property
+     * @var int|null $downloadCount Total number of download records represented by this Leadping user data export.
     */
     private ?int $downloadCount = null;
     
     /**
-     * @var string|null $downloadUrl The downloadUrl property
+     * @var string|null $downloadUrl Temporary URL for downloading the completed Leadping data export.
     */
     private ?string $downloadUrl = null;
     
     /**
-     * @var DateTime|null $expiresAt The expiresAt property
+     * @var DateTime|null $expiresAt Date and time when the user data export expires.
     */
     private ?DateTime $expiresAt = null;
     
     /**
-     * @var DateTime|null $failedAt The failedAt property
+     * @var DateTime|null $failedAt Date and time when the user data export failed.
     */
     private ?DateTime $failedAt = null;
     
     /**
-     * @var string|null $fileName The fileName property
+     * @var string|null $fileName Human-readable file name associated with this Leadping user data export.
     */
     private ?string $fileName = null;
     
     /**
-     * @var array<UserDataExportFile>|null $files The files property
+     * @var array<UserDataExportFile>|null $files Collection of files included with this Leadping user data export.
     */
     private ?array $files = null;
     
     /**
-     * @var string|null $id The id property
+     * @var string|null $id Unique Leadping identifier for the user data export.
     */
     private ?string $id = null;
     
     /**
-     * @var int|null $maxDownloadCount The maxDownloadCount property
+     * @var int|null $maxDownloadCount Total number of max download records represented by this Leadping user data export.
     */
     private ?int $maxDownloadCount = null;
     
     /**
-     * @var string|null $message The message property
+     * @var string|null $message Human-readable message for this Leadping user data export.
     */
     private ?string $message = null;
     
     /**
-     * @var DateTime|null $requestedAt The requestedAt property
+     * @var DateTime|null $requestedAt Date and time when the user data export was requested.
     */
     private ?DateTime $requestedAt = null;
     
     /**
-     * @var DateTime|null $startedAt The startedAt property
+     * @var DateTime|null $startedAt Date and time when the user data export started.
     */
     private ?DateTime $startedAt = null;
     
     /**
-     * @var UserDataExportStatuses|null $status Defines the supported user data export statuses values.
+     * @var UserDataExportStatuses|null $status Current status for this Leadping user data export.
     */
     private ?UserDataExportStatuses $status = null;
     
@@ -110,7 +110,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the completedAt property value. The completedAt property
+     * Gets the completedAt property value. Date and time when the user data export completed.
      * @return DateTime|null
     */
     public function getCompletedAt(): ?DateTime {
@@ -118,7 +118,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the contentType property value. The contentType property
+     * Gets the contentType property value. Media type of the generated file or response content.
      * @return string|null
     */
     public function getContentType(): ?string {
@@ -126,7 +126,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the downloadCount property value. The downloadCount property
+     * Gets the downloadCount property value. Total number of download records represented by this Leadping user data export.
      * @return int|null
     */
     public function getDownloadCount(): ?int {
@@ -134,7 +134,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the downloadUrl property value. The downloadUrl property
+     * Gets the downloadUrl property value. Temporary URL for downloading the completed Leadping data export.
      * @return string|null
     */
     public function getDownloadUrl(): ?string {
@@ -142,7 +142,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the expiresAt property value. The expiresAt property
+     * Gets the expiresAt property value. Date and time when the user data export expires.
      * @return DateTime|null
     */
     public function getExpiresAt(): ?DateTime {
@@ -150,7 +150,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the failedAt property value. The failedAt property
+     * Gets the failedAt property value. Date and time when the user data export failed.
      * @return DateTime|null
     */
     public function getFailedAt(): ?DateTime {
@@ -182,7 +182,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the fileName property value. The fileName property
+     * Gets the fileName property value. Human-readable file name associated with this Leadping user data export.
      * @return string|null
     */
     public function getFileName(): ?string {
@@ -190,7 +190,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the files property value. The files property
+     * Gets the files property value. Collection of files included with this Leadping user data export.
      * @return array<UserDataExportFile>|null
     */
     public function getFiles(): ?array {
@@ -198,7 +198,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The id property
+     * Gets the id property value. Unique Leadping identifier for the user data export.
      * @return string|null
     */
     public function getId(): ?string {
@@ -206,7 +206,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the maxDownloadCount property value. The maxDownloadCount property
+     * Gets the maxDownloadCount property value. Total number of max download records represented by this Leadping user data export.
      * @return int|null
     */
     public function getMaxDownloadCount(): ?int {
@@ -214,7 +214,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the message property value. The message property
+     * Gets the message property value. Human-readable message for this Leadping user data export.
      * @return string|null
     */
     public function getMessage(): ?string {
@@ -222,7 +222,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the requestedAt property value. The requestedAt property
+     * Gets the requestedAt property value. Date and time when the user data export was requested.
      * @return DateTime|null
     */
     public function getRequestedAt(): ?DateTime {
@@ -230,7 +230,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the startedAt property value. The startedAt property
+     * Gets the startedAt property value. Date and time when the user data export started.
      * @return DateTime|null
     */
     public function getStartedAt(): ?DateTime {
@@ -238,7 +238,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. Defines the supported user data export statuses values.
+     * Gets the status property value. Current status for this Leadping user data export.
      * @return UserDataExportStatuses|null
     */
     public function getStatus(): ?UserDataExportStatuses {
@@ -276,7 +276,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the completedAt property value. The completedAt property
+     * Sets the completedAt property value. Date and time when the user data export completed.
      * @param DateTime|null $value Value to set for the completedAt property.
     */
     public function setCompletedAt(?DateTime $value): void {
@@ -284,7 +284,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the contentType property value. The contentType property
+     * Sets the contentType property value. Media type of the generated file or response content.
      * @param string|null $value Value to set for the contentType property.
     */
     public function setContentType(?string $value): void {
@@ -292,7 +292,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the downloadCount property value. The downloadCount property
+     * Sets the downloadCount property value. Total number of download records represented by this Leadping user data export.
      * @param int|null $value Value to set for the downloadCount property.
     */
     public function setDownloadCount(?int $value): void {
@@ -300,7 +300,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the downloadUrl property value. The downloadUrl property
+     * Sets the downloadUrl property value. Temporary URL for downloading the completed Leadping data export.
      * @param string|null $value Value to set for the downloadUrl property.
     */
     public function setDownloadUrl(?string $value): void {
@@ -308,7 +308,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the expiresAt property value. The expiresAt property
+     * Sets the expiresAt property value. Date and time when the user data export expires.
      * @param DateTime|null $value Value to set for the expiresAt property.
     */
     public function setExpiresAt(?DateTime $value): void {
@@ -316,7 +316,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the failedAt property value. The failedAt property
+     * Sets the failedAt property value. Date and time when the user data export failed.
      * @param DateTime|null $value Value to set for the failedAt property.
     */
     public function setFailedAt(?DateTime $value): void {
@@ -324,7 +324,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the fileName property value. The fileName property
+     * Sets the fileName property value. Human-readable file name associated with this Leadping user data export.
      * @param string|null $value Value to set for the fileName property.
     */
     public function setFileName(?string $value): void {
@@ -332,7 +332,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the files property value. The files property
+     * Sets the files property value. Collection of files included with this Leadping user data export.
      * @param array<UserDataExportFile>|null $value Value to set for the files property.
     */
     public function setFiles(?array $value): void {
@@ -340,7 +340,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The id property
+     * Sets the id property value. Unique Leadping identifier for the user data export.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -348,7 +348,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the maxDownloadCount property value. The maxDownloadCount property
+     * Sets the maxDownloadCount property value. Total number of max download records represented by this Leadping user data export.
      * @param int|null $value Value to set for the maxDownloadCount property.
     */
     public function setMaxDownloadCount(?int $value): void {
@@ -356,7 +356,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the message property value. The message property
+     * Sets the message property value. Human-readable message for this Leadping user data export.
      * @param string|null $value Value to set for the message property.
     */
     public function setMessage(?string $value): void {
@@ -364,7 +364,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the requestedAt property value. The requestedAt property
+     * Sets the requestedAt property value. Date and time when the user data export was requested.
      * @param DateTime|null $value Value to set for the requestedAt property.
     */
     public function setRequestedAt(?DateTime $value): void {
@@ -372,7 +372,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the startedAt property value. The startedAt property
+     * Sets the startedAt property value. Date and time when the user data export started.
      * @param DateTime|null $value Value to set for the startedAt property.
     */
     public function setStartedAt(?DateTime $value): void {
@@ -380,7 +380,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. Defines the supported user data export statuses values.
+     * Sets the status property value. Current status for this Leadping user data export.
      * @param UserDataExportStatuses|null $value Value to set for the status property.
     */
     public function setStatus(?UserDataExportStatuses $value): void {

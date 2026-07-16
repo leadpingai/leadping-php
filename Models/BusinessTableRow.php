@@ -24,11 +24,6 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var BusinessTableRow_adminEnablementOverride|null $adminEnablementOverride The admin force enablement override on this business.
-    */
-    private ?BusinessTableRow_adminEnablementOverride $adminEnablementOverride = null;
-    
-    /**
      * @var DateTime|null $apiKeyExpiresAt The date and time this business API key expires, or null when it has no expiration.
     */
     private ?DateTime $apiKeyExpiresAt = null;
@@ -89,7 +84,7 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     private ?string $industry = null;
     
     /**
-     * @var DateTime|null $lastSubscriptionEventAt The lastSubscriptionEventAt property
+     * @var DateTime|null $lastSubscriptionEventAt Date and time when this Leadping business table row was last subscription event.
     */
     private ?DateTime $lastSubscriptionEventAt = null;
     
@@ -109,7 +104,7 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     private ?bool $needsAdminReview = null;
     
     /**
-     * @var DateTime|null $paymentFailedAt The paymentFailedAt property
+     * @var DateTime|null $paymentFailedAt Date and time when this Leadping business table row was payment failed.
     */
     private ?DateTime $paymentFailedAt = null;
     
@@ -129,7 +124,7 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     private ?BusinessTableRow_status $status = null;
     
     /**
-     * @var DateTime|null $subscriptionCancelAt The subscriptionCancelAt property
+     * @var DateTime|null $subscriptionCancelAt Date and time when this Leadping business table row was subscription cancel.
     */
     private ?DateTime $subscriptionCancelAt = null;
     
@@ -198,14 +193,6 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     */
     public function getAdditionalData(): ?array {
         return $this->additionalData;
-    }
-
-    /**
-     * Gets the adminEnablementOverride property value. The admin force enablement override on this business.
-     * @return BusinessTableRow_adminEnablementOverride|null
-    */
-    public function getAdminEnablementOverride(): ?BusinessTableRow_adminEnablementOverride {
-        return $this->adminEnablementOverride;
     }
 
     /**
@@ -296,7 +283,6 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'activationStatus' => fn(ParseNode $n) => $o->setActivationStatus($n->getEnumValue(BusinessTableRow_activationStatus::class)),
-            'adminEnablementOverride' => fn(ParseNode $n) => $o->setAdminEnablementOverride($n->getObjectValue([BusinessTableRow_adminEnablementOverride::class, 'createFromDiscriminatorValue'])),
             'apiKeyExpiresAt' => fn(ParseNode $n) => $o->setApiKeyExpiresAt($n->getDateTimeValue()),
             'apiKeyFirstUsedAt' => fn(ParseNode $n) => $o->setApiKeyFirstUsedAt($n->getDateTimeValue()),
             'apiKeyIssuedAt' => fn(ParseNode $n) => $o->setApiKeyIssuedAt($n->getDateTimeValue()),
@@ -345,7 +331,7 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lastSubscriptionEventAt property value. The lastSubscriptionEventAt property
+     * Gets the lastSubscriptionEventAt property value. Date and time when this Leadping business table row was last subscription event.
      * @return DateTime|null
     */
     public function getLastSubscriptionEventAt(): ?DateTime {
@@ -377,7 +363,7 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the paymentFailedAt property value. The paymentFailedAt property
+     * Gets the paymentFailedAt property value. Date and time when this Leadping business table row was payment failed.
      * @return DateTime|null
     */
     public function getPaymentFailedAt(): ?DateTime {
@@ -409,7 +395,7 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the subscriptionCancelAt property value. The subscriptionCancelAt property
+     * Gets the subscriptionCancelAt property value. Date and time when this Leadping business table row was subscription cancel.
      * @return DateTime|null
     */
     public function getSubscriptionCancelAt(): ?DateTime {
@@ -478,7 +464,6 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeEnumValue('activationStatus', $this->getActivationStatus());
-        $writer->writeObjectValue('adminEnablementOverride', $this->getAdminEnablementOverride());
         $writer->writeDateTimeValue('apiKeyExpiresAt', $this->getApiKeyExpiresAt());
         $writer->writeDateTimeValue('apiKeyFirstUsedAt', $this->getApiKeyFirstUsedAt());
         $writer->writeDateTimeValue('apiKeyIssuedAt', $this->getApiKeyIssuedAt());
@@ -524,14 +509,6 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the adminEnablementOverride property value. The admin force enablement override on this business.
-     * @param BusinessTableRow_adminEnablementOverride|null $value Value to set for the adminEnablementOverride property.
-    */
-    public function setAdminEnablementOverride(?BusinessTableRow_adminEnablementOverride $value): void {
-        $this->adminEnablementOverride = $value;
     }
 
     /**
@@ -631,7 +608,7 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lastSubscriptionEventAt property value. The lastSubscriptionEventAt property
+     * Sets the lastSubscriptionEventAt property value. Date and time when this Leadping business table row was last subscription event.
      * @param DateTime|null $value Value to set for the lastSubscriptionEventAt property.
     */
     public function setLastSubscriptionEventAt(?DateTime $value): void {
@@ -663,7 +640,7 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the paymentFailedAt property value. The paymentFailedAt property
+     * Sets the paymentFailedAt property value. Date and time when this Leadping business table row was payment failed.
      * @param DateTime|null $value Value to set for the paymentFailedAt property.
     */
     public function setPaymentFailedAt(?DateTime $value): void {
@@ -695,7 +672,7 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the subscriptionCancelAt property value. The subscriptionCancelAt property
+     * Sets the subscriptionCancelAt property value. Date and time when this Leadping business table row was subscription cancel.
      * @param DateTime|null $value Value to set for the subscriptionCancelAt property.
     */
     public function setSubscriptionCancelAt(?DateTime $value): void {

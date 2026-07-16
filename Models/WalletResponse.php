@@ -84,21 +84,6 @@ class WalletResponse implements AdditionalDataHolder, Parsable
     private ?WalletResponse_sourceType $sourceType = null;
     
     /**
-     * @var string|null $stripeChargeId Stripe charge identifier linked to this billing transaction.
-    */
-    private ?string $stripeChargeId = null;
-    
-    /**
-     * @var string|null $stripeInvoiceId Stripe invoice identifier linked to this billing transaction.
-    */
-    private ?string $stripeInvoiceId = null;
-    
-    /**
-     * @var string|null $stripePaymentIntentId Stripe payment intent identifier linked to this billing transaction.
-    */
-    private ?string $stripePaymentIntentId = null;
-    
-    /**
      * Instantiates a new WalletResponse and sets the default values.
     */
     public function __construct() {
@@ -190,9 +175,6 @@ class WalletResponse implements AdditionalDataHolder, Parsable
             'originalTransactionId' => fn(ParseNode $n) => $o->setOriginalTransactionId($n->getStringValue()),
             'purchasedAt' => fn(ParseNode $n) => $o->setPurchasedAt($n->getDateTimeValue()),
             'sourceType' => fn(ParseNode $n) => $o->setSourceType($n->getEnumValue(WalletResponse_sourceType::class)),
-            'stripeChargeId' => fn(ParseNode $n) => $o->setStripeChargeId($n->getStringValue()),
-            'stripeInvoiceId' => fn(ParseNode $n) => $o->setStripeInvoiceId($n->getStringValue()),
-            'stripePaymentIntentId' => fn(ParseNode $n) => $o->setStripePaymentIntentId($n->getStringValue()),
         ];
     }
 
@@ -253,30 +235,6 @@ class WalletResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the stripeChargeId property value. Stripe charge identifier linked to this billing transaction.
-     * @return string|null
-    */
-    public function getStripeChargeId(): ?string {
-        return $this->stripeChargeId;
-    }
-
-    /**
-     * Gets the stripeInvoiceId property value. Stripe invoice identifier linked to this billing transaction.
-     * @return string|null
-    */
-    public function getStripeInvoiceId(): ?string {
-        return $this->stripeInvoiceId;
-    }
-
-    /**
-     * Gets the stripePaymentIntentId property value. Stripe payment intent identifier linked to this billing transaction.
-     * @return string|null
-    */
-    public function getStripePaymentIntentId(): ?string {
-        return $this->stripePaymentIntentId;
-    }
-
-    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -294,9 +252,6 @@ class WalletResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('originalTransactionId', $this->getOriginalTransactionId());
         $writer->writeDateTimeValue('purchasedAt', $this->getPurchasedAt());
         $writer->writeEnumValue('sourceType', $this->getSourceType());
-        $writer->writeStringValue('stripeChargeId', $this->getStripeChargeId());
-        $writer->writeStringValue('stripeInvoiceId', $this->getStripeInvoiceId());
-        $writer->writeStringValue('stripePaymentIntentId', $this->getStripePaymentIntentId());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -410,30 +365,6 @@ class WalletResponse implements AdditionalDataHolder, Parsable
     */
     public function setSourceType(?WalletResponse_sourceType $value): void {
         $this->sourceType = $value;
-    }
-
-    /**
-     * Sets the stripeChargeId property value. Stripe charge identifier linked to this billing transaction.
-     * @param string|null $value Value to set for the stripeChargeId property.
-    */
-    public function setStripeChargeId(?string $value): void {
-        $this->stripeChargeId = $value;
-    }
-
-    /**
-     * Sets the stripeInvoiceId property value. Stripe invoice identifier linked to this billing transaction.
-     * @param string|null $value Value to set for the stripeInvoiceId property.
-    */
-    public function setStripeInvoiceId(?string $value): void {
-        $this->stripeInvoiceId = $value;
-    }
-
-    /**
-     * Sets the stripePaymentIntentId property value. Stripe payment intent identifier linked to this billing transaction.
-     * @param string|null $value Value to set for the stripePaymentIntentId property.
-    */
-    public function setStripePaymentIntentId(?string $value): void {
-        $this->stripePaymentIntentId = $value;
     }
 
 }

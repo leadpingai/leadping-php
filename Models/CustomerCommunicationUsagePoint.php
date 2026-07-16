@@ -16,42 +16,42 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var float|null $callMinutes The callMinutes property
+     * @var float|null $callMinutes Total connected call duration, in minutes, during the reporting period.
     */
     private ?float $callMinutes = null;
     
     /**
-     * @var int|null $calls The calls property
+     * @var int|null $calls Number of calls represented by this Leadping customer communication usage point.
     */
     private ?int $calls = null;
     
     /**
-     * @var DateTime|null $endAt The endAt property
+     * @var DateTime|null $endAt Date and time when this Leadping customer communication usage point was end.
     */
     private ?DateTime $endAt = null;
     
     /**
-     * @var string|null $label The label property
+     * @var string|null $label Human-readable label for this Leadping customer communication usage point.
     */
     private ?string $label = null;
     
     /**
-     * @var int|null $smsReceived The smsReceived property
+     * @var int|null $smsReceived Number of SMS messages received during the reporting period.
     */
     private ?int $smsReceived = null;
     
     /**
-     * @var int|null $smsSent The smsSent property
+     * @var int|null $smsSent Number of SMS messages sent during the reporting period.
     */
     private ?int $smsSent = null;
     
     /**
-     * @var float|null $spend The spend property
+     * @var float|null $spend Spend represented by this Leadping customer communication usage point.
     */
     private ?float $spend = null;
     
     /**
-     * @var DateTime|null $startAt The startAt property
+     * @var DateTime|null $startAt Date and time when this Leadping customer communication usage point was start.
     */
     private ?DateTime $startAt = null;
     
@@ -80,7 +80,7 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the callMinutes property value. The callMinutes property
+     * Gets the callMinutes property value. Total connected call duration, in minutes, during the reporting period.
      * @return float|null
     */
     public function getCallMinutes(): ?float {
@@ -88,7 +88,7 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the calls property value. The calls property
+     * Gets the calls property value. Number of calls represented by this Leadping customer communication usage point.
      * @return int|null
     */
     public function getCalls(): ?int {
@@ -96,7 +96,7 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the endAt property value. The endAt property
+     * Gets the endAt property value. Date and time when this Leadping customer communication usage point was end.
      * @return DateTime|null
     */
     public function getEndAt(): ?DateTime {
@@ -122,7 +122,7 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the label property value. The label property
+     * Gets the label property value. Human-readable label for this Leadping customer communication usage point.
      * @return string|null
     */
     public function getLabel(): ?string {
@@ -130,7 +130,7 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the smsReceived property value. The smsReceived property
+     * Gets the smsReceived property value. Number of SMS messages received during the reporting period.
      * @return int|null
     */
     public function getSmsReceived(): ?int {
@@ -138,7 +138,7 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the smsSent property value. The smsSent property
+     * Gets the smsSent property value. Number of SMS messages sent during the reporting period.
      * @return int|null
     */
     public function getSmsSent(): ?int {
@@ -146,7 +146,7 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the spend property value. The spend property
+     * Gets the spend property value. Spend represented by this Leadping customer communication usage point.
      * @return float|null
     */
     public function getSpend(): ?float {
@@ -154,7 +154,7 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the startAt property value. The startAt property
+     * Gets the startAt property value. Date and time when this Leadping customer communication usage point was start.
      * @return DateTime|null
     */
     public function getStartAt(): ?DateTime {
@@ -186,7 +186,7 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the callMinutes property value. The callMinutes property
+     * Sets the callMinutes property value. Total connected call duration, in minutes, during the reporting period.
      * @param float|null $value Value to set for the callMinutes property.
     */
     public function setCallMinutes(?float $value): void {
@@ -194,7 +194,7 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the calls property value. The calls property
+     * Sets the calls property value. Number of calls represented by this Leadping customer communication usage point.
      * @param int|null $value Value to set for the calls property.
     */
     public function setCalls(?int $value): void {
@@ -202,7 +202,7 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the endAt property value. The endAt property
+     * Sets the endAt property value. Date and time when this Leadping customer communication usage point was end.
      * @param DateTime|null $value Value to set for the endAt property.
     */
     public function setEndAt(?DateTime $value): void {
@@ -210,7 +210,7 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the label property value. The label property
+     * Sets the label property value. Human-readable label for this Leadping customer communication usage point.
      * @param string|null $value Value to set for the label property.
     */
     public function setLabel(?string $value): void {
@@ -218,7 +218,7 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the smsReceived property value. The smsReceived property
+     * Sets the smsReceived property value. Number of SMS messages received during the reporting period.
      * @param int|null $value Value to set for the smsReceived property.
     */
     public function setSmsReceived(?int $value): void {
@@ -226,7 +226,7 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the smsSent property value. The smsSent property
+     * Sets the smsSent property value. Number of SMS messages sent during the reporting period.
      * @param int|null $value Value to set for the smsSent property.
     */
     public function setSmsSent(?int $value): void {
@@ -234,7 +234,7 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the spend property value. The spend property
+     * Sets the spend property value. Spend represented by this Leadping customer communication usage point.
      * @param float|null $value Value to set for the spend property.
     */
     public function setSpend(?float $value): void {
@@ -242,7 +242,7 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the startAt property value. The startAt property
+     * Sets the startAt property value. Date and time when this Leadping customer communication usage point was start.
      * @param DateTime|null $value Value to set for the startAt property.
     */
     public function setStartAt(?DateTime $value): void {

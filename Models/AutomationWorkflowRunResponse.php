@@ -14,7 +14,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var array<AutomationWorkflowActionResponse>|null $actions The actions property
+     * @var array<AutomationWorkflowActionResponse>|null $actions Collection of actions included with this Leadping automation workflow run.
     */
     private ?array $actions = null;
     
@@ -24,157 +24,137 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $automationId The automationId property
+     * @var string|null $automationId Unique identifier of the automation associated with this Leadping automation workflow run.
     */
     private ?string $automationId = null;
     
     /**
-     * @var string|null $automationName The automationName property
+     * @var string|null $automationName Human-readable automation name associated with this Leadping automation workflow run.
     */
     private ?string $automationName = null;
     
     /**
-     * @var string|null $businessId The businessId property
+     * @var string|null $businessId Unique identifier of the business associated with this Leadping automation workflow run.
     */
     private ?string $businessId = null;
     
     /**
-     * @var DateTime|null $cancelledAt The cancelledAt property
+     * @var DateTime|null $cancelledAt Date and time when the automation workflow run was cancelled.
     */
     private ?DateTime $cancelledAt = null;
     
     /**
-     * @var DateTime|null $completedAt The completedAt property
+     * @var DateTime|null $completedAt Date and time when the automation workflow run completed.
     */
     private ?DateTime $completedAt = null;
     
     /**
-     * @var string|null $correlationId The correlationId property
-    */
-    private ?string $correlationId = null;
-    
-    /**
-     * @var string|null $currentStepId The currentStepId property
+     * @var string|null $currentStepId Unique identifier of the current step associated with this Leadping automation workflow run.
     */
     private ?string $currentStepId = null;
     
     /**
-     * @var string|null $currentStepName The currentStepName property
+     * @var string|null $currentStepName Human-readable current step name associated with this Leadping automation workflow run.
     */
     private ?string $currentStepName = null;
     
     /**
-     * @var array<AutomationWorkflowEventResponse>|null $events The events property
+     * @var array<AutomationWorkflowEventResponse>|null $events Collection of events included with this Leadping automation workflow run.
     */
     private ?array $events = null;
     
     /**
-     * @var string|null $executionKey The executionKey property
-    */
-    private ?string $executionKey = null;
-    
-    /**
-     * @var DateTime|null $failedAt The failedAt property
+     * @var DateTime|null $failedAt Date and time when the automation workflow run failed.
     */
     private ?DateTime $failedAt = null;
     
     /**
-     * @var string|null $id The id property
+     * @var string|null $id Unique Leadping identifier for the automation workflow run.
     */
     private ?string $id = null;
     
     /**
-     * @var string|null $internalErrorDetails The internalErrorDetails property
-    */
-    private ?string $internalErrorDetails = null;
-    
-    /**
-     * @var string|null $lastActionSummary The lastActionSummary property
+     * @var string|null $lastActionSummary Human-readable last action summary for this Leadping automation workflow run.
     */
     private ?string $lastActionSummary = null;
     
     /**
-     * @var string|null $lastErrorCode The lastErrorCode property
+     * @var string|null $lastErrorCode Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
     */
     private ?string $lastErrorCode = null;
     
     /**
-     * @var string|null $lastErrorMessage The lastErrorMessage property
+     * @var string|null $lastErrorMessage Human-readable last error message for this Leadping automation workflow run.
     */
     private ?string $lastErrorMessage = null;
     
     /**
-     * @var DateTime|null $lastExecutionAt The lastExecutionAt property
+     * @var DateTime|null $lastExecutionAt Date and time of the most recent execution for this Leadping automation workflow run.
     */
     private ?DateTime $lastExecutionAt = null;
     
     /**
-     * @var string|null $leadId The leadId property
+     * @var string|null $leadId Unique identifier of the lead associated with this Leadping automation workflow run.
     */
     private ?string $leadId = null;
     
     /**
-     * @var int|null $maxRetryCount The maxRetryCount property
+     * @var int|null $maxRetryCount Total number of max retry records represented by this Leadping automation workflow run.
     */
     private ?int $maxRetryCount = null;
     
     /**
-     * @var DateTime|null $nextExecutionAt The nextExecutionAt property
+     * @var DateTime|null $nextExecutionAt Date and time when the next execution is scheduled.
     */
     private ?DateTime $nextExecutionAt = null;
     
     /**
-     * @var DateTime|null $nextRetryAt The nextRetryAt property
+     * @var DateTime|null $nextRetryAt Date and time when the next retry is scheduled.
     */
     private ?DateTime $nextRetryAt = null;
     
     /**
-     * @var int|null $retryCount The retryCount property
+     * @var int|null $retryCount Total number of retry records represented by this Leadping automation workflow run.
     */
     private ?int $retryCount = null;
     
     /**
-     * @var string|null $skipReasonCode The skipReasonCode property
+     * @var string|null $skipReasonCode Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
     */
     private ?string $skipReasonCode = null;
     
     /**
-     * @var string|null $skipReasonDisplay The skipReasonDisplay property
+     * @var string|null $skipReasonDisplay Human-readable skip reason display for this Leadping automation workflow run.
     */
     private ?string $skipReasonDisplay = null;
     
     /**
-     * @var string|null $sourceEventId The sourceEventId property
-    */
-    private ?string $sourceEventId = null;
-    
-    /**
-     * @var DateTime|null $startedAt The startedAt property
+     * @var DateTime|null $startedAt Date and time when the automation workflow run started.
     */
     private ?DateTime $startedAt = null;
     
     /**
-     * @var string|null $status The status property
+     * @var string|null $status Current status for this Leadping automation workflow run.
     */
     private ?string $status = null;
     
     /**
-     * @var string|null $statusDisplay The statusDisplay property
+     * @var string|null $statusDisplay Human-readable status display for this Leadping automation workflow run.
     */
     private ?string $statusDisplay = null;
     
     /**
-     * @var string|null $triggerDisplay The triggerDisplay property
+     * @var string|null $triggerDisplay Human-readable trigger display for this Leadping automation workflow run.
     */
     private ?string $triggerDisplay = null;
     
     /**
-     * @var string|null $triggerType The triggerType property
+     * @var string|null $triggerType Trigger type classification for this Leadping automation workflow run.
     */
     private ?string $triggerType = null;
     
     /**
-     * @var DateTime|null $updatedAt The updatedAt property
+     * @var DateTime|null $updatedAt Date and time when the automation workflow run was last updated.
     */
     private ?DateTime $updatedAt = null;
     
@@ -195,7 +175,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the actions property value. The actions property
+     * Gets the actions property value. Collection of actions included with this Leadping automation workflow run.
      * @return array<AutomationWorkflowActionResponse>|null
     */
     public function getActions(): ?array {
@@ -211,7 +191,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the automationId property value. The automationId property
+     * Gets the automationId property value. Unique identifier of the automation associated with this Leadping automation workflow run.
      * @return string|null
     */
     public function getAutomationId(): ?string {
@@ -219,7 +199,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the automationName property value. The automationName property
+     * Gets the automationName property value. Human-readable automation name associated with this Leadping automation workflow run.
      * @return string|null
     */
     public function getAutomationName(): ?string {
@@ -227,7 +207,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the businessId property value. The businessId property
+     * Gets the businessId property value. Unique identifier of the business associated with this Leadping automation workflow run.
      * @return string|null
     */
     public function getBusinessId(): ?string {
@@ -235,7 +215,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the cancelledAt property value. The cancelledAt property
+     * Gets the cancelledAt property value. Date and time when the automation workflow run was cancelled.
      * @return DateTime|null
     */
     public function getCancelledAt(): ?DateTime {
@@ -243,7 +223,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the completedAt property value. The completedAt property
+     * Gets the completedAt property value. Date and time when the automation workflow run completed.
      * @return DateTime|null
     */
     public function getCompletedAt(): ?DateTime {
@@ -251,15 +231,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the correlationId property value. The correlationId property
-     * @return string|null
-    */
-    public function getCorrelationId(): ?string {
-        return $this->correlationId;
-    }
-
-    /**
-     * Gets the currentStepId property value. The currentStepId property
+     * Gets the currentStepId property value. Unique identifier of the current step associated with this Leadping automation workflow run.
      * @return string|null
     */
     public function getCurrentStepId(): ?string {
@@ -267,7 +239,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the currentStepName property value. The currentStepName property
+     * Gets the currentStepName property value. Human-readable current step name associated with this Leadping automation workflow run.
      * @return string|null
     */
     public function getCurrentStepName(): ?string {
@@ -275,7 +247,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the events property value. The events property
+     * Gets the events property value. Collection of events included with this Leadping automation workflow run.
      * @return array<AutomationWorkflowEventResponse>|null
     */
     public function getEvents(): ?array {
@@ -283,15 +255,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the executionKey property value. The executionKey property
-     * @return string|null
-    */
-    public function getExecutionKey(): ?string {
-        return $this->executionKey;
-    }
-
-    /**
-     * Gets the failedAt property value. The failedAt property
+     * Gets the failedAt property value. Date and time when the automation workflow run failed.
      * @return DateTime|null
     */
     public function getFailedAt(): ?DateTime {
@@ -311,14 +275,11 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
             'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'cancelledAt' => fn(ParseNode $n) => $o->setCancelledAt($n->getDateTimeValue()),
             'completedAt' => fn(ParseNode $n) => $o->setCompletedAt($n->getDateTimeValue()),
-            'correlationId' => fn(ParseNode $n) => $o->setCorrelationId($n->getStringValue()),
             'currentStepId' => fn(ParseNode $n) => $o->setCurrentStepId($n->getStringValue()),
             'currentStepName' => fn(ParseNode $n) => $o->setCurrentStepName($n->getStringValue()),
             'events' => fn(ParseNode $n) => $o->setEvents($n->getCollectionOfObjectValues([AutomationWorkflowEventResponse::class, 'createFromDiscriminatorValue'])),
-            'executionKey' => fn(ParseNode $n) => $o->setExecutionKey($n->getStringValue()),
             'failedAt' => fn(ParseNode $n) => $o->setFailedAt($n->getDateTimeValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
-            'internalErrorDetails' => fn(ParseNode $n) => $o->setInternalErrorDetails($n->getStringValue()),
             'lastActionSummary' => fn(ParseNode $n) => $o->setLastActionSummary($n->getStringValue()),
             'lastErrorCode' => fn(ParseNode $n) => $o->setLastErrorCode($n->getStringValue()),
             'lastErrorMessage' => fn(ParseNode $n) => $o->setLastErrorMessage($n->getStringValue()),
@@ -330,7 +291,6 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
             'retryCount' => fn(ParseNode $n) => $o->setRetryCount($n->getIntegerValue()),
             'skipReasonCode' => fn(ParseNode $n) => $o->setSkipReasonCode($n->getStringValue()),
             'skipReasonDisplay' => fn(ParseNode $n) => $o->setSkipReasonDisplay($n->getStringValue()),
-            'sourceEventId' => fn(ParseNode $n) => $o->setSourceEventId($n->getStringValue()),
             'startedAt' => fn(ParseNode $n) => $o->setStartedAt($n->getDateTimeValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getStringValue()),
             'statusDisplay' => fn(ParseNode $n) => $o->setStatusDisplay($n->getStringValue()),
@@ -341,7 +301,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The id property
+     * Gets the id property value. Unique Leadping identifier for the automation workflow run.
      * @return string|null
     */
     public function getId(): ?string {
@@ -349,15 +309,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the internalErrorDetails property value. The internalErrorDetails property
-     * @return string|null
-    */
-    public function getInternalErrorDetails(): ?string {
-        return $this->internalErrorDetails;
-    }
-
-    /**
-     * Gets the lastActionSummary property value. The lastActionSummary property
+     * Gets the lastActionSummary property value. Human-readable last action summary for this Leadping automation workflow run.
      * @return string|null
     */
     public function getLastActionSummary(): ?string {
@@ -365,7 +317,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lastErrorCode property value. The lastErrorCode property
+     * Gets the lastErrorCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
      * @return string|null
     */
     public function getLastErrorCode(): ?string {
@@ -373,7 +325,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lastErrorMessage property value. The lastErrorMessage property
+     * Gets the lastErrorMessage property value. Human-readable last error message for this Leadping automation workflow run.
      * @return string|null
     */
     public function getLastErrorMessage(): ?string {
@@ -381,7 +333,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lastExecutionAt property value. The lastExecutionAt property
+     * Gets the lastExecutionAt property value. Date and time of the most recent execution for this Leadping automation workflow run.
      * @return DateTime|null
     */
     public function getLastExecutionAt(): ?DateTime {
@@ -389,7 +341,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the leadId property value. The leadId property
+     * Gets the leadId property value. Unique identifier of the lead associated with this Leadping automation workflow run.
      * @return string|null
     */
     public function getLeadId(): ?string {
@@ -397,7 +349,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the maxRetryCount property value. The maxRetryCount property
+     * Gets the maxRetryCount property value. Total number of max retry records represented by this Leadping automation workflow run.
      * @return int|null
     */
     public function getMaxRetryCount(): ?int {
@@ -405,7 +357,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the nextExecutionAt property value. The nextExecutionAt property
+     * Gets the nextExecutionAt property value. Date and time when the next execution is scheduled.
      * @return DateTime|null
     */
     public function getNextExecutionAt(): ?DateTime {
@@ -413,7 +365,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the nextRetryAt property value. The nextRetryAt property
+     * Gets the nextRetryAt property value. Date and time when the next retry is scheduled.
      * @return DateTime|null
     */
     public function getNextRetryAt(): ?DateTime {
@@ -421,7 +373,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the retryCount property value. The retryCount property
+     * Gets the retryCount property value. Total number of retry records represented by this Leadping automation workflow run.
      * @return int|null
     */
     public function getRetryCount(): ?int {
@@ -429,7 +381,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the skipReasonCode property value. The skipReasonCode property
+     * Gets the skipReasonCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
      * @return string|null
     */
     public function getSkipReasonCode(): ?string {
@@ -437,7 +389,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the skipReasonDisplay property value. The skipReasonDisplay property
+     * Gets the skipReasonDisplay property value. Human-readable skip reason display for this Leadping automation workflow run.
      * @return string|null
     */
     public function getSkipReasonDisplay(): ?string {
@@ -445,15 +397,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the sourceEventId property value. The sourceEventId property
-     * @return string|null
-    */
-    public function getSourceEventId(): ?string {
-        return $this->sourceEventId;
-    }
-
-    /**
-     * Gets the startedAt property value. The startedAt property
+     * Gets the startedAt property value. Date and time when the automation workflow run started.
      * @return DateTime|null
     */
     public function getStartedAt(): ?DateTime {
@@ -461,7 +405,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. The status property
+     * Gets the status property value. Current status for this Leadping automation workflow run.
      * @return string|null
     */
     public function getStatus(): ?string {
@@ -469,7 +413,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the statusDisplay property value. The statusDisplay property
+     * Gets the statusDisplay property value. Human-readable status display for this Leadping automation workflow run.
      * @return string|null
     */
     public function getStatusDisplay(): ?string {
@@ -477,7 +421,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the triggerDisplay property value. The triggerDisplay property
+     * Gets the triggerDisplay property value. Human-readable trigger display for this Leadping automation workflow run.
      * @return string|null
     */
     public function getTriggerDisplay(): ?string {
@@ -485,7 +429,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the triggerType property value. The triggerType property
+     * Gets the triggerType property value. Trigger type classification for this Leadping automation workflow run.
      * @return string|null
     */
     public function getTriggerType(): ?string {
@@ -493,7 +437,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the updatedAt property value. The updatedAt property
+     * Gets the updatedAt property value. Date and time when the automation workflow run was last updated.
      * @return DateTime|null
     */
     public function getUpdatedAt(): ?DateTime {
@@ -511,14 +455,11 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeDateTimeValue('cancelledAt', $this->getCancelledAt());
         $writer->writeDateTimeValue('completedAt', $this->getCompletedAt());
-        $writer->writeStringValue('correlationId', $this->getCorrelationId());
         $writer->writeStringValue('currentStepId', $this->getCurrentStepId());
         $writer->writeStringValue('currentStepName', $this->getCurrentStepName());
         $writer->writeCollectionOfObjectValues('events', $this->getEvents());
-        $writer->writeStringValue('executionKey', $this->getExecutionKey());
         $writer->writeDateTimeValue('failedAt', $this->getFailedAt());
         $writer->writeStringValue('id', $this->getId());
-        $writer->writeStringValue('internalErrorDetails', $this->getInternalErrorDetails());
         $writer->writeStringValue('lastActionSummary', $this->getLastActionSummary());
         $writer->writeStringValue('lastErrorCode', $this->getLastErrorCode());
         $writer->writeStringValue('lastErrorMessage', $this->getLastErrorMessage());
@@ -530,7 +471,6 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
         $writer->writeIntegerValue('retryCount', $this->getRetryCount());
         $writer->writeStringValue('skipReasonCode', $this->getSkipReasonCode());
         $writer->writeStringValue('skipReasonDisplay', $this->getSkipReasonDisplay());
-        $writer->writeStringValue('sourceEventId', $this->getSourceEventId());
         $writer->writeDateTimeValue('startedAt', $this->getStartedAt());
         $writer->writeStringValue('status', $this->getStatus());
         $writer->writeStringValue('statusDisplay', $this->getStatusDisplay());
@@ -541,7 +481,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the actions property value. The actions property
+     * Sets the actions property value. Collection of actions included with this Leadping automation workflow run.
      * @param array<AutomationWorkflowActionResponse>|null $value Value to set for the actions property.
     */
     public function setActions(?array $value): void {
@@ -557,7 +497,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the automationId property value. The automationId property
+     * Sets the automationId property value. Unique identifier of the automation associated with this Leadping automation workflow run.
      * @param string|null $value Value to set for the automationId property.
     */
     public function setAutomationId(?string $value): void {
@@ -565,7 +505,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the automationName property value. The automationName property
+     * Sets the automationName property value. Human-readable automation name associated with this Leadping automation workflow run.
      * @param string|null $value Value to set for the automationName property.
     */
     public function setAutomationName(?string $value): void {
@@ -573,7 +513,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the businessId property value. The businessId property
+     * Sets the businessId property value. Unique identifier of the business associated with this Leadping automation workflow run.
      * @param string|null $value Value to set for the businessId property.
     */
     public function setBusinessId(?string $value): void {
@@ -581,7 +521,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the cancelledAt property value. The cancelledAt property
+     * Sets the cancelledAt property value. Date and time when the automation workflow run was cancelled.
      * @param DateTime|null $value Value to set for the cancelledAt property.
     */
     public function setCancelledAt(?DateTime $value): void {
@@ -589,7 +529,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the completedAt property value. The completedAt property
+     * Sets the completedAt property value. Date and time when the automation workflow run completed.
      * @param DateTime|null $value Value to set for the completedAt property.
     */
     public function setCompletedAt(?DateTime $value): void {
@@ -597,15 +537,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the correlationId property value. The correlationId property
-     * @param string|null $value Value to set for the correlationId property.
-    */
-    public function setCorrelationId(?string $value): void {
-        $this->correlationId = $value;
-    }
-
-    /**
-     * Sets the currentStepId property value. The currentStepId property
+     * Sets the currentStepId property value. Unique identifier of the current step associated with this Leadping automation workflow run.
      * @param string|null $value Value to set for the currentStepId property.
     */
     public function setCurrentStepId(?string $value): void {
@@ -613,7 +545,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the currentStepName property value. The currentStepName property
+     * Sets the currentStepName property value. Human-readable current step name associated with this Leadping automation workflow run.
      * @param string|null $value Value to set for the currentStepName property.
     */
     public function setCurrentStepName(?string $value): void {
@@ -621,7 +553,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the events property value. The events property
+     * Sets the events property value. Collection of events included with this Leadping automation workflow run.
      * @param array<AutomationWorkflowEventResponse>|null $value Value to set for the events property.
     */
     public function setEvents(?array $value): void {
@@ -629,15 +561,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the executionKey property value. The executionKey property
-     * @param string|null $value Value to set for the executionKey property.
-    */
-    public function setExecutionKey(?string $value): void {
-        $this->executionKey = $value;
-    }
-
-    /**
-     * Sets the failedAt property value. The failedAt property
+     * Sets the failedAt property value. Date and time when the automation workflow run failed.
      * @param DateTime|null $value Value to set for the failedAt property.
     */
     public function setFailedAt(?DateTime $value): void {
@@ -645,7 +569,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The id property
+     * Sets the id property value. Unique Leadping identifier for the automation workflow run.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -653,15 +577,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the internalErrorDetails property value. The internalErrorDetails property
-     * @param string|null $value Value to set for the internalErrorDetails property.
-    */
-    public function setInternalErrorDetails(?string $value): void {
-        $this->internalErrorDetails = $value;
-    }
-
-    /**
-     * Sets the lastActionSummary property value. The lastActionSummary property
+     * Sets the lastActionSummary property value. Human-readable last action summary for this Leadping automation workflow run.
      * @param string|null $value Value to set for the lastActionSummary property.
     */
     public function setLastActionSummary(?string $value): void {
@@ -669,7 +585,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lastErrorCode property value. The lastErrorCode property
+     * Sets the lastErrorCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
      * @param string|null $value Value to set for the lastErrorCode property.
     */
     public function setLastErrorCode(?string $value): void {
@@ -677,7 +593,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lastErrorMessage property value. The lastErrorMessage property
+     * Sets the lastErrorMessage property value. Human-readable last error message for this Leadping automation workflow run.
      * @param string|null $value Value to set for the lastErrorMessage property.
     */
     public function setLastErrorMessage(?string $value): void {
@@ -685,7 +601,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lastExecutionAt property value. The lastExecutionAt property
+     * Sets the lastExecutionAt property value. Date and time of the most recent execution for this Leadping automation workflow run.
      * @param DateTime|null $value Value to set for the lastExecutionAt property.
     */
     public function setLastExecutionAt(?DateTime $value): void {
@@ -693,7 +609,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the leadId property value. The leadId property
+     * Sets the leadId property value. Unique identifier of the lead associated with this Leadping automation workflow run.
      * @param string|null $value Value to set for the leadId property.
     */
     public function setLeadId(?string $value): void {
@@ -701,7 +617,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the maxRetryCount property value. The maxRetryCount property
+     * Sets the maxRetryCount property value. Total number of max retry records represented by this Leadping automation workflow run.
      * @param int|null $value Value to set for the maxRetryCount property.
     */
     public function setMaxRetryCount(?int $value): void {
@@ -709,7 +625,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the nextExecutionAt property value. The nextExecutionAt property
+     * Sets the nextExecutionAt property value. Date and time when the next execution is scheduled.
      * @param DateTime|null $value Value to set for the nextExecutionAt property.
     */
     public function setNextExecutionAt(?DateTime $value): void {
@@ -717,7 +633,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the nextRetryAt property value. The nextRetryAt property
+     * Sets the nextRetryAt property value. Date and time when the next retry is scheduled.
      * @param DateTime|null $value Value to set for the nextRetryAt property.
     */
     public function setNextRetryAt(?DateTime $value): void {
@@ -725,7 +641,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the retryCount property value. The retryCount property
+     * Sets the retryCount property value. Total number of retry records represented by this Leadping automation workflow run.
      * @param int|null $value Value to set for the retryCount property.
     */
     public function setRetryCount(?int $value): void {
@@ -733,7 +649,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the skipReasonCode property value. The skipReasonCode property
+     * Sets the skipReasonCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
      * @param string|null $value Value to set for the skipReasonCode property.
     */
     public function setSkipReasonCode(?string $value): void {
@@ -741,7 +657,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the skipReasonDisplay property value. The skipReasonDisplay property
+     * Sets the skipReasonDisplay property value. Human-readable skip reason display for this Leadping automation workflow run.
      * @param string|null $value Value to set for the skipReasonDisplay property.
     */
     public function setSkipReasonDisplay(?string $value): void {
@@ -749,15 +665,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the sourceEventId property value. The sourceEventId property
-     * @param string|null $value Value to set for the sourceEventId property.
-    */
-    public function setSourceEventId(?string $value): void {
-        $this->sourceEventId = $value;
-    }
-
-    /**
-     * Sets the startedAt property value. The startedAt property
+     * Sets the startedAt property value. Date and time when the automation workflow run started.
      * @param DateTime|null $value Value to set for the startedAt property.
     */
     public function setStartedAt(?DateTime $value): void {
@@ -765,7 +673,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. The status property
+     * Sets the status property value. Current status for this Leadping automation workflow run.
      * @param string|null $value Value to set for the status property.
     */
     public function setStatus(?string $value): void {
@@ -773,7 +681,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the statusDisplay property value. The statusDisplay property
+     * Sets the statusDisplay property value. Human-readable status display for this Leadping automation workflow run.
      * @param string|null $value Value to set for the statusDisplay property.
     */
     public function setStatusDisplay(?string $value): void {
@@ -781,7 +689,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the triggerDisplay property value. The triggerDisplay property
+     * Sets the triggerDisplay property value. Human-readable trigger display for this Leadping automation workflow run.
      * @param string|null $value Value to set for the triggerDisplay property.
     */
     public function setTriggerDisplay(?string $value): void {
@@ -789,7 +697,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the triggerType property value. The triggerType property
+     * Sets the triggerType property value. Trigger type classification for this Leadping automation workflow run.
      * @param string|null $value Value to set for the triggerType property.
     */
     public function setTriggerType(?string $value): void {
@@ -797,7 +705,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the updatedAt property value. The updatedAt property
+     * Sets the updatedAt property value. Date and time when the automation workflow run was last updated.
      * @param DateTime|null $value Value to set for the updatedAt property.
     */
     public function setUpdatedAt(?DateTime $value): void {

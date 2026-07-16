@@ -14,11 +14,6 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class TransactionTableRow implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var string|null $accountId Leadping account identifier used for wallet and transaction reconciliation.
-    */
-    private ?string $accountId = null;
-    
-    /**
      * @var string|null $accountName Display name of the wallet or account used for this transaction.
     */
     private ?string $accountName = null;
@@ -47,11 +42,6 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
      * @var DateTime|null $createdAt UTC timestamp when this billing transaction table row was created.
     */
     private ?DateTime $createdAt = null;
-    
-    /**
-     * @var string|null $createdBy Display name or identifier for the person or system that created this billing transaction table row.
-    */
-    private ?string $createdBy = null;
     
     /**
      * @var string|null $description Human-readable description that explains this billing transaction table row to API users.
@@ -110,14 +100,6 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the accountId property value. Leadping account identifier used for wallet and transaction reconciliation.
-     * @return string|null
-    */
-    public function getAccountId(): ?string {
-        return $this->accountId;
-    }
-
-    /**
      * Gets the accountName property value. Display name of the wallet or account used for this transaction.
      * @return string|null
     */
@@ -166,14 +148,6 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the createdBy property value. Display name or identifier for the person or system that created this billing transaction table row.
-     * @return string|null
-    */
-    public function getCreatedBy(): ?string {
-        return $this->createdBy;
-    }
-
-    /**
      * Gets the description property value. Human-readable description that explains this billing transaction table row to API users.
      * @return string|null
     */
@@ -188,13 +162,11 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'accountId' => fn(ParseNode $n) => $o->setAccountId($n->getStringValue()),
             'accountName' => fn(ParseNode $n) => $o->setAccountName($n->getStringValue()),
             'amount' => fn(ParseNode $n) => $o->setAmount($n->getFloatValue()),
             'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'businessName' => fn(ParseNode $n) => $o->setBusinessName($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
-            'createdBy' => fn(ParseNode $n) => $o->setCreatedBy($n->getStringValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
@@ -267,13 +239,11 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeStringValue('accountId', $this->getAccountId());
         $writer->writeStringValue('accountName', $this->getAccountName());
         $writer->writeFloatValue('amount', $this->getAmount());
         $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeStringValue('businessName', $this->getBusinessName());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
-        $writer->writeStringValue('createdBy', $this->getCreatedBy());
         $writer->writeStringValue('description', $this->getDescription());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeStringValue('leadId', $this->getLeadId());
@@ -283,14 +253,6 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
         $writer->writeEnumValue('transactionStatus', $this->getTransactionStatus());
         $writer->writeEnumValue('transactionType', $this->getTransactionType());
         $writer->writeAdditionalData($this->getAdditionalData());
-    }
-
-    /**
-     * Sets the accountId property value. Leadping account identifier used for wallet and transaction reconciliation.
-     * @param string|null $value Value to set for the accountId property.
-    */
-    public function setAccountId(?string $value): void {
-        $this->accountId = $value;
     }
 
     /**
@@ -339,14 +301,6 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     */
     public function setCreatedAt(?DateTime $value): void {
         $this->createdAt = $value;
-    }
-
-    /**
-     * Sets the createdBy property value. Display name or identifier for the person or system that created this billing transaction table row.
-     * @param string|null $value Value to set for the createdBy property.
-    */
-    public function setCreatedBy(?string $value): void {
-        $this->createdBy = $value;
     }
 
     /**

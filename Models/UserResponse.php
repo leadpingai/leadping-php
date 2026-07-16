@@ -114,11 +114,6 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?string $phone = null;
     
     /**
-     * @var UserResponse_stripeInfo|null $stripeInfo Stripe state for the user's currently selected business.
-    */
-    private ?UserResponse_stripeInfo $stripeInfo = null;
-    
-    /**
      * @var UserResponse_subscriptionStatus|null $subscriptionStatus Defines the supported Subscription Status values.
     */
     private ?UserResponse_subscriptionStatus $subscriptionStatus = null;
@@ -213,7 +208,6 @@ class UserResponse implements AdditionalDataHolder, Parsable
             'personalDataDeletionRequestedAt' => fn(ParseNode $n) => $o->setPersonalDataDeletionRequestedAt($n->getDateTimeValue()),
             'personalDataDeletionStatus' => fn(ParseNode $n) => $o->setPersonalDataDeletionStatus($n->getStringValue()),
             'phone' => fn(ParseNode $n) => $o->setPhone($n->getStringValue()),
-            'stripeInfo' => fn(ParseNode $n) => $o->setStripeInfo($n->getObjectValue([UserResponse_stripeInfo::class, 'createFromDiscriminatorValue'])),
             'subscriptionStatus' => fn(ParseNode $n) => $o->setSubscriptionStatus($n->getEnumValue(UserResponse_subscriptionStatus::class)),
         ];
     }
@@ -331,14 +325,6 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the stripeInfo property value. Stripe state for the user's currently selected business.
-     * @return UserResponse_stripeInfo|null
-    */
-    public function getStripeInfo(): ?UserResponse_stripeInfo {
-        return $this->stripeInfo;
-    }
-
-    /**
      * Gets the subscriptionStatus property value. Defines the supported Subscription Status values.
      * @return UserResponse_subscriptionStatus|null
     */
@@ -370,7 +356,6 @@ class UserResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('personalDataDeletionRequestedAt', $this->getPersonalDataDeletionRequestedAt());
         $writer->writeStringValue('personalDataDeletionStatus', $this->getPersonalDataDeletionStatus());
         $writer->writeStringValue('phone', $this->getPhone());
-        $writer->writeObjectValue('stripeInfo', $this->getStripeInfo());
         $writer->writeEnumValue('subscriptionStatus', $this->getSubscriptionStatus());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -533,14 +518,6 @@ class UserResponse implements AdditionalDataHolder, Parsable
     */
     public function setPhone(?string $value): void {
         $this->phone = $value;
-    }
-
-    /**
-     * Sets the stripeInfo property value. Stripe state for the user's currently selected business.
-     * @param UserResponse_stripeInfo|null $value Value to set for the stripeInfo property.
-    */
-    public function setStripeInfo(?UserResponse_stripeInfo $value): void {
-        $this->stripeInfo = $value;
     }
 
     /**

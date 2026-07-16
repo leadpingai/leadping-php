@@ -18,7 +18,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var bool|null $automationFailedEmailEnabled The automationFailedEmailEnabled property
+     * @var bool|null $automationFailedEmailEnabled Indicates whether automation failed email functionality is enabled for this Leadping user notification preferences.
     */
     private ?bool $automationFailedEmailEnabled = null;
     
@@ -28,7 +28,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     private ?bool $automationFailedEnabled = null;
     
     /**
-     * @var bool|null $automationFailedSmsEnabled The automationFailedSmsEnabled property
+     * @var bool|null $automationFailedSmsEnabled Indicates whether automation failed SMS functionality is enabled for this Leadping user notification preferences.
     */
     private ?bool $automationFailedSmsEnabled = null;
     
@@ -43,7 +43,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     private ?bool $billingSmsEnabled = null;
     
     /**
-     * @var bool|null $lowWalletBalanceEmailEnabled The lowWalletBalanceEmailEnabled property
+     * @var bool|null $lowWalletBalanceEmailEnabled Indicates whether low wallet balance email functionality is enabled for this Leadping user notification preferences.
     */
     private ?bool $lowWalletBalanceEmailEnabled = null;
     
@@ -53,12 +53,12 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     private ?bool $lowWalletBalanceEnabled = null;
     
     /**
-     * @var bool|null $lowWalletBalanceSmsEnabled The lowWalletBalanceSmsEnabled property
+     * @var bool|null $lowWalletBalanceSmsEnabled Indicates whether low wallet balance SMS functionality is enabled for this Leadping user notification preferences.
     */
     private ?bool $lowWalletBalanceSmsEnabled = null;
     
     /**
-     * @var bool|null $missedCallEmailEnabled The missedCallEmailEnabled property
+     * @var bool|null $missedCallEmailEnabled Indicates whether missed call email functionality is enabled for this Leadping user notification preferences.
     */
     private ?bool $missedCallEmailEnabled = null;
     
@@ -68,7 +68,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     private ?bool $missedCallEnabled = null;
     
     /**
-     * @var bool|null $missedCallSmsEnabled The missedCallSmsEnabled property
+     * @var bool|null $missedCallSmsEnabled Indicates whether missed call SMS functionality is enabled for this Leadping user notification preferences.
     */
     private ?bool $missedCallSmsEnabled = null;
     
@@ -93,12 +93,12 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     private ?bool $paymentFailedEnabled = null;
     
     /**
-     * @var bool|null $paymentFailedSmsEnabled The paymentFailedSmsEnabled property
+     * @var bool|null $paymentFailedSmsEnabled Indicates whether payment failed SMS functionality is enabled for this Leadping user notification preferences.
     */
     private ?bool $paymentFailedSmsEnabled = null;
     
     /**
-     * @var bool|null $subscriptionRenewingEmailEnabled The subscriptionRenewingEmailEnabled property
+     * @var bool|null $subscriptionRenewingEmailEnabled Indicates whether subscription renewing email functionality is enabled for this Leadping user notification preferences.
     */
     private ?bool $subscriptionRenewingEmailEnabled = null;
     
@@ -108,7 +108,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     private ?bool $subscriptionRenewingEnabled = null;
     
     /**
-     * @var bool|null $subscriptionRenewingSmsEnabled The subscriptionRenewingSmsEnabled property
+     * @var bool|null $subscriptionRenewingSmsEnabled Indicates whether subscription renewing SMS functionality is enabled for this Leadping user notification preferences.
     */
     private ?bool $subscriptionRenewingSmsEnabled = null;
     
@@ -118,7 +118,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     private ?bool $tenDlcStatusEnabled = null;
     
     /**
-     * @var bool|null $unreadSmsEmailEnabled The unreadSmsEmailEnabled property
+     * @var bool|null $unreadSmsEmailEnabled Indicates whether unread SMS email functionality is enabled for this Leadping user notification preferences.
     */
     private ?bool $unreadSmsEmailEnabled = null;
     
@@ -128,7 +128,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     private ?bool $unreadSmsEnabled = null;
     
     /**
-     * @var bool|null $unreadSmsSmsEnabled The unreadSmsSmsEnabled property
+     * @var bool|null $unreadSmsSmsEnabled Indicates whether unread SMS SMS functionality is enabled for this Leadping user notification preferences.
     */
     private ?bool $unreadSmsSmsEnabled = null;
     
@@ -162,7 +162,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the automationFailedEmailEnabled property value. The automationFailedEmailEnabled property
+     * Gets the automationFailedEmailEnabled property value. Indicates whether automation failed email functionality is enabled for this Leadping user notification preferences.
      * @return bool|null
     */
     public function getAutomationFailedEmailEnabled(): ?bool {
@@ -178,7 +178,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the automationFailedSmsEnabled property value. The automationFailedSmsEnabled property
+     * Gets the automationFailedSmsEnabled property value. Indicates whether automation failed SMS functionality is enabled for this Leadping user notification preferences.
      * @return bool|null
     */
     public function getAutomationFailedSmsEnabled(): ?bool {
@@ -236,7 +236,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lowWalletBalanceEmailEnabled property value. The lowWalletBalanceEmailEnabled property
+     * Gets the lowWalletBalanceEmailEnabled property value. Indicates whether low wallet balance email functionality is enabled for this Leadping user notification preferences.
      * @return bool|null
     */
     public function getLowWalletBalanceEmailEnabled(): ?bool {
@@ -252,7 +252,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lowWalletBalanceSmsEnabled property value. The lowWalletBalanceSmsEnabled property
+     * Gets the lowWalletBalanceSmsEnabled property value. Indicates whether low wallet balance SMS functionality is enabled for this Leadping user notification preferences.
      * @return bool|null
     */
     public function getLowWalletBalanceSmsEnabled(): ?bool {
@@ -260,7 +260,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the missedCallEmailEnabled property value. The missedCallEmailEnabled property
+     * Gets the missedCallEmailEnabled property value. Indicates whether missed call email functionality is enabled for this Leadping user notification preferences.
      * @return bool|null
     */
     public function getMissedCallEmailEnabled(): ?bool {
@@ -276,7 +276,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the missedCallSmsEnabled property value. The missedCallSmsEnabled property
+     * Gets the missedCallSmsEnabled property value. Indicates whether missed call SMS functionality is enabled for this Leadping user notification preferences.
      * @return bool|null
     */
     public function getMissedCallSmsEnabled(): ?bool {
@@ -316,7 +316,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the paymentFailedSmsEnabled property value. The paymentFailedSmsEnabled property
+     * Gets the paymentFailedSmsEnabled property value. Indicates whether payment failed SMS functionality is enabled for this Leadping user notification preferences.
      * @return bool|null
     */
     public function getPaymentFailedSmsEnabled(): ?bool {
@@ -324,7 +324,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the subscriptionRenewingEmailEnabled property value. The subscriptionRenewingEmailEnabled property
+     * Gets the subscriptionRenewingEmailEnabled property value. Indicates whether subscription renewing email functionality is enabled for this Leadping user notification preferences.
      * @return bool|null
     */
     public function getSubscriptionRenewingEmailEnabled(): ?bool {
@@ -340,7 +340,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the subscriptionRenewingSmsEnabled property value. The subscriptionRenewingSmsEnabled property
+     * Gets the subscriptionRenewingSmsEnabled property value. Indicates whether subscription renewing SMS functionality is enabled for this Leadping user notification preferences.
      * @return bool|null
     */
     public function getSubscriptionRenewingSmsEnabled(): ?bool {
@@ -356,7 +356,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the unreadSmsEmailEnabled property value. The unreadSmsEmailEnabled property
+     * Gets the unreadSmsEmailEnabled property value. Indicates whether unread SMS email functionality is enabled for this Leadping user notification preferences.
      * @return bool|null
     */
     public function getUnreadSmsEmailEnabled(): ?bool {
@@ -372,7 +372,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the unreadSmsSmsEnabled property value. The unreadSmsSmsEnabled property
+     * Gets the unreadSmsSmsEnabled property value. Indicates whether unread SMS SMS functionality is enabled for this Leadping user notification preferences.
      * @return bool|null
     */
     public function getUnreadSmsSmsEnabled(): ?bool {
@@ -428,7 +428,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the automationFailedEmailEnabled property value. The automationFailedEmailEnabled property
+     * Sets the automationFailedEmailEnabled property value. Indicates whether automation failed email functionality is enabled for this Leadping user notification preferences.
      * @param bool|null $value Value to set for the automationFailedEmailEnabled property.
     */
     public function setAutomationFailedEmailEnabled(?bool $value): void {
@@ -444,7 +444,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the automationFailedSmsEnabled property value. The automationFailedSmsEnabled property
+     * Sets the automationFailedSmsEnabled property value. Indicates whether automation failed SMS functionality is enabled for this Leadping user notification preferences.
      * @param bool|null $value Value to set for the automationFailedSmsEnabled property.
     */
     public function setAutomationFailedSmsEnabled(?bool $value): void {
@@ -468,7 +468,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lowWalletBalanceEmailEnabled property value. The lowWalletBalanceEmailEnabled property
+     * Sets the lowWalletBalanceEmailEnabled property value. Indicates whether low wallet balance email functionality is enabled for this Leadping user notification preferences.
      * @param bool|null $value Value to set for the lowWalletBalanceEmailEnabled property.
     */
     public function setLowWalletBalanceEmailEnabled(?bool $value): void {
@@ -484,7 +484,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lowWalletBalanceSmsEnabled property value. The lowWalletBalanceSmsEnabled property
+     * Sets the lowWalletBalanceSmsEnabled property value. Indicates whether low wallet balance SMS functionality is enabled for this Leadping user notification preferences.
      * @param bool|null $value Value to set for the lowWalletBalanceSmsEnabled property.
     */
     public function setLowWalletBalanceSmsEnabled(?bool $value): void {
@@ -492,7 +492,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the missedCallEmailEnabled property value. The missedCallEmailEnabled property
+     * Sets the missedCallEmailEnabled property value. Indicates whether missed call email functionality is enabled for this Leadping user notification preferences.
      * @param bool|null $value Value to set for the missedCallEmailEnabled property.
     */
     public function setMissedCallEmailEnabled(?bool $value): void {
@@ -508,7 +508,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the missedCallSmsEnabled property value. The missedCallSmsEnabled property
+     * Sets the missedCallSmsEnabled property value. Indicates whether missed call SMS functionality is enabled for this Leadping user notification preferences.
      * @param bool|null $value Value to set for the missedCallSmsEnabled property.
     */
     public function setMissedCallSmsEnabled(?bool $value): void {
@@ -548,7 +548,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the paymentFailedSmsEnabled property value. The paymentFailedSmsEnabled property
+     * Sets the paymentFailedSmsEnabled property value. Indicates whether payment failed SMS functionality is enabled for this Leadping user notification preferences.
      * @param bool|null $value Value to set for the paymentFailedSmsEnabled property.
     */
     public function setPaymentFailedSmsEnabled(?bool $value): void {
@@ -556,7 +556,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the subscriptionRenewingEmailEnabled property value. The subscriptionRenewingEmailEnabled property
+     * Sets the subscriptionRenewingEmailEnabled property value. Indicates whether subscription renewing email functionality is enabled for this Leadping user notification preferences.
      * @param bool|null $value Value to set for the subscriptionRenewingEmailEnabled property.
     */
     public function setSubscriptionRenewingEmailEnabled(?bool $value): void {
@@ -572,7 +572,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the subscriptionRenewingSmsEnabled property value. The subscriptionRenewingSmsEnabled property
+     * Sets the subscriptionRenewingSmsEnabled property value. Indicates whether subscription renewing SMS functionality is enabled for this Leadping user notification preferences.
      * @param bool|null $value Value to set for the subscriptionRenewingSmsEnabled property.
     */
     public function setSubscriptionRenewingSmsEnabled(?bool $value): void {
@@ -588,7 +588,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the unreadSmsEmailEnabled property value. The unreadSmsEmailEnabled property
+     * Sets the unreadSmsEmailEnabled property value. Indicates whether unread SMS email functionality is enabled for this Leadping user notification preferences.
      * @param bool|null $value Value to set for the unreadSmsEmailEnabled property.
     */
     public function setUnreadSmsEmailEnabled(?bool $value): void {
@@ -604,7 +604,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the unreadSmsSmsEnabled property value. The unreadSmsSmsEnabled property
+     * Sets the unreadSmsSmsEnabled property value. Indicates whether unread SMS SMS functionality is enabled for this Leadping user notification preferences.
      * @param bool|null $value Value to set for the unreadSmsSmsEnabled property.
     */
     public function setUnreadSmsSmsEnabled(?bool $value): void {

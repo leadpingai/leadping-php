@@ -16,22 +16,22 @@ class AnalyticsTrendPointOfdecimal implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var DateTime|null $endAt The endAt property
+     * @var DateTime|null $endAt Date and time when this Leadping analytics trend point was end.
     */
     private ?DateTime $endAt = null;
     
     /**
-     * @var string|null $label The label property
+     * @var string|null $label Human-readable label for this Leadping analytics trend point.
     */
     private ?string $label = null;
     
     /**
-     * @var DateTime|null $startAt The startAt property
+     * @var DateTime|null $startAt Date and time when this Leadping analytics trend point was start.
     */
     private ?DateTime $startAt = null;
     
     /**
-     * @var float|null $value The value property
+     * @var float|null $value Value associated with this Leadping analytics trend point.
     */
     private ?float $value = null;
     
@@ -60,7 +60,7 @@ class AnalyticsTrendPointOfdecimal implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the endAt property value. The endAt property
+     * Gets the endAt property value. Date and time when this Leadping analytics trend point was end.
      * @return DateTime|null
     */
     public function getEndAt(): ?DateTime {
@@ -82,7 +82,7 @@ class AnalyticsTrendPointOfdecimal implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the label property value. The label property
+     * Gets the label property value. Human-readable label for this Leadping analytics trend point.
      * @return string|null
     */
     public function getLabel(): ?string {
@@ -90,7 +90,7 @@ class AnalyticsTrendPointOfdecimal implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the startAt property value. The startAt property
+     * Gets the startAt property value. Date and time when this Leadping analytics trend point was start.
      * @return DateTime|null
     */
     public function getStartAt(): ?DateTime {
@@ -98,7 +98,7 @@ class AnalyticsTrendPointOfdecimal implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the value property value. The value property
+     * Gets the value property value. Value associated with this Leadping analytics trend point.
      * @return float|null
     */
     public function getValue(): ?float {
@@ -126,7 +126,7 @@ class AnalyticsTrendPointOfdecimal implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the endAt property value. The endAt property
+     * Sets the endAt property value. Date and time when this Leadping analytics trend point was end.
      * @param DateTime|null $value Value to set for the endAt property.
     */
     public function setEndAt(?DateTime $value): void {
@@ -134,7 +134,7 @@ class AnalyticsTrendPointOfdecimal implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the label property value. The label property
+     * Sets the label property value. Human-readable label for this Leadping analytics trend point.
      * @param string|null $value Value to set for the label property.
     */
     public function setLabel(?string $value): void {
@@ -142,7 +142,7 @@ class AnalyticsTrendPointOfdecimal implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the startAt property value. The startAt property
+     * Sets the startAt property value. Date and time when this Leadping analytics trend point was start.
      * @param DateTime|null $value Value to set for the startAt property.
     */
     public function setStartAt(?DateTime $value): void {
@@ -150,7 +150,7 @@ class AnalyticsTrendPointOfdecimal implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the value property value. The value property
+     * Sets the value property value. Value associated with this Leadping analytics trend point.
      * @param float|null $value Value to set for the value property.
     */
     public function setValue(?float $value): void {

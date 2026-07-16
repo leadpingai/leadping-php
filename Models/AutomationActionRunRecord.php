@@ -39,21 +39,6 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
     private ?DateTime $completedAt = null;
     
     /**
-     * @var string|null $connectionKey Stable integration connection key used by this automation action.
-    */
-    private ?string $connectionKey = null;
-    
-    /**
-     * @var string|null $error Error text returned while processing this automation action run record.
-    */
-    private ?string $error = null;
-    
-    /**
-     * @var string|null $executionKey Idempotency key used to identify a unique automation workflow execution.
-    */
-    private ?string $executionKey = null;
-    
-    /**
      * @var DateTime|null $failedAt UTC timestamp when processing failed for this automation action run record.
     */
     private ?DateTime $failedAt = null;
@@ -77,11 +62,6 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
      * @var int|null $order Sort order used to evaluate or display this automation action run record.
     */
     private ?int $order = null;
-    
-    /**
-     * @var string|null $output Generated output returned by this automation action run record.
-    */
-    private ?string $output = null;
     
     /**
      * @var int|null $processingAttempts Number of processing attempts made for this workflow or delivery request.
@@ -160,30 +140,6 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the connectionKey property value. Stable integration connection key used by this automation action.
-     * @return string|null
-    */
-    public function getConnectionKey(): ?string {
-        return $this->connectionKey;
-    }
-
-    /**
-     * Gets the error property value. Error text returned while processing this automation action run record.
-     * @return string|null
-    */
-    public function getError(): ?string {
-        return $this->error;
-    }
-
-    /**
-     * Gets the executionKey property value. Idempotency key used to identify a unique automation workflow execution.
-     * @return string|null
-    */
-    public function getExecutionKey(): ?string {
-        return $this->executionKey;
-    }
-
-    /**
      * Gets the failedAt property value. UTC timestamp when processing failed for this automation action run record.
      * @return DateTime|null
     */
@@ -210,15 +166,11 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
             'actionType' => fn(ParseNode $n) => $o->setActionType($n->getStringValue()),
             'automationRunId' => fn(ParseNode $n) => $o->setAutomationRunId($n->getStringValue()),
             'completedAt' => fn(ParseNode $n) => $o->setCompletedAt($n->getDateTimeValue()),
-            'connectionKey' => fn(ParseNode $n) => $o->setConnectionKey($n->getStringValue()),
-            'error' => fn(ParseNode $n) => $o->setError($n->getStringValue()),
-            'executionKey' => fn(ParseNode $n) => $o->setExecutionKey($n->getStringValue()),
             'failedAt' => fn(ParseNode $n) => $o->setFailedAt($n->getDateTimeValue()),
             'failureCode' => fn(ParseNode $n) => $o->setFailureCode($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'nextRetryAt' => fn(ParseNode $n) => $o->setNextRetryAt($n->getDateTimeValue()),
             'order' => fn(ParseNode $n) => $o->setOrder($n->getIntegerValue()),
-            'output' => fn(ParseNode $n) => $o->setOutput($n->getStringValue()),
             'processingAttempts' => fn(ParseNode $n) => $o->setProcessingAttempts($n->getIntegerValue()),
             'scheduledAt' => fn(ParseNode $n) => $o->setScheduledAt($n->getDateTimeValue()),
             'startedAt' => fn(ParseNode $n) => $o->setStartedAt($n->getDateTimeValue()),
@@ -248,14 +200,6 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
     */
     public function getOrder(): ?int {
         return $this->order;
-    }
-
-    /**
-     * Gets the output property value. Generated output returned by this automation action run record.
-     * @return string|null
-    */
-    public function getOutput(): ?string {
-        return $this->output;
     }
 
     /**
@@ -299,15 +243,11 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('actionType', $this->getActionType());
         $writer->writeStringValue('automationRunId', $this->getAutomationRunId());
         $writer->writeDateTimeValue('completedAt', $this->getCompletedAt());
-        $writer->writeStringValue('connectionKey', $this->getConnectionKey());
-        $writer->writeStringValue('error', $this->getError());
-        $writer->writeStringValue('executionKey', $this->getExecutionKey());
         $writer->writeDateTimeValue('failedAt', $this->getFailedAt());
         $writer->writeStringValue('failureCode', $this->getFailureCode());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeDateTimeValue('nextRetryAt', $this->getNextRetryAt());
         $writer->writeIntegerValue('order', $this->getOrder());
-        $writer->writeStringValue('output', $this->getOutput());
         $writer->writeIntegerValue('processingAttempts', $this->getProcessingAttempts());
         $writer->writeDateTimeValue('scheduledAt', $this->getScheduledAt());
         $writer->writeDateTimeValue('startedAt', $this->getStartedAt());
@@ -356,30 +296,6 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the connectionKey property value. Stable integration connection key used by this automation action.
-     * @param string|null $value Value to set for the connectionKey property.
-    */
-    public function setConnectionKey(?string $value): void {
-        $this->connectionKey = $value;
-    }
-
-    /**
-     * Sets the error property value. Error text returned while processing this automation action run record.
-     * @param string|null $value Value to set for the error property.
-    */
-    public function setError(?string $value): void {
-        $this->error = $value;
-    }
-
-    /**
-     * Sets the executionKey property value. Idempotency key used to identify a unique automation workflow execution.
-     * @param string|null $value Value to set for the executionKey property.
-    */
-    public function setExecutionKey(?string $value): void {
-        $this->executionKey = $value;
-    }
-
-    /**
      * Sets the failedAt property value. UTC timestamp when processing failed for this automation action run record.
      * @param DateTime|null $value Value to set for the failedAt property.
     */
@@ -417,14 +333,6 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
     */
     public function setOrder(?int $value): void {
         $this->order = $value;
-    }
-
-    /**
-     * Sets the output property value. Generated output returned by this automation action run record.
-     * @param string|null $value Value to set for the output property.
-    */
-    public function setOutput(?string $value): void {
-        $this->output = $value;
     }
 
     /**

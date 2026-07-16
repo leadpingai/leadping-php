@@ -79,11 +79,6 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     private ?string $leadId = null;
     
     /**
-     * @var PhoneCallResponse_metadata|null $metadata Structured metadata used for attribution, integrations, and reporting on this phone call.
-    */
-    private ?PhoneCallResponse_metadata $metadata = null;
-    
-    /**
      * @var DateTime|null $modifiedAt The date and time when the entity was last modified, if applicable.
     */
     private ?DateTime $modifiedAt = null;
@@ -245,7 +240,6 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
             'fromPhoneNumberId' => fn(ParseNode $n) => $o->setFromPhoneNumberId($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
-            'metadata' => fn(ParseNode $n) => $o->setMetadata($n->getObjectValue([PhoneCallResponse_metadata::class, 'createFromDiscriminatorValue'])),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'phoneNumber' => fn(ParseNode $n) => $o->setPhoneNumber($n->getStringValue()),
             'queuedAt' => fn(ParseNode $n) => $o->setQueuedAt($n->getDateTimeValue()),
@@ -290,14 +284,6 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     */
     public function getLeadId(): ?string {
         return $this->leadId;
-    }
-
-    /**
-     * Gets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this phone call.
-     * @return PhoneCallResponse_metadata|null
-    */
-    public function getMetadata(): ?PhoneCallResponse_metadata {
-        return $this->metadata;
     }
 
     /**
@@ -405,7 +391,6 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('fromPhoneNumberId', $this->getFromPhoneNumberId());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeStringValue('leadId', $this->getLeadId());
-        $writer->writeObjectValue('metadata', $this->getMetadata());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('phoneNumber', $this->getPhoneNumber());
         $writer->writeDateTimeValue('queuedAt', $this->getQueuedAt());
@@ -522,14 +507,6 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     */
     public function setLeadId(?string $value): void {
         $this->leadId = $value;
-    }
-
-    /**
-     * Sets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this phone call.
-     * @param PhoneCallResponse_metadata|null $value Value to set for the metadata property.
-    */
-    public function setMetadata(?PhoneCallResponse_metadata $value): void {
-        $this->metadata = $value;
     }
 
     /**

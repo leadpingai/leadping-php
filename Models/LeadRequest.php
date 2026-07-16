@@ -19,11 +19,6 @@ class LeadRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var LeadRequest_adminEnablementOverride|null $adminEnablementOverride Admin override that can enable or disable this record independently of normal status checks.
-    */
-    private ?LeadRequest_adminEnablementOverride $adminEnablementOverride = null;
-    
-    /**
      * @var LeadContact|null $contact Contact details for the lead or customer represented by this lead request.
     */
     private ?LeadContact $contact = null;
@@ -83,14 +78,6 @@ class LeadRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-     * @return LeadRequest_adminEnablementOverride|null
-    */
-    public function getAdminEnablementOverride(): ?LeadRequest_adminEnablementOverride {
-        return $this->adminEnablementOverride;
-    }
-
-    /**
      * Gets the contact property value. Contact details for the lead or customer represented by this lead request.
      * @return LeadContact|null
     */
@@ -121,7 +108,6 @@ class LeadRequest implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'adminEnablementOverride' => fn(ParseNode $n) => $o->setAdminEnablementOverride($n->getObjectValue([LeadRequest_adminEnablementOverride::class, 'createFromDiscriminatorValue'])),
             'contact' => fn(ParseNode $n) => $o->setContact($n->getObjectValue([LeadContact::class, 'createFromDiscriminatorValue'])),
             'customer' => fn(ParseNode $n) => $o->setCustomer($n->getObjectValue([LeadProfile::class, 'createFromDiscriminatorValue'])),
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
@@ -183,7 +169,6 @@ class LeadRequest implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeObjectValue('adminEnablementOverride', $this->getAdminEnablementOverride());
         $writer->writeObjectValue('contact', $this->getContact());
         $writer->writeObjectValue('customer', $this->getCustomer());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
@@ -200,14 +185,6 @@ class LeadRequest implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-     * @param LeadRequest_adminEnablementOverride|null $value Value to set for the adminEnablementOverride property.
-    */
-    public function setAdminEnablementOverride(?LeadRequest_adminEnablementOverride $value): void {
-        $this->adminEnablementOverride = $value;
     }
 
     /**

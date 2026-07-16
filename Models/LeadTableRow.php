@@ -19,11 +19,6 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var LeadTableRow_adminEnablementOverride|null $adminEnablementOverride Admin override that can enable or disable this record independently of normal status checks.
-    */
-    private ?LeadTableRow_adminEnablementOverride $adminEnablementOverride = null;
-    
-    /**
      * @var DateTime|null $archivedAt UTC timestamp when this record was archived.
     */
     private ?DateTime $archivedAt = null;
@@ -148,14 +143,6 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-     * @return LeadTableRow_adminEnablementOverride|null
-    */
-    public function getAdminEnablementOverride(): ?LeadTableRow_adminEnablementOverride {
-        return $this->adminEnablementOverride;
-    }
-
-    /**
      * Gets the archivedAt property value. UTC timestamp when this record was archived.
      * @return DateTime|null
     */
@@ -234,7 +221,6 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'adminEnablementOverride' => fn(ParseNode $n) => $o->setAdminEnablementOverride($n->getObjectValue([LeadTableRow_adminEnablementOverride::class, 'createFromDiscriminatorValue'])),
             'archivedAt' => fn(ParseNode $n) => $o->setArchivedAt($n->getDateTimeValue()),
             'archivedByUserId' => fn(ParseNode $n) => $o->setArchivedByUserId($n->getStringValue()),
             'archiveReason' => fn(ParseNode $n) => $o->setArchiveReason($n->getIntegerValue()),
@@ -351,7 +337,6 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeObjectValue('adminEnablementOverride', $this->getAdminEnablementOverride());
         $writer->writeDateTimeValue('archivedAt', $this->getArchivedAt());
         $writer->writeStringValue('archivedByUserId', $this->getArchivedByUserId());
         $writer->writeIntegerValue('archiveReason', $this->getArchiveReason());
@@ -381,14 +366,6 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-     * @param LeadTableRow_adminEnablementOverride|null $value Value to set for the adminEnablementOverride property.
-    */
-    public function setAdminEnablementOverride(?LeadTableRow_adminEnablementOverride $value): void {
-        $this->adminEnablementOverride = $value;
     }
 
     /**

@@ -19,9 +19,9 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var PhoneLookup_carrierType|null $carrierType An enumerator describing carrier types
+     * @var PhoneLookup_carrier|null $carrier Complete carrier metadata reported for this phone number.
     */
-    private ?PhoneLookup_carrierType $carrierType = null;
+    private ?PhoneLookup_carrier $carrier = null;
     
     /**
      * @var DateTime|null $createdAt Gets or sets created at.
@@ -83,11 +83,11 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the carrierType property value. An enumerator describing carrier types
-     * @return PhoneLookup_carrierType|null
+     * Gets the carrier property value. Complete carrier metadata reported for this phone number.
+     * @return PhoneLookup_carrier|null
     */
-    public function getCarrierType(): ?PhoneLookup_carrierType {
-        return $this->carrierType;
+    public function getCarrier(): ?PhoneLookup_carrier {
+        return $this->carrier;
     }
 
     /**
@@ -105,7 +105,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'carrierType' => fn(ParseNode $n) => $o->setCarrierType($n->getEnumValue(PhoneLookup_carrierType::class)),
+            'carrier' => fn(ParseNode $n) => $o->setCarrier($n->getObjectValue([PhoneLookup_carrier::class, 'createFromDiscriminatorValue'])),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isValid' => fn(ParseNode $n) => $o->setIsValid($n->getBooleanValue()),
@@ -169,7 +169,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeEnumValue('carrierType', $this->getCarrierType());
+        $writer->writeObjectValue('carrier', $this->getCarrier());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isValid', $this->getIsValid());
@@ -189,11 +189,11 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the carrierType property value. An enumerator describing carrier types
-     * @param PhoneLookup_carrierType|null $value Value to set for the carrierType property.
+     * Sets the carrier property value. Complete carrier metadata reported for this phone number.
+     * @param PhoneLookup_carrier|null $value Value to set for the carrier property.
     */
-    public function setCarrierType(?PhoneLookup_carrierType $value): void {
-        $this->carrierType = $value;
+    public function setCarrier(?PhoneLookup_carrier $value): void {
+        $this->carrier = $value;
     }
 
     /**

@@ -18,12 +18,12 @@ class AutomationWorkflowStatusResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $leadId The leadId property
+     * @var string|null $leadId Unique identifier of the lead associated with this Leadping automation workflow status.
     */
     private ?string $leadId = null;
     
     /**
-     * @var array<AutomationWorkflowRunResponse>|null $runs The runs property
+     * @var array<AutomationWorkflowRunResponse>|null $runs Collection of runs included with this Leadping automation workflow status.
     */
     private ?array $runs = null;
     
@@ -64,7 +64,7 @@ class AutomationWorkflowStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the leadId property value. The leadId property
+     * Gets the leadId property value. Unique identifier of the lead associated with this Leadping automation workflow status.
      * @return string|null
     */
     public function getLeadId(): ?string {
@@ -72,7 +72,7 @@ class AutomationWorkflowStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the runs property value. The runs property
+     * Gets the runs property value. Collection of runs included with this Leadping automation workflow status.
      * @return array<AutomationWorkflowRunResponse>|null
     */
     public function getRuns(): ?array {
@@ -98,7 +98,7 @@ class AutomationWorkflowStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the leadId property value. The leadId property
+     * Sets the leadId property value. Unique identifier of the lead associated with this Leadping automation workflow status.
      * @param string|null $value Value to set for the leadId property.
     */
     public function setLeadId(?string $value): void {
@@ -106,7 +106,7 @@ class AutomationWorkflowStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the runs property value. The runs property
+     * Sets the runs property value. Collection of runs included with this Leadping automation workflow status.
      * @param array<AutomationWorkflowRunResponse>|null $value Value to set for the runs property.
     */
     public function setRuns(?array $value): void {

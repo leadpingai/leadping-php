@@ -18,12 +18,12 @@ class Coordinate implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var float|null $latitude The latitude property
+     * @var float|null $latitude Latitude of the geographic coordinate in decimal degrees, from -90 through 90.
     */
     private ?float $latitude = null;
     
     /**
-     * @var float|null $longitude The longitude property
+     * @var float|null $longitude Longitude of the geographic coordinate in decimal degrees, from -180 through 180.
     */
     private ?float $longitude = null;
     
@@ -64,7 +64,7 @@ class Coordinate implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the latitude property value. The latitude property
+     * Gets the latitude property value. Latitude of the geographic coordinate in decimal degrees, from -90 through 90.
      * @return float|null
     */
     public function getLatitude(): ?float {
@@ -72,7 +72,7 @@ class Coordinate implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the longitude property value. The longitude property
+     * Gets the longitude property value. Longitude of the geographic coordinate in decimal degrees, from -180 through 180.
      * @return float|null
     */
     public function getLongitude(): ?float {
@@ -98,7 +98,7 @@ class Coordinate implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the latitude property value. The latitude property
+     * Sets the latitude property value. Latitude of the geographic coordinate in decimal degrees, from -90 through 90.
      * @param float|null $value Value to set for the latitude property.
     */
     public function setLatitude(?float $value): void {
@@ -106,7 +106,7 @@ class Coordinate implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the longitude property value. The longitude property
+     * Sets the longitude property value. Longitude of the geographic coordinate in decimal degrees, from -180 through 180.
      * @param float|null $value Value to set for the longitude property.
     */
     public function setLongitude(?float $value): void {

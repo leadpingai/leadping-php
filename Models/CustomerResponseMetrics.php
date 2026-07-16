@@ -7,6 +7,9 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
+/**
+ * Response metrics associated with this Leadping customer analytics.
+*/
 class CustomerResponseMetrics implements AdditionalDataHolder, Parsable 
 {
     /**
@@ -15,32 +18,32 @@ class CustomerResponseMetrics implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var array<AnalyticsTrendPointOfdecimal>|null $averageMinutesTrend The averageMinutesTrend property
+     * @var array<AnalyticsTrendPointOfdecimal>|null $averageMinutesTrend Collection of average minutes trend included with this Leadping customer response metrics.
     */
     private ?array $averageMinutesTrend = null;
     
     /**
-     * @var int|null $missedCalls The missedCalls property
+     * @var int|null $missedCalls Number of calls missed during the reporting period.
     */
     private ?int $missedCalls = null;
     
     /**
-     * @var int|null $respondedLeads The respondedLeads property
+     * @var int|null $respondedLeads Number of responded leads represented by this Leadping customer response metrics.
     */
     private ?int $respondedLeads = null;
     
     /**
-     * @var float|null $respondedWithinFiveMinutesPercent The respondedWithinFiveMinutesPercent property
+     * @var float|null $respondedWithinFiveMinutesPercent Responded within five minutes percent expressed as a percentage.
     */
     private ?float $respondedWithinFiveMinutesPercent = null;
     
     /**
-     * @var int|null $unreadMessages The unreadMessages property
+     * @var int|null $unreadMessages Number of unread messages represented by this Leadping customer response metrics.
     */
     private ?int $unreadMessages = null;
     
     /**
-     * @var int|null $unrespondedLeads The unrespondedLeads property
+     * @var int|null $unrespondedLeads Number of unresponded leads represented by this Leadping customer response metrics.
     */
     private ?int $unrespondedLeads = null;
     
@@ -69,7 +72,7 @@ class CustomerResponseMetrics implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the averageMinutesTrend property value. The averageMinutesTrend property
+     * Gets the averageMinutesTrend property value. Collection of average minutes trend included with this Leadping customer response metrics.
      * @return array<AnalyticsTrendPointOfdecimal>|null
     */
     public function getAverageMinutesTrend(): ?array {
@@ -93,7 +96,7 @@ class CustomerResponseMetrics implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the missedCalls property value. The missedCalls property
+     * Gets the missedCalls property value. Number of calls missed during the reporting period.
      * @return int|null
     */
     public function getMissedCalls(): ?int {
@@ -101,7 +104,7 @@ class CustomerResponseMetrics implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the respondedLeads property value. The respondedLeads property
+     * Gets the respondedLeads property value. Number of responded leads represented by this Leadping customer response metrics.
      * @return int|null
     */
     public function getRespondedLeads(): ?int {
@@ -109,7 +112,7 @@ class CustomerResponseMetrics implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the respondedWithinFiveMinutesPercent property value. The respondedWithinFiveMinutesPercent property
+     * Gets the respondedWithinFiveMinutesPercent property value. Responded within five minutes percent expressed as a percentage.
      * @return float|null
     */
     public function getRespondedWithinFiveMinutesPercent(): ?float {
@@ -117,7 +120,7 @@ class CustomerResponseMetrics implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the unreadMessages property value. The unreadMessages property
+     * Gets the unreadMessages property value. Number of unread messages represented by this Leadping customer response metrics.
      * @return int|null
     */
     public function getUnreadMessages(): ?int {
@@ -125,7 +128,7 @@ class CustomerResponseMetrics implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the unrespondedLeads property value. The unrespondedLeads property
+     * Gets the unrespondedLeads property value. Number of unresponded leads represented by this Leadping customer response metrics.
      * @return int|null
     */
     public function getUnrespondedLeads(): ?int {
@@ -155,7 +158,7 @@ class CustomerResponseMetrics implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the averageMinutesTrend property value. The averageMinutesTrend property
+     * Sets the averageMinutesTrend property value. Collection of average minutes trend included with this Leadping customer response metrics.
      * @param array<AnalyticsTrendPointOfdecimal>|null $value Value to set for the averageMinutesTrend property.
     */
     public function setAverageMinutesTrend(?array $value): void {
@@ -163,7 +166,7 @@ class CustomerResponseMetrics implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the missedCalls property value. The missedCalls property
+     * Sets the missedCalls property value. Number of calls missed during the reporting period.
      * @param int|null $value Value to set for the missedCalls property.
     */
     public function setMissedCalls(?int $value): void {
@@ -171,7 +174,7 @@ class CustomerResponseMetrics implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the respondedLeads property value. The respondedLeads property
+     * Sets the respondedLeads property value. Number of responded leads represented by this Leadping customer response metrics.
      * @param int|null $value Value to set for the respondedLeads property.
     */
     public function setRespondedLeads(?int $value): void {
@@ -179,7 +182,7 @@ class CustomerResponseMetrics implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the respondedWithinFiveMinutesPercent property value. The respondedWithinFiveMinutesPercent property
+     * Sets the respondedWithinFiveMinutesPercent property value. Responded within five minutes percent expressed as a percentage.
      * @param float|null $value Value to set for the respondedWithinFiveMinutesPercent property.
     */
     public function setRespondedWithinFiveMinutesPercent(?float $value): void {
@@ -187,7 +190,7 @@ class CustomerResponseMetrics implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the unreadMessages property value. The unreadMessages property
+     * Sets the unreadMessages property value. Number of unread messages represented by this Leadping customer response metrics.
      * @param int|null $value Value to set for the unreadMessages property.
     */
     public function setUnreadMessages(?int $value): void {
@@ -195,7 +198,7 @@ class CustomerResponseMetrics implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the unrespondedLeads property value. The unrespondedLeads property
+     * Sets the unrespondedLeads property value. Number of unresponded leads represented by this Leadping customer response metrics.
      * @param int|null $value Value to set for the unrespondedLeads property.
     */
     public function setUnrespondedLeads(?int $value): void {

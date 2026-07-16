@@ -39,21 +39,6 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     private ?DateTime $completedAt = null;
     
     /**
-     * @var AutomationRunRecord_contextSnapshot|null $contextSnapshot Snapshot of request context captured when this automation run record was created.
-    */
-    private ?AutomationRunRecord_contextSnapshot $contextSnapshot = null;
-    
-    /**
-     * @var string|null $error Error text returned while processing this automation run record.
-    */
-    private ?string $error = null;
-    
-    /**
-     * @var string|null $executionKey Idempotency key used to identify a unique automation workflow execution.
-    */
-    private ?string $executionKey = null;
-    
-    /**
      * @var string|null $executionMode Execution mode used for automation preview or live workflow processing.
     */
     private ?string $executionMode = null;
@@ -87,11 +72,6 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
      * @var string|null $skippedReason Human-readable reason explaining why Leadping skipped this automation run.
     */
     private ?string $skippedReason = null;
-    
-    /**
-     * @var string|null $sourceEventId Source event ID that triggered this workflow or outbound delivery.
-    */
-    private ?string $sourceEventId = null;
     
     /**
      * @var DateTime|null $startedAt UTC timestamp when processing started for this automation run record.
@@ -165,30 +145,6 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the contextSnapshot property value. Snapshot of request context captured when this automation run record was created.
-     * @return AutomationRunRecord_contextSnapshot|null
-    */
-    public function getContextSnapshot(): ?AutomationRunRecord_contextSnapshot {
-        return $this->contextSnapshot;
-    }
-
-    /**
-     * Gets the error property value. Error text returned while processing this automation run record.
-     * @return string|null
-    */
-    public function getError(): ?string {
-        return $this->error;
-    }
-
-    /**
-     * Gets the executionKey property value. Idempotency key used to identify a unique automation workflow execution.
-     * @return string|null
-    */
-    public function getExecutionKey(): ?string {
-        return $this->executionKey;
-    }
-
-    /**
      * Gets the executionMode property value. Execution mode used for automation preview or live workflow processing.
      * @return string|null
     */
@@ -215,9 +171,6 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
             'automationId' => fn(ParseNode $n) => $o->setAutomationId($n->getStringValue()),
             'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'completedAt' => fn(ParseNode $n) => $o->setCompletedAt($n->getDateTimeValue()),
-            'contextSnapshot' => fn(ParseNode $n) => $o->setContextSnapshot($n->getObjectValue([AutomationRunRecord_contextSnapshot::class, 'createFromDiscriminatorValue'])),
-            'error' => fn(ParseNode $n) => $o->setError($n->getStringValue()),
-            'executionKey' => fn(ParseNode $n) => $o->setExecutionKey($n->getStringValue()),
             'executionMode' => fn(ParseNode $n) => $o->setExecutionMode($n->getStringValue()),
             'failureCode' => fn(ParseNode $n) => $o->setFailureCode($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
@@ -225,7 +178,6 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
             'processingAttempts' => fn(ParseNode $n) => $o->setProcessingAttempts($n->getIntegerValue()),
             'skippedReason' => fn(ParseNode $n) => $o->setSkippedReason($n->getStringValue()),
-            'sourceEventId' => fn(ParseNode $n) => $o->setSourceEventId($n->getStringValue()),
             'startedAt' => fn(ParseNode $n) => $o->setStartedAt($n->getDateTimeValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getStringValue()),
             'triggerType' => fn(ParseNode $n) => $o->setTriggerType($n->getStringValue()),
@@ -273,14 +225,6 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the sourceEventId property value. Source event ID that triggered this workflow or outbound delivery.
-     * @return string|null
-    */
-    public function getSourceEventId(): ?string {
-        return $this->sourceEventId;
-    }
-
-    /**
      * Gets the startedAt property value. UTC timestamp when processing started for this automation run record.
      * @return DateTime|null
     */
@@ -313,9 +257,6 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('automationId', $this->getAutomationId());
         $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeDateTimeValue('completedAt', $this->getCompletedAt());
-        $writer->writeObjectValue('contextSnapshot', $this->getContextSnapshot());
-        $writer->writeStringValue('error', $this->getError());
-        $writer->writeStringValue('executionKey', $this->getExecutionKey());
         $writer->writeStringValue('executionMode', $this->getExecutionMode());
         $writer->writeStringValue('failureCode', $this->getFailureCode());
         $writer->writeStringValue('id', $this->getId());
@@ -323,7 +264,6 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('leadId', $this->getLeadId());
         $writer->writeIntegerValue('processingAttempts', $this->getProcessingAttempts());
         $writer->writeStringValue('skippedReason', $this->getSkippedReason());
-        $writer->writeStringValue('sourceEventId', $this->getSourceEventId());
         $writer->writeDateTimeValue('startedAt', $this->getStartedAt());
         $writer->writeStringValue('status', $this->getStatus());
         $writer->writeStringValue('triggerType', $this->getTriggerType());
@@ -368,30 +308,6 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     */
     public function setCompletedAt(?DateTime $value): void {
         $this->completedAt = $value;
-    }
-
-    /**
-     * Sets the contextSnapshot property value. Snapshot of request context captured when this automation run record was created.
-     * @param AutomationRunRecord_contextSnapshot|null $value Value to set for the contextSnapshot property.
-    */
-    public function setContextSnapshot(?AutomationRunRecord_contextSnapshot $value): void {
-        $this->contextSnapshot = $value;
-    }
-
-    /**
-     * Sets the error property value. Error text returned while processing this automation run record.
-     * @param string|null $value Value to set for the error property.
-    */
-    public function setError(?string $value): void {
-        $this->error = $value;
-    }
-
-    /**
-     * Sets the executionKey property value. Idempotency key used to identify a unique automation workflow execution.
-     * @param string|null $value Value to set for the executionKey property.
-    */
-    public function setExecutionKey(?string $value): void {
-        $this->executionKey = $value;
     }
 
     /**
@@ -448,14 +364,6 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     */
     public function setSkippedReason(?string $value): void {
         $this->skippedReason = $value;
-    }
-
-    /**
-     * Sets the sourceEventId property value. Source event ID that triggered this workflow or outbound delivery.
-     * @param string|null $value Value to set for the sourceEventId property.
-    */
-    public function setSourceEventId(?string $value): void {
-        $this->sourceEventId = $value;
     }
 
     /**

@@ -54,11 +54,6 @@ class PhoneNumberMessagingEventResponse implements AdditionalDataHolder, Parsabl
     private ?string $label = null;
     
     /**
-     * @var string|null $providerStatus Provider lifecycle or delivery status for this phone number messaging event.
-    */
-    private ?string $providerStatus = null;
-    
-    /**
      * @var string|null $textPreview Short preview of the SMS or conversation text for this phone number messaging event.
     */
     private ?string $textPreview = null;
@@ -130,7 +125,6 @@ class PhoneNumberMessagingEventResponse implements AdditionalDataHolder, Parsabl
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isOptOut' => fn(ParseNode $n) => $o->setIsOptOut($n->getBooleanValue()),
             'label' => fn(ParseNode $n) => $o->setLabel($n->getStringValue()),
-            'providerStatus' => fn(ParseNode $n) => $o->setProviderStatus($n->getStringValue()),
             'textPreview' => fn(ParseNode $n) => $o->setTextPreview($n->getStringValue()),
             'toPhoneNumber' => fn(ParseNode $n) => $o->setToPhoneNumber($n->getStringValue()),
         ];
@@ -169,14 +163,6 @@ class PhoneNumberMessagingEventResponse implements AdditionalDataHolder, Parsabl
     }
 
     /**
-     * Gets the providerStatus property value. Provider lifecycle or delivery status for this phone number messaging event.
-     * @return string|null
-    */
-    public function getProviderStatus(): ?string {
-        return $this->providerStatus;
-    }
-
-    /**
      * Gets the textPreview property value. Short preview of the SMS or conversation text for this phone number messaging event.
      * @return string|null
     */
@@ -204,7 +190,6 @@ class PhoneNumberMessagingEventResponse implements AdditionalDataHolder, Parsabl
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isOptOut', $this->getIsOptOut());
         $writer->writeStringValue('label', $this->getLabel());
-        $writer->writeStringValue('providerStatus', $this->getProviderStatus());
         $writer->writeStringValue('textPreview', $this->getTextPreview());
         $writer->writeStringValue('toPhoneNumber', $this->getToPhoneNumber());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -272,14 +257,6 @@ class PhoneNumberMessagingEventResponse implements AdditionalDataHolder, Parsabl
     */
     public function setLabel(?string $value): void {
         $this->label = $value;
-    }
-
-    /**
-     * Sets the providerStatus property value. Provider lifecycle or delivery status for this phone number messaging event.
-     * @param string|null $value Value to set for the providerStatus property.
-    */
-    public function setProviderStatus(?string $value): void {
-        $this->providerStatus = $value;
     }
 
     /**

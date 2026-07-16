@@ -7,6 +7,9 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
+/**
+ * Communication usage associated with this Leadping customer analytics.
+*/
 class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable 
 {
     /**
@@ -15,52 +18,52 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var int|null $answeredCalls The answeredCalls property
+     * @var int|null $answeredCalls Number of calls answered during the reporting period.
     */
     private ?int $answeredCalls = null;
     
     /**
-     * @var float|null $callMinutes The callMinutes property
+     * @var float|null $callMinutes Total connected call duration, in minutes, during the reporting period.
     */
     private ?float $callMinutes = null;
     
     /**
-     * @var int|null $callsPlaced The callsPlaced property
+     * @var int|null $callsPlaced Number of outbound calls placed during the reporting period.
     */
     private ?int $callsPlaced = null;
     
     /**
-     * @var int|null $callsReceived The callsReceived property
+     * @var int|null $callsReceived Number of inbound calls received during the reporting period.
     */
     private ?int $callsReceived = null;
     
     /**
-     * @var int|null $failedOrBlockedSms The failedOrBlockedSms property
+     * @var int|null $failedOrBlockedSms Number of SMS messages that failed or were blocked during the reporting period.
     */
     private ?int $failedOrBlockedSms = null;
     
     /**
-     * @var int|null $missedCalls The missedCalls property
+     * @var int|null $missedCalls Number of calls missed during the reporting period.
     */
     private ?int $missedCalls = null;
     
     /**
-     * @var int|null $smsReceived The smsReceived property
+     * @var int|null $smsReceived Number of SMS messages received during the reporting period.
     */
     private ?int $smsReceived = null;
     
     /**
-     * @var int|null $smsSent The smsSent property
+     * @var int|null $smsSent Number of SMS messages sent during the reporting period.
     */
     private ?int $smsSent = null;
     
     /**
-     * @var array<CustomerCommunicationUsagePoint>|null $trend The trend property
+     * @var array<CustomerCommunicationUsagePoint>|null $trend Collection of trend included with this Leadping customer communication usage.
     */
     private ?array $trend = null;
     
     /**
-     * @var float|null $usageSpend The usageSpend property
+     * @var float|null $usageSpend Usage spend represented by this Leadping customer communication usage.
     */
     private ?float $usageSpend = null;
     
@@ -89,7 +92,7 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the answeredCalls property value. The answeredCalls property
+     * Gets the answeredCalls property value. Number of calls answered during the reporting period.
      * @return int|null
     */
     public function getAnsweredCalls(): ?int {
@@ -97,7 +100,7 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the callMinutes property value. The callMinutes property
+     * Gets the callMinutes property value. Total connected call duration, in minutes, during the reporting period.
      * @return float|null
     */
     public function getCallMinutes(): ?float {
@@ -105,7 +108,7 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the callsPlaced property value. The callsPlaced property
+     * Gets the callsPlaced property value. Number of outbound calls placed during the reporting period.
      * @return int|null
     */
     public function getCallsPlaced(): ?int {
@@ -113,7 +116,7 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the callsReceived property value. The callsReceived property
+     * Gets the callsReceived property value. Number of inbound calls received during the reporting period.
      * @return int|null
     */
     public function getCallsReceived(): ?int {
@@ -121,7 +124,7 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the failedOrBlockedSms property value. The failedOrBlockedSms property
+     * Gets the failedOrBlockedSms property value. Number of SMS messages that failed or were blocked during the reporting period.
      * @return int|null
     */
     public function getFailedOrBlockedSms(): ?int {
@@ -149,7 +152,7 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the missedCalls property value. The missedCalls property
+     * Gets the missedCalls property value. Number of calls missed during the reporting period.
      * @return int|null
     */
     public function getMissedCalls(): ?int {
@@ -157,7 +160,7 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the smsReceived property value. The smsReceived property
+     * Gets the smsReceived property value. Number of SMS messages received during the reporting period.
      * @return int|null
     */
     public function getSmsReceived(): ?int {
@@ -165,7 +168,7 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the smsSent property value. The smsSent property
+     * Gets the smsSent property value. Number of SMS messages sent during the reporting period.
      * @return int|null
     */
     public function getSmsSent(): ?int {
@@ -173,7 +176,7 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the trend property value. The trend property
+     * Gets the trend property value. Collection of trend included with this Leadping customer communication usage.
      * @return array<CustomerCommunicationUsagePoint>|null
     */
     public function getTrend(): ?array {
@@ -181,7 +184,7 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the usageSpend property value. The usageSpend property
+     * Gets the usageSpend property value. Usage spend represented by this Leadping customer communication usage.
      * @return float|null
     */
     public function getUsageSpend(): ?float {
@@ -215,7 +218,7 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the answeredCalls property value. The answeredCalls property
+     * Sets the answeredCalls property value. Number of calls answered during the reporting period.
      * @param int|null $value Value to set for the answeredCalls property.
     */
     public function setAnsweredCalls(?int $value): void {
@@ -223,7 +226,7 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the callMinutes property value. The callMinutes property
+     * Sets the callMinutes property value. Total connected call duration, in minutes, during the reporting period.
      * @param float|null $value Value to set for the callMinutes property.
     */
     public function setCallMinutes(?float $value): void {
@@ -231,7 +234,7 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the callsPlaced property value. The callsPlaced property
+     * Sets the callsPlaced property value. Number of outbound calls placed during the reporting period.
      * @param int|null $value Value to set for the callsPlaced property.
     */
     public function setCallsPlaced(?int $value): void {
@@ -239,7 +242,7 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the callsReceived property value. The callsReceived property
+     * Sets the callsReceived property value. Number of inbound calls received during the reporting period.
      * @param int|null $value Value to set for the callsReceived property.
     */
     public function setCallsReceived(?int $value): void {
@@ -247,7 +250,7 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the failedOrBlockedSms property value. The failedOrBlockedSms property
+     * Sets the failedOrBlockedSms property value. Number of SMS messages that failed or were blocked during the reporting period.
      * @param int|null $value Value to set for the failedOrBlockedSms property.
     */
     public function setFailedOrBlockedSms(?int $value): void {
@@ -255,7 +258,7 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the missedCalls property value. The missedCalls property
+     * Sets the missedCalls property value. Number of calls missed during the reporting period.
      * @param int|null $value Value to set for the missedCalls property.
     */
     public function setMissedCalls(?int $value): void {
@@ -263,7 +266,7 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the smsReceived property value. The smsReceived property
+     * Sets the smsReceived property value. Number of SMS messages received during the reporting period.
      * @param int|null $value Value to set for the smsReceived property.
     */
     public function setSmsReceived(?int $value): void {
@@ -271,7 +274,7 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the smsSent property value. The smsSent property
+     * Sets the smsSent property value. Number of SMS messages sent during the reporting period.
      * @param int|null $value Value to set for the smsSent property.
     */
     public function setSmsSent(?int $value): void {
@@ -279,7 +282,7 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the trend property value. The trend property
+     * Sets the trend property value. Collection of trend included with this Leadping customer communication usage.
      * @param array<CustomerCommunicationUsagePoint>|null $value Value to set for the trend property.
     */
     public function setTrend(?array $value): void {
@@ -287,7 +290,7 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the usageSpend property value. The usageSpend property
+     * Sets the usageSpend property value. Usage spend represented by this Leadping customer communication usage.
      * @param float|null $value Value to set for the usageSpend property.
     */
     public function setUsageSpend(?float $value): void {

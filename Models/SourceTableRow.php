@@ -20,11 +20,6 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var SourceTableRow_adminEnablementOverride|null $adminEnablementOverride Admin override that can enable or disable this record independently of normal status checks.
-    */
-    private ?SourceTableRow_adminEnablementOverride $adminEnablementOverride = null;
-    
-    /**
      * @var array<string>|null $allowedProducts Product allowlist used to accept or route leads from this source.
     */
     private ?array $allowedProducts = null;
@@ -159,14 +154,6 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-     * @return SourceTableRow_adminEnablementOverride|null
-    */
-    public function getAdminEnablementOverride(): ?SourceTableRow_adminEnablementOverride {
-        return $this->adminEnablementOverride;
-    }
-
-    /**
      * Gets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
      * @return array<string>|null
     */
@@ -285,7 +272,6 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'adminEnablementOverride' => fn(ParseNode $n) => $o->setAdminEnablementOverride($n->getObjectValue([SourceTableRow_adminEnablementOverride::class, 'createFromDiscriminatorValue'])),
             'allowedProducts' => function (ParseNode $n) {
                 $val = $n->getCollectionOfPrimitiveValues();
                 if (is_array($val)) {
@@ -401,7 +387,6 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeObjectValue('adminEnablementOverride', $this->getAdminEnablementOverride());
         $writer->writeCollectionOfPrimitiveValues('allowedProducts', $this->getAllowedProducts());
         $writer->writeCollectionOfPrimitiveValues('allowedStates', $this->getAllowedStates());
         $writer->writeDateTimeValue('apiKeyLastUsedAt', $this->getApiKeyLastUsedAt());
@@ -433,14 +418,6 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-     * @param SourceTableRow_adminEnablementOverride|null $value Value to set for the adminEnablementOverride property.
-    */
-    public function setAdminEnablementOverride(?SourceTableRow_adminEnablementOverride $value): void {
-        $this->adminEnablementOverride = $value;
     }
 
     /**

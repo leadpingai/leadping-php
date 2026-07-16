@@ -7,6 +7,9 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
+/**
+ * Date and time when this Leadping customer analytics summary was leads comparison.
+*/
 class AnalyticsComparison implements AdditionalDataHolder, Parsable 
 {
     /**
@@ -15,17 +18,17 @@ class AnalyticsComparison implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var float|null $current The current property
+     * @var float|null $current Metric value for the current reporting period.
     */
     private ?float $current = null;
     
     /**
-     * @var string|null $direction The direction property
+     * @var string|null $direction Direction classification for this Leadping analytics comparison.
     */
     private ?string $direction = null;
     
     /**
-     * @var float|null $previous The previous property
+     * @var float|null $previous Metric value for the preceding comparison period.
     */
     private ?float $previous = null;
     
@@ -54,7 +57,7 @@ class AnalyticsComparison implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the current property value. The current property
+     * Gets the current property value. Metric value for the current reporting period.
      * @return float|null
     */
     public function getCurrent(): ?float {
@@ -62,7 +65,7 @@ class AnalyticsComparison implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the direction property value. The direction property
+     * Gets the direction property value. Direction classification for this Leadping analytics comparison.
      * @return string|null
     */
     public function getDirection(): ?string {
@@ -83,7 +86,7 @@ class AnalyticsComparison implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the previous property value. The previous property
+     * Gets the previous property value. Metric value for the preceding comparison period.
      * @return float|null
     */
     public function getPrevious(): ?float {
@@ -110,7 +113,7 @@ class AnalyticsComparison implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the current property value. The current property
+     * Sets the current property value. Metric value for the current reporting period.
      * @param float|null $value Value to set for the current property.
     */
     public function setCurrent(?float $value): void {
@@ -118,7 +121,7 @@ class AnalyticsComparison implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the direction property value. The direction property
+     * Sets the direction property value. Direction classification for this Leadping analytics comparison.
      * @param string|null $value Value to set for the direction property.
     */
     public function setDirection(?string $value): void {
@@ -126,7 +129,7 @@ class AnalyticsComparison implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the previous property value. The previous property
+     * Sets the previous property value. Metric value for the preceding comparison period.
      * @param float|null $value Value to set for the previous property.
     */
     public function setPrevious(?float $value): void {

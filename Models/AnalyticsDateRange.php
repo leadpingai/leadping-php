@@ -8,6 +8,9 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
+/**
+ * Range associated with this Leadping customer analytics.
+*/
 class AnalyticsDateRange implements AdditionalDataHolder, Parsable 
 {
     /**
@@ -16,17 +19,17 @@ class AnalyticsDateRange implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var int|null $bucketSize The bucketSize property
+     * @var int|null $bucketSize Bucket size associated with this Leadping analytics date range.
     */
     private ?int $bucketSize = null;
     
     /**
-     * @var DateTime|null $endAt The endAt property
+     * @var DateTime|null $endAt Date and time when this Leadping analytics date range was end.
     */
     private ?DateTime $endAt = null;
     
     /**
-     * @var DateTime|null $startAt The startAt property
+     * @var DateTime|null $startAt Date and time when this Leadping analytics date range was start.
     */
     private ?DateTime $startAt = null;
     
@@ -55,7 +58,7 @@ class AnalyticsDateRange implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the bucketSize property value. The bucketSize property
+     * Gets the bucketSize property value. Bucket size associated with this Leadping analytics date range.
      * @return int|null
     */
     public function getBucketSize(): ?int {
@@ -63,7 +66,7 @@ class AnalyticsDateRange implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the endAt property value. The endAt property
+     * Gets the endAt property value. Date and time when this Leadping analytics date range was end.
      * @return DateTime|null
     */
     public function getEndAt(): ?DateTime {
@@ -84,7 +87,7 @@ class AnalyticsDateRange implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the startAt property value. The startAt property
+     * Gets the startAt property value. Date and time when this Leadping analytics date range was start.
      * @return DateTime|null
     */
     public function getStartAt(): ?DateTime {
@@ -111,7 +114,7 @@ class AnalyticsDateRange implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the bucketSize property value. The bucketSize property
+     * Sets the bucketSize property value. Bucket size associated with this Leadping analytics date range.
      * @param int|null $value Value to set for the bucketSize property.
     */
     public function setBucketSize(?int $value): void {
@@ -119,7 +122,7 @@ class AnalyticsDateRange implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the endAt property value. The endAt property
+     * Sets the endAt property value. Date and time when this Leadping analytics date range was end.
      * @param DateTime|null $value Value to set for the endAt property.
     */
     public function setEndAt(?DateTime $value): void {
@@ -127,7 +130,7 @@ class AnalyticsDateRange implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the startAt property value. The startAt property
+     * Sets the startAt property value. Date and time when this Leadping analytics date range was start.
      * @param DateTime|null $value Value to set for the startAt property.
     */
     public function setStartAt(?DateTime $value): void {

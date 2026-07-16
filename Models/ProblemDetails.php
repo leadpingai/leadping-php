@@ -16,22 +16,22 @@ class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsa
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $detail The detail property
+     * @var string|null $detail Human-readable explanation specific to this occurrence of the problem.
     */
     private ?string $detail = null;
     
     /**
-     * @var string|null $instance The instance property
+     * @var string|null $instance URI reference that identifies this specific occurrence of the problem.
     */
     private ?string $instance = null;
     
     /**
-     * @var string|null $title The title property
+     * @var string|null $title Short, human-readable summary of the problem.
     */
     private ?string $title = null;
     
     /**
-     * @var string|null $type The type property
+     * @var string|null $type URI reference that identifies the problem type.
     */
     private ?string $type = null;
     
@@ -60,7 +60,7 @@ class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsa
     }
 
     /**
-     * Gets the detail property value. The detail property
+     * Gets the detail property value. Human-readable explanation specific to this occurrence of the problem.
      * @return string|null
     */
     public function getDetail(): ?string {
@@ -82,7 +82,7 @@ class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsa
     }
 
     /**
-     * Gets the instance property value. The instance property
+     * Gets the instance property value. URI reference that identifies this specific occurrence of the problem.
      * @return string|null
     */
     public function getInstance(): ?string {
@@ -98,7 +98,7 @@ class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsa
     }
 
     /**
-     * Gets the title property value. The title property
+     * Gets the title property value. Short, human-readable summary of the problem.
      * @return string|null
     */
     public function getTitle(): ?string {
@@ -106,7 +106,7 @@ class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsa
     }
 
     /**
-     * Gets the type property value. The type property
+     * Gets the type property value. URI reference that identifies the problem type.
      * @return string|null
     */
     public function getType(): ?string {
@@ -134,7 +134,7 @@ class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsa
     }
 
     /**
-     * Sets the detail property value. The detail property
+     * Sets the detail property value. Human-readable explanation specific to this occurrence of the problem.
      * @param string|null $value Value to set for the detail property.
     */
     public function setDetail(?string $value): void {
@@ -142,7 +142,7 @@ class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsa
     }
 
     /**
-     * Sets the instance property value. The instance property
+     * Sets the instance property value. URI reference that identifies this specific occurrence of the problem.
      * @param string|null $value Value to set for the instance property.
     */
     public function setInstance(?string $value): void {
@@ -150,7 +150,7 @@ class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsa
     }
 
     /**
-     * Sets the title property value. The title property
+     * Sets the title property value. Short, human-readable summary of the problem.
      * @param string|null $value Value to set for the title property.
     */
     public function setTitle(?string $value): void {
@@ -158,7 +158,7 @@ class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsa
     }
 
     /**
-     * Sets the type property value. The type property
+     * Sets the type property value. URI reference that identifies the problem type.
      * @param string|null $value Value to set for the type property.
     */
     public function setType(?string $value): void {

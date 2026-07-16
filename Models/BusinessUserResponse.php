@@ -54,16 +54,6 @@ class BusinessUserResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $licenseRenewalDate = null;
     
     /**
-     * @var string|null $licenseStripeSubscriptionId The Stripe subscription ID containing this user's business license item.
-    */
-    private ?string $licenseStripeSubscriptionId = null;
-    
-    /**
-     * @var string|null $licenseStripeSubscriptionItemId The Stripe subscription item ID used for business user licenses.
-    */
-    private ?string $licenseStripeSubscriptionItemId = null;
-    
-    /**
      * @var DateTime|null $modifiedAt The date and time when the entity was last modified, if applicable.
     */
     private ?DateTime $modifiedAt = null;
@@ -160,8 +150,6 @@ class BusinessUserResponse implements AdditionalDataHolder, Parsable
             'lastUsedAt' => fn(ParseNode $n) => $o->setLastUsedAt($n->getDateTimeValue()),
             'licenseBillingStatus' => fn(ParseNode $n) => $o->setLicenseBillingStatus($n->getStringValue()),
             'licenseRenewalDate' => fn(ParseNode $n) => $o->setLicenseRenewalDate($n->getDateTimeValue()),
-            'licenseStripeSubscriptionId' => fn(ParseNode $n) => $o->setLicenseStripeSubscriptionId($n->getStringValue()),
-            'licenseStripeSubscriptionItemId' => fn(ParseNode $n) => $o->setLicenseStripeSubscriptionItemId($n->getStringValue()),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'removedAt' => fn(ParseNode $n) => $o->setRemovedAt($n->getDateTimeValue()),
@@ -202,22 +190,6 @@ class BusinessUserResponse implements AdditionalDataHolder, Parsable
     */
     public function getLicenseRenewalDate(): ?DateTime {
         return $this->licenseRenewalDate;
-    }
-
-    /**
-     * Gets the licenseStripeSubscriptionId property value. The Stripe subscription ID containing this user's business license item.
-     * @return string|null
-    */
-    public function getLicenseStripeSubscriptionId(): ?string {
-        return $this->licenseStripeSubscriptionId;
-    }
-
-    /**
-     * Gets the licenseStripeSubscriptionItemId property value. The Stripe subscription item ID used for business user licenses.
-     * @return string|null
-    */
-    public function getLicenseStripeSubscriptionItemId(): ?string {
-        return $this->licenseStripeSubscriptionItemId;
     }
 
     /**
@@ -288,8 +260,6 @@ class BusinessUserResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('lastUsedAt', $this->getLastUsedAt());
         $writer->writeStringValue('licenseBillingStatus', $this->getLicenseBillingStatus());
         $writer->writeDateTimeValue('licenseRenewalDate', $this->getLicenseRenewalDate());
-        $writer->writeStringValue('licenseStripeSubscriptionId', $this->getLicenseStripeSubscriptionId());
-        $writer->writeStringValue('licenseStripeSubscriptionItemId', $this->getLicenseStripeSubscriptionItemId());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeDateTimeValue('removedAt', $this->getRemovedAt());
@@ -362,22 +332,6 @@ class BusinessUserResponse implements AdditionalDataHolder, Parsable
     */
     public function setLicenseRenewalDate(?DateTime $value): void {
         $this->licenseRenewalDate = $value;
-    }
-
-    /**
-     * Sets the licenseStripeSubscriptionId property value. The Stripe subscription ID containing this user's business license item.
-     * @param string|null $value Value to set for the licenseStripeSubscriptionId property.
-    */
-    public function setLicenseStripeSubscriptionId(?string $value): void {
-        $this->licenseStripeSubscriptionId = $value;
-    }
-
-    /**
-     * Sets the licenseStripeSubscriptionItemId property value. The Stripe subscription item ID used for business user licenses.
-     * @param string|null $value Value to set for the licenseStripeSubscriptionItemId property.
-    */
-    public function setLicenseStripeSubscriptionItemId(?string $value): void {
-        $this->licenseStripeSubscriptionItemId = $value;
     }
 
     /**

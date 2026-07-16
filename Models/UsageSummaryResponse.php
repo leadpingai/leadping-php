@@ -24,11 +24,6 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     private ?float $billableQuantityTotal = null;
     
     /**
-     * @var int|null $billingBlockedCount The billing blocked count for this usage summary.
-    */
-    private ?int $billingBlockedCount = null;
-    
-    /**
      * @var array<UsageCounterLine>|null $counters The named usage counters included with this usage summary.
     */
     private ?array $counters = null;
@@ -44,19 +39,9 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     private ?int $failedCount = null;
     
     /**
-     * @var float|null $internalCostTotal The internal cost total for this usage summary.
-    */
-    private ?float $internalCostTotal = null;
-    
-    /**
      * @var array<UsageSummaryLine>|null $lines The lines included with this usage summary.
     */
     private ?array $lines = null;
-    
-    /**
-     * @var int|null $nonBillableInternalCount The non billable internal count for this usage summary.
-    */
-    private ?int $nonBillableInternalCount = null;
     
     /**
      * @var int|null $pendingInvoiceCount The pending invoice count for this usage summary.
@@ -72,11 +57,6 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
      * @var DateTime|null $periodStart The date and time for the period start value on this usage summary.
     */
     private ?DateTime $periodStart = null;
-    
-    /**
-     * @var float|null $providerCostTotal The provider cost total for this usage summary.
-    */
-    private ?float $providerCostTotal = null;
     
     /**
      * @var int|null $usageRecordCount The usage record count for this usage summary.
@@ -116,14 +96,6 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billingBlockedCount property value. The billing blocked count for this usage summary.
-     * @return int|null
-    */
-    public function getBillingBlockedCount(): ?int {
-        return $this->billingBlockedCount;
-    }
-
-    /**
      * Gets the counters property value. The named usage counters included with this usage summary.
      * @return array<UsageCounterLine>|null
     */
@@ -155,27 +127,15 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'billableQuantityTotal' => fn(ParseNode $n) => $o->setBillableQuantityTotal($n->getFloatValue()),
-            'billingBlockedCount' => fn(ParseNode $n) => $o->setBillingBlockedCount($n->getIntegerValue()),
             'counters' => fn(ParseNode $n) => $o->setCounters($n->getCollectionOfObjectValues([UsageCounterLine::class, 'createFromDiscriminatorValue'])),
             'customerChargeTotal' => fn(ParseNode $n) => $o->setCustomerChargeTotal($n->getFloatValue()),
             'failedCount' => fn(ParseNode $n) => $o->setFailedCount($n->getIntegerValue()),
-            'internalCostTotal' => fn(ParseNode $n) => $o->setInternalCostTotal($n->getFloatValue()),
             'lines' => fn(ParseNode $n) => $o->setLines($n->getCollectionOfObjectValues([UsageSummaryLine::class, 'createFromDiscriminatorValue'])),
-            'nonBillableInternalCount' => fn(ParseNode $n) => $o->setNonBillableInternalCount($n->getIntegerValue()),
             'pendingInvoiceCount' => fn(ParseNode $n) => $o->setPendingInvoiceCount($n->getIntegerValue()),
             'periodEnd' => fn(ParseNode $n) => $o->setPeriodEnd($n->getDateTimeValue()),
             'periodStart' => fn(ParseNode $n) => $o->setPeriodStart($n->getDateTimeValue()),
-            'providerCostTotal' => fn(ParseNode $n) => $o->setProviderCostTotal($n->getFloatValue()),
             'usageRecordCount' => fn(ParseNode $n) => $o->setUsageRecordCount($n->getIntegerValue()),
         ];
-    }
-
-    /**
-     * Gets the internalCostTotal property value. The internal cost total for this usage summary.
-     * @return float|null
-    */
-    public function getInternalCostTotal(): ?float {
-        return $this->internalCostTotal;
     }
 
     /**
@@ -184,14 +144,6 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     */
     public function getLines(): ?array {
         return $this->lines;
-    }
-
-    /**
-     * Gets the nonBillableInternalCount property value. The non billable internal count for this usage summary.
-     * @return int|null
-    */
-    public function getNonBillableInternalCount(): ?int {
-        return $this->nonBillableInternalCount;
     }
 
     /**
@@ -219,14 +171,6 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the providerCostTotal property value. The provider cost total for this usage summary.
-     * @return float|null
-    */
-    public function getProviderCostTotal(): ?float {
-        return $this->providerCostTotal;
-    }
-
-    /**
      * Gets the usageRecordCount property value. The usage record count for this usage summary.
      * @return int|null
     */
@@ -240,17 +184,13 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeFloatValue('billableQuantityTotal', $this->getBillableQuantityTotal());
-        $writer->writeIntegerValue('billingBlockedCount', $this->getBillingBlockedCount());
         $writer->writeCollectionOfObjectValues('counters', $this->getCounters());
         $writer->writeFloatValue('customerChargeTotal', $this->getCustomerChargeTotal());
         $writer->writeIntegerValue('failedCount', $this->getFailedCount());
-        $writer->writeFloatValue('internalCostTotal', $this->getInternalCostTotal());
         $writer->writeCollectionOfObjectValues('lines', $this->getLines());
-        $writer->writeIntegerValue('nonBillableInternalCount', $this->getNonBillableInternalCount());
         $writer->writeIntegerValue('pendingInvoiceCount', $this->getPendingInvoiceCount());
         $writer->writeDateTimeValue('periodEnd', $this->getPeriodEnd());
         $writer->writeDateTimeValue('periodStart', $this->getPeriodStart());
-        $writer->writeFloatValue('providerCostTotal', $this->getProviderCostTotal());
         $writer->writeIntegerValue('usageRecordCount', $this->getUsageRecordCount());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -269,14 +209,6 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     */
     public function setBillableQuantityTotal(?float $value): void {
         $this->billableQuantityTotal = $value;
-    }
-
-    /**
-     * Sets the billingBlockedCount property value. The billing blocked count for this usage summary.
-     * @param int|null $value Value to set for the billingBlockedCount property.
-    */
-    public function setBillingBlockedCount(?int $value): void {
-        $this->billingBlockedCount = $value;
     }
 
     /**
@@ -304,27 +236,11 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the internalCostTotal property value. The internal cost total for this usage summary.
-     * @param float|null $value Value to set for the internalCostTotal property.
-    */
-    public function setInternalCostTotal(?float $value): void {
-        $this->internalCostTotal = $value;
-    }
-
-    /**
      * Sets the lines property value. The lines included with this usage summary.
      * @param array<UsageSummaryLine>|null $value Value to set for the lines property.
     */
     public function setLines(?array $value): void {
         $this->lines = $value;
-    }
-
-    /**
-     * Sets the nonBillableInternalCount property value. The non billable internal count for this usage summary.
-     * @param int|null $value Value to set for the nonBillableInternalCount property.
-    */
-    public function setNonBillableInternalCount(?int $value): void {
-        $this->nonBillableInternalCount = $value;
     }
 
     /**
@@ -349,14 +265,6 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     */
     public function setPeriodStart(?DateTime $value): void {
         $this->periodStart = $value;
-    }
-
-    /**
-     * Sets the providerCostTotal property value. The provider cost total for this usage summary.
-     * @param float|null $value Value to set for the providerCostTotal property.
-    */
-    public function setProviderCostTotal(?float $value): void {
-        $this->providerCostTotal = $value;
     }
 
     /**

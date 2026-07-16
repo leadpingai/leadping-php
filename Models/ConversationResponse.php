@@ -49,7 +49,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * @var bool|null $isArchived The isArchived property
+     * @var bool|null $isArchived Indicates whether the Leadping conversation has been archived.
     */
     private ?bool $isArchived = null;
     
@@ -209,7 +209,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the isArchived property value. The isArchived property
+     * Gets the isArchived property value. Indicates whether the Leadping conversation has been archived.
      * @return bool|null
     */
     public function getIsArchived(): ?bool {
@@ -387,7 +387,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the isArchived property value. The isArchived property
+     * Sets the isArchived property value. Indicates whether the Leadping conversation has been archived.
      * @param bool|null $value Value to set for the isArchived property.
     */
     public function setIsArchived(?bool $value): void {

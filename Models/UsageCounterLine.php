@@ -18,11 +18,6 @@ class UsageCounterLine implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var bool|null $adminOnly Whether this usage counter is only shown to admins.
-    */
-    private ?bool $adminOnly = null;
-    
-    /**
      * @var string|null $key The stable key for this usage counter.
     */
     private ?string $key = null;
@@ -72,21 +67,12 @@ class UsageCounterLine implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the adminOnly property value. Whether this usage counter is only shown to admins.
-     * @return bool|null
-    */
-    public function getAdminOnly(): ?bool {
-        return $this->adminOnly;
-    }
-
-    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'adminOnly' => fn(ParseNode $n) => $o->setAdminOnly($n->getBooleanValue()),
             'key' => fn(ParseNode $n) => $o->setKey($n->getStringValue()),
             'label' => fn(ParseNode $n) => $o->setLabel($n->getStringValue()),
             'sortOrder' => fn(ParseNode $n) => $o->setSortOrder($n->getIntegerValue()),
@@ -140,7 +126,6 @@ class UsageCounterLine implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeBooleanValue('adminOnly', $this->getAdminOnly());
         $writer->writeStringValue('key', $this->getKey());
         $writer->writeStringValue('label', $this->getLabel());
         $writer->writeIntegerValue('sortOrder', $this->getSortOrder());
@@ -155,14 +140,6 @@ class UsageCounterLine implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the adminOnly property value. Whether this usage counter is only shown to admins.
-     * @param bool|null $value Value to set for the adminOnly property.
-    */
-    public function setAdminOnly(?bool $value): void {
-        $this->adminOnly = $value;
     }
 
     /**

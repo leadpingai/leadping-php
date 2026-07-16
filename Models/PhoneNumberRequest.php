@@ -18,11 +18,6 @@ class PhoneNumberRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var PhoneNumberRequest_adminEnablementOverride|null $adminEnablementOverride Admin override that can enable or disable this record independently of normal status checks.
-    */
-    private ?PhoneNumberRequest_adminEnablementOverride $adminEnablementOverride = null;
-    
-    /**
      * @var string|null $businessId Business ID that owns the phone number being created or updated.
     */
     private ?string $businessId = null;
@@ -72,14 +67,6 @@ class PhoneNumberRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-     * @return PhoneNumberRequest_adminEnablementOverride|null
-    */
-    public function getAdminEnablementOverride(): ?PhoneNumberRequest_adminEnablementOverride {
-        return $this->adminEnablementOverride;
-    }
-
-    /**
      * Gets the businessId property value. Business ID that owns the phone number being created or updated.
      * @return string|null
     */
@@ -102,7 +89,6 @@ class PhoneNumberRequest implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'adminEnablementOverride' => fn(ParseNode $n) => $o->setAdminEnablementOverride($n->getObjectValue([PhoneNumberRequest_adminEnablementOverride::class, 'createFromDiscriminatorValue'])),
             'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
@@ -140,7 +126,6 @@ class PhoneNumberRequest implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeObjectValue('adminEnablementOverride', $this->getAdminEnablementOverride());
         $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeStringValue('id', $this->getId());
@@ -155,14 +140,6 @@ class PhoneNumberRequest implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-     * @param PhoneNumberRequest_adminEnablementOverride|null $value Value to set for the adminEnablementOverride property.
-    */
-    public function setAdminEnablementOverride(?PhoneNumberRequest_adminEnablementOverride $value): void {
-        $this->adminEnablementOverride = $value;
     }
 
     /**

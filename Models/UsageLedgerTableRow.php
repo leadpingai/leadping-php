@@ -39,11 +39,6 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     private ?UsageChannel $channel = null;
     
     /**
-     * @var string|null $correlationId The correlation ID associated with this usage ledger.
-    */
-    private ?string $correlationId = null;
-    
-    /**
      * @var DateTime|null $createdAt The date and time for the created at value on this usage ledger.
     */
     private ?DateTime $createdAt = null;
@@ -64,19 +59,9 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * @var string|null $idempotencyKey The idempotency key value for this usage ledger.
-    */
-    private ?string $idempotencyKey = null;
-    
-    /**
      * @var bool|null $isBillable Whether this usage ledger is billable.
     */
     private ?bool $isBillable = null;
-    
-    /**
-     * @var bool|null $isInternal Whether this usage ledger is internal.
-    */
-    private ?bool $isInternal = null;
     
     /**
      * @var string|null $leadId The lead ID associated with this usage ledger.
@@ -102,11 +87,6 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
      * @var float|null $quantity The quantity value for this usage ledger.
     */
     private ?float $quantity = null;
-    
-    /**
-     * @var string|null $sourceEventId The source event ID associated with this usage ledger.
-    */
-    private ?string $sourceEventId = null;
     
     /**
      * @var UsageRecordStatus|null $status The current status for this usage ledger.
@@ -185,14 +165,6 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the correlationId property value. The correlation ID associated with this usage ledger.
-     * @return string|null
-    */
-    public function getCorrelationId(): ?string {
-        return $this->correlationId;
-    }
-
-    /**
      * Gets the createdAt property value. The date and time for the created at value on this usage ledger.
      * @return DateTime|null
     */
@@ -227,20 +199,16 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
             'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'businessName' => fn(ParseNode $n) => $o->setBusinessName($n->getStringValue()),
             'channel' => fn(ParseNode $n) => $o->setChannel($n->getEnumValue(UsageChannel::class)),
-            'correlationId' => fn(ParseNode $n) => $o->setCorrelationId($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'customerChargeAmount' => fn(ParseNode $n) => $o->setCustomerChargeAmount($n->getFloatValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
-            'idempotencyKey' => fn(ParseNode $n) => $o->setIdempotencyKey($n->getStringValue()),
             'isBillable' => fn(ParseNode $n) => $o->setIsBillable($n->getBooleanValue()),
-            'isInternal' => fn(ParseNode $n) => $o->setIsInternal($n->getBooleanValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
             'leadName' => fn(ParseNode $n) => $o->setLeadName($n->getStringValue()),
             'phoneNumber' => fn(ParseNode $n) => $o->setPhoneNumber($n->getStringValue()),
             'phoneNumberId' => fn(ParseNode $n) => $o->setPhoneNumberId($n->getStringValue()),
             'quantity' => fn(ParseNode $n) => $o->setQuantity($n->getFloatValue()),
-            'sourceEventId' => fn(ParseNode $n) => $o->setSourceEventId($n->getStringValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(UsageRecordStatus::class)),
             'unitPrice' => fn(ParseNode $n) => $o->setUnitPrice($n->getFloatValue()),
             'userId' => fn(ParseNode $n) => $o->setUserId($n->getStringValue()),
@@ -257,27 +225,11 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the idempotencyKey property value. The idempotency key value for this usage ledger.
-     * @return string|null
-    */
-    public function getIdempotencyKey(): ?string {
-        return $this->idempotencyKey;
-    }
-
-    /**
      * Gets the isBillable property value. Whether this usage ledger is billable.
      * @return bool|null
     */
     public function getIsBillable(): ?bool {
         return $this->isBillable;
-    }
-
-    /**
-     * Gets the isInternal property value. Whether this usage ledger is internal.
-     * @return bool|null
-    */
-    public function getIsInternal(): ?bool {
-        return $this->isInternal;
     }
 
     /**
@@ -321,14 +273,6 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the sourceEventId property value. The source event ID associated with this usage ledger.
-     * @return string|null
-    */
-    public function getSourceEventId(): ?string {
-        return $this->sourceEventId;
-    }
-
-    /**
      * Gets the status property value. The current status for this usage ledger.
      * @return UsageRecordStatus|null
     */
@@ -369,20 +313,16 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeStringValue('businessName', $this->getBusinessName());
         $writer->writeEnumValue('channel', $this->getChannel());
-        $writer->writeStringValue('correlationId', $this->getCorrelationId());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeFloatValue('customerChargeAmount', $this->getCustomerChargeAmount());
         $writer->writeStringValue('description', $this->getDescription());
         $writer->writeStringValue('id', $this->getId());
-        $writer->writeStringValue('idempotencyKey', $this->getIdempotencyKey());
         $writer->writeBooleanValue('isBillable', $this->getIsBillable());
-        $writer->writeBooleanValue('isInternal', $this->getIsInternal());
         $writer->writeStringValue('leadId', $this->getLeadId());
         $writer->writeStringValue('leadName', $this->getLeadName());
         $writer->writeStringValue('phoneNumber', $this->getPhoneNumber());
         $writer->writeStringValue('phoneNumberId', $this->getPhoneNumberId());
         $writer->writeFloatValue('quantity', $this->getQuantity());
-        $writer->writeStringValue('sourceEventId', $this->getSourceEventId());
         $writer->writeEnumValue('status', $this->getStatus());
         $writer->writeFloatValue('unitPrice', $this->getUnitPrice());
         $writer->writeStringValue('userId', $this->getUserId());
@@ -431,14 +371,6 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the correlationId property value. The correlation ID associated with this usage ledger.
-     * @param string|null $value Value to set for the correlationId property.
-    */
-    public function setCorrelationId(?string $value): void {
-        $this->correlationId = $value;
-    }
-
-    /**
      * Sets the createdAt property value. The date and time for the created at value on this usage ledger.
      * @param DateTime|null $value Value to set for the createdAt property.
     */
@@ -471,27 +403,11 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the idempotencyKey property value. The idempotency key value for this usage ledger.
-     * @param string|null $value Value to set for the idempotencyKey property.
-    */
-    public function setIdempotencyKey(?string $value): void {
-        $this->idempotencyKey = $value;
-    }
-
-    /**
      * Sets the isBillable property value. Whether this usage ledger is billable.
      * @param bool|null $value Value to set for the isBillable property.
     */
     public function setIsBillable(?bool $value): void {
         $this->isBillable = $value;
-    }
-
-    /**
-     * Sets the isInternal property value. Whether this usage ledger is internal.
-     * @param bool|null $value Value to set for the isInternal property.
-    */
-    public function setIsInternal(?bool $value): void {
-        $this->isInternal = $value;
     }
 
     /**
@@ -532,14 +448,6 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     */
     public function setQuantity(?float $value): void {
         $this->quantity = $value;
-    }
-
-    /**
-     * Sets the sourceEventId property value. The source event ID associated with this usage ledger.
-     * @param string|null $value Value to set for the sourceEventId property.
-    */
-    public function setSourceEventId(?string $value): void {
-        $this->sourceEventId = $value;
     }
 
     /**

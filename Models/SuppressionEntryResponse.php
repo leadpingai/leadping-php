@@ -49,11 +49,6 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     private ?string $normalizedPhoneNumber = null;
     
     /**
-     * @var string|null $providerEventId The provider event ID associated with this ion entry.
-    */
-    private ?string $providerEventId = null;
-    
-    /**
      * @var string|null $reason The human-readable reason explaining this ion entry.
     */
     private ?string $reason = null;
@@ -72,11 +67,6 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
      * @var string|null $source The source value for this ion entry.
     */
     private ?string $source = null;
-    
-    /**
-     * @var string|null $sourceEventId The source event ID associated with this ion entry.
-    */
-    private ?string $sourceEventId = null;
     
     /**
      * @var string|null $status The current status for this ion entry.
@@ -149,12 +139,10 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'normalizedEmail' => fn(ParseNode $n) => $o->setNormalizedEmail($n->getStringValue()),
             'normalizedPhoneNumber' => fn(ParseNode $n) => $o->setNormalizedPhoneNumber($n->getStringValue()),
-            'providerEventId' => fn(ParseNode $n) => $o->setProviderEventId($n->getStringValue()),
             'reason' => fn(ParseNode $n) => $o->setReason($n->getStringValue()),
             'recipientIdentifier' => fn(ParseNode $n) => $o->setRecipientIdentifier($n->getStringValue()),
             'releasedAt' => fn(ParseNode $n) => $o->setReleasedAt($n->getDateTimeValue()),
             'source' => fn(ParseNode $n) => $o->setSource($n->getStringValue()),
-            'sourceEventId' => fn(ParseNode $n) => $o->setSourceEventId($n->getStringValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getStringValue()),
             'suppressedAt' => fn(ParseNode $n) => $o->setSuppressedAt($n->getDateTimeValue()),
         ];
@@ -182,14 +170,6 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     */
     public function getNormalizedPhoneNumber(): ?string {
         return $this->normalizedPhoneNumber;
-    }
-
-    /**
-     * Gets the providerEventId property value. The provider event ID associated with this ion entry.
-     * @return string|null
-    */
-    public function getProviderEventId(): ?string {
-        return $this->providerEventId;
     }
 
     /**
@@ -225,14 +205,6 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the sourceEventId property value. The source event ID associated with this ion entry.
-     * @return string|null
-    */
-    public function getSourceEventId(): ?string {
-        return $this->sourceEventId;
-    }
-
-    /**
      * Gets the status property value. The current status for this ion entry.
      * @return string|null
     */
@@ -259,12 +231,10 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('id', $this->getId());
         $writer->writeStringValue('normalizedEmail', $this->getNormalizedEmail());
         $writer->writeStringValue('normalizedPhoneNumber', $this->getNormalizedPhoneNumber());
-        $writer->writeStringValue('providerEventId', $this->getProviderEventId());
         $writer->writeStringValue('reason', $this->getReason());
         $writer->writeStringValue('recipientIdentifier', $this->getRecipientIdentifier());
         $writer->writeDateTimeValue('releasedAt', $this->getReleasedAt());
         $writer->writeStringValue('source', $this->getSource());
-        $writer->writeStringValue('sourceEventId', $this->getSourceEventId());
         $writer->writeStringValue('status', $this->getStatus());
         $writer->writeDateTimeValue('suppressedAt', $this->getSuppressedAt());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -327,14 +297,6 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the providerEventId property value. The provider event ID associated with this ion entry.
-     * @param string|null $value Value to set for the providerEventId property.
-    */
-    public function setProviderEventId(?string $value): void {
-        $this->providerEventId = $value;
-    }
-
-    /**
      * Sets the reason property value. The human-readable reason explaining this ion entry.
      * @param string|null $value Value to set for the reason property.
     */
@@ -364,14 +326,6 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     */
     public function setSource(?string $value): void {
         $this->source = $value;
-    }
-
-    /**
-     * Sets the sourceEventId property value. The source event ID associated with this ion entry.
-     * @param string|null $value Value to set for the sourceEventId property.
-    */
-    public function setSourceEventId(?string $value): void {
-        $this->sourceEventId = $value;
     }
 
     /**

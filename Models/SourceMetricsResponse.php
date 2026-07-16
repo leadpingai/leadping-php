@@ -16,22 +16,22 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var DateTime|null $generatedAt The generatedAt property
+     * @var DateTime|null $generatedAt Date and time when the source metrics was generated.
     */
     private ?DateTime $generatedAt = null;
     
     /**
-     * @var array<AnalyticsTrendPointOfint>|null $points The points property
+     * @var array<AnalyticsTrendPointOfint>|null $points Collection of points included with this Leadping source metrics.
     */
     private ?array $points = null;
     
     /**
-     * @var AnalyticsDateRange|null $range The range property
+     * @var AnalyticsDateRange|null $range Range associated with this Leadping source metrics.
     */
     private ?AnalyticsDateRange $range = null;
     
     /**
-     * @var int|null $totalLeads The totalLeads property
+     * @var int|null $totalLeads Total number of leads records represented by this Leadping source metrics.
     */
     private ?int $totalLeads = null;
     
@@ -74,7 +74,7 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the generatedAt property value. The generatedAt property
+     * Gets the generatedAt property value. Date and time when the source metrics was generated.
      * @return DateTime|null
     */
     public function getGeneratedAt(): ?DateTime {
@@ -82,7 +82,7 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the points property value. The points property
+     * Gets the points property value. Collection of points included with this Leadping source metrics.
      * @return array<AnalyticsTrendPointOfint>|null
     */
     public function getPoints(): ?array {
@@ -90,7 +90,7 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the range property value. The range property
+     * Gets the range property value. Range associated with this Leadping source metrics.
      * @return AnalyticsDateRange|null
     */
     public function getRange(): ?AnalyticsDateRange {
@@ -98,7 +98,7 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the totalLeads property value. The totalLeads property
+     * Gets the totalLeads property value. Total number of leads records represented by this Leadping source metrics.
      * @return int|null
     */
     public function getTotalLeads(): ?int {
@@ -126,7 +126,7 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the generatedAt property value. The generatedAt property
+     * Sets the generatedAt property value. Date and time when the source metrics was generated.
      * @param DateTime|null $value Value to set for the generatedAt property.
     */
     public function setGeneratedAt(?DateTime $value): void {
@@ -134,7 +134,7 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the points property value. The points property
+     * Sets the points property value. Collection of points included with this Leadping source metrics.
      * @param array<AnalyticsTrendPointOfint>|null $value Value to set for the points property.
     */
     public function setPoints(?array $value): void {
@@ -142,7 +142,7 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the range property value. The range property
+     * Sets the range property value. Range associated with this Leadping source metrics.
      * @param AnalyticsDateRange|null $value Value to set for the range property.
     */
     public function setRange(?AnalyticsDateRange $value): void {
@@ -150,7 +150,7 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the totalLeads property value. The totalLeads property
+     * Sets the totalLeads property value. Total number of leads records represented by this Leadping source metrics.
      * @param int|null $value Value to set for the totalLeads property.
     */
     public function setTotalLeads(?int $value): void {

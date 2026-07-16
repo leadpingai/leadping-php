@@ -19,11 +19,6 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var SourceRequest_adminEnablementOverride|null $adminEnablementOverride Admin override that can enable or disable this record independently of normal status checks.
-    */
-    private ?SourceRequest_adminEnablementOverride $adminEnablementOverride = null;
-    
-    /**
      * @var array<string>|null $allowedProducts Product allowlist used to accept or route leads from this source.
     */
     private ?array $allowedProducts = null;
@@ -32,21 +27,6 @@ class SourceRequest implements AdditionalDataHolder, Parsable
      * @var array<string>|null $allowedStates State or region allowlist used to accept leads from this source.
     */
     private ?array $allowedStates = null;
-    
-    /**
-     * @var string|null $businessId Business ID that owns or will own this lead source.
-    */
-    private ?string $businessId = null;
-    
-    /**
-     * @var bool|null $complianceApproved Indicates whether the business or sender passed compliance review.
-    */
-    private ?bool $complianceApproved = null;
-    
-    /**
-     * @var string|null $complianceNotes Compliance notes captured for admin review.
-    */
-    private ?string $complianceNotes = null;
     
     /**
      * @var array<string>|null $defaultTagIds Tag IDs automatically assigned to leads created by this source.
@@ -113,14 +93,6 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-     * @return SourceRequest_adminEnablementOverride|null
-    */
-    public function getAdminEnablementOverride(): ?SourceRequest_adminEnablementOverride {
-        return $this->adminEnablementOverride;
-    }
-
-    /**
      * Gets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
      * @return array<string>|null
     */
@@ -134,30 +106,6 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     */
     public function getAllowedStates(): ?array {
         return $this->allowedStates;
-    }
-
-    /**
-     * Gets the businessId property value. Business ID that owns or will own this lead source.
-     * @return string|null
-    */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
-    }
-
-    /**
-     * Gets the complianceApproved property value. Indicates whether the business or sender passed compliance review.
-     * @return bool|null
-    */
-    public function getComplianceApproved(): ?bool {
-        return $this->complianceApproved;
-    }
-
-    /**
-     * Gets the complianceNotes property value. Compliance notes captured for admin review.
-     * @return string|null
-    */
-    public function getComplianceNotes(): ?string {
-        return $this->complianceNotes;
     }
 
     /**
@@ -199,7 +147,6 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'adminEnablementOverride' => fn(ParseNode $n) => $o->setAdminEnablementOverride($n->getObjectValue([SourceRequest_adminEnablementOverride::class, 'createFromDiscriminatorValue'])),
             'allowedProducts' => function (ParseNode $n) {
                 $val = $n->getCollectionOfPrimitiveValues();
                 if (is_array($val)) {
@@ -216,9 +163,6 @@ class SourceRequest implements AdditionalDataHolder, Parsable
                 /** @var array<string>|null $val */
                 $this->setAllowedStates($val);
             },
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
-            'complianceApproved' => fn(ParseNode $n) => $o->setComplianceApproved($n->getBooleanValue()),
-            'complianceNotes' => fn(ParseNode $n) => $o->setComplianceNotes($n->getStringValue()),
             'defaultTagIds' => function (ParseNode $n) {
                 $val = $n->getCollectionOfPrimitiveValues();
                 if (is_array($val)) {
@@ -281,12 +225,8 @@ class SourceRequest implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeObjectValue('adminEnablementOverride', $this->getAdminEnablementOverride());
         $writer->writeCollectionOfPrimitiveValues('allowedProducts', $this->getAllowedProducts());
         $writer->writeCollectionOfPrimitiveValues('allowedStates', $this->getAllowedStates());
-        $writer->writeStringValue('businessId', $this->getBusinessId());
-        $writer->writeBooleanValue('complianceApproved', $this->getComplianceApproved());
-        $writer->writeStringValue('complianceNotes', $this->getComplianceNotes());
         $writer->writeCollectionOfPrimitiveValues('defaultTagIds', $this->getDefaultTagIds());
         $writer->writeCollectionOfPrimitiveValues('defaultTagNames', $this->getDefaultTagNames());
         $writer->writeStringValue('description', $this->getDescription());
@@ -307,14 +247,6 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-     * @param SourceRequest_adminEnablementOverride|null $value Value to set for the adminEnablementOverride property.
-    */
-    public function setAdminEnablementOverride(?SourceRequest_adminEnablementOverride $value): void {
-        $this->adminEnablementOverride = $value;
-    }
-
-    /**
      * Sets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
      * @param array<string>|null $value Value to set for the allowedProducts property.
     */
@@ -328,30 +260,6 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     */
     public function setAllowedStates(?array $value): void {
         $this->allowedStates = $value;
-    }
-
-    /**
-     * Sets the businessId property value. Business ID that owns or will own this lead source.
-     * @param string|null $value Value to set for the businessId property.
-    */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
-    }
-
-    /**
-     * Sets the complianceApproved property value. Indicates whether the business or sender passed compliance review.
-     * @param bool|null $value Value to set for the complianceApproved property.
-    */
-    public function setComplianceApproved(?bool $value): void {
-        $this->complianceApproved = $value;
-    }
-
-    /**
-     * Sets the complianceNotes property value. Compliance notes captured for admin review.
-     * @param string|null $value Value to set for the complianceNotes property.
-    */
-    public function setComplianceNotes(?string $value): void {
-        $this->complianceNotes = $value;
     }
 
     /**

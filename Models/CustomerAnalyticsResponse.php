@@ -11,7 +11,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var CustomerActivationHealth|null $activationHealth The activationHealth property
+     * @var CustomerActivationHealth|null $activationHealth Activation health associated with this Leadping customer analytics.
     */
     private ?CustomerActivationHealth $activationHealth = null;
     
@@ -21,47 +21,47 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var CustomerAutomationHealth|null $automationHealth The automationHealth property
+     * @var CustomerAutomationHealth|null $automationHealth Automation health associated with this Leadping customer analytics.
     */
     private ?CustomerAutomationHealth $automationHealth = null;
     
     /**
-     * @var CustomerCommunicationUsage|null $communicationUsage The communicationUsage property
+     * @var CustomerCommunicationUsage|null $communicationUsage Communication usage associated with this Leadping customer analytics.
     */
     private ?CustomerCommunicationUsage $communicationUsage = null;
     
     /**
-     * @var DateTime|null $generatedAt The generatedAt property
+     * @var DateTime|null $generatedAt Date and time when this Leadping customer analytics was generated.
     */
     private ?DateTime $generatedAt = null;
     
     /**
-     * @var array<CustomerLeadSourceBreakdown>|null $leadSources The leadSources property
+     * @var array<CustomerLeadSourceBreakdown>|null $leadSources Collection of lead sources included with this Leadping customer analytics.
     */
     private ?array $leadSources = null;
     
     /**
-     * @var CustomerLeadTrend|null $leadTrend The leadTrend property
+     * @var CustomerLeadTrend|null $leadTrend Lead trend associated with this Leadping customer analytics.
     */
     private ?CustomerLeadTrend $leadTrend = null;
     
     /**
-     * @var array<CustomerNeedsAttentionItem>|null $needsAttention The needsAttention property
+     * @var array<CustomerNeedsAttentionItem>|null $needsAttention Date and time when this Leadping customer analytics was needs attention.
     */
     private ?array $needsAttention = null;
     
     /**
-     * @var AnalyticsDateRange|null $range The range property
+     * @var AnalyticsDateRange|null $range Range associated with this Leadping customer analytics.
     */
     private ?AnalyticsDateRange $range = null;
     
     /**
-     * @var CustomerResponseMetrics|null $responseMetrics The responseMetrics property
+     * @var CustomerResponseMetrics|null $responseMetrics Response metrics associated with this Leadping customer analytics.
     */
     private ?CustomerResponseMetrics $responseMetrics = null;
     
     /**
-     * @var CustomerAnalyticsSummary|null $summary The summary property
+     * @var CustomerAnalyticsSummary|null $summary Human-readable summary for this Leadping customer analytics.
     */
     private ?CustomerAnalyticsSummary $summary = null;
     
@@ -82,7 +82,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the activationHealth property value. The activationHealth property
+     * Gets the activationHealth property value. Activation health associated with this Leadping customer analytics.
      * @return CustomerActivationHealth|null
     */
     public function getActivationHealth(): ?CustomerActivationHealth {
@@ -98,7 +98,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the automationHealth property value. The automationHealth property
+     * Gets the automationHealth property value. Automation health associated with this Leadping customer analytics.
      * @return CustomerAutomationHealth|null
     */
     public function getAutomationHealth(): ?CustomerAutomationHealth {
@@ -106,7 +106,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the communicationUsage property value. The communicationUsage property
+     * Gets the communicationUsage property value. Communication usage associated with this Leadping customer analytics.
      * @return CustomerCommunicationUsage|null
     */
     public function getCommunicationUsage(): ?CustomerCommunicationUsage {
@@ -134,7 +134,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the generatedAt property value. The generatedAt property
+     * Gets the generatedAt property value. Date and time when this Leadping customer analytics was generated.
      * @return DateTime|null
     */
     public function getGeneratedAt(): ?DateTime {
@@ -142,7 +142,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the leadSources property value. The leadSources property
+     * Gets the leadSources property value. Collection of lead sources included with this Leadping customer analytics.
      * @return array<CustomerLeadSourceBreakdown>|null
     */
     public function getLeadSources(): ?array {
@@ -150,7 +150,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the leadTrend property value. The leadTrend property
+     * Gets the leadTrend property value. Lead trend associated with this Leadping customer analytics.
      * @return CustomerLeadTrend|null
     */
     public function getLeadTrend(): ?CustomerLeadTrend {
@@ -158,7 +158,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the needsAttention property value. The needsAttention property
+     * Gets the needsAttention property value. Date and time when this Leadping customer analytics was needs attention.
      * @return array<CustomerNeedsAttentionItem>|null
     */
     public function getNeedsAttention(): ?array {
@@ -166,7 +166,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the range property value. The range property
+     * Gets the range property value. Range associated with this Leadping customer analytics.
      * @return AnalyticsDateRange|null
     */
     public function getRange(): ?AnalyticsDateRange {
@@ -174,7 +174,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the responseMetrics property value. The responseMetrics property
+     * Gets the responseMetrics property value. Response metrics associated with this Leadping customer analytics.
      * @return CustomerResponseMetrics|null
     */
     public function getResponseMetrics(): ?CustomerResponseMetrics {
@@ -182,7 +182,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the summary property value. The summary property
+     * Gets the summary property value. Human-readable summary for this Leadping customer analytics.
      * @return CustomerAnalyticsSummary|null
     */
     public function getSummary(): ?CustomerAnalyticsSummary {
@@ -208,7 +208,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the activationHealth property value. The activationHealth property
+     * Sets the activationHealth property value. Activation health associated with this Leadping customer analytics.
      * @param CustomerActivationHealth|null $value Value to set for the activationHealth property.
     */
     public function setActivationHealth(?CustomerActivationHealth $value): void {
@@ -224,7 +224,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the automationHealth property value. The automationHealth property
+     * Sets the automationHealth property value. Automation health associated with this Leadping customer analytics.
      * @param CustomerAutomationHealth|null $value Value to set for the automationHealth property.
     */
     public function setAutomationHealth(?CustomerAutomationHealth $value): void {
@@ -232,7 +232,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the communicationUsage property value. The communicationUsage property
+     * Sets the communicationUsage property value. Communication usage associated with this Leadping customer analytics.
      * @param CustomerCommunicationUsage|null $value Value to set for the communicationUsage property.
     */
     public function setCommunicationUsage(?CustomerCommunicationUsage $value): void {
@@ -240,7 +240,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the generatedAt property value. The generatedAt property
+     * Sets the generatedAt property value. Date and time when this Leadping customer analytics was generated.
      * @param DateTime|null $value Value to set for the generatedAt property.
     */
     public function setGeneratedAt(?DateTime $value): void {
@@ -248,7 +248,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the leadSources property value. The leadSources property
+     * Sets the leadSources property value. Collection of lead sources included with this Leadping customer analytics.
      * @param array<CustomerLeadSourceBreakdown>|null $value Value to set for the leadSources property.
     */
     public function setLeadSources(?array $value): void {
@@ -256,7 +256,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the leadTrend property value. The leadTrend property
+     * Sets the leadTrend property value. Lead trend associated with this Leadping customer analytics.
      * @param CustomerLeadTrend|null $value Value to set for the leadTrend property.
     */
     public function setLeadTrend(?CustomerLeadTrend $value): void {
@@ -264,7 +264,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the needsAttention property value. The needsAttention property
+     * Sets the needsAttention property value. Date and time when this Leadping customer analytics was needs attention.
      * @param array<CustomerNeedsAttentionItem>|null $value Value to set for the needsAttention property.
     */
     public function setNeedsAttention(?array $value): void {
@@ -272,7 +272,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the range property value. The range property
+     * Sets the range property value. Range associated with this Leadping customer analytics.
      * @param AnalyticsDateRange|null $value Value to set for the range property.
     */
     public function setRange(?AnalyticsDateRange $value): void {
@@ -280,7 +280,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the responseMetrics property value. The responseMetrics property
+     * Sets the responseMetrics property value. Response metrics associated with this Leadping customer analytics.
      * @param CustomerResponseMetrics|null $value Value to set for the responseMetrics property.
     */
     public function setResponseMetrics(?CustomerResponseMetrics $value): void {
@@ -288,7 +288,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the summary property value. The summary property
+     * Sets the summary property value. Human-readable summary for this Leadping customer analytics.
      * @param CustomerAnalyticsSummary|null $value Value to set for the summary property.
     */
     public function setSummary(?CustomerAnalyticsSummary $value): void {

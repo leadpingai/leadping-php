@@ -99,11 +99,6 @@ class EventDetailResponse implements AdditionalDataHolder, Parsable
     private ?string $outboundPhoneNumberId = null;
     
     /**
-     * @var string|null $providerMessageId Provider message identifier for SMS delivery tracking and reconciliation.
-    */
-    private ?string $providerMessageId = null;
-    
-    /**
      * @var DateTime|null $queuedAt UTC timestamp when Leadping queued this event detail response for processing.
     */
     private ?DateTime $queuedAt = null;
@@ -305,7 +300,6 @@ class EventDetailResponse implements AdditionalDataHolder, Parsable
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'outboundPhoneNumberId' => fn(ParseNode $n) => $o->setOutboundPhoneNumberId($n->getStringValue()),
-            'providerMessageId' => fn(ParseNode $n) => $o->setProviderMessageId($n->getStringValue()),
             'queuedAt' => fn(ParseNode $n) => $o->setQueuedAt($n->getDateTimeValue()),
             'receivedAt' => fn(ParseNode $n) => $o->setReceivedAt($n->getDateTimeValue()),
             'scheduledFor' => fn(ParseNode $n) => $o->setScheduledFor($n->getDateTimeValue()),
@@ -370,14 +364,6 @@ class EventDetailResponse implements AdditionalDataHolder, Parsable
     */
     public function getOutboundPhoneNumberId(): ?string {
         return $this->outboundPhoneNumberId;
-    }
-
-    /**
-     * Gets the providerMessageId property value. Provider message identifier for SMS delivery tracking and reconciliation.
-     * @return string|null
-    */
-    public function getProviderMessageId(): ?string {
-        return $this->providerMessageId;
     }
 
     /**
@@ -521,7 +507,6 @@ class EventDetailResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('leadId', $this->getLeadId());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('outboundPhoneNumberId', $this->getOutboundPhoneNumberId());
-        $writer->writeStringValue('providerMessageId', $this->getProviderMessageId());
         $writer->writeDateTimeValue('queuedAt', $this->getQueuedAt());
         $writer->writeDateTimeValue('receivedAt', $this->getReceivedAt());
         $writer->writeDateTimeValue('scheduledFor', $this->getScheduledFor());
@@ -674,14 +659,6 @@ class EventDetailResponse implements AdditionalDataHolder, Parsable
     */
     public function setOutboundPhoneNumberId(?string $value): void {
         $this->outboundPhoneNumberId = $value;
-    }
-
-    /**
-     * Sets the providerMessageId property value. Provider message identifier for SMS delivery tracking and reconciliation.
-     * @param string|null $value Value to set for the providerMessageId property.
-    */
-    public function setProviderMessageId(?string $value): void {
-        $this->providerMessageId = $value;
     }
 
     /**

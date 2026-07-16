@@ -14,11 +14,6 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class TransactionResponse implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var string|null $accountId Leadping account identifier used for wallet and transaction reconciliation.
-    */
-    private ?string $accountId = null;
-    
-    /**
      * @var string|null $accountName Display name of the wallet or account used for this transaction.
     */
     private ?string $accountName = null;
@@ -44,29 +39,14 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     private ?string $businessName = null;
     
     /**
-     * @var string|null $correlationId Correlation ID used to trace this workflow or request across Leadping services.
-    */
-    private ?string $correlationId = null;
-    
-    /**
      * @var DateTime|null $createdAt The date and time when the entity was created.
     */
     private ?DateTime $createdAt = null;
     
     /**
-     * @var string|null $createdBy Display name or identifier for the person or system that created this billing transaction response.
-    */
-    private ?string $createdBy = null;
-    
-    /**
      * @var string|null $description Human-readable description that explains this billing transaction response to API users.
     */
     private ?string $description = null;
-    
-    /**
-     * @var string|null $gatewayId Payment gateway identifier linked to this transaction.
-    */
-    private ?string $gatewayId = null;
     
     /**
      * @var string|null $gatewayStatus Payment gateway status returned for this transaction.
@@ -89,19 +69,9 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     private ?string $leadName = null;
     
     /**
-     * @var TransactionResponse_metadata|null $metadata Structured metadata used for attribution, integrations, and reporting on this billing transaction response.
-    */
-    private ?TransactionResponse_metadata $metadata = null;
-    
-    /**
      * @var DateTime|null $modifiedAt The date and time when the entity was last modified, if applicable.
     */
     private ?DateTime $modifiedAt = null;
-    
-    /**
-     * @var string|null $modifiedBy Display name or identifier for the person or system that last modified this billing transaction response.
-    */
-    private ?string $modifiedBy = null;
     
     /**
      * @var float|null $netAmount Net monetary amount after fees, credits, or adjustments.
@@ -145,14 +115,6 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the accountId property value. Leadping account identifier used for wallet and transaction reconciliation.
-     * @return string|null
-    */
-    public function getAccountId(): ?string {
-        return $this->accountId;
-    }
-
-    /**
      * Gets the accountName property value. Display name of the wallet or account used for this transaction.
      * @return string|null
     */
@@ -193,27 +155,11 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the correlationId property value. Correlation ID used to trace this workflow or request across Leadping services.
-     * @return string|null
-    */
-    public function getCorrelationId(): ?string {
-        return $this->correlationId;
-    }
-
-    /**
      * Gets the createdAt property value. The date and time when the entity was created.
      * @return DateTime|null
     */
     public function getCreatedAt(): ?DateTime {
         return $this->createdAt;
-    }
-
-    /**
-     * Gets the createdBy property value. Display name or identifier for the person or system that created this billing transaction response.
-     * @return string|null
-    */
-    public function getCreatedBy(): ?string {
-        return $this->createdBy;
     }
 
     /**
@@ -231,37 +177,23 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'accountId' => fn(ParseNode $n) => $o->setAccountId($n->getStringValue()),
             'accountName' => fn(ParseNode $n) => $o->setAccountName($n->getStringValue()),
             'amount' => fn(ParseNode $n) => $o->setAmount($n->getFloatValue()),
             'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'businessName' => fn(ParseNode $n) => $o->setBusinessName($n->getStringValue()),
-            'correlationId' => fn(ParseNode $n) => $o->setCorrelationId($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
-            'createdBy' => fn(ParseNode $n) => $o->setCreatedBy($n->getStringValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
-            'gatewayId' => fn(ParseNode $n) => $o->setGatewayId($n->getStringValue()),
             'gatewayStatus' => fn(ParseNode $n) => $o->setGatewayStatus($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
             'leadName' => fn(ParseNode $n) => $o->setLeadName($n->getStringValue()),
-            'metadata' => fn(ParseNode $n) => $o->setMetadata($n->getObjectValue([TransactionResponse_metadata::class, 'createFromDiscriminatorValue'])),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
-            'modifiedBy' => fn(ParseNode $n) => $o->setModifiedBy($n->getStringValue()),
             'netAmount' => fn(ParseNode $n) => $o->setNetAmount($n->getFloatValue()),
             'notes' => fn(ParseNode $n) => $o->setNotes($n->getStringValue()),
             'paymentMethodDisplay' => fn(ParseNode $n) => $o->setPaymentMethodDisplay($n->getStringValue()),
             'transactionStatus' => fn(ParseNode $n) => $o->setTransactionStatus($n->getEnumValue(TransactionStatus::class)),
             'transactionType' => fn(ParseNode $n) => $o->setTransactionType($n->getEnumValue(TransactionType::class)),
         ];
-    }
-
-    /**
-     * Gets the gatewayId property value. Payment gateway identifier linked to this transaction.
-     * @return string|null
-    */
-    public function getGatewayId(): ?string {
-        return $this->gatewayId;
     }
 
     /**
@@ -297,27 +229,11 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this billing transaction response.
-     * @return TransactionResponse_metadata|null
-    */
-    public function getMetadata(): ?TransactionResponse_metadata {
-        return $this->metadata;
-    }
-
-    /**
      * Gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
      * @return DateTime|null
     */
     public function getModifiedAt(): ?DateTime {
         return $this->modifiedAt;
-    }
-
-    /**
-     * Gets the modifiedBy property value. Display name or identifier for the person or system that last modified this billing transaction response.
-     * @return string|null
-    */
-    public function getModifiedBy(): ?string {
-        return $this->modifiedBy;
     }
 
     /**
@@ -365,37 +281,23 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeStringValue('accountId', $this->getAccountId());
         $writer->writeStringValue('accountName', $this->getAccountName());
         $writer->writeFloatValue('amount', $this->getAmount());
         $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeStringValue('businessName', $this->getBusinessName());
-        $writer->writeStringValue('correlationId', $this->getCorrelationId());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
-        $writer->writeStringValue('createdBy', $this->getCreatedBy());
         $writer->writeStringValue('description', $this->getDescription());
-        $writer->writeStringValue('gatewayId', $this->getGatewayId());
         $writer->writeStringValue('gatewayStatus', $this->getGatewayStatus());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeStringValue('leadId', $this->getLeadId());
         $writer->writeStringValue('leadName', $this->getLeadName());
-        $writer->writeObjectValue('metadata', $this->getMetadata());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
-        $writer->writeStringValue('modifiedBy', $this->getModifiedBy());
         $writer->writeFloatValue('netAmount', $this->getNetAmount());
         $writer->writeStringValue('notes', $this->getNotes());
         $writer->writeStringValue('paymentMethodDisplay', $this->getPaymentMethodDisplay());
         $writer->writeEnumValue('transactionStatus', $this->getTransactionStatus());
         $writer->writeEnumValue('transactionType', $this->getTransactionType());
         $writer->writeAdditionalData($this->getAdditionalData());
-    }
-
-    /**
-     * Sets the accountId property value. Leadping account identifier used for wallet and transaction reconciliation.
-     * @param string|null $value Value to set for the accountId property.
-    */
-    public function setAccountId(?string $value): void {
-        $this->accountId = $value;
     }
 
     /**
@@ -439,14 +341,6 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the correlationId property value. Correlation ID used to trace this workflow or request across Leadping services.
-     * @param string|null $value Value to set for the correlationId property.
-    */
-    public function setCorrelationId(?string $value): void {
-        $this->correlationId = $value;
-    }
-
-    /**
      * Sets the createdAt property value. The date and time when the entity was created.
      * @param DateTime|null $value Value to set for the createdAt property.
     */
@@ -455,27 +349,11 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the createdBy property value. Display name or identifier for the person or system that created this billing transaction response.
-     * @param string|null $value Value to set for the createdBy property.
-    */
-    public function setCreatedBy(?string $value): void {
-        $this->createdBy = $value;
-    }
-
-    /**
      * Sets the description property value. Human-readable description that explains this billing transaction response to API users.
      * @param string|null $value Value to set for the description property.
     */
     public function setDescription(?string $value): void {
         $this->description = $value;
-    }
-
-    /**
-     * Sets the gatewayId property value. Payment gateway identifier linked to this transaction.
-     * @param string|null $value Value to set for the gatewayId property.
-    */
-    public function setGatewayId(?string $value): void {
-        $this->gatewayId = $value;
     }
 
     /**
@@ -511,27 +389,11 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this billing transaction response.
-     * @param TransactionResponse_metadata|null $value Value to set for the metadata property.
-    */
-    public function setMetadata(?TransactionResponse_metadata $value): void {
-        $this->metadata = $value;
-    }
-
-    /**
      * Sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
      * @param DateTime|null $value Value to set for the modifiedAt property.
     */
     public function setModifiedAt(?DateTime $value): void {
         $this->modifiedAt = $value;
-    }
-
-    /**
-     * Sets the modifiedBy property value. Display name or identifier for the person or system that last modified this billing transaction response.
-     * @param string|null $value Value to set for the modifiedBy property.
-    */
-    public function setModifiedBy(?string $value): void {
-        $this->modifiedBy = $value;
     }
 
     /**

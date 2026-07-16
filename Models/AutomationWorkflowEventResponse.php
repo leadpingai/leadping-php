@@ -14,7 +14,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class AutomationWorkflowEventResponse implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var string|null $actionId The actionId property
+     * @var string|null $actionId Unique identifier of the action associated with this Leadping automation workflow event.
     */
     private ?string $actionId = null;
     
@@ -24,47 +24,42 @@ class AutomationWorkflowEventResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $adminDiagnostics The adminDiagnostics property
-    */
-    private ?string $adminDiagnostics = null;
-    
-    /**
-     * @var string|null $eventType The eventType property
+     * @var string|null $eventType Event type classification for this Leadping automation workflow event.
     */
     private ?string $eventType = null;
     
     /**
-     * @var string|null $id The id property
+     * @var string|null $id Unique Leadping identifier for the automation workflow event.
     */
     private ?string $id = null;
     
     /**
-     * @var DateTime|null $occurredAt The occurredAt property
+     * @var DateTime|null $occurredAt Date and time when the automation workflow event event occurred.
     */
     private ?DateTime $occurredAt = null;
     
     /**
-     * @var string|null $reasonCode The reasonCode property
+     * @var string|null $reasonCode Reason or diagnostic code that explains the current outcome for this Leadping automation workflow event.
     */
     private ?string $reasonCode = null;
     
     /**
-     * @var string|null $status The status property
+     * @var string|null $status Current status for this Leadping automation workflow event.
     */
     private ?string $status = null;
     
     /**
-     * @var string|null $statusDisplay The statusDisplay property
+     * @var string|null $statusDisplay Human-readable status display for this Leadping automation workflow event.
     */
     private ?string $statusDisplay = null;
     
     /**
-     * @var string|null $stepId The stepId property
+     * @var string|null $stepId Unique identifier of the step associated with this Leadping automation workflow event.
     */
     private ?string $stepId = null;
     
     /**
-     * @var string|null $summary The summary property
+     * @var string|null $summary Human-readable summary for this Leadping automation workflow event.
     */
     private ?string $summary = null;
     
@@ -85,7 +80,7 @@ class AutomationWorkflowEventResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the actionId property value. The actionId property
+     * Gets the actionId property value. Unique identifier of the action associated with this Leadping automation workflow event.
      * @return string|null
     */
     public function getActionId(): ?string {
@@ -101,15 +96,7 @@ class AutomationWorkflowEventResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the adminDiagnostics property value. The adminDiagnostics property
-     * @return string|null
-    */
-    public function getAdminDiagnostics(): ?string {
-        return $this->adminDiagnostics;
-    }
-
-    /**
-     * Gets the eventType property value. The eventType property
+     * Gets the eventType property value. Event type classification for this Leadping automation workflow event.
      * @return string|null
     */
     public function getEventType(): ?string {
@@ -124,7 +111,6 @@ class AutomationWorkflowEventResponse implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'actionId' => fn(ParseNode $n) => $o->setActionId($n->getStringValue()),
-            'adminDiagnostics' => fn(ParseNode $n) => $o->setAdminDiagnostics($n->getStringValue()),
             'eventType' => fn(ParseNode $n) => $o->setEventType($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'occurredAt' => fn(ParseNode $n) => $o->setOccurredAt($n->getDateTimeValue()),
@@ -137,7 +123,7 @@ class AutomationWorkflowEventResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The id property
+     * Gets the id property value. Unique Leadping identifier for the automation workflow event.
      * @return string|null
     */
     public function getId(): ?string {
@@ -145,7 +131,7 @@ class AutomationWorkflowEventResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the occurredAt property value. The occurredAt property
+     * Gets the occurredAt property value. Date and time when the automation workflow event event occurred.
      * @return DateTime|null
     */
     public function getOccurredAt(): ?DateTime {
@@ -153,7 +139,7 @@ class AutomationWorkflowEventResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the reasonCode property value. The reasonCode property
+     * Gets the reasonCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow event.
      * @return string|null
     */
     public function getReasonCode(): ?string {
@@ -161,7 +147,7 @@ class AutomationWorkflowEventResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. The status property
+     * Gets the status property value. Current status for this Leadping automation workflow event.
      * @return string|null
     */
     public function getStatus(): ?string {
@@ -169,7 +155,7 @@ class AutomationWorkflowEventResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the statusDisplay property value. The statusDisplay property
+     * Gets the statusDisplay property value. Human-readable status display for this Leadping automation workflow event.
      * @return string|null
     */
     public function getStatusDisplay(): ?string {
@@ -177,7 +163,7 @@ class AutomationWorkflowEventResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the stepId property value. The stepId property
+     * Gets the stepId property value. Unique identifier of the step associated with this Leadping automation workflow event.
      * @return string|null
     */
     public function getStepId(): ?string {
@@ -185,7 +171,7 @@ class AutomationWorkflowEventResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the summary property value. The summary property
+     * Gets the summary property value. Human-readable summary for this Leadping automation workflow event.
      * @return string|null
     */
     public function getSummary(): ?string {
@@ -198,7 +184,6 @@ class AutomationWorkflowEventResponse implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('actionId', $this->getActionId());
-        $writer->writeStringValue('adminDiagnostics', $this->getAdminDiagnostics());
         $writer->writeStringValue('eventType', $this->getEventType());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeDateTimeValue('occurredAt', $this->getOccurredAt());
@@ -211,7 +196,7 @@ class AutomationWorkflowEventResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the actionId property value. The actionId property
+     * Sets the actionId property value. Unique identifier of the action associated with this Leadping automation workflow event.
      * @param string|null $value Value to set for the actionId property.
     */
     public function setActionId(?string $value): void {
@@ -227,15 +212,7 @@ class AutomationWorkflowEventResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the adminDiagnostics property value. The adminDiagnostics property
-     * @param string|null $value Value to set for the adminDiagnostics property.
-    */
-    public function setAdminDiagnostics(?string $value): void {
-        $this->adminDiagnostics = $value;
-    }
-
-    /**
-     * Sets the eventType property value. The eventType property
+     * Sets the eventType property value. Event type classification for this Leadping automation workflow event.
      * @param string|null $value Value to set for the eventType property.
     */
     public function setEventType(?string $value): void {
@@ -243,7 +220,7 @@ class AutomationWorkflowEventResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The id property
+     * Sets the id property value. Unique Leadping identifier for the automation workflow event.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -251,7 +228,7 @@ class AutomationWorkflowEventResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the occurredAt property value. The occurredAt property
+     * Sets the occurredAt property value. Date and time when the automation workflow event event occurred.
      * @param DateTime|null $value Value to set for the occurredAt property.
     */
     public function setOccurredAt(?DateTime $value): void {
@@ -259,7 +236,7 @@ class AutomationWorkflowEventResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the reasonCode property value. The reasonCode property
+     * Sets the reasonCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow event.
      * @param string|null $value Value to set for the reasonCode property.
     */
     public function setReasonCode(?string $value): void {
@@ -267,7 +244,7 @@ class AutomationWorkflowEventResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. The status property
+     * Sets the status property value. Current status for this Leadping automation workflow event.
      * @param string|null $value Value to set for the status property.
     */
     public function setStatus(?string $value): void {
@@ -275,7 +252,7 @@ class AutomationWorkflowEventResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the statusDisplay property value. The statusDisplay property
+     * Sets the statusDisplay property value. Human-readable status display for this Leadping automation workflow event.
      * @param string|null $value Value to set for the statusDisplay property.
     */
     public function setStatusDisplay(?string $value): void {
@@ -283,7 +260,7 @@ class AutomationWorkflowEventResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the stepId property value. The stepId property
+     * Sets the stepId property value. Unique identifier of the step associated with this Leadping automation workflow event.
      * @param string|null $value Value to set for the stepId property.
     */
     public function setStepId(?string $value): void {
@@ -291,7 +268,7 @@ class AutomationWorkflowEventResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the summary property value. The summary property
+     * Sets the summary property value. Human-readable summary for this Leadping automation workflow event.
      * @param string|null $value Value to set for the summary property.
     */
     public function setSummary(?string $value): void {

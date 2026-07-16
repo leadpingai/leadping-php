@@ -24,11 +24,6 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var AutomationTableRow_adminEnablementOverride|null $adminEnablementOverride Admin override that can enable or disable this record independently of normal status checks.
-    */
-    private ?AutomationTableRow_adminEnablementOverride $adminEnablementOverride = null;
-    
-    /**
      * @var AutomationTableRow_business|null $business Business summary connected to this automation table row.
     */
     private ?AutomationTableRow_business $business = null;
@@ -77,11 +72,6 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
      * @var DateTime|null $lastRunAt UTC timestamp when this automation last ran.
     */
     private ?DateTime $lastRunAt = null;
-    
-    /**
-     * @var string|null $lastRunError Most recent automation run error message, if the last run failed.
-    */
-    private ?string $lastRunError = null;
     
     /**
      * @var string|null $lastRunStatus Status from the most recent automation run.
@@ -166,14 +156,6 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-     * @return AutomationTableRow_adminEnablementOverride|null
-    */
-    public function getAdminEnablementOverride(): ?AutomationTableRow_adminEnablementOverride {
-        return $this->adminEnablementOverride;
-    }
-
-    /**
      * Gets the business property value. Business summary connected to this automation table row.
      * @return AutomationTableRow_business|null
     */
@@ -229,7 +211,6 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'actionSummary' => fn(ParseNode $n) => $o->setActionSummary($n->getStringValue()),
-            'adminEnablementOverride' => fn(ParseNode $n) => $o->setAdminEnablementOverride($n->getObjectValue([AutomationTableRow_adminEnablementOverride::class, 'createFromDiscriminatorValue'])),
             'business' => fn(ParseNode $n) => $o->setBusiness($n->getObjectValue([AutomationTableRow_business::class, 'createFromDiscriminatorValue'])),
             'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'conditionSummary' => fn(ParseNode $n) => $o->setConditionSummary($n->getStringValue()),
@@ -240,7 +221,6 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isSystemManaged' => fn(ParseNode $n) => $o->setIsSystemManaged($n->getBooleanValue()),
             'lastRunAt' => fn(ParseNode $n) => $o->setLastRunAt($n->getDateTimeValue()),
-            'lastRunError' => fn(ParseNode $n) => $o->setLastRunError($n->getStringValue()),
             'lastRunStatus' => fn(ParseNode $n) => $o->setLastRunStatus($n->getStringValue()),
             'managementLevel' => fn(ParseNode $n) => $o->setManagementLevel($n->getStringValue()),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
@@ -284,14 +264,6 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     */
     public function getLastRunAt(): ?DateTime {
         return $this->lastRunAt;
-    }
-
-    /**
-     * Gets the lastRunError property value. Most recent automation run error message, if the last run failed.
-     * @return string|null
-    */
-    public function getLastRunError(): ?string {
-        return $this->lastRunError;
     }
 
     /**
@@ -380,7 +352,6 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('actionSummary', $this->getActionSummary());
-        $writer->writeObjectValue('adminEnablementOverride', $this->getAdminEnablementOverride());
         $writer->writeObjectValue('business', $this->getBusiness());
         $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeStringValue('conditionSummary', $this->getConditionSummary());
@@ -391,7 +362,6 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isSystemManaged', $this->getIsSystemManaged());
         $writer->writeDateTimeValue('lastRunAt', $this->getLastRunAt());
-        $writer->writeStringValue('lastRunError', $this->getLastRunError());
         $writer->writeStringValue('lastRunStatus', $this->getLastRunStatus());
         $writer->writeStringValue('managementLevel', $this->getManagementLevel());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
@@ -419,14 +389,6 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-     * @param AutomationTableRow_adminEnablementOverride|null $value Value to set for the adminEnablementOverride property.
-    */
-    public function setAdminEnablementOverride(?AutomationTableRow_adminEnablementOverride $value): void {
-        $this->adminEnablementOverride = $value;
     }
 
     /**
@@ -507,14 +469,6 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     */
     public function setLastRunAt(?DateTime $value): void {
         $this->lastRunAt = $value;
-    }
-
-    /**
-     * Sets the lastRunError property value. Most recent automation run error message, if the last run failed.
-     * @param string|null $value Value to set for the lastRunError property.
-    */
-    public function setLastRunError(?string $value): void {
-        $this->lastRunError = $value;
     }
 
     /**

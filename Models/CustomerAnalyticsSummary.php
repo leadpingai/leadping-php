@@ -7,6 +7,9 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
+/**
+ * Human-readable summary for this Leadping customer analytics.
+*/
 class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable 
 {
     /**
@@ -15,77 +18,77 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $billingStatus The billingStatus property
+     * @var string|null $billingStatus Current billing status for this Leadping customer analytics summary.
     */
     private ?string $billingStatus = null;
     
     /**
-     * @var float|null $callMinutes The callMinutes property
+     * @var float|null $callMinutes Total connected call duration, in minutes, during the reporting period.
     */
     private ?float $callMinutes = null;
     
     /**
-     * @var int|null $callsPlaced The callsPlaced property
+     * @var int|null $callsPlaced Number of outbound calls placed during the reporting period.
     */
     private ?int $callsPlaced = null;
     
     /**
-     * @var int|null $callsReceived The callsReceived property
+     * @var int|null $callsReceived Number of inbound calls received during the reporting period.
     */
     private ?int $callsReceived = null;
     
     /**
-     * @var int|null $leads The leads property
+     * @var int|null $leads Number of leads represented by this Leadping customer analytics summary.
     */
     private ?int $leads = null;
     
     /**
-     * @var AnalyticsComparison|null $leadsComparison The leadsComparison property
+     * @var AnalyticsComparison|null $leadsComparison Date and time when this Leadping customer analytics summary was leads comparison.
     */
     private ?AnalyticsComparison $leadsComparison = null;
     
     /**
-     * @var int|null $missedCalls The missedCalls property
+     * @var int|null $missedCalls Number of calls missed during the reporting period.
     */
     private ?int $missedCalls = null;
     
     /**
-     * @var int|null $missedLeads The missedLeads property
+     * @var int|null $missedLeads Number of missed leads represented by this Leadping customer analytics summary.
     */
     private ?int $missedLeads = null;
     
     /**
-     * @var float|null $respondedWithinFiveMinutesPercent The respondedWithinFiveMinutesPercent property
+     * @var float|null $respondedWithinFiveMinutesPercent Responded within five minutes percent expressed as a percentage.
     */
     private ?float $respondedWithinFiveMinutesPercent = null;
     
     /**
-     * @var int|null $smsReceived The smsReceived property
+     * @var int|null $smsReceived Number of SMS messages received during the reporting period.
     */
     private ?int $smsReceived = null;
     
     /**
-     * @var int|null $smsSent The smsSent property
+     * @var int|null $smsSent Number of SMS messages sent during the reporting period.
     */
     private ?int $smsSent = null;
     
     /**
-     * @var int|null $unreadMessages The unreadMessages property
+     * @var int|null $unreadMessages Number of unread messages represented by this Leadping customer analytics summary.
     */
     private ?int $unreadMessages = null;
     
     /**
-     * @var float|null $usageSpend The usageSpend property
+     * @var float|null $usageSpend Usage spend represented by this Leadping customer analytics summary.
     */
     private ?float $usageSpend = null;
     
     /**
-     * @var float|null $walletBalance The walletBalance property
+     * @var float|null $walletBalance Wallet balance represented by this Leadping customer analytics summary.
     */
     private ?float $walletBalance = null;
     
     /**
-     * @var string|null $walletStatus The walletStatus property
+     * @var string|null $walletStatus Current wallet status for this Leadping customer analytics summary.
     */
     private ?string $walletStatus = null;
     
@@ -114,7 +117,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billingStatus property value. The billingStatus property
+     * Gets the billingStatus property value. Current billing status for this Leadping customer analytics summary.
      * @return string|null
     */
     public function getBillingStatus(): ?string {
@@ -122,7 +125,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the callMinutes property value. The callMinutes property
+     * Gets the callMinutes property value. Total connected call duration, in minutes, during the reporting period.
      * @return float|null
     */
     public function getCallMinutes(): ?float {
@@ -130,7 +133,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the callsPlaced property value. The callsPlaced property
+     * Gets the callsPlaced property value. Number of outbound calls placed during the reporting period.
      * @return int|null
     */
     public function getCallsPlaced(): ?int {
@@ -138,7 +141,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the callsReceived property value. The callsReceived property
+     * Gets the callsReceived property value. Number of inbound calls received during the reporting period.
      * @return int|null
     */
     public function getCallsReceived(): ?int {
@@ -171,7 +174,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the leads property value. The leads property
+     * Gets the leads property value. Number of leads represented by this Leadping customer analytics summary.
      * @return int|null
     */
     public function getLeads(): ?int {
@@ -179,7 +182,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the leadsComparison property value. The leadsComparison property
+     * Gets the leadsComparison property value. Date and time when this Leadping customer analytics summary was leads comparison.
      * @return AnalyticsComparison|null
     */
     public function getLeadsComparison(): ?AnalyticsComparison {
@@ -187,7 +190,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the missedCalls property value. The missedCalls property
+     * Gets the missedCalls property value. Number of calls missed during the reporting period.
      * @return int|null
     */
     public function getMissedCalls(): ?int {
@@ -195,7 +198,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the missedLeads property value. The missedLeads property
+     * Gets the missedLeads property value. Number of missed leads represented by this Leadping customer analytics summary.
      * @return int|null
     */
     public function getMissedLeads(): ?int {
@@ -203,7 +206,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the respondedWithinFiveMinutesPercent property value. The respondedWithinFiveMinutesPercent property
+     * Gets the respondedWithinFiveMinutesPercent property value. Responded within five minutes percent expressed as a percentage.
      * @return float|null
     */
     public function getRespondedWithinFiveMinutesPercent(): ?float {
@@ -211,7 +214,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the smsReceived property value. The smsReceived property
+     * Gets the smsReceived property value. Number of SMS messages received during the reporting period.
      * @return int|null
     */
     public function getSmsReceived(): ?int {
@@ -219,7 +222,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the smsSent property value. The smsSent property
+     * Gets the smsSent property value. Number of SMS messages sent during the reporting period.
      * @return int|null
     */
     public function getSmsSent(): ?int {
@@ -227,7 +230,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the unreadMessages property value. The unreadMessages property
+     * Gets the unreadMessages property value. Number of unread messages represented by this Leadping customer analytics summary.
      * @return int|null
     */
     public function getUnreadMessages(): ?int {
@@ -235,7 +238,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the usageSpend property value. The usageSpend property
+     * Gets the usageSpend property value. Usage spend represented by this Leadping customer analytics summary.
      * @return float|null
     */
     public function getUsageSpend(): ?float {
@@ -243,7 +246,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the walletBalance property value. The walletBalance property
+     * Gets the walletBalance property value. Wallet balance represented by this Leadping customer analytics summary.
      * @return float|null
     */
     public function getWalletBalance(): ?float {
@@ -251,7 +254,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the walletStatus property value. The walletStatus property
+     * Gets the walletStatus property value. Current wallet status for this Leadping customer analytics summary.
      * @return string|null
     */
     public function getWalletStatus(): ?string {
@@ -290,7 +293,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billingStatus property value. The billingStatus property
+     * Sets the billingStatus property value. Current billing status for this Leadping customer analytics summary.
      * @param string|null $value Value to set for the billingStatus property.
     */
     public function setBillingStatus(?string $value): void {
@@ -298,7 +301,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the callMinutes property value. The callMinutes property
+     * Sets the callMinutes property value. Total connected call duration, in minutes, during the reporting period.
      * @param float|null $value Value to set for the callMinutes property.
     */
     public function setCallMinutes(?float $value): void {
@@ -306,7 +309,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the callsPlaced property value. The callsPlaced property
+     * Sets the callsPlaced property value. Number of outbound calls placed during the reporting period.
      * @param int|null $value Value to set for the callsPlaced property.
     */
     public function setCallsPlaced(?int $value): void {
@@ -314,7 +317,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the callsReceived property value. The callsReceived property
+     * Sets the callsReceived property value. Number of inbound calls received during the reporting period.
      * @param int|null $value Value to set for the callsReceived property.
     */
     public function setCallsReceived(?int $value): void {
@@ -322,7 +325,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the leads property value. The leads property
+     * Sets the leads property value. Number of leads represented by this Leadping customer analytics summary.
      * @param int|null $value Value to set for the leads property.
     */
     public function setLeads(?int $value): void {
@@ -330,7 +333,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the leadsComparison property value. The leadsComparison property
+     * Sets the leadsComparison property value. Date and time when this Leadping customer analytics summary was leads comparison.
      * @param AnalyticsComparison|null $value Value to set for the leadsComparison property.
     */
     public function setLeadsComparison(?AnalyticsComparison $value): void {
@@ -338,7 +341,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the missedCalls property value. The missedCalls property
+     * Sets the missedCalls property value. Number of calls missed during the reporting period.
      * @param int|null $value Value to set for the missedCalls property.
     */
     public function setMissedCalls(?int $value): void {
@@ -346,7 +349,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the missedLeads property value. The missedLeads property
+     * Sets the missedLeads property value. Number of missed leads represented by this Leadping customer analytics summary.
      * @param int|null $value Value to set for the missedLeads property.
     */
     public function setMissedLeads(?int $value): void {
@@ -354,7 +357,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the respondedWithinFiveMinutesPercent property value. The respondedWithinFiveMinutesPercent property
+     * Sets the respondedWithinFiveMinutesPercent property value. Responded within five minutes percent expressed as a percentage.
      * @param float|null $value Value to set for the respondedWithinFiveMinutesPercent property.
     */
     public function setRespondedWithinFiveMinutesPercent(?float $value): void {
@@ -362,7 +365,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the smsReceived property value. The smsReceived property
+     * Sets the smsReceived property value. Number of SMS messages received during the reporting period.
      * @param int|null $value Value to set for the smsReceived property.
     */
     public function setSmsReceived(?int $value): void {
@@ -370,7 +373,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the smsSent property value. The smsSent property
+     * Sets the smsSent property value. Number of SMS messages sent during the reporting period.
      * @param int|null $value Value to set for the smsSent property.
     */
     public function setSmsSent(?int $value): void {
@@ -378,7 +381,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the unreadMessages property value. The unreadMessages property
+     * Sets the unreadMessages property value. Number of unread messages represented by this Leadping customer analytics summary.
      * @param int|null $value Value to set for the unreadMessages property.
     */
     public function setUnreadMessages(?int $value): void {
@@ -386,7 +389,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the usageSpend property value. The usageSpend property
+     * Sets the usageSpend property value. Usage spend represented by this Leadping customer analytics summary.
      * @param float|null $value Value to set for the usageSpend property.
     */
     public function setUsageSpend(?float $value): void {
@@ -394,7 +397,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the walletBalance property value. The walletBalance property
+     * Sets the walletBalance property value. Wallet balance represented by this Leadping customer analytics summary.
      * @param float|null $value Value to set for the walletBalance property.
     */
     public function setWalletBalance(?float $value): void {
@@ -402,7 +405,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the walletStatus property value. The walletStatus property
+     * Sets the walletStatus property value. Current wallet status for this Leadping customer analytics summary.
      * @param string|null $value Value to set for the walletStatus property.
     */
     public function setWalletStatus(?string $value): void {

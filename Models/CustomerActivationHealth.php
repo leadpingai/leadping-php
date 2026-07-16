@@ -7,6 +7,9 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
+/**
+ * Activation health associated with this Leadping customer analytics.
+*/
 class CustomerActivationHealth implements AdditionalDataHolder, Parsable 
 {
     /**
@@ -15,12 +18,12 @@ class CustomerActivationHealth implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var array<CustomerActivationHealthItem>|null $items The items property
+     * @var array<CustomerActivationHealthItem>|null $items Collection of items included with this Leadping customer activation health.
     */
     private ?array $items = null;
     
     /**
-     * @var string|null $overallStatus The overallStatus property
+     * @var string|null $overallStatus Current overall status for this Leadping customer activation health.
     */
     private ?string $overallStatus = null;
     
@@ -61,7 +64,7 @@ class CustomerActivationHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the items property value. The items property
+     * Gets the items property value. Collection of items included with this Leadping customer activation health.
      * @return array<CustomerActivationHealthItem>|null
     */
     public function getItems(): ?array {
@@ -69,7 +72,7 @@ class CustomerActivationHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the overallStatus property value. The overallStatus property
+     * Gets the overallStatus property value. Current overall status for this Leadping customer activation health.
      * @return string|null
     */
     public function getOverallStatus(): ?string {
@@ -95,7 +98,7 @@ class CustomerActivationHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the items property value. The items property
+     * Sets the items property value. Collection of items included with this Leadping customer activation health.
      * @param array<CustomerActivationHealthItem>|null $value Value to set for the items property.
     */
     public function setItems(?array $value): void {
@@ -103,7 +106,7 @@ class CustomerActivationHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the overallStatus property value. The overallStatus property
+     * Sets the overallStatus property value. Current overall status for this Leadping customer activation health.
      * @param string|null $value Value to set for the overallStatus property.
     */
     public function setOverallStatus(?string $value): void {

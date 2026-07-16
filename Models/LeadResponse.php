@@ -19,11 +19,6 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var LeadResponse_adminEnablementOverride|null $adminEnablementOverride Admin override that can enable or disable this record independently of normal status checks.
-    */
-    private ?LeadResponse_adminEnablementOverride $adminEnablementOverride = null;
-    
-    /**
      * @var DateTime|null $archivedAt UTC timestamp when this record was archived.
     */
     private ?DateTime $archivedAt = null;
@@ -74,7 +69,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * @var bool|null $isArchived The isArchived property
+     * @var bool|null $isArchived Indicates whether the lead has been archived in Leadping.
     */
     private ?bool $isArchived = null;
     
@@ -115,14 +110,6 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     */
     public function getAdditionalData(): ?array {
         return $this->additionalData;
-    }
-
-    /**
-     * Gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-     * @return LeadResponse_adminEnablementOverride|null
-    */
-    public function getAdminEnablementOverride(): ?LeadResponse_adminEnablementOverride {
-        return $this->adminEnablementOverride;
     }
 
     /**
@@ -204,7 +191,6 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'adminEnablementOverride' => fn(ParseNode $n) => $o->setAdminEnablementOverride($n->getObjectValue([LeadResponse_adminEnablementOverride::class, 'createFromDiscriminatorValue'])),
             'archivedAt' => fn(ParseNode $n) => $o->setArchivedAt($n->getDateTimeValue()),
             'archivedByUserId' => fn(ParseNode $n) => $o->setArchivedByUserId($n->getStringValue()),
             'archiveNote' => fn(ParseNode $n) => $o->setArchiveNote($n->getStringValue()),
@@ -231,7 +217,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the isArchived property value. The isArchived property
+     * Gets the isArchived property value. Indicates whether the lead has been archived in Leadping.
      * @return bool|null
     */
     public function getIsArchived(): ?bool {
@@ -267,7 +253,6 @@ class LeadResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeObjectValue('adminEnablementOverride', $this->getAdminEnablementOverride());
         $writer->writeDateTimeValue('archivedAt', $this->getArchivedAt());
         $writer->writeStringValue('archivedByUserId', $this->getArchivedByUserId());
         $writer->writeStringValue('archiveNote', $this->getArchiveNote());
@@ -291,14 +276,6 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-     * @param LeadResponse_adminEnablementOverride|null $value Value to set for the adminEnablementOverride property.
-    */
-    public function setAdminEnablementOverride(?LeadResponse_adminEnablementOverride $value): void {
-        $this->adminEnablementOverride = $value;
     }
 
     /**
@@ -382,7 +359,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the isArchived property value. The isArchived property
+     * Sets the isArchived property value. Indicates whether the lead has been archived in Leadping.
      * @param bool|null $value Value to set for the isArchived property.
     */
     public function setIsArchived(?bool $value): void {

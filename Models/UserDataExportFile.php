@@ -15,22 +15,22 @@ class UserDataExportFile implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $category The category property
+     * @var string|null $category Category classification for this Leadping user data export file.
     */
     private ?string $category = null;
     
     /**
-     * @var string|null $contentType The contentType property
+     * @var string|null $contentType Media type of the generated file or response content.
     */
     private ?string $contentType = null;
     
     /**
-     * @var string|null $fileName The fileName property
+     * @var string|null $fileName Human-readable file name associated with this Leadping user data export file.
     */
     private ?string $fileName = null;
     
     /**
-     * @var int|null $rowCount The rowCount property
+     * @var int|null $rowCount Total number of row records represented by this Leadping user data export file.
     */
     private ?int $rowCount = null;
     
@@ -59,7 +59,7 @@ class UserDataExportFile implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the category property value. The category property
+     * Gets the category property value. Category classification for this Leadping user data export file.
      * @return string|null
     */
     public function getCategory(): ?string {
@@ -67,7 +67,7 @@ class UserDataExportFile implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the contentType property value. The contentType property
+     * Gets the contentType property value. Media type of the generated file or response content.
      * @return string|null
     */
     public function getContentType(): ?string {
@@ -89,7 +89,7 @@ class UserDataExportFile implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the fileName property value. The fileName property
+     * Gets the fileName property value. Human-readable file name associated with this Leadping user data export file.
      * @return string|null
     */
     public function getFileName(): ?string {
@@ -97,7 +97,7 @@ class UserDataExportFile implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the rowCount property value. The rowCount property
+     * Gets the rowCount property value. Total number of row records represented by this Leadping user data export file.
      * @return int|null
     */
     public function getRowCount(): ?int {
@@ -125,7 +125,7 @@ class UserDataExportFile implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the category property value. The category property
+     * Sets the category property value. Category classification for this Leadping user data export file.
      * @param string|null $value Value to set for the category property.
     */
     public function setCategory(?string $value): void {
@@ -133,7 +133,7 @@ class UserDataExportFile implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the contentType property value. The contentType property
+     * Sets the contentType property value. Media type of the generated file or response content.
      * @param string|null $value Value to set for the contentType property.
     */
     public function setContentType(?string $value): void {
@@ -141,7 +141,7 @@ class UserDataExportFile implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the fileName property value. The fileName property
+     * Sets the fileName property value. Human-readable file name associated with this Leadping user data export file.
      * @param string|null $value Value to set for the fileName property.
     */
     public function setFileName(?string $value): void {
@@ -149,7 +149,7 @@ class UserDataExportFile implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the rowCount property value. The rowCount property
+     * Sets the rowCount property value. Total number of row records represented by this Leadping user data export file.
      * @param int|null $value Value to set for the rowCount property.
     */
     public function setRowCount(?int $value): void {

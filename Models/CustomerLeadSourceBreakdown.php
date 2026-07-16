@@ -15,17 +15,17 @@ class CustomerLeadSourceBreakdown implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var int|null $leads The leads property
+     * @var int|null $leads Number of leads represented by this Leadping customer lead source breakdown.
     */
     private ?int $leads = null;
     
     /**
-     * @var float|null $percent The percent property
+     * @var float|null $percent Percent expressed as a percentage.
     */
     private ?float $percent = null;
     
     /**
-     * @var string|null $source The source property
+     * @var string|null $source Source classification for this Leadping customer lead source breakdown.
     */
     private ?string $source = null;
     
@@ -67,7 +67,7 @@ class CustomerLeadSourceBreakdown implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the leads property value. The leads property
+     * Gets the leads property value. Number of leads represented by this Leadping customer lead source breakdown.
      * @return int|null
     */
     public function getLeads(): ?int {
@@ -75,7 +75,7 @@ class CustomerLeadSourceBreakdown implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the percent property value. The percent property
+     * Gets the percent property value. Percent expressed as a percentage.
      * @return float|null
     */
     public function getPercent(): ?float {
@@ -83,7 +83,7 @@ class CustomerLeadSourceBreakdown implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the source property value. The source property
+     * Gets the source property value. Source classification for this Leadping customer lead source breakdown.
      * @return string|null
     */
     public function getSource(): ?string {
@@ -110,7 +110,7 @@ class CustomerLeadSourceBreakdown implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the leads property value. The leads property
+     * Sets the leads property value. Number of leads represented by this Leadping customer lead source breakdown.
      * @param int|null $value Value to set for the leads property.
     */
     public function setLeads(?int $value): void {
@@ -118,7 +118,7 @@ class CustomerLeadSourceBreakdown implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the percent property value. The percent property
+     * Sets the percent property value. Percent expressed as a percentage.
      * @param float|null $value Value to set for the percent property.
     */
     public function setPercent(?float $value): void {
@@ -126,7 +126,7 @@ class CustomerLeadSourceBreakdown implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the source property value. The source property
+     * Sets the source property value. Source classification for this Leadping customer lead source breakdown.
      * @param string|null $value Value to set for the source property.
     */
     public function setSource(?string $value): void {

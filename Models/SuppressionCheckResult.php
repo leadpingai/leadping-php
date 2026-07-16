@@ -19,11 +19,6 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $adminReason The human-readable admin reason explaining this ion check result.
-    */
-    private ?string $adminReason = null;
-    
-    /**
      * @var bool|null $allowed Whether this ion check result allows ed.
     */
     private ?bool $allowed = null;
@@ -98,14 +93,6 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the adminReason property value. The human-readable admin reason explaining this ion check result.
-     * @return string|null
-    */
-    public function getAdminReason(): ?string {
-        return $this->adminReason;
-    }
-
-    /**
      * Gets the allowed property value. Whether this ion check result allows ed.
      * @return bool|null
     */
@@ -144,7 +131,6 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'adminReason' => fn(ParseNode $n) => $o->setAdminReason($n->getStringValue()),
             'allowed' => fn(ParseNode $n) => $o->setAllowed($n->getBooleanValue()),
             'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'channel' => fn(ParseNode $n) => $o->setChannel($n->getStringValue()),
@@ -211,7 +197,6 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeStringValue('adminReason', $this->getAdminReason());
         $writer->writeBooleanValue('allowed', $this->getAllowed());
         $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeStringValue('channel', $this->getChannel());
@@ -231,14 +216,6 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the adminReason property value. The human-readable admin reason explaining this ion check result.
-     * @param string|null $value Value to set for the adminReason property.
-    */
-    public function setAdminReason(?string $value): void {
-        $this->adminReason = $value;
     }
 
     /**

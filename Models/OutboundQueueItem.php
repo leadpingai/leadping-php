@@ -16,22 +16,22 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var OutboundDeliveryChannel|null $channel Defines outbound delivery channels protected by delivery control.
+     * @var OutboundDeliveryChannel|null $channel Channel classification for this Leadping outbound queue item.
     */
     private ?OutboundDeliveryChannel $channel = null;
     
     /**
-     * @var string|null $id The id property
+     * @var string|null $id Unique Leadping identifier for the outbound queue item.
     */
     private ?string $id = null;
     
     /**
-     * @var string|null $phoneNumber The phoneNumber property
+     * @var string|null $phoneNumber Phone number associated with this Leadping outbound queue item.
     */
     private ?string $phoneNumber = null;
     
     /**
-     * @var string|null $reason The reason property
+     * @var string|null $reason Human-readable explanation for the current outbound queue item outcome.
     */
     private ?string $reason = null;
     
@@ -41,17 +41,17 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     private ?OutboundQueueItem_reasonCode $reasonCode = null;
     
     /**
-     * @var DateTime|null $scheduledSendAt The scheduledSendAt property
+     * @var DateTime|null $scheduledSendAt Date and time when this Leadping outbound queue item was scheduled send.
     */
     private ?DateTime $scheduledSendAt = null;
     
     /**
-     * @var OutboundDeliverySource|null $source Defines the source that requested outbound delivery.
+     * @var OutboundDeliverySource|null $source Source classification for this Leadping outbound queue item.
     */
     private ?OutboundDeliverySource $source = null;
     
     /**
-     * @var OutboundDeliveryStatus|null $status Defines durable outbound delivery request statuses.
+     * @var OutboundDeliveryStatus|null $status Current status for this Leadping outbound queue item.
     */
     private ?OutboundDeliveryStatus $status = null;
     
@@ -80,7 +80,7 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the channel property value. Defines outbound delivery channels protected by delivery control.
+     * Gets the channel property value. Channel classification for this Leadping outbound queue item.
      * @return OutboundDeliveryChannel|null
     */
     public function getChannel(): ?OutboundDeliveryChannel {
@@ -106,7 +106,7 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The id property
+     * Gets the id property value. Unique Leadping identifier for the outbound queue item.
      * @return string|null
     */
     public function getId(): ?string {
@@ -114,7 +114,7 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the phoneNumber property value. The phoneNumber property
+     * Gets the phoneNumber property value. Phone number associated with this Leadping outbound queue item.
      * @return string|null
     */
     public function getPhoneNumber(): ?string {
@@ -122,7 +122,7 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the reason property value. The reason property
+     * Gets the reason property value. Human-readable explanation for the current outbound queue item outcome.
      * @return string|null
     */
     public function getReason(): ?string {
@@ -138,7 +138,7 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the scheduledSendAt property value. The scheduledSendAt property
+     * Gets the scheduledSendAt property value. Date and time when this Leadping outbound queue item was scheduled send.
      * @return DateTime|null
     */
     public function getScheduledSendAt(): ?DateTime {
@@ -146,7 +146,7 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the source property value. Defines the source that requested outbound delivery.
+     * Gets the source property value. Source classification for this Leadping outbound queue item.
      * @return OutboundDeliverySource|null
     */
     public function getSource(): ?OutboundDeliverySource {
@@ -154,7 +154,7 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. Defines durable outbound delivery request statuses.
+     * Gets the status property value. Current status for this Leadping outbound queue item.
      * @return OutboundDeliveryStatus|null
     */
     public function getStatus(): ?OutboundDeliveryStatus {
@@ -186,7 +186,7 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the channel property value. Defines outbound delivery channels protected by delivery control.
+     * Sets the channel property value. Channel classification for this Leadping outbound queue item.
      * @param OutboundDeliveryChannel|null $value Value to set for the channel property.
     */
     public function setChannel(?OutboundDeliveryChannel $value): void {
@@ -194,7 +194,7 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The id property
+     * Sets the id property value. Unique Leadping identifier for the outbound queue item.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -202,7 +202,7 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the phoneNumber property value. The phoneNumber property
+     * Sets the phoneNumber property value. Phone number associated with this Leadping outbound queue item.
      * @param string|null $value Value to set for the phoneNumber property.
     */
     public function setPhoneNumber(?string $value): void {
@@ -210,7 +210,7 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the reason property value. The reason property
+     * Sets the reason property value. Human-readable explanation for the current outbound queue item outcome.
      * @param string|null $value Value to set for the reason property.
     */
     public function setReason(?string $value): void {
@@ -226,7 +226,7 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the scheduledSendAt property value. The scheduledSendAt property
+     * Sets the scheduledSendAt property value. Date and time when this Leadping outbound queue item was scheduled send.
      * @param DateTime|null $value Value to set for the scheduledSendAt property.
     */
     public function setScheduledSendAt(?DateTime $value): void {
@@ -234,7 +234,7 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the source property value. Defines the source that requested outbound delivery.
+     * Sets the source property value. Source classification for this Leadping outbound queue item.
      * @param OutboundDeliverySource|null $value Value to set for the source property.
     */
     public function setSource(?OutboundDeliverySource $value): void {
@@ -242,7 +242,7 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. Defines durable outbound delivery request statuses.
+     * Sets the status property value. Current status for this Leadping outbound queue item.
      * @param OutboundDeliveryStatus|null $value Value to set for the status property.
     */
     public function setStatus(?OutboundDeliveryStatus $value): void {

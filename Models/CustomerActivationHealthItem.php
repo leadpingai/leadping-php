@@ -10,7 +10,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class CustomerActivationHealthItem implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var string|null $actionHref The actionHref property
+     * @var string|null $actionHref Relative URL for the recommended follow-up action.
     */
     private ?string $actionHref = null;
     
@@ -20,22 +20,22 @@ class CustomerActivationHealthItem implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $detail The detail property
+     * @var string|null $detail Human-readable detail for this Leadping customer activation health item.
     */
     private ?string $detail = null;
     
     /**
-     * @var string|null $key The key property
+     * @var string|null $key Key associated with this Leadping customer activation health item.
     */
     private ?string $key = null;
     
     /**
-     * @var string|null $label The label property
+     * @var string|null $label Human-readable label for this Leadping customer activation health item.
     */
     private ?string $label = null;
     
     /**
-     * @var string|null $status The status property
+     * @var string|null $status Current status for this Leadping customer activation health item.
     */
     private ?string $status = null;
     
@@ -56,7 +56,7 @@ class CustomerActivationHealthItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the actionHref property value. The actionHref property
+     * Gets the actionHref property value. Relative URL for the recommended follow-up action.
      * @return string|null
     */
     public function getActionHref(): ?string {
@@ -72,7 +72,7 @@ class CustomerActivationHealthItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the detail property value. The detail property
+     * Gets the detail property value. Human-readable detail for this Leadping customer activation health item.
      * @return string|null
     */
     public function getDetail(): ?string {
@@ -95,7 +95,7 @@ class CustomerActivationHealthItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the key property value. The key property
+     * Gets the key property value. Key associated with this Leadping customer activation health item.
      * @return string|null
     */
     public function getKey(): ?string {
@@ -103,7 +103,7 @@ class CustomerActivationHealthItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the label property value. The label property
+     * Gets the label property value. Human-readable label for this Leadping customer activation health item.
      * @return string|null
     */
     public function getLabel(): ?string {
@@ -111,7 +111,7 @@ class CustomerActivationHealthItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. The status property
+     * Gets the status property value. Current status for this Leadping customer activation health item.
      * @return string|null
     */
     public function getStatus(): ?string {
@@ -132,7 +132,7 @@ class CustomerActivationHealthItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the actionHref property value. The actionHref property
+     * Sets the actionHref property value. Relative URL for the recommended follow-up action.
      * @param string|null $value Value to set for the actionHref property.
     */
     public function setActionHref(?string $value): void {
@@ -148,7 +148,7 @@ class CustomerActivationHealthItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the detail property value. The detail property
+     * Sets the detail property value. Human-readable detail for this Leadping customer activation health item.
      * @param string|null $value Value to set for the detail property.
     */
     public function setDetail(?string $value): void {
@@ -156,7 +156,7 @@ class CustomerActivationHealthItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the key property value. The key property
+     * Sets the key property value. Key associated with this Leadping customer activation health item.
      * @param string|null $value Value to set for the key property.
     */
     public function setKey(?string $value): void {
@@ -164,7 +164,7 @@ class CustomerActivationHealthItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the label property value. The label property
+     * Sets the label property value. Human-readable label for this Leadping customer activation health item.
      * @param string|null $value Value to set for the label property.
     */
     public function setLabel(?string $value): void {
@@ -172,7 +172,7 @@ class CustomerActivationHealthItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. The status property
+     * Sets the status property value. Current status for this Leadping customer activation health item.
      * @param string|null $value Value to set for the status property.
     */
     public function setStatus(?string $value): void {

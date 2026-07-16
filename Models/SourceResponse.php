@@ -20,11 +20,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var SourceResponse_adminEnablementOverride|null $adminEnablementOverride Admin override that can enable or disable this record independently of normal status checks.
-    */
-    private ?SourceResponse_adminEnablementOverride $adminEnablementOverride = null;
-    
-    /**
      * @var array<string>|null $allowedProducts Product allowlist used to accept or route leads from this source.
     */
     private ?array $allowedProducts = null;
@@ -48,11 +43,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
      * @var bool|null $complianceApproved Indicates whether the business or sender passed compliance review.
     */
     private ?bool $complianceApproved = null;
-    
-    /**
-     * @var string|null $complianceNotes Compliance notes captured for admin review.
-    */
-    private ?string $complianceNotes = null;
     
     /**
      * @var DateTime|null $createdAt The date and time when the entity was created.
@@ -149,14 +139,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-     * @return SourceResponse_adminEnablementOverride|null
-    */
-    public function getAdminEnablementOverride(): ?SourceResponse_adminEnablementOverride {
-        return $this->adminEnablementOverride;
-    }
-
-    /**
      * Gets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
      * @return array<string>|null
     */
@@ -194,14 +176,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     */
     public function getComplianceApproved(): ?bool {
         return $this->complianceApproved;
-    }
-
-    /**
-     * Gets the complianceNotes property value. Compliance notes captured for admin review.
-     * @return string|null
-    */
-    public function getComplianceNotes(): ?string {
-        return $this->complianceNotes;
     }
 
     /**
@@ -259,7 +233,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'adminEnablementOverride' => fn(ParseNode $n) => $o->setAdminEnablementOverride($n->getObjectValue([SourceResponse_adminEnablementOverride::class, 'createFromDiscriminatorValue'])),
             'allowedProducts' => function (ParseNode $n) {
                 $val = $n->getCollectionOfPrimitiveValues();
                 if (is_array($val)) {
@@ -279,7 +252,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
             'apiKeyPreview' => fn(ParseNode $n) => $o->setApiKeyPreview($n->getStringValue()),
             'business' => fn(ParseNode $n) => $o->setBusiness($n->getObjectValue([SourceResponse_business::class, 'createFromDiscriminatorValue'])),
             'complianceApproved' => fn(ParseNode $n) => $o->setComplianceApproved($n->getBooleanValue()),
-            'complianceNotes' => fn(ParseNode $n) => $o->setComplianceNotes($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'createdByUser' => fn(ParseNode $n) => $o->setCreatedByUser($n->getObjectValue([SourceResponse_createdByUser::class, 'createFromDiscriminatorValue'])),
             'defaultTagIds' => function (ParseNode $n) {
@@ -373,13 +345,11 @@ class SourceResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeObjectValue('adminEnablementOverride', $this->getAdminEnablementOverride());
         $writer->writeCollectionOfPrimitiveValues('allowedProducts', $this->getAllowedProducts());
         $writer->writeCollectionOfPrimitiveValues('allowedStates', $this->getAllowedStates());
         $writer->writeStringValue('apiKeyPreview', $this->getApiKeyPreview());
         $writer->writeObjectValue('business', $this->getBusiness());
         $writer->writeBooleanValue('complianceApproved', $this->getComplianceApproved());
-        $writer->writeStringValue('complianceNotes', $this->getComplianceNotes());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeObjectValue('createdByUser', $this->getCreatedByUser());
         $writer->writeCollectionOfPrimitiveValues('defaultTagIds', $this->getDefaultTagIds());
@@ -403,14 +373,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-     * @param SourceResponse_adminEnablementOverride|null $value Value to set for the adminEnablementOverride property.
-    */
-    public function setAdminEnablementOverride(?SourceResponse_adminEnablementOverride $value): void {
-        $this->adminEnablementOverride = $value;
     }
 
     /**
@@ -451,14 +413,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     */
     public function setComplianceApproved(?bool $value): void {
         $this->complianceApproved = $value;
-    }
-
-    /**
-     * Sets the complianceNotes property value. Compliance notes captured for admin review.
-     * @param string|null $value Value to set for the complianceNotes property.
-    */
-    public function setComplianceNotes(?string $value): void {
-        $this->complianceNotes = $value;
     }
 
     /**

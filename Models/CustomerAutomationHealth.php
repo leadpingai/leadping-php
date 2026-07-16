@@ -7,6 +7,9 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
+/**
+ * Automation health associated with this Leadping customer analytics.
+*/
 class CustomerAutomationHealth implements AdditionalDataHolder, Parsable 
 {
     /**
@@ -15,37 +18,37 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var int|null $automationCount The automationCount property
+     * @var int|null $automationCount Total number of automation records represented by this Leadping customer automation health.
     */
     private ?int $automationCount = null;
     
     /**
-     * @var int|null $enabledCount The enabledCount property
+     * @var int|null $enabledCount Total number of enabled records represented by this Leadping customer automation health.
     */
     private ?int $enabledCount = null;
     
     /**
-     * @var int|null $executions The executions property
+     * @var int|null $executions Number of executions represented by this Leadping customer automation health.
     */
     private ?int $executions = null;
     
     /**
-     * @var array<CustomerFailingAutomation>|null $failingAutomations The failingAutomations property
+     * @var array<CustomerFailingAutomation>|null $failingAutomations Collection of failing automations included with this Leadping customer automation health.
     */
     private ?array $failingAutomations = null;
     
     /**
-     * @var int|null $failureCount The failureCount property
+     * @var int|null $failureCount Total number of failure records represented by this Leadping customer automation health.
     */
     private ?int $failureCount = null;
     
     /**
-     * @var CustomerAutomationHealth_lastFailure|null $lastFailure The lastFailure property
+     * @var CustomerAutomationHealth_lastFailure|null $lastFailure Last failure associated with this Leadping customer automation health.
     */
     private ?CustomerAutomationHealth_lastFailure $lastFailure = null;
     
     /**
-     * @var int|null $successCount The successCount property
+     * @var int|null $successCount Total number of success records represented by this Leadping customer automation health.
     */
     private ?int $successCount = null;
     
@@ -74,7 +77,7 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the automationCount property value. The automationCount property
+     * Gets the automationCount property value. Total number of automation records represented by this Leadping customer automation health.
      * @return int|null
     */
     public function getAutomationCount(): ?int {
@@ -82,7 +85,7 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the enabledCount property value. The enabledCount property
+     * Gets the enabledCount property value. Total number of enabled records represented by this Leadping customer automation health.
      * @return int|null
     */
     public function getEnabledCount(): ?int {
@@ -90,7 +93,7 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the executions property value. The executions property
+     * Gets the executions property value. Number of executions represented by this Leadping customer automation health.
      * @return int|null
     */
     public function getExecutions(): ?int {
@@ -98,7 +101,7 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the failingAutomations property value. The failingAutomations property
+     * Gets the failingAutomations property value. Collection of failing automations included with this Leadping customer automation health.
      * @return array<CustomerFailingAutomation>|null
     */
     public function getFailingAutomations(): ?array {
@@ -106,7 +109,7 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the failureCount property value. The failureCount property
+     * Gets the failureCount property value. Total number of failure records represented by this Leadping customer automation health.
      * @return int|null
     */
     public function getFailureCount(): ?int {
@@ -131,7 +134,7 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lastFailure property value. The lastFailure property
+     * Gets the lastFailure property value. Last failure associated with this Leadping customer automation health.
      * @return CustomerAutomationHealth_lastFailure|null
     */
     public function getLastFailure(): ?CustomerAutomationHealth_lastFailure {
@@ -139,7 +142,7 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the successCount property value. The successCount property
+     * Gets the successCount property value. Total number of success records represented by this Leadping customer automation health.
      * @return int|null
     */
     public function getSuccessCount(): ?int {
@@ -170,7 +173,7 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the automationCount property value. The automationCount property
+     * Sets the automationCount property value. Total number of automation records represented by this Leadping customer automation health.
      * @param int|null $value Value to set for the automationCount property.
     */
     public function setAutomationCount(?int $value): void {
@@ -178,7 +181,7 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the enabledCount property value. The enabledCount property
+     * Sets the enabledCount property value. Total number of enabled records represented by this Leadping customer automation health.
      * @param int|null $value Value to set for the enabledCount property.
     */
     public function setEnabledCount(?int $value): void {
@@ -186,7 +189,7 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the executions property value. The executions property
+     * Sets the executions property value. Number of executions represented by this Leadping customer automation health.
      * @param int|null $value Value to set for the executions property.
     */
     public function setExecutions(?int $value): void {
@@ -194,7 +197,7 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the failingAutomations property value. The failingAutomations property
+     * Sets the failingAutomations property value. Collection of failing automations included with this Leadping customer automation health.
      * @param array<CustomerFailingAutomation>|null $value Value to set for the failingAutomations property.
     */
     public function setFailingAutomations(?array $value): void {
@@ -202,7 +205,7 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the failureCount property value. The failureCount property
+     * Sets the failureCount property value. Total number of failure records represented by this Leadping customer automation health.
      * @param int|null $value Value to set for the failureCount property.
     */
     public function setFailureCount(?int $value): void {
@@ -210,7 +213,7 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lastFailure property value. The lastFailure property
+     * Sets the lastFailure property value. Last failure associated with this Leadping customer automation health.
      * @param CustomerAutomationHealth_lastFailure|null $value Value to set for the lastFailure property.
     */
     public function setLastFailure(?CustomerAutomationHealth_lastFailure $value): void {
@@ -218,7 +221,7 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the successCount property value. The successCount property
+     * Sets the successCount property value. Total number of success records represented by this Leadping customer automation health.
      * @param int|null $value Value to set for the successCount property.
     */
     public function setSuccessCount(?int $value): void {

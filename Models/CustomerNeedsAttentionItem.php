@@ -10,12 +10,12 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class CustomerNeedsAttentionItem implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var string|null $actionHref The actionHref property
+     * @var string|null $actionHref Relative URL for the recommended follow-up action.
     */
     private ?string $actionHref = null;
     
     /**
-     * @var string|null $actionText The actionText property
+     * @var string|null $actionText Action text associated with this Leadping customer needs attention item.
     */
     private ?string $actionText = null;
     
@@ -25,17 +25,17 @@ class CustomerNeedsAttentionItem implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $detail The detail property
+     * @var string|null $detail Human-readable detail for this Leadping customer needs attention item.
     */
     private ?string $detail = null;
     
     /**
-     * @var string|null $severity The severity property
+     * @var string|null $severity Severity associated with this Leadping customer needs attention item.
     */
     private ?string $severity = null;
     
     /**
-     * @var string|null $title The title property
+     * @var string|null $title Human-readable title for this Leadping customer needs attention item.
     */
     private ?string $title = null;
     
@@ -56,7 +56,7 @@ class CustomerNeedsAttentionItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the actionHref property value. The actionHref property
+     * Gets the actionHref property value. Relative URL for the recommended follow-up action.
      * @return string|null
     */
     public function getActionHref(): ?string {
@@ -64,7 +64,7 @@ class CustomerNeedsAttentionItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the actionText property value. The actionText property
+     * Gets the actionText property value. Action text associated with this Leadping customer needs attention item.
      * @return string|null
     */
     public function getActionText(): ?string {
@@ -80,7 +80,7 @@ class CustomerNeedsAttentionItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the detail property value. The detail property
+     * Gets the detail property value. Human-readable detail for this Leadping customer needs attention item.
      * @return string|null
     */
     public function getDetail(): ?string {
@@ -103,7 +103,7 @@ class CustomerNeedsAttentionItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the severity property value. The severity property
+     * Gets the severity property value. Severity associated with this Leadping customer needs attention item.
      * @return string|null
     */
     public function getSeverity(): ?string {
@@ -111,7 +111,7 @@ class CustomerNeedsAttentionItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the title property value. The title property
+     * Gets the title property value. Human-readable title for this Leadping customer needs attention item.
      * @return string|null
     */
     public function getTitle(): ?string {
@@ -132,7 +132,7 @@ class CustomerNeedsAttentionItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the actionHref property value. The actionHref property
+     * Sets the actionHref property value. Relative URL for the recommended follow-up action.
      * @param string|null $value Value to set for the actionHref property.
     */
     public function setActionHref(?string $value): void {
@@ -140,7 +140,7 @@ class CustomerNeedsAttentionItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the actionText property value. The actionText property
+     * Sets the actionText property value. Action text associated with this Leadping customer needs attention item.
      * @param string|null $value Value to set for the actionText property.
     */
     public function setActionText(?string $value): void {
@@ -156,7 +156,7 @@ class CustomerNeedsAttentionItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the detail property value. The detail property
+     * Sets the detail property value. Human-readable detail for this Leadping customer needs attention item.
      * @param string|null $value Value to set for the detail property.
     */
     public function setDetail(?string $value): void {
@@ -164,7 +164,7 @@ class CustomerNeedsAttentionItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the severity property value. The severity property
+     * Sets the severity property value. Severity associated with this Leadping customer needs attention item.
      * @param string|null $value Value to set for the severity property.
     */
     public function setSeverity(?string $value): void {
@@ -172,7 +172,7 @@ class CustomerNeedsAttentionItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the title property value. The title property
+     * Sets the title property value. Human-readable title for this Leadping customer needs attention item.
      * @param string|null $value Value to set for the title property.
     */
     public function setTitle(?string $value): void {

@@ -44,17 +44,17 @@ class DispositionExportRow implements AdditionalDataHolder, Parsable
     private ?DispositionExportRow_category $category = null;
     
     /**
-     * @var DateTime|null $changedAt The changedAt property
+     * @var DateTime|null $changedAt Date and time when the disposition change occurred.
     */
     private ?DateTime $changedAt = null;
     
     /**
-     * @var string|null $changedByAutomationId The changedByAutomationId property
+     * @var string|null $changedByAutomationId Unique identifier of the automation that changed the disposition, when applicable.
     */
     private ?string $changedByAutomationId = null;
     
     /**
-     * @var string|null $changedByUserId The changedByUserId property
+     * @var string|null $changedByUserId Unique identifier of the Leadping user who made the change.
     */
     private ?string $changedByUserId = null;
     
@@ -89,7 +89,7 @@ class DispositionExportRow implements AdditionalDataHolder, Parsable
     private ?string $leadId = null;
     
     /**
-     * @var string|null $newDispositionId The newDispositionId property
+     * @var string|null $newDispositionId Unique identifier of the new disposition associated with this Leadping disposition export row.
     */
     private ?string $newDispositionId = null;
     
@@ -99,17 +99,17 @@ class DispositionExportRow implements AdditionalDataHolder, Parsable
     private ?string $notes = null;
     
     /**
-     * @var string|null $oldDispositionId The oldDispositionId property
+     * @var string|null $oldDispositionId Unique identifier of the old disposition associated with this Leadping disposition export row.
     */
     private ?string $oldDispositionId = null;
     
     /**
-     * @var string|null $oldDispositionOutcome The oldDispositionOutcome property
+     * @var string|null $oldDispositionOutcome Old disposition outcome associated with this Leadping disposition export row.
     */
     private ?string $oldDispositionOutcome = null;
     
     /**
-     * @var string|null $oldDispositionType The oldDispositionType property
+     * @var string|null $oldDispositionType Old disposition type classification for this Leadping disposition export row.
     */
     private ?string $oldDispositionType = null;
     
@@ -119,7 +119,7 @@ class DispositionExportRow implements AdditionalDataHolder, Parsable
     private ?string $outcome = null;
     
     /**
-     * @var string|null $reason The reason property
+     * @var string|null $reason Human-readable explanation for the current disposition export row outcome.
     */
     private ?string $reason = null;
     
@@ -213,7 +213,7 @@ class DispositionExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the changedAt property value. The changedAt property
+     * Gets the changedAt property value. Date and time when the disposition change occurred.
      * @return DateTime|null
     */
     public function getChangedAt(): ?DateTime {
@@ -221,7 +221,7 @@ class DispositionExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the changedByAutomationId property value. The changedByAutomationId property
+     * Gets the changedByAutomationId property value. Unique identifier of the automation that changed the disposition, when applicable.
      * @return string|null
     */
     public function getChangedByAutomationId(): ?string {
@@ -229,7 +229,7 @@ class DispositionExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the changedByUserId property value. The changedByUserId property
+     * Gets the changedByUserId property value. Unique identifier of the Leadping user who made the change.
      * @return string|null
     */
     public function getChangedByUserId(): ?string {
@@ -321,7 +321,7 @@ class DispositionExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the newDispositionId property value. The newDispositionId property
+     * Gets the newDispositionId property value. Unique identifier of the new disposition associated with this Leadping disposition export row.
      * @return string|null
     */
     public function getNewDispositionId(): ?string {
@@ -337,7 +337,7 @@ class DispositionExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the oldDispositionId property value. The oldDispositionId property
+     * Gets the oldDispositionId property value. Unique identifier of the old disposition associated with this Leadping disposition export row.
      * @return string|null
     */
     public function getOldDispositionId(): ?string {
@@ -345,7 +345,7 @@ class DispositionExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the oldDispositionOutcome property value. The oldDispositionOutcome property
+     * Gets the oldDispositionOutcome property value. Old disposition outcome associated with this Leadping disposition export row.
      * @return string|null
     */
     public function getOldDispositionOutcome(): ?string {
@@ -353,7 +353,7 @@ class DispositionExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the oldDispositionType property value. The oldDispositionType property
+     * Gets the oldDispositionType property value. Old disposition type classification for this Leadping disposition export row.
      * @return string|null
     */
     public function getOldDispositionType(): ?string {
@@ -369,7 +369,7 @@ class DispositionExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the reason property value. The reason property
+     * Gets the reason property value. Human-readable explanation for the current disposition export row outcome.
      * @return string|null
     */
     public function getReason(): ?string {
@@ -499,7 +499,7 @@ class DispositionExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the changedAt property value. The changedAt property
+     * Sets the changedAt property value. Date and time when the disposition change occurred.
      * @param DateTime|null $value Value to set for the changedAt property.
     */
     public function setChangedAt(?DateTime $value): void {
@@ -507,7 +507,7 @@ class DispositionExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the changedByAutomationId property value. The changedByAutomationId property
+     * Sets the changedByAutomationId property value. Unique identifier of the automation that changed the disposition, when applicable.
      * @param string|null $value Value to set for the changedByAutomationId property.
     */
     public function setChangedByAutomationId(?string $value): void {
@@ -515,7 +515,7 @@ class DispositionExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the changedByUserId property value. The changedByUserId property
+     * Sets the changedByUserId property value. Unique identifier of the Leadping user who made the change.
      * @param string|null $value Value to set for the changedByUserId property.
     */
     public function setChangedByUserId(?string $value): void {
@@ -571,7 +571,7 @@ class DispositionExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the newDispositionId property value. The newDispositionId property
+     * Sets the newDispositionId property value. Unique identifier of the new disposition associated with this Leadping disposition export row.
      * @param string|null $value Value to set for the newDispositionId property.
     */
     public function setNewDispositionId(?string $value): void {
@@ -587,7 +587,7 @@ class DispositionExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the oldDispositionId property value. The oldDispositionId property
+     * Sets the oldDispositionId property value. Unique identifier of the old disposition associated with this Leadping disposition export row.
      * @param string|null $value Value to set for the oldDispositionId property.
     */
     public function setOldDispositionId(?string $value): void {
@@ -595,7 +595,7 @@ class DispositionExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the oldDispositionOutcome property value. The oldDispositionOutcome property
+     * Sets the oldDispositionOutcome property value. Old disposition outcome associated with this Leadping disposition export row.
      * @param string|null $value Value to set for the oldDispositionOutcome property.
     */
     public function setOldDispositionOutcome(?string $value): void {
@@ -603,7 +603,7 @@ class DispositionExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the oldDispositionType property value. The oldDispositionType property
+     * Sets the oldDispositionType property value. Old disposition type classification for this Leadping disposition export row.
      * @param string|null $value Value to set for the oldDispositionType property.
     */
     public function setOldDispositionType(?string $value): void {
@@ -619,7 +619,7 @@ class DispositionExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the reason property value. The reason property
+     * Sets the reason property value. Human-readable explanation for the current disposition export row outcome.
      * @param string|null $value Value to set for the reason property.
     */
     public function setReason(?string $value): void {

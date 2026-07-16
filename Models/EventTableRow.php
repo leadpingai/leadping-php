@@ -124,11 +124,6 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * @var bool|null $isWarmup Indicates whether this event timeline table row is part of Leadping sender warmup traffic.
-    */
-    private ?bool $isWarmup = null;
-    
-    /**
      * @var string|null $leadId Lead ID associated with this timeline event.
     */
     private ?string $leadId = null;
@@ -142,11 +137,6 @@ class EventTableRow implements AdditionalDataHolder, Parsable
      * @var string|null $outboundPhoneNumberId Phone number ID selected for outbound delivery.
     */
     private ?string $outboundPhoneNumberId = null;
-    
-    /**
-     * @var string|null $providerMessageId Provider message identifier for SMS delivery tracking and reconciliation.
-    */
-    private ?string $providerMessageId = null;
     
     /**
      * @var DateTime|null $queuedAt UTC timestamp when Leadping queued this event timeline table row for processing.
@@ -217,16 +207,6 @@ class EventTableRow implements AdditionalDataHolder, Parsable
      * @var string|null $summary Short human-readable summary of this event timeline table row for lists, timelines, and notifications.
     */
     private ?string $summary = null;
-    
-    /**
-     * @var string|null $telnyxId Telnyx identifier connected to this phone number, call, or SMS event.
-    */
-    private ?string $telnyxId = null;
-    
-    /**
-     * @var string|null $tenDlcCampaignId 10DLC campaign identifier associated with this sender or SMS event.
-    */
-    private ?string $tenDlcCampaignId = null;
     
     /**
      * @var string|null $timelineCategory Timeline category used to group events for display and filtering.
@@ -454,11 +434,9 @@ class EventTableRow implements AdditionalDataHolder, Parsable
             'fromPhoneNumber' => fn(ParseNode $n) => $o->setFromPhoneNumber($n->getStringValue()),
             'fromPhoneNumberId' => fn(ParseNode $n) => $o->setFromPhoneNumberId($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
-            'isWarmup' => fn(ParseNode $n) => $o->setIsWarmup($n->getBooleanValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
             'nextRetryAt' => fn(ParseNode $n) => $o->setNextRetryAt($n->getDateTimeValue()),
             'outboundPhoneNumberId' => fn(ParseNode $n) => $o->setOutboundPhoneNumberId($n->getStringValue()),
-            'providerMessageId' => fn(ParseNode $n) => $o->setProviderMessageId($n->getStringValue()),
             'queuedAt' => fn(ParseNode $n) => $o->setQueuedAt($n->getDateTimeValue()),
             'receivedAt' => fn(ParseNode $n) => $o->setReceivedAt($n->getDateTimeValue()),
             'relatedEntityId' => fn(ParseNode $n) => $o->setRelatedEntityId($n->getStringValue()),
@@ -473,8 +451,6 @@ class EventTableRow implements AdditionalDataHolder, Parsable
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(EventTableRow_status::class)),
             'statusReason' => fn(ParseNode $n) => $o->setStatusReason($n->getStringValue()),
             'summary' => fn(ParseNode $n) => $o->setSummary($n->getStringValue()),
-            'telnyxId' => fn(ParseNode $n) => $o->setTelnyxId($n->getStringValue()),
-            'tenDlcCampaignId' => fn(ParseNode $n) => $o->setTenDlcCampaignId($n->getStringValue()),
             'timelineCategory' => fn(ParseNode $n) => $o->setTimelineCategory($n->getStringValue()),
             'timelineType' => fn(ParseNode $n) => $o->setTimelineType($n->getEnumValue(EventTimelineType::class)),
             'toPhoneNumber' => fn(ParseNode $n) => $o->setToPhoneNumber($n->getStringValue()),
@@ -509,14 +485,6 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the isWarmup property value. Indicates whether this event timeline table row is part of Leadping sender warmup traffic.
-     * @return bool|null
-    */
-    public function getIsWarmup(): ?bool {
-        return $this->isWarmup;
-    }
-
-    /**
      * Gets the leadId property value. Lead ID associated with this timeline event.
      * @return string|null
     */
@@ -538,14 +506,6 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function getOutboundPhoneNumberId(): ?string {
         return $this->outboundPhoneNumberId;
-    }
-
-    /**
-     * Gets the providerMessageId property value. Provider message identifier for SMS delivery tracking and reconciliation.
-     * @return string|null
-    */
-    public function getProviderMessageId(): ?string {
-        return $this->providerMessageId;
     }
 
     /**
@@ -661,22 +621,6 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the telnyxId property value. Telnyx identifier connected to this phone number, call, or SMS event.
-     * @return string|null
-    */
-    public function getTelnyxId(): ?string {
-        return $this->telnyxId;
-    }
-
-    /**
-     * Gets the tenDlcCampaignId property value. 10DLC campaign identifier associated with this sender or SMS event.
-     * @return string|null
-    */
-    public function getTenDlcCampaignId(): ?string {
-        return $this->tenDlcCampaignId;
-    }
-
-    /**
      * Gets the timelineCategory property value. Timeline category used to group events for display and filtering.
      * @return string|null
     */
@@ -750,11 +694,9 @@ class EventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('fromPhoneNumber', $this->getFromPhoneNumber());
         $writer->writeStringValue('fromPhoneNumberId', $this->getFromPhoneNumberId());
         $writer->writeStringValue('id', $this->getId());
-        $writer->writeBooleanValue('isWarmup', $this->getIsWarmup());
         $writer->writeStringValue('leadId', $this->getLeadId());
         $writer->writeDateTimeValue('nextRetryAt', $this->getNextRetryAt());
         $writer->writeStringValue('outboundPhoneNumberId', $this->getOutboundPhoneNumberId());
-        $writer->writeStringValue('providerMessageId', $this->getProviderMessageId());
         $writer->writeDateTimeValue('queuedAt', $this->getQueuedAt());
         $writer->writeDateTimeValue('receivedAt', $this->getReceivedAt());
         $writer->writeStringValue('relatedEntityId', $this->getRelatedEntityId());
@@ -769,8 +711,6 @@ class EventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeEnumValue('status', $this->getStatus());
         $writer->writeStringValue('statusReason', $this->getStatusReason());
         $writer->writeStringValue('summary', $this->getSummary());
-        $writer->writeStringValue('telnyxId', $this->getTelnyxId());
-        $writer->writeStringValue('tenDlcCampaignId', $this->getTenDlcCampaignId());
         $writer->writeStringValue('timelineCategory', $this->getTimelineCategory());
         $writer->writeEnumValue('timelineType', $this->getTimelineType());
         $writer->writeStringValue('toPhoneNumber', $this->getToPhoneNumber());
@@ -957,14 +897,6 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the isWarmup property value. Indicates whether this event timeline table row is part of Leadping sender warmup traffic.
-     * @param bool|null $value Value to set for the isWarmup property.
-    */
-    public function setIsWarmup(?bool $value): void {
-        $this->isWarmup = $value;
-    }
-
-    /**
      * Sets the leadId property value. Lead ID associated with this timeline event.
      * @param string|null $value Value to set for the leadId property.
     */
@@ -986,14 +918,6 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setOutboundPhoneNumberId(?string $value): void {
         $this->outboundPhoneNumberId = $value;
-    }
-
-    /**
-     * Sets the providerMessageId property value. Provider message identifier for SMS delivery tracking and reconciliation.
-     * @param string|null $value Value to set for the providerMessageId property.
-    */
-    public function setProviderMessageId(?string $value): void {
-        $this->providerMessageId = $value;
     }
 
     /**
@@ -1106,22 +1030,6 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setSummary(?string $value): void {
         $this->summary = $value;
-    }
-
-    /**
-     * Sets the telnyxId property value. Telnyx identifier connected to this phone number, call, or SMS event.
-     * @param string|null $value Value to set for the telnyxId property.
-    */
-    public function setTelnyxId(?string $value): void {
-        $this->telnyxId = $value;
-    }
-
-    /**
-     * Sets the tenDlcCampaignId property value. 10DLC campaign identifier associated with this sender or SMS event.
-     * @param string|null $value Value to set for the tenDlcCampaignId property.
-    */
-    public function setTenDlcCampaignId(?string $value): void {
-        $this->tenDlcCampaignId = $value;
     }
 
     /**

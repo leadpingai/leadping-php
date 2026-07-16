@@ -33,16 +33,6 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     private ?float $customerChargeAmount = null;
     
     /**
-     * @var float|null $internalCostAmount The monetary internal cost amount for this usage summary line.
-    */
-    private ?float $internalCostAmount = null;
-    
-    /**
-     * @var float|null $providerCostAmount The monetary provider cost amount for this usage summary line.
-    */
-    private ?float $providerCostAmount = null;
-    
-    /**
      * @var float|null $quantity The quantity value for this usage summary line.
     */
     private ?float $quantity = null;
@@ -115,28 +105,10 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
             'billableUnit' => fn(ParseNode $n) => $o->setBillableUnit($n->getEnumValue(BillableUnit::class)),
             'channel' => fn(ParseNode $n) => $o->setChannel($n->getEnumValue(UsageChannel::class)),
             'customerChargeAmount' => fn(ParseNode $n) => $o->setCustomerChargeAmount($n->getFloatValue()),
-            'internalCostAmount' => fn(ParseNode $n) => $o->setInternalCostAmount($n->getFloatValue()),
-            'providerCostAmount' => fn(ParseNode $n) => $o->setProviderCostAmount($n->getFloatValue()),
             'quantity' => fn(ParseNode $n) => $o->setQuantity($n->getFloatValue()),
             'recordCount' => fn(ParseNode $n) => $o->setRecordCount($n->getIntegerValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(UsageRecordStatus::class)),
         ];
-    }
-
-    /**
-     * Gets the internalCostAmount property value. The monetary internal cost amount for this usage summary line.
-     * @return float|null
-    */
-    public function getInternalCostAmount(): ?float {
-        return $this->internalCostAmount;
-    }
-
-    /**
-     * Gets the providerCostAmount property value. The monetary provider cost amount for this usage summary line.
-     * @return float|null
-    */
-    public function getProviderCostAmount(): ?float {
-        return $this->providerCostAmount;
     }
 
     /**
@@ -171,8 +143,6 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
         $writer->writeEnumValue('billableUnit', $this->getBillableUnit());
         $writer->writeEnumValue('channel', $this->getChannel());
         $writer->writeFloatValue('customerChargeAmount', $this->getCustomerChargeAmount());
-        $writer->writeFloatValue('internalCostAmount', $this->getInternalCostAmount());
-        $writer->writeFloatValue('providerCostAmount', $this->getProviderCostAmount());
         $writer->writeFloatValue('quantity', $this->getQuantity());
         $writer->writeIntegerValue('recordCount', $this->getRecordCount());
         $writer->writeEnumValue('status', $this->getStatus());
@@ -209,22 +179,6 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     */
     public function setCustomerChargeAmount(?float $value): void {
         $this->customerChargeAmount = $value;
-    }
-
-    /**
-     * Sets the internalCostAmount property value. The monetary internal cost amount for this usage summary line.
-     * @param float|null $value Value to set for the internalCostAmount property.
-    */
-    public function setInternalCostAmount(?float $value): void {
-        $this->internalCostAmount = $value;
-    }
-
-    /**
-     * Sets the providerCostAmount property value. The monetary provider cost amount for this usage summary line.
-     * @param float|null $value Value to set for the providerCostAmount property.
-    */
-    public function setProviderCostAmount(?float $value): void {
-        $this->providerCostAmount = $value;
     }
 
     /**

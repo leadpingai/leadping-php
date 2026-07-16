@@ -13,11 +13,6 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class BusinessRequest implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var BusinessRequest_activation|null $activation Business activation state covering site, billing, compliance, and telephony readiness.
-    */
-    private ?BusinessRequest_activation $activation = null;
-    
-    /**
      * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     */
     private ?array $additionalData = null;
@@ -26,11 +21,6 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
      * @var BusinessRequest_address|null $address Postal address for the business, lead, or contact represented by this business profile request.
     */
     private ?BusinessRequest_address $address = null;
-    
-    /**
-     * @var BusinessRequest_adminEnablementOverride|null $adminEnablementOverride Admin override that can enable or disable this record independently of normal status checks.
-    */
-    private ?BusinessRequest_adminEnablementOverride $adminEnablementOverride = null;
     
     /**
      * @var bool|null $autoRefillEnabled Indicates whether automatic wallet refill is enabled for the business.
@@ -46,11 +36,6 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
      * @var string|null $billingName Name used for invoices, receipts, and payment processor billing records.
     */
     private ?string $billingName = null;
-    
-    /**
-     * @var BusinessRequest_billingPlan|null $billingPlan Defines the supported Billing Plan values.
-    */
-    private ?BusinessRequest_billingPlan $billingPlan = null;
     
     /**
      * @var BusinessRequest_compliancePolicy|null $compliancePolicy Compliance policy configuration for the business.
@@ -108,24 +93,9 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
     private ?string $secondaryName = null;
     
     /**
-     * @var BusinessRequest_setupStep|null $setupStep Defines the supported Business Setup Step values.
-    */
-    private ?BusinessRequest_setupStep $setupStep = null;
-    
-    /**
      * @var BusinessRequest_status|null $status Defines the supported Business Status values.
     */
     private ?BusinessRequest_status $status = null;
-    
-    /**
-     * @var BusinessRequest_stripeInfo|null $stripeInfo Stripe customer and subscription state associated with this business or user.
-    */
-    private ?BusinessRequest_stripeInfo $stripeInfo = null;
-    
-    /**
-     * @var BusinessRequest_subscriptionStatus|null $subscriptionStatus Defines the supported Subscription Status values.
-    */
-    private ?BusinessRequest_subscriptionStatus $subscriptionStatus = null;
     
     /**
      * @var string|null $vertical Industry vertical used for lead routing, compliance review, and reporting.
@@ -154,14 +124,6 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the activation property value. Business activation state covering site, billing, compliance, and telephony readiness.
-     * @return BusinessRequest_activation|null
-    */
-    public function getActivation(): ?BusinessRequest_activation {
-        return $this->activation;
-    }
-
-    /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>|null
     */
@@ -175,14 +137,6 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
     */
     public function getAddress(): ?BusinessRequest_address {
         return $this->address;
-    }
-
-    /**
-     * Gets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-     * @return BusinessRequest_adminEnablementOverride|null
-    */
-    public function getAdminEnablementOverride(): ?BusinessRequest_adminEnablementOverride {
-        return $this->adminEnablementOverride;
     }
 
     /**
@@ -207,14 +161,6 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
     */
     public function getBillingName(): ?string {
         return $this->billingName;
-    }
-
-    /**
-     * Gets the billingPlan property value. Defines the supported Billing Plan values.
-     * @return BusinessRequest_billingPlan|null
-    */
-    public function getBillingPlan(): ?BusinessRequest_billingPlan {
-        return $this->billingPlan;
     }
 
     /**
@@ -264,13 +210,10 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'activation' => fn(ParseNode $n) => $o->setActivation($n->getObjectValue([BusinessRequest_activation::class, 'createFromDiscriminatorValue'])),
             'address' => fn(ParseNode $n) => $o->setAddress($n->getObjectValue([BusinessRequest_address::class, 'createFromDiscriminatorValue'])),
-            'adminEnablementOverride' => fn(ParseNode $n) => $o->setAdminEnablementOverride($n->getObjectValue([BusinessRequest_adminEnablementOverride::class, 'createFromDiscriminatorValue'])),
             'autoRefillEnabled' => fn(ParseNode $n) => $o->setAutoRefillEnabled($n->getBooleanValue()),
             'billingAddress' => fn(ParseNode $n) => $o->setBillingAddress($n->getObjectValue([BusinessRequest_billingAddress::class, 'createFromDiscriminatorValue'])),
             'billingName' => fn(ParseNode $n) => $o->setBillingName($n->getStringValue()),
-            'billingPlan' => fn(ParseNode $n) => $o->setBillingPlan($n->getEnumValue(BusinessRequest_billingPlan::class)),
             'compliancePolicy' => fn(ParseNode $n) => $o->setCompliancePolicy($n->getObjectValue([BusinessRequest_compliancePolicy::class, 'createFromDiscriminatorValue'])),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'ein' => fn(ParseNode $n) => $o->setEin($n->getStringValue()),
@@ -282,10 +225,7 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
             'phone' => fn(ParseNode $n) => $o->setPhone($n->getStringValue()),
             'phones' => fn(ParseNode $n) => $o->setPhones($n->getCollectionOfObjectValues([IdNameValue::class, 'createFromDiscriminatorValue'])),
             'secondaryName' => fn(ParseNode $n) => $o->setSecondaryName($n->getStringValue()),
-            'setupStep' => fn(ParseNode $n) => $o->setSetupStep($n->getEnumValue(BusinessRequest_setupStep::class)),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(BusinessRequest_status::class)),
-            'stripeInfo' => fn(ParseNode $n) => $o->setStripeInfo($n->getObjectValue([BusinessRequest_stripeInfo::class, 'createFromDiscriminatorValue'])),
-            'subscriptionStatus' => fn(ParseNode $n) => $o->setSubscriptionStatus($n->getEnumValue(BusinessRequest_subscriptionStatus::class)),
             'vertical' => fn(ParseNode $n) => $o->setVertical($n->getStringValue()),
             'website' => fn(ParseNode $n) => $o->setWebsite($n->getStringValue()),
         ];
@@ -340,35 +280,11 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the setupStep property value. Defines the supported Business Setup Step values.
-     * @return BusinessRequest_setupStep|null
-    */
-    public function getSetupStep(): ?BusinessRequest_setupStep {
-        return $this->setupStep;
-    }
-
-    /**
      * Gets the status property value. Defines the supported Business Status values.
      * @return BusinessRequest_status|null
     */
     public function getStatus(): ?BusinessRequest_status {
         return $this->status;
-    }
-
-    /**
-     * Gets the stripeInfo property value. Stripe customer and subscription state associated with this business or user.
-     * @return BusinessRequest_stripeInfo|null
-    */
-    public function getStripeInfo(): ?BusinessRequest_stripeInfo {
-        return $this->stripeInfo;
-    }
-
-    /**
-     * Gets the subscriptionStatus property value. Defines the supported Subscription Status values.
-     * @return BusinessRequest_subscriptionStatus|null
-    */
-    public function getSubscriptionStatus(): ?BusinessRequest_subscriptionStatus {
-        return $this->subscriptionStatus;
     }
 
     /**
@@ -392,13 +308,10 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeObjectValue('activation', $this->getActivation());
         $writer->writeObjectValue('address', $this->getAddress());
-        $writer->writeObjectValue('adminEnablementOverride', $this->getAdminEnablementOverride());
         $writer->writeBooleanValue('autoRefillEnabled', $this->getAutoRefillEnabled());
         $writer->writeObjectValue('billingAddress', $this->getBillingAddress());
         $writer->writeStringValue('billingName', $this->getBillingName());
-        $writer->writeEnumValue('billingPlan', $this->getBillingPlan());
         $writer->writeObjectValue('compliancePolicy', $this->getCompliancePolicy());
         $writer->writeStringValue('description', $this->getDescription());
         $writer->writeStringValue('ein', $this->getEin());
@@ -410,21 +323,10 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('phone', $this->getPhone());
         $writer->writeCollectionOfObjectValues('phones', $this->getPhones());
         $writer->writeStringValue('secondaryName', $this->getSecondaryName());
-        $writer->writeEnumValue('setupStep', $this->getSetupStep());
         $writer->writeEnumValue('status', $this->getStatus());
-        $writer->writeObjectValue('stripeInfo', $this->getStripeInfo());
-        $writer->writeEnumValue('subscriptionStatus', $this->getSubscriptionStatus());
         $writer->writeStringValue('vertical', $this->getVertical());
         $writer->writeStringValue('website', $this->getWebsite());
         $writer->writeAdditionalData($this->getAdditionalData());
-    }
-
-    /**
-     * Sets the activation property value. Business activation state covering site, billing, compliance, and telephony readiness.
-     * @param BusinessRequest_activation|null $value Value to set for the activation property.
-    */
-    public function setActivation(?BusinessRequest_activation $value): void {
-        $this->activation = $value;
     }
 
     /**
@@ -441,14 +343,6 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
     */
     public function setAddress(?BusinessRequest_address $value): void {
         $this->address = $value;
-    }
-
-    /**
-     * Sets the adminEnablementOverride property value. Admin override that can enable or disable this record independently of normal status checks.
-     * @param BusinessRequest_adminEnablementOverride|null $value Value to set for the adminEnablementOverride property.
-    */
-    public function setAdminEnablementOverride(?BusinessRequest_adminEnablementOverride $value): void {
-        $this->adminEnablementOverride = $value;
     }
 
     /**
@@ -473,14 +367,6 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
     */
     public function setBillingName(?string $value): void {
         $this->billingName = $value;
-    }
-
-    /**
-     * Sets the billingPlan property value. Defines the supported Billing Plan values.
-     * @param BusinessRequest_billingPlan|null $value Value to set for the billingPlan property.
-    */
-    public function setBillingPlan(?BusinessRequest_billingPlan $value): void {
-        $this->billingPlan = $value;
     }
 
     /**
@@ -572,35 +458,11 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the setupStep property value. Defines the supported Business Setup Step values.
-     * @param BusinessRequest_setupStep|null $value Value to set for the setupStep property.
-    */
-    public function setSetupStep(?BusinessRequest_setupStep $value): void {
-        $this->setupStep = $value;
-    }
-
-    /**
      * Sets the status property value. Defines the supported Business Status values.
      * @param BusinessRequest_status|null $value Value to set for the status property.
     */
     public function setStatus(?BusinessRequest_status $value): void {
         $this->status = $value;
-    }
-
-    /**
-     * Sets the stripeInfo property value. Stripe customer and subscription state associated with this business or user.
-     * @param BusinessRequest_stripeInfo|null $value Value to set for the stripeInfo property.
-    */
-    public function setStripeInfo(?BusinessRequest_stripeInfo $value): void {
-        $this->stripeInfo = $value;
-    }
-
-    /**
-     * Sets the subscriptionStatus property value. Defines the supported Subscription Status values.
-     * @param BusinessRequest_subscriptionStatus|null $value Value to set for the subscriptionStatus property.
-    */
-    public function setSubscriptionStatus(?BusinessRequest_subscriptionStatus $value): void {
-        $this->subscriptionStatus = $value;
     }
 
     /**
