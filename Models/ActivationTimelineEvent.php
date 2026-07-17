@@ -14,9 +14,9 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class ActivationTimelineEvent implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var string|null $actorName The actor name value for this activation timeline event.
+     * @var ActivationTimelineEvent_actor|null $actor The ID and name for this actor.
     */
-    private ?string $actorName = null;
+    private ?ActivationTimelineEvent_actor $actor = null;
     
     /**
      * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -75,11 +75,11 @@ class ActivationTimelineEvent implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the actorName property value. The actor name value for this activation timeline event.
-     * @return string|null
+     * Gets the actor property value. The ID and name for this actor.
+     * @return ActivationTimelineEvent_actor|null
     */
-    public function getActorName(): ?string {
-        return $this->actorName;
+    public function getActor(): ?ActivationTimelineEvent_actor {
+        return $this->actor;
     }
 
     /**
@@ -121,7 +121,7 @@ class ActivationTimelineEvent implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'actorName' => fn(ParseNode $n) => $o->setActorName($n->getStringValue()),
+            'actor' => fn(ParseNode $n) => $o->setActor($n->getObjectValue([ActivationTimelineEvent_actor::class, 'createFromDiscriminatorValue'])),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'details' => fn(ParseNode $n) => $o->setDetails($n->getStringValue()),
             'failureReason' => fn(ParseNode $n) => $o->setFailureReason($n->getStringValue()),
@@ -169,7 +169,7 @@ class ActivationTimelineEvent implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeStringValue('actorName', $this->getActorName());
+        $writer->writeObjectValue('actor', $this->getActor());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('details', $this->getDetails());
         $writer->writeStringValue('failureReason', $this->getFailureReason());
@@ -181,11 +181,11 @@ class ActivationTimelineEvent implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the actorName property value. The actor name value for this activation timeline event.
-     * @param string|null $value Value to set for the actorName property.
+     * Sets the actor property value. The ID and name for this actor.
+     * @param ActivationTimelineEvent_actor|null $value Value to set for the actor property.
     */
-    public function setActorName(?string $value): void {
-        $this->actorName = $value;
+    public function setActor(?ActivationTimelineEvent_actor $value): void {
+        $this->actor = $value;
     }
 
     /**

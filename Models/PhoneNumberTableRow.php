@@ -38,11 +38,6 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * @var string|null $location Geographic location metadata for the phone number, lead, or lookup result.
-    */
-    private ?string $location = null;
-    
-    /**
      * @var string|null $name Display name for this phone number table row in the Leadping API.
     */
     private ?string $name = null;
@@ -146,7 +141,6 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
             'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
-            'location' => fn(ParseNode $n) => $o->setLocation($n->getStringValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'number' => fn(ParseNode $n) => $o->setNumber($n->getStringValue()),
             'ownership' => fn(ParseNode $n) => $o->setOwnership($n->getStringValue()),
@@ -165,14 +159,6 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     */
     public function getId(): ?string {
         return $this->id;
-    }
-
-    /**
-     * Gets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
-     * @return string|null
-    */
-    public function getLocation(): ?string {
-        return $this->location;
     }
 
     /**
@@ -256,7 +242,6 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeStringValue('id', $this->getId());
-        $writer->writeStringValue('location', $this->getLocation());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeStringValue('number', $this->getNumber());
         $writer->writeStringValue('ownership', $this->getOwnership());
@@ -307,14 +292,6 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     */
     public function setId(?string $value): void {
         $this->id = $value;
-    }
-
-    /**
-     * Sets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
-     * @param string|null $value Value to set for the location property.
-    */
-    public function setLocation(?string $value): void {
-        $this->location = $value;
     }
 
     /**

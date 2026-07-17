@@ -44,19 +44,14 @@ class BusinessUserTableRow implements AdditionalDataHolder, Parsable
     private ?BusinessUserRole $role = null;
     
     /**
+     * @var IdNamePair|null $user The ID and name for this user.
+    */
+    private ?IdNamePair $user = null;
+    
+    /**
      * @var string|null $userEmail The user email value for this business user.
     */
     private ?string $userEmail = null;
-    
-    /**
-     * @var string|null $userId The user ID associated with this business user.
-    */
-    private ?string $userId = null;
-    
-    /**
-     * @var string|null $userName The user name value for this business user.
-    */
-    private ?string $userName = null;
     
     /**
      * Instantiates a new BusinessUserTableRow and sets the default values.
@@ -102,9 +97,8 @@ class BusinessUserTableRow implements AdditionalDataHolder, Parsable
             'licenseBillingStatus' => fn(ParseNode $n) => $o->setLicenseBillingStatus($n->getStringValue()),
             'licenseRenewalDate' => fn(ParseNode $n) => $o->setLicenseRenewalDate($n->getDateTimeValue()),
             'role' => fn(ParseNode $n) => $o->setRole($n->getEnumValue(BusinessUserRole::class)),
+            'user' => fn(ParseNode $n) => $o->setUser($n->getObjectValue([IdNamePair::class, 'createFromDiscriminatorValue'])),
             'userEmail' => fn(ParseNode $n) => $o->setUserEmail($n->getStringValue()),
-            'userId' => fn(ParseNode $n) => $o->setUserId($n->getStringValue()),
-            'userName' => fn(ParseNode $n) => $o->setUserName($n->getStringValue()),
         ];
     }
 
@@ -141,27 +135,19 @@ class BusinessUserTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the user property value. The ID and name for this user.
+     * @return IdNamePair|null
+    */
+    public function getUser(): ?IdNamePair {
+        return $this->user;
+    }
+
+    /**
      * Gets the userEmail property value. The user email value for this business user.
      * @return string|null
     */
     public function getUserEmail(): ?string {
         return $this->userEmail;
-    }
-
-    /**
-     * Gets the userId property value. The user ID associated with this business user.
-     * @return string|null
-    */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * Gets the userName property value. The user name value for this business user.
-     * @return string|null
-    */
-    public function getUserName(): ?string {
-        return $this->userName;
     }
 
     /**
@@ -174,9 +160,8 @@ class BusinessUserTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('licenseBillingStatus', $this->getLicenseBillingStatus());
         $writer->writeDateTimeValue('licenseRenewalDate', $this->getLicenseRenewalDate());
         $writer->writeEnumValue('role', $this->getRole());
+        $writer->writeObjectValue('user', $this->getUser());
         $writer->writeStringValue('userEmail', $this->getUserEmail());
-        $writer->writeStringValue('userId', $this->getUserId());
-        $writer->writeStringValue('userName', $this->getUserName());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -229,27 +214,19 @@ class BusinessUserTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the user property value. The ID and name for this user.
+     * @param IdNamePair|null $value Value to set for the user property.
+    */
+    public function setUser(?IdNamePair $value): void {
+        $this->user = $value;
+    }
+
+    /**
      * Sets the userEmail property value. The user email value for this business user.
      * @param string|null $value Value to set for the userEmail property.
     */
     public function setUserEmail(?string $value): void {
         $this->userEmail = $value;
-    }
-
-    /**
-     * Sets the userId property value. The user ID associated with this business user.
-     * @param string|null $value Value to set for the userId property.
-    */
-    public function setUserId(?string $value): void {
-        $this->userId = $value;
-    }
-
-    /**
-     * Sets the userName property value. The user name value for this business user.
-     * @param string|null $value Value to set for the userName property.
-    */
-    public function setUserName(?string $value): void {
-        $this->userName = $value;
     }
 
 }

@@ -119,14 +119,9 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     private ?bool $isAutomated = null;
     
     /**
-     * @var string|null $leadId Lead ID associated with this SMS event.
+     * @var IdNamePair|null $lead The ID and name for this lead.
     */
-    private ?string $leadId = null;
-    
-    /**
-     * @var string|null $leadName Lead display name shown for this SMS event.
-    */
-    private ?string $leadName = null;
+    private ?IdNamePair $lead = null;
     
     /**
      * @var string|null $outboundPhoneNumberId Phone number ID selected for outbound delivery.
@@ -392,8 +387,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
             'fromPhoneNumberId' => fn(ParseNode $n) => $o->setFromPhoneNumberId($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isAutomated' => fn(ParseNode $n) => $o->setIsAutomated($n->getBooleanValue()),
-            'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
-            'leadName' => fn(ParseNode $n) => $o->setLeadName($n->getStringValue()),
+            'lead' => fn(ParseNode $n) => $o->setLead($n->getObjectValue([IdNamePair::class, 'createFromDiscriminatorValue'])),
             'outboundPhoneNumberId' => fn(ParseNode $n) => $o->setOutboundPhoneNumberId($n->getStringValue()),
             'outboundSource' => fn(ParseNode $n) => $o->setOutboundSource($n->getEnumValue(SmsEventTableRow_outboundSource::class)),
             'queuedAt' => fn(ParseNode $n) => $o->setQueuedAt($n->getDateTimeValue()),
@@ -447,19 +441,11 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the leadId property value. Lead ID associated with this SMS event.
-     * @return string|null
+     * Gets the lead property value. The ID and name for this lead.
+     * @return IdNamePair|null
     */
-    public function getLeadId(): ?string {
-        return $this->leadId;
-    }
-
-    /**
-     * Gets the leadName property value. Lead display name shown for this SMS event.
-     * @return string|null
-    */
-    public function getLeadName(): ?string {
-        return $this->leadName;
+    public function getLead(): ?IdNamePair {
+        return $this->lead;
     }
 
     /**
@@ -623,8 +609,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('fromPhoneNumberId', $this->getFromPhoneNumberId());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isAutomated', $this->getIsAutomated());
-        $writer->writeStringValue('leadId', $this->getLeadId());
-        $writer->writeStringValue('leadName', $this->getLeadName());
+        $writer->writeObjectValue('lead', $this->getLead());
         $writer->writeStringValue('outboundPhoneNumberId', $this->getOutboundPhoneNumberId());
         $writer->writeEnumValue('outboundSource', $this->getOutboundSource());
         $writer->writeDateTimeValue('queuedAt', $this->getQueuedAt());
@@ -814,19 +799,11 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the leadId property value. Lead ID associated with this SMS event.
-     * @param string|null $value Value to set for the leadId property.
+     * Sets the lead property value. The ID and name for this lead.
+     * @param IdNamePair|null $value Value to set for the lead property.
     */
-    public function setLeadId(?string $value): void {
-        $this->leadId = $value;
-    }
-
-    /**
-     * Sets the leadName property value. Lead display name shown for this SMS event.
-     * @param string|null $value Value to set for the leadName property.
-    */
-    public function setLeadName(?string $value): void {
-        $this->leadName = $value;
+    public function setLead(?IdNamePair $value): void {
+        $this->lead = $value;
     }
 
     /**

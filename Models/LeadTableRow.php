@@ -34,14 +34,9 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     private ?int $archiveReason = null;
     
     /**
-     * @var string|null $businessId Business ID that owns this lead.
+     * @var LeadTableRow_business|null $business The ID and name for this business.
     */
-    private ?string $businessId = null;
-    
-    /**
-     * @var string|null $businessName Business display name shown for this lead.
-    */
-    private ?string $businessName = null;
+    private ?LeadTableRow_business $business = null;
     
     /**
      * @var DateTime|null $createdAt UTC timestamp when this lead table row was created.
@@ -89,14 +84,9 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     private ?string $phone = null;
     
     /**
-     * @var string|null $sourceId Lead source ID that created or supplied this lead.
+     * @var LeadTableRow_source|null $source The ID and name for this source.
     */
-    private ?string $sourceId = null;
-    
-    /**
-     * @var string|null $sourceName Lead source display name shown for this lead.
-    */
-    private ?string $sourceName = null;
+    private ?LeadTableRow_source $source = null;
     
     /**
      * @var string|null $status Current lifecycle status for this lead table row in the Leadping API.
@@ -167,19 +157,11 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the businessId property value. Business ID that owns this lead.
-     * @return string|null
+     * Gets the business property value. The ID and name for this business.
+     * @return LeadTableRow_business|null
     */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
-    }
-
-    /**
-     * Gets the businessName property value. Business display name shown for this lead.
-     * @return string|null
-    */
-    public function getBusinessName(): ?string {
-        return $this->businessName;
+    public function getBusiness(): ?LeadTableRow_business {
+        return $this->business;
     }
 
     /**
@@ -224,8 +206,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
             'archivedAt' => fn(ParseNode $n) => $o->setArchivedAt($n->getDateTimeValue()),
             'archivedByUserId' => fn(ParseNode $n) => $o->setArchivedByUserId($n->getStringValue()),
             'archiveReason' => fn(ParseNode $n) => $o->setArchiveReason($n->getIntegerValue()),
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
-            'businessName' => fn(ParseNode $n) => $o->setBusinessName($n->getStringValue()),
+            'business' => fn(ParseNode $n) => $o->setBusiness($n->getObjectValue([LeadTableRow_business::class, 'createFromDiscriminatorValue'])),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'currentDisposition' => fn(ParseNode $n) => $o->setCurrentDisposition($n->getObjectValue([LeadTableRow_currentDisposition::class, 'createFromDiscriminatorValue'])),
             'email' => fn(ParseNode $n) => $o->setEmail($n->getStringValue()),
@@ -235,8 +216,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
             'isArchived' => fn(ParseNode $n) => $o->setIsArchived($n->getBooleanValue()),
             'lastName' => fn(ParseNode $n) => $o->setLastName($n->getStringValue()),
             'phone' => fn(ParseNode $n) => $o->setPhone($n->getStringValue()),
-            'sourceId' => fn(ParseNode $n) => $o->setSourceId($n->getStringValue()),
-            'sourceName' => fn(ParseNode $n) => $o->setSourceName($n->getStringValue()),
+            'source' => fn(ParseNode $n) => $o->setSource($n->getObjectValue([LeadTableRow_source::class, 'createFromDiscriminatorValue'])),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getStringValue()),
             'statusTone' => fn(ParseNode $n) => $o->setStatusTone($n->getStringValue()),
             'tags' => fn(ParseNode $n) => $o->setTags($n->getCollectionOfObjectValues([TagSummary::class, 'createFromDiscriminatorValue'])),
@@ -285,19 +265,11 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the sourceId property value. Lead source ID that created or supplied this lead.
-     * @return string|null
+     * Gets the source property value. The ID and name for this source.
+     * @return LeadTableRow_source|null
     */
-    public function getSourceId(): ?string {
-        return $this->sourceId;
-    }
-
-    /**
-     * Gets the sourceName property value. Lead source display name shown for this lead.
-     * @return string|null
-    */
-    public function getSourceName(): ?string {
-        return $this->sourceName;
+    public function getSource(): ?LeadTableRow_source {
+        return $this->source;
     }
 
     /**
@@ -340,8 +312,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('archivedAt', $this->getArchivedAt());
         $writer->writeStringValue('archivedByUserId', $this->getArchivedByUserId());
         $writer->writeIntegerValue('archiveReason', $this->getArchiveReason());
-        $writer->writeStringValue('businessId', $this->getBusinessId());
-        $writer->writeStringValue('businessName', $this->getBusinessName());
+        $writer->writeObjectValue('business', $this->getBusiness());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeObjectValue('currentDisposition', $this->getCurrentDisposition());
         $writer->writeStringValue('email', $this->getEmail());
@@ -351,8 +322,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('isArchived', $this->getIsArchived());
         $writer->writeStringValue('lastName', $this->getLastName());
         $writer->writeStringValue('phone', $this->getPhone());
-        $writer->writeStringValue('sourceId', $this->getSourceId());
-        $writer->writeStringValue('sourceName', $this->getSourceName());
+        $writer->writeObjectValue('source', $this->getSource());
         $writer->writeStringValue('status', $this->getStatus());
         $writer->writeStringValue('statusTone', $this->getStatusTone());
         $writer->writeCollectionOfObjectValues('tags', $this->getTags());
@@ -393,19 +363,11 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the businessId property value. Business ID that owns this lead.
-     * @param string|null $value Value to set for the businessId property.
+     * Sets the business property value. The ID and name for this business.
+     * @param LeadTableRow_business|null $value Value to set for the business property.
     */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
-    }
-
-    /**
-     * Sets the businessName property value. Business display name shown for this lead.
-     * @param string|null $value Value to set for the businessName property.
-    */
-    public function setBusinessName(?string $value): void {
-        $this->businessName = $value;
+    public function setBusiness(?LeadTableRow_business $value): void {
+        $this->business = $value;
     }
 
     /**
@@ -481,19 +443,11 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the sourceId property value. Lead source ID that created or supplied this lead.
-     * @param string|null $value Value to set for the sourceId property.
+     * Sets the source property value. The ID and name for this source.
+     * @param LeadTableRow_source|null $value Value to set for the source property.
     */
-    public function setSourceId(?string $value): void {
-        $this->sourceId = $value;
-    }
-
-    /**
-     * Sets the sourceName property value. Lead source display name shown for this lead.
-     * @param string|null $value Value to set for the sourceName property.
-    */
-    public function setSourceName(?string $value): void {
-        $this->sourceName = $value;
+    public function setSource(?LeadTableRow_source $value): void {
+        $this->source = $value;
     }
 
     /**

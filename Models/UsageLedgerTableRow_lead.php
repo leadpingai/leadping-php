@@ -7,12 +7,12 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Geographic location metadata for the phone number, lead, or lookup result.
+ * The ID and name for this lead.
 */
-class PhoneNumberResponse_location extends PhoneNumberLocation implements Parsable 
+class UsageLedgerTableRow_lead extends IdNamePair implements Parsable 
 {
     /**
-     * Instantiates a new PhoneNumberResponse_location and sets the default values.
+     * Instantiates a new UsageLedgerTableRow_lead and sets the default values.
     */
     public function __construct() {
         parent::__construct();
@@ -21,10 +21,10 @@ class PhoneNumberResponse_location extends PhoneNumberLocation implements Parsab
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
-     * @return PhoneNumberResponse_location
+     * @return UsageLedgerTableRow_lead
     */
-    public static function createFromDiscriminatorValue(ParseNode $parseNode): PhoneNumberResponse_location {
-        return new PhoneNumberResponse_location();
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): UsageLedgerTableRow_lead {
+        return new UsageLedgerTableRow_lead();
     }
 
     /**

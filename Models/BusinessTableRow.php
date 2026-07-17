@@ -59,14 +59,9 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     private ?BusinessTableRow_billingPlan $billingPlan = null;
     
     /**
-     * @var string|null $businessId The business ID that owns this row when the row represents a child business resource.
+     * @var BusinessTableRow_business|null $business The ID and name for this business.
     */
-    private ?string $businessId = null;
-    
-    /**
-     * @var string|null $businessName The business name that owns this row when the row represents a child business resource.
-    */
-    private ?string $businessName = null;
+    private ?BusinessTableRow_business $business = null;
     
     /**
      * @var bool|null $enabled Whether this business is enabled.
@@ -142,16 +137,6 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
      * @var int|null $userCount The user count for this business.
     */
     private ?int $userCount = null;
-    
-    /**
-     * @var string|null $userId The user ID value for this business.
-    */
-    private ?string $userId = null;
-    
-    /**
-     * @var string|null $userName The user name value for this business.
-    */
-    private ?string $userName = null;
     
     /**
      * @var string|null $website The website URL associated with this business.
@@ -252,19 +237,11 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the businessId property value. The business ID that owns this row when the row represents a child business resource.
-     * @return string|null
+     * Gets the business property value. The ID and name for this business.
+     * @return BusinessTableRow_business|null
     */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
-    }
-
-    /**
-     * Gets the businessName property value. The business name that owns this row when the row represents a child business resource.
-     * @return string|null
-    */
-    public function getBusinessName(): ?string {
-        return $this->businessName;
+    public function getBusiness(): ?BusinessTableRow_business {
+        return $this->business;
     }
 
     /**
@@ -290,8 +267,7 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
             'apiKeyPreview' => fn(ParseNode $n) => $o->setApiKeyPreview($n->getStringValue()),
             'apiKeyTotalUses' => fn(ParseNode $n) => $o->setApiKeyTotalUses($n->getIntegerValue()),
             'billingPlan' => fn(ParseNode $n) => $o->setBillingPlan($n->getEnumValue(BusinessTableRow_billingPlan::class)),
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
-            'businessName' => fn(ParseNode $n) => $o->setBusinessName($n->getStringValue()),
+            'business' => fn(ParseNode $n) => $o->setBusiness($n->getObjectValue([BusinessTableRow_business::class, 'createFromDiscriminatorValue'])),
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'industry' => fn(ParseNode $n) => $o->setIndustry($n->getStringValue()),
@@ -307,8 +283,6 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
             'subscriptionStatus' => fn(ParseNode $n) => $o->setSubscriptionStatus($n->getEnumValue(BusinessTableRow_subscriptionStatus::class)),
             'tenDlcStatus' => fn(ParseNode $n) => $o->setTenDlcStatus($n->getEnumValue(BusinessTableRow_tenDlcStatus::class)),
             'userCount' => fn(ParseNode $n) => $o->setUserCount($n->getIntegerValue()),
-            'userId' => fn(ParseNode $n) => $o->setUserId($n->getStringValue()),
-            'userName' => fn(ParseNode $n) => $o->setUserName($n->getStringValue()),
             'website' => fn(ParseNode $n) => $o->setWebsite($n->getStringValue()),
             'websiteStatus' => fn(ParseNode $n) => $o->setWebsiteStatus($n->getEnumValue(BusinessTableRow_websiteStatus::class)),
         ];
@@ -427,22 +401,6 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the userId property value. The user ID value for this business.
-     * @return string|null
-    */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * Gets the userName property value. The user name value for this business.
-     * @return string|null
-    */
-    public function getUserName(): ?string {
-        return $this->userName;
-    }
-
-    /**
      * Gets the website property value. The website URL associated with this business.
      * @return string|null
     */
@@ -471,8 +429,7 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('apiKeyPreview', $this->getApiKeyPreview());
         $writer->writeIntegerValue('apiKeyTotalUses', $this->getApiKeyTotalUses());
         $writer->writeEnumValue('billingPlan', $this->getBillingPlan());
-        $writer->writeStringValue('businessId', $this->getBusinessId());
-        $writer->writeStringValue('businessName', $this->getBusinessName());
+        $writer->writeObjectValue('business', $this->getBusiness());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeStringValue('industry', $this->getIndustry());
@@ -488,8 +445,6 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
         $writer->writeEnumValue('subscriptionStatus', $this->getSubscriptionStatus());
         $writer->writeEnumValue('tenDlcStatus', $this->getTenDlcStatus());
         $writer->writeIntegerValue('userCount', $this->getUserCount());
-        $writer->writeStringValue('userId', $this->getUserId());
-        $writer->writeStringValue('userName', $this->getUserName());
         $writer->writeStringValue('website', $this->getWebsite());
         $writer->writeEnumValue('websiteStatus', $this->getWebsiteStatus());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -568,19 +523,11 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the businessId property value. The business ID that owns this row when the row represents a child business resource.
-     * @param string|null $value Value to set for the businessId property.
+     * Sets the business property value. The ID and name for this business.
+     * @param BusinessTableRow_business|null $value Value to set for the business property.
     */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
-    }
-
-    /**
-     * Sets the businessName property value. The business name that owns this row when the row represents a child business resource.
-     * @param string|null $value Value to set for the businessName property.
-    */
-    public function setBusinessName(?string $value): void {
-        $this->businessName = $value;
+    public function setBusiness(?BusinessTableRow_business $value): void {
+        $this->business = $value;
     }
 
     /**
@@ -701,22 +648,6 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     */
     public function setUserCount(?int $value): void {
         $this->userCount = $value;
-    }
-
-    /**
-     * Sets the userId property value. The user ID value for this business.
-     * @param string|null $value Value to set for the userId property.
-    */
-    public function setUserId(?string $value): void {
-        $this->userId = $value;
-    }
-
-    /**
-     * Sets the userName property value. The user name value for this business.
-     * @param string|null $value Value to set for the userName property.
-    */
-    public function setUserName(?string $value): void {
-        $this->userName = $value;
     }
 
     /**

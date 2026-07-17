@@ -44,11 +44,6 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     private ?bool $leadpingOwned = null;
     
     /**
-     * @var PhoneNumberResponse_location|null $location Geographic location metadata for the phone number, lead, or lookup result.
-    */
-    private ?PhoneNumberResponse_location $location = null;
-    
-    /**
      * @var DateTime|null $modifiedAt The date and time when the entity was last modified, if applicable.
     */
     private ?DateTime $modifiedAt = null;
@@ -62,6 +57,11 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
      * @var string|null $number E.164 phone number exposed by this phone number.
     */
     private ?string $number = null;
+    
+    /**
+     * @var string|null $phoneIdentityId Identifier of the canonical phone identity for this number.
+    */
+    private ?string $phoneIdentityId = null;
     
     /**
      * @var PhoneNumberRoutingMetadata|null $routing Routing metadata that connects this phone number to teams, campaigns, and sources.
@@ -133,10 +133,10 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'leadpingOwned' => fn(ParseNode $n) => $o->setLeadpingOwned($n->getBooleanValue()),
-            'location' => fn(ParseNode $n) => $o->setLocation($n->getObjectValue([PhoneNumberResponse_location::class, 'createFromDiscriminatorValue'])),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'number' => fn(ParseNode $n) => $o->setNumber($n->getStringValue()),
+            'phoneIdentityId' => fn(ParseNode $n) => $o->setPhoneIdentityId($n->getStringValue()),
             'routing' => fn(ParseNode $n) => $o->setRouting($n->getObjectValue([PhoneNumberRoutingMetadata::class, 'createFromDiscriminatorValue'])),
             'warmup' => fn(ParseNode $n) => $o->setWarmup($n->getObjectValue([PhoneNumberWarmup::class, 'createFromDiscriminatorValue'])),
         ];
@@ -156,14 +156,6 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     */
     public function getLeadpingOwned(): ?bool {
         return $this->leadpingOwned;
-    }
-
-    /**
-     * Gets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
-     * @return PhoneNumberResponse_location|null
-    */
-    public function getLocation(): ?PhoneNumberResponse_location {
-        return $this->location;
     }
 
     /**
@@ -188,6 +180,14 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     */
     public function getNumber(): ?string {
         return $this->number;
+    }
+
+    /**
+     * Gets the phoneIdentityId property value. Identifier of the canonical phone identity for this number.
+     * @return string|null
+    */
+    public function getPhoneIdentityId(): ?string {
+        return $this->phoneIdentityId;
     }
 
     /**
@@ -216,10 +216,10 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('leadpingOwned', $this->getLeadpingOwned());
-        $writer->writeObjectValue('location', $this->getLocation());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeStringValue('number', $this->getNumber());
+        $writer->writeStringValue('phoneIdentityId', $this->getPhoneIdentityId());
         $writer->writeObjectValue('routing', $this->getRouting());
         $writer->writeObjectValue('warmup', $this->getWarmup());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -274,14 +274,6 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
-     * @param PhoneNumberResponse_location|null $value Value to set for the location property.
-    */
-    public function setLocation(?PhoneNumberResponse_location $value): void {
-        $this->location = $value;
-    }
-
-    /**
      * Sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
      * @param DateTime|null $value Value to set for the modifiedAt property.
     */
@@ -303,6 +295,14 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     */
     public function setNumber(?string $value): void {
         $this->number = $value;
+    }
+
+    /**
+     * Sets the phoneIdentityId property value. Identifier of the canonical phone identity for this number.
+     * @param string|null $value Value to set for the phoneIdentityId property.
+    */
+    public function setPhoneIdentityId(?string $value): void {
+        $this->phoneIdentityId = $value;
     }
 
     /**

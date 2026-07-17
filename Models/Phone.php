@@ -18,11 +18,6 @@ class Phone implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var Phone_lookup|null $lookup Phone lookup details returned by the provider or Leadping enrichment service.
-    */
-    private ?Phone_lookup $lookup = null;
-    
-    /**
      * @var string|null $number E.164 phone number exposed by this lead phone number.
     */
     private ?string $number = null;
@@ -68,19 +63,10 @@ class Phone implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'lookup' => fn(ParseNode $n) => $o->setLookup($n->getObjectValue([Phone_lookup::class, 'createFromDiscriminatorValue'])),
             'number' => fn(ParseNode $n) => $o->setNumber($n->getStringValue()),
             'phoneIdentityId' => fn(ParseNode $n) => $o->setPhoneIdentityId($n->getStringValue()),
             'type' => fn(ParseNode $n) => $o->setType($n->getStringValue()),
         ];
-    }
-
-    /**
-     * Gets the lookup property value. Phone lookup details returned by the provider or Leadping enrichment service.
-     * @return Phone_lookup|null
-    */
-    public function getLookup(): ?Phone_lookup {
-        return $this->lookup;
     }
 
     /**
@@ -112,7 +98,6 @@ class Phone implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeObjectValue('lookup', $this->getLookup());
         $writer->writeStringValue('number', $this->getNumber());
         $writer->writeStringValue('phoneIdentityId', $this->getPhoneIdentityId());
         $writer->writeStringValue('type', $this->getType());
@@ -125,14 +110,6 @@ class Phone implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the lookup property value. Phone lookup details returned by the provider or Leadping enrichment service.
-     * @param Phone_lookup|null $value Value to set for the lookup property.
-    */
-    public function setLookup(?Phone_lookup $value): void {
-        $this->lookup = $value;
     }
 
     /**

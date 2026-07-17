@@ -7,12 +7,12 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Complete carrier metadata reported for this phone number.
+ * The ID and name for this currentStep.
 */
-class PhoneLookup_carrier extends PhoneLookupCarrier implements Parsable 
+class AutomationWorkflowRunResponse_currentStep extends IdNamePair implements Parsable 
 {
     /**
-     * Instantiates a new PhoneLookup_carrier and sets the default values.
+     * Instantiates a new AutomationWorkflowRunResponse_currentStep and sets the default values.
     */
     public function __construct() {
         parent::__construct();
@@ -21,10 +21,10 @@ class PhoneLookup_carrier extends PhoneLookupCarrier implements Parsable
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
-     * @return PhoneLookup_carrier
+     * @return AutomationWorkflowRunResponse_currentStep
     */
-    public static function createFromDiscriminatorValue(ParseNode $parseNode): PhoneLookup_carrier {
-        return new PhoneLookup_carrier();
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): AutomationWorkflowRunResponse_currentStep {
+        return new AutomationWorkflowRunResponse_currentStep();
     }
 
     /**

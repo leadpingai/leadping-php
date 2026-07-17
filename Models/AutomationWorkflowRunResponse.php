@@ -24,14 +24,9 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $automationId Unique identifier of the automation associated with this Leadping automation workflow run.
+     * @var AutomationWorkflowRunResponse_automation|null $automation The ID and name for this automation.
     */
-    private ?string $automationId = null;
-    
-    /**
-     * @var string|null $automationName Human-readable automation name associated with this Leadping automation workflow run.
-    */
-    private ?string $automationName = null;
+    private ?AutomationWorkflowRunResponse_automation $automation = null;
     
     /**
      * @var string|null $businessId Unique identifier of the business associated with this Leadping automation workflow run.
@@ -49,14 +44,9 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $completedAt = null;
     
     /**
-     * @var string|null $currentStepId Unique identifier of the current step associated with this Leadping automation workflow run.
+     * @var AutomationWorkflowRunResponse_currentStep|null $currentStep The ID and name for this currentStep.
     */
-    private ?string $currentStepId = null;
-    
-    /**
-     * @var string|null $currentStepName Human-readable current step name associated with this Leadping automation workflow run.
-    */
-    private ?string $currentStepName = null;
+    private ?AutomationWorkflowRunResponse_currentStep $currentStep = null;
     
     /**
      * @var array<AutomationWorkflowEventResponse>|null $events Collection of events included with this Leadping automation workflow run.
@@ -191,19 +181,11 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the automationId property value. Unique identifier of the automation associated with this Leadping automation workflow run.
-     * @return string|null
+     * Gets the automation property value. The ID and name for this automation.
+     * @return AutomationWorkflowRunResponse_automation|null
     */
-    public function getAutomationId(): ?string {
-        return $this->automationId;
-    }
-
-    /**
-     * Gets the automationName property value. Human-readable automation name associated with this Leadping automation workflow run.
-     * @return string|null
-    */
-    public function getAutomationName(): ?string {
-        return $this->automationName;
+    public function getAutomation(): ?AutomationWorkflowRunResponse_automation {
+        return $this->automation;
     }
 
     /**
@@ -231,19 +213,11 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the currentStepId property value. Unique identifier of the current step associated with this Leadping automation workflow run.
-     * @return string|null
+     * Gets the currentStep property value. The ID and name for this currentStep.
+     * @return AutomationWorkflowRunResponse_currentStep|null
     */
-    public function getCurrentStepId(): ?string {
-        return $this->currentStepId;
-    }
-
-    /**
-     * Gets the currentStepName property value. Human-readable current step name associated with this Leadping automation workflow run.
-     * @return string|null
-    */
-    public function getCurrentStepName(): ?string {
-        return $this->currentStepName;
+    public function getCurrentStep(): ?AutomationWorkflowRunResponse_currentStep {
+        return $this->currentStep;
     }
 
     /**
@@ -270,13 +244,11 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'actions' => fn(ParseNode $n) => $o->setActions($n->getCollectionOfObjectValues([AutomationWorkflowActionResponse::class, 'createFromDiscriminatorValue'])),
-            'automationId' => fn(ParseNode $n) => $o->setAutomationId($n->getStringValue()),
-            'automationName' => fn(ParseNode $n) => $o->setAutomationName($n->getStringValue()),
+            'automation' => fn(ParseNode $n) => $o->setAutomation($n->getObjectValue([AutomationWorkflowRunResponse_automation::class, 'createFromDiscriminatorValue'])),
             'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'cancelledAt' => fn(ParseNode $n) => $o->setCancelledAt($n->getDateTimeValue()),
             'completedAt' => fn(ParseNode $n) => $o->setCompletedAt($n->getDateTimeValue()),
-            'currentStepId' => fn(ParseNode $n) => $o->setCurrentStepId($n->getStringValue()),
-            'currentStepName' => fn(ParseNode $n) => $o->setCurrentStepName($n->getStringValue()),
+            'currentStep' => fn(ParseNode $n) => $o->setCurrentStep($n->getObjectValue([AutomationWorkflowRunResponse_currentStep::class, 'createFromDiscriminatorValue'])),
             'events' => fn(ParseNode $n) => $o->setEvents($n->getCollectionOfObjectValues([AutomationWorkflowEventResponse::class, 'createFromDiscriminatorValue'])),
             'failedAt' => fn(ParseNode $n) => $o->setFailedAt($n->getDateTimeValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
@@ -450,13 +422,11 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeCollectionOfObjectValues('actions', $this->getActions());
-        $writer->writeStringValue('automationId', $this->getAutomationId());
-        $writer->writeStringValue('automationName', $this->getAutomationName());
+        $writer->writeObjectValue('automation', $this->getAutomation());
         $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeDateTimeValue('cancelledAt', $this->getCancelledAt());
         $writer->writeDateTimeValue('completedAt', $this->getCompletedAt());
-        $writer->writeStringValue('currentStepId', $this->getCurrentStepId());
-        $writer->writeStringValue('currentStepName', $this->getCurrentStepName());
+        $writer->writeObjectValue('currentStep', $this->getCurrentStep());
         $writer->writeCollectionOfObjectValues('events', $this->getEvents());
         $writer->writeDateTimeValue('failedAt', $this->getFailedAt());
         $writer->writeStringValue('id', $this->getId());
@@ -497,19 +467,11 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the automationId property value. Unique identifier of the automation associated with this Leadping automation workflow run.
-     * @param string|null $value Value to set for the automationId property.
+     * Sets the automation property value. The ID and name for this automation.
+     * @param AutomationWorkflowRunResponse_automation|null $value Value to set for the automation property.
     */
-    public function setAutomationId(?string $value): void {
-        $this->automationId = $value;
-    }
-
-    /**
-     * Sets the automationName property value. Human-readable automation name associated with this Leadping automation workflow run.
-     * @param string|null $value Value to set for the automationName property.
-    */
-    public function setAutomationName(?string $value): void {
-        $this->automationName = $value;
+    public function setAutomation(?AutomationWorkflowRunResponse_automation $value): void {
+        $this->automation = $value;
     }
 
     /**
@@ -537,19 +499,11 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the currentStepId property value. Unique identifier of the current step associated with this Leadping automation workflow run.
-     * @param string|null $value Value to set for the currentStepId property.
+     * Sets the currentStep property value. The ID and name for this currentStep.
+     * @param AutomationWorkflowRunResponse_currentStep|null $value Value to set for the currentStep property.
     */
-    public function setCurrentStepId(?string $value): void {
-        $this->currentStepId = $value;
-    }
-
-    /**
-     * Sets the currentStepName property value. Human-readable current step name associated with this Leadping automation workflow run.
-     * @param string|null $value Value to set for the currentStepName property.
-    */
-    public function setCurrentStepName(?string $value): void {
-        $this->currentStepName = $value;
+    public function setCurrentStep(?AutomationWorkflowRunResponse_currentStep $value): void {
+        $this->currentStep = $value;
     }
 
     /**

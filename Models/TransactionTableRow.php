@@ -14,11 +14,6 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class TransactionTableRow implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var string|null $accountName Display name of the wallet or account used for this transaction.
-    */
-    private ?string $accountName = null;
-    
-    /**
      * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     */
     private ?array $additionalData = null;
@@ -29,14 +24,9 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     private ?float $amount = null;
     
     /**
-     * @var string|null $businessId Business ID charged or credited by this wallet transaction.
+     * @var TransactionTableRow_business|null $business The ID and name for this business.
     */
-    private ?string $businessId = null;
-    
-    /**
-     * @var string|null $businessName Business display name shown for this wallet transaction.
-    */
-    private ?string $businessName = null;
+    private ?TransactionTableRow_business $business = null;
     
     /**
      * @var DateTime|null $createdAt UTC timestamp when this billing transaction table row was created.
@@ -54,14 +44,9 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * @var string|null $leadId Lead ID connected to this transaction when the charge came from lead activity.
+     * @var TransactionTableRow_lead|null $lead The ID and name for this lead.
     */
-    private ?string $leadId = null;
-    
-    /**
-     * @var string|null $leadName Lead display name shown for lead-related wallet transactions.
-    */
-    private ?string $leadName = null;
+    private ?TransactionTableRow_lead $lead = null;
     
     /**
      * @var float|null $netAmount Net monetary amount after fees, credits, or adjustments.
@@ -100,14 +85,6 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the accountName property value. Display name of the wallet or account used for this transaction.
-     * @return string|null
-    */
-    public function getAccountName(): ?string {
-        return $this->accountName;
-    }
-
-    /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>|null
     */
@@ -124,19 +101,11 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the businessId property value. Business ID charged or credited by this wallet transaction.
-     * @return string|null
+     * Gets the business property value. The ID and name for this business.
+     * @return TransactionTableRow_business|null
     */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
-    }
-
-    /**
-     * Gets the businessName property value. Business display name shown for this wallet transaction.
-     * @return string|null
-    */
-    public function getBusinessName(): ?string {
-        return $this->businessName;
+    public function getBusiness(): ?TransactionTableRow_business {
+        return $this->business;
     }
 
     /**
@@ -162,15 +131,12 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'accountName' => fn(ParseNode $n) => $o->setAccountName($n->getStringValue()),
             'amount' => fn(ParseNode $n) => $o->setAmount($n->getFloatValue()),
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
-            'businessName' => fn(ParseNode $n) => $o->setBusinessName($n->getStringValue()),
+            'business' => fn(ParseNode $n) => $o->setBusiness($n->getObjectValue([TransactionTableRow_business::class, 'createFromDiscriminatorValue'])),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
-            'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
-            'leadName' => fn(ParseNode $n) => $o->setLeadName($n->getStringValue()),
+            'lead' => fn(ParseNode $n) => $o->setLead($n->getObjectValue([TransactionTableRow_lead::class, 'createFromDiscriminatorValue'])),
             'netAmount' => fn(ParseNode $n) => $o->setNetAmount($n->getFloatValue()),
             'paymentMethodDisplay' => fn(ParseNode $n) => $o->setPaymentMethodDisplay($n->getStringValue()),
             'transactionStatus' => fn(ParseNode $n) => $o->setTransactionStatus($n->getEnumValue(TransactionStatus::class)),
@@ -187,19 +153,11 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the leadId property value. Lead ID connected to this transaction when the charge came from lead activity.
-     * @return string|null
+     * Gets the lead property value. The ID and name for this lead.
+     * @return TransactionTableRow_lead|null
     */
-    public function getLeadId(): ?string {
-        return $this->leadId;
-    }
-
-    /**
-     * Gets the leadName property value. Lead display name shown for lead-related wallet transactions.
-     * @return string|null
-    */
-    public function getLeadName(): ?string {
-        return $this->leadName;
+    public function getLead(): ?TransactionTableRow_lead {
+        return $this->lead;
     }
 
     /**
@@ -239,28 +197,17 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeStringValue('accountName', $this->getAccountName());
         $writer->writeFloatValue('amount', $this->getAmount());
-        $writer->writeStringValue('businessId', $this->getBusinessId());
-        $writer->writeStringValue('businessName', $this->getBusinessName());
+        $writer->writeObjectValue('business', $this->getBusiness());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('description', $this->getDescription());
         $writer->writeStringValue('id', $this->getId());
-        $writer->writeStringValue('leadId', $this->getLeadId());
-        $writer->writeStringValue('leadName', $this->getLeadName());
+        $writer->writeObjectValue('lead', $this->getLead());
         $writer->writeFloatValue('netAmount', $this->getNetAmount());
         $writer->writeStringValue('paymentMethodDisplay', $this->getPaymentMethodDisplay());
         $writer->writeEnumValue('transactionStatus', $this->getTransactionStatus());
         $writer->writeEnumValue('transactionType', $this->getTransactionType());
         $writer->writeAdditionalData($this->getAdditionalData());
-    }
-
-    /**
-     * Sets the accountName property value. Display name of the wallet or account used for this transaction.
-     * @param string|null $value Value to set for the accountName property.
-    */
-    public function setAccountName(?string $value): void {
-        $this->accountName = $value;
     }
 
     /**
@@ -280,19 +227,11 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the businessId property value. Business ID charged or credited by this wallet transaction.
-     * @param string|null $value Value to set for the businessId property.
+     * Sets the business property value. The ID and name for this business.
+     * @param TransactionTableRow_business|null $value Value to set for the business property.
     */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
-    }
-
-    /**
-     * Sets the businessName property value. Business display name shown for this wallet transaction.
-     * @param string|null $value Value to set for the businessName property.
-    */
-    public function setBusinessName(?string $value): void {
-        $this->businessName = $value;
+    public function setBusiness(?TransactionTableRow_business $value): void {
+        $this->business = $value;
     }
 
     /**
@@ -320,19 +259,11 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the leadId property value. Lead ID connected to this transaction when the charge came from lead activity.
-     * @param string|null $value Value to set for the leadId property.
+     * Sets the lead property value. The ID and name for this lead.
+     * @param TransactionTableRow_lead|null $value Value to set for the lead property.
     */
-    public function setLeadId(?string $value): void {
-        $this->leadId = $value;
-    }
-
-    /**
-     * Sets the leadName property value. Lead display name shown for lead-related wallet transactions.
-     * @param string|null $value Value to set for the leadName property.
-    */
-    public function setLeadName(?string $value): void {
-        $this->leadName = $value;
+    public function setLead(?TransactionTableRow_lead $value): void {
+        $this->lead = $value;
     }
 
     /**

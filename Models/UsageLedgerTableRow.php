@@ -24,14 +24,9 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     private ?BillableUnit $billableUnit = null;
     
     /**
-     * @var string|null $businessId The business ID associated with this usage ledger.
+     * @var UsageLedgerTableRow_business|null $business The ID and name for this business.
     */
-    private ?string $businessId = null;
-    
-    /**
-     * @var string|null $businessName The business name value for this usage ledger.
-    */
-    private ?string $businessName = null;
+    private ?UsageLedgerTableRow_business $business = null;
     
     /**
      * @var UsageChannel|null $channel The channel value for this usage ledger.
@@ -64,14 +59,9 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     private ?bool $isBillable = null;
     
     /**
-     * @var string|null $leadId The lead ID associated with this usage ledger.
+     * @var UsageLedgerTableRow_lead|null $lead The ID and name for this lead.
     */
-    private ?string $leadId = null;
-    
-    /**
-     * @var string|null $leadName The lead name value for this usage ledger.
-    */
-    private ?string $leadName = null;
+    private ?UsageLedgerTableRow_lead $lead = null;
     
     /**
      * @var string|null $phoneNumber The phone number associated with this usage ledger.
@@ -99,14 +89,9 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     private ?float $unitPrice = null;
     
     /**
-     * @var string|null $userId The user ID associated with this usage ledger.
+     * @var UsageLedgerTableRow_user|null $user The ID and name for this user.
     */
-    private ?string $userId = null;
-    
-    /**
-     * @var string|null $userName The user name value for this usage ledger.
-    */
-    private ?string $userName = null;
+    private ?UsageLedgerTableRow_user $user = null;
     
     /**
      * Instantiates a new UsageLedgerTableRow and sets the default values.
@@ -141,19 +126,11 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the businessId property value. The business ID associated with this usage ledger.
-     * @return string|null
+     * Gets the business property value. The ID and name for this business.
+     * @return UsageLedgerTableRow_business|null
     */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
-    }
-
-    /**
-     * Gets the businessName property value. The business name value for this usage ledger.
-     * @return string|null
-    */
-    public function getBusinessName(): ?string {
-        return $this->businessName;
+    public function getBusiness(): ?UsageLedgerTableRow_business {
+        return $this->business;
     }
 
     /**
@@ -196,23 +173,20 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'billableUnit' => fn(ParseNode $n) => $o->setBillableUnit($n->getEnumValue(BillableUnit::class)),
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
-            'businessName' => fn(ParseNode $n) => $o->setBusinessName($n->getStringValue()),
+            'business' => fn(ParseNode $n) => $o->setBusiness($n->getObjectValue([UsageLedgerTableRow_business::class, 'createFromDiscriminatorValue'])),
             'channel' => fn(ParseNode $n) => $o->setChannel($n->getEnumValue(UsageChannel::class)),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'customerChargeAmount' => fn(ParseNode $n) => $o->setCustomerChargeAmount($n->getFloatValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isBillable' => fn(ParseNode $n) => $o->setIsBillable($n->getBooleanValue()),
-            'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
-            'leadName' => fn(ParseNode $n) => $o->setLeadName($n->getStringValue()),
+            'lead' => fn(ParseNode $n) => $o->setLead($n->getObjectValue([UsageLedgerTableRow_lead::class, 'createFromDiscriminatorValue'])),
             'phoneNumber' => fn(ParseNode $n) => $o->setPhoneNumber($n->getStringValue()),
             'phoneNumberId' => fn(ParseNode $n) => $o->setPhoneNumberId($n->getStringValue()),
             'quantity' => fn(ParseNode $n) => $o->setQuantity($n->getFloatValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(UsageRecordStatus::class)),
             'unitPrice' => fn(ParseNode $n) => $o->setUnitPrice($n->getFloatValue()),
-            'userId' => fn(ParseNode $n) => $o->setUserId($n->getStringValue()),
-            'userName' => fn(ParseNode $n) => $o->setUserName($n->getStringValue()),
+            'user' => fn(ParseNode $n) => $o->setUser($n->getObjectValue([UsageLedgerTableRow_user::class, 'createFromDiscriminatorValue'])),
         ];
     }
 
@@ -233,19 +207,11 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the leadId property value. The lead ID associated with this usage ledger.
-     * @return string|null
+     * Gets the lead property value. The ID and name for this lead.
+     * @return UsageLedgerTableRow_lead|null
     */
-    public function getLeadId(): ?string {
-        return $this->leadId;
-    }
-
-    /**
-     * Gets the leadName property value. The lead name value for this usage ledger.
-     * @return string|null
-    */
-    public function getLeadName(): ?string {
-        return $this->leadName;
+    public function getLead(): ?UsageLedgerTableRow_lead {
+        return $this->lead;
     }
 
     /**
@@ -289,19 +255,11 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the userId property value. The user ID associated with this usage ledger.
-     * @return string|null
+     * Gets the user property value. The ID and name for this user.
+     * @return UsageLedgerTableRow_user|null
     */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
-     * Gets the userName property value. The user name value for this usage ledger.
-     * @return string|null
-    */
-    public function getUserName(): ?string {
-        return $this->userName;
+    public function getUser(): ?UsageLedgerTableRow_user {
+        return $this->user;
     }
 
     /**
@@ -310,23 +268,20 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeEnumValue('billableUnit', $this->getBillableUnit());
-        $writer->writeStringValue('businessId', $this->getBusinessId());
-        $writer->writeStringValue('businessName', $this->getBusinessName());
+        $writer->writeObjectValue('business', $this->getBusiness());
         $writer->writeEnumValue('channel', $this->getChannel());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeFloatValue('customerChargeAmount', $this->getCustomerChargeAmount());
         $writer->writeStringValue('description', $this->getDescription());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isBillable', $this->getIsBillable());
-        $writer->writeStringValue('leadId', $this->getLeadId());
-        $writer->writeStringValue('leadName', $this->getLeadName());
+        $writer->writeObjectValue('lead', $this->getLead());
         $writer->writeStringValue('phoneNumber', $this->getPhoneNumber());
         $writer->writeStringValue('phoneNumberId', $this->getPhoneNumberId());
         $writer->writeFloatValue('quantity', $this->getQuantity());
         $writer->writeEnumValue('status', $this->getStatus());
         $writer->writeFloatValue('unitPrice', $this->getUnitPrice());
-        $writer->writeStringValue('userId', $this->getUserId());
-        $writer->writeStringValue('userName', $this->getUserName());
+        $writer->writeObjectValue('user', $this->getUser());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -347,19 +302,11 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the businessId property value. The business ID associated with this usage ledger.
-     * @param string|null $value Value to set for the businessId property.
+     * Sets the business property value. The ID and name for this business.
+     * @param UsageLedgerTableRow_business|null $value Value to set for the business property.
     */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
-    }
-
-    /**
-     * Sets the businessName property value. The business name value for this usage ledger.
-     * @param string|null $value Value to set for the businessName property.
-    */
-    public function setBusinessName(?string $value): void {
-        $this->businessName = $value;
+    public function setBusiness(?UsageLedgerTableRow_business $value): void {
+        $this->business = $value;
     }
 
     /**
@@ -411,19 +358,11 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the leadId property value. The lead ID associated with this usage ledger.
-     * @param string|null $value Value to set for the leadId property.
+     * Sets the lead property value. The ID and name for this lead.
+     * @param UsageLedgerTableRow_lead|null $value Value to set for the lead property.
     */
-    public function setLeadId(?string $value): void {
-        $this->leadId = $value;
-    }
-
-    /**
-     * Sets the leadName property value. The lead name value for this usage ledger.
-     * @param string|null $value Value to set for the leadName property.
-    */
-    public function setLeadName(?string $value): void {
-        $this->leadName = $value;
+    public function setLead(?UsageLedgerTableRow_lead $value): void {
+        $this->lead = $value;
     }
 
     /**
@@ -467,19 +406,11 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the userId property value. The user ID associated with this usage ledger.
-     * @param string|null $value Value to set for the userId property.
+     * Sets the user property value. The ID and name for this user.
+     * @param UsageLedgerTableRow_user|null $value Value to set for the user property.
     */
-    public function setUserId(?string $value): void {
-        $this->userId = $value;
-    }
-
-    /**
-     * Sets the userName property value. The user name value for this usage ledger.
-     * @param string|null $value Value to set for the userName property.
-    */
-    public function setUserName(?string $value): void {
-        $this->userName = $value;
+    public function setUser(?UsageLedgerTableRow_user $value): void {
+        $this->user = $value;
     }
 
 }

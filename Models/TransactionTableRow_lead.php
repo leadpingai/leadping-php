@@ -7,12 +7,12 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Phone lookup details returned by the provider or Leadping enrichment service.
+ * The ID and name for this lead.
 */
-class Phone_lookup extends PhoneLookup implements Parsable 
+class TransactionTableRow_lead extends IdNamePair implements Parsable 
 {
     /**
-     * Instantiates a new Phone_lookup and sets the default values.
+     * Instantiates a new TransactionTableRow_lead and sets the default values.
     */
     public function __construct() {
         parent::__construct();
@@ -21,10 +21,10 @@ class Phone_lookup extends PhoneLookup implements Parsable
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
-     * @return Phone_lookup
+     * @return TransactionTableRow_lead
     */
-    public static function createFromDiscriminatorValue(ParseNode $parseNode): Phone_lookup {
-        return new Phone_lookup();
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): TransactionTableRow_lead {
+        return new TransactionTableRow_lead();
     }
 
     /**

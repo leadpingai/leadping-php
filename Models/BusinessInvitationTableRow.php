@@ -24,14 +24,9 @@ class BusinessInvitationTableRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $businessId The business ID associated with this business invitation.
+     * @var IdNamePair|null $business The ID and name for this business.
     */
-    private ?string $businessId = null;
-    
-    /**
-     * @var string|null $businessName The business name value for this business invitation.
-    */
-    private ?string $businessName = null;
+    private ?IdNamePair $business = null;
     
     /**
      * @var DateTime|null $createdAt The date and time for the created at value on this business invitation.
@@ -136,19 +131,11 @@ class BusinessInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the businessId property value. The business ID associated with this business invitation.
-     * @return string|null
+     * Gets the business property value. The ID and name for this business.
+     * @return IdNamePair|null
     */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
-    }
-
-    /**
-     * Gets the businessName property value. The business name value for this business invitation.
-     * @return string|null
-    */
-    public function getBusinessName(): ?string {
-        return $this->businessName;
+    public function getBusiness(): ?IdNamePair {
+        return $this->business;
     }
 
     /**
@@ -183,8 +170,7 @@ class BusinessInvitationTableRow implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'acceptedAt' => fn(ParseNode $n) => $o->setAcceptedAt($n->getDateTimeValue()),
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
-            'businessName' => fn(ParseNode $n) => $o->setBusinessName($n->getStringValue()),
+            'business' => fn(ParseNode $n) => $o->setBusiness($n->getObjectValue([IdNamePair::class, 'createFromDiscriminatorValue'])),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'email' => fn(ParseNode $n) => $o->setEmail($n->getStringValue()),
             'expiresAt' => fn(ParseNode $n) => $o->setExpiresAt($n->getDateTimeValue()),
@@ -296,8 +282,7 @@ class BusinessInvitationTableRow implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeDateTimeValue('acceptedAt', $this->getAcceptedAt());
-        $writer->writeStringValue('businessId', $this->getBusinessId());
-        $writer->writeStringValue('businessName', $this->getBusinessName());
+        $writer->writeObjectValue('business', $this->getBusiness());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('email', $this->getEmail());
         $writer->writeDateTimeValue('expiresAt', $this->getExpiresAt());
@@ -332,19 +317,11 @@ class BusinessInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the businessId property value. The business ID associated with this business invitation.
-     * @param string|null $value Value to set for the businessId property.
+     * Sets the business property value. The ID and name for this business.
+     * @param IdNamePair|null $value Value to set for the business property.
     */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
-    }
-
-    /**
-     * Sets the businessName property value. The business name value for this business invitation.
-     * @param string|null $value Value to set for the businessName property.
-    */
-    public function setBusinessName(?string $value): void {
-        $this->businessName = $value;
+    public function setBusiness(?IdNamePair $value): void {
+        $this->business = $value;
     }
 
     /**
