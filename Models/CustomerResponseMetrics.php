@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Response metrics associated with this Leadping customer analytics.
+ * Represents customer response metrics data exposed by Leadping analytics.
 */
 class CustomerResponseMetrics implements AdditionalDataHolder, Parsable 
 {

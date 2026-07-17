@@ -8,6 +8,9 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
+/**
+ * Represents customer communication usage point data exposed by Leadping analytics.
+*/
 class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable 
 {
     /**

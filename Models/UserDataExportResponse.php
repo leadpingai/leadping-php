@@ -8,6 +8,9 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
+/**
+ * Response model containing user data export data returned by the Leadping API.
+*/
 class UserDataExportResponse implements AdditionalDataHolder, Parsable 
 {
     /**

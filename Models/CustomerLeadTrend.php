@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Lead trend associated with this Leadping customer analytics.
+ * Represents customer lead trend data exposed by Leadping analytics.
 */
 class CustomerLeadTrend implements AdditionalDataHolder, Parsable 
 {

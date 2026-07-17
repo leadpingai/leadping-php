@@ -7,6 +7,9 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
+/**
+ * Represents outbound phone number capacity data used by Leadping.
+*/
 class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable 
 {
     /**

@@ -8,6 +8,9 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
+/**
+ * Response model containing source metrics data returned by the Leadping API.
+*/
 class SourceMetricsResponse implements AdditionalDataHolder, Parsable 
 {
     /**

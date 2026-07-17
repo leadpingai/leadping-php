@@ -8,6 +8,9 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
+/**
+ * Represents analytics trend point data exposed by Leadping analytics.
+*/
 class AnalyticsTrendPointOfdecimal implements AdditionalDataHolder, Parsable 
 {
     /**

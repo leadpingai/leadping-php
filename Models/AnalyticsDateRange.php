@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Range associated with this Leadping customer analytics.
+ * Represents analytics date range data exposed by Leadping analytics.
 */
 class AnalyticsDateRange implements AdditionalDataHolder, Parsable 
 {

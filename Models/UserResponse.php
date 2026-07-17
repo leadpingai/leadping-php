@@ -24,6 +24,11 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?UserResponse_billingPlan $billingPlan = null;
     
     /**
+     * @var UserResponse_billingState|null $billingState Customer-safe billing state for the user's currently selected business.
+    */
+    private ?UserResponse_billingState $billingState = null;
+    
+    /**
      * @var UserResponse_compliance|null $compliance The compliance value for this user.
     */
     private ?UserResponse_compliance $compliance = null;
@@ -151,6 +156,14 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the billingState property value. Customer-safe billing state for the user's currently selected business.
+     * @return UserResponse_billingState|null
+    */
+    public function getBillingState(): ?UserResponse_billingState {
+        return $this->billingState;
+    }
+
+    /**
      * Gets the compliance property value. The compliance value for this user.
      * @return UserResponse_compliance|null
     */
@@ -190,6 +203,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'billingPlan' => fn(ParseNode $n) => $o->setBillingPlan($n->getEnumValue(UserResponse_billingPlan::class)),
+            'billingState' => fn(ParseNode $n) => $o->setBillingState($n->getObjectValue([UserResponse_billingState::class, 'createFromDiscriminatorValue'])),
             'compliance' => fn(ParseNode $n) => $o->setCompliance($n->getObjectValue([UserResponse_compliance::class, 'createFromDiscriminatorValue'])),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'currentBusiness' => fn(ParseNode $n) => $o->setCurrentBusiness($n->getObjectValue([UserResponse_currentBusiness::class, 'createFromDiscriminatorValue'])),
@@ -338,6 +352,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeEnumValue('billingPlan', $this->getBillingPlan());
+        $writer->writeObjectValue('billingState', $this->getBillingState());
         $writer->writeObjectValue('compliance', $this->getCompliance());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeObjectValue('currentBusiness', $this->getCurrentBusiness());
@@ -374,6 +389,14 @@ class UserResponse implements AdditionalDataHolder, Parsable
     */
     public function setBillingPlan(?UserResponse_billingPlan $value): void {
         $this->billingPlan = $value;
+    }
+
+    /**
+     * Sets the billingState property value. Customer-safe billing state for the user's currently selected business.
+     * @param UserResponse_billingState|null $value Value to set for the billingState property.
+    */
+    public function setBillingState(?UserResponse_billingState $value): void {
+        $this->billingState = $value;
     }
 
     /**

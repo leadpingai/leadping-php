@@ -54,6 +54,11 @@ class BusinessResponse implements AdditionalDataHolder, Parsable
     private ?BusinessResponse_billingPlan $billingPlan = null;
     
     /**
+     * @var BusinessResponse_billingState|null $billingState Customer-safe billing state for this business.
+    */
+    private ?BusinessResponse_billingState $billingState = null;
+    
+    /**
      * @var BusinessResponse_compliancePolicy|null $compliancePolicy Compliance policy configuration for the business.
     */
     private ?BusinessResponse_compliancePolicy $compliancePolicy = null;
@@ -234,6 +239,14 @@ class BusinessResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the billingState property value. Customer-safe billing state for this business.
+     * @return BusinessResponse_billingState|null
+    */
+    public function getBillingState(): ?BusinessResponse_billingState {
+        return $this->billingState;
+    }
+
+    /**
      * Gets the compliancePolicy property value. Compliance policy configuration for the business.
      * @return BusinessResponse_compliancePolicy|null
     */
@@ -303,6 +316,7 @@ class BusinessResponse implements AdditionalDataHolder, Parsable
             'billingAddress' => fn(ParseNode $n) => $o->setBillingAddress($n->getObjectValue([BusinessResponse_billingAddress::class, 'createFromDiscriminatorValue'])),
             'billingName' => fn(ParseNode $n) => $o->setBillingName($n->getStringValue()),
             'billingPlan' => fn(ParseNode $n) => $o->setBillingPlan($n->getEnumValue(BusinessResponse_billingPlan::class)),
+            'billingState' => fn(ParseNode $n) => $o->setBillingState($n->getObjectValue([BusinessResponse_billingState::class, 'createFromDiscriminatorValue'])),
             'compliancePolicy' => fn(ParseNode $n) => $o->setCompliancePolicy($n->getObjectValue([BusinessResponse_compliancePolicy::class, 'createFromDiscriminatorValue'])),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
@@ -442,6 +456,7 @@ class BusinessResponse implements AdditionalDataHolder, Parsable
         $writer->writeObjectValue('billingAddress', $this->getBillingAddress());
         $writer->writeStringValue('billingName', $this->getBillingName());
         $writer->writeEnumValue('billingPlan', $this->getBillingPlan());
+        $writer->writeObjectValue('billingState', $this->getBillingState());
         $writer->writeObjectValue('compliancePolicy', $this->getCompliancePolicy());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('description', $this->getDescription());
@@ -527,6 +542,14 @@ class BusinessResponse implements AdditionalDataHolder, Parsable
     */
     public function setBillingPlan(?BusinessResponse_billingPlan $value): void {
         $this->billingPlan = $value;
+    }
+
+    /**
+     * Sets the billingState property value. Customer-safe billing state for this business.
+     * @param BusinessResponse_billingState|null $value Value to set for the billingState property.
+    */
+    public function setBillingState(?BusinessResponse_billingState $value): void {
+        $this->billingState = $value;
     }
 
     /**

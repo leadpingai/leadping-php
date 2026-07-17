@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Date and time when this Leadping customer analytics summary was leads comparison.
+ * Represents analytics comparison data exposed by Leadping analytics.
 */
 class AnalyticsComparison implements AdditionalDataHolder, Parsable 
 {

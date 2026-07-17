@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Human-readable summary for this Leadping customer analytics.
+ * Represents customer analytics summary data exposed by Leadping analytics.
 */
 class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable 
 {
