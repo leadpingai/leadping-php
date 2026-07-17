@@ -124,6 +124,11 @@ class BusinessResponse implements AdditionalDataHolder, Parsable
     private ?string $secondaryName = null;
     
     /**
+     * @var BusinessResponse_setupStatus|null $setupStatus Defines the supported User Setup Status values.
+    */
+    private ?BusinessResponse_setupStatus $setupStatus = null;
+    
+    /**
      * @var BusinessResponse_setupStep|null $setupStep Defines the supported Business Setup Step values.
     */
     private ?BusinessResponse_setupStep $setupStep = null;
@@ -330,6 +335,7 @@ class BusinessResponse implements AdditionalDataHolder, Parsable
             'phone' => fn(ParseNode $n) => $o->setPhone($n->getStringValue()),
             'phones' => fn(ParseNode $n) => $o->setPhones($n->getCollectionOfObjectValues([IdNameValue::class, 'createFromDiscriminatorValue'])),
             'secondaryName' => fn(ParseNode $n) => $o->setSecondaryName($n->getStringValue()),
+            'setupStatus' => fn(ParseNode $n) => $o->setSetupStatus($n->getEnumValue(BusinessResponse_setupStatus::class)),
             'setupStep' => fn(ParseNode $n) => $o->setSetupStep($n->getEnumValue(BusinessResponse_setupStep::class)),
             'site' => fn(ParseNode $n) => $o->setSite($n->getObjectValue([BusinessResponse_site::class, 'createFromDiscriminatorValue'])),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(BusinessResponse_status::class)),
@@ -386,6 +392,14 @@ class BusinessResponse implements AdditionalDataHolder, Parsable
     */
     public function getSecondaryName(): ?string {
         return $this->secondaryName;
+    }
+
+    /**
+     * Gets the setupStatus property value. Defines the supported User Setup Status values.
+     * @return BusinessResponse_setupStatus|null
+    */
+    public function getSetupStatus(): ?BusinessResponse_setupStatus {
+        return $this->setupStatus;
     }
 
     /**
@@ -470,6 +484,7 @@ class BusinessResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('phone', $this->getPhone());
         $writer->writeCollectionOfObjectValues('phones', $this->getPhones());
         $writer->writeStringValue('secondaryName', $this->getSecondaryName());
+        $writer->writeEnumValue('setupStatus', $this->getSetupStatus());
         $writer->writeEnumValue('setupStep', $this->getSetupStep());
         $writer->writeObjectValue('site', $this->getSite());
         $writer->writeEnumValue('status', $this->getStatus());
@@ -654,6 +669,14 @@ class BusinessResponse implements AdditionalDataHolder, Parsable
     */
     public function setSecondaryName(?string $value): void {
         $this->secondaryName = $value;
+    }
+
+    /**
+     * Sets the setupStatus property value. Defines the supported User Setup Status values.
+     * @param BusinessResponse_setupStatus|null $value Value to set for the setupStatus property.
+    */
+    public function setSetupStatus(?BusinessResponse_setupStatus $value): void {
+        $this->setupStatus = $value;
     }
 
     /**
