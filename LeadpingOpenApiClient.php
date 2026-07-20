@@ -11,6 +11,7 @@ use Leadping\OpenApiClient\Dispositions\DispositionsRequestBuilder;
 use Leadping\OpenApiClient\Events\EventsRequestBuilder;
 use Leadping\OpenApiClient\Feedback\FeedbackRequestBuilder;
 use Leadping\OpenApiClient\Leads\LeadsRequestBuilder;
+use Leadping\OpenApiClient\LeadStatuses\LeadStatusesRequestBuilder;
 use Leadping\OpenApiClient\Notifications\NotificationsRequestBuilder;
 use Leadping\OpenApiClient\Outbound\OutboundRequestBuilder;
 use Leadping\OpenApiClient\PaymentMethods\PaymentMethodsRequestBuilder;
@@ -103,6 +104,13 @@ class LeadpingOpenApiClient extends BaseRequestBuilder
     */
     public function leads(): LeadsRequestBuilder {
         return new LeadsRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The leadStatuses property
+    */
+    public function leadStatuses(): LeadStatusesRequestBuilder {
+        return new LeadStatusesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**

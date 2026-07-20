@@ -38,6 +38,11 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
     private ?string $billingName = null;
     
     /**
+     * @var string|null $billingTaxId Tax identifier printed on billing documents. This may differ from the business verification EIN.
+    */
+    private ?string $billingTaxId = null;
+    
+    /**
      * @var BusinessRequest_compliancePolicy|null $compliancePolicy Compliance policy configuration for the business.
     */
     private ?BusinessRequest_compliancePolicy $compliancePolicy = null;
@@ -164,6 +169,14 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the billingTaxId property value. Tax identifier printed on billing documents. This may differ from the business verification EIN.
+     * @return string|null
+    */
+    public function getBillingTaxId(): ?string {
+        return $this->billingTaxId;
+    }
+
+    /**
      * Gets the compliancePolicy property value. Compliance policy configuration for the business.
      * @return BusinessRequest_compliancePolicy|null
     */
@@ -214,6 +227,7 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
             'autoRefillEnabled' => fn(ParseNode $n) => $o->setAutoRefillEnabled($n->getBooleanValue()),
             'billingAddress' => fn(ParseNode $n) => $o->setBillingAddress($n->getObjectValue([BusinessRequest_billingAddress::class, 'createFromDiscriminatorValue'])),
             'billingName' => fn(ParseNode $n) => $o->setBillingName($n->getStringValue()),
+            'billingTaxId' => fn(ParseNode $n) => $o->setBillingTaxId($n->getStringValue()),
             'compliancePolicy' => fn(ParseNode $n) => $o->setCompliancePolicy($n->getObjectValue([BusinessRequest_compliancePolicy::class, 'createFromDiscriminatorValue'])),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'ein' => fn(ParseNode $n) => $o->setEin($n->getStringValue()),
@@ -312,6 +326,7 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('autoRefillEnabled', $this->getAutoRefillEnabled());
         $writer->writeObjectValue('billingAddress', $this->getBillingAddress());
         $writer->writeStringValue('billingName', $this->getBillingName());
+        $writer->writeStringValue('billingTaxId', $this->getBillingTaxId());
         $writer->writeObjectValue('compliancePolicy', $this->getCompliancePolicy());
         $writer->writeStringValue('description', $this->getDescription());
         $writer->writeStringValue('ein', $this->getEin());
@@ -367,6 +382,14 @@ class BusinessRequest implements AdditionalDataHolder, Parsable
     */
     public function setBillingName(?string $value): void {
         $this->billingName = $value;
+    }
+
+    /**
+     * Sets the billingTaxId property value. Tax identifier printed on billing documents. This may differ from the business verification EIN.
+     * @param string|null $value Value to set for the billingTaxId property.
+    */
+    public function setBillingTaxId(?string $value): void {
+        $this->billingTaxId = $value;
     }
 
     /**

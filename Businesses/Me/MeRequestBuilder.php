@@ -79,6 +79,22 @@ class MeRequestBuilder extends BaseRequestBuilder
     }
 
     /**
+     * Creates a business owned by the current user and selects it as their active business.
+     * @param BusinessRequest $body Request schema for the Leadping API business profile request, including the fields clients can send.
+     * @param MeRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return Promise<BusinessResponse|null>
+     * @throws Exception
+    */
+    public function post(BusinessRequest $body, ?MeRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
+        $requestInfo = $this->toPostRequestInformation($body, $requestConfiguration);
+        $errorMappings = [
+                '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+        ];
+        return $this->requestAdapter->sendAsync($requestInfo, [BusinessResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
+    }
+
+    /**
      * Updates the authenticated user's current business profile, including contact, settings, and communication configuration.
      * @param BusinessRequest $body Request schema for the Leadping API business profile request, including the fields clients can send.
      * @param MeRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -109,6 +125,26 @@ class MeRequestBuilder extends BaseRequestBuilder
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
         $requestInfo->tryAddHeader('Accept', "application/json");
+        return $requestInfo;
+    }
+
+    /**
+     * Creates a business owned by the current user and selects it as their active business.
+     * @param BusinessRequest $body Request schema for the Leadping API business profile request, including the fields clients can send.
+     * @param MeRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return RequestInformation
+    */
+    public function toPostRequestInformation(BusinessRequest $body, ?MeRequestBuilderPostRequestConfiguration $requestConfiguration = null): RequestInformation {
+        $requestInfo = new RequestInformation();
+        $requestInfo->urlTemplate = $this->urlTemplate;
+        $requestInfo->pathParameters = $this->pathParameters;
+        $requestInfo->httpMethod = HttpMethod::POST;
+        if ($requestConfiguration !== null) {
+            $requestInfo->addHeaders($requestConfiguration->headers);
+            $requestInfo->addRequestOptions(...$requestConfiguration->options);
+        }
+        $requestInfo->tryAddHeader('Accept', "application/json");
+        $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
         return $requestInfo;
     }
 

@@ -6,6 +6,7 @@ use Exception;
 use Http\Promise\Promise;
 use Leadping\OpenApiClient\Models\ProblemDetails;
 use Leadping\OpenApiClient\Models\StripePaymentMethodResponse;
+use Leadping\OpenApiClient\PaymentMethods\Invoices\InvoicesRequestBuilder;
 use Leadping\OpenApiClient\PaymentMethods\Item\PaymentMethodsItemRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
@@ -17,6 +18,13 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 */
 class PaymentMethodsRequestBuilder extends BaseRequestBuilder 
 {
+    /**
+     * The invoices property
+    */
+    public function invoices(): InvoicesRequestBuilder {
+        return new InvoicesRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
     /**
      * Gets an item from the Leadping/OpenApiClient.paymentMethods.item collection
      * @param string $id The ID of the payment method to retrieve.

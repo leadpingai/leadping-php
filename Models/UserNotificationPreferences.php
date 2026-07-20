@@ -2,6 +2,7 @@
 
 namespace Leadping\OpenApiClient\Models;
 
+use DateTime;
 use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
@@ -96,6 +97,21 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
      * @var bool|null $paymentFailedSmsEnabled Indicates whether payment failed SMS functionality is enabled for this Leadping user notification preferences.
     */
     private ?bool $paymentFailedSmsEnabled = null;
+    
+    /**
+     * @var bool|null $smsConsentOptedIn Whether the user has consented to receive Leadping account notification SMS messages.
+    */
+    private ?bool $smsConsentOptedIn = null;
+    
+    /**
+     * @var UserNotificationPreferences_smsConsentTrustedFormCertificate|null $smsConsentTrustedFormCertificate The TrustedForm certificate captured for the user's most recent SMS opt-in.
+    */
+    private ?UserNotificationPreferences_smsConsentTrustedFormCertificate $smsConsentTrustedFormCertificate = null;
+    
+    /**
+     * @var DateTime|null $smsConsentUpdatedAt When the user's Leadping notification SMS consent was last changed.
+    */
+    private ?DateTime $smsConsentUpdatedAt = null;
     
     /**
      * @var bool|null $subscriptionRenewingEmailEnabled Indicates whether subscription renewing email functionality is enabled for this Leadping user notification preferences.
@@ -224,6 +240,9 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
             'newLeadSmsEnabled' => fn(ParseNode $n) => $o->setNewLeadSmsEnabled($n->getBooleanValue()),
             'paymentFailedEnabled' => fn(ParseNode $n) => $o->setPaymentFailedEnabled($n->getBooleanValue()),
             'paymentFailedSmsEnabled' => fn(ParseNode $n) => $o->setPaymentFailedSmsEnabled($n->getBooleanValue()),
+            'smsConsentOptedIn' => fn(ParseNode $n) => $o->setSmsConsentOptedIn($n->getBooleanValue()),
+            'smsConsentTrustedFormCertificate' => fn(ParseNode $n) => $o->setSmsConsentTrustedFormCertificate($n->getObjectValue([UserNotificationPreferences_smsConsentTrustedFormCertificate::class, 'createFromDiscriminatorValue'])),
+            'smsConsentUpdatedAt' => fn(ParseNode $n) => $o->setSmsConsentUpdatedAt($n->getDateTimeValue()),
             'subscriptionRenewingEmailEnabled' => fn(ParseNode $n) => $o->setSubscriptionRenewingEmailEnabled($n->getBooleanValue()),
             'subscriptionRenewingEnabled' => fn(ParseNode $n) => $o->setSubscriptionRenewingEnabled($n->getBooleanValue()),
             'subscriptionRenewingSmsEnabled' => fn(ParseNode $n) => $o->setSubscriptionRenewingSmsEnabled($n->getBooleanValue()),
@@ -324,6 +343,30 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the smsConsentOptedIn property value. Whether the user has consented to receive Leadping account notification SMS messages.
+     * @return bool|null
+    */
+    public function getSmsConsentOptedIn(): ?bool {
+        return $this->smsConsentOptedIn;
+    }
+
+    /**
+     * Gets the smsConsentTrustedFormCertificate property value. The TrustedForm certificate captured for the user's most recent SMS opt-in.
+     * @return UserNotificationPreferences_smsConsentTrustedFormCertificate|null
+    */
+    public function getSmsConsentTrustedFormCertificate(): ?UserNotificationPreferences_smsConsentTrustedFormCertificate {
+        return $this->smsConsentTrustedFormCertificate;
+    }
+
+    /**
+     * Gets the smsConsentUpdatedAt property value. When the user's Leadping notification SMS consent was last changed.
+     * @return DateTime|null
+    */
+    public function getSmsConsentUpdatedAt(): ?DateTime {
+        return $this->smsConsentUpdatedAt;
+    }
+
+    /**
      * Gets the subscriptionRenewingEmailEnabled property value. Indicates whether subscription renewing email functionality is enabled for this Leadping user notification preferences.
      * @return bool|null
     */
@@ -408,6 +451,9 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('newLeadSmsEnabled', $this->getNewLeadSmsEnabled());
         $writer->writeBooleanValue('paymentFailedEnabled', $this->getPaymentFailedEnabled());
         $writer->writeBooleanValue('paymentFailedSmsEnabled', $this->getPaymentFailedSmsEnabled());
+        $writer->writeBooleanValue('smsConsentOptedIn', $this->getSmsConsentOptedIn());
+        $writer->writeObjectValue('smsConsentTrustedFormCertificate', $this->getSmsConsentTrustedFormCertificate());
+        $writer->writeDateTimeValue('smsConsentUpdatedAt', $this->getSmsConsentUpdatedAt());
         $writer->writeBooleanValue('subscriptionRenewingEmailEnabled', $this->getSubscriptionRenewingEmailEnabled());
         $writer->writeBooleanValue('subscriptionRenewingEnabled', $this->getSubscriptionRenewingEnabled());
         $writer->writeBooleanValue('subscriptionRenewingSmsEnabled', $this->getSubscriptionRenewingSmsEnabled());
@@ -553,6 +599,30 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     */
     public function setPaymentFailedSmsEnabled(?bool $value): void {
         $this->paymentFailedSmsEnabled = $value;
+    }
+
+    /**
+     * Sets the smsConsentOptedIn property value. Whether the user has consented to receive Leadping account notification SMS messages.
+     * @param bool|null $value Value to set for the smsConsentOptedIn property.
+    */
+    public function setSmsConsentOptedIn(?bool $value): void {
+        $this->smsConsentOptedIn = $value;
+    }
+
+    /**
+     * Sets the smsConsentTrustedFormCertificate property value. The TrustedForm certificate captured for the user's most recent SMS opt-in.
+     * @param UserNotificationPreferences_smsConsentTrustedFormCertificate|null $value Value to set for the smsConsentTrustedFormCertificate property.
+    */
+    public function setSmsConsentTrustedFormCertificate(?UserNotificationPreferences_smsConsentTrustedFormCertificate $value): void {
+        $this->smsConsentTrustedFormCertificate = $value;
+    }
+
+    /**
+     * Sets the smsConsentUpdatedAt property value. When the user's Leadping notification SMS consent was last changed.
+     * @param DateTime|null $value Value to set for the smsConsentUpdatedAt property.
+    */
+    public function setSmsConsentUpdatedAt(?DateTime $value): void {
+        $this->smsConsentUpdatedAt = $value;
     }
 
     /**

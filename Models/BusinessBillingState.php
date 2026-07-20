@@ -19,6 +19,11 @@ class BusinessBillingState implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var DateTime|null $billingPlanChangeEffectiveAt Date and time when the scheduled billing plan change takes effect.
+    */
+    private ?DateTime $billingPlanChangeEffectiveAt = null;
+    
+    /**
      * @var DateTime|null $cancelAt Gets or sets when the active subscription is scheduled to cancel.
     */
     private ?DateTime $cancelAt = null;
@@ -49,6 +54,16 @@ class BusinessBillingState implements AdditionalDataHolder, Parsable
     private ?DateTime $lastSubscriptionEventAt = null;
     
     /**
+     * @var BusinessBillingState_pendingBillingPlan|null $pendingBillingPlan Defines the supported Billing Plan values.
+    */
+    private ?BusinessBillingState_pendingBillingPlan $pendingBillingPlan = null;
+    
+    /**
+     * @var DateTime|null $planRenewalAt Current plan renewal date.
+    */
+    private ?DateTime $planRenewalAt = null;
+    
+    /**
      * Instantiates a new BusinessBillingState and sets the default values.
     */
     public function __construct() {
@@ -70,6 +85,14 @@ class BusinessBillingState implements AdditionalDataHolder, Parsable
     */
     public function getAdditionalData(): ?array {
         return $this->additionalData;
+    }
+
+    /**
+     * Gets the billingPlanChangeEffectiveAt property value. Date and time when the scheduled billing plan change takes effect.
+     * @return DateTime|null
+    */
+    public function getBillingPlanChangeEffectiveAt(): ?DateTime {
+        return $this->billingPlanChangeEffectiveAt;
     }
 
     /**
@@ -95,12 +118,15 @@ class BusinessBillingState implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'billingPlanChangeEffectiveAt' => fn(ParseNode $n) => $o->setBillingPlanChangeEffectiveAt($n->getDateTimeValue()),
             'cancelAt' => fn(ParseNode $n) => $o->setCancelAt($n->getDateTimeValue()),
             'dunning' => fn(ParseNode $n) => $o->setDunning($n->getObjectValue([BusinessBillingState_dunning::class, 'createFromDiscriminatorValue'])),
             'hasPaymentMethod' => fn(ParseNode $n) => $o->setHasPaymentMethod($n->getBooleanValue()),
             'hasStripeCustomer' => fn(ParseNode $n) => $o->setHasStripeCustomer($n->getBooleanValue()),
             'lastPaymentMethodEventAt' => fn(ParseNode $n) => $o->setLastPaymentMethodEventAt($n->getDateTimeValue()),
             'lastSubscriptionEventAt' => fn(ParseNode $n) => $o->setLastSubscriptionEventAt($n->getDateTimeValue()),
+            'pendingBillingPlan' => fn(ParseNode $n) => $o->setPendingBillingPlan($n->getEnumValue(BusinessBillingState_pendingBillingPlan::class)),
+            'planRenewalAt' => fn(ParseNode $n) => $o->setPlanRenewalAt($n->getDateTimeValue()),
         ];
     }
 
@@ -137,16 +163,35 @@ class BusinessBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the pendingBillingPlan property value. Defines the supported Billing Plan values.
+     * @return BusinessBillingState_pendingBillingPlan|null
+    */
+    public function getPendingBillingPlan(): ?BusinessBillingState_pendingBillingPlan {
+        return $this->pendingBillingPlan;
+    }
+
+    /**
+     * Gets the planRenewalAt property value. Current plan renewal date.
+     * @return DateTime|null
+    */
+    public function getPlanRenewalAt(): ?DateTime {
+        return $this->planRenewalAt;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeDateTimeValue('billingPlanChangeEffectiveAt', $this->getBillingPlanChangeEffectiveAt());
         $writer->writeDateTimeValue('cancelAt', $this->getCancelAt());
         $writer->writeObjectValue('dunning', $this->getDunning());
         $writer->writeBooleanValue('hasPaymentMethod', $this->getHasPaymentMethod());
         $writer->writeBooleanValue('hasStripeCustomer', $this->getHasStripeCustomer());
         $writer->writeDateTimeValue('lastPaymentMethodEventAt', $this->getLastPaymentMethodEventAt());
         $writer->writeDateTimeValue('lastSubscriptionEventAt', $this->getLastSubscriptionEventAt());
+        $writer->writeEnumValue('pendingBillingPlan', $this->getPendingBillingPlan());
+        $writer->writeDateTimeValue('planRenewalAt', $this->getPlanRenewalAt());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -156,6 +201,14 @@ class BusinessBillingState implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the billingPlanChangeEffectiveAt property value. Date and time when the scheduled billing plan change takes effect.
+     * @param DateTime|null $value Value to set for the billingPlanChangeEffectiveAt property.
+    */
+    public function setBillingPlanChangeEffectiveAt(?DateTime $value): void {
+        $this->billingPlanChangeEffectiveAt = $value;
     }
 
     /**
@@ -204,6 +257,22 @@ class BusinessBillingState implements AdditionalDataHolder, Parsable
     */
     public function setLastSubscriptionEventAt(?DateTime $value): void {
         $this->lastSubscriptionEventAt = $value;
+    }
+
+    /**
+     * Sets the pendingBillingPlan property value. Defines the supported Billing Plan values.
+     * @param BusinessBillingState_pendingBillingPlan|null $value Value to set for the pendingBillingPlan property.
+    */
+    public function setPendingBillingPlan(?BusinessBillingState_pendingBillingPlan $value): void {
+        $this->pendingBillingPlan = $value;
+    }
+
+    /**
+     * Sets the planRenewalAt property value. Current plan renewal date.
+     * @param DateTime|null $value Value to set for the planRenewalAt property.
+    */
+    public function setPlanRenewalAt(?DateTime $value): void {
+        $this->planRenewalAt = $value;
     }
 
 }
