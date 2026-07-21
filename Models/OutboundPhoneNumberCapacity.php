@@ -18,6 +18,11 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var bool|null $capacityAvailable Indicates whether Leadping successfully calculated capacity for this phone number.
+    */
+    private ?bool $capacityAvailable = null;
+    
+    /**
      * @var PhoneNumberOutboundHealthStatus|null $healthStatus Current health status for this Leadping outbound phone number capacity.
     */
     private ?PhoneNumberOutboundHealthStatus $healthStatus = null;
@@ -117,12 +122,21 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the capacityAvailable property value. Indicates whether Leadping successfully calculated capacity for this phone number.
+     * @return bool|null
+    */
+    public function getCapacityAvailable(): ?bool {
+        return $this->capacityAvailable;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'capacityAvailable' => fn(ParseNode $n) => $o->setCapacityAvailable($n->getBooleanValue()),
             'healthStatus' => fn(ParseNode $n) => $o->setHealthStatus($n->getEnumValue(PhoneNumberOutboundHealthStatus::class)),
             'phoneNumber' => fn(ParseNode $n) => $o->setPhoneNumber($n->getStringValue()),
             'phoneNumberId' => fn(ParseNode $n) => $o->setPhoneNumberId($n->getStringValue()),
@@ -266,6 +280,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeBooleanValue('capacityAvailable', $this->getCapacityAvailable());
         $writer->writeEnumValue('healthStatus', $this->getHealthStatus());
         $writer->writeStringValue('phoneNumber', $this->getPhoneNumber());
         $writer->writeStringValue('phoneNumberId', $this->getPhoneNumberId());
@@ -290,6 +305,14 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the capacityAvailable property value. Indicates whether Leadping successfully calculated capacity for this phone number.
+     * @param bool|null $value Value to set for the capacityAvailable property.
+    */
+    public function setCapacityAvailable(?bool $value): void {
+        $this->capacityAvailable = $value;
     }
 
     /**

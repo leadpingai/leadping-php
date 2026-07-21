@@ -5,6 +5,7 @@ namespace Leadping\OpenApiClient\PaymentMethods\Invoices;
 use Exception;
 use Http\Promise\Promise;
 use Leadping\OpenApiClient\Models\StripeInvoiceResponse;
+use Leadping\OpenApiClient\PaymentMethods\Invoices\Item\WithInvoiceItemRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
@@ -15,6 +16,17 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 */
 class InvoicesRequestBuilder extends BaseRequestBuilder 
 {
+    /**
+     * Gets an item from the Leadping/OpenApiClient.paymentMethods.invoices.item collection
+     * @param string $invoiceId Unique identifier of the item
+     * @return WithInvoiceItemRequestBuilder
+    */
+    public function byInvoiceId(string $invoiceId): WithInvoiceItemRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['invoiceId'] = $invoiceId;
+        return new WithInvoiceItemRequestBuilder($urlTplParams, $this->requestAdapter);
+    }
+
     /**
      * Instantiates a new InvoicesRequestBuilder and sets the default values.
      * @param array<string, mixed>|string $pathParametersOrRawUrl Path parameters for the request or a String representing the raw URL.
@@ -30,7 +42,7 @@ class InvoicesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Lists actual Stripe invoices for the current business.
+     * Returns the current business's Stripe invoices with their amounts, payment status, billing period, and hosted invoice details.
      * @param InvoicesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<array<StripeInvoiceResponse>|null>
      * @throws Exception
@@ -41,7 +53,7 @@ class InvoicesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Lists actual Stripe invoices for the current business.
+     * Returns the current business's Stripe invoices with their amounts, payment status, billing period, and hosted invoice details.
      * @param InvoicesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

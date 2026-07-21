@@ -6,6 +6,7 @@ use Exception;
 use Http\Promise\Promise;
 use Leadping\OpenApiClient\Businesses\Me\EscapedSwitch\SwitchRequestBuilder;
 use Leadping\OpenApiClient\Businesses\Me\Invitations\InvitationsRequestBuilder;
+use Leadping\OpenApiClient\Businesses\Me\OneZerodlc\OneZerodlcRequestBuilder;
 use Leadping\OpenApiClient\Businesses\Me\Options\OptionsRequestBuilder;
 use Leadping\OpenApiClient\Businesses\Me\Users\UsersRequestBuilder;
 use Leadping\OpenApiClient\Models\BusinessRequest;
@@ -33,6 +34,13 @@ class MeRequestBuilder extends BaseRequestBuilder
     */
     public function invitations(): InvitationsRequestBuilder {
         return new InvitationsRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The OneZerodlc property
+    */
+    public function oneZerodlc(): OneZerodlcRequestBuilder {
+        return new OneZerodlcRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**
@@ -79,7 +87,7 @@ class MeRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Creates a business owned by the current user and selects it as their active business.
+     * Creates a business account for the authenticated user, assigns them as its owner, and makes it their active business context.
      * @param BusinessRequest $body Request schema for the Leadping API business profile request, including the fields clients can send.
      * @param MeRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<BusinessResponse|null>
@@ -129,7 +137,7 @@ class MeRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Creates a business owned by the current user and selects it as their active business.
+     * Creates a business account for the authenticated user, assigns them as its owner, and makes it their active business context.
      * @param BusinessRequest $body Request schema for the Leadping API business profile request, including the fields clients can send.
      * @param MeRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

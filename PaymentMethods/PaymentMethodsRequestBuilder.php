@@ -51,7 +51,7 @@ class PaymentMethodsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * List payment methods
+     * Lists the payment methods available to the current business for billing, invoice payments, and wallet funding.
      * @param PaymentMethodsRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<array<StripePaymentMethodResponse>|null>
      * @throws Exception
@@ -65,7 +65,7 @@ class PaymentMethodsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * List payment methods
+     * Lists the payment methods available to the current business for billing, invoice payments, and wallet funding.
      * @param PaymentMethodsRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

@@ -23,7 +23,7 @@ class MeRequestBuilder extends BaseRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/notifications/me');
+        parent::__construct($requestAdapter, [], '{+baseurl}/notifications/me{?endAt*,startAt*}');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {
@@ -61,6 +61,9 @@ class MeRequestBuilder extends BaseRequestBuilder
         $requestInfo->httpMethod = HttpMethod::POST;
         if ($requestConfiguration !== null) {
             $requestInfo->addHeaders($requestConfiguration->headers);
+            if ($requestConfiguration->queryParameters !== null) {
+                $requestInfo->setQueryParameters($requestConfiguration->queryParameters);
+            }
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
         $requestInfo->tryAddHeader('Accept', "application/json");

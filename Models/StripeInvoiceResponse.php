@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Customer-safe Stripe invoice summary for billing history.
+ * Customer-safe Leadping invoice summary for billing.
 */
 class StripeInvoiceResponse implements AdditionalDataHolder, Parsable 
 {
@@ -29,9 +29,9 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $createdAt = null;
     
     /**
-     * @var string|null $hostedInvoiceUrl The hostedInvoiceUrl property
+     * @var bool|null $hasPdf The hasPdf property
     */
-    private ?string $hostedInvoiceUrl = null;
+    private ?bool $hasPdf = null;
     
     /**
      * @var string|null $id The id property
@@ -97,7 +97,7 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
         return  [
             'amount' => fn(ParseNode $n) => $o->setAmount($n->getFloatValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
-            'hostedInvoiceUrl' => fn(ParseNode $n) => $o->setHostedInvoiceUrl($n->getStringValue()),
+            'hasPdf' => fn(ParseNode $n) => $o->setHasPdf($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'number' => fn(ParseNode $n) => $o->setNumber($n->getStringValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getStringValue()),
@@ -105,11 +105,11 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the hostedInvoiceUrl property value. The hostedInvoiceUrl property
-     * @return string|null
+     * Gets the hasPdf property value. The hasPdf property
+     * @return bool|null
     */
-    public function getHostedInvoiceUrl(): ?string {
-        return $this->hostedInvoiceUrl;
+    public function getHasPdf(): ?bool {
+        return $this->hasPdf;
     }
 
     /**
@@ -143,7 +143,7 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeFloatValue('amount', $this->getAmount());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
-        $writer->writeStringValue('hostedInvoiceUrl', $this->getHostedInvoiceUrl());
+        $writer->writeBooleanValue('hasPdf', $this->getHasPdf());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeStringValue('number', $this->getNumber());
         $writer->writeStringValue('status', $this->getStatus());
@@ -175,11 +175,11 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the hostedInvoiceUrl property value. The hostedInvoiceUrl property
-     * @param string|null $value Value to set for the hostedInvoiceUrl property.
+     * Sets the hasPdf property value. The hasPdf property
+     * @param bool|null $value Value to set for the hasPdf property.
     */
-    public function setHostedInvoiceUrl(?string $value): void {
-        $this->hostedInvoiceUrl = $value;
+    public function setHasPdf(?bool $value): void {
+        $this->hasPdf = $value;
     }
 
     /**

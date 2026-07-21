@@ -43,7 +43,7 @@ class LeadStatusesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Get all
+     * Lists the current business's active lead statuses for organizing and tracking leads through the sales workflow.
      * @param LeadStatusesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<array<LeadStatusResponse>|null>
      * @throws Exception
@@ -54,7 +54,7 @@ class LeadStatusesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Create
+     * Creates a reusable lead status for the current business to categorize leads in its sales workflow.
      * @param LeadStatusRequest $body The request body
      * @param LeadStatusesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<LeadStatusResponse|null>
@@ -66,7 +66,7 @@ class LeadStatusesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Get all
+     * Lists the current business's active lead statuses for organizing and tracking leads through the sales workflow.
      * @param LeadStatusesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -84,7 +84,7 @@ class LeadStatusesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Create
+     * Creates a reusable lead status for the current business to categorize leads in its sales workflow.
      * @param LeadStatusRequest $body The request body
      * @param LeadStatusesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

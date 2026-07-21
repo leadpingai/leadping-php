@@ -31,7 +31,7 @@ class LeadStatusesItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Archive
+     * Archives a lead status for the current business so it is unavailable for new assignments while existing lead history is preserved.
      * @param LeadStatusesItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<bool|null>
      * @throws Exception
@@ -44,7 +44,7 @@ class LeadStatusesItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Update
+     * Updates the name, color, and display order of a lead status owned by the current business.
      * @param LeadStatusRequest $body The request body
      * @param LeadStatusesItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<LeadStatusResponse|null>
@@ -56,7 +56,7 @@ class LeadStatusesItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Archive
+     * Archives a lead status for the current business so it is unavailable for new assignments while existing lead history is preserved.
      * @param LeadStatusesItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -74,7 +74,7 @@ class LeadStatusesItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Update
+     * Updates the name, color, and display order of a lead status owned by the current business.
      * @param LeadStatusRequest $body The request body
      * @param LeadStatusesItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

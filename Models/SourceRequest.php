@@ -29,6 +29,11 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     private ?array $allowedStates = null;
     
     /**
+     * @var string|null $apiKey Source API key used to authenticate inbound lead delivery to Leadping.
+    */
+    private ?string $apiKey = null;
+    
+    /**
      * @var array<string>|null $defaultTagIds Tag IDs automatically assigned to leads created by this source.
     */
     private ?array $defaultTagIds = null;
@@ -109,6 +114,14 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping.
+     * @return string|null
+    */
+    public function getApiKey(): ?string {
+        return $this->apiKey;
+    }
+
+    /**
      * Gets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
      * @return array<string>|null
     */
@@ -163,6 +176,7 @@ class SourceRequest implements AdditionalDataHolder, Parsable
                 /** @var array<string>|null $val */
                 $this->setAllowedStates($val);
             },
+            'apiKey' => fn(ParseNode $n) => $o->setApiKey($n->getStringValue()),
             'defaultTagIds' => function (ParseNode $n) {
                 $val = $n->getCollectionOfPrimitiveValues();
                 if (is_array($val)) {
@@ -227,6 +241,7 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeCollectionOfPrimitiveValues('allowedProducts', $this->getAllowedProducts());
         $writer->writeCollectionOfPrimitiveValues('allowedStates', $this->getAllowedStates());
+        $writer->writeStringValue('apiKey', $this->getApiKey());
         $writer->writeCollectionOfPrimitiveValues('defaultTagIds', $this->getDefaultTagIds());
         $writer->writeCollectionOfPrimitiveValues('defaultTagNames', $this->getDefaultTagNames());
         $writer->writeStringValue('description', $this->getDescription());
@@ -260,6 +275,14 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     */
     public function setAllowedStates(?array $value): void {
         $this->allowedStates = $value;
+    }
+
+    /**
+     * Sets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping.
+     * @param string|null $value Value to set for the apiKey property.
+    */
+    public function setApiKey(?string $value): void {
+        $this->apiKey = $value;
     }
 
     /**

@@ -30,6 +30,11 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     private ?array $allowedStates = null;
     
     /**
+     * @var string|null $apiKey Source API key used to authenticate inbound lead delivery to Leadping. Unlike a business API key, this value remains available to authorized source users.
+    */
+    private ?string $apiKey = null;
+    
+    /**
      * @var DateTime|null $apiKeyLastUsedAt UTC timestamp when the source API key was last used.
     */
     private ?DateTime $apiKeyLastUsedAt = null;
@@ -170,6 +175,14 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike a business API key, this value remains available to authorized source users.
+     * @return string|null
+    */
+    public function getApiKey(): ?string {
+        return $this->apiKey;
+    }
+
+    /**
      * Gets the apiKeyLastUsedAt property value. UTC timestamp when the source API key was last used.
      * @return DateTime|null
     */
@@ -288,6 +301,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
                 /** @var array<string>|null $val */
                 $this->setAllowedStates($val);
             },
+            'apiKey' => fn(ParseNode $n) => $o->setApiKey($n->getStringValue()),
             'apiKeyLastUsedAt' => fn(ParseNode $n) => $o->setApiKeyLastUsedAt($n->getDateTimeValue()),
             'apiKeyPreview' => fn(ParseNode $n) => $o->setApiKeyPreview($n->getStringValue()),
             'apiKeyTotalUses' => fn(ParseNode $n) => $o->setApiKeyTotalUses($n->getIntegerValue()),
@@ -389,6 +403,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeCollectionOfPrimitiveValues('allowedProducts', $this->getAllowedProducts());
         $writer->writeCollectionOfPrimitiveValues('allowedStates', $this->getAllowedStates());
+        $writer->writeStringValue('apiKey', $this->getApiKey());
         $writer->writeDateTimeValue('apiKeyLastUsedAt', $this->getApiKeyLastUsedAt());
         $writer->writeStringValue('apiKeyPreview', $this->getApiKeyPreview());
         $writer->writeIntegerValue('apiKeyTotalUses', $this->getApiKeyTotalUses());
@@ -434,6 +449,14 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     */
     public function setAllowedStates(?array $value): void {
         $this->allowedStates = $value;
+    }
+
+    /**
+     * Sets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike a business API key, this value remains available to authorized source users.
+     * @param string|null $value Value to set for the apiKey property.
+    */
+    public function setApiKey(?string $value): void {
+        $this->apiKey = $value;
     }
 
     /**
