@@ -8,9 +8,9 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API DTO containing SMS warmup ui state data used by Leadping API contracts.
+ * API DTO containing SMS readiness UI state data used by Leadping API contracts.
 */
-class SmsWarmupUiState implements AdditionalDataHolder, Parsable 
+class SmsReadinessUiState implements AdditionalDataHolder, Parsable 
 {
     /**
      * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -18,22 +18,22 @@ class SmsWarmupUiState implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $description The human-readable description of this SMS warmup UI state.
+     * @var string|null $description The human-readable description of this SMS readiness UI state.
     */
     private ?string $description = null;
     
     /**
-     * @var SmsWarmupHealthState|null $label The human-readable label shown for this SMS warmup UI state.
+     * @var SmsReadinessState|null $label The human-readable label shown for this SMS readiness UI state.
     */
-    private ?SmsWarmupHealthState $label = null;
+    private ?SmsReadinessState $label = null;
     
     /**
-     * @var string|null $tone The tone value for this SMS warmup UI state.
+     * @var string|null $tone The tone value for this SMS readiness UI state.
     */
     private ?string $tone = null;
     
     /**
-     * Instantiates a new SmsWarmupUiState and sets the default values.
+     * Instantiates a new SmsReadinessUiState and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);
@@ -42,10 +42,10 @@ class SmsWarmupUiState implements AdditionalDataHolder, Parsable
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
-     * @return SmsWarmupUiState
+     * @return SmsReadinessUiState
     */
-    public static function createFromDiscriminatorValue(ParseNode $parseNode): SmsWarmupUiState {
-        return new SmsWarmupUiState();
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): SmsReadinessUiState {
+        return new SmsReadinessUiState();
     }
 
     /**
@@ -57,7 +57,7 @@ class SmsWarmupUiState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the description property value. The human-readable description of this SMS warmup UI state.
+     * Gets the description property value. The human-readable description of this SMS readiness UI state.
      * @return string|null
     */
     public function getDescription(): ?string {
@@ -72,21 +72,21 @@ class SmsWarmupUiState implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
-            'label' => fn(ParseNode $n) => $o->setLabel($n->getEnumValue(SmsWarmupHealthState::class)),
+            'label' => fn(ParseNode $n) => $o->setLabel($n->getEnumValue(SmsReadinessState::class)),
             'tone' => fn(ParseNode $n) => $o->setTone($n->getStringValue()),
         ];
     }
 
     /**
-     * Gets the label property value. The human-readable label shown for this SMS warmup UI state.
-     * @return SmsWarmupHealthState|null
+     * Gets the label property value. The human-readable label shown for this SMS readiness UI state.
+     * @return SmsReadinessState|null
     */
-    public function getLabel(): ?SmsWarmupHealthState {
+    public function getLabel(): ?SmsReadinessState {
         return $this->label;
     }
 
     /**
-     * Gets the tone property value. The tone value for this SMS warmup UI state.
+     * Gets the tone property value. The tone value for this SMS readiness UI state.
      * @return string|null
     */
     public function getTone(): ?string {
@@ -113,7 +113,7 @@ class SmsWarmupUiState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the description property value. The human-readable description of this SMS warmup UI state.
+     * Sets the description property value. The human-readable description of this SMS readiness UI state.
      * @param string|null $value Value to set for the description property.
     */
     public function setDescription(?string $value): void {
@@ -121,15 +121,15 @@ class SmsWarmupUiState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the label property value. The human-readable label shown for this SMS warmup UI state.
-     * @param SmsWarmupHealthState|null $value Value to set for the label property.
+     * Sets the label property value. The human-readable label shown for this SMS readiness UI state.
+     * @param SmsReadinessState|null $value Value to set for the label property.
     */
-    public function setLabel(?SmsWarmupHealthState $value): void {
+    public function setLabel(?SmsReadinessState $value): void {
         $this->label = $value;
     }
 
     /**
-     * Sets the tone property value. The tone value for this SMS warmup UI state.
+     * Sets the tone property value. The tone value for this SMS readiness UI state.
      * @param string|null $value Value to set for the tone property.
     */
     public function setTone(?string $value): void {

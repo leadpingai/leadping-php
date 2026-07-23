@@ -5,7 +5,7 @@ namespace Leadping\OpenApiClient\PhoneNumbers\Item\Status;
 use Microsoft\Kiota\Abstractions\Types\Date;
 
 /**
- * Returns provider and Leadping status for a phone number, including messaging readiness, assignments, and verification state.
+ * Returns provider and Leadping status for a phone number, including messaging warmup, assignments, and verification state.
 */
 class StatusRequestBuilderGetQueryParameters 
 {

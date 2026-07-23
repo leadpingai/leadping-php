@@ -38,7 +38,7 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * @var string|null $name Display name for this phone number table row in the Leadping API.
+     * @var string|null $name Optional display label for this phone number table row in the Leadping API.
     */
     private ?string $name = null;
     
@@ -78,9 +78,9 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     private ?bool $voiceReady = null;
     
     /**
-     * @var PhoneNumberWarmup|null $warmup Warmup state for this phone number.
+     * @var PhoneNumberReadiness|null $warmup Warmup state for this phone number.
     */
-    private ?PhoneNumberWarmup $warmup = null;
+    private ?PhoneNumberReadiness $warmup = null;
     
     /**
      * Instantiates a new PhoneNumberTableRow and sets the default values.
@@ -149,7 +149,7 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
             'tenDlcCampaignStatus' => fn(ParseNode $n) => $o->setTenDlcCampaignStatus($n->getStringValue()),
             'type' => fn(ParseNode $n) => $o->setType($n->getStringValue()),
             'voiceReady' => fn(ParseNode $n) => $o->setVoiceReady($n->getBooleanValue()),
-            'warmup' => fn(ParseNode $n) => $o->setWarmup($n->getObjectValue([PhoneNumberWarmup::class, 'createFromDiscriminatorValue'])),
+            'warmup' => fn(ParseNode $n) => $o->setWarmup($n->getObjectValue([PhoneNumberReadiness::class, 'createFromDiscriminatorValue'])),
         ];
     }
 
@@ -162,7 +162,7 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the name property value. Display name for this phone number table row in the Leadping API.
+     * Gets the name property value. Optional display label for this phone number table row in the Leadping API.
      * @return string|null
     */
     public function getName(): ?string {
@@ -227,9 +227,9 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
 
     /**
      * Gets the warmup property value. Warmup state for this phone number.
-     * @return PhoneNumberWarmup|null
+     * @return PhoneNumberReadiness|null
     */
-    public function getWarmup(): ?PhoneNumberWarmup {
+    public function getWarmup(): ?PhoneNumberReadiness {
         return $this->warmup;
     }
 
@@ -295,7 +295,7 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the name property value. Display name for this phone number table row in the Leadping API.
+     * Sets the name property value. Optional display label for this phone number table row in the Leadping API.
      * @param string|null $value Value to set for the name property.
     */
     public function setName(?string $value): void {
@@ -360,9 +360,9 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
 
     /**
      * Sets the warmup property value. Warmup state for this phone number.
-     * @param PhoneNumberWarmup|null $value Value to set for the warmup property.
+     * @param PhoneNumberReadiness|null $value Value to set for the warmup property.
     */
-    public function setWarmup(?PhoneNumberWarmup $value): void {
+    public function setWarmup(?PhoneNumberReadiness $value): void {
         $this->warmup = $value;
     }
 

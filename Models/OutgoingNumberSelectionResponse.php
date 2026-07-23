@@ -43,7 +43,7 @@ class OutgoingNumberSelectionResponse implements AdditionalDataHolder, Parsable
     private ?string $healthLabel = null;
     
     /**
-     * @var OutgoingNumberSelectionResponse_healthStatus|null $healthStatus Defines the supported SMS Warmup Health State values.
+     * @var OutgoingNumberSelectionResponse_healthStatus|null $healthStatus Defines the supported SMS readiness health assessments.
     */
     private ?OutgoingNumberSelectionResponse_healthStatus $healthStatus = null;
     
@@ -176,7 +176,7 @@ class OutgoingNumberSelectionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the healthStatus property value. Defines the supported SMS Warmup Health State values.
+     * Gets the healthStatus property value. Defines the supported SMS readiness health assessments.
      * @return OutgoingNumberSelectionResponse_healthStatus|null
     */
     public function getHealthStatus(): ?OutgoingNumberSelectionResponse_healthStatus {
@@ -318,7 +318,7 @@ class OutgoingNumberSelectionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the healthStatus property value. Defines the supported SMS Warmup Health State values.
+     * Sets the healthStatus property value. Defines the supported SMS readiness health assessments.
      * @param OutgoingNumberSelectionResponse_healthStatus|null $value Value to set for the healthStatus property.
     */
     public function setHealthStatus(?OutgoingNumberSelectionResponse_healthStatus $value): void {

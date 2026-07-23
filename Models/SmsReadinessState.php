@@ -4,11 +4,9 @@ namespace Leadping\OpenApiClient\Models;
 
 use Microsoft\Kiota\Abstractions\Enum;
 
-class PhoneNumberWarmup_healthStatus extends Enum {
+class SmsReadinessState extends Enum {
     public const NOT_STARTED = "Not Started";
-    public const WARMING = "Warming";
-    public const HEALTHY = "Healthy";
-    public const NEEDS_ATTENTION = "Needs Attention";
+    public const IN_PROGRESS = "In Progress";
     public const PAUSED = "Paused";
     public const BLOCKED = "Blocked";
     public const READY = "Ready";

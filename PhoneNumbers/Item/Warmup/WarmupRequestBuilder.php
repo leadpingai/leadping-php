@@ -31,7 +31,7 @@ class WarmupRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns warmup status for a phone number, including readiness, limits, and recent events used for delivery pacing.
+     * Returns warmup status for a phone number, including limits and recent events used for delivery pacing.
      * @param WarmupRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<PhoneNumberStatusResponse|null>
      * @throws Exception
@@ -46,7 +46,7 @@ class WarmupRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns warmup status for a phone number, including readiness, limits, and recent events used for delivery pacing.
+     * Returns warmup status for a phone number, including limits and recent events used for delivery pacing.
      * @param WarmupRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

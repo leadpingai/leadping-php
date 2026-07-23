@@ -5,7 +5,7 @@ namespace Leadping\OpenApiClient\PhoneNumbers\Item\Warmup;
 use Microsoft\Kiota\Abstractions\Types\Date;
 
 /**
- * Returns warmup status for a phone number, including readiness, limits, and recent events used for delivery pacing.
+ * Returns warmup status for a phone number, including limits and recent events used for delivery pacing.
 */
 class WarmupRequestBuilderGetQueryParameters 
 {

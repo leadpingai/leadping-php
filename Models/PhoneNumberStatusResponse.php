@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Response schema for the Leadping API phone number readiness status returned to authenticated clients.
+ * Response schema for the Leadping API phone number warmup status returned to authenticated clients.
 */
 class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable 
 {
@@ -28,7 +28,7 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     private ?int $messagesPossible = null;
     
     /**
-     * @var string|null $number E.164 phone number exposed by this phone number readiness status.
+     * @var string|null $number E.164 phone number exposed by this phone number warmup status.
     */
     private ?string $number = null;
     
@@ -48,7 +48,7 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     private ?array $recentEvents = null;
     
     /**
-     * @var PhoneNumberStatusResponse_smsWarmup|null $smsWarmup SMS sender warmup status for this phone number.
+     * @var PhoneNumberStatusResponse_smsWarmup|null $smsWarmup SMS warmup status for this phone number.
     */
     private ?PhoneNumberStatusResponse_smsWarmup $smsWarmup = null;
     
@@ -116,7 +116,7 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the number property value. E.164 phone number exposed by this phone number readiness status.
+     * Gets the number property value. E.164 phone number exposed by this phone number warmup status.
      * @return string|null
     */
     public function getNumber(): ?string {
@@ -148,7 +148,7 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the smsWarmup property value. SMS sender warmup status for this phone number.
+     * Gets the smsWarmup property value. SMS warmup status for this phone number.
      * @return PhoneNumberStatusResponse_smsWarmup|null
     */
     public function getSmsWarmup(): ?PhoneNumberStatusResponse_smsWarmup {
@@ -204,7 +204,7 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the number property value. E.164 phone number exposed by this phone number readiness status.
+     * Sets the number property value. E.164 phone number exposed by this phone number warmup status.
      * @param string|null $value Value to set for the number property.
     */
     public function setNumber(?string $value): void {
@@ -236,7 +236,7 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the smsWarmup property value. SMS sender warmup status for this phone number.
+     * Sets the smsWarmup property value. SMS warmup status for this phone number.
      * @param PhoneNumberStatusResponse_smsWarmup|null $value Value to set for the smsWarmup property.
     */
     public function setSmsWarmup(?PhoneNumberStatusResponse_smsWarmup $value): void {

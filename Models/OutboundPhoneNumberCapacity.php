@@ -2,6 +2,7 @@
 
 namespace Leadping\OpenApiClient\Models;
 
+use DateTime;
 use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
@@ -38,6 +39,16 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     private ?string $phoneNumberId = null;
     
     /**
+     * @var DateTime|null $smsDailyResetsAt Next midnight Eastern time, when SMS daily capacity resets.
+    */
+    private ?DateTime $smsDailyResetsAt = null;
+    
+    /**
+     * @var DateTime|null $smsHourlyResetsAt Start of the next Eastern time hour, when SMS hourly capacity resets.
+    */
+    private ?DateTime $smsHourlyResetsAt = null;
+    
+    /**
      * @var int|null $smsLimitThisHour Number of SMS limit this hour represented by this Leadping outbound phone number capacity.
     */
     private ?int $smsLimitThisHour = null;
@@ -66,6 +77,16 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
      * @var int|null $smsUsedToday SMS used today for the applicable messaging or voice capacity window.
     */
     private ?int $smsUsedToday = null;
+    
+    /**
+     * @var DateTime|null $voiceDailyResetsAt Next midnight Eastern time, when voice daily capacity resets.
+    */
+    private ?DateTime $voiceDailyResetsAt = null;
+    
+    /**
+     * @var DateTime|null $voiceHourlyResetsAt Start of the next Eastern time hour, when voice hourly capacity resets.
+    */
+    private ?DateTime $voiceHourlyResetsAt = null;
     
     /**
      * @var int|null $voiceLimitThisHour Voice limit this hour associated with this Leadping outbound phone number capacity.
@@ -140,12 +161,16 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
             'healthStatus' => fn(ParseNode $n) => $o->setHealthStatus($n->getEnumValue(PhoneNumberOutboundHealthStatus::class)),
             'phoneNumber' => fn(ParseNode $n) => $o->setPhoneNumber($n->getStringValue()),
             'phoneNumberId' => fn(ParseNode $n) => $o->setPhoneNumberId($n->getStringValue()),
+            'smsDailyResetsAt' => fn(ParseNode $n) => $o->setSmsDailyResetsAt($n->getDateTimeValue()),
+            'smsHourlyResetsAt' => fn(ParseNode $n) => $o->setSmsHourlyResetsAt($n->getDateTimeValue()),
             'smsLimitThisHour' => fn(ParseNode $n) => $o->setSmsLimitThisHour($n->getIntegerValue()),
             'smsLimitToday' => fn(ParseNode $n) => $o->setSmsLimitToday($n->getIntegerValue()),
             'smsRemainingThisHour' => fn(ParseNode $n) => $o->setSmsRemainingThisHour($n->getIntegerValue()),
             'smsRemainingToday' => fn(ParseNode $n) => $o->setSmsRemainingToday($n->getIntegerValue()),
             'smsUsedThisHour' => fn(ParseNode $n) => $o->setSmsUsedThisHour($n->getIntegerValue()),
             'smsUsedToday' => fn(ParseNode $n) => $o->setSmsUsedToday($n->getIntegerValue()),
+            'voiceDailyResetsAt' => fn(ParseNode $n) => $o->setVoiceDailyResetsAt($n->getDateTimeValue()),
+            'voiceHourlyResetsAt' => fn(ParseNode $n) => $o->setVoiceHourlyResetsAt($n->getDateTimeValue()),
             'voiceLimitThisHour' => fn(ParseNode $n) => $o->setVoiceLimitThisHour($n->getIntegerValue()),
             'voiceLimitToday' => fn(ParseNode $n) => $o->setVoiceLimitToday($n->getIntegerValue()),
             'voiceRemainingThisHour' => fn(ParseNode $n) => $o->setVoiceRemainingThisHour($n->getIntegerValue()),
@@ -177,6 +202,22 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     */
     public function getPhoneNumberId(): ?string {
         return $this->phoneNumberId;
+    }
+
+    /**
+     * Gets the smsDailyResetsAt property value. Next midnight Eastern time, when SMS daily capacity resets.
+     * @return DateTime|null
+    */
+    public function getSmsDailyResetsAt(): ?DateTime {
+        return $this->smsDailyResetsAt;
+    }
+
+    /**
+     * Gets the smsHourlyResetsAt property value. Start of the next Eastern time hour, when SMS hourly capacity resets.
+     * @return DateTime|null
+    */
+    public function getSmsHourlyResetsAt(): ?DateTime {
+        return $this->smsHourlyResetsAt;
     }
 
     /**
@@ -225,6 +266,22 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     */
     public function getSmsUsedToday(): ?int {
         return $this->smsUsedToday;
+    }
+
+    /**
+     * Gets the voiceDailyResetsAt property value. Next midnight Eastern time, when voice daily capacity resets.
+     * @return DateTime|null
+    */
+    public function getVoiceDailyResetsAt(): ?DateTime {
+        return $this->voiceDailyResetsAt;
+    }
+
+    /**
+     * Gets the voiceHourlyResetsAt property value. Start of the next Eastern time hour, when voice hourly capacity resets.
+     * @return DateTime|null
+    */
+    public function getVoiceHourlyResetsAt(): ?DateTime {
+        return $this->voiceHourlyResetsAt;
     }
 
     /**
@@ -284,12 +341,16 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
         $writer->writeEnumValue('healthStatus', $this->getHealthStatus());
         $writer->writeStringValue('phoneNumber', $this->getPhoneNumber());
         $writer->writeStringValue('phoneNumberId', $this->getPhoneNumberId());
+        $writer->writeDateTimeValue('smsDailyResetsAt', $this->getSmsDailyResetsAt());
+        $writer->writeDateTimeValue('smsHourlyResetsAt', $this->getSmsHourlyResetsAt());
         $writer->writeIntegerValue('smsLimitThisHour', $this->getSmsLimitThisHour());
         $writer->writeIntegerValue('smsLimitToday', $this->getSmsLimitToday());
         $writer->writeIntegerValue('smsRemainingThisHour', $this->getSmsRemainingThisHour());
         $writer->writeIntegerValue('smsRemainingToday', $this->getSmsRemainingToday());
         $writer->writeIntegerValue('smsUsedThisHour', $this->getSmsUsedThisHour());
         $writer->writeIntegerValue('smsUsedToday', $this->getSmsUsedToday());
+        $writer->writeDateTimeValue('voiceDailyResetsAt', $this->getVoiceDailyResetsAt());
+        $writer->writeDateTimeValue('voiceHourlyResetsAt', $this->getVoiceHourlyResetsAt());
         $writer->writeIntegerValue('voiceLimitThisHour', $this->getVoiceLimitThisHour());
         $writer->writeIntegerValue('voiceLimitToday', $this->getVoiceLimitToday());
         $writer->writeIntegerValue('voiceRemainingThisHour', $this->getVoiceRemainingThisHour());
@@ -340,6 +401,22 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the smsDailyResetsAt property value. Next midnight Eastern time, when SMS daily capacity resets.
+     * @param DateTime|null $value Value to set for the smsDailyResetsAt property.
+    */
+    public function setSmsDailyResetsAt(?DateTime $value): void {
+        $this->smsDailyResetsAt = $value;
+    }
+
+    /**
+     * Sets the smsHourlyResetsAt property value. Start of the next Eastern time hour, when SMS hourly capacity resets.
+     * @param DateTime|null $value Value to set for the smsHourlyResetsAt property.
+    */
+    public function setSmsHourlyResetsAt(?DateTime $value): void {
+        $this->smsHourlyResetsAt = $value;
+    }
+
+    /**
      * Sets the smsLimitThisHour property value. Number of SMS limit this hour represented by this Leadping outbound phone number capacity.
      * @param int|null $value Value to set for the smsLimitThisHour property.
     */
@@ -385,6 +462,22 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     */
     public function setSmsUsedToday(?int $value): void {
         $this->smsUsedToday = $value;
+    }
+
+    /**
+     * Sets the voiceDailyResetsAt property value. Next midnight Eastern time, when voice daily capacity resets.
+     * @param DateTime|null $value Value to set for the voiceDailyResetsAt property.
+    */
+    public function setVoiceDailyResetsAt(?DateTime $value): void {
+        $this->voiceDailyResetsAt = $value;
+    }
+
+    /**
+     * Sets the voiceHourlyResetsAt property value. Start of the next Eastern time hour, when voice hourly capacity resets.
+     * @param DateTime|null $value Value to set for the voiceHourlyResetsAt property.
+    */
+    public function setVoiceHourlyResetsAt(?DateTime $value): void {
+        $this->voiceHourlyResetsAt = $value;
     }
 
     /**

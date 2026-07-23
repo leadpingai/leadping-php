@@ -80,7 +80,7 @@ class PhoneNumberItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Updates phone number settings such as display name, assignment, messaging options, or warmup configuration.
+     * Updates phone number settings such as its optional label, assignment, messaging options, or warmup configuration.
      * @param PhoneNumberRequest $body Request schema for the Leadping API phone number update request, including the fields clients can send.
      * @param PhoneNumberItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<PhoneNumberResponse|null>
@@ -134,7 +134,7 @@ class PhoneNumberItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Updates phone number settings such as display name, assignment, messaging options, or warmup configuration.
+     * Updates phone number settings such as its optional label, assignment, messaging options, or warmup configuration.
      * @param PhoneNumberRequest $body Request schema for the Leadping API phone number update request, including the fields clients can send.
      * @param PhoneNumberItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

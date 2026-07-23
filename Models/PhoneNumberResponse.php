@@ -69,9 +69,9 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     private ?PhoneNumberRoutingMetadata $routing = null;
     
     /**
-     * @var PhoneNumberWarmup|null $warmup SMS and voice warmup state for this phone number.
+     * @var PhoneNumberReadiness|null $warmup SMS and call warmup for this phone number.
     */
-    private ?PhoneNumberWarmup $warmup = null;
+    private ?PhoneNumberReadiness $warmup = null;
     
     /**
      * Instantiates a new PhoneNumberResponse and sets the default values.
@@ -138,7 +138,7 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
             'number' => fn(ParseNode $n) => $o->setNumber($n->getStringValue()),
             'phoneIdentityId' => fn(ParseNode $n) => $o->setPhoneIdentityId($n->getStringValue()),
             'routing' => fn(ParseNode $n) => $o->setRouting($n->getObjectValue([PhoneNumberRoutingMetadata::class, 'createFromDiscriminatorValue'])),
-            'warmup' => fn(ParseNode $n) => $o->setWarmup($n->getObjectValue([PhoneNumberWarmup::class, 'createFromDiscriminatorValue'])),
+            'warmup' => fn(ParseNode $n) => $o->setWarmup($n->getObjectValue([PhoneNumberReadiness::class, 'createFromDiscriminatorValue'])),
         ];
     }
 
@@ -199,10 +199,10 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the warmup property value. SMS and voice warmup state for this phone number.
-     * @return PhoneNumberWarmup|null
+     * Gets the warmup property value. SMS and call warmup for this phone number.
+     * @return PhoneNumberReadiness|null
     */
-    public function getWarmup(): ?PhoneNumberWarmup {
+    public function getWarmup(): ?PhoneNumberReadiness {
         return $this->warmup;
     }
 
@@ -314,10 +314,10 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the warmup property value. SMS and voice warmup state for this phone number.
-     * @param PhoneNumberWarmup|null $value Value to set for the warmup property.
+     * Sets the warmup property value. SMS and call warmup for this phone number.
+     * @param PhoneNumberReadiness|null $value Value to set for the warmup property.
     */
-    public function setWarmup(?PhoneNumberWarmup $value): void {
+    public function setWarmup(?PhoneNumberReadiness $value): void {
         $this->warmup = $value;
     }
 

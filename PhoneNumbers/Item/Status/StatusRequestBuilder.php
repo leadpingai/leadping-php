@@ -31,7 +31,7 @@ class StatusRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns provider and Leadping status for a phone number, including messaging readiness, assignments, and verification state.
+     * Returns provider and Leadping status for a phone number, including messaging warmup, assignments, and verification state.
      * @param StatusRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<PhoneNumberStatusResponse|null>
      * @throws Exception
@@ -47,7 +47,7 @@ class StatusRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns provider and Leadping status for a phone number, including messaging readiness, assignments, and verification state.
+     * Returns provider and Leadping status for a phone number, including messaging warmup, assignments, and verification state.
      * @param StatusRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

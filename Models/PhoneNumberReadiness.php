@@ -8,9 +8,9 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Warmup state for a Leadping phone number.
+ * Messaging and calling warmup for a Leadping phone number.
 */
-class PhoneNumberWarmup implements AdditionalDataHolder, Parsable 
+class PhoneNumberReadiness implements AdditionalDataHolder, Parsable 
 {
     /**
      * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -18,19 +18,19 @@ class PhoneNumberWarmup implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var bool|null $enabled Indicates whether the phone number warmup is enabled in Leadping.
+     * @var bool|null $enabled Indicates whether phone number warmup is enabled in Leadping.
     */
     private ?bool $enabled = null;
     
     /**
-     * @var int|null $healthScore Current warmup health score used to assess phone number readiness.
+     * @var int|null $healthScore Current warmup health score used to assess phone number warmup.
     */
     private ?int $healthScore = null;
     
     /**
-     * @var PhoneNumberWarmup_healthStatus|null $healthStatus Defines the supported SMS Warmup Health State values.
+     * @var PhoneNumberReadiness_healthStatus|null $healthStatus Defines the supported SMS readiness health assessments.
     */
-    private ?PhoneNumberWarmup_healthStatus $healthStatus = null;
+    private ?PhoneNumberReadiness_healthStatus $healthStatus = null;
     
     /**
      * @var int|null $progressPercent Warmup completion percentage, from 0 through 100.
@@ -38,12 +38,12 @@ class PhoneNumberWarmup implements AdditionalDataHolder, Parsable
     private ?int $progressPercent = null;
     
     /**
-     * @var PhoneNumberWarmup_state|null $state Defines the supported SMS Warmup Health State values.
+     * @var PhoneNumberReadiness_state|null $state Defines the supported SMS readiness states.
     */
-    private ?PhoneNumberWarmup_state $state = null;
+    private ?PhoneNumberReadiness_state $state = null;
     
     /**
-     * Instantiates a new PhoneNumberWarmup and sets the default values.
+     * Instantiates a new PhoneNumberReadiness and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);
@@ -52,10 +52,10 @@ class PhoneNumberWarmup implements AdditionalDataHolder, Parsable
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
-     * @return PhoneNumberWarmup
+     * @return PhoneNumberReadiness
     */
-    public static function createFromDiscriminatorValue(ParseNode $parseNode): PhoneNumberWarmup {
-        return new PhoneNumberWarmup();
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): PhoneNumberReadiness {
+        return new PhoneNumberReadiness();
     }
 
     /**
@@ -67,7 +67,7 @@ class PhoneNumberWarmup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the enabled property value. Indicates whether the phone number warmup is enabled in Leadping.
+     * Gets the enabled property value. Indicates whether phone number warmup is enabled in Leadping.
      * @return bool|null
     */
     public function getEnabled(): ?bool {
@@ -83,14 +83,14 @@ class PhoneNumberWarmup implements AdditionalDataHolder, Parsable
         return  [
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'healthScore' => fn(ParseNode $n) => $o->setHealthScore($n->getIntegerValue()),
-            'healthStatus' => fn(ParseNode $n) => $o->setHealthStatus($n->getEnumValue(PhoneNumberWarmup_healthStatus::class)),
+            'healthStatus' => fn(ParseNode $n) => $o->setHealthStatus($n->getEnumValue(PhoneNumberReadiness_healthStatus::class)),
             'progressPercent' => fn(ParseNode $n) => $o->setProgressPercent($n->getIntegerValue()),
-            'state' => fn(ParseNode $n) => $o->setState($n->getEnumValue(PhoneNumberWarmup_state::class)),
+            'state' => fn(ParseNode $n) => $o->setState($n->getEnumValue(PhoneNumberReadiness_state::class)),
         ];
     }
 
     /**
-     * Gets the healthScore property value. Current warmup health score used to assess phone number readiness.
+     * Gets the healthScore property value. Current warmup health score used to assess phone number warmup.
      * @return int|null
     */
     public function getHealthScore(): ?int {
@@ -98,10 +98,10 @@ class PhoneNumberWarmup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the healthStatus property value. Defines the supported SMS Warmup Health State values.
-     * @return PhoneNumberWarmup_healthStatus|null
+     * Gets the healthStatus property value. Defines the supported SMS readiness health assessments.
+     * @return PhoneNumberReadiness_healthStatus|null
     */
-    public function getHealthStatus(): ?PhoneNumberWarmup_healthStatus {
+    public function getHealthStatus(): ?PhoneNumberReadiness_healthStatus {
         return $this->healthStatus;
     }
 
@@ -114,10 +114,10 @@ class PhoneNumberWarmup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the state property value. Defines the supported SMS Warmup Health State values.
-     * @return PhoneNumberWarmup_state|null
+     * Gets the state property value. Defines the supported SMS readiness states.
+     * @return PhoneNumberReadiness_state|null
     */
-    public function getState(): ?PhoneNumberWarmup_state {
+    public function getState(): ?PhoneNumberReadiness_state {
         return $this->state;
     }
 
@@ -143,7 +143,7 @@ class PhoneNumberWarmup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the enabled property value. Indicates whether the phone number warmup is enabled in Leadping.
+     * Sets the enabled property value. Indicates whether phone number warmup is enabled in Leadping.
      * @param bool|null $value Value to set for the enabled property.
     */
     public function setEnabled(?bool $value): void {
@@ -151,7 +151,7 @@ class PhoneNumberWarmup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the healthScore property value. Current warmup health score used to assess phone number readiness.
+     * Sets the healthScore property value. Current warmup health score used to assess phone number warmup.
      * @param int|null $value Value to set for the healthScore property.
     */
     public function setHealthScore(?int $value): void {
@@ -159,10 +159,10 @@ class PhoneNumberWarmup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the healthStatus property value. Defines the supported SMS Warmup Health State values.
-     * @param PhoneNumberWarmup_healthStatus|null $value Value to set for the healthStatus property.
+     * Sets the healthStatus property value. Defines the supported SMS readiness health assessments.
+     * @param PhoneNumberReadiness_healthStatus|null $value Value to set for the healthStatus property.
     */
-    public function setHealthStatus(?PhoneNumberWarmup_healthStatus $value): void {
+    public function setHealthStatus(?PhoneNumberReadiness_healthStatus $value): void {
         $this->healthStatus = $value;
     }
 
@@ -175,10 +175,10 @@ class PhoneNumberWarmup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the state property value. Defines the supported SMS Warmup Health State values.
-     * @param PhoneNumberWarmup_state|null $value Value to set for the state property.
+     * Sets the state property value. Defines the supported SMS readiness states.
+     * @param PhoneNumberReadiness_state|null $value Value to set for the state property.
     */
-    public function setState(?PhoneNumberWarmup_state $value): void {
+    public function setState(?PhoneNumberReadiness_state $value): void {
         $this->state = $value;
     }
 

@@ -38,7 +38,7 @@ class EligibleOutgoingNumberResponse implements AdditionalDataHolder, Parsable
     private ?string $healthLabel = null;
     
     /**
-     * @var EligibleOutgoingNumberResponse_healthStatus|null $healthStatus Defines the supported SMS Warmup Health State values.
+     * @var EligibleOutgoingNumberResponse_healthStatus|null $healthStatus Defines the supported SMS readiness health assessments.
     */
     private ?EligibleOutgoingNumberResponse_healthStatus $healthStatus = null;
     
@@ -168,7 +168,7 @@ class EligibleOutgoingNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the healthStatus property value. Defines the supported SMS Warmup Health State values.
+     * Gets the healthStatus property value. Defines the supported SMS readiness health assessments.
      * @return EligibleOutgoingNumberResponse_healthStatus|null
     */
     public function getHealthStatus(): ?EligibleOutgoingNumberResponse_healthStatus {
@@ -310,7 +310,7 @@ class EligibleOutgoingNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the healthStatus property value. Defines the supported SMS Warmup Health State values.
+     * Sets the healthStatus property value. Defines the supported SMS readiness health assessments.
      * @param EligibleOutgoingNumberResponse_healthStatus|null $value Value to set for the healthStatus property.
     */
     public function setHealthStatus(?EligibleOutgoingNumberResponse_healthStatus $value): void {

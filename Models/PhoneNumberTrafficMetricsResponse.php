@@ -19,14 +19,29 @@ class PhoneNumberTrafficMetricsResponse implements AdditionalDataHolder, Parsabl
     private ?array $additionalData = null;
     
     /**
+     * @var int|null $callConnectedCount Number of outbound calls that connected during this metrics window.
+    */
+    private ?int $callConnectedCount = null;
+    
+    /**
      * @var int|null $callFailedCount Number of outbound calls that failed during this metrics window.
     */
     private ?int $callFailedCount = null;
     
     /**
+     * @var int|null $callInvalidNumberCount Number of outbound calls that failed because the destination number was invalid during this metrics window.
+    */
+    private ?int $callInvalidNumberCount = null;
+    
+    /**
      * @var int|null $callPlacedCount Number of outbound calls placed during this metrics window.
     */
     private ?int $callPlacedCount = null;
+    
+    /**
+     * @var int|null $callShortCount Number of connected outbound calls shorter than 30 seconds during this metrics window.
+    */
+    private ?int $callShortCount = null;
     
     /**
      * @var int|null $smsFailedCount Number of SMS messages that failed during this metrics window.
@@ -78,11 +93,27 @@ class PhoneNumberTrafficMetricsResponse implements AdditionalDataHolder, Parsabl
     }
 
     /**
+     * Gets the callConnectedCount property value. Number of outbound calls that connected during this metrics window.
+     * @return int|null
+    */
+    public function getCallConnectedCount(): ?int {
+        return $this->callConnectedCount;
+    }
+
+    /**
      * Gets the callFailedCount property value. Number of outbound calls that failed during this metrics window.
      * @return int|null
     */
     public function getCallFailedCount(): ?int {
         return $this->callFailedCount;
+    }
+
+    /**
+     * Gets the callInvalidNumberCount property value. Number of outbound calls that failed because the destination number was invalid during this metrics window.
+     * @return int|null
+    */
+    public function getCallInvalidNumberCount(): ?int {
+        return $this->callInvalidNumberCount;
     }
 
     /**
@@ -94,14 +125,25 @@ class PhoneNumberTrafficMetricsResponse implements AdditionalDataHolder, Parsabl
     }
 
     /**
+     * Gets the callShortCount property value. Number of connected outbound calls shorter than 30 seconds during this metrics window.
+     * @return int|null
+    */
+    public function getCallShortCount(): ?int {
+        return $this->callShortCount;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'callConnectedCount' => fn(ParseNode $n) => $o->setCallConnectedCount($n->getIntegerValue()),
             'callFailedCount' => fn(ParseNode $n) => $o->setCallFailedCount($n->getIntegerValue()),
+            'callInvalidNumberCount' => fn(ParseNode $n) => $o->setCallInvalidNumberCount($n->getIntegerValue()),
             'callPlacedCount' => fn(ParseNode $n) => $o->setCallPlacedCount($n->getIntegerValue()),
+            'callShortCount' => fn(ParseNode $n) => $o->setCallShortCount($n->getIntegerValue()),
             'smsFailedCount' => fn(ParseNode $n) => $o->setSmsFailedCount($n->getIntegerValue()),
             'smsSentCount' => fn(ParseNode $n) => $o->setSmsSentCount($n->getIntegerValue()),
             'trend' => fn(ParseNode $n) => $o->setTrend($n->getCollectionOfObjectValues([PhoneNumberTrafficTrendPoint::class, 'createFromDiscriminatorValue'])),
@@ -155,8 +197,11 @@ class PhoneNumberTrafficMetricsResponse implements AdditionalDataHolder, Parsabl
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeIntegerValue('callConnectedCount', $this->getCallConnectedCount());
         $writer->writeIntegerValue('callFailedCount', $this->getCallFailedCount());
+        $writer->writeIntegerValue('callInvalidNumberCount', $this->getCallInvalidNumberCount());
         $writer->writeIntegerValue('callPlacedCount', $this->getCallPlacedCount());
+        $writer->writeIntegerValue('callShortCount', $this->getCallShortCount());
         $writer->writeIntegerValue('smsFailedCount', $this->getSmsFailedCount());
         $writer->writeIntegerValue('smsSentCount', $this->getSmsSentCount());
         $writer->writeCollectionOfObjectValues('trend', $this->getTrend());
@@ -174,6 +219,14 @@ class PhoneNumberTrafficMetricsResponse implements AdditionalDataHolder, Parsabl
     }
 
     /**
+     * Sets the callConnectedCount property value. Number of outbound calls that connected during this metrics window.
+     * @param int|null $value Value to set for the callConnectedCount property.
+    */
+    public function setCallConnectedCount(?int $value): void {
+        $this->callConnectedCount = $value;
+    }
+
+    /**
      * Sets the callFailedCount property value. Number of outbound calls that failed during this metrics window.
      * @param int|null $value Value to set for the callFailedCount property.
     */
@@ -182,11 +235,27 @@ class PhoneNumberTrafficMetricsResponse implements AdditionalDataHolder, Parsabl
     }
 
     /**
+     * Sets the callInvalidNumberCount property value. Number of outbound calls that failed because the destination number was invalid during this metrics window.
+     * @param int|null $value Value to set for the callInvalidNumberCount property.
+    */
+    public function setCallInvalidNumberCount(?int $value): void {
+        $this->callInvalidNumberCount = $value;
+    }
+
+    /**
      * Sets the callPlacedCount property value. Number of outbound calls placed during this metrics window.
      * @param int|null $value Value to set for the callPlacedCount property.
     */
     public function setCallPlacedCount(?int $value): void {
         $this->callPlacedCount = $value;
+    }
+
+    /**
+     * Sets the callShortCount property value. Number of connected outbound calls shorter than 30 seconds during this metrics window.
+     * @param int|null $value Value to set for the callShortCount property.
+    */
+    public function setCallShortCount(?int $value): void {
+        $this->callShortCount = $value;
     }
 
     /**

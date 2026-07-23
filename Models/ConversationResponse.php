@@ -39,6 +39,11 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     private ?ConversationResponse_currentDisposition $currentDisposition = null;
     
     /**
+     * @var string|null $email Email address used to resolve the lead's avatar when available.
+    */
+    private ?string $email = null;
+    
+    /**
      * @var string|null $firstName First name of the lead, user, or contact represented by this conversation response.
     */
     private ?string $firstName = null;
@@ -165,6 +170,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the email property value. Email address used to resolve the lead's avatar when available.
+     * @return string|null
+    */
+    public function getEmail(): ?string {
+        return $this->email;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
@@ -175,6 +188,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
             'archivedAt' => fn(ParseNode $n) => $o->setArchivedAt($n->getDateTimeValue()),
             'archiveReason' => fn(ParseNode $n) => $o->setArchiveReason($n->getIntegerValue()),
             'currentDisposition' => fn(ParseNode $n) => $o->setCurrentDisposition($n->getObjectValue([ConversationResponse_currentDisposition::class, 'createFromDiscriminatorValue'])),
+            'email' => fn(ParseNode $n) => $o->setEmail($n->getStringValue()),
             'firstName' => fn(ParseNode $n) => $o->setFirstName($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isArchived' => fn(ParseNode $n) => $o->setIsArchived($n->getBooleanValue()),
@@ -313,6 +327,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('archivedAt', $this->getArchivedAt());
         $writer->writeIntegerValue('archiveReason', $this->getArchiveReason());
         $writer->writeObjectValue('currentDisposition', $this->getCurrentDisposition());
+        $writer->writeStringValue('email', $this->getEmail());
         $writer->writeStringValue('firstName', $this->getFirstName());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isArchived', $this->getIsArchived());
@@ -368,6 +383,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     */
     public function setCurrentDisposition(?ConversationResponse_currentDisposition $value): void {
         $this->currentDisposition = $value;
+    }
+
+    /**
+     * Sets the email property value. Email address used to resolve the lead's avatar when available.
+     * @param string|null $value Value to set for the email property.
+    */
+    public function setEmail(?string $value): void {
+        $this->email = $value;
     }
 
     /**

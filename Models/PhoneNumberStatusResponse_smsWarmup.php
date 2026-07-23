@@ -7,9 +7,9 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * SMS sender warmup status for this phone number.
+ * SMS warmup status for this phone number.
 */
-class PhoneNumberStatusResponse_smsWarmup extends SmsWarmupStatusResponse implements Parsable 
+class PhoneNumberStatusResponse_smsWarmup extends SmsReadinessStatusResponse implements Parsable 
 {
     /**
      * Instantiates a new PhoneNumberStatusResponse_smsWarmup and sets the default values.

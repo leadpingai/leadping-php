@@ -74,6 +74,11 @@ class BusinessSwitchOption implements AdditionalDataHolder, Parsable
     private ?BusinessUserRole $role = null;
     
     /**
+     * @var BusinessSwitchOption_tenDlcStatus|null $tenDlcStatus Defines the supported 10DLC Application Status values.
+    */
+    private ?BusinessSwitchOption_tenDlcStatus $tenDlcStatus = null;
+    
+    /**
      * Instantiates a new BusinessSwitchOption and sets the default values.
     */
     public function __construct() {
@@ -139,6 +144,7 @@ class BusinessSwitchOption implements AdditionalDataHolder, Parsable
             'needsAdminReview' => fn(ParseNode $n) => $o->setNeedsAdminReview($n->getBooleanValue()),
             'readyForCustomerTraffic' => fn(ParseNode $n) => $o->setReadyForCustomerTraffic($n->getBooleanValue()),
             'role' => fn(ParseNode $n) => $o->setRole($n->getEnumValue(BusinessUserRole::class)),
+            'tenDlcStatus' => fn(ParseNode $n) => $o->setTenDlcStatus($n->getEnumValue(BusinessSwitchOption_tenDlcStatus::class)),
         ];
     }
 
@@ -207,6 +213,14 @@ class BusinessSwitchOption implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the tenDlcStatus property value. Defines the supported 10DLC Application Status values.
+     * @return BusinessSwitchOption_tenDlcStatus|null
+    */
+    public function getTenDlcStatus(): ?BusinessSwitchOption_tenDlcStatus {
+        return $this->tenDlcStatus;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -222,6 +236,7 @@ class BusinessSwitchOption implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('needsAdminReview', $this->getNeedsAdminReview());
         $writer->writeBooleanValue('readyForCustomerTraffic', $this->getReadyForCustomerTraffic());
         $writer->writeEnumValue('role', $this->getRole());
+        $writer->writeEnumValue('tenDlcStatus', $this->getTenDlcStatus());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -319,6 +334,14 @@ class BusinessSwitchOption implements AdditionalDataHolder, Parsable
     */
     public function setRole(?BusinessUserRole $value): void {
         $this->role = $value;
+    }
+
+    /**
+     * Sets the tenDlcStatus property value. Defines the supported 10DLC Application Status values.
+     * @param BusinessSwitchOption_tenDlcStatus|null $value Value to set for the tenDlcStatus property.
+    */
+    public function setTenDlcStatus(?BusinessSwitchOption_tenDlcStatus $value): void {
+        $this->tenDlcStatus = $value;
     }
 
 }
