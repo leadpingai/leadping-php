@@ -73,6 +73,11 @@ class UserRequest implements AdditionalDataHolder, Parsable
     private ?string $phone = null;
     
     /**
+     * @var string|null $timeZoneId IANA time zone identifier used when displaying dates and times for this user.
+    */
+    private ?string $timeZoneId = null;
+    
+    /**
      * Instantiates a new UserRequest and sets the default values.
     */
     public function __construct() {
@@ -146,6 +151,7 @@ class UserRequest implements AdditionalDataHolder, Parsable
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'notificationPreferences' => fn(ParseNode $n) => $o->setNotificationPreferences($n->getObjectValue([UserRequest_notificationPreferences::class, 'createFromDiscriminatorValue'])),
             'phone' => fn(ParseNode $n) => $o->setPhone($n->getStringValue()),
+            'timeZoneId' => fn(ParseNode $n) => $o->setTimeZoneId($n->getStringValue()),
         ];
     }
 
@@ -206,6 +212,14 @@ class UserRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the timeZoneId property value. IANA time zone identifier used when displaying dates and times for this user.
+     * @return string|null
+    */
+    public function getTimeZoneId(): ?string {
+        return $this->timeZoneId;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -221,6 +235,7 @@ class UserRequest implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('name', $this->getName());
         $writer->writeObjectValue('notificationPreferences', $this->getNotificationPreferences());
         $writer->writeStringValue('phone', $this->getPhone());
+        $writer->writeStringValue('timeZoneId', $this->getTimeZoneId());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -318,6 +333,14 @@ class UserRequest implements AdditionalDataHolder, Parsable
     */
     public function setPhone(?string $value): void {
         $this->phone = $value;
+    }
+
+    /**
+     * Sets the timeZoneId property value. IANA time zone identifier used when displaying dates and times for this user.
+     * @param string|null $value Value to set for the timeZoneId property.
+    */
+    public function setTimeZoneId(?string $value): void {
+        $this->timeZoneId = $value;
     }
 
 }

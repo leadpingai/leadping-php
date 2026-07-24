@@ -124,6 +124,11 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?UserResponse_subscriptionStatus $subscriptionStatus = null;
     
     /**
+     * @var string|null $timeZoneId IANA time zone identifier used when displaying dates and times for this user.
+    */
+    private ?string $timeZoneId = null;
+    
+    /**
      * Instantiates a new UserResponse and sets the default values.
     */
     public function __construct() {
@@ -223,6 +228,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
             'personalDataDeletionStatus' => fn(ParseNode $n) => $o->setPersonalDataDeletionStatus($n->getStringValue()),
             'phone' => fn(ParseNode $n) => $o->setPhone($n->getStringValue()),
             'subscriptionStatus' => fn(ParseNode $n) => $o->setSubscriptionStatus($n->getEnumValue(UserResponse_subscriptionStatus::class)),
+            'timeZoneId' => fn(ParseNode $n) => $o->setTimeZoneId($n->getStringValue()),
         ];
     }
 
@@ -347,6 +353,14 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the timeZoneId property value. IANA time zone identifier used when displaying dates and times for this user.
+     * @return string|null
+    */
+    public function getTimeZoneId(): ?string {
+        return $this->timeZoneId;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -372,6 +386,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('personalDataDeletionStatus', $this->getPersonalDataDeletionStatus());
         $writer->writeStringValue('phone', $this->getPhone());
         $writer->writeEnumValue('subscriptionStatus', $this->getSubscriptionStatus());
+        $writer->writeStringValue('timeZoneId', $this->getTimeZoneId());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -549,6 +564,14 @@ class UserResponse implements AdditionalDataHolder, Parsable
     */
     public function setSubscriptionStatus(?UserResponse_subscriptionStatus $value): void {
         $this->subscriptionStatus = $value;
+    }
+
+    /**
+     * Sets the timeZoneId property value. IANA time zone identifier used when displaying dates and times for this user.
+     * @param string|null $value Value to set for the timeZoneId property.
+    */
+    public function setTimeZoneId(?string $value): void {
+        $this->timeZoneId = $value;
     }
 
 }
