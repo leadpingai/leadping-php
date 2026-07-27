@@ -38,6 +38,11 @@ class PhoneNumberRoutingMetadata implements AdditionalDataHolder, Parsable
     private ?string $teamId = null;
     
     /**
+     * @var string|null $tenDlcApplicationId Leadping 10DLC application entity associated with this phone number.
+    */
+    private ?string $tenDlcApplicationId = null;
+    
+    /**
      * @var bool|null $voiceEnabled Indicates whether the phone number can be used for voice calls.
     */
     private ?bool $voiceEnabled = null;
@@ -85,6 +90,7 @@ class PhoneNumberRoutingMetadata implements AdditionalDataHolder, Parsable
             'smsEnabled' => fn(ParseNode $n) => $o->setSmsEnabled($n->getBooleanValue()),
             'sourceId' => fn(ParseNode $n) => $o->setSourceId($n->getStringValue()),
             'teamId' => fn(ParseNode $n) => $o->setTeamId($n->getStringValue()),
+            'tenDlcApplicationId' => fn(ParseNode $n) => $o->setTenDlcApplicationId($n->getStringValue()),
             'voiceEnabled' => fn(ParseNode $n) => $o->setVoiceEnabled($n->getBooleanValue()),
         ];
     }
@@ -114,6 +120,14 @@ class PhoneNumberRoutingMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the tenDlcApplicationId property value. Leadping 10DLC application entity associated with this phone number.
+     * @return string|null
+    */
+    public function getTenDlcApplicationId(): ?string {
+        return $this->tenDlcApplicationId;
+    }
+
+    /**
      * Gets the voiceEnabled property value. Indicates whether the phone number can be used for voice calls.
      * @return bool|null
     */
@@ -130,6 +144,7 @@ class PhoneNumberRoutingMetadata implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('smsEnabled', $this->getSmsEnabled());
         $writer->writeStringValue('sourceId', $this->getSourceId());
         $writer->writeStringValue('teamId', $this->getTeamId());
+        $writer->writeStringValue('tenDlcApplicationId', $this->getTenDlcApplicationId());
         $writer->writeBooleanValue('voiceEnabled', $this->getVoiceEnabled());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -172,6 +187,14 @@ class PhoneNumberRoutingMetadata implements AdditionalDataHolder, Parsable
     */
     public function setTeamId(?string $value): void {
         $this->teamId = $value;
+    }
+
+    /**
+     * Sets the tenDlcApplicationId property value. Leadping 10DLC application entity associated with this phone number.
+     * @param string|null $value Value to set for the tenDlcApplicationId property.
+    */
+    public function setTenDlcApplicationId(?string $value): void {
+        $this->tenDlcApplicationId = $value;
     }
 
     /**

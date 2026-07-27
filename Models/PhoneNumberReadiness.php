@@ -18,6 +18,11 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var PhoneNumberReadiness_callStage|null $callStage Defines the supported voice call warmup stages for a Leadping-managed phone number.
+    */
+    private ?PhoneNumberReadiness_callStage $callStage = null;
+    
+    /**
      * @var bool|null $enabled Indicates whether phone number warmup is enabled in Leadping.
     */
     private ?bool $enabled = null;
@@ -67,6 +72,14 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the callStage property value. Defines the supported voice call warmup stages for a Leadping-managed phone number.
+     * @return PhoneNumberReadiness_callStage|null
+    */
+    public function getCallStage(): ?PhoneNumberReadiness_callStage {
+        return $this->callStage;
+    }
+
+    /**
      * Gets the enabled property value. Indicates whether phone number warmup is enabled in Leadping.
      * @return bool|null
     */
@@ -81,6 +94,7 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'callStage' => fn(ParseNode $n) => $o->setCallStage($n->getEnumValue(PhoneNumberReadiness_callStage::class)),
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'healthScore' => fn(ParseNode $n) => $o->setHealthScore($n->getIntegerValue()),
             'healthStatus' => fn(ParseNode $n) => $o->setHealthStatus($n->getEnumValue(PhoneNumberReadiness_healthStatus::class)),
@@ -126,6 +140,7 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeEnumValue('callStage', $this->getCallStage());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeIntegerValue('healthScore', $this->getHealthScore());
         $writer->writeEnumValue('healthStatus', $this->getHealthStatus());
@@ -140,6 +155,14 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the callStage property value. Defines the supported voice call warmup stages for a Leadping-managed phone number.
+     * @param PhoneNumberReadiness_callStage|null $value Value to set for the callStage property.
+    */
+    public function setCallStage(?PhoneNumberReadiness_callStage $value): void {
+        $this->callStage = $value;
     }
 
     /**

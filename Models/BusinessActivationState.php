@@ -164,6 +164,11 @@ class BusinessActivationState implements AdditionalDataHolder, Parsable
     private ?ActivationTelephonyStatus $telephonyStatus = null;
     
     /**
+     * @var string|null $tenDlcApplicationId Identifier of the first-class 10DLC application entity for this business.
+    */
+    private ?string $tenDlcApplicationId = null;
+    
+    /**
      * @var BusinessActivationState_tenDlcDraft|null $tenDlcDraft The 10DLC draft value for this business activation state.
     */
     private ?BusinessActivationState_tenDlcDraft $tenDlcDraft = null;
@@ -341,6 +346,7 @@ class BusinessActivationState implements AdditionalDataHolder, Parsable
             'telephonyProvisioningStartedAt' => fn(ParseNode $n) => $o->setTelephonyProvisioningStartedAt($n->getDateTimeValue()),
             'telephonyReadyAt' => fn(ParseNode $n) => $o->setTelephonyReadyAt($n->getDateTimeValue()),
             'telephonyStatus' => fn(ParseNode $n) => $o->setTelephonyStatus($n->getEnumValue(ActivationTelephonyStatus::class)),
+            'tenDlcApplicationId' => fn(ParseNode $n) => $o->setTenDlcApplicationId($n->getStringValue()),
             'tenDlcDraft' => fn(ParseNode $n) => $o->setTenDlcDraft($n->getObjectValue([BusinessActivationState_tenDlcDraft::class, 'createFromDiscriminatorValue'])),
             'tenDlcStatus' => fn(ParseNode $n) => $o->setTenDlcStatus($n->getEnumValue(TenDlcApplicationStatus::class)),
             'updatedAt' => fn(ParseNode $n) => $o->setUpdatedAt($n->getDateTimeValue()),
@@ -495,6 +501,14 @@ class BusinessActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the tenDlcApplicationId property value. Identifier of the first-class 10DLC application entity for this business.
+     * @return string|null
+    */
+    public function getTenDlcApplicationId(): ?string {
+        return $this->tenDlcApplicationId;
+    }
+
+    /**
      * Gets the tenDlcDraft property value. The 10DLC draft value for this business activation state.
      * @return BusinessActivationState_tenDlcDraft|null
     */
@@ -576,6 +590,7 @@ class BusinessActivationState implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('telephonyProvisioningStartedAt', $this->getTelephonyProvisioningStartedAt());
         $writer->writeDateTimeValue('telephonyReadyAt', $this->getTelephonyReadyAt());
         $writer->writeEnumValue('telephonyStatus', $this->getTelephonyStatus());
+        $writer->writeStringValue('tenDlcApplicationId', $this->getTenDlcApplicationId());
         $writer->writeObjectValue('tenDlcDraft', $this->getTenDlcDraft());
         $writer->writeEnumValue('tenDlcStatus', $this->getTenDlcStatus());
         $writer->writeDateTimeValue('updatedAt', $this->getUpdatedAt());
@@ -823,6 +838,14 @@ class BusinessActivationState implements AdditionalDataHolder, Parsable
     */
     public function setTelephonyStatus(?ActivationTelephonyStatus $value): void {
         $this->telephonyStatus = $value;
+    }
+
+    /**
+     * Sets the tenDlcApplicationId property value. Identifier of the first-class 10DLC application entity for this business.
+     * @param string|null $value Value to set for the tenDlcApplicationId property.
+    */
+    public function setTenDlcApplicationId(?string $value): void {
+        $this->tenDlcApplicationId = $value;
     }
 
     /**

@@ -19,6 +19,11 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     private ?string $actorDisplayName = null;
     
     /**
+     * @var string|null $actorEmail Email address for the person who created this event timeline table row.
+    */
+    private ?string $actorEmail = null;
+    
+    /**
      * @var string|null $actorUserId User ID for the person or system that created this event timeline table row.
     */
     private ?string $actorUserId = null;
@@ -263,6 +268,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the actorEmail property value. Email address for the person who created this event timeline table row.
+     * @return string|null
+    */
+    public function getActorEmail(): ?string {
+        return $this->actorEmail;
+    }
+
+    /**
      * Gets the actorUserId property value. User ID for the person or system that created this event timeline table row.
      * @return string|null
     */
@@ -414,6 +427,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'actorDisplayName' => fn(ParseNode $n) => $o->setActorDisplayName($n->getStringValue()),
+            'actorEmail' => fn(ParseNode $n) => $o->setActorEmail($n->getStringValue()),
             'actorUserId' => fn(ParseNode $n) => $o->setActorUserId($n->getStringValue()),
             'billingStatus' => fn(ParseNode $n) => $o->setBillingStatus($n->getStringValue()),
             'blockedAt' => fn(ParseNode $n) => $o->setBlockedAt($n->getDateTimeValue()),
@@ -674,6 +688,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('actorDisplayName', $this->getActorDisplayName());
+        $writer->writeStringValue('actorEmail', $this->getActorEmail());
         $writer->writeStringValue('actorUserId', $this->getActorUserId());
         $writer->writeStringValue('billingStatus', $this->getBillingStatus());
         $writer->writeDateTimeValue('blockedAt', $this->getBlockedAt());
@@ -726,6 +741,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setActorDisplayName(?string $value): void {
         $this->actorDisplayName = $value;
+    }
+
+    /**
+     * Sets the actorEmail property value. Email address for the person who created this event timeline table row.
+     * @param string|null $value Value to set for the actorEmail property.
+    */
+    public function setActorEmail(?string $value): void {
+        $this->actorEmail = $value;
     }
 
     /**

@@ -84,6 +84,11 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $modifiedAt = null;
     
     /**
+     * @var LeadResponse_phoneIdentity|null $phoneIdentity Canonical phone identity and provider lookup details for this lead.
+    */
+    private ?LeadResponse_phoneIdentity $phoneIdentity = null;
+    
+    /**
      * @var array<TagSummary>|null $tags Tags currently attached to this lead, source, or record.
     */
     private ?array $tags = null;
@@ -204,6 +209,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
             'isArchived' => fn(ParseNode $n) => $o->setIsArchived($n->getBooleanValue()),
             'metadata' => fn(ParseNode $n) => $o->setMetadata($n->getObjectValue([LeadMetadata::class, 'createFromDiscriminatorValue'])),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
+            'phoneIdentity' => fn(ParseNode $n) => $o->setPhoneIdentity($n->getObjectValue([LeadResponse_phoneIdentity::class, 'createFromDiscriminatorValue'])),
             'tags' => fn(ParseNode $n) => $o->setTags($n->getCollectionOfObjectValues([TagSummary::class, 'createFromDiscriminatorValue'])),
         ];
     }
@@ -241,6 +247,14 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the phoneIdentity property value. Canonical phone identity and provider lookup details for this lead.
+     * @return LeadResponse_phoneIdentity|null
+    */
+    public function getPhoneIdentity(): ?LeadResponse_phoneIdentity {
+        return $this->phoneIdentity;
+    }
+
+    /**
      * Gets the tags property value. Tags currently attached to this lead, source, or record.
      * @return array<TagSummary>|null
     */
@@ -266,6 +280,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('isArchived', $this->getIsArchived());
         $writer->writeObjectValue('metadata', $this->getMetadata());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
+        $writer->writeObjectValue('phoneIdentity', $this->getPhoneIdentity());
         $writer->writeCollectionOfObjectValues('tags', $this->getTags());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -380,6 +395,14 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     */
     public function setModifiedAt(?DateTime $value): void {
         $this->modifiedAt = $value;
+    }
+
+    /**
+     * Sets the phoneIdentity property value. Canonical phone identity and provider lookup details for this lead.
+     * @param LeadResponse_phoneIdentity|null $value Value to set for the phoneIdentity property.
+    */
+    public function setPhoneIdentity(?LeadResponse_phoneIdentity $value): void {
+        $this->phoneIdentity = $value;
     }
 
     /**
