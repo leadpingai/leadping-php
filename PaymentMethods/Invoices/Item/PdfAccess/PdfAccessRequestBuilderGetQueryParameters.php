@@ -3,7 +3,7 @@
 namespace Leadping\OpenApiClient\PaymentMethods\Invoices\Item\PdfAccess;
 
 /**
- * Creates a short-lived URL for viewing or downloading a private invoice PDF.
+ * Creates a short-lived, secure URL that lets the current business view or download a private Stripe invoice PDF without exposing a permanent file link.
 */
 class PdfAccessRequestBuilderGetQueryParameters 
 {

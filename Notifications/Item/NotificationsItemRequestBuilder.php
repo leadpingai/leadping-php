@@ -39,7 +39,7 @@ class NotificationsItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Gets one notification for the current user and business.
+     * Returns one notification for the current user and business, including its content, read state, delivery context, and relevant account activity.
      * @param NotificationsItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<NotificationResponse|null>
      * @throws Exception
@@ -54,7 +54,7 @@ class NotificationsItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Gets one notification for the current user and business.
+     * Returns one notification for the current user and business, including its content, read state, delivery context, and relevant account activity.
      * @param NotificationsItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

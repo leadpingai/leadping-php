@@ -54,7 +54,7 @@ class LeadStatusesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Creates a reusable lead status for the current business to categorize leads in its sales workflow.
+     * Creates a reusable lead status for the current business to categorize, organize, and track leads consistently throughout its sales and follow-up workflow.
      * @param LeadStatusRequest $body The request body
      * @param LeadStatusesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<LeadStatusResponse|null>
@@ -84,7 +84,7 @@ class LeadStatusesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Creates a reusable lead status for the current business to categorize leads in its sales workflow.
+     * Creates a reusable lead status for the current business to categorize, organize, and track leads consistently throughout its sales and follow-up workflow.
      * @param LeadStatusRequest $body The request body
      * @param LeadStatusesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
