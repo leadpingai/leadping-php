@@ -18,6 +18,11 @@ class AnalyticsComparison implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var float|null $changePercent Percentage change between the current and previous reporting periods.
+    */
+    private ?float $changePercent = null;
+    
+    /**
      * @var float|null $current Metric value for the current reporting period.
     */
     private ?float $current = null;
@@ -57,6 +62,14 @@ class AnalyticsComparison implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the changePercent property value. Percentage change between the current and previous reporting periods.
+     * @return float|null
+    */
+    public function getChangePercent(): ?float {
+        return $this->changePercent;
+    }
+
+    /**
      * Gets the current property value. Metric value for the current reporting period.
      * @return float|null
     */
@@ -79,6 +92,7 @@ class AnalyticsComparison implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'changePercent' => fn(ParseNode $n) => $o->setChangePercent($n->getFloatValue()),
             'current' => fn(ParseNode $n) => $o->setCurrent($n->getFloatValue()),
             'direction' => fn(ParseNode $n) => $o->setDirection($n->getStringValue()),
             'previous' => fn(ParseNode $n) => $o->setPrevious($n->getFloatValue()),
@@ -98,6 +112,7 @@ class AnalyticsComparison implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeFloatValue('changePercent', $this->getChangePercent());
         $writer->writeFloatValue('current', $this->getCurrent());
         $writer->writeStringValue('direction', $this->getDirection());
         $writer->writeFloatValue('previous', $this->getPrevious());
@@ -110,6 +125,14 @@ class AnalyticsComparison implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the changePercent property value. Percentage change between the current and previous reporting periods.
+     * @param float|null $value Value to set for the changePercent property.
+    */
+    public function setChangePercent(?float $value): void {
+        $this->changePercent = $value;
     }
 
     /**

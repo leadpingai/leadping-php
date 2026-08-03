@@ -29,6 +29,11 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var float|null $billableAmount Monetary amount billed for this Leadping communication or transaction.
+    */
+    private ?float $billableAmount = null;
+    
+    /**
      * @var string|null $billingStatus Billing state for this communication, charge, or transaction.
     */
     private ?string $billingStatus = null;
@@ -122,6 +127,11 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
      * @var IdNamePair|null $lead The ID and name for this lead.
     */
     private ?IdNamePair $lead = null;
+    
+    /**
+     * @var array<MessageMediaAttachment>|null $media Media attached to this SMS/MMS event.
+    */
+    private ?array $media = null;
     
     /**
      * @var string|null $outboundPhoneNumberId Phone number ID selected for outbound delivery.
@@ -249,6 +259,14 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
+     * @return float|null
+    */
+    public function getBillableAmount(): ?float {
+        return $this->billableAmount;
+    }
+
+    /**
      * Gets the billingStatus property value. Billing state for this communication, charge, or transaction.
      * @return string|null
     */
@@ -369,6 +387,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
         return  [
             'actorDisplayName' => fn(ParseNode $n) => $o->setActorDisplayName($n->getStringValue()),
             'actorUserId' => fn(ParseNode $n) => $o->setActorUserId($n->getStringValue()),
+            'billableAmount' => fn(ParseNode $n) => $o->setBillableAmount($n->getFloatValue()),
             'billingStatus' => fn(ParseNode $n) => $o->setBillingStatus($n->getStringValue()),
             'blockedAt' => fn(ParseNode $n) => $o->setBlockedAt($n->getDateTimeValue()),
             'business' => fn(ParseNode $n) => $o->setBusiness($n->getStringValue()),
@@ -388,6 +407,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isAutomated' => fn(ParseNode $n) => $o->setIsAutomated($n->getBooleanValue()),
             'lead' => fn(ParseNode $n) => $o->setLead($n->getObjectValue([IdNamePair::class, 'createFromDiscriminatorValue'])),
+            'media' => fn(ParseNode $n) => $o->setMedia($n->getCollectionOfObjectValues([MessageMediaAttachment::class, 'createFromDiscriminatorValue'])),
             'outboundPhoneNumberId' => fn(ParseNode $n) => $o->setOutboundPhoneNumberId($n->getStringValue()),
             'outboundSource' => fn(ParseNode $n) => $o->setOutboundSource($n->getEnumValue(SmsEventTableRow_outboundSource::class)),
             'queuedAt' => fn(ParseNode $n) => $o->setQueuedAt($n->getDateTimeValue()),
@@ -446,6 +466,14 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function getLead(): ?IdNamePair {
         return $this->lead;
+    }
+
+    /**
+     * Gets the media property value. Media attached to this SMS/MMS event.
+     * @return array<MessageMediaAttachment>|null
+    */
+    public function getMedia(): ?array {
+        return $this->media;
     }
 
     /**
@@ -591,6 +619,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('actorDisplayName', $this->getActorDisplayName());
         $writer->writeStringValue('actorUserId', $this->getActorUserId());
+        $writer->writeFloatValue('billableAmount', $this->getBillableAmount());
         $writer->writeStringValue('billingStatus', $this->getBillingStatus());
         $writer->writeDateTimeValue('blockedAt', $this->getBlockedAt());
         $writer->writeStringValue('business', $this->getBusiness());
@@ -610,6 +639,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isAutomated', $this->getIsAutomated());
         $writer->writeObjectValue('lead', $this->getLead());
+        $writer->writeCollectionOfObjectValues('media', $this->getMedia());
         $writer->writeStringValue('outboundPhoneNumberId', $this->getOutboundPhoneNumberId());
         $writer->writeEnumValue('outboundSource', $this->getOutboundSource());
         $writer->writeDateTimeValue('queuedAt', $this->getQueuedAt());
@@ -652,6 +682,14 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
+     * @param float|null $value Value to set for the billableAmount property.
+    */
+    public function setBillableAmount(?float $value): void {
+        $this->billableAmount = $value;
     }
 
     /**
@@ -804,6 +842,14 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setLead(?IdNamePair $value): void {
         $this->lead = $value;
+    }
+
+    /**
+     * Sets the media property value. Media attached to this SMS/MMS event.
+     * @param array<MessageMediaAttachment>|null $value Value to set for the media property.
+    */
+    public function setMedia(?array $value): void {
+        $this->media = $value;
     }
 
     /**

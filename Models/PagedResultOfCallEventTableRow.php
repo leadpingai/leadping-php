@@ -33,6 +33,11 @@ class PagedResultOfCallEventTableRow implements AdditionalDataHolder, Parsable
     private ?int $pageSize = null;
     
     /**
+     * @var int|null $totalCount The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
+    */
+    private ?int $totalCount = null;
+    
+    /**
      * Instantiates a new PagedResultOfCallEventTableRow and sets the default values.
     */
     public function __construct() {
@@ -74,6 +79,7 @@ class PagedResultOfCallEventTableRow implements AdditionalDataHolder, Parsable
             'continuationToken' => fn(ParseNode $n) => $o->setContinuationToken($n->getStringValue()),
             'items' => fn(ParseNode $n) => $o->setItems($n->getCollectionOfObjectValues([CallEventTableRow::class, 'createFromDiscriminatorValue'])),
             'pageSize' => fn(ParseNode $n) => $o->setPageSize($n->getIntegerValue()),
+            'totalCount' => fn(ParseNode $n) => $o->setTotalCount($n->getIntegerValue()),
         ];
     }
 
@@ -94,6 +100,14 @@ class PagedResultOfCallEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the totalCount property value. The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
+     * @return int|null
+    */
+    public function getTotalCount(): ?int {
+        return $this->totalCount;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -101,6 +115,7 @@ class PagedResultOfCallEventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('continuationToken', $this->getContinuationToken());
         $writer->writeCollectionOfObjectValues('items', $this->getItems());
         $writer->writeIntegerValue('pageSize', $this->getPageSize());
+        $writer->writeIntegerValue('totalCount', $this->getTotalCount());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -134,6 +149,14 @@ class PagedResultOfCallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setPageSize(?int $value): void {
         $this->pageSize = $value;
+    }
+
+    /**
+     * Sets the totalCount property value. The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
+     * @param int|null $value Value to set for the totalCount property.
+    */
+    public function setTotalCount(?int $value): void {
+        $this->totalCount = $value;
     }
 
 }

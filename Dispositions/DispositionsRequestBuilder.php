@@ -4,6 +4,7 @@ namespace Leadping\OpenApiClient\Dispositions;
 
 use Exception;
 use Http\Promise\Promise;
+use Leadping\OpenApiClient\Dispositions\All\AllRequestBuilder;
 use Leadping\OpenApiClient\Dispositions\Item\DispositionsItemRequestBuilder;
 use Leadping\OpenApiClient\Dispositions\Lead\LeadRequestBuilder;
 use Leadping\OpenApiClient\Models\DispositionRequest;
@@ -19,6 +20,13 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 */
 class DispositionsRequestBuilder extends BaseRequestBuilder 
 {
+    /**
+     * The all property
+    */
+    public function all(): AllRequestBuilder {
+        return new AllRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
     /**
      * The lead property
     */

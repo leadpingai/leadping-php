@@ -44,6 +44,11 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     private ?DateTime $createdAt = null;
     
     /**
+     * @var float|null $directPostPrice Direct-post price supplied by the lead source during intake.
+    */
+    private ?float $directPostPrice = null;
+    
+    /**
      * @var string|null $externalId External system identifier used to reconcile this lead attribution metadata across integrations.
     */
     private ?string $externalId = null;
@@ -72,6 +77,11 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
      * @var string|null $origin System or workflow that created this event.
     */
     private ?string $origin = null;
+    
+    /**
+     * @var float|null $price Lead price or transaction price supplied to the Leadping API.
+    */
+    private ?float $price = null;
     
     /**
      * @var string|null $product Product or offer associated with the lead or source.
@@ -132,6 +142,11 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
      * @var string|null $subId Affiliate or publisher sub ID captured for lead attribution.
     */
     private ?string $subId = null;
+    
+    /**
+     * @var DateTime|null $trustedFormCheckedAt UTC timestamp when Leadping last successfully validated the TrustedForm certificate URL.
+    */
+    private ?DateTime $trustedFormCheckedAt = null;
     
     /**
      * @var string|null $trustedFormUrl TrustedForm certificate URL used as proof of consumer consent.
@@ -243,6 +258,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
+     * @return float|null
+    */
+    public function getDirectPostPrice(): ?float {
+        return $this->directPostPrice;
+    }
+
+    /**
      * Gets the externalId property value. External system identifier used to reconcile this lead attribution metadata across integrations.
      * @return string|null
     */
@@ -262,12 +285,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
             'complianceBlockedReason' => fn(ParseNode $n) => $o->setComplianceBlockedReason($n->getStringValue()),
             'complianceStatus' => fn(ParseNode $n) => $o->setComplianceStatus($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
+            'directPostPrice' => fn(ParseNode $n) => $o->setDirectPostPrice($n->getFloatValue()),
             'externalId' => fn(ParseNode $n) => $o->setExternalId($n->getStringValue()),
             'importBatchId' => fn(ParseNode $n) => $o->setImportBatchId($n->getStringValue()),
             'ipAddress' => fn(ParseNode $n) => $o->setIpAddress($n->getStringValue()),
             'isImported' => fn(ParseNode $n) => $o->setIsImported($n->getBooleanValue()),
             'landingPage' => fn(ParseNode $n) => $o->setLandingPage($n->getStringValue()),
             'origin' => fn(ParseNode $n) => $o->setOrigin($n->getStringValue()),
+            'price' => fn(ParseNode $n) => $o->setPrice($n->getFloatValue()),
             'product' => fn(ParseNode $n) => $o->setProduct($n->getStringValue()),
             'pubId' => fn(ParseNode $n) => $o->setPubId($n->getStringValue()),
             'referrer' => fn(ParseNode $n) => $o->setReferrer($n->getStringValue()),
@@ -280,6 +305,7 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
             'smsOptOutAt' => fn(ParseNode $n) => $o->setSmsOptOutAt($n->getDateTimeValue()),
             'sourceMetadata' => fn(ParseNode $n) => $o->setSourceMetadata($n->getObjectValue([LeadMetadata_sourceMetadata::class, 'createFromDiscriminatorValue'])),
             'subId' => fn(ParseNode $n) => $o->setSubId($n->getStringValue()),
+            'trustedFormCheckedAt' => fn(ParseNode $n) => $o->setTrustedFormCheckedAt($n->getDateTimeValue()),
             'trustedFormUrl' => fn(ParseNode $n) => $o->setTrustedFormUrl($n->getStringValue()),
             'userAgent' => fn(ParseNode $n) => $o->setUserAgent($n->getStringValue()),
             'userId' => fn(ParseNode $n) => $o->setUserId($n->getStringValue()),
@@ -330,6 +356,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function getOrigin(): ?string {
         return $this->origin;
+    }
+
+    /**
+     * Gets the price property value. Lead price or transaction price supplied to the Leadping API.
+     * @return float|null
+    */
+    public function getPrice(): ?float {
+        return $this->price;
     }
 
     /**
@@ -429,6 +463,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the trustedFormCheckedAt property value. UTC timestamp when Leadping last successfully validated the TrustedForm certificate URL.
+     * @return DateTime|null
+    */
+    public function getTrustedFormCheckedAt(): ?DateTime {
+        return $this->trustedFormCheckedAt;
+    }
+
+    /**
      * Gets the trustedFormUrl property value. TrustedForm certificate URL used as proof of consumer consent.
      * @return string|null
     */
@@ -510,12 +552,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('complianceBlockedReason', $this->getComplianceBlockedReason());
         $writer->writeStringValue('complianceStatus', $this->getComplianceStatus());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
+        $writer->writeFloatValue('directPostPrice', $this->getDirectPostPrice());
         $writer->writeStringValue('externalId', $this->getExternalId());
         $writer->writeStringValue('importBatchId', $this->getImportBatchId());
         $writer->writeStringValue('ipAddress', $this->getIpAddress());
         $writer->writeBooleanValue('isImported', $this->getIsImported());
         $writer->writeStringValue('landingPage', $this->getLandingPage());
         $writer->writeStringValue('origin', $this->getOrigin());
+        $writer->writeFloatValue('price', $this->getPrice());
         $writer->writeStringValue('product', $this->getProduct());
         $writer->writeStringValue('pubId', $this->getPubId());
         $writer->writeStringValue('referrer', $this->getReferrer());
@@ -528,6 +572,7 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('smsOptOutAt', $this->getSmsOptOutAt());
         $writer->writeObjectValue('sourceMetadata', $this->getSourceMetadata());
         $writer->writeStringValue('subId', $this->getSubId());
+        $writer->writeDateTimeValue('trustedFormCheckedAt', $this->getTrustedFormCheckedAt());
         $writer->writeStringValue('trustedFormUrl', $this->getTrustedFormUrl());
         $writer->writeStringValue('userAgent', $this->getUserAgent());
         $writer->writeStringValue('userId', $this->getUserId());
@@ -589,6 +634,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
+     * @param float|null $value Value to set for the directPostPrice property.
+    */
+    public function setDirectPostPrice(?float $value): void {
+        $this->directPostPrice = $value;
+    }
+
+    /**
      * Sets the externalId property value. External system identifier used to reconcile this lead attribution metadata across integrations.
      * @param string|null $value Value to set for the externalId property.
     */
@@ -634,6 +687,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function setOrigin(?string $value): void {
         $this->origin = $value;
+    }
+
+    /**
+     * Sets the price property value. Lead price or transaction price supplied to the Leadping API.
+     * @param float|null $value Value to set for the price property.
+    */
+    public function setPrice(?float $value): void {
+        $this->price = $value;
     }
 
     /**
@@ -730,6 +791,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function setSubId(?string $value): void {
         $this->subId = $value;
+    }
+
+    /**
+     * Sets the trustedFormCheckedAt property value. UTC timestamp when Leadping last successfully validated the TrustedForm certificate URL.
+     * @param DateTime|null $value Value to set for the trustedFormCheckedAt property.
+    */
+    public function setTrustedFormCheckedAt(?DateTime $value): void {
+        $this->trustedFormCheckedAt = $value;
     }
 
     /**

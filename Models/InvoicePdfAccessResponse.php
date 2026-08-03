@@ -19,12 +19,12 @@ class InvoicePdfAccessResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var DateTime|null $expiresAt The expiresAt property
+     * @var DateTime|null $expiresAt Date and time after which the download URL is no longer valid.
     */
     private ?DateTime $expiresAt = null;
     
     /**
-     * @var string|null $url The url property
+     * @var string|null $url Short-lived URL that can be used to download the invoice PDF.
     */
     private ?string $url = null;
     
@@ -53,7 +53,7 @@ class InvoicePdfAccessResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the expiresAt property value. The expiresAt property
+     * Gets the expiresAt property value. Date and time after which the download URL is no longer valid.
      * @return DateTime|null
     */
     public function getExpiresAt(): ?DateTime {
@@ -73,7 +73,7 @@ class InvoicePdfAccessResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the url property value. The url property
+     * Gets the url property value. Short-lived URL that can be used to download the invoice PDF.
      * @return string|null
     */
     public function getUrl(): ?string {
@@ -99,7 +99,7 @@ class InvoicePdfAccessResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the expiresAt property value. The expiresAt property
+     * Sets the expiresAt property value. Date and time after which the download URL is no longer valid.
      * @param DateTime|null $value Value to set for the expiresAt property.
     */
     public function setExpiresAt(?DateTime $value): void {
@@ -107,7 +107,7 @@ class InvoicePdfAccessResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the url property value. The url property
+     * Sets the url property value. Short-lived URL that can be used to download the invoice PDF.
      * @param string|null $value Value to set for the url property.
     */
     public function setUrl(?string $value): void {

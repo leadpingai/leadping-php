@@ -24,6 +24,21 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     private ?float $amount = null;
     
     /**
+     * @var TransactionTableRow_billableUnit|null $billableUnit Defines the supported Billable Unit values.
+    */
+    private ?TransactionTableRow_billableUnit $billableUnit = null;
+    
+    /**
+     * @var float|null $billedAmount The billedAmount property
+    */
+    private ?float $billedAmount = null;
+    
+    /**
+     * @var TransactionTableRow_billingChannel|null $billingChannel Defines the supported Usage Channel values.
+    */
+    private ?TransactionTableRow_billingChannel $billingChannel = null;
+    
+    /**
      * @var TransactionTableRow_business|null $business The ID and name for this business.
     */
     private ?TransactionTableRow_business $business = null;
@@ -59,6 +74,26 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     private ?string $paymentMethodDisplay = null;
     
     /**
+     * @var string|null $pricingVersion The pricingVersion property
+    */
+    private ?string $pricingVersion = null;
+    
+    /**
+     * @var float|null $quantity The quantity property
+    */
+    private ?float $quantity = null;
+    
+    /**
+     * @var string|null $sourceEventId The sourceEventId property
+    */
+    private ?string $sourceEventId = null;
+    
+    /**
+     * @var string|null $sourceEventType The sourceEventType property
+    */
+    private ?string $sourceEventType = null;
+    
+    /**
      * @var TransactionStatus|null $transactionStatus Processing status for this wallet transaction.
     */
     private ?TransactionStatus $transactionStatus = null;
@@ -67,6 +102,11 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
      * @var TransactionType|null $transactionType Debit or credit classification for this wallet transaction.
     */
     private ?TransactionType $transactionType = null;
+    
+    /**
+     * @var float|null $unitPrice The unitPrice property
+    */
+    private ?float $unitPrice = null;
     
     /**
      * Instantiates a new TransactionTableRow and sets the default values.
@@ -101,6 +141,30 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the billableUnit property value. Defines the supported Billable Unit values.
+     * @return TransactionTableRow_billableUnit|null
+    */
+    public function getBillableUnit(): ?TransactionTableRow_billableUnit {
+        return $this->billableUnit;
+    }
+
+    /**
+     * Gets the billedAmount property value. The billedAmount property
+     * @return float|null
+    */
+    public function getBilledAmount(): ?float {
+        return $this->billedAmount;
+    }
+
+    /**
+     * Gets the billingChannel property value. Defines the supported Usage Channel values.
+     * @return TransactionTableRow_billingChannel|null
+    */
+    public function getBillingChannel(): ?TransactionTableRow_billingChannel {
+        return $this->billingChannel;
+    }
+
+    /**
      * Gets the business property value. The ID and name for this business.
      * @return TransactionTableRow_business|null
     */
@@ -132,6 +196,9 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'amount' => fn(ParseNode $n) => $o->setAmount($n->getFloatValue()),
+            'billableUnit' => fn(ParseNode $n) => $o->setBillableUnit($n->getEnumValue(TransactionTableRow_billableUnit::class)),
+            'billedAmount' => fn(ParseNode $n) => $o->setBilledAmount($n->getFloatValue()),
+            'billingChannel' => fn(ParseNode $n) => $o->setBillingChannel($n->getEnumValue(TransactionTableRow_billingChannel::class)),
             'business' => fn(ParseNode $n) => $o->setBusiness($n->getObjectValue([TransactionTableRow_business::class, 'createFromDiscriminatorValue'])),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
@@ -139,8 +206,13 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
             'lead' => fn(ParseNode $n) => $o->setLead($n->getObjectValue([TransactionTableRow_lead::class, 'createFromDiscriminatorValue'])),
             'netAmount' => fn(ParseNode $n) => $o->setNetAmount($n->getFloatValue()),
             'paymentMethodDisplay' => fn(ParseNode $n) => $o->setPaymentMethodDisplay($n->getStringValue()),
+            'pricingVersion' => fn(ParseNode $n) => $o->setPricingVersion($n->getStringValue()),
+            'quantity' => fn(ParseNode $n) => $o->setQuantity($n->getFloatValue()),
+            'sourceEventId' => fn(ParseNode $n) => $o->setSourceEventId($n->getStringValue()),
+            'sourceEventType' => fn(ParseNode $n) => $o->setSourceEventType($n->getStringValue()),
             'transactionStatus' => fn(ParseNode $n) => $o->setTransactionStatus($n->getEnumValue(TransactionStatus::class)),
             'transactionType' => fn(ParseNode $n) => $o->setTransactionType($n->getEnumValue(TransactionType::class)),
+            'unitPrice' => fn(ParseNode $n) => $o->setUnitPrice($n->getFloatValue()),
         ];
     }
 
@@ -177,6 +249,38 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the pricingVersion property value. The pricingVersion property
+     * @return string|null
+    */
+    public function getPricingVersion(): ?string {
+        return $this->pricingVersion;
+    }
+
+    /**
+     * Gets the quantity property value. The quantity property
+     * @return float|null
+    */
+    public function getQuantity(): ?float {
+        return $this->quantity;
+    }
+
+    /**
+     * Gets the sourceEventId property value. The sourceEventId property
+     * @return string|null
+    */
+    public function getSourceEventId(): ?string {
+        return $this->sourceEventId;
+    }
+
+    /**
+     * Gets the sourceEventType property value. The sourceEventType property
+     * @return string|null
+    */
+    public function getSourceEventType(): ?string {
+        return $this->sourceEventType;
+    }
+
+    /**
      * Gets the transactionStatus property value. Processing status for this wallet transaction.
      * @return TransactionStatus|null
     */
@@ -193,11 +297,22 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the unitPrice property value. The unitPrice property
+     * @return float|null
+    */
+    public function getUnitPrice(): ?float {
+        return $this->unitPrice;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeFloatValue('amount', $this->getAmount());
+        $writer->writeEnumValue('billableUnit', $this->getBillableUnit());
+        $writer->writeFloatValue('billedAmount', $this->getBilledAmount());
+        $writer->writeEnumValue('billingChannel', $this->getBillingChannel());
         $writer->writeObjectValue('business', $this->getBusiness());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('description', $this->getDescription());
@@ -205,8 +320,13 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
         $writer->writeObjectValue('lead', $this->getLead());
         $writer->writeFloatValue('netAmount', $this->getNetAmount());
         $writer->writeStringValue('paymentMethodDisplay', $this->getPaymentMethodDisplay());
+        $writer->writeStringValue('pricingVersion', $this->getPricingVersion());
+        $writer->writeFloatValue('quantity', $this->getQuantity());
+        $writer->writeStringValue('sourceEventId', $this->getSourceEventId());
+        $writer->writeStringValue('sourceEventType', $this->getSourceEventType());
         $writer->writeEnumValue('transactionStatus', $this->getTransactionStatus());
         $writer->writeEnumValue('transactionType', $this->getTransactionType());
+        $writer->writeFloatValue('unitPrice', $this->getUnitPrice());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -224,6 +344,30 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     */
     public function setAmount(?float $value): void {
         $this->amount = $value;
+    }
+
+    /**
+     * Sets the billableUnit property value. Defines the supported Billable Unit values.
+     * @param TransactionTableRow_billableUnit|null $value Value to set for the billableUnit property.
+    */
+    public function setBillableUnit(?TransactionTableRow_billableUnit $value): void {
+        $this->billableUnit = $value;
+    }
+
+    /**
+     * Sets the billedAmount property value. The billedAmount property
+     * @param float|null $value Value to set for the billedAmount property.
+    */
+    public function setBilledAmount(?float $value): void {
+        $this->billedAmount = $value;
+    }
+
+    /**
+     * Sets the billingChannel property value. Defines the supported Usage Channel values.
+     * @param TransactionTableRow_billingChannel|null $value Value to set for the billingChannel property.
+    */
+    public function setBillingChannel(?TransactionTableRow_billingChannel $value): void {
+        $this->billingChannel = $value;
     }
 
     /**
@@ -283,6 +427,38 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the pricingVersion property value. The pricingVersion property
+     * @param string|null $value Value to set for the pricingVersion property.
+    */
+    public function setPricingVersion(?string $value): void {
+        $this->pricingVersion = $value;
+    }
+
+    /**
+     * Sets the quantity property value. The quantity property
+     * @param float|null $value Value to set for the quantity property.
+    */
+    public function setQuantity(?float $value): void {
+        $this->quantity = $value;
+    }
+
+    /**
+     * Sets the sourceEventId property value. The sourceEventId property
+     * @param string|null $value Value to set for the sourceEventId property.
+    */
+    public function setSourceEventId(?string $value): void {
+        $this->sourceEventId = $value;
+    }
+
+    /**
+     * Sets the sourceEventType property value. The sourceEventType property
+     * @param string|null $value Value to set for the sourceEventType property.
+    */
+    public function setSourceEventType(?string $value): void {
+        $this->sourceEventType = $value;
+    }
+
+    /**
      * Sets the transactionStatus property value. Processing status for this wallet transaction.
      * @param TransactionStatus|null $value Value to set for the transactionStatus property.
     */
@@ -296,6 +472,14 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     */
     public function setTransactionType(?TransactionType $value): void {
         $this->transactionType = $value;
+    }
+
+    /**
+     * Sets the unitPrice property value. The unitPrice property
+     * @param float|null $value Value to set for the unitPrice property.
+    */
+    public function setUnitPrice(?float $value): void {
+        $this->unitPrice = $value;
     }
 
 }

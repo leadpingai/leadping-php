@@ -55,7 +55,7 @@ class LeadStatusesRequestBuilder extends BaseRequestBuilder
 
     /**
      * Creates a reusable lead status for the current business to categorize, organize, and track leads consistently throughout its sales and follow-up workflow.
-     * @param LeadStatusRequest $body The request body
+     * @param LeadStatusRequest $body Defines the editable values used to create or update a lead status.
      * @param LeadStatusesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<LeadStatusResponse|null>
      * @throws Exception
@@ -85,7 +85,7 @@ class LeadStatusesRequestBuilder extends BaseRequestBuilder
 
     /**
      * Creates a reusable lead status for the current business to categorize, organize, and track leads consistently throughout its sales and follow-up workflow.
-     * @param LeadStatusRequest $body The request body
+     * @param LeadStatusRequest $body Defines the editable values used to create or update a lead status.
      * @param LeadStatusesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -98,7 +98,7 @@ class LeadStatusesRequestBuilder extends BaseRequestBuilder
             $requestInfo->addHeaders($requestConfiguration->headers);
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
-        $requestInfo->tryAddHeader('Accept', "application/json, text/plain;q=0.9");
+        $requestInfo->tryAddHeader('Accept', "text/plain;q=0.9");
         $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
         return $requestInfo;
     }

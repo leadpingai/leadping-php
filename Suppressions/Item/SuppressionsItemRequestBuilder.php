@@ -1,28 +1,28 @@
 <?php
 
-namespace Leadping\OpenApiClient\Users\Me\LastLogin;
+namespace Leadping\OpenApiClient\Suppressions\Item;
 
 use Exception;
 use Http\Promise\Promise;
 use Leadping\OpenApiClient\Models\ProblemDetails;
-use Leadping\OpenApiClient\Models\UserResponse;
+use Leadping\OpenApiClient\Models\SuppressionEntryResponse;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
 
 /**
- * Builds and executes requests for operations under /users/me/last-login
+ * Builds and executes requests for operations under /suppressions/{id}
 */
-class LastLoginRequestBuilder extends BaseRequestBuilder 
+class SuppressionsItemRequestBuilder extends BaseRequestBuilder 
 {
     /**
-     * Instantiates a new LastLoginRequestBuilder and sets the default values.
+     * Instantiates a new SuppressionsItemRequestBuilder and sets the default values.
      * @param array<string, mixed>|string $pathParametersOrRawUrl Path parameters for the request or a String representing the raw URL.
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/users/me/last-login');
+        parent::__construct($requestAdapter, [], '{+baseurl}/suppressions/{id}');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {
@@ -31,30 +31,30 @@ class LastLoginRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Records a successful sign-in for the current user, updating login metadata used for auditing and account events.
-     * @param LastLoginRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return Promise<UserResponse|null>
+     * Get
+     * @param SuppressionsItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return Promise<SuppressionEntryResponse|null>
      * @throws Exception
     */
-    public function post(?LastLoginRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
-        $requestInfo = $this->toPostRequestInformation($requestConfiguration);
+    public function get(?SuppressionsItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
+        $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
-        return $this->requestAdapter->sendAsync($requestInfo, [UserResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
+        return $this->requestAdapter->sendAsync($requestInfo, [SuppressionEntryResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
 
     /**
-     * Records a successful sign-in for the current user, updating login metadata used for auditing and account events.
-     * @param LastLoginRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * Get
+     * @param SuppressionsItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
-    public function toPostRequestInformation(?LastLoginRequestBuilderPostRequestConfiguration $requestConfiguration = null): RequestInformation {
+    public function toGetRequestInformation(?SuppressionsItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
-        $requestInfo->httpMethod = HttpMethod::POST;
+        $requestInfo->httpMethod = HttpMethod::GET;
         if ($requestConfiguration !== null) {
             $requestInfo->addHeaders($requestConfiguration->headers);
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
@@ -66,10 +66,10 @@ class LastLoginRequestBuilder extends BaseRequestBuilder
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param string $rawUrl The raw URL to use for the request builder.
-     * @return LastLoginRequestBuilder
+     * @return SuppressionsItemRequestBuilder
     */
-    public function withUrl(string $rawUrl): LastLoginRequestBuilder {
-        return new LastLoginRequestBuilder($rawUrl, $this->requestAdapter);
+    public function withUrl(string $rawUrl): SuppressionsItemRequestBuilder {
+        return new SuppressionsItemRequestBuilder($rawUrl, $this->requestAdapter);
     }
 
 }

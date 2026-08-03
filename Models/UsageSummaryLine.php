@@ -43,9 +43,9 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     private ?int $recordCount = null;
     
     /**
-     * @var UsageRecordStatus|null $status The current status for this usage summary line.
+     * @var UsageStatus|null $status The current status for this usage summary line.
     */
-    private ?UsageRecordStatus $status = null;
+    private ?UsageStatus $status = null;
     
     /**
      * Instantiates a new UsageSummaryLine and sets the default values.
@@ -107,7 +107,7 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
             'customerChargeAmount' => fn(ParseNode $n) => $o->setCustomerChargeAmount($n->getFloatValue()),
             'quantity' => fn(ParseNode $n) => $o->setQuantity($n->getFloatValue()),
             'recordCount' => fn(ParseNode $n) => $o->setRecordCount($n->getIntegerValue()),
-            'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(UsageRecordStatus::class)),
+            'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(UsageStatus::class)),
         ];
     }
 
@@ -129,9 +129,9 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
 
     /**
      * Gets the status property value. The current status for this usage summary line.
-     * @return UsageRecordStatus|null
+     * @return UsageStatus|null
     */
-    public function getStatus(): ?UsageRecordStatus {
+    public function getStatus(): ?UsageStatus {
         return $this->status;
     }
 
@@ -199,9 +199,9 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
 
     /**
      * Sets the status property value. The current status for this usage summary line.
-     * @param UsageRecordStatus|null $value Value to set for the status property.
+     * @param UsageStatus|null $value Value to set for the status property.
     */
-    public function setStatus(?UsageRecordStatus $value): void {
+    public function setStatus(?UsageStatus $value): void {
         $this->status = $value;
     }
 

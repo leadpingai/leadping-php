@@ -69,6 +69,11 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $lastEventAt = null;
     
     /**
+     * @var bool|null $lastEventIsInternalNote Indicates that the most recent conversation activity is an internal note.
+    */
+    private ?bool $lastEventIsInternalNote = null;
+    
+    /**
      * @var string|null $lastName Last name of the lead, user, or contact represented by this conversation response.
     */
     private ?string $lastName = null;
@@ -194,6 +199,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
             'isArchived' => fn(ParseNode $n) => $o->setIsArchived($n->getBooleanValue()),
             'isUnread' => fn(ParseNode $n) => $o->setIsUnread($n->getBooleanValue()),
             'lastEventAt' => fn(ParseNode $n) => $o->setLastEventAt($n->getDateTimeValue()),
+            'lastEventIsInternalNote' => fn(ParseNode $n) => $o->setLastEventIsInternalNote($n->getBooleanValue()),
             'lastName' => fn(ParseNode $n) => $o->setLastName($n->getStringValue()),
             'lastSnippet' => fn(ParseNode $n) => $o->setLastSnippet($n->getStringValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
@@ -244,6 +250,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     */
     public function getLastEventAt(): ?DateTime {
         return $this->lastEventAt;
+    }
+
+    /**
+     * Gets the lastEventIsInternalNote property value. Indicates that the most recent conversation activity is an internal note.
+     * @return bool|null
+    */
+    public function getLastEventIsInternalNote(): ?bool {
+        return $this->lastEventIsInternalNote;
     }
 
     /**
@@ -333,6 +347,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('isArchived', $this->getIsArchived());
         $writer->writeBooleanValue('isUnread', $this->getIsUnread());
         $writer->writeDateTimeValue('lastEventAt', $this->getLastEventAt());
+        $writer->writeBooleanValue('lastEventIsInternalNote', $this->getLastEventIsInternalNote());
         $writer->writeStringValue('lastName', $this->getLastName());
         $writer->writeStringValue('lastSnippet', $this->getLastSnippet());
         $writer->writeStringValue('leadId', $this->getLeadId());
@@ -431,6 +446,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     */
     public function setLastEventAt(?DateTime $value): void {
         $this->lastEventAt = $value;
+    }
+
+    /**
+     * Sets the lastEventIsInternalNote property value. Indicates that the most recent conversation activity is an internal note.
+     * @param bool|null $value Value to set for the lastEventIsInternalNote property.
+    */
+    public function setLastEventIsInternalNote(?bool $value): void {
+        $this->lastEventIsInternalNote = $value;
     }
 
     /**

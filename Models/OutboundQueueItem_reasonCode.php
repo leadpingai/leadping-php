@@ -11,9 +11,6 @@ class OutboundQueueItem_reasonCode extends Enum {
     public const PHONE_NUMBER_DAILY_LIMIT_REACHED = "phone_number_daily_limit_reached";
     public const PHONE_NUMBER_HOURLY_LIMIT_REACHED = "phone_number_hourly_limit_reached";
     public const PHONE_NUMBER_MINUTE_LIMIT_REACHED = "phone_number_minute_limit_reached";
-    public const BUSINESS_DAILY_LIMIT_REACHED = "business_daily_limit_reached";
-    public const BUSINESS_HOURLY_LIMIT_REACHED = "business_hourly_limit_reached";
-    public const BUSINESS_MINUTE_LIMIT_REACHED = "business_minute_limit_reached";
     public const LEAD_DAILY_LIMIT_REACHED = "lead_daily_limit_reached";
     public const LEAD_HOURLY_LIMIT_REACHED = "lead_hourly_limit_reached";
     public const LEAD_RECENTLY_CONTACTED = "lead_recently_contacted";

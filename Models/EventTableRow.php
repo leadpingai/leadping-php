@@ -34,6 +34,11 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var float|null $billableAmount Monetary amount billed for this Leadping communication or transaction.
+    */
+    private ?float $billableAmount = null;
+    
+    /**
      * @var string|null $billingStatus Billing state for this communication, charge, or transaction.
     */
     private ?string $billingStatus = null;
@@ -132,6 +137,11 @@ class EventTableRow implements AdditionalDataHolder, Parsable
      * @var string|null $leadId Lead ID associated with this timeline event.
     */
     private ?string $leadId = null;
+    
+    /**
+     * @var array<MessageMediaAttachment>|null $media Media attached to an MMS timeline event.
+    */
+    private ?array $media = null;
     
     /**
      * @var DateTime|null $nextRetryAt UTC timestamp when Leadping will retry this event timeline table row.
@@ -292,6 +302,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
+     * @return float|null
+    */
+    public function getBillableAmount(): ?float {
+        return $this->billableAmount;
+    }
+
+    /**
      * Gets the billingStatus property value. Billing state for this communication, charge, or transaction.
      * @return string|null
     */
@@ -429,6 +447,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
             'actorDisplayName' => fn(ParseNode $n) => $o->setActorDisplayName($n->getStringValue()),
             'actorEmail' => fn(ParseNode $n) => $o->setActorEmail($n->getStringValue()),
             'actorUserId' => fn(ParseNode $n) => $o->setActorUserId($n->getStringValue()),
+            'billableAmount' => fn(ParseNode $n) => $o->setBillableAmount($n->getFloatValue()),
             'billingStatus' => fn(ParseNode $n) => $o->setBillingStatus($n->getStringValue()),
             'blockedAt' => fn(ParseNode $n) => $o->setBlockedAt($n->getDateTimeValue()),
             'campaignId' => fn(ParseNode $n) => $o->setCampaignId($n->getStringValue()),
@@ -449,6 +468,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
             'fromPhoneNumberId' => fn(ParseNode $n) => $o->setFromPhoneNumberId($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
+            'media' => fn(ParseNode $n) => $o->setMedia($n->getCollectionOfObjectValues([MessageMediaAttachment::class, 'createFromDiscriminatorValue'])),
             'nextRetryAt' => fn(ParseNode $n) => $o->setNextRetryAt($n->getDateTimeValue()),
             'outboundPhoneNumberId' => fn(ParseNode $n) => $o->setOutboundPhoneNumberId($n->getStringValue()),
             'queuedAt' => fn(ParseNode $n) => $o->setQueuedAt($n->getDateTimeValue()),
@@ -504,6 +524,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function getLeadId(): ?string {
         return $this->leadId;
+    }
+
+    /**
+     * Gets the media property value. Media attached to an MMS timeline event.
+     * @return array<MessageMediaAttachment>|null
+    */
+    public function getMedia(): ?array {
+        return $this->media;
     }
 
     /**
@@ -690,6 +718,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('actorDisplayName', $this->getActorDisplayName());
         $writer->writeStringValue('actorEmail', $this->getActorEmail());
         $writer->writeStringValue('actorUserId', $this->getActorUserId());
+        $writer->writeFloatValue('billableAmount', $this->getBillableAmount());
         $writer->writeStringValue('billingStatus', $this->getBillingStatus());
         $writer->writeDateTimeValue('blockedAt', $this->getBlockedAt());
         $writer->writeStringValue('campaignId', $this->getCampaignId());
@@ -710,6 +739,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('fromPhoneNumberId', $this->getFromPhoneNumberId());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeStringValue('leadId', $this->getLeadId());
+        $writer->writeCollectionOfObjectValues('media', $this->getMedia());
         $writer->writeDateTimeValue('nextRetryAt', $this->getNextRetryAt());
         $writer->writeStringValue('outboundPhoneNumberId', $this->getOutboundPhoneNumberId());
         $writer->writeDateTimeValue('queuedAt', $this->getQueuedAt());
@@ -765,6 +795,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
+     * @param float|null $value Value to set for the billableAmount property.
+    */
+    public function setBillableAmount(?float $value): void {
+        $this->billableAmount = $value;
     }
 
     /**
@@ -925,6 +963,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setLeadId(?string $value): void {
         $this->leadId = $value;
+    }
+
+    /**
+     * Sets the media property value. Media attached to an MMS timeline event.
+     * @param array<MessageMediaAttachment>|null $value Value to set for the media property.
+    */
+    public function setMedia(?array $value): void {
+        $this->media = $value;
     }
 
     /**

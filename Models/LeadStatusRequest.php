@@ -7,6 +7,9 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
+/**
+ * Defines the editable values used to create or update a lead status.
+*/
 class LeadStatusRequest implements AdditionalDataHolder, Parsable 
 {
     /**
@@ -20,14 +23,19 @@ class LeadStatusRequest implements AdditionalDataHolder, Parsable
     private ?LeadStatusRequest_category $category = null;
     
     /**
-     * @var string|null $color The color property
+     * @var string|null $color Display color for the lead status.
     */
     private ?string $color = null;
     
     /**
-     * @var string|null $name The name property
+     * @var string|null $name Display name for the lead status.
     */
     private ?string $name = null;
+    
+    /**
+     * @var int|null $sortOrder Relative display order for the lead status.
+    */
+    private ?int $sortOrder = null;
     
     /**
      * Instantiates a new LeadStatusRequest and sets the default values.
@@ -62,7 +70,7 @@ class LeadStatusRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the color property value. The color property
+     * Gets the color property value. Display color for the lead status.
      * @return string|null
     */
     public function getColor(): ?string {
@@ -79,15 +87,24 @@ class LeadStatusRequest implements AdditionalDataHolder, Parsable
             'category' => fn(ParseNode $n) => $o->setCategory($n->getEnumValue(LeadStatusRequest_category::class)),
             'color' => fn(ParseNode $n) => $o->setColor($n->getStringValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
+            'sortOrder' => fn(ParseNode $n) => $o->setSortOrder($n->getIntegerValue()),
         ];
     }
 
     /**
-     * Gets the name property value. The name property
+     * Gets the name property value. Display name for the lead status.
      * @return string|null
     */
     public function getName(): ?string {
         return $this->name;
+    }
+
+    /**
+     * Gets the sortOrder property value. Relative display order for the lead status.
+     * @return int|null
+    */
+    public function getSortOrder(): ?int {
+        return $this->sortOrder;
     }
 
     /**
@@ -98,6 +115,7 @@ class LeadStatusRequest implements AdditionalDataHolder, Parsable
         $writer->writeEnumValue('category', $this->getCategory());
         $writer->writeStringValue('color', $this->getColor());
         $writer->writeStringValue('name', $this->getName());
+        $writer->writeIntegerValue('sortOrder', $this->getSortOrder());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -118,7 +136,7 @@ class LeadStatusRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the color property value. The color property
+     * Sets the color property value. Display color for the lead status.
      * @param string|null $value Value to set for the color property.
     */
     public function setColor(?string $value): void {
@@ -126,11 +144,19 @@ class LeadStatusRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the name property value. The name property
+     * Sets the name property value. Display name for the lead status.
      * @param string|null $value Value to set for the name property.
     */
     public function setName(?string $value): void {
         $this->name = $value;
+    }
+
+    /**
+     * Sets the sortOrder property value. Relative display order for the lead status.
+     * @param int|null $value Value to set for the sortOrder property.
+    */
+    public function setSortOrder(?int $value): void {
+        $this->sortOrder = $value;
     }
 
 }

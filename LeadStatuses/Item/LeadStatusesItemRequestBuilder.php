@@ -45,7 +45,7 @@ class LeadStatusesItemRequestBuilder extends BaseRequestBuilder
 
     /**
      * Updates the name, color, and display order of a lead status owned by the current business so pipeline stages remain clear and consistently organized.
-     * @param LeadStatusRequest $body The request body
+     * @param LeadStatusRequest $body Defines the editable values used to create or update a lead status.
      * @param LeadStatusesItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<LeadStatusResponse|null>
      * @throws Exception
@@ -75,7 +75,7 @@ class LeadStatusesItemRequestBuilder extends BaseRequestBuilder
 
     /**
      * Updates the name, color, and display order of a lead status owned by the current business so pipeline stages remain clear and consistently organized.
-     * @param LeadStatusRequest $body The request body
+     * @param LeadStatusRequest $body Defines the editable values used to create or update a lead status.
      * @param LeadStatusesItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -88,7 +88,7 @@ class LeadStatusesItemRequestBuilder extends BaseRequestBuilder
             $requestInfo->addHeaders($requestConfiguration->headers);
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
-        $requestInfo->tryAddHeader('Accept', "application/json, text/plain;q=0.9");
+        $requestInfo->tryAddHeader('Accept', "text/plain;q=0.9");
         $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
         return $requestInfo;
     }

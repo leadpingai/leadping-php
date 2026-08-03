@@ -19,6 +19,11 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var PhoneLookup_callerName|null $callerName Caller-name data returned by the provider.
+    */
+    private ?PhoneLookup_callerName $callerName = null;
+    
+    /**
      * @var PhoneLookup_carrier|null $carrier Complete carrier metadata reported for this phone number.
     */
     private ?PhoneLookup_carrier $carrier = null;
@@ -27,6 +32,11 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
      * @var DateTime|null $createdAt Gets or sets created at.
     */
     private ?DateTime $createdAt = null;
+    
+    /**
+     * @var string|null $fraud Fraud value returned by the provider, when available.
+    */
+    private ?string $fraud = null;
     
     /**
      * @var string|null $id Gets or sets id.
@@ -54,9 +64,24 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     private ?DateTime $modifiedAt = null;
     
     /**
+     * @var string|null $nationalFormat Provider-formatted national phone number.
+    */
+    private ?string $nationalFormat = null;
+    
+    /**
      * @var string|null $number E.164 phone number exposed by this phone lookup result.
     */
     private ?string $number = null;
+    
+    /**
+     * @var PhoneLookup_portability|null $portability Complete portability data returned by Telnyx.
+    */
+    private ?PhoneLookup_portability $portability = null;
+    
+    /**
+     * @var string|null $recordType Provider record discriminator.
+    */
+    private ?string $recordType = null;
     
     /**
      * Instantiates a new PhoneLookup and sets the default values.
@@ -83,6 +108,14 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the callerName property value. Caller-name data returned by the provider.
+     * @return PhoneLookup_callerName|null
+    */
+    public function getCallerName(): ?PhoneLookup_callerName {
+        return $this->callerName;
+    }
+
+    /**
      * Gets the carrier property value. Complete carrier metadata reported for this phone number.
      * @return PhoneLookup_carrier|null
     */
@@ -105,15 +138,28 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'callerName' => fn(ParseNode $n) => $o->setCallerName($n->getObjectValue([PhoneLookup_callerName::class, 'createFromDiscriminatorValue'])),
             'carrier' => fn(ParseNode $n) => $o->setCarrier($n->getObjectValue([PhoneLookup_carrier::class, 'createFromDiscriminatorValue'])),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
+            'fraud' => fn(ParseNode $n) => $o->setFraud($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isValid' => fn(ParseNode $n) => $o->setIsValid($n->getBooleanValue()),
             'lineType' => fn(ParseNode $n) => $o->setLineType($n->getEnumValue(PhoneLookup_lineType::class)),
             'location' => fn(ParseNode $n) => $o->setLocation($n->getObjectValue([PhoneLookup_location::class, 'createFromDiscriminatorValue'])),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
+            'nationalFormat' => fn(ParseNode $n) => $o->setNationalFormat($n->getStringValue()),
             'number' => fn(ParseNode $n) => $o->setNumber($n->getStringValue()),
+            'portability' => fn(ParseNode $n) => $o->setPortability($n->getObjectValue([PhoneLookup_portability::class, 'createFromDiscriminatorValue'])),
+            'recordType' => fn(ParseNode $n) => $o->setRecordType($n->getStringValue()),
         ];
+    }
+
+    /**
+     * Gets the fraud property value. Fraud value returned by the provider, when available.
+     * @return string|null
+    */
+    public function getFraud(): ?string {
+        return $this->fraud;
     }
 
     /**
@@ -157,6 +203,14 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the nationalFormat property value. Provider-formatted national phone number.
+     * @return string|null
+    */
+    public function getNationalFormat(): ?string {
+        return $this->nationalFormat;
+    }
+
+    /**
      * Gets the number property value. E.164 phone number exposed by this phone lookup result.
      * @return string|null
     */
@@ -165,18 +219,39 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the portability property value. Complete portability data returned by Telnyx.
+     * @return PhoneLookup_portability|null
+    */
+    public function getPortability(): ?PhoneLookup_portability {
+        return $this->portability;
+    }
+
+    /**
+     * Gets the recordType property value. Provider record discriminator.
+     * @return string|null
+    */
+    public function getRecordType(): ?string {
+        return $this->recordType;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeObjectValue('callerName', $this->getCallerName());
         $writer->writeObjectValue('carrier', $this->getCarrier());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
+        $writer->writeStringValue('fraud', $this->getFraud());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isValid', $this->getIsValid());
         $writer->writeEnumValue('lineType', $this->getLineType());
         $writer->writeObjectValue('location', $this->getLocation());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
+        $writer->writeStringValue('nationalFormat', $this->getNationalFormat());
         $writer->writeStringValue('number', $this->getNumber());
+        $writer->writeObjectValue('portability', $this->getPortability());
+        $writer->writeStringValue('recordType', $this->getRecordType());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -186,6 +261,14 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the callerName property value. Caller-name data returned by the provider.
+     * @param PhoneLookup_callerName|null $value Value to set for the callerName property.
+    */
+    public function setCallerName(?PhoneLookup_callerName $value): void {
+        $this->callerName = $value;
     }
 
     /**
@@ -202,6 +285,14 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     */
     public function setCreatedAt(?DateTime $value): void {
         $this->createdAt = $value;
+    }
+
+    /**
+     * Sets the fraud property value. Fraud value returned by the provider, when available.
+     * @param string|null $value Value to set for the fraud property.
+    */
+    public function setFraud(?string $value): void {
+        $this->fraud = $value;
     }
 
     /**
@@ -245,11 +336,35 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the nationalFormat property value. Provider-formatted national phone number.
+     * @param string|null $value Value to set for the nationalFormat property.
+    */
+    public function setNationalFormat(?string $value): void {
+        $this->nationalFormat = $value;
+    }
+
+    /**
      * Sets the number property value. E.164 phone number exposed by this phone lookup result.
      * @param string|null $value Value to set for the number property.
     */
     public function setNumber(?string $value): void {
         $this->number = $value;
+    }
+
+    /**
+     * Sets the portability property value. Complete portability data returned by Telnyx.
+     * @param PhoneLookup_portability|null $value Value to set for the portability property.
+    */
+    public function setPortability(?PhoneLookup_portability $value): void {
+        $this->portability = $value;
+    }
+
+    /**
+     * Sets the recordType property value. Provider record discriminator.
+     * @param string|null $value Value to set for the recordType property.
+    */
+    public function setRecordType(?string $value): void {
+        $this->recordType = $value;
     }
 
 }

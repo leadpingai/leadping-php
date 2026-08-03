@@ -18,6 +18,11 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var float|null $averageResponseMinutes Average time, in minutes, before a lead receives a response.
+    */
+    private ?float $averageResponseMinutes = null;
+    
+    /**
      * @var string|null $billingStatus Current billing status for this Leadping customer analytics summary.
     */
     private ?string $billingStatus = null;
@@ -46,6 +51,11 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
      * @var AnalyticsComparison|null $leadsComparison Date and time when this Leadping customer analytics summary was leads comparison.
     */
     private ?AnalyticsComparison $leadsComparison = null;
+    
+    /**
+     * @var float|null $medianResponseMinutes Median response minutes measured in minutes.
+    */
+    private ?float $medianResponseMinutes = null;
     
     /**
      * @var int|null $missedCalls Number of calls missed during the reporting period.
@@ -117,6 +127,14 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the averageResponseMinutes property value. Average time, in minutes, before a lead receives a response.
+     * @return float|null
+    */
+    public function getAverageResponseMinutes(): ?float {
+        return $this->averageResponseMinutes;
+    }
+
+    /**
      * Gets the billingStatus property value. Current billing status for this Leadping customer analytics summary.
      * @return string|null
     */
@@ -155,12 +173,14 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'averageResponseMinutes' => fn(ParseNode $n) => $o->setAverageResponseMinutes($n->getFloatValue()),
             'billingStatus' => fn(ParseNode $n) => $o->setBillingStatus($n->getStringValue()),
             'callMinutes' => fn(ParseNode $n) => $o->setCallMinutes($n->getFloatValue()),
             'callsPlaced' => fn(ParseNode $n) => $o->setCallsPlaced($n->getIntegerValue()),
             'callsReceived' => fn(ParseNode $n) => $o->setCallsReceived($n->getIntegerValue()),
             'leads' => fn(ParseNode $n) => $o->setLeads($n->getIntegerValue()),
             'leadsComparison' => fn(ParseNode $n) => $o->setLeadsComparison($n->getObjectValue([AnalyticsComparison::class, 'createFromDiscriminatorValue'])),
+            'medianResponseMinutes' => fn(ParseNode $n) => $o->setMedianResponseMinutes($n->getFloatValue()),
             'missedCalls' => fn(ParseNode $n) => $o->setMissedCalls($n->getIntegerValue()),
             'missedLeads' => fn(ParseNode $n) => $o->setMissedLeads($n->getIntegerValue()),
             'respondedWithinFiveMinutesPercent' => fn(ParseNode $n) => $o->setRespondedWithinFiveMinutesPercent($n->getFloatValue()),
@@ -187,6 +207,14 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     */
     public function getLeadsComparison(): ?AnalyticsComparison {
         return $this->leadsComparison;
+    }
+
+    /**
+     * Gets the medianResponseMinutes property value. Median response minutes measured in minutes.
+     * @return float|null
+    */
+    public function getMedianResponseMinutes(): ?float {
+        return $this->medianResponseMinutes;
     }
 
     /**
@@ -266,12 +294,14 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeFloatValue('averageResponseMinutes', $this->getAverageResponseMinutes());
         $writer->writeStringValue('billingStatus', $this->getBillingStatus());
         $writer->writeFloatValue('callMinutes', $this->getCallMinutes());
         $writer->writeIntegerValue('callsPlaced', $this->getCallsPlaced());
         $writer->writeIntegerValue('callsReceived', $this->getCallsReceived());
         $writer->writeIntegerValue('leads', $this->getLeads());
         $writer->writeObjectValue('leadsComparison', $this->getLeadsComparison());
+        $writer->writeFloatValue('medianResponseMinutes', $this->getMedianResponseMinutes());
         $writer->writeIntegerValue('missedCalls', $this->getMissedCalls());
         $writer->writeIntegerValue('missedLeads', $this->getMissedLeads());
         $writer->writeFloatValue('respondedWithinFiveMinutesPercent', $this->getRespondedWithinFiveMinutesPercent());
@@ -290,6 +320,14 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the averageResponseMinutes property value. Average time, in minutes, before a lead receives a response.
+     * @param float|null $value Value to set for the averageResponseMinutes property.
+    */
+    public function setAverageResponseMinutes(?float $value): void {
+        $this->averageResponseMinutes = $value;
     }
 
     /**
@@ -338,6 +376,14 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     */
     public function setLeadsComparison(?AnalyticsComparison $value): void {
         $this->leadsComparison = $value;
+    }
+
+    /**
+     * Sets the medianResponseMinutes property value. Median response minutes measured in minutes.
+     * @param float|null $value Value to set for the medianResponseMinutes property.
+    */
+    public function setMedianResponseMinutes(?float $value): void {
+        $this->medianResponseMinutes = $value;
     }
 
     /**

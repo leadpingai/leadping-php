@@ -24,6 +24,16 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     private ?DateTime $answeredAt = null;
     
     /**
+     * @var float|null $billableAmount Monetary amount billed for this Leadping communication or transaction.
+    */
+    private ?float $billableAmount = null;
+    
+    /**
+     * @var int|null $billableSeconds Billable call duration in seconds.
+    */
+    private ?int $billableSeconds = null;
+    
+    /**
      * @var string|null $billingStatus Billing state for this communication, charge, or transaction.
     */
     private ?string $billingStatus = null;
@@ -37,6 +47,11 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
      * @var string|null $businessId Business ID associated with this call event.
     */
     private ?string $businessId = null;
+    
+    /**
+     * @var string|null $businessName Display name for the business associated with this call event.
+    */
+    private ?string $businessName = null;
     
     /**
      * @var string|null $callerId Caller ID phone number presented during the outbound call.
@@ -57,6 +72,11 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
      * @var string|null $direction Communication direction for this call event table row, such as inbound or outbound.
     */
     private ?string $direction = null;
+    
+    /**
+     * @var int|null $duration Call duration or processing duration represented by this call event table row.
+    */
+    private ?int $duration = null;
     
     /**
      * @var DateTime|null $endedAt UTC timestamp when the call ended.
@@ -82,6 +102,11 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
      * @var string|null $leadId Lead ID associated with this call event.
     */
     private ?string $leadId = null;
+    
+    /**
+     * @var string|null $leadName Display name for the lead associated with this call event.
+    */
+    private ?string $leadName = null;
     
     /**
      * @var string|null $recordingUrl URL for the call recording, when the provider makes one available.
@@ -146,6 +171,22 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
+     * @return float|null
+    */
+    public function getBillableAmount(): ?float {
+        return $this->billableAmount;
+    }
+
+    /**
+     * Gets the billableSeconds property value. Billable call duration in seconds.
+     * @return int|null
+    */
+    public function getBillableSeconds(): ?int {
+        return $this->billableSeconds;
+    }
+
+    /**
      * Gets the billingStatus property value. Billing state for this communication, charge, or transaction.
      * @return string|null
     */
@@ -167,6 +208,14 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function getBusinessId(): ?string {
         return $this->businessId;
+    }
+
+    /**
+     * Gets the businessName property value. Display name for the business associated with this call event.
+     * @return string|null
+    */
+    public function getBusinessName(): ?string {
+        return $this->businessName;
     }
 
     /**
@@ -202,6 +251,14 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the duration property value. Call duration or processing duration represented by this call event table row.
+     * @return int|null
+    */
+    public function getDuration(): ?int {
+        return $this->duration;
+    }
+
+    /**
      * Gets the endedAt property value. UTC timestamp when the call ended.
      * @return DateTime|null
     */
@@ -217,18 +274,23 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'answeredAt' => fn(ParseNode $n) => $o->setAnsweredAt($n->getDateTimeValue()),
+            'billableAmount' => fn(ParseNode $n) => $o->setBillableAmount($n->getFloatValue()),
+            'billableSeconds' => fn(ParseNode $n) => $o->setBillableSeconds($n->getIntegerValue()),
             'billingStatus' => fn(ParseNode $n) => $o->setBillingStatus($n->getStringValue()),
             'business' => fn(ParseNode $n) => $o->setBusiness($n->getStringValue()),
             'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
+            'businessName' => fn(ParseNode $n) => $o->setBusinessName($n->getStringValue()),
             'callerId' => fn(ParseNode $n) => $o->setCallerId($n->getStringValue()),
             'conversationId' => fn(ParseNode $n) => $o->setConversationId($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'direction' => fn(ParseNode $n) => $o->setDirection($n->getStringValue()),
+            'duration' => fn(ParseNode $n) => $o->setDuration($n->getIntegerValue()),
             'endedAt' => fn(ParseNode $n) => $o->setEndedAt($n->getDateTimeValue()),
             'fromPhoneNumber' => fn(ParseNode $n) => $o->setFromPhoneNumber($n->getStringValue()),
             'fromPhoneNumberId' => fn(ParseNode $n) => $o->setFromPhoneNumberId($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
+            'leadName' => fn(ParseNode $n) => $o->setLeadName($n->getStringValue()),
             'recordingUrl' => fn(ParseNode $n) => $o->setRecordingUrl($n->getStringValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(CallEventTableRow_status::class)),
             'statusReason' => fn(ParseNode $n) => $o->setStatusReason($n->getStringValue()),
@@ -268,6 +330,14 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function getLeadId(): ?string {
         return $this->leadId;
+    }
+
+    /**
+     * Gets the leadName property value. Display name for the lead associated with this call event.
+     * @return string|null
+    */
+    public function getLeadName(): ?string {
+        return $this->leadName;
     }
 
     /**
@@ -324,18 +394,23 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeDateTimeValue('answeredAt', $this->getAnsweredAt());
+        $writer->writeFloatValue('billableAmount', $this->getBillableAmount());
+        $writer->writeIntegerValue('billableSeconds', $this->getBillableSeconds());
         $writer->writeStringValue('billingStatus', $this->getBillingStatus());
         $writer->writeStringValue('business', $this->getBusiness());
         $writer->writeStringValue('businessId', $this->getBusinessId());
+        $writer->writeStringValue('businessName', $this->getBusinessName());
         $writer->writeStringValue('callerId', $this->getCallerId());
         $writer->writeStringValue('conversationId', $this->getConversationId());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('direction', $this->getDirection());
+        $writer->writeIntegerValue('duration', $this->getDuration());
         $writer->writeDateTimeValue('endedAt', $this->getEndedAt());
         $writer->writeStringValue('fromPhoneNumber', $this->getFromPhoneNumber());
         $writer->writeStringValue('fromPhoneNumberId', $this->getFromPhoneNumberId());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeStringValue('leadId', $this->getLeadId());
+        $writer->writeStringValue('leadName', $this->getLeadName());
         $writer->writeStringValue('recordingUrl', $this->getRecordingUrl());
         $writer->writeEnumValue('status', $this->getStatus());
         $writer->writeStringValue('statusReason', $this->getStatusReason());
@@ -362,6 +437,22 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
+     * @param float|null $value Value to set for the billableAmount property.
+    */
+    public function setBillableAmount(?float $value): void {
+        $this->billableAmount = $value;
+    }
+
+    /**
+     * Sets the billableSeconds property value. Billable call duration in seconds.
+     * @param int|null $value Value to set for the billableSeconds property.
+    */
+    public function setBillableSeconds(?int $value): void {
+        $this->billableSeconds = $value;
+    }
+
+    /**
      * Sets the billingStatus property value. Billing state for this communication, charge, or transaction.
      * @param string|null $value Value to set for the billingStatus property.
     */
@@ -383,6 +474,14 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setBusinessId(?string $value): void {
         $this->businessId = $value;
+    }
+
+    /**
+     * Sets the businessName property value. Display name for the business associated with this call event.
+     * @param string|null $value Value to set for the businessName property.
+    */
+    public function setBusinessName(?string $value): void {
+        $this->businessName = $value;
     }
 
     /**
@@ -415,6 +514,14 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setDirection(?string $value): void {
         $this->direction = $value;
+    }
+
+    /**
+     * Sets the duration property value. Call duration or processing duration represented by this call event table row.
+     * @param int|null $value Value to set for the duration property.
+    */
+    public function setDuration(?int $value): void {
+        $this->duration = $value;
     }
 
     /**
@@ -455,6 +562,14 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setLeadId(?string $value): void {
         $this->leadId = $value;
+    }
+
+    /**
+     * Sets the leadName property value. Display name for the lead associated with this call event.
+     * @param string|null $value Value to set for the leadName property.
+    */
+    public function setLeadName(?string $value): void {
+        $this->leadName = $value;
     }
 
     /**

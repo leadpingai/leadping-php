@@ -28,6 +28,11 @@ class AutomationRequest implements AdditionalDataHolder, Parsable
     private ?array $conditionGroups = null;
     
     /**
+     * @var array<AutomationConnection>|null $connections Directed connections between nodes in this automation graph.
+    */
+    private ?array $connections = null;
+    
+    /**
      * @var string|null $description Human-readable description that explains this automation configuration request to API users.
     */
     private ?string $description = null;
@@ -108,6 +113,14 @@ class AutomationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the connections property value. Directed connections between nodes in this automation graph.
+     * @return array<AutomationConnection>|null
+    */
+    public function getConnections(): ?array {
+        return $this->connections;
+    }
+
+    /**
      * Gets the description property value. Human-readable description that explains this automation configuration request to API users.
      * @return string|null
     */
@@ -132,6 +145,7 @@ class AutomationRequest implements AdditionalDataHolder, Parsable
         return  [
             'actions' => fn(ParseNode $n) => $o->setActions($n->getCollectionOfObjectValues([AutomationAction::class, 'createFromDiscriminatorValue'])),
             'conditionGroups' => fn(ParseNode $n) => $o->setConditionGroups($n->getCollectionOfObjectValues([AutomationConditionGroup::class, 'createFromDiscriminatorValue'])),
+            'connections' => fn(ParseNode $n) => $o->setConnections($n->getCollectionOfObjectValues([AutomationConnection::class, 'createFromDiscriminatorValue'])),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
@@ -198,6 +212,7 @@ class AutomationRequest implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeCollectionOfObjectValues('actions', $this->getActions());
         $writer->writeCollectionOfObjectValues('conditionGroups', $this->getConditionGroups());
+        $writer->writeCollectionOfObjectValues('connections', $this->getConnections());
         $writer->writeStringValue('description', $this->getDescription());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeStringValue('id', $this->getId());
@@ -231,6 +246,14 @@ class AutomationRequest implements AdditionalDataHolder, Parsable
     */
     public function setConditionGroups(?array $value): void {
         $this->conditionGroups = $value;
+    }
+
+    /**
+     * Sets the connections property value. Directed connections between nodes in this automation graph.
+     * @param array<AutomationConnection>|null $value Value to set for the connections property.
+    */
+    public function setConnections(?array $value): void {
+        $this->connections = $value;
     }
 
     /**

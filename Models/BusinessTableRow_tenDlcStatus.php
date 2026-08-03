@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Enum;
 class BusinessTableRow_tenDlcStatus extends Enum {
     public const NOT_STARTED = "NotStarted";
     public const DRAFT_GENERATED = "DraftGenerated";
-    public const DRAFT_NEEDS_ADMIN_REVIEW = "DraftNeedsAdminReview";
+    public const DRAFT_INCOMPLETE = "DraftIncomplete";
     public const READY_TO_SUBMIT = "ReadyToSubmit";
     public const SUBMITTED = "Submitted";
     public const PENDING_TELNYX_REVIEW = "PendingTelnyxReview";

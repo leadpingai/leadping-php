@@ -24,6 +24,16 @@ class BusinessBillingState implements AdditionalDataHolder, Parsable
     private ?DateTime $billingPlanChangeEffectiveAt = null;
     
     /**
+     * @var int|null $businessUserAssignedQuantity Gets or sets the number of user licenses currently assigned by the business.
+    */
+    private ?int $businessUserAssignedQuantity = null;
+    
+    /**
+     * @var int|null $businessUserQuantity Gets or sets the number of user licenses included in the business subscription.
+    */
+    private ?int $businessUserQuantity = null;
+    
+    /**
      * @var DateTime|null $cancelAt Gets or sets when the active subscription is scheduled to cancel.
     */
     private ?DateTime $cancelAt = null;
@@ -57,6 +67,16 @@ class BusinessBillingState implements AdditionalDataHolder, Parsable
      * @var BusinessBillingState_pendingBillingPlan|null $pendingBillingPlan Defines the supported Billing Plan values.
     */
     private ?BusinessBillingState_pendingBillingPlan $pendingBillingPlan = null;
+    
+    /**
+     * @var int|null $phoneNumberQuantity Gets or sets the number of phone numbers included in the business subscription.
+    */
+    private ?int $phoneNumberQuantity = null;
+    
+    /**
+     * @var DateTime|null $planPeriodStartAt Start of the current plan billing period.
+    */
+    private ?DateTime $planPeriodStartAt = null;
     
     /**
      * @var DateTime|null $planRenewalAt Current plan renewal date.
@@ -96,6 +116,22 @@ class BusinessBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the businessUserAssignedQuantity property value. Gets or sets the number of user licenses currently assigned by the business.
+     * @return int|null
+    */
+    public function getBusinessUserAssignedQuantity(): ?int {
+        return $this->businessUserAssignedQuantity;
+    }
+
+    /**
+     * Gets the businessUserQuantity property value. Gets or sets the number of user licenses included in the business subscription.
+     * @return int|null
+    */
+    public function getBusinessUserQuantity(): ?int {
+        return $this->businessUserQuantity;
+    }
+
+    /**
      * Gets the cancelAt property value. Gets or sets when the active subscription is scheduled to cancel.
      * @return DateTime|null
     */
@@ -119,6 +155,8 @@ class BusinessBillingState implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'billingPlanChangeEffectiveAt' => fn(ParseNode $n) => $o->setBillingPlanChangeEffectiveAt($n->getDateTimeValue()),
+            'businessUserAssignedQuantity' => fn(ParseNode $n) => $o->setBusinessUserAssignedQuantity($n->getIntegerValue()),
+            'businessUserQuantity' => fn(ParseNode $n) => $o->setBusinessUserQuantity($n->getIntegerValue()),
             'cancelAt' => fn(ParseNode $n) => $o->setCancelAt($n->getDateTimeValue()),
             'dunning' => fn(ParseNode $n) => $o->setDunning($n->getObjectValue([BusinessBillingState_dunning::class, 'createFromDiscriminatorValue'])),
             'hasPaymentMethod' => fn(ParseNode $n) => $o->setHasPaymentMethod($n->getBooleanValue()),
@@ -126,6 +164,8 @@ class BusinessBillingState implements AdditionalDataHolder, Parsable
             'lastPaymentMethodEventAt' => fn(ParseNode $n) => $o->setLastPaymentMethodEventAt($n->getDateTimeValue()),
             'lastSubscriptionEventAt' => fn(ParseNode $n) => $o->setLastSubscriptionEventAt($n->getDateTimeValue()),
             'pendingBillingPlan' => fn(ParseNode $n) => $o->setPendingBillingPlan($n->getEnumValue(BusinessBillingState_pendingBillingPlan::class)),
+            'phoneNumberQuantity' => fn(ParseNode $n) => $o->setPhoneNumberQuantity($n->getIntegerValue()),
+            'planPeriodStartAt' => fn(ParseNode $n) => $o->setPlanPeriodStartAt($n->getDateTimeValue()),
             'planRenewalAt' => fn(ParseNode $n) => $o->setPlanRenewalAt($n->getDateTimeValue()),
         ];
     }
@@ -171,6 +211,22 @@ class BusinessBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the phoneNumberQuantity property value. Gets or sets the number of phone numbers included in the business subscription.
+     * @return int|null
+    */
+    public function getPhoneNumberQuantity(): ?int {
+        return $this->phoneNumberQuantity;
+    }
+
+    /**
+     * Gets the planPeriodStartAt property value. Start of the current plan billing period.
+     * @return DateTime|null
+    */
+    public function getPlanPeriodStartAt(): ?DateTime {
+        return $this->planPeriodStartAt;
+    }
+
+    /**
      * Gets the planRenewalAt property value. Current plan renewal date.
      * @return DateTime|null
     */
@@ -184,6 +240,8 @@ class BusinessBillingState implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeDateTimeValue('billingPlanChangeEffectiveAt', $this->getBillingPlanChangeEffectiveAt());
+        $writer->writeIntegerValue('businessUserAssignedQuantity', $this->getBusinessUserAssignedQuantity());
+        $writer->writeIntegerValue('businessUserQuantity', $this->getBusinessUserQuantity());
         $writer->writeDateTimeValue('cancelAt', $this->getCancelAt());
         $writer->writeObjectValue('dunning', $this->getDunning());
         $writer->writeBooleanValue('hasPaymentMethod', $this->getHasPaymentMethod());
@@ -191,6 +249,8 @@ class BusinessBillingState implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('lastPaymentMethodEventAt', $this->getLastPaymentMethodEventAt());
         $writer->writeDateTimeValue('lastSubscriptionEventAt', $this->getLastSubscriptionEventAt());
         $writer->writeEnumValue('pendingBillingPlan', $this->getPendingBillingPlan());
+        $writer->writeIntegerValue('phoneNumberQuantity', $this->getPhoneNumberQuantity());
+        $writer->writeDateTimeValue('planPeriodStartAt', $this->getPlanPeriodStartAt());
         $writer->writeDateTimeValue('planRenewalAt', $this->getPlanRenewalAt());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -209,6 +269,22 @@ class BusinessBillingState implements AdditionalDataHolder, Parsable
     */
     public function setBillingPlanChangeEffectiveAt(?DateTime $value): void {
         $this->billingPlanChangeEffectiveAt = $value;
+    }
+
+    /**
+     * Sets the businessUserAssignedQuantity property value. Gets or sets the number of user licenses currently assigned by the business.
+     * @param int|null $value Value to set for the businessUserAssignedQuantity property.
+    */
+    public function setBusinessUserAssignedQuantity(?int $value): void {
+        $this->businessUserAssignedQuantity = $value;
+    }
+
+    /**
+     * Sets the businessUserQuantity property value. Gets or sets the number of user licenses included in the business subscription.
+     * @param int|null $value Value to set for the businessUserQuantity property.
+    */
+    public function setBusinessUserQuantity(?int $value): void {
+        $this->businessUserQuantity = $value;
     }
 
     /**
@@ -265,6 +341,22 @@ class BusinessBillingState implements AdditionalDataHolder, Parsable
     */
     public function setPendingBillingPlan(?BusinessBillingState_pendingBillingPlan $value): void {
         $this->pendingBillingPlan = $value;
+    }
+
+    /**
+     * Sets the phoneNumberQuantity property value. Gets or sets the number of phone numbers included in the business subscription.
+     * @param int|null $value Value to set for the phoneNumberQuantity property.
+    */
+    public function setPhoneNumberQuantity(?int $value): void {
+        $this->phoneNumberQuantity = $value;
+    }
+
+    /**
+     * Sets the planPeriodStartAt property value. Start of the current plan billing period.
+     * @param DateTime|null $value Value to set for the planPeriodStartAt property.
+    */
+    public function setPlanPeriodStartAt(?DateTime $value): void {
+        $this->planPeriodStartAt = $value;
     }
 
     /**

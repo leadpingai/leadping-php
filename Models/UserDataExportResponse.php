@@ -79,6 +79,11 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $requestedAt = null;
     
     /**
+     * @var int|null $sizeBytes File size in bytes.
+    */
+    private ?int $sizeBytes = null;
+    
+    /**
      * @var DateTime|null $startedAt Date and time when the user data export started.
     */
     private ?DateTime $startedAt = null;
@@ -179,6 +184,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
             'maxDownloadCount' => fn(ParseNode $n) => $o->setMaxDownloadCount($n->getIntegerValue()),
             'message' => fn(ParseNode $n) => $o->setMessage($n->getStringValue()),
             'requestedAt' => fn(ParseNode $n) => $o->setRequestedAt($n->getDateTimeValue()),
+            'sizeBytes' => fn(ParseNode $n) => $o->setSizeBytes($n->getIntegerValue()),
             'startedAt' => fn(ParseNode $n) => $o->setStartedAt($n->getDateTimeValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(UserDataExportStatuses::class)),
         ];
@@ -233,6 +239,14 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the sizeBytes property value. File size in bytes.
+     * @return int|null
+    */
+    public function getSizeBytes(): ?int {
+        return $this->sizeBytes;
+    }
+
+    /**
      * Gets the startedAt property value. Date and time when the user data export started.
      * @return DateTime|null
     */
@@ -265,6 +279,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
         $writer->writeIntegerValue('maxDownloadCount', $this->getMaxDownloadCount());
         $writer->writeStringValue('message', $this->getMessage());
         $writer->writeDateTimeValue('requestedAt', $this->getRequestedAt());
+        $writer->writeIntegerValue('sizeBytes', $this->getSizeBytes());
         $writer->writeDateTimeValue('startedAt', $this->getStartedAt());
         $writer->writeEnumValue('status', $this->getStatus());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -372,6 +387,14 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     */
     public function setRequestedAt(?DateTime $value): void {
         $this->requestedAt = $value;
+    }
+
+    /**
+     * Sets the sizeBytes property value. File size in bytes.
+     * @param int|null $value Value to set for the sizeBytes property.
+    */
+    public function setSizeBytes(?int $value): void {
+        $this->sizeBytes = $value;
     }
 
     /**

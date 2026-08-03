@@ -7,12 +7,18 @@ use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
+use Microsoft\Kiota\Abstractions\Types\TypeUtils;
 
 /**
  * API DTO containing business data used by Leadping API contracts.
 */
 class BusinessTableRow implements AdditionalDataHolder, Parsable 
 {
+    /**
+     * @var float|null $accountBalance The account balance value for this business.
+    */
+    private ?float $accountBalance = null;
+    
     /**
      * @var BusinessTableRow_activationStatus|null $activationStatus Defines the supported Customer Activation Status values.
     */
@@ -42,6 +48,11 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
      * @var DateTime|null $apiKeyLastUsedAt The date and time this business API key was last used.
     */
     private ?DateTime $apiKeyLastUsedAt = null;
+    
+    /**
+     * @var array<string>|null $apiKeyPermissions WorkOS permission slugs granted to this business API key.
+    */
+    private ?array $apiKeyPermissions = null;
     
     /**
      * @var string|null $apiKeyPreview The masked API key preview owned by this business.
@@ -165,6 +176,14 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the accountBalance property value. The account balance value for this business.
+     * @return float|null
+    */
+    public function getAccountBalance(): ?float {
+        return $this->accountBalance;
+    }
+
+    /**
      * Gets the activationStatus property value. Defines the supported Customer Activation Status values.
      * @return BusinessTableRow_activationStatus|null
     */
@@ -210,6 +229,14 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     */
     public function getApiKeyLastUsedAt(): ?DateTime {
         return $this->apiKeyLastUsedAt;
+    }
+
+    /**
+     * Gets the apiKeyPermissions property value. WorkOS permission slugs granted to this business API key.
+     * @return array<string>|null
+    */
+    public function getApiKeyPermissions(): ?array {
+        return $this->apiKeyPermissions;
     }
 
     /**
@@ -259,11 +286,20 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'accountBalance' => fn(ParseNode $n) => $o->setAccountBalance($n->getFloatValue()),
             'activationStatus' => fn(ParseNode $n) => $o->setActivationStatus($n->getEnumValue(BusinessTableRow_activationStatus::class)),
             'apiKeyExpiresAt' => fn(ParseNode $n) => $o->setApiKeyExpiresAt($n->getDateTimeValue()),
             'apiKeyFirstUsedAt' => fn(ParseNode $n) => $o->setApiKeyFirstUsedAt($n->getDateTimeValue()),
             'apiKeyIssuedAt' => fn(ParseNode $n) => $o->setApiKeyIssuedAt($n->getDateTimeValue()),
             'apiKeyLastUsedAt' => fn(ParseNode $n) => $o->setApiKeyLastUsedAt($n->getDateTimeValue()),
+            'apiKeyPermissions' => function (ParseNode $n) {
+                $val = $n->getCollectionOfPrimitiveValues();
+                if (is_array($val)) {
+                    TypeUtils::validateCollectionValues($val, 'string');
+                }
+                /** @var array<string>|null $val */
+                $this->setApiKeyPermissions($val);
+            },
             'apiKeyPreview' => fn(ParseNode $n) => $o->setApiKeyPreview($n->getStringValue()),
             'apiKeyTotalUses' => fn(ParseNode $n) => $o->setApiKeyTotalUses($n->getIntegerValue()),
             'billingPlan' => fn(ParseNode $n) => $o->setBillingPlan($n->getEnumValue(BusinessTableRow_billingPlan::class)),
@@ -421,11 +457,13 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeFloatValue('accountBalance', $this->getAccountBalance());
         $writer->writeEnumValue('activationStatus', $this->getActivationStatus());
         $writer->writeDateTimeValue('apiKeyExpiresAt', $this->getApiKeyExpiresAt());
         $writer->writeDateTimeValue('apiKeyFirstUsedAt', $this->getApiKeyFirstUsedAt());
         $writer->writeDateTimeValue('apiKeyIssuedAt', $this->getApiKeyIssuedAt());
         $writer->writeDateTimeValue('apiKeyLastUsedAt', $this->getApiKeyLastUsedAt());
+        $writer->writeCollectionOfPrimitiveValues('apiKeyPermissions', $this->getApiKeyPermissions());
         $writer->writeStringValue('apiKeyPreview', $this->getApiKeyPreview());
         $writer->writeIntegerValue('apiKeyTotalUses', $this->getApiKeyTotalUses());
         $writer->writeEnumValue('billingPlan', $this->getBillingPlan());
@@ -448,6 +486,14 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('website', $this->getWebsite());
         $writer->writeEnumValue('websiteStatus', $this->getWebsiteStatus());
         $writer->writeAdditionalData($this->getAdditionalData());
+    }
+
+    /**
+     * Sets the accountBalance property value. The account balance value for this business.
+     * @param float|null $value Value to set for the accountBalance property.
+    */
+    public function setAccountBalance(?float $value): void {
+        $this->accountBalance = $value;
     }
 
     /**
@@ -496,6 +542,14 @@ class BusinessTableRow implements AdditionalDataHolder, Parsable
     */
     public function setApiKeyLastUsedAt(?DateTime $value): void {
         $this->apiKeyLastUsedAt = $value;
+    }
+
+    /**
+     * Sets the apiKeyPermissions property value. WorkOS permission slugs granted to this business API key.
+     * @param array<string>|null $value Value to set for the apiKeyPermissions property.
+    */
+    public function setApiKeyPermissions(?array $value): void {
+        $this->apiKeyPermissions = $value;
     }
 
     /**

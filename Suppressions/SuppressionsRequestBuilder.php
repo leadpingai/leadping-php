@@ -7,7 +7,9 @@ use Http\Promise\Promise;
 use Leadping\OpenApiClient\Models\ProblemDetails;
 use Leadping\OpenApiClient\Models\SuppressionEntryRequest;
 use Leadping\OpenApiClient\Models\SuppressionEntryResponse;
+use Leadping\OpenApiClient\Suppressions\All\AllRequestBuilder;
 use Leadping\OpenApiClient\Suppressions\Check\CheckRequestBuilder;
+use Leadping\OpenApiClient\Suppressions\Item\SuppressionsItemRequestBuilder;
 use Leadping\OpenApiClient\Suppressions\Release\ReleaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
@@ -19,6 +21,13 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 */
 class SuppressionsRequestBuilder extends BaseRequestBuilder 
 {
+    /**
+     * The all property
+    */
+    public function all(): AllRequestBuilder {
+        return new AllRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
     /**
      * The check property
     */
@@ -33,6 +42,17 @@ class SuppressionsRequestBuilder extends BaseRequestBuilder
         return new ReleaseRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
+    /**
+     * Gets an item from the Leadping/OpenApiClient.suppressions.item collection
+     * @param string $id Unique identifier of the item
+     * @return SuppressionsItemRequestBuilder
+    */
+    public function byId(string $id): SuppressionsItemRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['id'] = $id;
+        return new SuppressionsItemRequestBuilder($urlTplParams, $this->requestAdapter);
+    }
+
     /**
      * Instantiates a new SuppressionsRequestBuilder and sets the default values.
      * @param array<string, mixed>|string $pathParametersOrRawUrl Path parameters for the request or a String representing the raw URL.

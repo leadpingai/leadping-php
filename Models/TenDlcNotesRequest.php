@@ -7,6 +7,9 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
+/**
+ * Updates the internal notes associated with a 10DLC application.
+*/
 class TenDlcNotesRequest implements AdditionalDataHolder, Parsable 
 {
     /**
@@ -15,7 +18,7 @@ class TenDlcNotesRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $notes The notes property
+     * @var string|null $notes Notes to store with the 10DLC application, or null to clear them.
     */
     private ?string $notes = null;
     
@@ -55,7 +58,7 @@ class TenDlcNotesRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the notes property value. The notes property
+     * Gets the notes property value. Notes to store with the 10DLC application, or null to clear them.
      * @return string|null
     */
     public function getNotes(): ?string {
@@ -80,7 +83,7 @@ class TenDlcNotesRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the notes property value. The notes property
+     * Sets the notes property value. Notes to store with the 10DLC application, or null to clear them.
      * @param string|null $value Value to set for the notes property.
     */
     public function setNotes(?string $value): void {

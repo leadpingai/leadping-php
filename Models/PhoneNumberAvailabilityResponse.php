@@ -38,6 +38,11 @@ class PhoneNumberAvailabilityResponse implements AdditionalDataHolder, Parsable
     private ?string $phoneNumber = null;
     
     /**
+     * @var float|null $price Lead price or transaction price supplied to the Leadping API.
+    */
+    private ?float $price = null;
+    
+    /**
      * Instantiates a new PhoneNumberAvailabilityResponse and sets the default values.
     */
     public function __construct() {
@@ -80,6 +85,7 @@ class PhoneNumberAvailabilityResponse implements AdditionalDataHolder, Parsable
             'isAvailable' => fn(ParseNode $n) => $o->setIsAvailable($n->getBooleanValue()),
             'location' => fn(ParseNode $n) => $o->setLocation($n->getObjectValue([PhoneNumberAvailabilityResponse_location::class, 'createFromDiscriminatorValue'])),
             'phoneNumber' => fn(ParseNode $n) => $o->setPhoneNumber($n->getStringValue()),
+            'price' => fn(ParseNode $n) => $o->setPrice($n->getFloatValue()),
         ];
     }
 
@@ -108,6 +114,14 @@ class PhoneNumberAvailabilityResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the price property value. Lead price or transaction price supplied to the Leadping API.
+     * @return float|null
+    */
+    public function getPrice(): ?float {
+        return $this->price;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -116,6 +130,7 @@ class PhoneNumberAvailabilityResponse implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('isAvailable', $this->getIsAvailable());
         $writer->writeObjectValue('location', $this->getLocation());
         $writer->writeStringValue('phoneNumber', $this->getPhoneNumber());
+        $writer->writeFloatValue('price', $this->getPrice());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -157,6 +172,14 @@ class PhoneNumberAvailabilityResponse implements AdditionalDataHolder, Parsable
     */
     public function setPhoneNumber(?string $value): void {
         $this->phoneNumber = $value;
+    }
+
+    /**
+     * Sets the price property value. Lead price or transaction price supplied to the Leadping API.
+     * @param float|null $value Value to set for the price property.
+    */
+    public function setPrice(?float $value): void {
+        $this->price = $value;
     }
 
 }

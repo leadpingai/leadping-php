@@ -7,6 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
+use Microsoft\Kiota\Abstractions\Types\TypeUtils;
 
 /**
  * Request schema for the Leadping API SMS send request, including the fields clients can send.
@@ -32,6 +33,11 @@ class SendSmsRequest implements AdditionalDataHolder, Parsable
      * @var string|null $fromPhoneNumberId Sender phone number ID used for this outbound SMS or call.
     */
     private ?string $fromPhoneNumberId = null;
+    
+    /**
+     * @var array<string>|null $mediaUrls Public HTTPS media URLs to attach. Supplying at least one URL sends the message as MMS.
+    */
+    private ?array $mediaUrls = null;
     
     /**
      * @var string|null $outboundIdempotencyKey Idempotency key used to prevent duplicate outbound delivery.
@@ -113,6 +119,14 @@ class SendSmsRequest implements AdditionalDataHolder, Parsable
             'campaignId' => fn(ParseNode $n) => $o->setCampaignId($n->getStringValue()),
             'conversationId' => fn(ParseNode $n) => $o->setConversationId($n->getStringValue()),
             'fromPhoneNumberId' => fn(ParseNode $n) => $o->setFromPhoneNumberId($n->getStringValue()),
+            'mediaUrls' => function (ParseNode $n) {
+                $val = $n->getCollectionOfPrimitiveValues();
+                if (is_array($val)) {
+                    TypeUtils::validateCollectionValues($val, 'string');
+                }
+                /** @var array<string>|null $val */
+                $this->setMediaUrls($val);
+            },
             'outboundIdempotencyKey' => fn(ParseNode $n) => $o->setOutboundIdempotencyKey($n->getStringValue()),
             'scheduledFor' => fn(ParseNode $n) => $o->setScheduledFor($n->getDateTimeValue()),
             'smsEventId' => fn(ParseNode $n) => $o->setSmsEventId($n->getStringValue()),
@@ -128,6 +142,14 @@ class SendSmsRequest implements AdditionalDataHolder, Parsable
     */
     public function getFromPhoneNumberId(): ?string {
         return $this->fromPhoneNumberId;
+    }
+
+    /**
+     * Gets the mediaUrls property value. Public HTTPS media URLs to attach. Supplying at least one URL sends the message as MMS.
+     * @return array<string>|null
+    */
+    public function getMediaUrls(): ?array {
+        return $this->mediaUrls;
     }
 
     /**
@@ -186,6 +208,7 @@ class SendSmsRequest implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('campaignId', $this->getCampaignId());
         $writer->writeStringValue('conversationId', $this->getConversationId());
         $writer->writeStringValue('fromPhoneNumberId', $this->getFromPhoneNumberId());
+        $writer->writeCollectionOfPrimitiveValues('mediaUrls', $this->getMediaUrls());
         $writer->writeStringValue('outboundIdempotencyKey', $this->getOutboundIdempotencyKey());
         $writer->writeDateTimeValue('scheduledFor', $this->getScheduledFor());
         $writer->writeStringValue('smsEventId', $this->getSmsEventId());
@@ -225,6 +248,14 @@ class SendSmsRequest implements AdditionalDataHolder, Parsable
     */
     public function setFromPhoneNumberId(?string $value): void {
         $this->fromPhoneNumberId = $value;
+    }
+
+    /**
+     * Sets the mediaUrls property value. Public HTTPS media URLs to attach. Supplying at least one URL sends the message as MMS.
+     * @param array<string>|null $value Value to set for the mediaUrls property.
+    */
+    public function setMediaUrls(?array $value): void {
+        $this->mediaUrls = $value;
     }
 
     /**

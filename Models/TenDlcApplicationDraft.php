@@ -20,6 +20,16 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var TenDlcRegistrationStatus|null $brandStatus The current provider review status for the submitted brand.
+    */
+    private ?TenDlcRegistrationStatus $brandStatus = null;
+    
+    /**
+     * @var TenDlcRegistrationStatus|null $campaignStatus The current provider review status for the submitted campaign.
+    */
+    private ?TenDlcRegistrationStatus $campaignStatus = null;
+    
+    /**
      * @var string|null $companyName The company name value for this 10DLC application draft.
     */
     private ?string $companyName = null;
@@ -48,6 +58,11 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
      * @var string|null $ein The EIN value for this 10DLC application draft.
     */
     private ?string $ein = null;
+    
+    /**
+     * @var int|null $expectedMonthlyVolume The expected monthly volume value for this 10DLC application draft.
+    */
+    private ?int $expectedMonthlyVolume = null;
     
     /**
      * @var string|null $industry The industry value for this 10DLC application draft.
@@ -149,6 +164,22 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the brandStatus property value. The current provider review status for the submitted brand.
+     * @return TenDlcRegistrationStatus|null
+    */
+    public function getBrandStatus(): ?TenDlcRegistrationStatus {
+        return $this->brandStatus;
+    }
+
+    /**
+     * Gets the campaignStatus property value. The current provider review status for the submitted campaign.
+     * @return TenDlcRegistrationStatus|null
+    */
+    public function getCampaignStatus(): ?TenDlcRegistrationStatus {
+        return $this->campaignStatus;
+    }
+
+    /**
      * Gets the companyName property value. The company name value for this 10DLC application draft.
      * @return string|null
     */
@@ -197,12 +228,22 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the expectedMonthlyVolume property value. The expected monthly volume value for this 10DLC application draft.
+     * @return int|null
+    */
+    public function getExpectedMonthlyVolume(): ?int {
+        return $this->expectedMonthlyVolume;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'brandStatus' => fn(ParseNode $n) => $o->setBrandStatus($n->getEnumValue(TenDlcRegistrationStatus::class)),
+            'campaignStatus' => fn(ParseNode $n) => $o->setCampaignStatus($n->getEnumValue(TenDlcRegistrationStatus::class)),
             'companyName' => fn(ParseNode $n) => $o->setCompanyName($n->getStringValue()),
             'complianceWarnings' => function (ParseNode $n) {
                 $val = $n->getCollectionOfPrimitiveValues();
@@ -216,6 +257,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
             'contactName' => fn(ParseNode $n) => $o->setContactName($n->getStringValue()),
             'contactPhone' => fn(ParseNode $n) => $o->setContactPhone($n->getStringValue()),
             'ein' => fn(ParseNode $n) => $o->setEin($n->getStringValue()),
+            'expectedMonthlyVolume' => fn(ParseNode $n) => $o->setExpectedMonthlyVolume($n->getIntegerValue()),
             'industry' => fn(ParseNode $n) => $o->setIndustry($n->getStringValue()),
             'lastSubmittedAt' => fn(ParseNode $n) => $o->setLastSubmittedAt($n->getDateTimeValue()),
             'leadSource' => fn(ParseNode $n) => $o->setLeadSource($n->getStringValue()),
@@ -373,12 +415,15 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeEnumValue('brandStatus', $this->getBrandStatus());
+        $writer->writeEnumValue('campaignStatus', $this->getCampaignStatus());
         $writer->writeStringValue('companyName', $this->getCompanyName());
         $writer->writeCollectionOfPrimitiveValues('complianceWarnings', $this->getComplianceWarnings());
         $writer->writeStringValue('contactEmail', $this->getContactEmail());
         $writer->writeStringValue('contactName', $this->getContactName());
         $writer->writeStringValue('contactPhone', $this->getContactPhone());
         $writer->writeStringValue('ein', $this->getEin());
+        $writer->writeIntegerValue('expectedMonthlyVolume', $this->getExpectedMonthlyVolume());
         $writer->writeStringValue('industry', $this->getIndustry());
         $writer->writeDateTimeValue('lastSubmittedAt', $this->getLastSubmittedAt());
         $writer->writeStringValue('leadSource', $this->getLeadSource());
@@ -403,6 +448,22 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the brandStatus property value. The current provider review status for the submitted brand.
+     * @param TenDlcRegistrationStatus|null $value Value to set for the brandStatus property.
+    */
+    public function setBrandStatus(?TenDlcRegistrationStatus $value): void {
+        $this->brandStatus = $value;
+    }
+
+    /**
+     * Sets the campaignStatus property value. The current provider review status for the submitted campaign.
+     * @param TenDlcRegistrationStatus|null $value Value to set for the campaignStatus property.
+    */
+    public function setCampaignStatus(?TenDlcRegistrationStatus $value): void {
+        $this->campaignStatus = $value;
     }
 
     /**
@@ -451,6 +512,14 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     */
     public function setEin(?string $value): void {
         $this->ein = $value;
+    }
+
+    /**
+     * Sets the expectedMonthlyVolume property value. The expected monthly volume value for this 10DLC application draft.
+     * @param int|null $value Value to set for the expectedMonthlyVolume property.
+    */
+    public function setExpectedMonthlyVolume(?int $value): void {
+        $this->expectedMonthlyVolume = $value;
     }
 
     /**

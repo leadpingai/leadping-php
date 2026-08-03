@@ -4,7 +4,7 @@ namespace Leadping\OpenApiClient\Models;
 
 use Microsoft\Kiota\Abstractions\Enum;
 
-class UsageRecordStatus extends Enum {
+class UsageStatus extends Enum {
     public const RECORDED = "recorded";
     public const RATED = "rated";
     public const PENDING_INVOICE = "pending_invoice";

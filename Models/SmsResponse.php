@@ -19,6 +19,11 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var float|null $billableAmount Monetary amount billed for this Leadping communication or transaction.
+    */
+    private ?float $billableAmount = null;
+    
+    /**
      * @var string|null $billingStatus Billing state for this communication, charge, or transaction.
     */
     private ?string $billingStatus = null;
@@ -97,6 +102,11 @@ class SmsResponse implements AdditionalDataHolder, Parsable
      * @var string|null $leadId Lead ID associated with the SMS conversation or outreach attempt.
     */
     private ?string $leadId = null;
+    
+    /**
+     * @var array<MessageMediaAttachment>|null $media Media attached to this message. A non-empty collection identifies an MMS message.
+    */
+    private ?array $media = null;
     
     /**
      * @var DateTime|null $modifiedAt The date and time when the entity was last modified, if applicable.
@@ -213,6 +223,14 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
+     * @return float|null
+    */
+    public function getBillableAmount(): ?float {
+        return $this->billableAmount;
+    }
+
+    /**
      * Gets the billingStatus property value. Billing state for this communication, charge, or transaction.
      * @return string|null
     */
@@ -315,6 +333,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'billableAmount' => fn(ParseNode $n) => $o->setBillableAmount($n->getFloatValue()),
             'billingStatus' => fn(ParseNode $n) => $o->setBillingStatus($n->getStringValue()),
             'blockedAt' => fn(ParseNode $n) => $o->setBlockedAt($n->getDateTimeValue()),
             'campaignId' => fn(ParseNode $n) => $o->setCampaignId($n->getStringValue()),
@@ -331,6 +350,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
             'fromPhoneNumberId' => fn(ParseNode $n) => $o->setFromPhoneNumberId($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
+            'media' => fn(ParseNode $n) => $o->setMedia($n->getCollectionOfObjectValues([MessageMediaAttachment::class, 'createFromDiscriminatorValue'])),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'nextRetryAt' => fn(ParseNode $n) => $o->setNextRetryAt($n->getDateTimeValue()),
             'outboundPhoneNumberId' => fn(ParseNode $n) => $o->setOutboundPhoneNumberId($n->getStringValue()),
@@ -382,6 +402,14 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     */
     public function getLeadId(): ?string {
         return $this->leadId;
+    }
+
+    /**
+     * Gets the media property value. Media attached to this message. A non-empty collection identifies an MMS message.
+     * @return array<MessageMediaAttachment>|null
+    */
+    public function getMedia(): ?array {
+        return $this->media;
     }
 
     /**
@@ -533,6 +561,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeFloatValue('billableAmount', $this->getBillableAmount());
         $writer->writeStringValue('billingStatus', $this->getBillingStatus());
         $writer->writeDateTimeValue('blockedAt', $this->getBlockedAt());
         $writer->writeStringValue('campaignId', $this->getCampaignId());
@@ -549,6 +578,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('fromPhoneNumberId', $this->getFromPhoneNumberId());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeStringValue('leadId', $this->getLeadId());
+        $writer->writeCollectionOfObjectValues('media', $this->getMedia());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeDateTimeValue('nextRetryAt', $this->getNextRetryAt());
         $writer->writeStringValue('outboundPhoneNumberId', $this->getOutboundPhoneNumberId());
@@ -576,6 +606,14 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
+     * @param float|null $value Value to set for the billableAmount property.
+    */
+    public function setBillableAmount(?float $value): void {
+        $this->billableAmount = $value;
     }
 
     /**
@@ -704,6 +742,14 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     */
     public function setLeadId(?string $value): void {
         $this->leadId = $value;
+    }
+
+    /**
+     * Sets the media property value. Media attached to this message. A non-empty collection identifies an MMS message.
+     * @param array<MessageMediaAttachment>|null $value Value to set for the media property.
+    */
+    public function setMedia(?array $value): void {
+        $this->media = $value;
     }
 
     /**

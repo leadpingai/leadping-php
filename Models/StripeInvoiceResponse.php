@@ -19,32 +19,32 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var float|null $amount The amount property
+     * @var float|null $amount Total invoice amount in the invoice currency.
     */
     private ?float $amount = null;
     
     /**
-     * @var DateTime|null $createdAt The createdAt property
+     * @var DateTime|null $createdAt Date and time when the invoice was created.
     */
     private ?DateTime $createdAt = null;
     
     /**
-     * @var bool|null $hasPdf The hasPdf property
+     * @var bool|null $hasPdf Indicates whether a downloadable PDF is available for the invoice.
     */
     private ?bool $hasPdf = null;
     
     /**
-     * @var string|null $id The id property
+     * @var string|null $id Provider identifier for the invoice.
     */
     private ?string $id = null;
     
     /**
-     * @var string|null $number The number property
+     * @var string|null $number Human-readable invoice number, when assigned.
     */
     private ?string $number = null;
     
     /**
-     * @var string|null $status The status property
+     * @var string|null $status Current provider-reported invoice status.
     */
     private ?string $status = null;
     
@@ -73,7 +73,7 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the amount property value. The amount property
+     * Gets the amount property value. Total invoice amount in the invoice currency.
      * @return float|null
     */
     public function getAmount(): ?float {
@@ -81,7 +81,7 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the createdAt property value. The createdAt property
+     * Gets the createdAt property value. Date and time when the invoice was created.
      * @return DateTime|null
     */
     public function getCreatedAt(): ?DateTime {
@@ -105,7 +105,7 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the hasPdf property value. The hasPdf property
+     * Gets the hasPdf property value. Indicates whether a downloadable PDF is available for the invoice.
      * @return bool|null
     */
     public function getHasPdf(): ?bool {
@@ -113,7 +113,7 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The id property
+     * Gets the id property value. Provider identifier for the invoice.
      * @return string|null
     */
     public function getId(): ?string {
@@ -121,7 +121,7 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the number property value. The number property
+     * Gets the number property value. Human-readable invoice number, when assigned.
      * @return string|null
     */
     public function getNumber(): ?string {
@@ -129,7 +129,7 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. The status property
+     * Gets the status property value. Current provider-reported invoice status.
      * @return string|null
     */
     public function getStatus(): ?string {
@@ -159,7 +159,7 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the amount property value. The amount property
+     * Sets the amount property value. Total invoice amount in the invoice currency.
      * @param float|null $value Value to set for the amount property.
     */
     public function setAmount(?float $value): void {
@@ -167,7 +167,7 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the createdAt property value. The createdAt property
+     * Sets the createdAt property value. Date and time when the invoice was created.
      * @param DateTime|null $value Value to set for the createdAt property.
     */
     public function setCreatedAt(?DateTime $value): void {
@@ -175,7 +175,7 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the hasPdf property value. The hasPdf property
+     * Sets the hasPdf property value. Indicates whether a downloadable PDF is available for the invoice.
      * @param bool|null $value Value to set for the hasPdf property.
     */
     public function setHasPdf(?bool $value): void {
@@ -183,7 +183,7 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The id property
+     * Sets the id property value. Provider identifier for the invoice.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -191,7 +191,7 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the number property value. The number property
+     * Sets the number property value. Human-readable invoice number, when assigned.
      * @param string|null $value Value to set for the number property.
     */
     public function setNumber(?string $value): void {
@@ -199,7 +199,7 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. The status property
+     * Sets the status property value. Current provider-reported invoice status.
      * @param string|null $value Value to set for the status property.
     */
     public function setStatus(?string $value): void {

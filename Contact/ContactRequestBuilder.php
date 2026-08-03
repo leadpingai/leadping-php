@@ -4,6 +4,7 @@ namespace Leadping\OpenApiClient\Contact;
 
 use Exception;
 use Http\Promise\Promise;
+use Leadping\OpenApiClient\Contact\Website\WebsiteRequestBuilder;
 use Leadping\OpenApiClient\Models\ContactRequest;
 use Leadping\OpenApiClient\Models\ContactResponse;
 use Leadping\OpenApiClient\Models\ProblemDetails;
@@ -17,6 +18,13 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 */
 class ContactRequestBuilder extends BaseRequestBuilder 
 {
+    /**
+     * The website property
+    */
+    public function website(): WebsiteRequestBuilder {
+        return new WebsiteRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
     /**
      * Instantiates a new ContactRequestBuilder and sets the default values.
      * @param array<string, mixed>|string $pathParametersOrRawUrl Path parameters for the request or a String representing the raw URL.

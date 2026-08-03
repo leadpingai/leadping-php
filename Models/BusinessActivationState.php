@@ -24,6 +24,11 @@ class BusinessActivationState implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var int|null $availableDomainCount The number of registrar-verified domains found by the current search.
+    */
+    private ?int $availableDomainCount = null;
+    
+    /**
      * @var ActivationSubscriptionStatus|null $billingSubscriptionStatus The current billing subscription status for this business activation state.
     */
     private ?ActivationSubscriptionStatus $billingSubscriptionStatus = null;
@@ -62,6 +67,31 @@ class BusinessActivationState implements AdditionalDataHolder, Parsable
      * @var array<ActivationDomainOption>|null $domainOptions The domain options included with this business activation state.
     */
     private ?array $domainOptions = null;
+    
+    /**
+     * @var DateTime|null $domainPurchasedAt The date and time the selected domain was purchased.
+    */
+    private ?DateTime $domainPurchasedAt = null;
+    
+    /**
+     * @var int|null $domainSearchAttempt The current domain generation attempt.
+    */
+    private ?int $domainSearchAttempt = null;
+    
+    /**
+     * @var string|null $domainSearchId Identifies the active domain search run.
+    */
+    private ?string $domainSearchId = null;
+    
+    /**
+     * @var BusinessActivationState_domainSearchStage|null $domainSearchStage Defines the stages of a domain search.
+    */
+    private ?BusinessActivationState_domainSearchStage $domainSearchStage = null;
+    
+    /**
+     * @var DateTime|null $domainSearchUpdatedAt The last time domain search progress changed.
+    */
+    private ?DateTime $domainSearchUpdatedAt = null;
     
     /**
      * @var array<ActivationTimelineEvent>|null $events The events included with this business activation state.
@@ -184,6 +214,11 @@ class BusinessActivationState implements AdditionalDataHolder, Parsable
     private ?DateTime $updatedAt = null;
     
     /**
+     * @var string|null $websiteGenerationResult The latest persisted website generation progress message.
+    */
+    private ?string $websiteGenerationResult = null;
+    
+    /**
      * @var string|null $websiteNeeds The website needs value for this business activation state.
     */
     private ?string $websiteNeeds = null;
@@ -228,6 +263,14 @@ class BusinessActivationState implements AdditionalDataHolder, Parsable
     */
     public function getAdditionalData(): ?array {
         return $this->additionalData;
+    }
+
+    /**
+     * Gets the availableDomainCount property value. The number of registrar-verified domains found by the current search.
+     * @return int|null
+    */
+    public function getAvailableDomainCount(): ?int {
+        return $this->availableDomainCount;
     }
 
     /**
@@ -295,6 +338,46 @@ class BusinessActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the domainPurchasedAt property value. The date and time the selected domain was purchased.
+     * @return DateTime|null
+    */
+    public function getDomainPurchasedAt(): ?DateTime {
+        return $this->domainPurchasedAt;
+    }
+
+    /**
+     * Gets the domainSearchAttempt property value. The current domain generation attempt.
+     * @return int|null
+    */
+    public function getDomainSearchAttempt(): ?int {
+        return $this->domainSearchAttempt;
+    }
+
+    /**
+     * Gets the domainSearchId property value. Identifies the active domain search run.
+     * @return string|null
+    */
+    public function getDomainSearchId(): ?string {
+        return $this->domainSearchId;
+    }
+
+    /**
+     * Gets the domainSearchStage property value. Defines the stages of a domain search.
+     * @return BusinessActivationState_domainSearchStage|null
+    */
+    public function getDomainSearchStage(): ?BusinessActivationState_domainSearchStage {
+        return $this->domainSearchStage;
+    }
+
+    /**
+     * Gets the domainSearchUpdatedAt property value. The last time domain search progress changed.
+     * @return DateTime|null
+    */
+    public function getDomainSearchUpdatedAt(): ?DateTime {
+        return $this->domainSearchUpdatedAt;
+    }
+
+    /**
      * Gets the events property value. The events included with this business activation state.
      * @return array<ActivationTimelineEvent>|null
     */
@@ -318,6 +401,7 @@ class BusinessActivationState implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'activatedAt' => fn(ParseNode $n) => $o->setActivatedAt($n->getDateTimeValue()),
+            'availableDomainCount' => fn(ParseNode $n) => $o->setAvailableDomainCount($n->getIntegerValue()),
             'billingSubscriptionStatus' => fn(ParseNode $n) => $o->setBillingSubscriptionStatus($n->getEnumValue(ActivationSubscriptionStatus::class)),
             'businessDescription' => fn(ParseNode $n) => $o->setBusinessDescription($n->getStringValue()),
             'complianceNotes' => fn(ParseNode $n) => $o->setComplianceNotes($n->getStringValue()),
@@ -326,6 +410,11 @@ class BusinessActivationState implements AdditionalDataHolder, Parsable
             'customerFacingStatus' => fn(ParseNode $n) => $o->setCustomerFacingStatus($n->getStringValue()),
             'domainApprovedAt' => fn(ParseNode $n) => $o->setDomainApprovedAt($n->getDateTimeValue()),
             'domainOptions' => fn(ParseNode $n) => $o->setDomainOptions($n->getCollectionOfObjectValues([ActivationDomainOption::class, 'createFromDiscriminatorValue'])),
+            'domainPurchasedAt' => fn(ParseNode $n) => $o->setDomainPurchasedAt($n->getDateTimeValue()),
+            'domainSearchAttempt' => fn(ParseNode $n) => $o->setDomainSearchAttempt($n->getIntegerValue()),
+            'domainSearchId' => fn(ParseNode $n) => $o->setDomainSearchId($n->getStringValue()),
+            'domainSearchStage' => fn(ParseNode $n) => $o->setDomainSearchStage($n->getEnumValue(BusinessActivationState_domainSearchStage::class)),
+            'domainSearchUpdatedAt' => fn(ParseNode $n) => $o->setDomainSearchUpdatedAt($n->getDateTimeValue()),
             'events' => fn(ParseNode $n) => $o->setEvents($n->getCollectionOfObjectValues([ActivationTimelineEvent::class, 'createFromDiscriminatorValue'])),
             'failedAt' => fn(ParseNode $n) => $o->setFailedAt($n->getDateTimeValue()),
             'industry' => fn(ParseNode $n) => $o->setIndustry($n->getStringValue()),
@@ -350,6 +439,7 @@ class BusinessActivationState implements AdditionalDataHolder, Parsable
             'tenDlcDraft' => fn(ParseNode $n) => $o->setTenDlcDraft($n->getObjectValue([BusinessActivationState_tenDlcDraft::class, 'createFromDiscriminatorValue'])),
             'tenDlcStatus' => fn(ParseNode $n) => $o->setTenDlcStatus($n->getEnumValue(TenDlcApplicationStatus::class)),
             'updatedAt' => fn(ParseNode $n) => $o->setUpdatedAt($n->getDateTimeValue()),
+            'websiteGenerationResult' => fn(ParseNode $n) => $o->setWebsiteGenerationResult($n->getStringValue()),
             'websiteNeeds' => fn(ParseNode $n) => $o->setWebsiteNeeds($n->getStringValue()),
             'websiteStatus' => fn(ParseNode $n) => $o->setWebsiteStatus($n->getEnumValue(WebsiteLifecycleStatus::class)),
             'websiteUrl' => fn(ParseNode $n) => $o->setWebsiteUrl($n->getStringValue()),
@@ -533,6 +623,14 @@ class BusinessActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the websiteGenerationResult property value. The latest persisted website generation progress message.
+     * @return string|null
+    */
+    public function getWebsiteGenerationResult(): ?string {
+        return $this->websiteGenerationResult;
+    }
+
+    /**
      * Gets the websiteNeeds property value. The website needs value for this business activation state.
      * @return string|null
     */
@@ -562,6 +660,7 @@ class BusinessActivationState implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeDateTimeValue('activatedAt', $this->getActivatedAt());
+        $writer->writeIntegerValue('availableDomainCount', $this->getAvailableDomainCount());
         $writer->writeEnumValue('billingSubscriptionStatus', $this->getBillingSubscriptionStatus());
         $writer->writeStringValue('businessDescription', $this->getBusinessDescription());
         $writer->writeStringValue('complianceNotes', $this->getComplianceNotes());
@@ -570,6 +669,11 @@ class BusinessActivationState implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('customerFacingStatus', $this->getCustomerFacingStatus());
         $writer->writeDateTimeValue('domainApprovedAt', $this->getDomainApprovedAt());
         $writer->writeCollectionOfObjectValues('domainOptions', $this->getDomainOptions());
+        $writer->writeDateTimeValue('domainPurchasedAt', $this->getDomainPurchasedAt());
+        $writer->writeIntegerValue('domainSearchAttempt', $this->getDomainSearchAttempt());
+        $writer->writeStringValue('domainSearchId', $this->getDomainSearchId());
+        $writer->writeEnumValue('domainSearchStage', $this->getDomainSearchStage());
+        $writer->writeDateTimeValue('domainSearchUpdatedAt', $this->getDomainSearchUpdatedAt());
         $writer->writeCollectionOfObjectValues('events', $this->getEvents());
         $writer->writeDateTimeValue('failedAt', $this->getFailedAt());
         $writer->writeStringValue('industry', $this->getIndustry());
@@ -594,6 +698,7 @@ class BusinessActivationState implements AdditionalDataHolder, Parsable
         $writer->writeObjectValue('tenDlcDraft', $this->getTenDlcDraft());
         $writer->writeEnumValue('tenDlcStatus', $this->getTenDlcStatus());
         $writer->writeDateTimeValue('updatedAt', $this->getUpdatedAt());
+        $writer->writeStringValue('websiteGenerationResult', $this->getWebsiteGenerationResult());
         $writer->writeStringValue('websiteNeeds', $this->getWebsiteNeeds());
         $writer->writeEnumValue('websiteStatus', $this->getWebsiteStatus());
         $writer->writeStringValue('websiteUrl', $this->getWebsiteUrl());
@@ -614,6 +719,14 @@ class BusinessActivationState implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the availableDomainCount property value. The number of registrar-verified domains found by the current search.
+     * @param int|null $value Value to set for the availableDomainCount property.
+    */
+    public function setAvailableDomainCount(?int $value): void {
+        $this->availableDomainCount = $value;
     }
 
     /**
@@ -678,6 +791,46 @@ class BusinessActivationState implements AdditionalDataHolder, Parsable
     */
     public function setDomainOptions(?array $value): void {
         $this->domainOptions = $value;
+    }
+
+    /**
+     * Sets the domainPurchasedAt property value. The date and time the selected domain was purchased.
+     * @param DateTime|null $value Value to set for the domainPurchasedAt property.
+    */
+    public function setDomainPurchasedAt(?DateTime $value): void {
+        $this->domainPurchasedAt = $value;
+    }
+
+    /**
+     * Sets the domainSearchAttempt property value. The current domain generation attempt.
+     * @param int|null $value Value to set for the domainSearchAttempt property.
+    */
+    public function setDomainSearchAttempt(?int $value): void {
+        $this->domainSearchAttempt = $value;
+    }
+
+    /**
+     * Sets the domainSearchId property value. Identifies the active domain search run.
+     * @param string|null $value Value to set for the domainSearchId property.
+    */
+    public function setDomainSearchId(?string $value): void {
+        $this->domainSearchId = $value;
+    }
+
+    /**
+     * Sets the domainSearchStage property value. Defines the stages of a domain search.
+     * @param BusinessActivationState_domainSearchStage|null $value Value to set for the domainSearchStage property.
+    */
+    public function setDomainSearchStage(?BusinessActivationState_domainSearchStage $value): void {
+        $this->domainSearchStage = $value;
+    }
+
+    /**
+     * Sets the domainSearchUpdatedAt property value. The last time domain search progress changed.
+     * @param DateTime|null $value Value to set for the domainSearchUpdatedAt property.
+    */
+    public function setDomainSearchUpdatedAt(?DateTime $value): void {
+        $this->domainSearchUpdatedAt = $value;
     }
 
     /**
@@ -870,6 +1023,14 @@ class BusinessActivationState implements AdditionalDataHolder, Parsable
     */
     public function setUpdatedAt(?DateTime $value): void {
         $this->updatedAt = $value;
+    }
+
+    /**
+     * Sets the websiteGenerationResult property value. The latest persisted website generation progress message.
+     * @param string|null $value Value to set for the websiteGenerationResult property.
+    */
+    public function setWebsiteGenerationResult(?string $value): void {
+        $this->websiteGenerationResult = $value;
     }
 
     /**

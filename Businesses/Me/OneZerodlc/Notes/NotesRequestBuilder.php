@@ -33,7 +33,7 @@ class NotesRequestBuilder extends BaseRequestBuilder
 
     /**
      * Updates the shared 10DLC registration notes for the current business, keeping carrier review context and messaging compliance details current.
-     * @param TenDlcNotesRequest $body The request body
+     * @param TenDlcNotesRequest $body Updates the internal notes associated with a 10DLC application.
      * @param NotesRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<BusinessResponse|null>
      * @throws Exception
@@ -49,7 +49,7 @@ class NotesRequestBuilder extends BaseRequestBuilder
 
     /**
      * Updates the shared 10DLC registration notes for the current business, keeping carrier review context and messaging compliance details current.
-     * @param TenDlcNotesRequest $body The request body
+     * @param TenDlcNotesRequest $body Updates the internal notes associated with a 10DLC application.
      * @param NotesRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

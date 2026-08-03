@@ -3,6 +3,7 @@
 namespace Leadping\OpenApiClient\Sms;
 
 use Leadping\OpenApiClient\Sms\Item\WithSmsEventItemRequestBuilder;
+use Leadping\OpenApiClient\Sms\Media\MediaRequestBuilder;
 use Leadping\OpenApiClient\Sms\Send\SendRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
@@ -12,6 +13,13 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 */
 class SmsRequestBuilder extends BaseRequestBuilder 
 {
+    /**
+     * The media property
+    */
+    public function media(): MediaRequestBuilder {
+        return new MediaRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
     /**
      * The send property
     */

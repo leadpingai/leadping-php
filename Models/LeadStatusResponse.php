@@ -8,6 +8,9 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
+/**
+ * Represents a configurable status that can be assigned to leads.
+*/
 class LeadStatusResponse implements AdditionalDataHolder, Parsable 
 {
     /**
@@ -16,42 +19,42 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $businessId The businessId property
+     * @var string|null $businessId Identifier of the business that owns the lead status.
     */
     private ?string $businessId = null;
     
     /**
-     * @var DispositionCategory|null $category Controlled disposition categories used for reporting, automation, and analytics.
+     * @var DispositionCategory|null $category Disposition category represented by the lead status.
     */
     private ?DispositionCategory $category = null;
     
     /**
-     * @var string|null $color The color property
+     * @var string|null $color Display color assigned to the lead status.
     */
     private ?string $color = null;
     
     /**
-     * @var string|null $id The id property
+     * @var string|null $id Unique identifier for the lead status.
     */
     private ?string $id = null;
     
     /**
-     * @var bool|null $isArchived The isArchived property
+     * @var bool|null $isArchived Indicates whether the lead status has been archived.
     */
     private ?bool $isArchived = null;
     
     /**
-     * @var DateTime|null $modifiedAt The modifiedAt property
+     * @var DateTime|null $modifiedAt Date and time when the lead status was last modified.
     */
     private ?DateTime $modifiedAt = null;
     
     /**
-     * @var string|null $name The name property
+     * @var string|null $name Display name of the lead status.
     */
     private ?string $name = null;
     
     /**
-     * @var int|null $sortOrder The sortOrder property
+     * @var int|null $sortOrder Relative display order of the lead status.
     */
     private ?int $sortOrder = null;
     
@@ -80,7 +83,7 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the businessId property value. The businessId property
+     * Gets the businessId property value. Identifier of the business that owns the lead status.
      * @return string|null
     */
     public function getBusinessId(): ?string {
@@ -88,7 +91,7 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the category property value. Controlled disposition categories used for reporting, automation, and analytics.
+     * Gets the category property value. Disposition category represented by the lead status.
      * @return DispositionCategory|null
     */
     public function getCategory(): ?DispositionCategory {
@@ -96,7 +99,7 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the color property value. The color property
+     * Gets the color property value. Display color assigned to the lead status.
      * @return string|null
     */
     public function getColor(): ?string {
@@ -122,7 +125,7 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The id property
+     * Gets the id property value. Unique identifier for the lead status.
      * @return string|null
     */
     public function getId(): ?string {
@@ -130,7 +133,7 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the isArchived property value. The isArchived property
+     * Gets the isArchived property value. Indicates whether the lead status has been archived.
      * @return bool|null
     */
     public function getIsArchived(): ?bool {
@@ -138,7 +141,7 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the modifiedAt property value. The modifiedAt property
+     * Gets the modifiedAt property value. Date and time when the lead status was last modified.
      * @return DateTime|null
     */
     public function getModifiedAt(): ?DateTime {
@@ -146,7 +149,7 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the name property value. The name property
+     * Gets the name property value. Display name of the lead status.
      * @return string|null
     */
     public function getName(): ?string {
@@ -154,7 +157,7 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the sortOrder property value. The sortOrder property
+     * Gets the sortOrder property value. Relative display order of the lead status.
      * @return int|null
     */
     public function getSortOrder(): ?int {
@@ -186,7 +189,7 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the businessId property value. The businessId property
+     * Sets the businessId property value. Identifier of the business that owns the lead status.
      * @param string|null $value Value to set for the businessId property.
     */
     public function setBusinessId(?string $value): void {
@@ -194,7 +197,7 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the category property value. Controlled disposition categories used for reporting, automation, and analytics.
+     * Sets the category property value. Disposition category represented by the lead status.
      * @param DispositionCategory|null $value Value to set for the category property.
     */
     public function setCategory(?DispositionCategory $value): void {
@@ -202,7 +205,7 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the color property value. The color property
+     * Sets the color property value. Display color assigned to the lead status.
      * @param string|null $value Value to set for the color property.
     */
     public function setColor(?string $value): void {
@@ -210,7 +213,7 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The id property
+     * Sets the id property value. Unique identifier for the lead status.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -218,7 +221,7 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the isArchived property value. The isArchived property
+     * Sets the isArchived property value. Indicates whether the lead status has been archived.
      * @param bool|null $value Value to set for the isArchived property.
     */
     public function setIsArchived(?bool $value): void {
@@ -226,7 +229,7 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the modifiedAt property value. The modifiedAt property
+     * Sets the modifiedAt property value. Date and time when the lead status was last modified.
      * @param DateTime|null $value Value to set for the modifiedAt property.
     */
     public function setModifiedAt(?DateTime $value): void {
@@ -234,7 +237,7 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the name property value. The name property
+     * Sets the name property value. Display name of the lead status.
      * @param string|null $value Value to set for the name property.
     */
     public function setName(?string $value): void {
@@ -242,7 +245,7 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the sortOrder property value. The sortOrder property
+     * Sets the sortOrder property value. Relative display order of the lead status.
      * @param int|null $value Value to set for the sortOrder property.
     */
     public function setSortOrder(?int $value): void {

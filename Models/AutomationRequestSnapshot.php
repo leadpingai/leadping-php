@@ -33,6 +33,11 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
     private ?array $conditionGroups = null;
     
     /**
+     * @var array<AutomationConnection>|null $connections Directed connections between nodes in this automation graph.
+    */
+    private ?array $connections = null;
+    
+    /**
      * @var string|null $createdByUserId User ID of the person who created this automation request snapshot.
     */
     private ?string $createdByUserId = null;
@@ -131,6 +136,14 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the connections property value. Directed connections between nodes in this automation graph.
+     * @return array<AutomationConnection>|null
+    */
+    public function getConnections(): ?array {
+        return $this->connections;
+    }
+
+    /**
      * Gets the createdByUserId property value. User ID of the person who created this automation request snapshot.
      * @return string|null
     */
@@ -164,6 +177,7 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
             'actions' => fn(ParseNode $n) => $o->setActions($n->getCollectionOfObjectValues([AutomationAction::class, 'createFromDiscriminatorValue'])),
             'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'conditionGroups' => fn(ParseNode $n) => $o->setConditionGroups($n->getCollectionOfObjectValues([AutomationConditionGroup::class, 'createFromDiscriminatorValue'])),
+            'connections' => fn(ParseNode $n) => $o->setConnections($n->getCollectionOfObjectValues([AutomationConnection::class, 'createFromDiscriminatorValue'])),
             'createdByUserId' => fn(ParseNode $n) => $o->setCreatedByUserId($n->getStringValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
@@ -241,6 +255,7 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
         $writer->writeCollectionOfObjectValues('actions', $this->getActions());
         $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeCollectionOfObjectValues('conditionGroups', $this->getConditionGroups());
+        $writer->writeCollectionOfObjectValues('connections', $this->getConnections());
         $writer->writeStringValue('createdByUserId', $this->getCreatedByUserId());
         $writer->writeStringValue('description', $this->getDescription());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
@@ -284,6 +299,14 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
     */
     public function setConditionGroups(?array $value): void {
         $this->conditionGroups = $value;
+    }
+
+    /**
+     * Sets the connections property value. Directed connections between nodes in this automation graph.
+     * @param array<AutomationConnection>|null $value Value to set for the connections property.
+    */
+    public function setConnections(?array $value): void {
+        $this->connections = $value;
     }
 
     /**

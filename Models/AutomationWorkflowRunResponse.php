@@ -49,6 +49,11 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     private ?AutomationWorkflowRunResponse_currentStep $currentStep = null;
     
     /**
+     * @var int|null $currentStepOrder Current step order associated with this Leadping automation workflow run.
+    */
+    private ?int $currentStepOrder = null;
+    
+    /**
      * @var array<AutomationWorkflowEventResponse>|null $events Collection of events included with this Leadping automation workflow run.
     */
     private ?array $events = null;
@@ -221,6 +226,14 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the currentStepOrder property value. Current step order associated with this Leadping automation workflow run.
+     * @return int|null
+    */
+    public function getCurrentStepOrder(): ?int {
+        return $this->currentStepOrder;
+    }
+
+    /**
      * Gets the events property value. Collection of events included with this Leadping automation workflow run.
      * @return array<AutomationWorkflowEventResponse>|null
     */
@@ -249,6 +262,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
             'cancelledAt' => fn(ParseNode $n) => $o->setCancelledAt($n->getDateTimeValue()),
             'completedAt' => fn(ParseNode $n) => $o->setCompletedAt($n->getDateTimeValue()),
             'currentStep' => fn(ParseNode $n) => $o->setCurrentStep($n->getObjectValue([AutomationWorkflowRunResponse_currentStep::class, 'createFromDiscriminatorValue'])),
+            'currentStepOrder' => fn(ParseNode $n) => $o->setCurrentStepOrder($n->getIntegerValue()),
             'events' => fn(ParseNode $n) => $o->setEvents($n->getCollectionOfObjectValues([AutomationWorkflowEventResponse::class, 'createFromDiscriminatorValue'])),
             'failedAt' => fn(ParseNode $n) => $o->setFailedAt($n->getDateTimeValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
@@ -427,6 +441,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('cancelledAt', $this->getCancelledAt());
         $writer->writeDateTimeValue('completedAt', $this->getCompletedAt());
         $writer->writeObjectValue('currentStep', $this->getCurrentStep());
+        $writer->writeIntegerValue('currentStepOrder', $this->getCurrentStepOrder());
         $writer->writeCollectionOfObjectValues('events', $this->getEvents());
         $writer->writeDateTimeValue('failedAt', $this->getFailedAt());
         $writer->writeStringValue('id', $this->getId());
@@ -504,6 +519,14 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     */
     public function setCurrentStep(?AutomationWorkflowRunResponse_currentStep $value): void {
         $this->currentStep = $value;
+    }
+
+    /**
+     * Sets the currentStepOrder property value. Current step order associated with this Leadping automation workflow run.
+     * @param int|null $value Value to set for the currentStepOrder property.
+    */
+    public function setCurrentStepOrder(?int $value): void {
+        $this->currentStepOrder = $value;
     }
 
     /**

@@ -59,9 +59,9 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $periodStart = null;
     
     /**
-     * @var int|null $usageRecordCount The usage record count for this usage summary.
+     * @var int|null $transactionCount The usage record count for this usage summary.
     */
-    private ?int $usageRecordCount = null;
+    private ?int $transactionCount = null;
     
     /**
      * Instantiates a new UsageSummaryResponse and sets the default values.
@@ -134,7 +134,7 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
             'pendingInvoiceCount' => fn(ParseNode $n) => $o->setPendingInvoiceCount($n->getIntegerValue()),
             'periodEnd' => fn(ParseNode $n) => $o->setPeriodEnd($n->getDateTimeValue()),
             'periodStart' => fn(ParseNode $n) => $o->setPeriodStart($n->getDateTimeValue()),
-            'usageRecordCount' => fn(ParseNode $n) => $o->setUsageRecordCount($n->getIntegerValue()),
+            'transactionCount' => fn(ParseNode $n) => $o->setTransactionCount($n->getIntegerValue()),
         ];
     }
 
@@ -171,11 +171,11 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the usageRecordCount property value. The usage record count for this usage summary.
+     * Gets the transactionCount property value. The usage record count for this usage summary.
      * @return int|null
     */
-    public function getUsageRecordCount(): ?int {
-        return $this->usageRecordCount;
+    public function getTransactionCount(): ?int {
+        return $this->transactionCount;
     }
 
     /**
@@ -191,7 +191,7 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
         $writer->writeIntegerValue('pendingInvoiceCount', $this->getPendingInvoiceCount());
         $writer->writeDateTimeValue('periodEnd', $this->getPeriodEnd());
         $writer->writeDateTimeValue('periodStart', $this->getPeriodStart());
-        $writer->writeIntegerValue('usageRecordCount', $this->getUsageRecordCount());
+        $writer->writeIntegerValue('transactionCount', $this->getTransactionCount());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -268,11 +268,11 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the usageRecordCount property value. The usage record count for this usage summary.
-     * @param int|null $value Value to set for the usageRecordCount property.
+     * Sets the transactionCount property value. The usage record count for this usage summary.
+     * @param int|null $value Value to set for the transactionCount property.
     */
-    public function setUsageRecordCount(?int $value): void {
-        $this->usageRecordCount = $value;
+    public function setTransactionCount(?int $value): void {
+        $this->transactionCount = $value;
     }
 
 }

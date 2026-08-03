@@ -39,6 +39,11 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     private ?array $conditionGroups = null;
     
     /**
+     * @var array<AutomationConnection>|null $connections Directed connections between nodes in this automation graph.
+    */
+    private ?array $connections = null;
+    
+    /**
      * @var DateTime|null $createdAt The date and time when the entity was created.
     */
     private ?DateTime $createdAt = null;
@@ -180,6 +185,14 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the connections property value. Directed connections between nodes in this automation graph.
+     * @return array<AutomationConnection>|null
+    */
+    public function getConnections(): ?array {
+        return $this->connections;
+    }
+
+    /**
      * Gets the createdAt property value. The date and time when the entity was created.
      * @return DateTime|null
     */
@@ -222,6 +235,7 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
             'business' => fn(ParseNode $n) => $o->setBusiness($n->getObjectValue([AutomationResponse_business::class, 'createFromDiscriminatorValue'])),
             'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'conditionGroups' => fn(ParseNode $n) => $o->setConditionGroups($n->getCollectionOfObjectValues([AutomationConditionGroup::class, 'createFromDiscriminatorValue'])),
+            'connections' => fn(ParseNode $n) => $o->setConnections($n->getCollectionOfObjectValues([AutomationConnection::class, 'createFromDiscriminatorValue'])),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'createdByUserId' => fn(ParseNode $n) => $o->setCreatedByUserId($n->getStringValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
@@ -355,6 +369,7 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
         $writer->writeObjectValue('business', $this->getBusiness());
         $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeCollectionOfObjectValues('conditionGroups', $this->getConditionGroups());
+        $writer->writeCollectionOfObjectValues('connections', $this->getConnections());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('createdByUserId', $this->getCreatedByUserId());
         $writer->writeStringValue('description', $this->getDescription());
@@ -413,6 +428,14 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     */
     public function setConditionGroups(?array $value): void {
         $this->conditionGroups = $value;
+    }
+
+    /**
+     * Sets the connections property value. Directed connections between nodes in this automation graph.
+     * @param array<AutomationConnection>|null $value Value to set for the connections property.
+    */
+    public function setConnections(?array $value): void {
+        $this->connections = $value;
     }
 
     /**
