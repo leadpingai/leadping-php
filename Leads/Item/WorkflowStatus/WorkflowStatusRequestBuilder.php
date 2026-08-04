@@ -12,7 +12,7 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
 
 /**
- * Builds and executes requests for operations under /leads/{id}/workflow-status
+ * Builds and executes requests for operations under /leads/{-id}/workflow-status
 */
 class WorkflowStatusRequestBuilder extends BaseRequestBuilder 
 {
@@ -22,7 +22,7 @@ class WorkflowStatusRequestBuilder extends BaseRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/leads/{id}/workflow-status');
+        parent::__construct($requestAdapter, [], '{+baseurl}/leads/{%2Did}/workflow-status');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {
@@ -31,7 +31,7 @@ class WorkflowStatusRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns automation workflow status for one lead, including active runs, paused state, and follow-up progress for the current business.
+     * Returns automation workflow status for one lead, including active runs, paused state, and follow-up progress for the current organization.
      * @param WorkflowStatusRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<AutomationWorkflowStatusResponse|null>
      * @throws Exception
@@ -46,7 +46,7 @@ class WorkflowStatusRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns automation workflow status for one lead, including active runs, paused state, and follow-up progress for the current business.
+     * Returns automation workflow status for one lead, including active runs, paused state, and follow-up progress for the current organization.
      * @param WorkflowStatusRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

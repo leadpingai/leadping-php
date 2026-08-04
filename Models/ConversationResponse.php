@@ -34,9 +34,9 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     private ?int $archiveReason = null;
     
     /**
-     * @var ConversationResponse_currentDisposition|null $currentDisposition Current disposition summary that describes the lead outcome.
+     * @var ConversationResponse_currentLeadStatus|null $currentLeadStatus Current lead status change summary that describes the lead outcome.
     */
-    private ?ConversationResponse_currentDisposition $currentDisposition = null;
+    private ?ConversationResponse_currentLeadStatus $currentLeadStatus = null;
     
     /**
      * @var string|null $email Email address used to resolve the lead's avatar when available.
@@ -167,11 +167,11 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the currentDisposition property value. Current disposition summary that describes the lead outcome.
-     * @return ConversationResponse_currentDisposition|null
+     * Gets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
+     * @return ConversationResponse_currentLeadStatus|null
     */
-    public function getCurrentDisposition(): ?ConversationResponse_currentDisposition {
-        return $this->currentDisposition;
+    public function getCurrentLeadStatus(): ?ConversationResponse_currentLeadStatus {
+        return $this->currentLeadStatus;
     }
 
     /**
@@ -192,7 +192,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
             'activeOutboundPhoneNumberId' => fn(ParseNode $n) => $o->setActiveOutboundPhoneNumberId($n->getStringValue()),
             'archivedAt' => fn(ParseNode $n) => $o->setArchivedAt($n->getDateTimeValue()),
             'archiveReason' => fn(ParseNode $n) => $o->setArchiveReason($n->getIntegerValue()),
-            'currentDisposition' => fn(ParseNode $n) => $o->setCurrentDisposition($n->getObjectValue([ConversationResponse_currentDisposition::class, 'createFromDiscriminatorValue'])),
+            'currentLeadStatus' => fn(ParseNode $n) => $o->setCurrentLeadStatus($n->getObjectValue([ConversationResponse_currentLeadStatus::class, 'createFromDiscriminatorValue'])),
             'email' => fn(ParseNode $n) => $o->setEmail($n->getStringValue()),
             'firstName' => fn(ParseNode $n) => $o->setFirstName($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
@@ -340,7 +340,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('activeOutboundPhoneNumberId', $this->getActiveOutboundPhoneNumberId());
         $writer->writeDateTimeValue('archivedAt', $this->getArchivedAt());
         $writer->writeIntegerValue('archiveReason', $this->getArchiveReason());
-        $writer->writeObjectValue('currentDisposition', $this->getCurrentDisposition());
+        $writer->writeObjectValue('currentLeadStatus', $this->getCurrentLeadStatus());
         $writer->writeStringValue('email', $this->getEmail());
         $writer->writeStringValue('firstName', $this->getFirstName());
         $writer->writeStringValue('id', $this->getId());
@@ -393,11 +393,11 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the currentDisposition property value. Current disposition summary that describes the lead outcome.
-     * @param ConversationResponse_currentDisposition|null $value Value to set for the currentDisposition property.
+     * Sets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
+     * @param ConversationResponse_currentLeadStatus|null $value Value to set for the currentLeadStatus property.
     */
-    public function setCurrentDisposition(?ConversationResponse_currentDisposition $value): void {
-        $this->currentDisposition = $value;
+    public function setCurrentLeadStatus(?ConversationResponse_currentLeadStatus $value): void {
+        $this->currentLeadStatus = $value;
     }
 
     /**

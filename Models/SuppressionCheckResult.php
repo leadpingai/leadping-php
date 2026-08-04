@@ -24,11 +24,6 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     private ?bool $allowed = null;
     
     /**
-     * @var string|null $businessId The business ID associated with this ion check result.
-    */
-    private ?string $businessId = null;
-    
-    /**
      * @var string|null $channel The channel value for this ion check result.
     */
     private ?string $channel = null;
@@ -47,6 +42,11 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
      * @var string|null $normalizedPhoneNumber The phone number associated with this ion check result.
     */
     private ?string $normalizedPhoneNumber = null;
+    
+    /**
+     * @var string|null $organizationId The organization ID associated with this ion check result.
+    */
+    private ?string $organizationId = null;
     
     /**
      * @var string|null $recipientIdentifier The recipient identifier value for this ion check result.
@@ -101,14 +101,6 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the businessId property value. The business ID associated with this ion check result.
-     * @return string|null
-    */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
-    }
-
-    /**
      * Gets the channel property value. The channel value for this ion check result.
      * @return string|null
     */
@@ -132,11 +124,11 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'allowed' => fn(ParseNode $n) => $o->setAllowed($n->getBooleanValue()),
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'channel' => fn(ParseNode $n) => $o->setChannel($n->getStringValue()),
             'customerReason' => fn(ParseNode $n) => $o->setCustomerReason($n->getStringValue()),
             'normalizedEmail' => fn(ParseNode $n) => $o->setNormalizedEmail($n->getStringValue()),
             'normalizedPhoneNumber' => fn(ParseNode $n) => $o->setNormalizedPhoneNumber($n->getStringValue()),
+            'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'recipientIdentifier' => fn(ParseNode $n) => $o->setRecipientIdentifier($n->getStringValue()),
             'source' => fn(ParseNode $n) => $o->setSource($n->getStringValue()),
             'suppressedAt' => fn(ParseNode $n) => $o->setSuppressedAt($n->getDateTimeValue()),
@@ -158,6 +150,14 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     */
     public function getNormalizedPhoneNumber(): ?string {
         return $this->normalizedPhoneNumber;
+    }
+
+    /**
+     * Gets the organizationId property value. The organization ID associated with this ion check result.
+     * @return string|null
+    */
+    public function getOrganizationId(): ?string {
+        return $this->organizationId;
     }
 
     /**
@@ -198,11 +198,11 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeBooleanValue('allowed', $this->getAllowed());
-        $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeStringValue('channel', $this->getChannel());
         $writer->writeStringValue('customerReason', $this->getCustomerReason());
         $writer->writeStringValue('normalizedEmail', $this->getNormalizedEmail());
         $writer->writeStringValue('normalizedPhoneNumber', $this->getNormalizedPhoneNumber());
+        $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeStringValue('recipientIdentifier', $this->getRecipientIdentifier());
         $writer->writeStringValue('source', $this->getSource());
         $writer->writeDateTimeValue('suppressedAt', $this->getSuppressedAt());
@@ -224,14 +224,6 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     */
     public function setAllowed(?bool $value): void {
         $this->allowed = $value;
-    }
-
-    /**
-     * Sets the businessId property value. The business ID associated with this ion check result.
-     * @param string|null $value Value to set for the businessId property.
-    */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
     }
 
     /**
@@ -264,6 +256,14 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     */
     public function setNormalizedPhoneNumber(?string $value): void {
         $this->normalizedPhoneNumber = $value;
+    }
+
+    /**
+     * Sets the organizationId property value. The organization ID associated with this ion check result.
+     * @param string|null $value Value to set for the organizationId property.
+    */
+    public function setOrganizationId(?string $value): void {
+        $this->organizationId = $value;
     }
 
     /**

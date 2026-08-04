@@ -18,16 +18,6 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $business Business summary connected to this phone number table row.
-    */
-    private ?string $business = null;
-    
-    /**
-     * @var string|null $businessId Unique Leadping business identifier connected to this phone number table row.
-    */
-    private ?string $businessId = null;
-    
-    /**
      * @var bool|null $enabled Indicates whether this phone number table row is active and available in the Leadping API.
     */
     private ?bool $enabled = null;
@@ -48,6 +38,16 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     private ?string $number = null;
     
     /**
+     * @var string|null $organization Organization summary connected to this phone number table row.
+    */
+    private ?string $organization = null;
+    
+    /**
+     * @var string|null $organizationId Unique Leadping organization identifier connected to this phone number table row.
+    */
+    private ?string $organizationId = null;
+    
+    /**
      * @var string|null $ownership Ownership classification for this phone number, such as Leadping-owned or customer-owned.
     */
     private ?string $ownership = null;
@@ -58,7 +58,7 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     private ?string $routingSummary = null;
     
     /**
-     * @var bool|null $smsReady Indicates whether SMS messaging is ready for this business or phone number.
+     * @var bool|null $smsReady Indicates whether SMS messaging is ready for this organization or phone number.
     */
     private ?bool $smsReady = null;
     
@@ -73,7 +73,7 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     private ?string $type = null;
     
     /**
-     * @var bool|null $voiceReady Indicates whether voice calling is ready for this business or phone number.
+     * @var bool|null $voiceReady Indicates whether voice calling is ready for this organization or phone number.
     */
     private ?bool $voiceReady = null;
     
@@ -107,22 +107,6 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the business property value. Business summary connected to this phone number table row.
-     * @return string|null
-    */
-    public function getBusiness(): ?string {
-        return $this->business;
-    }
-
-    /**
-     * Gets the businessId property value. Unique Leadping business identifier connected to this phone number table row.
-     * @return string|null
-    */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
-    }
-
-    /**
      * Gets the enabled property value. Indicates whether this phone number table row is active and available in the Leadping API.
      * @return bool|null
     */
@@ -137,12 +121,12 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'business' => fn(ParseNode $n) => $o->setBusiness($n->getStringValue()),
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'number' => fn(ParseNode $n) => $o->setNumber($n->getStringValue()),
+            'organization' => fn(ParseNode $n) => $o->setOrganization($n->getStringValue()),
+            'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'ownership' => fn(ParseNode $n) => $o->setOwnership($n->getStringValue()),
             'routingSummary' => fn(ParseNode $n) => $o->setRoutingSummary($n->getStringValue()),
             'smsReady' => fn(ParseNode $n) => $o->setSmsReady($n->getBooleanValue()),
@@ -178,6 +162,22 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the organization property value. Organization summary connected to this phone number table row.
+     * @return string|null
+    */
+    public function getOrganization(): ?string {
+        return $this->organization;
+    }
+
+    /**
+     * Gets the organizationId property value. Unique Leadping organization identifier connected to this phone number table row.
+     * @return string|null
+    */
+    public function getOrganizationId(): ?string {
+        return $this->organizationId;
+    }
+
+    /**
      * Gets the ownership property value. Ownership classification for this phone number, such as Leadping-owned or customer-owned.
      * @return string|null
     */
@@ -194,7 +194,7 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the smsReady property value. Indicates whether SMS messaging is ready for this business or phone number.
+     * Gets the smsReady property value. Indicates whether SMS messaging is ready for this organization or phone number.
      * @return bool|null
     */
     public function getSmsReady(): ?bool {
@@ -218,7 +218,7 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the voiceReady property value. Indicates whether voice calling is ready for this business or phone number.
+     * Gets the voiceReady property value. Indicates whether voice calling is ready for this organization or phone number.
      * @return bool|null
     */
     public function getVoiceReady(): ?bool {
@@ -238,12 +238,12 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeStringValue('business', $this->getBusiness());
-        $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeStringValue('number', $this->getNumber());
+        $writer->writeStringValue('organization', $this->getOrganization());
+        $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeStringValue('ownership', $this->getOwnership());
         $writer->writeStringValue('routingSummary', $this->getRoutingSummary());
         $writer->writeBooleanValue('smsReady', $this->getSmsReady());
@@ -260,22 +260,6 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the business property value. Business summary connected to this phone number table row.
-     * @param string|null $value Value to set for the business property.
-    */
-    public function setBusiness(?string $value): void {
-        $this->business = $value;
-    }
-
-    /**
-     * Sets the businessId property value. Unique Leadping business identifier connected to this phone number table row.
-     * @param string|null $value Value to set for the businessId property.
-    */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
     }
 
     /**
@@ -311,6 +295,22 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the organization property value. Organization summary connected to this phone number table row.
+     * @param string|null $value Value to set for the organization property.
+    */
+    public function setOrganization(?string $value): void {
+        $this->organization = $value;
+    }
+
+    /**
+     * Sets the organizationId property value. Unique Leadping organization identifier connected to this phone number table row.
+     * @param string|null $value Value to set for the organizationId property.
+    */
+    public function setOrganizationId(?string $value): void {
+        $this->organizationId = $value;
+    }
+
+    /**
      * Sets the ownership property value. Ownership classification for this phone number, such as Leadping-owned or customer-owned.
      * @param string|null $value Value to set for the ownership property.
     */
@@ -327,7 +327,7 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the smsReady property value. Indicates whether SMS messaging is ready for this business or phone number.
+     * Sets the smsReady property value. Indicates whether SMS messaging is ready for this organization or phone number.
      * @param bool|null $value Value to set for the smsReady property.
     */
     public function setSmsReady(?bool $value): void {
@@ -351,7 +351,7 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the voiceReady property value. Indicates whether voice calling is ready for this business or phone number.
+     * Sets the voiceReady property value. Indicates whether voice calling is ready for this organization or phone number.
      * @param bool|null $value Value to set for the voiceReady property.
     */
     public function setVoiceReady(?bool $value): void {

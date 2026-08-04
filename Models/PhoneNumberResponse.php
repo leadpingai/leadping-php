@@ -19,11 +19,6 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var PhoneNumberResponse_business|null $business Business summary connected to this phone number.
-    */
-    private ?PhoneNumberResponse_business $business = null;
-    
-    /**
      * @var DateTime|null $createdAt The date and time when the entity was created.
     */
     private ?DateTime $createdAt = null;
@@ -57,6 +52,11 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
      * @var string|null $number E.164 phone number exposed by this phone number.
     */
     private ?string $number = null;
+    
+    /**
+     * @var PhoneNumberResponse_organization|null $organization Organization summary connected to this phone number.
+    */
+    private ?PhoneNumberResponse_organization $organization = null;
     
     /**
      * @var string|null $phoneIdentityId Identifier of the canonical phone identity for this number.
@@ -98,14 +98,6 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the business property value. Business summary connected to this phone number.
-     * @return PhoneNumberResponse_business|null
-    */
-    public function getBusiness(): ?PhoneNumberResponse_business {
-        return $this->business;
-    }
-
-    /**
      * Gets the createdAt property value. The date and time when the entity was created.
      * @return DateTime|null
     */
@@ -128,7 +120,6 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'business' => fn(ParseNode $n) => $o->setBusiness($n->getObjectValue([PhoneNumberResponse_business::class, 'createFromDiscriminatorValue'])),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
@@ -136,6 +127,7 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'number' => fn(ParseNode $n) => $o->setNumber($n->getStringValue()),
+            'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([PhoneNumberResponse_organization::class, 'createFromDiscriminatorValue'])),
             'phoneIdentityId' => fn(ParseNode $n) => $o->setPhoneIdentityId($n->getStringValue()),
             'routing' => fn(ParseNode $n) => $o->setRouting($n->getObjectValue([PhoneNumberRoutingMetadata::class, 'createFromDiscriminatorValue'])),
             'warmup' => fn(ParseNode $n) => $o->setWarmup($n->getObjectValue([PhoneNumberReadiness::class, 'createFromDiscriminatorValue'])),
@@ -183,6 +175,14 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the organization property value. Organization summary connected to this phone number.
+     * @return PhoneNumberResponse_organization|null
+    */
+    public function getOrganization(): ?PhoneNumberResponse_organization {
+        return $this->organization;
+    }
+
+    /**
      * Gets the phoneIdentityId property value. Identifier of the canonical phone identity for this number.
      * @return string|null
     */
@@ -211,7 +211,6 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeObjectValue('business', $this->getBusiness());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeStringValue('id', $this->getId());
@@ -219,6 +218,7 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeStringValue('number', $this->getNumber());
+        $writer->writeObjectValue('organization', $this->getOrganization());
         $writer->writeStringValue('phoneIdentityId', $this->getPhoneIdentityId());
         $writer->writeObjectValue('routing', $this->getRouting());
         $writer->writeObjectValue('warmup', $this->getWarmup());
@@ -231,14 +231,6 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the business property value. Business summary connected to this phone number.
-     * @param PhoneNumberResponse_business|null $value Value to set for the business property.
-    */
-    public function setBusiness(?PhoneNumberResponse_business $value): void {
-        $this->business = $value;
     }
 
     /**
@@ -295,6 +287,14 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     */
     public function setNumber(?string $value): void {
         $this->number = $value;
+    }
+
+    /**
+     * Sets the organization property value. Organization summary connected to this phone number.
+     * @param PhoneNumberResponse_organization|null $value Value to set for the organization property.
+    */
+    public function setOrganization(?PhoneNumberResponse_organization $value): void {
+        $this->organization = $value;
     }
 
     /**

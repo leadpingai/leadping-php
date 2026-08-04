@@ -24,16 +24,6 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var AutomationTableRow_business|null $business Business summary connected to this automation table row.
-    */
-    private ?AutomationTableRow_business $business = null;
-    
-    /**
-     * @var string|null $businessId Business ID that owns this automation.
-    */
-    private ?string $businessId = null;
-    
-    /**
      * @var string|null $conditionSummary Human-readable summary of the automation condition evaluation.
     */
     private ?string $conditionSummary = null;
@@ -79,7 +69,7 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     private ?string $lastRunStatus = null;
     
     /**
-     * @var string|null $managementLevel Management level that controls whether Leadping or the business owns this automation setting.
+     * @var string|null $managementLevel Management level that controls whether Leadping or the organization owns this automation setting.
     */
     private ?string $managementLevel = null;
     
@@ -92,6 +82,16 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
      * @var string|null $name Display name for this automation table row in the Leadping API.
     */
     private ?string $name = null;
+    
+    /**
+     * @var AutomationTableRow_organization|null $organization Organization summary connected to this automation table row.
+    */
+    private ?AutomationTableRow_organization $organization = null;
+    
+    /**
+     * @var string|null $organizationId Organization ID that owns this automation.
+    */
+    private ?string $organizationId = null;
     
     /**
      * @var string|null $ruleSentence Human-readable explanation of the automation rule being evaluated.
@@ -156,22 +156,6 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the business property value. Business summary connected to this automation table row.
-     * @return AutomationTableRow_business|null
-    */
-    public function getBusiness(): ?AutomationTableRow_business {
-        return $this->business;
-    }
-
-    /**
-     * Gets the businessId property value. Business ID that owns this automation.
-     * @return string|null
-    */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
-    }
-
-    /**
      * Gets the conditionSummary property value. Human-readable summary of the automation condition evaluation.
      * @return string|null
     */
@@ -211,8 +195,6 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'actionSummary' => fn(ParseNode $n) => $o->setActionSummary($n->getStringValue()),
-            'business' => fn(ParseNode $n) => $o->setBusiness($n->getObjectValue([AutomationTableRow_business::class, 'createFromDiscriminatorValue'])),
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'conditionSummary' => fn(ParseNode $n) => $o->setConditionSummary($n->getStringValue()),
             'createdByUserId' => fn(ParseNode $n) => $o->setCreatedByUserId($n->getStringValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
@@ -225,6 +207,8 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
             'managementLevel' => fn(ParseNode $n) => $o->setManagementLevel($n->getStringValue()),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
+            'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([AutomationTableRow_organization::class, 'createFromDiscriminatorValue'])),
+            'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'ruleSentence' => fn(ParseNode $n) => $o->setRuleSentence($n->getStringValue()),
             'scope' => fn(ParseNode $n) => $o->setScope($n->getStringValue()),
             'triggerSummary' => fn(ParseNode $n) => $o->setTriggerSummary($n->getStringValue()),
@@ -275,7 +259,7 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the managementLevel property value. Management level that controls whether Leadping or the business owns this automation setting.
+     * Gets the managementLevel property value. Management level that controls whether Leadping or the organization owns this automation setting.
      * @return string|null
     */
     public function getManagementLevel(): ?string {
@@ -296,6 +280,22 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     */
     public function getName(): ?string {
         return $this->name;
+    }
+
+    /**
+     * Gets the organization property value. Organization summary connected to this automation table row.
+     * @return AutomationTableRow_organization|null
+    */
+    public function getOrganization(): ?AutomationTableRow_organization {
+        return $this->organization;
+    }
+
+    /**
+     * Gets the organizationId property value. Organization ID that owns this automation.
+     * @return string|null
+    */
+    public function getOrganizationId(): ?string {
+        return $this->organizationId;
     }
 
     /**
@@ -352,8 +352,6 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('actionSummary', $this->getActionSummary());
-        $writer->writeObjectValue('business', $this->getBusiness());
-        $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeStringValue('conditionSummary', $this->getConditionSummary());
         $writer->writeStringValue('createdByUserId', $this->getCreatedByUserId());
         $writer->writeStringValue('description', $this->getDescription());
@@ -366,6 +364,8 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('managementLevel', $this->getManagementLevel());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('name', $this->getName());
+        $writer->writeObjectValue('organization', $this->getOrganization());
+        $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeStringValue('ruleSentence', $this->getRuleSentence());
         $writer->writeStringValue('scope', $this->getScope());
         $writer->writeStringValue('triggerSummary', $this->getTriggerSummary());
@@ -389,22 +389,6 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the business property value. Business summary connected to this automation table row.
-     * @param AutomationTableRow_business|null $value Value to set for the business property.
-    */
-    public function setBusiness(?AutomationTableRow_business $value): void {
-        $this->business = $value;
-    }
-
-    /**
-     * Sets the businessId property value. Business ID that owns this automation.
-     * @param string|null $value Value to set for the businessId property.
-    */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
     }
 
     /**
@@ -480,7 +464,7 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the managementLevel property value. Management level that controls whether Leadping or the business owns this automation setting.
+     * Sets the managementLevel property value. Management level that controls whether Leadping or the organization owns this automation setting.
      * @param string|null $value Value to set for the managementLevel property.
     */
     public function setManagementLevel(?string $value): void {
@@ -501,6 +485,22 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     */
     public function setName(?string $value): void {
         $this->name = $value;
+    }
+
+    /**
+     * Sets the organization property value. Organization summary connected to this automation table row.
+     * @param AutomationTableRow_organization|null $value Value to set for the organization property.
+    */
+    public function setOrganization(?AutomationTableRow_organization $value): void {
+        $this->organization = $value;
+    }
+
+    /**
+     * Sets the organizationId property value. Organization ID that owns this automation.
+     * @param string|null $value Value to set for the organizationId property.
+    */
+    public function setOrganizationId(?string $value): void {
+        $this->organizationId = $value;
     }
 
     /**

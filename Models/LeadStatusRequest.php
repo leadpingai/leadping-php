@@ -18,7 +18,7 @@ class LeadStatusRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var LeadStatusRequest_category|null $category Controlled disposition categories used for reporting, automation, and analytics.
+     * @var LeadStatusRequest_category|null $category Controlled lead status change categories used for reporting, automation, and analytics.
     */
     private ?LeadStatusRequest_category $category = null;
     
@@ -62,7 +62,7 @@ class LeadStatusRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the category property value. Controlled disposition categories used for reporting, automation, and analytics.
+     * Gets the category property value. Controlled lead status change categories used for reporting, automation, and analytics.
      * @return LeadStatusRequest_category|null
     */
     public function getCategory(): ?LeadStatusRequest_category {
@@ -128,7 +128,7 @@ class LeadStatusRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the category property value. Controlled disposition categories used for reporting, automation, and analytics.
+     * Sets the category property value. Controlled lead status change categories used for reporting, automation, and analytics.
      * @param LeadStatusRequest_category|null $value Value to set for the category property.
     */
     public function setCategory(?LeadStatusRequest_category $value): void {

@@ -24,16 +24,6 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var AutomationResponse_business|null $business Business summary connected to this automation configuration response.
-    */
-    private ?AutomationResponse_business $business = null;
-    
-    /**
-     * @var string|null $businessId Business ID that owns this automation.
-    */
-    private ?string $businessId = null;
-    
-    /**
      * @var array<AutomationConditionGroup>|null $conditionGroups Grouped automation conditions used to decide whether this workflow should run.
     */
     private ?array $conditionGroups = null;
@@ -84,7 +74,7 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     private ?string $lastRunStatus = null;
     
     /**
-     * @var string|null $managementLevel Management level that controls whether Leadping or the business owns this automation setting.
+     * @var string|null $managementLevel Management level that controls whether Leadping or the organization owns this automation setting.
     */
     private ?string $managementLevel = null;
     
@@ -97,6 +87,16 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
      * @var string|null $name The display name for the entity.
     */
     private ?string $name = null;
+    
+    /**
+     * @var AutomationResponse_organization|null $organization Organization summary connected to this automation configuration response.
+    */
+    private ?AutomationResponse_organization $organization = null;
+    
+    /**
+     * @var string|null $organizationId Organization ID that owns this automation.
+    */
+    private ?string $organizationId = null;
     
     /**
      * @var array<AutomationRunRecord>|null $recentRuns Recent automation runs returned for history and troubleshooting.
@@ -161,22 +161,6 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the business property value. Business summary connected to this automation configuration response.
-     * @return AutomationResponse_business|null
-    */
-    public function getBusiness(): ?AutomationResponse_business {
-        return $this->business;
-    }
-
-    /**
-     * Gets the businessId property value. Business ID that owns this automation.
-     * @return string|null
-    */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
-    }
-
-    /**
      * Gets the conditionGroups property value. Grouped automation conditions used to decide whether this workflow should run.
      * @return array<AutomationConditionGroup>|null
     */
@@ -232,8 +216,6 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'actions' => fn(ParseNode $n) => $o->setActions($n->getCollectionOfObjectValues([AutomationAction::class, 'createFromDiscriminatorValue'])),
-            'business' => fn(ParseNode $n) => $o->setBusiness($n->getObjectValue([AutomationResponse_business::class, 'createFromDiscriminatorValue'])),
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'conditionGroups' => fn(ParseNode $n) => $o->setConditionGroups($n->getCollectionOfObjectValues([AutomationConditionGroup::class, 'createFromDiscriminatorValue'])),
             'connections' => fn(ParseNode $n) => $o->setConnections($n->getCollectionOfObjectValues([AutomationConnection::class, 'createFromDiscriminatorValue'])),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
@@ -247,6 +229,8 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
             'managementLevel' => fn(ParseNode $n) => $o->setManagementLevel($n->getStringValue()),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
+            'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([AutomationResponse_organization::class, 'createFromDiscriminatorValue'])),
+            'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'recentRuns' => fn(ParseNode $n) => $o->setRecentRuns($n->getCollectionOfObjectValues([AutomationRunRecord::class, 'createFromDiscriminatorValue'])),
             'scope' => fn(ParseNode $n) => $o->setScope($n->getStringValue()),
             'triggers' => fn(ParseNode $n) => $o->setTriggers($n->getCollectionOfObjectValues([AutomationTrigger::class, 'createFromDiscriminatorValue'])),
@@ -289,7 +273,7 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the managementLevel property value. Management level that controls whether Leadping or the business owns this automation setting.
+     * Gets the managementLevel property value. Management level that controls whether Leadping or the organization owns this automation setting.
      * @return string|null
     */
     public function getManagementLevel(): ?string {
@@ -310,6 +294,22 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     */
     public function getName(): ?string {
         return $this->name;
+    }
+
+    /**
+     * Gets the organization property value. Organization summary connected to this automation configuration response.
+     * @return AutomationResponse_organization|null
+    */
+    public function getOrganization(): ?AutomationResponse_organization {
+        return $this->organization;
+    }
+
+    /**
+     * Gets the organizationId property value. Organization ID that owns this automation.
+     * @return string|null
+    */
+    public function getOrganizationId(): ?string {
+        return $this->organizationId;
     }
 
     /**
@@ -366,8 +366,6 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeCollectionOfObjectValues('actions', $this->getActions());
-        $writer->writeObjectValue('business', $this->getBusiness());
-        $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeCollectionOfObjectValues('conditionGroups', $this->getConditionGroups());
         $writer->writeCollectionOfObjectValues('connections', $this->getConnections());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
@@ -381,6 +379,8 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('managementLevel', $this->getManagementLevel());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('name', $this->getName());
+        $writer->writeObjectValue('organization', $this->getOrganization());
+        $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeCollectionOfObjectValues('recentRuns', $this->getRecentRuns());
         $writer->writeStringValue('scope', $this->getScope());
         $writer->writeCollectionOfObjectValues('triggers', $this->getTriggers());
@@ -404,22 +404,6 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the business property value. Business summary connected to this automation configuration response.
-     * @param AutomationResponse_business|null $value Value to set for the business property.
-    */
-    public function setBusiness(?AutomationResponse_business $value): void {
-        $this->business = $value;
-    }
-
-    /**
-     * Sets the businessId property value. Business ID that owns this automation.
-     * @param string|null $value Value to set for the businessId property.
-    */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
     }
 
     /**
@@ -503,7 +487,7 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the managementLevel property value. Management level that controls whether Leadping or the business owns this automation setting.
+     * Sets the managementLevel property value. Management level that controls whether Leadping or the organization owns this automation setting.
      * @param string|null $value Value to set for the managementLevel property.
     */
     public function setManagementLevel(?string $value): void {
@@ -524,6 +508,22 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     */
     public function setName(?string $value): void {
         $this->name = $value;
+    }
+
+    /**
+     * Sets the organization property value. Organization summary connected to this automation configuration response.
+     * @param AutomationResponse_organization|null $value Value to set for the organization property.
+    */
+    public function setOrganization(?AutomationResponse_organization $value): void {
+        $this->organization = $value;
+    }
+
+    /**
+     * Sets the organizationId property value. Organization ID that owns this automation.
+     * @param string|null $value Value to set for the organizationId property.
+    */
+    public function setOrganizationId(?string $value): void {
+        $this->organizationId = $value;
     }
 
     /**

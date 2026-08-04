@@ -29,11 +29,6 @@ class FeedbackResponse implements AdditionalDataHolder, Parsable
     private ?string $area = null;
     
     /**
-     * @var string|null $businessId Business ID connected to the feedback item, when the feedback came from a business workspace.
-    */
-    private ?string $businessId = null;
-    
-    /**
      * @var string|null $clientVersion Client application version that submitted this feedback item response.
     */
     private ?string $clientVersion = null;
@@ -52,6 +47,11 @@ class FeedbackResponse implements AdditionalDataHolder, Parsable
      * @var string|null $message Message text supplied by the user or returned by the Leadping API for this feedback item response.
     */
     private ?string $message = null;
+    
+    /**
+     * @var string|null $organizationId Organization ID connected to the feedback item, when the feedback came from an organization workspace.
+    */
+    private ?string $organizationId = null;
     
     /**
      * @var string|null $route Application route where this feedback item response originated or should direct the user.
@@ -114,14 +114,6 @@ class FeedbackResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the businessId property value. Business ID connected to the feedback item, when the feedback came from a business workspace.
-     * @return string|null
-    */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
-    }
-
-    /**
      * Gets the clientVersion property value. Client application version that submitted this feedback item response.
      * @return string|null
     */
@@ -146,11 +138,11 @@ class FeedbackResponse implements AdditionalDataHolder, Parsable
         return  [
             'allowContact' => fn(ParseNode $n) => $o->setAllowContact($n->getBooleanValue()),
             'area' => fn(ParseNode $n) => $o->setArea($n->getStringValue()),
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'clientVersion' => fn(ParseNode $n) => $o->setClientVersion($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'message' => fn(ParseNode $n) => $o->setMessage($n->getStringValue()),
+            'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'route' => fn(ParseNode $n) => $o->setRoute($n->getStringValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(FeedbackStatus::class)),
             'type' => fn(ParseNode $n) => $o->setType($n->getEnumValue(FeedbackType::class)),
@@ -172,6 +164,14 @@ class FeedbackResponse implements AdditionalDataHolder, Parsable
     */
     public function getMessage(): ?string {
         return $this->message;
+    }
+
+    /**
+     * Gets the organizationId property value. Organization ID connected to the feedback item, when the feedback came from an organization workspace.
+     * @return string|null
+    */
+    public function getOrganizationId(): ?string {
+        return $this->organizationId;
     }
 
     /**
@@ -213,11 +213,11 @@ class FeedbackResponse implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeBooleanValue('allowContact', $this->getAllowContact());
         $writer->writeStringValue('area', $this->getArea());
-        $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeStringValue('clientVersion', $this->getClientVersion());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeStringValue('message', $this->getMessage());
+        $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeStringValue('route', $this->getRoute());
         $writer->writeEnumValue('status', $this->getStatus());
         $writer->writeEnumValue('type', $this->getType());
@@ -250,14 +250,6 @@ class FeedbackResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the businessId property value. Business ID connected to the feedback item, when the feedback came from a business workspace.
-     * @param string|null $value Value to set for the businessId property.
-    */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
-    }
-
-    /**
      * Sets the clientVersion property value. Client application version that submitted this feedback item response.
      * @param string|null $value Value to set for the clientVersion property.
     */
@@ -287,6 +279,14 @@ class FeedbackResponse implements AdditionalDataHolder, Parsable
     */
     public function setMessage(?string $value): void {
         $this->message = $value;
+    }
+
+    /**
+     * Sets the organizationId property value. Organization ID connected to the feedback item, when the feedback came from an organization workspace.
+     * @param string|null $value Value to set for the organizationId property.
+    */
+    public function setOrganizationId(?string $value): void {
+        $this->organizationId = $value;
     }
 
     /**

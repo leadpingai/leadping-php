@@ -24,7 +24,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?UserResponse_billingPlan $billingPlan = null;
     
     /**
-     * @var UserResponse_billingState|null $billingState Customer-safe billing state for the user's currently selected business.
+     * @var UserResponse_billingState|null $billingState Customer-safe billing state for the user's currently selected organization.
     */
     private ?UserResponse_billingState $billingState = null;
     
@@ -39,9 +39,9 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $createdAt = null;
     
     /**
-     * @var UserResponse_currentBusiness|null $currentBusiness The current business value for this user.
+     * @var UserResponse_currentOrganization|null $currentOrganization The current organization value for this user.
     */
-    private ?UserResponse_currentBusiness $currentBusiness = null;
+    private ?UserResponse_currentOrganization $currentOrganization = null;
     
     /**
      * @var string|null $email The email address associated with this user.
@@ -161,7 +161,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billingState property value. Customer-safe billing state for the user's currently selected business.
+     * Gets the billingState property value. Customer-safe billing state for the user's currently selected organization.
      * @return UserResponse_billingState|null
     */
     public function getBillingState(): ?UserResponse_billingState {
@@ -185,11 +185,11 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the currentBusiness property value. The current business value for this user.
-     * @return UserResponse_currentBusiness|null
+     * Gets the currentOrganization property value. The current organization value for this user.
+     * @return UserResponse_currentOrganization|null
     */
-    public function getCurrentBusiness(): ?UserResponse_currentBusiness {
-        return $this->currentBusiness;
+    public function getCurrentOrganization(): ?UserResponse_currentOrganization {
+        return $this->currentOrganization;
     }
 
     /**
@@ -211,7 +211,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
             'billingState' => fn(ParseNode $n) => $o->setBillingState($n->getObjectValue([UserResponse_billingState::class, 'createFromDiscriminatorValue'])),
             'compliance' => fn(ParseNode $n) => $o->setCompliance($n->getObjectValue([UserResponse_compliance::class, 'createFromDiscriminatorValue'])),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
-            'currentBusiness' => fn(ParseNode $n) => $o->setCurrentBusiness($n->getObjectValue([UserResponse_currentBusiness::class, 'createFromDiscriminatorValue'])),
+            'currentOrganization' => fn(ParseNode $n) => $o->setCurrentOrganization($n->getObjectValue([UserResponse_currentOrganization::class, 'createFromDiscriminatorValue'])),
             'email' => fn(ParseNode $n) => $o->setEmail($n->getStringValue()),
             'firstName' => fn(ParseNode $n) => $o->setFirstName($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
@@ -369,7 +369,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
         $writer->writeObjectValue('billingState', $this->getBillingState());
         $writer->writeObjectValue('compliance', $this->getCompliance());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
-        $writer->writeObjectValue('currentBusiness', $this->getCurrentBusiness());
+        $writer->writeObjectValue('currentOrganization', $this->getCurrentOrganization());
         $writer->writeStringValue('email', $this->getEmail());
         $writer->writeStringValue('firstName', $this->getFirstName());
         $writer->writeStringValue('id', $this->getId());
@@ -407,7 +407,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billingState property value. Customer-safe billing state for the user's currently selected business.
+     * Sets the billingState property value. Customer-safe billing state for the user's currently selected organization.
      * @param UserResponse_billingState|null $value Value to set for the billingState property.
     */
     public function setBillingState(?UserResponse_billingState $value): void {
@@ -431,11 +431,11 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the currentBusiness property value. The current business value for this user.
-     * @param UserResponse_currentBusiness|null $value Value to set for the currentBusiness property.
+     * Sets the currentOrganization property value. The current organization value for this user.
+     * @param UserResponse_currentOrganization|null $value Value to set for the currentOrganization property.
     */
-    public function setCurrentBusiness(?UserResponse_currentBusiness $value): void {
-        $this->currentBusiness = $value;
+    public function setCurrentOrganization(?UserResponse_currentOrganization $value): void {
+        $this->currentOrganization = $value;
     }
 
     /**

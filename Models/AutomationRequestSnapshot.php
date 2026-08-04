@@ -23,11 +23,6 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $businessId Business ID captured when the automation request snapshot was created.
-    */
-    private ?string $businessId = null;
-    
-    /**
      * @var array<AutomationConditionGroup>|null $conditionGroups Grouped automation conditions used to decide whether this workflow should run.
     */
     private ?array $conditionGroups = null;
@@ -63,7 +58,7 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
     private ?bool $isSystemManaged = null;
     
     /**
-     * @var string|null $managementLevel Management level that controls whether Leadping or the business owns this automation setting.
+     * @var string|null $managementLevel Management level that controls whether Leadping or the organization owns this automation setting.
     */
     private ?string $managementLevel = null;
     
@@ -71,6 +66,11 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
      * @var string|null $name Display name for this automation request snapshot in the Leadping API.
     */
     private ?string $name = null;
+    
+    /**
+     * @var string|null $organizationId Organization ID captured when the automation request snapshot was created.
+    */
+    private ?string $organizationId = null;
     
     /**
      * @var string|null $scope Scope that limits where this automation request snapshot applies in Leadping.
@@ -117,14 +117,6 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
     */
     public function getAdditionalData(): ?array {
         return $this->additionalData;
-    }
-
-    /**
-     * Gets the businessId property value. Business ID captured when the automation request snapshot was created.
-     * @return string|null
-    */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
     }
 
     /**
@@ -175,7 +167,6 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'actions' => fn(ParseNode $n) => $o->setActions($n->getCollectionOfObjectValues([AutomationAction::class, 'createFromDiscriminatorValue'])),
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'conditionGroups' => fn(ParseNode $n) => $o->setConditionGroups($n->getCollectionOfObjectValues([AutomationConditionGroup::class, 'createFromDiscriminatorValue'])),
             'connections' => fn(ParseNode $n) => $o->setConnections($n->getCollectionOfObjectValues([AutomationConnection::class, 'createFromDiscriminatorValue'])),
             'createdByUserId' => fn(ParseNode $n) => $o->setCreatedByUserId($n->getStringValue()),
@@ -185,6 +176,7 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
             'isSystemManaged' => fn(ParseNode $n) => $o->setIsSystemManaged($n->getBooleanValue()),
             'managementLevel' => fn(ParseNode $n) => $o->setManagementLevel($n->getStringValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
+            'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'scope' => fn(ParseNode $n) => $o->setScope($n->getStringValue()),
             'triggers' => fn(ParseNode $n) => $o->setTriggers($n->getCollectionOfObjectValues([AutomationTrigger::class, 'createFromDiscriminatorValue'])),
             'visibility' => fn(ParseNode $n) => $o->setVisibility($n->getStringValue()),
@@ -208,7 +200,7 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the managementLevel property value. Management level that controls whether Leadping or the business owns this automation setting.
+     * Gets the managementLevel property value. Management level that controls whether Leadping or the organization owns this automation setting.
      * @return string|null
     */
     public function getManagementLevel(): ?string {
@@ -221,6 +213,14 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
     */
     public function getName(): ?string {
         return $this->name;
+    }
+
+    /**
+     * Gets the organizationId property value. Organization ID captured when the automation request snapshot was created.
+     * @return string|null
+    */
+    public function getOrganizationId(): ?string {
+        return $this->organizationId;
     }
 
     /**
@@ -253,7 +253,6 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeCollectionOfObjectValues('actions', $this->getActions());
-        $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeCollectionOfObjectValues('conditionGroups', $this->getConditionGroups());
         $writer->writeCollectionOfObjectValues('connections', $this->getConnections());
         $writer->writeStringValue('createdByUserId', $this->getCreatedByUserId());
@@ -263,6 +262,7 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('isSystemManaged', $this->getIsSystemManaged());
         $writer->writeStringValue('managementLevel', $this->getManagementLevel());
         $writer->writeStringValue('name', $this->getName());
+        $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeStringValue('scope', $this->getScope());
         $writer->writeCollectionOfObjectValues('triggers', $this->getTriggers());
         $writer->writeStringValue('visibility', $this->getVisibility());
@@ -283,14 +283,6 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the businessId property value. Business ID captured when the automation request snapshot was created.
-     * @param string|null $value Value to set for the businessId property.
-    */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
     }
 
     /**
@@ -350,7 +342,7 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the managementLevel property value. Management level that controls whether Leadping or the business owns this automation setting.
+     * Sets the managementLevel property value. Management level that controls whether Leadping or the organization owns this automation setting.
      * @param string|null $value Value to set for the managementLevel property.
     */
     public function setManagementLevel(?string $value): void {
@@ -363,6 +355,14 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
     */
     public function setName(?string $value): void {
         $this->name = $value;
+    }
+
+    /**
+     * Sets the organizationId property value. Organization ID captured when the automation request snapshot was created.
+     * @param string|null $value Value to set for the organizationId property.
+    */
+    public function setOrganizationId(?string $value): void {
+        $this->organizationId = $value;
     }
 
     /**

@@ -29,11 +29,6 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     private ?BillableUnit $billableUnit = null;
     
     /**
-     * @var UsageLedgerTableRow_business|null $business The ID and name for this business.
-    */
-    private ?UsageLedgerTableRow_business $business = null;
-    
-    /**
      * @var UsageChannel|null $channel The channel value for this usage ledger.
     */
     private ?UsageChannel $channel = null;
@@ -72,6 +67,11 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
      * @var UsageLedgerTableRow_lead|null $lead The ID and name for this lead.
     */
     private ?UsageLedgerTableRow_lead $lead = null;
+    
+    /**
+     * @var UsageLedgerTableRow_organization|null $organization The ID and name for this organization.
+    */
+    private ?UsageLedgerTableRow_organization $organization = null;
     
     /**
      * @var string|null $phoneNumber The phone number associated with this usage ledger.
@@ -149,14 +149,6 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the business property value. The ID and name for this business.
-     * @return UsageLedgerTableRow_business|null
-    */
-    public function getBusiness(): ?UsageLedgerTableRow_business {
-        return $this->business;
-    }
-
-    /**
      * Gets the channel property value. The channel value for this usage ledger.
      * @return UsageChannel|null
     */
@@ -205,7 +197,6 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
         return  [
             'billableSeconds' => fn(ParseNode $n) => $o->setBillableSeconds($n->getIntegerValue()),
             'billableUnit' => fn(ParseNode $n) => $o->setBillableUnit($n->getEnumValue(BillableUnit::class)),
-            'business' => fn(ParseNode $n) => $o->setBusiness($n->getObjectValue([UsageLedgerTableRow_business::class, 'createFromDiscriminatorValue'])),
             'channel' => fn(ParseNode $n) => $o->setChannel($n->getEnumValue(UsageChannel::class)),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'customerChargeAmount' => fn(ParseNode $n) => $o->setCustomerChargeAmount($n->getFloatValue()),
@@ -214,6 +205,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isBillable' => fn(ParseNode $n) => $o->setIsBillable($n->getBooleanValue()),
             'lead' => fn(ParseNode $n) => $o->setLead($n->getObjectValue([UsageLedgerTableRow_lead::class, 'createFromDiscriminatorValue'])),
+            'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([UsageLedgerTableRow_organization::class, 'createFromDiscriminatorValue'])),
             'phoneNumber' => fn(ParseNode $n) => $o->setPhoneNumber($n->getStringValue()),
             'phoneNumberId' => fn(ParseNode $n) => $o->setPhoneNumberId($n->getStringValue()),
             'quantity' => fn(ParseNode $n) => $o->setQuantity($n->getFloatValue()),
@@ -246,6 +238,14 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     */
     public function getLead(): ?UsageLedgerTableRow_lead {
         return $this->lead;
+    }
+
+    /**
+     * Gets the organization property value. The ID and name for this organization.
+     * @return UsageLedgerTableRow_organization|null
+    */
+    public function getOrganization(): ?UsageLedgerTableRow_organization {
+        return $this->organization;
     }
 
     /**
@@ -311,7 +311,6 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeIntegerValue('billableSeconds', $this->getBillableSeconds());
         $writer->writeEnumValue('billableUnit', $this->getBillableUnit());
-        $writer->writeObjectValue('business', $this->getBusiness());
         $writer->writeEnumValue('channel', $this->getChannel());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeFloatValue('customerChargeAmount', $this->getCustomerChargeAmount());
@@ -320,6 +319,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isBillable', $this->getIsBillable());
         $writer->writeObjectValue('lead', $this->getLead());
+        $writer->writeObjectValue('organization', $this->getOrganization());
         $writer->writeStringValue('phoneNumber', $this->getPhoneNumber());
         $writer->writeStringValue('phoneNumberId', $this->getPhoneNumberId());
         $writer->writeFloatValue('quantity', $this->getQuantity());
@@ -352,14 +352,6 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     */
     public function setBillableUnit(?BillableUnit $value): void {
         $this->billableUnit = $value;
-    }
-
-    /**
-     * Sets the business property value. The ID and name for this business.
-     * @param UsageLedgerTableRow_business|null $value Value to set for the business property.
-    */
-    public function setBusiness(?UsageLedgerTableRow_business $value): void {
-        $this->business = $value;
     }
 
     /**
@@ -424,6 +416,14 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     */
     public function setLead(?UsageLedgerTableRow_lead $value): void {
         $this->lead = $value;
+    }
+
+    /**
+     * Sets the organization property value. The ID and name for this organization.
+     * @param UsageLedgerTableRow_organization|null $value Value to set for the organization property.
+    */
+    public function setOrganization(?UsageLedgerTableRow_organization $value): void {
+        $this->organization = $value;
     }
 
     /**

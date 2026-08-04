@@ -5,7 +5,7 @@ namespace Leadping\OpenApiClient\Analytics\My;
 use DateTime;
 
 /**
- * Returns current-business analytics for lead communication, including event volume, response metrics, and date-range filtering.
+ * Returns current-organization analytics for lead communication, including event volume, response metrics, and date-range filtering.
 */
 class MyRequestBuilderGetQueryParameters 
 {

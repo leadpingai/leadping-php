@@ -31,7 +31,7 @@ class PdfAccessRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Creates a short-lived, secure URL that lets the current business view or download a private Stripe invoice PDF without exposing a permanent file link.
+     * Creates a short-lived, secure URL that lets the current organization view or download a private Stripe invoice PDF without exposing a permanent file link.
      * @param PdfAccessRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<InvoicePdfAccessResponse|null>
      * @throws Exception
@@ -45,7 +45,7 @@ class PdfAccessRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Creates a short-lived, secure URL that lets the current business view or download a private Stripe invoice PDF without exposing a permanent file link.
+     * Creates a short-lived, secure URL that lets the current organization view or download a private Stripe invoice PDF without exposing a permanent file link.
      * @param PdfAccessRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

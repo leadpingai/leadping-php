@@ -32,7 +32,7 @@ class IsAvailableForPurchaseRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Checks whether a phone number can be purchased for the current business before creating or assigning it.
+     * Checks whether a phone number can be purchased for the current organization before creating or assigning it.
      * @param PhoneNumberAvailabilityRequest $body Request schema for checking phone number availability before purchase or assignment.
      * @param IsAvailableForPurchaseRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<PhoneNumberAvailabilityResponse|null>
@@ -49,7 +49,7 @@ class IsAvailableForPurchaseRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Checks whether a phone number can be purchased for the current business before creating or assigning it.
+     * Checks whether a phone number can be purchased for the current organization before creating or assigning it.
      * @param PhoneNumberAvailabilityRequest $body Request schema for checking phone number availability before purchase or assignment.
      * @param IsAvailableForPurchaseRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

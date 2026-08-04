@@ -6,7 +6,7 @@ use Exception;
 use Http\Promise\Promise;
 use Leadping\OpenApiClient\Leads\All\AllRequestBuilder;
 use Leadping\OpenApiClient\Leads\Intake\IntakeRequestBuilder;
-use Leadping\OpenApiClient\Leads\Item\LeadsItemRequestBuilder;
+use Leadping\OpenApiClient\Leads\Item\ItemRequestBuilder;
 use Leadping\OpenApiClient\Models\LeadRequest;
 use Leadping\OpenApiClient\Models\LeadResponse;
 use Leadping\OpenApiClient\Models\ProblemDetails;
@@ -37,12 +37,12 @@ class LeadsRequestBuilder extends BaseRequestBuilder
     /**
      * Gets an item from the Leadping/OpenApiClient.leads.item collection
      * @param string $id The ID of the lead to retrieve.
-     * @return LeadsItemRequestBuilder
+     * @return ItemRequestBuilder
     */
-    public function byId(string $id): LeadsItemRequestBuilder {
+    public function byId(string $id): ItemRequestBuilder {
         $urlTplParams = $this->pathParameters;
-        $urlTplParams['id'] = $id;
-        return new LeadsItemRequestBuilder($urlTplParams, $this->requestAdapter);
+        $urlTplParams['%2Did'] = $id;
+        return new ItemRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
     /**

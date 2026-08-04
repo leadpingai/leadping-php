@@ -7,9 +7,9 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Customer-safe billing state for the user's currently selected business.
+ * Customer-safe billing state for the user's currently selected organization.
 */
-class UserResponse_billingState extends BusinessBillingState implements Parsable 
+class UserResponse_billingState extends OrganizationBillingState implements Parsable 
 {
     /**
      * Instantiates a new UserResponse_billingState and sets the default values.

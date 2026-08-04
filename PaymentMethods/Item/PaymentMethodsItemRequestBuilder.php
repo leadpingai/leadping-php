@@ -55,7 +55,7 @@ class PaymentMethodsItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns one payment method for the current user or business, including card metadata used for billing management.
+     * Returns one payment method for the current user or organization, including card metadata used for billing management.
      * @param PaymentMethodsItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<StripePaymentMethodResponse|null>
      * @throws Exception
@@ -89,7 +89,7 @@ class PaymentMethodsItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns one payment method for the current user or business, including card metadata used for billing management.
+     * Returns one payment method for the current user or organization, including card metadata used for billing management.
      * @param PaymentMethodsItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

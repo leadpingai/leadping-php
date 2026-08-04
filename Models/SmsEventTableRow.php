@@ -44,16 +44,6 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     private ?DateTime $blockedAt = null;
     
     /**
-     * @var string|null $business Business summary connected to this SMS event table row.
-    */
-    private ?string $business = null;
-    
-    /**
-     * @var string|null $businessName Business display name shown for this SMS event.
-    */
-    private ?string $businessName = null;
-    
-    /**
      * @var DateTime|null $canceledAt UTC timestamp when this delivery or workflow was canceled.
     */
     private ?DateTime $canceledAt = null;
@@ -132,6 +122,16 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
      * @var array<MessageMediaAttachment>|null $media Media attached to this SMS/MMS event.
     */
     private ?array $media = null;
+    
+    /**
+     * @var string|null $organization Organization summary connected to this SMS event table row.
+    */
+    private ?string $organization = null;
+    
+    /**
+     * @var string|null $organizationName Organization display name shown for this SMS event.
+    */
+    private ?string $organizationName = null;
     
     /**
      * @var string|null $outboundPhoneNumberId Phone number ID selected for outbound delivery.
@@ -283,22 +283,6 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the business property value. Business summary connected to this SMS event table row.
-     * @return string|null
-    */
-    public function getBusiness(): ?string {
-        return $this->business;
-    }
-
-    /**
-     * Gets the businessName property value. Business display name shown for this SMS event.
-     * @return string|null
-    */
-    public function getBusinessName(): ?string {
-        return $this->businessName;
-    }
-
-    /**
      * Gets the canceledAt property value. UTC timestamp when this delivery or workflow was canceled.
      * @return DateTime|null
     */
@@ -390,8 +374,6 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
             'billableAmount' => fn(ParseNode $n) => $o->setBillableAmount($n->getFloatValue()),
             'billingStatus' => fn(ParseNode $n) => $o->setBillingStatus($n->getStringValue()),
             'blockedAt' => fn(ParseNode $n) => $o->setBlockedAt($n->getDateTimeValue()),
-            'business' => fn(ParseNode $n) => $o->setBusiness($n->getStringValue()),
-            'businessName' => fn(ParseNode $n) => $o->setBusinessName($n->getStringValue()),
             'canceledAt' => fn(ParseNode $n) => $o->setCanceledAt($n->getDateTimeValue()),
             'cancelReason' => fn(ParseNode $n) => $o->setCancelReason($n->getStringValue()),
             'complianceAction' => fn(ParseNode $n) => $o->setComplianceAction($n->getStringValue()),
@@ -408,6 +390,8 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
             'isAutomated' => fn(ParseNode $n) => $o->setIsAutomated($n->getBooleanValue()),
             'lead' => fn(ParseNode $n) => $o->setLead($n->getObjectValue([IdNamePair::class, 'createFromDiscriminatorValue'])),
             'media' => fn(ParseNode $n) => $o->setMedia($n->getCollectionOfObjectValues([MessageMediaAttachment::class, 'createFromDiscriminatorValue'])),
+            'organization' => fn(ParseNode $n) => $o->setOrganization($n->getStringValue()),
+            'organizationName' => fn(ParseNode $n) => $o->setOrganizationName($n->getStringValue()),
             'outboundPhoneNumberId' => fn(ParseNode $n) => $o->setOutboundPhoneNumberId($n->getStringValue()),
             'outboundSource' => fn(ParseNode $n) => $o->setOutboundSource($n->getEnumValue(SmsEventTableRow_outboundSource::class)),
             'queuedAt' => fn(ParseNode $n) => $o->setQueuedAt($n->getDateTimeValue()),
@@ -474,6 +458,22 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function getMedia(): ?array {
         return $this->media;
+    }
+
+    /**
+     * Gets the organization property value. Organization summary connected to this SMS event table row.
+     * @return string|null
+    */
+    public function getOrganization(): ?string {
+        return $this->organization;
+    }
+
+    /**
+     * Gets the organizationName property value. Organization display name shown for this SMS event.
+     * @return string|null
+    */
+    public function getOrganizationName(): ?string {
+        return $this->organizationName;
     }
 
     /**
@@ -622,8 +622,6 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeFloatValue('billableAmount', $this->getBillableAmount());
         $writer->writeStringValue('billingStatus', $this->getBillingStatus());
         $writer->writeDateTimeValue('blockedAt', $this->getBlockedAt());
-        $writer->writeStringValue('business', $this->getBusiness());
-        $writer->writeStringValue('businessName', $this->getBusinessName());
         $writer->writeDateTimeValue('canceledAt', $this->getCanceledAt());
         $writer->writeStringValue('cancelReason', $this->getCancelReason());
         $writer->writeStringValue('complianceAction', $this->getComplianceAction());
@@ -640,6 +638,8 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('isAutomated', $this->getIsAutomated());
         $writer->writeObjectValue('lead', $this->getLead());
         $writer->writeCollectionOfObjectValues('media', $this->getMedia());
+        $writer->writeStringValue('organization', $this->getOrganization());
+        $writer->writeStringValue('organizationName', $this->getOrganizationName());
         $writer->writeStringValue('outboundPhoneNumberId', $this->getOutboundPhoneNumberId());
         $writer->writeEnumValue('outboundSource', $this->getOutboundSource());
         $writer->writeDateTimeValue('queuedAt', $this->getQueuedAt());
@@ -706,22 +706,6 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setBlockedAt(?DateTime $value): void {
         $this->blockedAt = $value;
-    }
-
-    /**
-     * Sets the business property value. Business summary connected to this SMS event table row.
-     * @param string|null $value Value to set for the business property.
-    */
-    public function setBusiness(?string $value): void {
-        $this->business = $value;
-    }
-
-    /**
-     * Sets the businessName property value. Business display name shown for this SMS event.
-     * @param string|null $value Value to set for the businessName property.
-    */
-    public function setBusinessName(?string $value): void {
-        $this->businessName = $value;
     }
 
     /**
@@ -850,6 +834,22 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setMedia(?array $value): void {
         $this->media = $value;
+    }
+
+    /**
+     * Sets the organization property value. Organization summary connected to this SMS event table row.
+     * @param string|null $value Value to set for the organization property.
+    */
+    public function setOrganization(?string $value): void {
+        $this->organization = $value;
+    }
+
+    /**
+     * Sets the organizationName property value. Organization display name shown for this SMS event.
+     * @param string|null $value Value to set for the organizationName property.
+    */
+    public function setOrganizationName(?string $value): void {
+        $this->organizationName = $value;
     }
 
     /**

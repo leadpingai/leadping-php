@@ -31,7 +31,7 @@ class MyRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns current-business usage totals for the active billing period, including spend, limits, and event summary data.
+     * Returns current-organization usage totals for the active billing period, including spend, limits, and event summary data.
      * @param MyRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<UsageSummaryResponse|null>
      * @throws Exception
@@ -45,7 +45,7 @@ class MyRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns current-business usage totals for the active billing period, including spend, limits, and event summary data.
+     * Returns current-organization usage totals for the active billing period, including spend, limits, and event summary data.
      * @param MyRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

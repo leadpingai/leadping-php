@@ -38,7 +38,7 @@ class LeadContact implements AdditionalDataHolder, Parsable
     private ?string $lastName = null;
     
     /**
-     * @var LeadContact_phone|null $phone Phone details for the lead, user, or business represented by this lead contact profile.
+     * @var LeadContact_phone|null $phone Phone details for the lead, user, or organization represented by this lead contact profile.
     */
     private ?LeadContact_phone $phone = null;
     
@@ -126,7 +126,7 @@ class LeadContact implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the phone property value. Phone details for the lead, user, or business represented by this lead contact profile.
+     * Gets the phone property value. Phone details for the lead, user, or organization represented by this lead contact profile.
      * @return LeadContact_phone|null
     */
     public function getPhone(): ?LeadContact_phone {
@@ -205,7 +205,7 @@ class LeadContact implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the phone property value. Phone details for the lead, user, or business represented by this lead contact profile.
+     * Sets the phone property value. Phone details for the lead, user, or organization represented by this lead contact profile.
      * @param LeadContact_phone|null $value Value to set for the phone property.
     */
     public function setPhone(?LeadContact_phone $value): void {

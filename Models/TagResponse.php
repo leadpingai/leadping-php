@@ -24,11 +24,6 @@ class TagResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $archivedAt = null;
     
     /**
-     * @var string|null $businessId Business ID that owns this tag.
-    */
-    private ?string $businessId = null;
-    
-    /**
      * @var string|null $color Hex color used to display this tag or status in Leadping clients.
     */
     private ?string $color = null;
@@ -74,6 +69,11 @@ class TagResponse implements AdditionalDataHolder, Parsable
     private ?string $normalizedName = null;
     
     /**
+     * @var string|null $organizationId Organization ID that owns this tag.
+    */
+    private ?string $organizationId = null;
+    
+    /**
      * Instantiates a new TagResponse and sets the default values.
     */
     public function __construct() {
@@ -103,14 +103,6 @@ class TagResponse implements AdditionalDataHolder, Parsable
     */
     public function getArchivedAt(): ?DateTime {
         return $this->archivedAt;
-    }
-
-    /**
-     * Gets the businessId property value. Business ID that owns this tag.
-     * @return string|null
-    */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
     }
 
     /**
@@ -153,7 +145,6 @@ class TagResponse implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'archivedAt' => fn(ParseNode $n) => $o->setArchivedAt($n->getDateTimeValue()),
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'color' => fn(ParseNode $n) => $o->setColor($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'createdByUserId' => fn(ParseNode $n) => $o->setCreatedByUserId($n->getStringValue()),
@@ -163,6 +154,7 @@ class TagResponse implements AdditionalDataHolder, Parsable
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'normalizedName' => fn(ParseNode $n) => $o->setNormalizedName($n->getStringValue()),
+            'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
         ];
     }
 
@@ -207,12 +199,19 @@ class TagResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the organizationId property value. Organization ID that owns this tag.
+     * @return string|null
+    */
+    public function getOrganizationId(): ?string {
+        return $this->organizationId;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeDateTimeValue('archivedAt', $this->getArchivedAt());
-        $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeStringValue('color', $this->getColor());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('createdByUserId', $this->getCreatedByUserId());
@@ -222,6 +221,7 @@ class TagResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeStringValue('normalizedName', $this->getNormalizedName());
+        $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -239,14 +239,6 @@ class TagResponse implements AdditionalDataHolder, Parsable
     */
     public function setArchivedAt(?DateTime $value): void {
         $this->archivedAt = $value;
-    }
-
-    /**
-     * Sets the businessId property value. Business ID that owns this tag.
-     * @param string|null $value Value to set for the businessId property.
-    */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
     }
 
     /**
@@ -319,6 +311,14 @@ class TagResponse implements AdditionalDataHolder, Parsable
     */
     public function setNormalizedName(?string $value): void {
         $this->normalizedName = $value;
+    }
+
+    /**
+     * Sets the organizationId property value. Organization ID that owns this tag.
+     * @param string|null $value Value to set for the organizationId property.
+    */
+    public function setOrganizationId(?string $value): void {
+        $this->organizationId = $value;
     }
 
 }

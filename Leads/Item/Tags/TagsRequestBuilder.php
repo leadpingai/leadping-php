@@ -14,7 +14,7 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
 
 /**
- * Builds and executes requests for operations under /leads/{id}/tags
+ * Builds and executes requests for operations under /leads/{-id}/tags
 */
 class TagsRequestBuilder extends BaseRequestBuilder 
 {
@@ -35,7 +35,7 @@ class TagsRequestBuilder extends BaseRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/leads/{id}/tags');
+        parent::__construct($requestAdapter, [], '{+baseurl}/leads/{%2Did}/tags');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {
@@ -44,7 +44,7 @@ class TagsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Adds one or more current-business tags to a lead so users can segment, filter, route, and review follow-up work.
+     * Adds one or more current-organization tags to a lead so users can segment, filter, route, and review follow-up work.
      * @param LeadTagsRequest $body Request schema for the Leadping API lead tag update request, including the fields clients can send.
      * @param TagsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<LeadResponse|null>
@@ -61,7 +61,7 @@ class TagsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Replaces all tags on a lead with the supplied current-business tags, keeping segmentation and routing labels in sync.
+     * Replaces all tags on a lead with the supplied current-organization tags, keeping segmentation and routing labels in sync.
      * @param LeadTagsRequest $body Request schema for the Leadping API lead tag update request, including the fields clients can send.
      * @param TagsRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<LeadResponse|null>
@@ -78,7 +78,7 @@ class TagsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Adds one or more current-business tags to a lead so users can segment, filter, route, and review follow-up work.
+     * Adds one or more current-organization tags to a lead so users can segment, filter, route, and review follow-up work.
      * @param LeadTagsRequest $body Request schema for the Leadping API lead tag update request, including the fields clients can send.
      * @param TagsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -98,7 +98,7 @@ class TagsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Replaces all tags on a lead with the supplied current-business tags, keeping segmentation and routing labels in sync.
+     * Replaces all tags on a lead with the supplied current-organization tags, keeping segmentation and routing labels in sync.
      * @param LeadTagsRequest $body Request schema for the Leadping API lead tag update request, including the fields clients can send.
      * @param TagsRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

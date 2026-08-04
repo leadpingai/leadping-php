@@ -32,7 +32,7 @@ class FeedbackRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Creates product feedback for the current business, capturing category, message, and context for operator review.
+     * Creates product feedback for the current organization, capturing category, message, and context for operator review.
      * @param FeedbackCreateRequest $body Request schema for the Leadping API feedback creation request, including the fields clients can send.
      * @param FeedbackRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<FeedbackResponse|null>
@@ -48,7 +48,7 @@ class FeedbackRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Creates product feedback for the current business, capturing category, message, and context for operator review.
+     * Creates product feedback for the current organization, capturing category, message, and context for operator review.
      * @param FeedbackCreateRequest $body Request schema for the Leadping API feedback creation request, including the fields clients can send.
      * @param FeedbackRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

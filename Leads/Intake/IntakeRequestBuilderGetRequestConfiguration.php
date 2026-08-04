@@ -32,7 +32,7 @@ class IntakeRequestBuilderGetRequestConfiguration extends BaseRequestConfigurati
      * @param string|null $address1 First street address line submitted by the lead intake source.
      * @param string|null $address2 Second street address line submitted by the lead intake source.
      * @param Date|null $birthDate Lead birth date used for demographic matching and insurance intake workflows.
-     * @param string|null $city City for the lead or business postal address.
+     * @param string|null $city City for the lead or organization postal address.
      * @param Date|null $dateOfBirth Lead date of birth supplied by intake sources and normalized into the lead profile.
      * @param float|null $directPostPrice Direct-post price supplied by the lead source during intake.
      * @param string|null $email Email address for the person represented by this lead intake request.
@@ -41,9 +41,9 @@ class IntakeRequestBuilderGetRequestConfiguration extends BaseRequestConfigurati
      * @param string|null $gender Lead gender supplied by intake sources and normalized when possible.
      * @param string|null $landingPage Landing page URL where the lead submitted their information.
      * @param string|null $lastName Last name of the lead, user, or contact represented by this lead intake request.
-     * @param string|null $phone Phone details for the lead, user, or business represented by this lead intake request.
+     * @param string|null $phone Phone details for the lead, user, or organization represented by this lead intake request.
      * @param string|null $phoneType Source-provided phone type, such as mobile, landline, or VoIP, used during lead intake normalization.
-     * @param string|null $postalCode Postal code for the lead or business address.
+     * @param string|null $postalCode Postal code for the lead or organization address.
      * @param float|null $price Lead price or transaction price supplied to the Leadping API.
      * @param string|null $product Product or offer associated with the lead or source.
      * @param string|null $referrer Referring page or traffic source that sent the lead into Leadping.
@@ -51,7 +51,7 @@ class IntakeRequestBuilderGetRequestConfiguration extends BaseRequestConfigurati
      * @param string|null $sellerLeadIdentifier Alternate seller-provided lead identifier used during intake normalization.
      * @param string|null $sourceKey The Leadping source key supplied as a query string parameter, or omitted when supplied as Authorization: Bearer lp_src_...
      * @param string|null $sourceMetadata Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
-     * @param string|null $state State, province, or region for the lead or business postal address.
+     * @param string|null $state State, province, or region for the lead or organization postal address.
      * @param string|null $subId Affiliate or publisher sub ID captured for lead attribution.
      * @param array<string>|null $tagIds Tag IDs assigned to or filtered against this lead.
      * @param array<string>|null $tagNames Tag names assigned to this lead when matching existing tags by name.

@@ -11,7 +11,7 @@ class EventDetailResponse_timelineType extends Enum {
     public const CALL = "Call";
     public const VOICEMAIL = "Voicemail";
     public const NOTE = "Note";
-    public const DISPOSITION = "Disposition";
+    public const LEAD_STATUS_CHANGE = "LeadStatusChange";
     public const LEAD_CREATED = "LeadCreated";
     public const LEAD_UPDATED = "LeadUpdated";
     public const NOTIFICATION = "Notification";

@@ -32,7 +32,7 @@ class AutomationsItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Deletes an automation for the current business so it no longer schedules follow-up or routing work for captured leads.
+     * Deletes an automation for the current organization so it no longer schedules follow-up or routing work for captured leads.
      * @param AutomationsItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<bool|null>
      * @throws Exception
@@ -49,7 +49,7 @@ class AutomationsItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns one automation for the current business, including trigger criteria, message steps, routing settings, and enabled state.
+     * Returns one automation for the current organization, including trigger criteria, message steps, routing settings, and enabled state.
      * @param AutomationsItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<AutomationResponse|null>
      * @throws Exception
@@ -64,7 +64,7 @@ class AutomationsItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Updates an automation for current-business leads, changing triggers, message steps, routing, or active follow-up settings.
+     * Updates an automation for current-organization leads, changing triggers, message steps, routing, or active follow-up settings.
      * @param AutomationRequest $body Request schema for the Leadping API automation configuration request, including the fields clients can send.
      * @param AutomationsItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<AutomationResponse|null>
@@ -81,7 +81,7 @@ class AutomationsItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Deletes an automation for the current business so it no longer schedules follow-up or routing work for captured leads.
+     * Deletes an automation for the current organization so it no longer schedules follow-up or routing work for captured leads.
      * @param AutomationsItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -99,7 +99,7 @@ class AutomationsItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns one automation for the current business, including trigger criteria, message steps, routing settings, and enabled state.
+     * Returns one automation for the current organization, including trigger criteria, message steps, routing settings, and enabled state.
      * @param AutomationsItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -117,7 +117,7 @@ class AutomationsItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Updates an automation for current-business leads, changing triggers, message steps, routing, or active follow-up settings.
+     * Updates an automation for current-organization leads, changing triggers, message steps, routing, or active follow-up settings.
      * @param AutomationRequest $body Request schema for the Leadping API automation configuration request, including the fields clients can send.
      * @param AutomationsItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

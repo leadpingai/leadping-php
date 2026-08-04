@@ -32,7 +32,7 @@ class ComplianceRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Updates current-user compliance settings used for messaging eligibility, billing readiness, and business account setup.
+     * Updates current-user compliance settings used for messaging eligibility, billing readiness, and organization account setup.
      * @param ComplianceUpdateRequest $body Request payload for compliance update.
      * @param ComplianceRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<UserResponse|null>
@@ -48,7 +48,7 @@ class ComplianceRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Updates current-user compliance settings used for messaging eligibility, billing readiness, and business account setup.
+     * Updates current-user compliance settings used for messaging eligibility, billing readiness, and organization account setup.
      * @param ComplianceUpdateRequest $body Request payload for compliance update.
      * @param ComplianceRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

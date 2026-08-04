@@ -29,11 +29,6 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     private ?AutomationWorkflowRunResponse_automation $automation = null;
     
     /**
-     * @var string|null $businessId Unique identifier of the business associated with this Leadping automation workflow run.
-    */
-    private ?string $businessId = null;
-    
-    /**
      * @var DateTime|null $cancelledAt Date and time when the automation workflow run was cancelled.
     */
     private ?DateTime $cancelledAt = null;
@@ -107,6 +102,11 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
      * @var DateTime|null $nextRetryAt Date and time when the next retry is scheduled.
     */
     private ?DateTime $nextRetryAt = null;
+    
+    /**
+     * @var string|null $organizationId Unique identifier of the organization associated with this Leadping automation workflow run.
+    */
+    private ?string $organizationId = null;
     
     /**
      * @var int|null $retryCount Total number of retry records represented by this Leadping automation workflow run.
@@ -194,14 +194,6 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the businessId property value. Unique identifier of the business associated with this Leadping automation workflow run.
-     * @return string|null
-    */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
-    }
-
-    /**
      * Gets the cancelledAt property value. Date and time when the automation workflow run was cancelled.
      * @return DateTime|null
     */
@@ -258,7 +250,6 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
         return  [
             'actions' => fn(ParseNode $n) => $o->setActions($n->getCollectionOfObjectValues([AutomationWorkflowActionResponse::class, 'createFromDiscriminatorValue'])),
             'automation' => fn(ParseNode $n) => $o->setAutomation($n->getObjectValue([AutomationWorkflowRunResponse_automation::class, 'createFromDiscriminatorValue'])),
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'cancelledAt' => fn(ParseNode $n) => $o->setCancelledAt($n->getDateTimeValue()),
             'completedAt' => fn(ParseNode $n) => $o->setCompletedAt($n->getDateTimeValue()),
             'currentStep' => fn(ParseNode $n) => $o->setCurrentStep($n->getObjectValue([AutomationWorkflowRunResponse_currentStep::class, 'createFromDiscriminatorValue'])),
@@ -274,6 +265,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
             'maxRetryCount' => fn(ParseNode $n) => $o->setMaxRetryCount($n->getIntegerValue()),
             'nextExecutionAt' => fn(ParseNode $n) => $o->setNextExecutionAt($n->getDateTimeValue()),
             'nextRetryAt' => fn(ParseNode $n) => $o->setNextRetryAt($n->getDateTimeValue()),
+            'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'retryCount' => fn(ParseNode $n) => $o->setRetryCount($n->getIntegerValue()),
             'skipReasonCode' => fn(ParseNode $n) => $o->setSkipReasonCode($n->getStringValue()),
             'skipReasonDisplay' => fn(ParseNode $n) => $o->setSkipReasonDisplay($n->getStringValue()),
@@ -359,6 +351,14 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the organizationId property value. Unique identifier of the organization associated with this Leadping automation workflow run.
+     * @return string|null
+    */
+    public function getOrganizationId(): ?string {
+        return $this->organizationId;
+    }
+
+    /**
      * Gets the retryCount property value. Total number of retry records represented by this Leadping automation workflow run.
      * @return int|null
     */
@@ -437,7 +437,6 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeCollectionOfObjectValues('actions', $this->getActions());
         $writer->writeObjectValue('automation', $this->getAutomation());
-        $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeDateTimeValue('cancelledAt', $this->getCancelledAt());
         $writer->writeDateTimeValue('completedAt', $this->getCompletedAt());
         $writer->writeObjectValue('currentStep', $this->getCurrentStep());
@@ -453,6 +452,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
         $writer->writeIntegerValue('maxRetryCount', $this->getMaxRetryCount());
         $writer->writeDateTimeValue('nextExecutionAt', $this->getNextExecutionAt());
         $writer->writeDateTimeValue('nextRetryAt', $this->getNextRetryAt());
+        $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeIntegerValue('retryCount', $this->getRetryCount());
         $writer->writeStringValue('skipReasonCode', $this->getSkipReasonCode());
         $writer->writeStringValue('skipReasonDisplay', $this->getSkipReasonDisplay());
@@ -487,14 +487,6 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     */
     public function setAutomation(?AutomationWorkflowRunResponse_automation $value): void {
         $this->automation = $value;
-    }
-
-    /**
-     * Sets the businessId property value. Unique identifier of the business associated with this Leadping automation workflow run.
-     * @param string|null $value Value to set for the businessId property.
-    */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
     }
 
     /**
@@ -615,6 +607,14 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     */
     public function setNextRetryAt(?DateTime $value): void {
         $this->nextRetryAt = $value;
+    }
+
+    /**
+     * Sets the organizationId property value. Unique identifier of the organization associated with this Leadping automation workflow run.
+     * @param string|null $value Value to set for the organizationId property.
+    */
+    public function setOrganizationId(?string $value): void {
+        $this->organizationId = $value;
     }
 
     /**

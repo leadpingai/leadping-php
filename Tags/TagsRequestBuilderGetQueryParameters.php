@@ -3,7 +3,7 @@
 namespace Leadping\OpenApiClient\Tags;
 
 /**
- * Lists tags for the current business, optionally including archived tags, for lead segmentation, filters, and routing labels.
+ * Lists tags for the current organization, optionally including archived tags, for lead segmentation, filters, and routing labels.
 */
 class TagsRequestBuilderGetQueryParameters 
 {

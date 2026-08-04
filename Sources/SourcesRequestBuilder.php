@@ -52,7 +52,7 @@ class SourcesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Creates a lead source for the current business, storing intake credentials and routing context for captured external leads.
+     * Creates a lead source for the current organization, storing intake credentials and routing context for captured external leads.
      * @param SourceRequest $body Request schema for the Leadping API lead source request, including the fields clients can send.
      * @param SourcesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<SourceResponse|null>
@@ -68,7 +68,7 @@ class SourcesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Creates a lead source for the current business, storing intake credentials and routing context for captured external leads.
+     * Creates a lead source for the current organization, storing intake credentials and routing context for captured external leads.
      * @param SourceRequest $body Request schema for the Leadping API lead source request, including the fields clients can send.
      * @param SourcesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

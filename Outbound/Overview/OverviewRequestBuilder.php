@@ -31,7 +31,7 @@ class OverviewRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns current-business outbound capacity, scheduled work, and pacing decisions used to control lead communication delivery.
+     * Returns current-organization outbound capacity, scheduled work, and pacing decisions used to control lead communication delivery.
      * @param OverviewRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<OutboundCapacityOverview|null>
      * @throws Exception
@@ -45,7 +45,7 @@ class OverviewRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns current-business outbound capacity, scheduled work, and pacing decisions used to control lead communication delivery.
+     * Returns current-organization outbound capacity, scheduled work, and pacing decisions used to control lead communication delivery.
      * @param OverviewRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

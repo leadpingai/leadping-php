@@ -48,7 +48,7 @@ class OutgoingNumberSelectionRequest implements AdditionalDataHolder, Parsable
     private ?string $sourceId = null;
     
     /**
-     * @var string|null $teamId Team ID used to choose the best outgoing sender number.
+     * @var string|null $teamId Organization ID used to choose the best outgoing sender number.
     */
     private ?string $teamId = null;
     
@@ -142,7 +142,7 @@ class OutgoingNumberSelectionRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the teamId property value. Team ID used to choose the best outgoing sender number.
+     * Gets the teamId property value. Organization ID used to choose the best outgoing sender number.
      * @return string|null
     */
     public function getTeamId(): ?string {
@@ -221,7 +221,7 @@ class OutgoingNumberSelectionRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the teamId property value. Team ID used to choose the best outgoing sender number.
+     * Sets the teamId property value. Organization ID used to choose the best outgoing sender number.
      * @param string|null $value Value to set for the teamId property.
     */
     public function setTeamId(?string $value): void {

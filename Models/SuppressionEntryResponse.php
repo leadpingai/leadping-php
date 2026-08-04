@@ -24,11 +24,6 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     private ?array $audit = null;
     
     /**
-     * @var string|null $businessId The business ID associated with this ion entry.
-    */
-    private ?string $businessId = null;
-    
-    /**
      * @var string|null $channel The channel value for this ion entry.
     */
     private ?string $channel = null;
@@ -47,6 +42,11 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
      * @var string|null $normalizedPhoneNumber The phone number associated with this ion entry.
     */
     private ?string $normalizedPhoneNumber = null;
+    
+    /**
+     * @var string|null $organizationId The organization ID associated with this ion entry.
+    */
+    private ?string $organizationId = null;
     
     /**
      * @var string|null $reason The human-readable reason explaining this ion entry.
@@ -111,14 +111,6 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the businessId property value. The business ID associated with this ion entry.
-     * @return string|null
-    */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
-    }
-
-    /**
      * Gets the channel property value. The channel value for this ion entry.
      * @return string|null
     */
@@ -134,11 +126,11 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'audit' => fn(ParseNode $n) => $o->setAudit($n->getCollectionOfObjectValues([SuppressionEntryAudit::class, 'createFromDiscriminatorValue'])),
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'channel' => fn(ParseNode $n) => $o->setChannel($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'normalizedEmail' => fn(ParseNode $n) => $o->setNormalizedEmail($n->getStringValue()),
             'normalizedPhoneNumber' => fn(ParseNode $n) => $o->setNormalizedPhoneNumber($n->getStringValue()),
+            'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'reason' => fn(ParseNode $n) => $o->setReason($n->getStringValue()),
             'recipientIdentifier' => fn(ParseNode $n) => $o->setRecipientIdentifier($n->getStringValue()),
             'releasedAt' => fn(ParseNode $n) => $o->setReleasedAt($n->getDateTimeValue()),
@@ -170,6 +162,14 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     */
     public function getNormalizedPhoneNumber(): ?string {
         return $this->normalizedPhoneNumber;
+    }
+
+    /**
+     * Gets the organizationId property value. The organization ID associated with this ion entry.
+     * @return string|null
+    */
+    public function getOrganizationId(): ?string {
+        return $this->organizationId;
     }
 
     /**
@@ -226,11 +226,11 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeCollectionOfObjectValues('audit', $this->getAudit());
-        $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeStringValue('channel', $this->getChannel());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeStringValue('normalizedEmail', $this->getNormalizedEmail());
         $writer->writeStringValue('normalizedPhoneNumber', $this->getNormalizedPhoneNumber());
+        $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeStringValue('reason', $this->getReason());
         $writer->writeStringValue('recipientIdentifier', $this->getRecipientIdentifier());
         $writer->writeDateTimeValue('releasedAt', $this->getReleasedAt());
@@ -254,14 +254,6 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     */
     public function setAudit(?array $value): void {
         $this->audit = $value;
-    }
-
-    /**
-     * Sets the businessId property value. The business ID associated with this ion entry.
-     * @param string|null $value Value to set for the businessId property.
-    */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
     }
 
     /**
@@ -294,6 +286,14 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     */
     public function setNormalizedPhoneNumber(?string $value): void {
         $this->normalizedPhoneNumber = $value;
+    }
+
+    /**
+     * Sets the organizationId property value. The organization ID associated with this ion entry.
+     * @param string|null $value Value to set for the organizationId property.
+    */
+    public function setOrganizationId(?string $value): void {
+        $this->organizationId = $value;
     }
 
     /**

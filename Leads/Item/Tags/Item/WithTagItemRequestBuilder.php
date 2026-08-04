@@ -12,7 +12,7 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
 
 /**
- * Builds and executes requests for operations under /leads/{id}/tags/{tagId}
+ * Builds and executes requests for operations under /leads/{-id}/tags/{tagId}
 */
 class WithTagItemRequestBuilder extends BaseRequestBuilder 
 {
@@ -22,7 +22,7 @@ class WithTagItemRequestBuilder extends BaseRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/leads/{id}/tags/{tagId}');
+        parent::__construct($requestAdapter, [], '{+baseurl}/leads/{%2Did}/tags/{tagId}');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {
@@ -31,7 +31,7 @@ class WithTagItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Removes one current-business tag from a lead while leaving the lead record, other tags, and communication history intact.
+     * Removes one current-organization tag from a lead while leaving the lead record, other tags, and communication history intact.
      * @param WithTagItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<LeadResponse|null>
      * @throws Exception
@@ -46,7 +46,7 @@ class WithTagItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Removes one current-business tag from a lead while leaving the lead record, other tags, and communication history intact.
+     * Removes one current-organization tag from a lead while leaving the lead record, other tags, and communication history intact.
      * @param WithTagItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

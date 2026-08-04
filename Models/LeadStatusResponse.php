@@ -19,14 +19,9 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $businessId Identifier of the business that owns the lead status.
+     * @var LeadStatusCategory|null $category LeadStatusChange category represented by the lead status.
     */
-    private ?string $businessId = null;
-    
-    /**
-     * @var DispositionCategory|null $category Disposition category represented by the lead status.
-    */
-    private ?DispositionCategory $category = null;
+    private ?LeadStatusCategory $category = null;
     
     /**
      * @var string|null $color Display color assigned to the lead status.
@@ -52,6 +47,11 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
      * @var string|null $name Display name of the lead status.
     */
     private ?string $name = null;
+    
+    /**
+     * @var string|null $organizationId Identifier of the organization that owns the lead status.
+    */
+    private ?string $organizationId = null;
     
     /**
      * @var int|null $sortOrder Relative display order of the lead status.
@@ -83,18 +83,10 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the businessId property value. Identifier of the business that owns the lead status.
-     * @return string|null
+     * Gets the category property value. LeadStatusChange category represented by the lead status.
+     * @return LeadStatusCategory|null
     */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
-    }
-
-    /**
-     * Gets the category property value. Disposition category represented by the lead status.
-     * @return DispositionCategory|null
-    */
-    public function getCategory(): ?DispositionCategory {
+    public function getCategory(): ?LeadStatusCategory {
         return $this->category;
     }
 
@@ -113,13 +105,13 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
-            'category' => fn(ParseNode $n) => $o->setCategory($n->getEnumValue(DispositionCategory::class)),
+            'category' => fn(ParseNode $n) => $o->setCategory($n->getEnumValue(LeadStatusCategory::class)),
             'color' => fn(ParseNode $n) => $o->setColor($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isArchived' => fn(ParseNode $n) => $o->setIsArchived($n->getBooleanValue()),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
+            'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'sortOrder' => fn(ParseNode $n) => $o->setSortOrder($n->getIntegerValue()),
         ];
     }
@@ -157,6 +149,14 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the organizationId property value. Identifier of the organization that owns the lead status.
+     * @return string|null
+    */
+    public function getOrganizationId(): ?string {
+        return $this->organizationId;
+    }
+
+    /**
      * Gets the sortOrder property value. Relative display order of the lead status.
      * @return int|null
     */
@@ -169,13 +169,13 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeEnumValue('category', $this->getCategory());
         $writer->writeStringValue('color', $this->getColor());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isArchived', $this->getIsArchived());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('name', $this->getName());
+        $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeIntegerValue('sortOrder', $this->getSortOrder());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -189,18 +189,10 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the businessId property value. Identifier of the business that owns the lead status.
-     * @param string|null $value Value to set for the businessId property.
+     * Sets the category property value. LeadStatusChange category represented by the lead status.
+     * @param LeadStatusCategory|null $value Value to set for the category property.
     */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
-    }
-
-    /**
-     * Sets the category property value. Disposition category represented by the lead status.
-     * @param DispositionCategory|null $value Value to set for the category property.
-    */
-    public function setCategory(?DispositionCategory $value): void {
+    public function setCategory(?LeadStatusCategory $value): void {
         $this->category = $value;
     }
 
@@ -242,6 +234,14 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     */
     public function setName(?string $value): void {
         $this->name = $value;
+    }
+
+    /**
+     * Sets the organizationId property value. Identifier of the organization that owns the lead status.
+     * @param string|null $value Value to set for the organizationId property.
+    */
+    public function setOrganizationId(?string $value): void {
+        $this->organizationId = $value;
     }
 
     /**

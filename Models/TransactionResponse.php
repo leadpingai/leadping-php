@@ -39,11 +39,6 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     private ?TransactionResponse_billingChannel $billingChannel = null;
     
     /**
-     * @var TransactionResponse_business|null $business The ID and name for this business.
-    */
-    private ?TransactionResponse_business $business = null;
-    
-    /**
      * @var DateTime|null $createdAt The date and time when the entity was created.
     */
     private ?DateTime $createdAt = null;
@@ -87,6 +82,11 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
      * @var string|null $notes Additional billing notes that explain the transaction for admins or customers.
     */
     private ?string $notes = null;
+    
+    /**
+     * @var TransactionResponse_organization|null $organization The ID and name for this organization.
+    */
+    private ?TransactionResponse_organization $organization = null;
     
     /**
      * @var string|null $paymentMethodDisplay Masked or human-readable payment method shown for this transaction.
@@ -165,14 +165,6 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the business property value. The ID and name for this business.
-     * @return TransactionResponse_business|null
-    */
-    public function getBusiness(): ?TransactionResponse_business {
-        return $this->business;
-    }
-
-    /**
      * Gets the createdAt property value. The date and time when the entity was created.
      * @return DateTime|null
     */
@@ -199,7 +191,6 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
             'billableUnit' => fn(ParseNode $n) => $o->setBillableUnit($n->getEnumValue(TransactionResponse_billableUnit::class)),
             'billedAmount' => fn(ParseNode $n) => $o->setBilledAmount($n->getFloatValue()),
             'billingChannel' => fn(ParseNode $n) => $o->setBillingChannel($n->getEnumValue(TransactionResponse_billingChannel::class)),
-            'business' => fn(ParseNode $n) => $o->setBusiness($n->getObjectValue([TransactionResponse_business::class, 'createFromDiscriminatorValue'])),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'gatewayFeeAmount' => fn(ParseNode $n) => $o->setGatewayFeeAmount($n->getFloatValue()),
@@ -209,6 +200,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'netAmount' => fn(ParseNode $n) => $o->setNetAmount($n->getFloatValue()),
             'notes' => fn(ParseNode $n) => $o->setNotes($n->getStringValue()),
+            'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([TransactionResponse_organization::class, 'createFromDiscriminatorValue'])),
             'paymentMethodDisplay' => fn(ParseNode $n) => $o->setPaymentMethodDisplay($n->getStringValue()),
             'platformFeeAmount' => fn(ParseNode $n) => $o->setPlatformFeeAmount($n->getFloatValue()),
             'transactionStatus' => fn(ParseNode $n) => $o->setTransactionStatus($n->getEnumValue(TransactionStatus::class)),
@@ -273,6 +265,14 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the organization property value. The ID and name for this organization.
+     * @return TransactionResponse_organization|null
+    */
+    public function getOrganization(): ?TransactionResponse_organization {
+        return $this->organization;
+    }
+
+    /**
      * Gets the paymentMethodDisplay property value. Masked or human-readable payment method shown for this transaction.
      * @return string|null
     */
@@ -313,7 +313,6 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
         $writer->writeEnumValue('billableUnit', $this->getBillableUnit());
         $writer->writeFloatValue('billedAmount', $this->getBilledAmount());
         $writer->writeEnumValue('billingChannel', $this->getBillingChannel());
-        $writer->writeObjectValue('business', $this->getBusiness());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('description', $this->getDescription());
         $writer->writeFloatValue('gatewayFeeAmount', $this->getGatewayFeeAmount());
@@ -323,6 +322,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeFloatValue('netAmount', $this->getNetAmount());
         $writer->writeStringValue('notes', $this->getNotes());
+        $writer->writeObjectValue('organization', $this->getOrganization());
         $writer->writeStringValue('paymentMethodDisplay', $this->getPaymentMethodDisplay());
         $writer->writeFloatValue('platformFeeAmount', $this->getPlatformFeeAmount());
         $writer->writeEnumValue('transactionStatus', $this->getTransactionStatus());
@@ -368,14 +368,6 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     */
     public function setBillingChannel(?TransactionResponse_billingChannel $value): void {
         $this->billingChannel = $value;
-    }
-
-    /**
-     * Sets the business property value. The ID and name for this business.
-     * @param TransactionResponse_business|null $value Value to set for the business property.
-    */
-    public function setBusiness(?TransactionResponse_business $value): void {
-        $this->business = $value;
     }
 
     /**
@@ -448,6 +440,14 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     */
     public function setNotes(?string $value): void {
         $this->notes = $value;
+    }
+
+    /**
+     * Sets the organization property value. The ID and name for this organization.
+     * @param TransactionResponse_organization|null $value Value to set for the organization property.
+    */
+    public function setOrganization(?TransactionResponse_organization $value): void {
+        $this->organization = $value;
     }
 
     /**

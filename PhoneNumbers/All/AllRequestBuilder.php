@@ -2,7 +2,7 @@
 
 namespace Leadping\OpenApiClient\PhoneNumbers\All;
 
-use Leadping\OpenApiClient\PhoneNumbers\All\Business\BusinessRequestBuilder;
+use Leadping\OpenApiClient\PhoneNumbers\All\Organization\OrganizationRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 
@@ -12,10 +12,10 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 class AllRequestBuilder extends BaseRequestBuilder 
 {
     /**
-     * The business property
+     * The organization property
     */
-    public function business(): BusinessRequestBuilder {
-        return new BusinessRequestBuilder($this->pathParameters, $this->requestAdapter);
+    public function organization(): OrganizationRequestBuilder {
+        return new OrganizationRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**

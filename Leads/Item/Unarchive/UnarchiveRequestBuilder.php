@@ -12,7 +12,7 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
 
 /**
- * Builds and executes requests for operations under /leads/{id}/unarchive
+ * Builds and executes requests for operations under /leads/{-id}/unarchive
 */
 class UnarchiveRequestBuilder extends BaseRequestBuilder 
 {
@@ -22,7 +22,7 @@ class UnarchiveRequestBuilder extends BaseRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/leads/{id}/unarchive');
+        parent::__construct($requestAdapter, [], '{+baseurl}/leads/{%2Did}/unarchive');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {

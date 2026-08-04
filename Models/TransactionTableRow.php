@@ -39,11 +39,6 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     private ?TransactionTableRow_billingChannel $billingChannel = null;
     
     /**
-     * @var TransactionTableRow_business|null $business The ID and name for this business.
-    */
-    private ?TransactionTableRow_business $business = null;
-    
-    /**
      * @var DateTime|null $createdAt UTC timestamp when this billing transaction table row was created.
     */
     private ?DateTime $createdAt = null;
@@ -67,6 +62,11 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
      * @var float|null $netAmount Net monetary amount after fees, credits, or adjustments.
     */
     private ?float $netAmount = null;
+    
+    /**
+     * @var TransactionTableRow_organization|null $organization The ID and name for this organization.
+    */
+    private ?TransactionTableRow_organization $organization = null;
     
     /**
      * @var string|null $paymentMethodDisplay Masked or human-readable payment method shown for this transaction.
@@ -165,14 +165,6 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the business property value. The ID and name for this business.
-     * @return TransactionTableRow_business|null
-    */
-    public function getBusiness(): ?TransactionTableRow_business {
-        return $this->business;
-    }
-
-    /**
      * Gets the createdAt property value. UTC timestamp when this billing transaction table row was created.
      * @return DateTime|null
     */
@@ -199,12 +191,12 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
             'billableUnit' => fn(ParseNode $n) => $o->setBillableUnit($n->getEnumValue(TransactionTableRow_billableUnit::class)),
             'billedAmount' => fn(ParseNode $n) => $o->setBilledAmount($n->getFloatValue()),
             'billingChannel' => fn(ParseNode $n) => $o->setBillingChannel($n->getEnumValue(TransactionTableRow_billingChannel::class)),
-            'business' => fn(ParseNode $n) => $o->setBusiness($n->getObjectValue([TransactionTableRow_business::class, 'createFromDiscriminatorValue'])),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'lead' => fn(ParseNode $n) => $o->setLead($n->getObjectValue([TransactionTableRow_lead::class, 'createFromDiscriminatorValue'])),
             'netAmount' => fn(ParseNode $n) => $o->setNetAmount($n->getFloatValue()),
+            'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([TransactionTableRow_organization::class, 'createFromDiscriminatorValue'])),
             'paymentMethodDisplay' => fn(ParseNode $n) => $o->setPaymentMethodDisplay($n->getStringValue()),
             'pricingVersion' => fn(ParseNode $n) => $o->setPricingVersion($n->getStringValue()),
             'quantity' => fn(ParseNode $n) => $o->setQuantity($n->getFloatValue()),
@@ -238,6 +230,14 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     */
     public function getNetAmount(): ?float {
         return $this->netAmount;
+    }
+
+    /**
+     * Gets the organization property value. The ID and name for this organization.
+     * @return TransactionTableRow_organization|null
+    */
+    public function getOrganization(): ?TransactionTableRow_organization {
+        return $this->organization;
     }
 
     /**
@@ -313,12 +313,12 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
         $writer->writeEnumValue('billableUnit', $this->getBillableUnit());
         $writer->writeFloatValue('billedAmount', $this->getBilledAmount());
         $writer->writeEnumValue('billingChannel', $this->getBillingChannel());
-        $writer->writeObjectValue('business', $this->getBusiness());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('description', $this->getDescription());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeObjectValue('lead', $this->getLead());
         $writer->writeFloatValue('netAmount', $this->getNetAmount());
+        $writer->writeObjectValue('organization', $this->getOrganization());
         $writer->writeStringValue('paymentMethodDisplay', $this->getPaymentMethodDisplay());
         $writer->writeStringValue('pricingVersion', $this->getPricingVersion());
         $writer->writeFloatValue('quantity', $this->getQuantity());
@@ -371,14 +371,6 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the business property value. The ID and name for this business.
-     * @param TransactionTableRow_business|null $value Value to set for the business property.
-    */
-    public function setBusiness(?TransactionTableRow_business $value): void {
-        $this->business = $value;
-    }
-
-    /**
      * Sets the createdAt property value. UTC timestamp when this billing transaction table row was created.
      * @param DateTime|null $value Value to set for the createdAt property.
     */
@@ -416,6 +408,14 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     */
     public function setNetAmount(?float $value): void {
         $this->netAmount = $value;
+    }
+
+    /**
+     * Sets the organization property value. The ID and name for this organization.
+     * @param TransactionTableRow_organization|null $value Value to set for the organization property.
+    */
+    public function setOrganization(?TransactionTableRow_organization $value): void {
+        $this->organization = $value;
     }
 
     /**

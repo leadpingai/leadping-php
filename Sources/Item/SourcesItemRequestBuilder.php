@@ -40,7 +40,7 @@ class SourcesItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Deletes a lead source from the current business so it can no longer accept or route newly captured leads.
+     * Deletes a lead source from the current organization so it can no longer accept or route newly captured leads.
      * @param SourcesItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<void|null>
      * @throws Exception
@@ -55,7 +55,7 @@ class SourcesItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns one lead source for the current business, including intake settings, credentials metadata, and routing context.
+     * Returns one lead source for the current organization, including intake settings, credentials metadata, and routing context.
      * @param SourcesItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<SourceResponse|null>
      * @throws Exception
@@ -70,7 +70,7 @@ class SourcesItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Updates a lead source for the current business, changing intake settings, credentials, routing context, or active status.
+     * Updates a lead source for the current organization, changing intake settings, credentials, routing context, or active status.
      * @param SourceRequest $body Request schema for the Leadping API lead source request, including the fields clients can send.
      * @param SourcesItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<SourceResponse|null>
@@ -86,7 +86,7 @@ class SourcesItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Deletes a lead source from the current business so it can no longer accept or route newly captured leads.
+     * Deletes a lead source from the current organization so it can no longer accept or route newly captured leads.
      * @param SourcesItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -104,7 +104,7 @@ class SourcesItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns one lead source for the current business, including intake settings, credentials metadata, and routing context.
+     * Returns one lead source for the current organization, including intake settings, credentials metadata, and routing context.
      * @param SourcesItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -122,7 +122,7 @@ class SourcesItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Updates a lead source for the current business, changing intake settings, credentials, routing context, or active status.
+     * Updates a lead source for the current organization, changing intake settings, credentials, routing context, or active status.
      * @param SourceRequest $body Request schema for the Leadping API lead source request, including the fields clients can send.
      * @param SourcesItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

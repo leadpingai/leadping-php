@@ -3,11 +3,11 @@
 namespace Leadping\OpenApiClient\Events;
 
 use Leadping\OpenApiClient\Events\All\AllRequestBuilder;
-use Leadping\OpenApiClient\Events\Businesses\BusinessesRequestBuilder;
 use Leadping\OpenApiClient\Events\Calls\CallsRequestBuilder;
 use Leadping\OpenApiClient\Events\Conversations\ConversationsRequestBuilder;
 use Leadping\OpenApiClient\Events\Item\WithEventItemRequestBuilder;
 use Leadping\OpenApiClient\Events\Leads\LeadsRequestBuilder;
+use Leadping\OpenApiClient\Events\Organizations\OrganizationsRequestBuilder;
 use Leadping\OpenApiClient\Events\Sms\SmsRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
@@ -22,13 +22,6 @@ class EventsRequestBuilder extends BaseRequestBuilder
     */
     public function all(): AllRequestBuilder {
         return new AllRequestBuilder($this->pathParameters, $this->requestAdapter);
-    }
-    
-    /**
-     * The businesses property
-    */
-    public function businesses(): BusinessesRequestBuilder {
-        return new BusinessesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**
@@ -50,6 +43,13 @@ class EventsRequestBuilder extends BaseRequestBuilder
     */
     public function leads(): LeadsRequestBuilder {
         return new LeadsRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The organizations property
+    */
+    public function organizations(): OrganizationsRequestBuilder {
+        return new OrganizationsRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**

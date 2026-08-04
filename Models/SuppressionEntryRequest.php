@@ -18,11 +18,6 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $businessId The business ID associated with this ion entry.
-    */
-    private ?string $businessId = null;
-    
-    /**
      * @var string|null $channel The channel value for this ion entry.
     */
     private ?string $channel = null;
@@ -31,6 +26,11 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
      * @var string|null $email The email address associated with this ion entry.
     */
     private ?string $email = null;
+    
+    /**
+     * @var string|null $organizationId The organization ID associated with this ion entry.
+    */
+    private ?string $organizationId = null;
     
     /**
      * @var string|null $phoneNumber The phone number associated with this ion entry.
@@ -72,14 +72,6 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the businessId property value. The business ID associated with this ion entry.
-     * @return string|null
-    */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
-    }
-
-    /**
      * Gets the channel property value. The channel value for this ion entry.
      * @return string|null
     */
@@ -102,13 +94,21 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'channel' => fn(ParseNode $n) => $o->setChannel($n->getStringValue()),
             'email' => fn(ParseNode $n) => $o->setEmail($n->getStringValue()),
+            'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'phoneNumber' => fn(ParseNode $n) => $o->setPhoneNumber($n->getStringValue()),
             'reason' => fn(ParseNode $n) => $o->setReason($n->getStringValue()),
             'recipientIdentifier' => fn(ParseNode $n) => $o->setRecipientIdentifier($n->getStringValue()),
         ];
+    }
+
+    /**
+     * Gets the organizationId property value. The organization ID associated with this ion entry.
+     * @return string|null
+    */
+    public function getOrganizationId(): ?string {
+        return $this->organizationId;
     }
 
     /**
@@ -140,9 +140,9 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeStringValue('channel', $this->getChannel());
         $writer->writeStringValue('email', $this->getEmail());
+        $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeStringValue('phoneNumber', $this->getPhoneNumber());
         $writer->writeStringValue('reason', $this->getReason());
         $writer->writeStringValue('recipientIdentifier', $this->getRecipientIdentifier());
@@ -155,14 +155,6 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the businessId property value. The business ID associated with this ion entry.
-     * @param string|null $value Value to set for the businessId property.
-    */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
     }
 
     /**
@@ -179,6 +171,14 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
     */
     public function setEmail(?string $value): void {
         $this->email = $value;
+    }
+
+    /**
+     * Sets the organizationId property value. The organization ID associated with this ion entry.
+     * @param string|null $value Value to set for the organizationId property.
+    */
+    public function setOrganizationId(?string $value): void {
+        $this->organizationId = $value;
     }
 
     /**

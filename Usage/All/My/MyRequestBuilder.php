@@ -32,7 +32,7 @@ class MyRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Lists current-business usage ledger entries with paging, sorting, and filters for messaging, billing, and wallet review.
+     * Lists current-organization usage ledger entries with paging, sorting, and filters for messaging, billing, and wallet review.
      * @param RequestDataOptions $body Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
      * @param MyRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<PagedResultOfUsageLedgerTableRow|null>
@@ -47,7 +47,7 @@ class MyRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Lists current-business usage ledger entries with paging, sorting, and filters for messaging, billing, and wallet review.
+     * Lists current-organization usage ledger entries with paging, sorting, and filters for messaging, billing, and wallet review.
      * @param RequestDataOptions $body Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
      * @param MyRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

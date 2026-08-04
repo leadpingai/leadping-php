@@ -43,7 +43,7 @@ class LeadStatusesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Lists the current business's active lead statuses for organizing and tracking leads through the sales workflow.
+     * Lists the current organization's active lead statuses for organizing and tracking leads through the sales workflow.
      * @param LeadStatusesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<array<LeadStatusResponse>|null>
      * @throws Exception
@@ -54,7 +54,7 @@ class LeadStatusesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Creates a reusable lead status for the current business to categorize, organize, and track leads consistently throughout its sales and follow-up workflow.
+     * Creates a reusable lead status for the current organization to categorize, organize, and track leads consistently throughout its sales and follow-up workflow.
      * @param LeadStatusRequest $body Defines the editable values used to create or update a lead status.
      * @param LeadStatusesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<LeadStatusResponse|null>
@@ -66,7 +66,7 @@ class LeadStatusesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Lists the current business's active lead statuses for organizing and tracking leads through the sales workflow.
+     * Lists the current organization's active lead statuses for organizing and tracking leads through the sales workflow.
      * @param LeadStatusesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -84,7 +84,7 @@ class LeadStatusesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Creates a reusable lead status for the current business to categorize, organize, and track leads consistently throughout its sales and follow-up workflow.
+     * Creates a reusable lead status for the current organization to categorize, organize, and track leads consistently throughout its sales and follow-up workflow.
      * @param LeadStatusRequest $body Defines the editable values used to create or update a lead status.
      * @param LeadStatusesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

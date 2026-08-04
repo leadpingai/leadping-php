@@ -30,7 +30,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     private ?array $allowedStates = null;
     
     /**
-     * @var string|null $apiKey Source API key used to authenticate inbound lead delivery to Leadping. Unlike a business API key, this value remains available to authorized source users.
+     * @var string|null $apiKey Source API key used to authenticate inbound lead delivery to Leadping. Unlike an organization API key, this value remains available to authorized source users.
     */
     private ?string $apiKey = null;
     
@@ -40,12 +40,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     private ?string $apiKeyPreview = null;
     
     /**
-     * @var SourceResponse_business|null $business Business summary connected to this lead source response.
-    */
-    private ?SourceResponse_business $business = null;
-    
-    /**
-     * @var bool|null $complianceApproved Indicates whether the business or sender passed compliance review.
+     * @var bool|null $complianceApproved Indicates whether the organization or sender passed compliance review.
     */
     private ?bool $complianceApproved = null;
     
@@ -115,6 +110,11 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     private ?string $name = null;
     
     /**
+     * @var SourceResponse_organization|null $organization Organization summary connected to this lead source response.
+    */
+    private ?SourceResponse_organization $organization = null;
+    
+    /**
      * @var bool|null $requiresTrustedForm Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
     */
     private ?bool $requiresTrustedForm = null;
@@ -165,7 +165,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike a business API key, this value remains available to authorized source users.
+     * Gets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike an organization API key, this value remains available to authorized source users.
      * @return string|null
     */
     public function getApiKey(): ?string {
@@ -181,15 +181,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the business property value. Business summary connected to this lead source response.
-     * @return SourceResponse_business|null
-    */
-    public function getBusiness(): ?SourceResponse_business {
-        return $this->business;
-    }
-
-    /**
-     * Gets the complianceApproved property value. Indicates whether the business or sender passed compliance review.
+     * Gets the complianceApproved property value. Indicates whether the organization or sender passed compliance review.
      * @return bool|null
     */
     public function getComplianceApproved(): ?bool {
@@ -277,7 +269,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
             },
             'apiKey' => fn(ParseNode $n) => $o->setApiKey($n->getStringValue()),
             'apiKeyPreview' => fn(ParseNode $n) => $o->setApiKeyPreview($n->getStringValue()),
-            'business' => fn(ParseNode $n) => $o->setBusiness($n->getObjectValue([SourceResponse_business::class, 'createFromDiscriminatorValue'])),
             'complianceApproved' => fn(ParseNode $n) => $o->setComplianceApproved($n->getBooleanValue()),
             'costPerLead' => fn(ParseNode $n) => $o->setCostPerLead($n->getFloatValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
@@ -299,6 +290,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'modifiedByUser' => fn(ParseNode $n) => $o->setModifiedByUser($n->getObjectValue([SourceResponse_modifiedByUser::class, 'createFromDiscriminatorValue'])),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
+            'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([SourceResponse_organization::class, 'createFromDiscriminatorValue'])),
             'requiresTrustedForm' => fn(ParseNode $n) => $o->setRequiresTrustedForm($n->getBooleanValue()),
             'user' => fn(ParseNode $n) => $o->setUser($n->getObjectValue([SourceResponse_user::class, 'createFromDiscriminatorValue'])),
         ];
@@ -353,6 +345,14 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the organization property value. Organization summary connected to this lead source response.
+     * @return SourceResponse_organization|null
+    */
+    public function getOrganization(): ?SourceResponse_organization {
+        return $this->organization;
+    }
+
+    /**
      * Gets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
      * @return bool|null
     */
@@ -377,7 +377,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
         $writer->writeCollectionOfPrimitiveValues('allowedStates', $this->getAllowedStates());
         $writer->writeStringValue('apiKey', $this->getApiKey());
         $writer->writeStringValue('apiKeyPreview', $this->getApiKeyPreview());
-        $writer->writeObjectValue('business', $this->getBusiness());
         $writer->writeBooleanValue('complianceApproved', $this->getComplianceApproved());
         $writer->writeFloatValue('costPerLead', $this->getCostPerLead());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
@@ -392,6 +391,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeObjectValue('modifiedByUser', $this->getModifiedByUser());
         $writer->writeStringValue('name', $this->getName());
+        $writer->writeObjectValue('organization', $this->getOrganization());
         $writer->writeBooleanValue('requiresTrustedForm', $this->getRequiresTrustedForm());
         $writer->writeObjectValue('user', $this->getUser());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -422,7 +422,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike a business API key, this value remains available to authorized source users.
+     * Sets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike an organization API key, this value remains available to authorized source users.
      * @param string|null $value Value to set for the apiKey property.
     */
     public function setApiKey(?string $value): void {
@@ -438,15 +438,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the business property value. Business summary connected to this lead source response.
-     * @param SourceResponse_business|null $value Value to set for the business property.
-    */
-    public function setBusiness(?SourceResponse_business $value): void {
-        $this->business = $value;
-    }
-
-    /**
-     * Sets the complianceApproved property value. Indicates whether the business or sender passed compliance review.
+     * Sets the complianceApproved property value. Indicates whether the organization or sender passed compliance review.
      * @param bool|null $value Value to set for the complianceApproved property.
     */
     public function setComplianceApproved(?bool $value): void {
@@ -555,6 +547,14 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     */
     public function setName(?string $value): void {
         $this->name = $value;
+    }
+
+    /**
+     * Sets the organization property value. Organization summary connected to this lead source response.
+     * @param SourceResponse_organization|null $value Value to set for the organization property.
+    */
+    public function setOrganization(?SourceResponse_organization $value): void {
+        $this->organization = $value;
     }
 
     /**

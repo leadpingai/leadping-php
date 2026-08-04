@@ -31,7 +31,7 @@ class MyRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns current-business analytics for lead communication, including event volume, response metrics, and date-range filtering.
+     * Returns current-organization analytics for lead communication, including event volume, response metrics, and date-range filtering.
      * @param MyRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<CustomerAnalyticsResponse|null>
      * @throws Exception
@@ -47,7 +47,7 @@ class MyRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns current-business analytics for lead communication, including event volume, response metrics, and date-range filtering.
+     * Returns current-organization analytics for lead communication, including event volume, response metrics, and date-range filtering.
      * @param MyRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

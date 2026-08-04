@@ -33,7 +33,7 @@ class PhoneNumberRoutingMetadata implements AdditionalDataHolder, Parsable
     private ?string $sourceId = null;
     
     /**
-     * @var string|null $teamId Team ID used to route calls and messages for this phone number.
+     * @var string|null $teamId Organization ID used to route calls and messages for this phone number.
     */
     private ?string $teamId = null;
     
@@ -112,7 +112,7 @@ class PhoneNumberRoutingMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the teamId property value. Team ID used to route calls and messages for this phone number.
+     * Gets the teamId property value. Organization ID used to route calls and messages for this phone number.
      * @return string|null
     */
     public function getTeamId(): ?string {
@@ -182,7 +182,7 @@ class PhoneNumberRoutingMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the teamId property value. Team ID used to route calls and messages for this phone number.
+     * Sets the teamId property value. Organization ID used to route calls and messages for this phone number.
      * @param string|null $value Value to set for the teamId property.
     */
     public function setTeamId(?string $value): void {

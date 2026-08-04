@@ -48,7 +48,7 @@ class PhoneNumberLocation implements AdditionalDataHolder, Parsable
     private ?string $location = null;
     
     /**
-     * @var string|null $state State, province, or region for the lead or business postal address.
+     * @var string|null $state State, province, or region for the lead or organization postal address.
     */
     private ?string $state = null;
     
@@ -154,7 +154,7 @@ class PhoneNumberLocation implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the state property value. State, province, or region for the lead or business postal address.
+     * Gets the state property value. State, province, or region for the lead or organization postal address.
      * @return string|null
     */
     public function getState(): ?string {
@@ -251,7 +251,7 @@ class PhoneNumberLocation implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the state property value. State, province, or region for the lead or business postal address.
+     * Sets the state property value. State, province, or region for the lead or organization postal address.
      * @param string|null $value Value to set for the state property.
     */
     public function setState(?string $value): void {

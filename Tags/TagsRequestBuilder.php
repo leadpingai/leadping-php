@@ -44,7 +44,7 @@ class TagsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Lists tags for the current business, optionally including archived tags, for lead segmentation, filters, and routing labels.
+     * Lists tags for the current organization, optionally including archived tags, for lead segmentation, filters, and routing labels.
      * @param TagsRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<array<TagResponse>|null>
      * @throws Exception
@@ -58,7 +58,7 @@ class TagsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Creates a tag for the current business so leads can be segmented, filtered, routed, and reviewed by label.
+     * Creates a tag for the current organization so leads can be segmented, filtered, routed, and reviewed by label.
      * @param TagRequest $body Request schema for the Leadping API tag request, including the fields clients can send.
      * @param TagsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<TagResponse|null>
@@ -74,7 +74,7 @@ class TagsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Lists tags for the current business, optionally including archived tags, for lead segmentation, filters, and routing labels.
+     * Lists tags for the current organization, optionally including archived tags, for lead segmentation, filters, and routing labels.
      * @param TagsRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -95,7 +95,7 @@ class TagsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Creates a tag for the current business so leads can be segmented, filtered, routed, and reviewed by label.
+     * Creates a tag for the current organization so leads can be segmented, filtered, routed, and reviewed by label.
      * @param TagRequest $body Request schema for the Leadping API tag request, including the fields clients can send.
      * @param TagsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

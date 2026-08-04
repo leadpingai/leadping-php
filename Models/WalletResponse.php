@@ -39,11 +39,6 @@ class WalletResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $balanceCalculatedAt = null;
     
     /**
-     * @var string|null $businessId Business ID that owns this wallet balance or credit.
-    */
-    private ?string $businessId = null;
-    
-    /**
      * @var DateTime|null $createdAt The date and time when the entity was created.
     */
     private ?DateTime $createdAt = null;
@@ -92,6 +87,11 @@ class WalletResponse implements AdditionalDataHolder, Parsable
      * @var float|null $nextExpiringCreditAmount Amount of wallet credit scheduled to expire next.
     */
     private ?float $nextExpiringCreditAmount = null;
+    
+    /**
+     * @var string|null $organizationId Organization ID that owns this wallet balance or credit.
+    */
+    private ?string $organizationId = null;
     
     /**
      * @var string|null $originalTransactionId Original wallet transaction ID referenced by a reversal, refund, or adjustment.
@@ -165,14 +165,6 @@ class WalletResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the businessId property value. Business ID that owns this wallet balance or credit.
-     * @return string|null
-    */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
-    }
-
-    /**
      * Gets the createdAt property value. The date and time when the entity was created.
      * @return DateTime|null
     */
@@ -223,7 +215,6 @@ class WalletResponse implements AdditionalDataHolder, Parsable
             'amountRemaining' => fn(ParseNode $n) => $o->setAmountRemaining($n->getFloatValue()),
             'balance' => fn(ParseNode $n) => $o->setBalance($n->getFloatValue()),
             'balanceCalculatedAt' => fn(ParseNode $n) => $o->setBalanceCalculatedAt($n->getDateTimeValue()),
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'creditStatus' => fn(ParseNode $n) => $o->setCreditStatus($n->getEnumValue(WalletResponse_creditStatus::class)),
             'currency' => fn(ParseNode $n) => $o->setCurrency($n->getStringValue()),
@@ -234,6 +225,7 @@ class WalletResponse implements AdditionalDataHolder, Parsable
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'nextCreditExpirationAt' => fn(ParseNode $n) => $o->setNextCreditExpirationAt($n->getDateTimeValue()),
             'nextExpiringCreditAmount' => fn(ParseNode $n) => $o->setNextExpiringCreditAmount($n->getFloatValue()),
+            'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'originalTransactionId' => fn(ParseNode $n) => $o->setOriginalTransactionId($n->getStringValue()),
             'purchasedAt' => fn(ParseNode $n) => $o->setPurchasedAt($n->getDateTimeValue()),
             'sourceType' => fn(ParseNode $n) => $o->setSourceType($n->getEnumValue(WalletResponse_sourceType::class)),
@@ -281,6 +273,14 @@ class WalletResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the organizationId property value. Organization ID that owns this wallet balance or credit.
+     * @return string|null
+    */
+    public function getOrganizationId(): ?string {
+        return $this->organizationId;
+    }
+
+    /**
      * Gets the originalTransactionId property value. Original wallet transaction ID referenced by a reversal, refund, or adjustment.
      * @return string|null
     */
@@ -313,7 +313,6 @@ class WalletResponse implements AdditionalDataHolder, Parsable
         $writer->writeFloatValue('amountRemaining', $this->getAmountRemaining());
         $writer->writeFloatValue('balance', $this->getBalance());
         $writer->writeDateTimeValue('balanceCalculatedAt', $this->getBalanceCalculatedAt());
-        $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeEnumValue('creditStatus', $this->getCreditStatus());
         $writer->writeStringValue('currency', $this->getCurrency());
@@ -324,6 +323,7 @@ class WalletResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('name', $this->getName());
         $writer->writeDateTimeValue('nextCreditExpirationAt', $this->getNextCreditExpirationAt());
         $writer->writeFloatValue('nextExpiringCreditAmount', $this->getNextExpiringCreditAmount());
+        $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeStringValue('originalTransactionId', $this->getOriginalTransactionId());
         $writer->writeDateTimeValue('purchasedAt', $this->getPurchasedAt());
         $writer->writeEnumValue('sourceType', $this->getSourceType());
@@ -368,14 +368,6 @@ class WalletResponse implements AdditionalDataHolder, Parsable
     */
     public function setBalanceCalculatedAt(?DateTime $value): void {
         $this->balanceCalculatedAt = $value;
-    }
-
-    /**
-     * Sets the businessId property value. Business ID that owns this wallet balance or credit.
-     * @param string|null $value Value to set for the businessId property.
-    */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
     }
 
     /**
@@ -456,6 +448,14 @@ class WalletResponse implements AdditionalDataHolder, Parsable
     */
     public function setNextExpiringCreditAmount(?float $value): void {
         $this->nextExpiringCreditAmount = $value;
+    }
+
+    /**
+     * Sets the organizationId property value. Organization ID that owns this wallet balance or credit.
+     * @param string|null $value Value to set for the organizationId property.
+    */
+    public function setOrganizationId(?string $value): void {
+        $this->organizationId = $value;
     }
 
     /**

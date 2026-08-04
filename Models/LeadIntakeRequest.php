@@ -35,7 +35,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     private ?Date $birthDate = null;
     
     /**
-     * @var string|null $city City for the lead or business postal address.
+     * @var string|null $city City for the lead or organization postal address.
     */
     private ?string $city = null;
     
@@ -80,7 +80,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     private ?string $lastName = null;
     
     /**
-     * @var string|null $phone Phone details for the lead, user, or business represented by this lead intake request.
+     * @var string|null $phone Phone details for the lead, user, or organization represented by this lead intake request.
     */
     private ?string $phone = null;
     
@@ -90,7 +90,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     private ?string $phoneType = null;
     
     /**
-     * @var string|null $postalCode Postal code for the lead or business address.
+     * @var string|null $postalCode Postal code for the lead or organization address.
     */
     private ?string $postalCode = null;
     
@@ -125,7 +125,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     private ?LeadIntakeRequest_sourceMetadata $sourceMetadata = null;
     
     /**
-     * @var string|null $state State, province, or region for the lead or business postal address.
+     * @var string|null $state State, province, or region for the lead or organization postal address.
     */
     private ?string $state = null;
     
@@ -233,7 +233,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the city property value. City for the lead or business postal address.
+     * Gets the city property value. City for the lead or organization postal address.
      * @return string|null
     */
     public function getCity(): ?string {
@@ -362,7 +362,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the phone property value. Phone details for the lead, user, or business represented by this lead intake request.
+     * Gets the phone property value. Phone details for the lead, user, or organization represented by this lead intake request.
      * @return string|null
     */
     public function getPhone(): ?string {
@@ -378,7 +378,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the postalCode property value. Postal code for the lead or business address.
+     * Gets the postalCode property value. Postal code for the lead or organization address.
      * @return string|null
     */
     public function getPostalCode(): ?string {
@@ -434,7 +434,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the state property value. State, province, or region for the lead or business postal address.
+     * Gets the state property value. State, province, or region for the lead or organization postal address.
      * @return string|null
     */
     public function getState(): ?string {
@@ -603,7 +603,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the city property value. City for the lead or business postal address.
+     * Sets the city property value. City for the lead or organization postal address.
      * @param string|null $value Value to set for the city property.
     */
     public function setCity(?string $value): void {
@@ -675,7 +675,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the phone property value. Phone details for the lead, user, or business represented by this lead intake request.
+     * Sets the phone property value. Phone details for the lead, user, or organization represented by this lead intake request.
      * @param string|null $value Value to set for the phone property.
     */
     public function setPhone(?string $value): void {
@@ -691,7 +691,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the postalCode property value. Postal code for the lead or business address.
+     * Sets the postalCode property value. Postal code for the lead or organization address.
      * @param string|null $value Value to set for the postalCode property.
     */
     public function setPostalCode(?string $value): void {
@@ -747,7 +747,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the state property value. State, province, or region for the lead or business postal address.
+     * Sets the state property value. State, province, or region for the lead or organization postal address.
      * @param string|null $value Value to set for the state property.
     */
     public function setState(?string $value): void {

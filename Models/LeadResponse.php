@@ -49,9 +49,9 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $createdAt = null;
     
     /**
-     * @var LeadResponse_currentDisposition|null $currentDisposition Current disposition summary that describes the lead outcome.
+     * @var LeadResponse_currentLeadStatus|null $currentLeadStatus Current lead status change summary that describes the lead outcome.
     */
-    private ?LeadResponse_currentDisposition $currentDisposition = null;
+    private ?LeadResponse_currentLeadStatus $currentLeadStatus = null;
     
     /**
      * @var LeadProfile|null $customer Demographic profile details for the lead represented by this lead response.
@@ -166,11 +166,11 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the currentDisposition property value. Current disposition summary that describes the lead outcome.
-     * @return LeadResponse_currentDisposition|null
+     * Gets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
+     * @return LeadResponse_currentLeadStatus|null
     */
-    public function getCurrentDisposition(): ?LeadResponse_currentDisposition {
-        return $this->currentDisposition;
+    public function getCurrentLeadStatus(): ?LeadResponse_currentLeadStatus {
+        return $this->currentLeadStatus;
     }
 
     /**
@@ -202,7 +202,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
             'archiveReason' => fn(ParseNode $n) => $o->setArchiveReason($n->getIntegerValue()),
             'contact' => fn(ParseNode $n) => $o->setContact($n->getObjectValue([LeadContact::class, 'createFromDiscriminatorValue'])),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
-            'currentDisposition' => fn(ParseNode $n) => $o->setCurrentDisposition($n->getObjectValue([LeadResponse_currentDisposition::class, 'createFromDiscriminatorValue'])),
+            'currentLeadStatus' => fn(ParseNode $n) => $o->setCurrentLeadStatus($n->getObjectValue([LeadResponse_currentLeadStatus::class, 'createFromDiscriminatorValue'])),
             'customer' => fn(ParseNode $n) => $o->setCustomer($n->getObjectValue([LeadProfile::class, 'createFromDiscriminatorValue'])),
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
@@ -273,7 +273,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
         $writer->writeIntegerValue('archiveReason', $this->getArchiveReason());
         $writer->writeObjectValue('contact', $this->getContact());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
-        $writer->writeObjectValue('currentDisposition', $this->getCurrentDisposition());
+        $writer->writeObjectValue('currentLeadStatus', $this->getCurrentLeadStatus());
         $writer->writeObjectValue('customer', $this->getCustomer());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeStringValue('id', $this->getId());
@@ -342,11 +342,11 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the currentDisposition property value. Current disposition summary that describes the lead outcome.
-     * @param LeadResponse_currentDisposition|null $value Value to set for the currentDisposition property.
+     * Sets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
+     * @param LeadResponse_currentLeadStatus|null $value Value to set for the currentLeadStatus property.
     */
-    public function setCurrentDisposition(?LeadResponse_currentDisposition $value): void {
-        $this->currentDisposition = $value;
+    public function setCurrentLeadStatus(?LeadResponse_currentLeadStatus $value): void {
+        $this->currentLeadStatus = $value;
     }
 
     /**

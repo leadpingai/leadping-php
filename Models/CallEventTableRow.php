@@ -39,21 +39,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     private ?string $billingStatus = null;
     
     /**
-     * @var string|null $business Business summary connected to this call event table row.
-    */
-    private ?string $business = null;
-    
-    /**
-     * @var string|null $businessId Business ID associated with this call event.
-    */
-    private ?string $businessId = null;
-    
-    /**
-     * @var string|null $businessName Display name for the business associated with this call event.
-    */
-    private ?string $businessName = null;
-    
-    /**
      * @var string|null $callerId Caller ID phone number presented during the outbound call.
     */
     private ?string $callerId = null;
@@ -107,6 +92,21 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
      * @var string|null $leadName Display name for the lead associated with this call event.
     */
     private ?string $leadName = null;
+    
+    /**
+     * @var string|null $organization Organization summary connected to this call event table row.
+    */
+    private ?string $organization = null;
+    
+    /**
+     * @var string|null $organizationId Organization ID associated with this call event.
+    */
+    private ?string $organizationId = null;
+    
+    /**
+     * @var string|null $organizationName Display name for the organization associated with this call event.
+    */
+    private ?string $organizationName = null;
     
     /**
      * @var string|null $recordingUrl URL for the call recording, when the provider makes one available.
@@ -195,30 +195,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the business property value. Business summary connected to this call event table row.
-     * @return string|null
-    */
-    public function getBusiness(): ?string {
-        return $this->business;
-    }
-
-    /**
-     * Gets the businessId property value. Business ID associated with this call event.
-     * @return string|null
-    */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
-    }
-
-    /**
-     * Gets the businessName property value. Display name for the business associated with this call event.
-     * @return string|null
-    */
-    public function getBusinessName(): ?string {
-        return $this->businessName;
-    }
-
-    /**
      * Gets the callerId property value. Caller ID phone number presented during the outbound call.
      * @return string|null
     */
@@ -277,9 +253,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
             'billableAmount' => fn(ParseNode $n) => $o->setBillableAmount($n->getFloatValue()),
             'billableSeconds' => fn(ParseNode $n) => $o->setBillableSeconds($n->getIntegerValue()),
             'billingStatus' => fn(ParseNode $n) => $o->setBillingStatus($n->getStringValue()),
-            'business' => fn(ParseNode $n) => $o->setBusiness($n->getStringValue()),
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
-            'businessName' => fn(ParseNode $n) => $o->setBusinessName($n->getStringValue()),
             'callerId' => fn(ParseNode $n) => $o->setCallerId($n->getStringValue()),
             'conversationId' => fn(ParseNode $n) => $o->setConversationId($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
@@ -291,6 +264,9 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
             'leadName' => fn(ParseNode $n) => $o->setLeadName($n->getStringValue()),
+            'organization' => fn(ParseNode $n) => $o->setOrganization($n->getStringValue()),
+            'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
+            'organizationName' => fn(ParseNode $n) => $o->setOrganizationName($n->getStringValue()),
             'recordingUrl' => fn(ParseNode $n) => $o->setRecordingUrl($n->getStringValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(CallEventTableRow_status::class)),
             'statusReason' => fn(ParseNode $n) => $o->setStatusReason($n->getStringValue()),
@@ -338,6 +314,30 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function getLeadName(): ?string {
         return $this->leadName;
+    }
+
+    /**
+     * Gets the organization property value. Organization summary connected to this call event table row.
+     * @return string|null
+    */
+    public function getOrganization(): ?string {
+        return $this->organization;
+    }
+
+    /**
+     * Gets the organizationId property value. Organization ID associated with this call event.
+     * @return string|null
+    */
+    public function getOrganizationId(): ?string {
+        return $this->organizationId;
+    }
+
+    /**
+     * Gets the organizationName property value. Display name for the organization associated with this call event.
+     * @return string|null
+    */
+    public function getOrganizationName(): ?string {
+        return $this->organizationName;
     }
 
     /**
@@ -397,9 +397,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeFloatValue('billableAmount', $this->getBillableAmount());
         $writer->writeIntegerValue('billableSeconds', $this->getBillableSeconds());
         $writer->writeStringValue('billingStatus', $this->getBillingStatus());
-        $writer->writeStringValue('business', $this->getBusiness());
-        $writer->writeStringValue('businessId', $this->getBusinessId());
-        $writer->writeStringValue('businessName', $this->getBusinessName());
         $writer->writeStringValue('callerId', $this->getCallerId());
         $writer->writeStringValue('conversationId', $this->getConversationId());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
@@ -411,6 +408,9 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('id', $this->getId());
         $writer->writeStringValue('leadId', $this->getLeadId());
         $writer->writeStringValue('leadName', $this->getLeadName());
+        $writer->writeStringValue('organization', $this->getOrganization());
+        $writer->writeStringValue('organizationId', $this->getOrganizationId());
+        $writer->writeStringValue('organizationName', $this->getOrganizationName());
         $writer->writeStringValue('recordingUrl', $this->getRecordingUrl());
         $writer->writeEnumValue('status', $this->getStatus());
         $writer->writeStringValue('statusReason', $this->getStatusReason());
@@ -458,30 +458,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setBillingStatus(?string $value): void {
         $this->billingStatus = $value;
-    }
-
-    /**
-     * Sets the business property value. Business summary connected to this call event table row.
-     * @param string|null $value Value to set for the business property.
-    */
-    public function setBusiness(?string $value): void {
-        $this->business = $value;
-    }
-
-    /**
-     * Sets the businessId property value. Business ID associated with this call event.
-     * @param string|null $value Value to set for the businessId property.
-    */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
-    }
-
-    /**
-     * Sets the businessName property value. Display name for the business associated with this call event.
-     * @param string|null $value Value to set for the businessName property.
-    */
-    public function setBusinessName(?string $value): void {
-        $this->businessName = $value;
     }
 
     /**
@@ -570,6 +546,30 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setLeadName(?string $value): void {
         $this->leadName = $value;
+    }
+
+    /**
+     * Sets the organization property value. Organization summary connected to this call event table row.
+     * @param string|null $value Value to set for the organization property.
+    */
+    public function setOrganization(?string $value): void {
+        $this->organization = $value;
+    }
+
+    /**
+     * Sets the organizationId property value. Organization ID associated with this call event.
+     * @param string|null $value Value to set for the organizationId property.
+    */
+    public function setOrganizationId(?string $value): void {
+        $this->organizationId = $value;
+    }
+
+    /**
+     * Sets the organizationName property value. Display name for the organization associated with this call event.
+     * @param string|null $value Value to set for the organizationName property.
+    */
+    public function setOrganizationName(?string $value): void {
+        $this->organizationName = $value;
     }
 
     /**

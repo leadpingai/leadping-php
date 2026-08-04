@@ -34,19 +34,14 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     private ?int $archiveReason = null;
     
     /**
-     * @var LeadTableRow_business|null $business The ID and name for this business.
-    */
-    private ?LeadTableRow_business $business = null;
-    
-    /**
      * @var DateTime|null $createdAt UTC timestamp when this lead table row was created.
     */
     private ?DateTime $createdAt = null;
     
     /**
-     * @var LeadTableRow_currentDisposition|null $currentDisposition Current disposition summary that describes the lead outcome.
+     * @var LeadTableRow_currentLeadStatus|null $currentLeadStatus Current lead status change summary that describes the lead outcome.
     */
-    private ?LeadTableRow_currentDisposition $currentDisposition = null;
+    private ?LeadTableRow_currentLeadStatus $currentLeadStatus = null;
     
     /**
      * @var string|null $email Email address for the person represented by this lead table row.
@@ -79,7 +74,12 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     private ?string $lastName = null;
     
     /**
-     * @var string|null $phone Phone details for the lead, user, or business represented by this lead table row.
+     * @var LeadTableRow_organization|null $organization The ID and name for this organization.
+    */
+    private ?LeadTableRow_organization $organization = null;
+    
+    /**
+     * @var string|null $phone Phone details for the lead, user, or organization represented by this lead table row.
     */
     private ?string $phone = null;
     
@@ -162,14 +162,6 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the business property value. The ID and name for this business.
-     * @return LeadTableRow_business|null
-    */
-    public function getBusiness(): ?LeadTableRow_business {
-        return $this->business;
-    }
-
-    /**
      * Gets the createdAt property value. UTC timestamp when this lead table row was created.
      * @return DateTime|null
     */
@@ -178,11 +170,11 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the currentDisposition property value. Current disposition summary that describes the lead outcome.
-     * @return LeadTableRow_currentDisposition|null
+     * Gets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
+     * @return LeadTableRow_currentLeadStatus|null
     */
-    public function getCurrentDisposition(): ?LeadTableRow_currentDisposition {
-        return $this->currentDisposition;
+    public function getCurrentLeadStatus(): ?LeadTableRow_currentLeadStatus {
+        return $this->currentLeadStatus;
     }
 
     /**
@@ -211,15 +203,15 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
             'archivedAt' => fn(ParseNode $n) => $o->setArchivedAt($n->getDateTimeValue()),
             'archivedByUserId' => fn(ParseNode $n) => $o->setArchivedByUserId($n->getStringValue()),
             'archiveReason' => fn(ParseNode $n) => $o->setArchiveReason($n->getIntegerValue()),
-            'business' => fn(ParseNode $n) => $o->setBusiness($n->getObjectValue([LeadTableRow_business::class, 'createFromDiscriminatorValue'])),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
-            'currentDisposition' => fn(ParseNode $n) => $o->setCurrentDisposition($n->getObjectValue([LeadTableRow_currentDisposition::class, 'createFromDiscriminatorValue'])),
+            'currentLeadStatus' => fn(ParseNode $n) => $o->setCurrentLeadStatus($n->getObjectValue([LeadTableRow_currentLeadStatus::class, 'createFromDiscriminatorValue'])),
             'email' => fn(ParseNode $n) => $o->setEmail($n->getStringValue()),
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'firstName' => fn(ParseNode $n) => $o->setFirstName($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isArchived' => fn(ParseNode $n) => $o->setIsArchived($n->getBooleanValue()),
             'lastName' => fn(ParseNode $n) => $o->setLastName($n->getStringValue()),
+            'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([LeadTableRow_organization::class, 'createFromDiscriminatorValue'])),
             'phone' => fn(ParseNode $n) => $o->setPhone($n->getStringValue()),
             'price' => fn(ParseNode $n) => $o->setPrice($n->getFloatValue()),
             'source' => fn(ParseNode $n) => $o->setSource($n->getObjectValue([LeadTableRow_source::class, 'createFromDiscriminatorValue'])),
@@ -263,7 +255,15 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the phone property value. Phone details for the lead, user, or business represented by this lead table row.
+     * Gets the organization property value. The ID and name for this organization.
+     * @return LeadTableRow_organization|null
+    */
+    public function getOrganization(): ?LeadTableRow_organization {
+        return $this->organization;
+    }
+
+    /**
+     * Gets the phone property value. Phone details for the lead, user, or organization represented by this lead table row.
      * @return string|null
     */
     public function getPhone(): ?string {
@@ -326,15 +326,15 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('archivedAt', $this->getArchivedAt());
         $writer->writeStringValue('archivedByUserId', $this->getArchivedByUserId());
         $writer->writeIntegerValue('archiveReason', $this->getArchiveReason());
-        $writer->writeObjectValue('business', $this->getBusiness());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
-        $writer->writeObjectValue('currentDisposition', $this->getCurrentDisposition());
+        $writer->writeObjectValue('currentLeadStatus', $this->getCurrentLeadStatus());
         $writer->writeStringValue('email', $this->getEmail());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeStringValue('firstName', $this->getFirstName());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isArchived', $this->getIsArchived());
         $writer->writeStringValue('lastName', $this->getLastName());
+        $writer->writeObjectValue('organization', $this->getOrganization());
         $writer->writeStringValue('phone', $this->getPhone());
         $writer->writeFloatValue('price', $this->getPrice());
         $writer->writeObjectValue('source', $this->getSource());
@@ -378,14 +378,6 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the business property value. The ID and name for this business.
-     * @param LeadTableRow_business|null $value Value to set for the business property.
-    */
-    public function setBusiness(?LeadTableRow_business $value): void {
-        $this->business = $value;
-    }
-
-    /**
      * Sets the createdAt property value. UTC timestamp when this lead table row was created.
      * @param DateTime|null $value Value to set for the createdAt property.
     */
@@ -394,11 +386,11 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the currentDisposition property value. Current disposition summary that describes the lead outcome.
-     * @param LeadTableRow_currentDisposition|null $value Value to set for the currentDisposition property.
+     * Sets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
+     * @param LeadTableRow_currentLeadStatus|null $value Value to set for the currentLeadStatus property.
     */
-    public function setCurrentDisposition(?LeadTableRow_currentDisposition $value): void {
-        $this->currentDisposition = $value;
+    public function setCurrentLeadStatus(?LeadTableRow_currentLeadStatus $value): void {
+        $this->currentLeadStatus = $value;
     }
 
     /**
@@ -450,7 +442,15 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the phone property value. Phone details for the lead, user, or business represented by this lead table row.
+     * Sets the organization property value. The ID and name for this organization.
+     * @param LeadTableRow_organization|null $value Value to set for the organization property.
+    */
+    public function setOrganization(?LeadTableRow_organization $value): void {
+        $this->organization = $value;
+    }
+
+    /**
+     * Sets the phone property value. Phone details for the lead, user, or organization represented by this lead table row.
      * @param string|null $value Value to set for the phone property.
     */
     public function setPhone(?string $value): void {

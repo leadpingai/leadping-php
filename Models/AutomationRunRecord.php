@@ -29,11 +29,6 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     private ?string $automationId = null;
     
     /**
-     * @var string|null $businessId Business ID that owns this automation run.
-    */
-    private ?string $businessId = null;
-    
-    /**
      * @var DateTime|null $completedAt UTC timestamp when processing completed for this automation run record.
     */
     private ?DateTime $completedAt = null;
@@ -62,6 +57,11 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
      * @var string|null $leadId Lead ID that triggered this automation run, when the run is lead-based.
     */
     private ?string $leadId = null;
+    
+    /**
+     * @var string|null $organizationId Organization ID that owns this automation run.
+    */
+    private ?string $organizationId = null;
     
     /**
      * @var int|null $processingAttempts Number of processing attempts made for this workflow or delivery request.
@@ -129,14 +129,6 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the businessId property value. Business ID that owns this automation run.
-     * @return string|null
-    */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
-    }
-
-    /**
      * Gets the completedAt property value. UTC timestamp when processing completed for this automation run record.
      * @return DateTime|null
     */
@@ -169,13 +161,13 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
         return  [
             'actions' => fn(ParseNode $n) => $o->setActions($n->getCollectionOfObjectValues([AutomationActionRunRecord::class, 'createFromDiscriminatorValue'])),
             'automationId' => fn(ParseNode $n) => $o->setAutomationId($n->getStringValue()),
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'completedAt' => fn(ParseNode $n) => $o->setCompletedAt($n->getDateTimeValue()),
             'executionMode' => fn(ParseNode $n) => $o->setExecutionMode($n->getStringValue()),
             'failureCode' => fn(ParseNode $n) => $o->setFailureCode($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'lastAttemptAt' => fn(ParseNode $n) => $o->setLastAttemptAt($n->getDateTimeValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
+            'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'processingAttempts' => fn(ParseNode $n) => $o->setProcessingAttempts($n->getIntegerValue()),
             'skippedReason' => fn(ParseNode $n) => $o->setSkippedReason($n->getStringValue()),
             'startedAt' => fn(ParseNode $n) => $o->setStartedAt($n->getDateTimeValue()),
@@ -206,6 +198,14 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     */
     public function getLeadId(): ?string {
         return $this->leadId;
+    }
+
+    /**
+     * Gets the organizationId property value. Organization ID that owns this automation run.
+     * @return string|null
+    */
+    public function getOrganizationId(): ?string {
+        return $this->organizationId;
     }
 
     /**
@@ -255,13 +255,13 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeCollectionOfObjectValues('actions', $this->getActions());
         $writer->writeStringValue('automationId', $this->getAutomationId());
-        $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeDateTimeValue('completedAt', $this->getCompletedAt());
         $writer->writeStringValue('executionMode', $this->getExecutionMode());
         $writer->writeStringValue('failureCode', $this->getFailureCode());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeDateTimeValue('lastAttemptAt', $this->getLastAttemptAt());
         $writer->writeStringValue('leadId', $this->getLeadId());
+        $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeIntegerValue('processingAttempts', $this->getProcessingAttempts());
         $writer->writeStringValue('skippedReason', $this->getSkippedReason());
         $writer->writeDateTimeValue('startedAt', $this->getStartedAt());
@@ -292,14 +292,6 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     */
     public function setAutomationId(?string $value): void {
         $this->automationId = $value;
-    }
-
-    /**
-     * Sets the businessId property value. Business ID that owns this automation run.
-     * @param string|null $value Value to set for the businessId property.
-    */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
     }
 
     /**
@@ -348,6 +340,14 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     */
     public function setLeadId(?string $value): void {
         $this->leadId = $value;
+    }
+
+    /**
+     * Sets the organizationId property value. Organization ID that owns this automation run.
+     * @param string|null $value Value to set for the organizationId property.
+    */
+    public function setOrganizationId(?string $value): void {
+        $this->organizationId = $value;
     }
 
     /**

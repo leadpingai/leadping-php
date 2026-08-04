@@ -65,7 +65,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     private ?int $expectedMonthlyVolume = null;
     
     /**
-     * @var string|null $industry The industry value for this 10DLC application draft.
+     * @var string|null $industry The Telnyx brand vertical for this 10DLC application draft. The JSON name is retained for backward compatibility.
     */
     private ?string $industry = null;
     
@@ -291,7 +291,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the industry property value. The industry value for this 10DLC application draft.
+     * Gets the industry property value. The Telnyx brand vertical for this 10DLC application draft. The JSON name is retained for backward compatibility.
      * @return string|null
     */
     public function getIndustry(): ?string {
@@ -523,7 +523,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the industry property value. The industry value for this 10DLC application draft.
+     * Sets the industry property value. The Telnyx brand vertical for this 10DLC application draft. The JSON name is retained for backward compatibility.
      * @param string|null $value Value to set for the industry property.
     */
     public function setIndustry(?string $value): void {

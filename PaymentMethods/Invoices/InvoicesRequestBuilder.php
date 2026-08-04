@@ -42,7 +42,7 @@ class InvoicesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns the current business's Stripe invoices with their amounts, payment status, billing period, and hosted invoice details.
+     * Returns the current organization's Stripe invoices with their amounts, payment status, billing period, and hosted invoice details.
      * @param InvoicesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<array<StripeInvoiceResponse>|null>
      * @throws Exception
@@ -53,7 +53,7 @@ class InvoicesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns the current business's Stripe invoices with their amounts, payment status, billing period, and hosted invoice details.
+     * Returns the current organization's Stripe invoices with their amounts, payment status, billing period, and hosted invoice details.
      * @param InvoicesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

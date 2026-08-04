@@ -5,7 +5,7 @@ namespace Leadping\OpenApiClient\Usage\Summary\My;
 use DateTime;
 
 /**
- * Returns current-business usage totals for the active billing period, including spend, limits, and event summary data.
+ * Returns current-organization usage totals for the active billing period, including spend, limits, and event summary data.
 */
 class MyRequestBuilderGetQueryParameters 
 {

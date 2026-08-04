@@ -28,9 +28,9 @@ class UserRequest implements AdditionalDataHolder, Parsable
     private ?UserRequest_compliance $compliance = null;
     
     /**
-     * @var UserRequest_currentBusiness|null $currentBusiness Business currently selected for the user session or profile.
+     * @var UserRequest_currentOrganization|null $currentOrganization Organization currently selected for the user session or profile.
     */
-    private ?UserRequest_currentBusiness $currentBusiness = null;
+    private ?UserRequest_currentOrganization $currentOrganization = null;
     
     /**
      * @var string|null $email Email address for the person represented by this user profile request.
@@ -68,7 +68,7 @@ class UserRequest implements AdditionalDataHolder, Parsable
     private ?UserRequest_notificationPreferences $notificationPreferences = null;
     
     /**
-     * @var string|null $phone Phone details for the lead, user, or business represented by this user profile request.
+     * @var string|null $phone Phone details for the lead, user, or organization represented by this user profile request.
     */
     private ?string $phone = null;
     
@@ -118,11 +118,11 @@ class UserRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the currentBusiness property value. Business currently selected for the user session or profile.
-     * @return UserRequest_currentBusiness|null
+     * Gets the currentOrganization property value. Organization currently selected for the user session or profile.
+     * @return UserRequest_currentOrganization|null
     */
-    public function getCurrentBusiness(): ?UserRequest_currentBusiness {
-        return $this->currentBusiness;
+    public function getCurrentOrganization(): ?UserRequest_currentOrganization {
+        return $this->currentOrganization;
     }
 
     /**
@@ -142,7 +142,7 @@ class UserRequest implements AdditionalDataHolder, Parsable
         return  [
             'billingPlan' => fn(ParseNode $n) => $o->setBillingPlan($n->getEnumValue(UserRequest_billingPlan::class)),
             'compliance' => fn(ParseNode $n) => $o->setCompliance($n->getObjectValue([UserRequest_compliance::class, 'createFromDiscriminatorValue'])),
-            'currentBusiness' => fn(ParseNode $n) => $o->setCurrentBusiness($n->getObjectValue([UserRequest_currentBusiness::class, 'createFromDiscriminatorValue'])),
+            'currentOrganization' => fn(ParseNode $n) => $o->setCurrentOrganization($n->getObjectValue([UserRequest_currentOrganization::class, 'createFromDiscriminatorValue'])),
             'email' => fn(ParseNode $n) => $o->setEmail($n->getStringValue()),
             'firstName' => fn(ParseNode $n) => $o->setFirstName($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
@@ -204,7 +204,7 @@ class UserRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the phone property value. Phone details for the lead, user, or business represented by this user profile request.
+     * Gets the phone property value. Phone details for the lead, user, or organization represented by this user profile request.
      * @return string|null
     */
     public function getPhone(): ?string {
@@ -226,7 +226,7 @@ class UserRequest implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeEnumValue('billingPlan', $this->getBillingPlan());
         $writer->writeObjectValue('compliance', $this->getCompliance());
-        $writer->writeObjectValue('currentBusiness', $this->getCurrentBusiness());
+        $writer->writeObjectValue('currentOrganization', $this->getCurrentOrganization());
         $writer->writeStringValue('email', $this->getEmail());
         $writer->writeStringValue('firstName', $this->getFirstName());
         $writer->writeStringValue('id', $this->getId());
@@ -264,11 +264,11 @@ class UserRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the currentBusiness property value. Business currently selected for the user session or profile.
-     * @param UserRequest_currentBusiness|null $value Value to set for the currentBusiness property.
+     * Sets the currentOrganization property value. Organization currently selected for the user session or profile.
+     * @param UserRequest_currentOrganization|null $value Value to set for the currentOrganization property.
     */
-    public function setCurrentBusiness(?UserRequest_currentBusiness $value): void {
-        $this->currentBusiness = $value;
+    public function setCurrentOrganization(?UserRequest_currentOrganization $value): void {
+        $this->currentOrganization = $value;
     }
 
     /**
@@ -328,7 +328,7 @@ class UserRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the phone property value. Phone details for the lead, user, or business represented by this user profile request.
+     * Sets the phone property value. Phone details for the lead, user, or organization represented by this user profile request.
      * @param string|null $value Value to set for the phone property.
     */
     public function setPhone(?string $value): void {

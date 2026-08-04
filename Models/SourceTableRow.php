@@ -30,7 +30,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     private ?array $allowedStates = null;
     
     /**
-     * @var string|null $apiKey Source API key used to authenticate inbound lead delivery to Leadping. Unlike a business API key, this value remains available to authorized source users.
+     * @var string|null $apiKey Source API key used to authenticate inbound lead delivery to Leadping. Unlike an organization API key, this value remains available to authorized source users.
     */
     private ?string $apiKey = null;
     
@@ -50,17 +50,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     private ?int $apiKeyTotalUses = null;
     
     /**
-     * @var SourceTableRow_business|null $business Business summary connected to this lead source table row.
-    */
-    private ?SourceTableRow_business $business = null;
-    
-    /**
-     * @var string|null $businessId Business ID that owns this lead source.
-    */
-    private ?string $businessId = null;
-    
-    /**
-     * @var bool|null $complianceApproved Indicates whether the business or sender passed compliance review.
+     * @var bool|null $complianceApproved Indicates whether the organization or sender passed compliance review.
     */
     private ?bool $complianceApproved = null;
     
@@ -130,6 +120,16 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     private ?string $name = null;
     
     /**
+     * @var SourceTableRow_organization|null $organization Organization summary connected to this lead source table row.
+    */
+    private ?SourceTableRow_organization $organization = null;
+    
+    /**
+     * @var string|null $organizationId Organization ID that owns this lead source.
+    */
+    private ?string $organizationId = null;
+    
+    /**
      * @var bool|null $requiresTrustedForm Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
     */
     private ?bool $requiresTrustedForm = null;
@@ -180,7 +180,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike a business API key, this value remains available to authorized source users.
+     * Gets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike an organization API key, this value remains available to authorized source users.
      * @return string|null
     */
     public function getApiKey(): ?string {
@@ -212,23 +212,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the business property value. Business summary connected to this lead source table row.
-     * @return SourceTableRow_business|null
-    */
-    public function getBusiness(): ?SourceTableRow_business {
-        return $this->business;
-    }
-
-    /**
-     * Gets the businessId property value. Business ID that owns this lead source.
-     * @return string|null
-    */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
-    }
-
-    /**
-     * Gets the complianceApproved property value. Indicates whether the business or sender passed compliance review.
+     * Gets the complianceApproved property value. Indicates whether the organization or sender passed compliance review.
      * @return bool|null
     */
     public function getComplianceApproved(): ?bool {
@@ -318,8 +302,6 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
             'apiKeyLastUsedAt' => fn(ParseNode $n) => $o->setApiKeyLastUsedAt($n->getDateTimeValue()),
             'apiKeyPreview' => fn(ParseNode $n) => $o->setApiKeyPreview($n->getStringValue()),
             'apiKeyTotalUses' => fn(ParseNode $n) => $o->setApiKeyTotalUses($n->getIntegerValue()),
-            'business' => fn(ParseNode $n) => $o->setBusiness($n->getObjectValue([SourceTableRow_business::class, 'createFromDiscriminatorValue'])),
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'complianceApproved' => fn(ParseNode $n) => $o->setComplianceApproved($n->getBooleanValue()),
             'costPerLead' => fn(ParseNode $n) => $o->setCostPerLead($n->getFloatValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
@@ -341,6 +323,8 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'modifiedByUser' => fn(ParseNode $n) => $o->setModifiedByUser($n->getObjectValue([SourceTableRow_modifiedByUser::class, 'createFromDiscriminatorValue'])),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
+            'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([SourceTableRow_organization::class, 'createFromDiscriminatorValue'])),
+            'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'requiresTrustedForm' => fn(ParseNode $n) => $o->setRequiresTrustedForm($n->getBooleanValue()),
             'user' => fn(ParseNode $n) => $o->setUser($n->getObjectValue([SourceTableRow_user::class, 'createFromDiscriminatorValue'])),
         ];
@@ -395,6 +379,22 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the organization property value. Organization summary connected to this lead source table row.
+     * @return SourceTableRow_organization|null
+    */
+    public function getOrganization(): ?SourceTableRow_organization {
+        return $this->organization;
+    }
+
+    /**
+     * Gets the organizationId property value. Organization ID that owns this lead source.
+     * @return string|null
+    */
+    public function getOrganizationId(): ?string {
+        return $this->organizationId;
+    }
+
+    /**
      * Gets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
      * @return bool|null
     */
@@ -421,8 +421,6 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('apiKeyLastUsedAt', $this->getApiKeyLastUsedAt());
         $writer->writeStringValue('apiKeyPreview', $this->getApiKeyPreview());
         $writer->writeIntegerValue('apiKeyTotalUses', $this->getApiKeyTotalUses());
-        $writer->writeObjectValue('business', $this->getBusiness());
-        $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeBooleanValue('complianceApproved', $this->getComplianceApproved());
         $writer->writeFloatValue('costPerLead', $this->getCostPerLead());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
@@ -437,6 +435,8 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeObjectValue('modifiedByUser', $this->getModifiedByUser());
         $writer->writeStringValue('name', $this->getName());
+        $writer->writeObjectValue('organization', $this->getOrganization());
+        $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeBooleanValue('requiresTrustedForm', $this->getRequiresTrustedForm());
         $writer->writeObjectValue('user', $this->getUser());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -467,7 +467,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike a business API key, this value remains available to authorized source users.
+     * Sets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike an organization API key, this value remains available to authorized source users.
      * @param string|null $value Value to set for the apiKey property.
     */
     public function setApiKey(?string $value): void {
@@ -499,23 +499,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the business property value. Business summary connected to this lead source table row.
-     * @param SourceTableRow_business|null $value Value to set for the business property.
-    */
-    public function setBusiness(?SourceTableRow_business $value): void {
-        $this->business = $value;
-    }
-
-    /**
-     * Sets the businessId property value. Business ID that owns this lead source.
-     * @param string|null $value Value to set for the businessId property.
-    */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
-    }
-
-    /**
-     * Sets the complianceApproved property value. Indicates whether the business or sender passed compliance review.
+     * Sets the complianceApproved property value. Indicates whether the organization or sender passed compliance review.
      * @param bool|null $value Value to set for the complianceApproved property.
     */
     public function setComplianceApproved(?bool $value): void {
@@ -624,6 +608,22 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     */
     public function setName(?string $value): void {
         $this->name = $value;
+    }
+
+    /**
+     * Sets the organization property value. Organization summary connected to this lead source table row.
+     * @param SourceTableRow_organization|null $value Value to set for the organization property.
+    */
+    public function setOrganization(?SourceTableRow_organization $value): void {
+        $this->organization = $value;
+    }
+
+    /**
+     * Sets the organizationId property value. Organization ID that owns this lead source.
+     * @param string|null $value Value to set for the organizationId property.
+    */
+    public function setOrganizationId(?string $value): void {
+        $this->organizationId = $value;
     }
 
     /**

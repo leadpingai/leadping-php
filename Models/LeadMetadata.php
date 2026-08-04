@@ -19,14 +19,9 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $assignedPhoneNumberId Phone number ID assigned to the lead, business, or source.
+     * @var string|null $assignedPhoneNumberId Phone number ID assigned to the lead, organization, or source.
     */
     private ?string $assignedPhoneNumberId = null;
-    
-    /**
-     * @var string|null $businessId Business ID that owns this lead's attribution metadata.
-    */
-    private ?string $businessId = null;
     
     /**
      * @var string|null $complianceBlockedReason Reason Leadping blocked this operation for compliance.
@@ -72,6 +67,11 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
      * @var string|null $landingPage Landing page URL where the lead submitted their information.
     */
     private ?string $landingPage = null;
+    
+    /**
+     * @var string|null $organizationId Organization ID that owns this lead's attribution metadata.
+    */
+    private ?string $organizationId = null;
     
     /**
      * @var string|null $origin System or workflow that created this event.
@@ -218,19 +218,11 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the assignedPhoneNumberId property value. Phone number ID assigned to the lead, business, or source.
+     * Gets the assignedPhoneNumberId property value. Phone number ID assigned to the lead, organization, or source.
      * @return string|null
     */
     public function getAssignedPhoneNumberId(): ?string {
         return $this->assignedPhoneNumberId;
-    }
-
-    /**
-     * Gets the businessId property value. Business ID that owns this lead's attribution metadata.
-     * @return string|null
-    */
-    public function getBusinessId(): ?string {
-        return $this->businessId;
     }
 
     /**
@@ -281,7 +273,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'assignedPhoneNumberId' => fn(ParseNode $n) => $o->setAssignedPhoneNumberId($n->getStringValue()),
-            'businessId' => fn(ParseNode $n) => $o->setBusinessId($n->getStringValue()),
             'complianceBlockedReason' => fn(ParseNode $n) => $o->setComplianceBlockedReason($n->getStringValue()),
             'complianceStatus' => fn(ParseNode $n) => $o->setComplianceStatus($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
@@ -291,6 +282,7 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
             'ipAddress' => fn(ParseNode $n) => $o->setIpAddress($n->getStringValue()),
             'isImported' => fn(ParseNode $n) => $o->setIsImported($n->getBooleanValue()),
             'landingPage' => fn(ParseNode $n) => $o->setLandingPage($n->getStringValue()),
+            'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'origin' => fn(ParseNode $n) => $o->setOrigin($n->getStringValue()),
             'price' => fn(ParseNode $n) => $o->setPrice($n->getFloatValue()),
             'product' => fn(ParseNode $n) => $o->setProduct($n->getStringValue()),
@@ -348,6 +340,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function getLandingPage(): ?string {
         return $this->landingPage;
+    }
+
+    /**
+     * Gets the organizationId property value. Organization ID that owns this lead's attribution metadata.
+     * @return string|null
+    */
+    public function getOrganizationId(): ?string {
+        return $this->organizationId;
     }
 
     /**
@@ -548,7 +548,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('assignedPhoneNumberId', $this->getAssignedPhoneNumberId());
-        $writer->writeStringValue('businessId', $this->getBusinessId());
         $writer->writeStringValue('complianceBlockedReason', $this->getComplianceBlockedReason());
         $writer->writeStringValue('complianceStatus', $this->getComplianceStatus());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
@@ -558,6 +557,7 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('ipAddress', $this->getIpAddress());
         $writer->writeBooleanValue('isImported', $this->getIsImported());
         $writer->writeStringValue('landingPage', $this->getLandingPage());
+        $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeStringValue('origin', $this->getOrigin());
         $writer->writeFloatValue('price', $this->getPrice());
         $writer->writeStringValue('product', $this->getProduct());
@@ -594,19 +594,11 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the assignedPhoneNumberId property value. Phone number ID assigned to the lead, business, or source.
+     * Sets the assignedPhoneNumberId property value. Phone number ID assigned to the lead, organization, or source.
      * @param string|null $value Value to set for the assignedPhoneNumberId property.
     */
     public function setAssignedPhoneNumberId(?string $value): void {
         $this->assignedPhoneNumberId = $value;
-    }
-
-    /**
-     * Sets the businessId property value. Business ID that owns this lead's attribution metadata.
-     * @param string|null $value Value to set for the businessId property.
-    */
-    public function setBusinessId(?string $value): void {
-        $this->businessId = $value;
     }
 
     /**
@@ -679,6 +671,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function setLandingPage(?string $value): void {
         $this->landingPage = $value;
+    }
+
+    /**
+     * Sets the organizationId property value. Organization ID that owns this lead's attribution metadata.
+     * @param string|null $value Value to set for the organizationId property.
+    */
+    public function setOrganizationId(?string $value): void {
+        $this->organizationId = $value;
     }
 
     /**

@@ -4,15 +4,15 @@ namespace Leadping\OpenApiClient;
 
 use Leadping\OpenApiClient\Analytics\AnalyticsRequestBuilder;
 use Leadping\OpenApiClient\Automations\AutomationsRequestBuilder;
-use Leadping\OpenApiClient\Businesses\BusinessesRequestBuilder;
 use Leadping\OpenApiClient\Contact\ContactRequestBuilder;
 use Leadping\OpenApiClient\Conversations\ConversationsRequestBuilder;
-use Leadping\OpenApiClient\Dispositions\DispositionsRequestBuilder;
 use Leadping\OpenApiClient\Events\EventsRequestBuilder;
 use Leadping\OpenApiClient\Feedback\FeedbackRequestBuilder;
 use Leadping\OpenApiClient\Leads\LeadsRequestBuilder;
+use Leadping\OpenApiClient\LeadStatusChanges\LeadStatusChangesRequestBuilder;
 use Leadping\OpenApiClient\LeadStatuses\LeadStatusesRequestBuilder;
 use Leadping\OpenApiClient\Notifications\NotificationsRequestBuilder;
+use Leadping\OpenApiClient\Organizations\OrganizationsRequestBuilder;
 use Leadping\OpenApiClient\Outbound\OutboundRequestBuilder;
 use Leadping\OpenApiClient\PaymentMethods\PaymentMethodsRequestBuilder;
 use Leadping\OpenApiClient\PhoneCall\PhoneCallRequestBuilder;
@@ -58,13 +58,6 @@ class LeadpingOpenApiClient extends BaseRequestBuilder
     }
     
     /**
-     * The businesses property
-    */
-    public function businesses(): BusinessesRequestBuilder {
-        return new BusinessesRequestBuilder($this->pathParameters, $this->requestAdapter);
-    }
-    
-    /**
      * The contact property
     */
     public function contact(): ContactRequestBuilder {
@@ -76,13 +69,6 @@ class LeadpingOpenApiClient extends BaseRequestBuilder
     */
     public function conversations(): ConversationsRequestBuilder {
         return new ConversationsRequestBuilder($this->pathParameters, $this->requestAdapter);
-    }
-    
-    /**
-     * The dispositions property
-    */
-    public function dispositions(): DispositionsRequestBuilder {
-        return new DispositionsRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**
@@ -107,6 +93,13 @@ class LeadpingOpenApiClient extends BaseRequestBuilder
     }
     
     /**
+     * The leadStatusChanges property
+    */
+    public function leadStatusChanges(): LeadStatusChangesRequestBuilder {
+        return new LeadStatusChangesRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
      * The leadStatuses property
     */
     public function leadStatuses(): LeadStatusesRequestBuilder {
@@ -118,6 +111,13 @@ class LeadpingOpenApiClient extends BaseRequestBuilder
     */
     public function notifications(): NotificationsRequestBuilder {
         return new NotificationsRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The organizations property
+    */
+    public function organizations(): OrganizationsRequestBuilder {
+        return new OrganizationsRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**

@@ -31,7 +31,7 @@ class MeRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns the current business wallet, including balance and funding status used for communication delivery and billing.
+     * Returns the current organization wallet, including balance and funding status used for communication delivery and billing.
      * @param MeRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<WalletResponse|null>
      * @throws Exception
@@ -47,7 +47,7 @@ class MeRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns the current business wallet, including balance and funding status used for communication delivery and billing.
+     * Returns the current organization wallet, including balance and funding status used for communication delivery and billing.
      * @param MeRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

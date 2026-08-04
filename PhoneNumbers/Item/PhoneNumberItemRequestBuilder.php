@@ -48,7 +48,7 @@ class PhoneNumberItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Deletes a phone number from the current business when it should no longer be used for lead communication.
+     * Deletes a phone number from the current organization when it should no longer be used for lead communication.
      * @param PhoneNumberItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<void|null>
      * @throws Exception
@@ -98,7 +98,7 @@ class PhoneNumberItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Deletes a phone number from the current business when it should no longer be used for lead communication.
+     * Deletes a phone number from the current organization when it should no longer be used for lead communication.
      * @param PhoneNumberItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

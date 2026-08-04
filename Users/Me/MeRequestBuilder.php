@@ -40,7 +40,7 @@ class MeRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns the current user's profile, roles, business context, billing state, and compliance settings for portal sessions.
+     * Returns the current user's profile, roles, organization context, billing state, and compliance settings for portal sessions.
      * @param MeRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<UserResponse|null>
      * @throws Exception
@@ -55,7 +55,7 @@ class MeRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Updates the current user's profile fields, contact details, preferences, or business context used across Leadping.
+     * Updates the current user's profile fields, contact details, preferences, or organization context used across Leadping.
      * @param UserRequest $body Request schema for the Leadping API user profile request, including the fields clients can send.
      * @param MeRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<UserResponse|null>
@@ -71,7 +71,7 @@ class MeRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns the current user's profile, roles, business context, billing state, and compliance settings for portal sessions.
+     * Returns the current user's profile, roles, organization context, billing state, and compliance settings for portal sessions.
      * @param MeRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -89,7 +89,7 @@ class MeRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Updates the current user's profile fields, contact details, preferences, or business context used across Leadping.
+     * Updates the current user's profile fields, contact details, preferences, or organization context used across Leadping.
      * @param UserRequest $body Request schema for the Leadping API user profile request, including the fields clients can send.
      * @param MeRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
