@@ -34,6 +34,11 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     private ?int $archiveReason = null;
     
     /**
+     * @var string|null $avatarUrl Optional profile image URL explicitly associated with the lead.
+    */
+    private ?string $avatarUrl = null;
+    
+    /**
      * @var ConversationResponse_currentLeadStatus|null $currentLeadStatus Current lead status change summary that describes the lead outcome.
     */
     private ?ConversationResponse_currentLeadStatus $currentLeadStatus = null;
@@ -167,6 +172,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the avatarUrl property value. Optional profile image URL explicitly associated with the lead.
+     * @return string|null
+    */
+    public function getAvatarUrl(): ?string {
+        return $this->avatarUrl;
+    }
+
+    /**
      * Gets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
      * @return ConversationResponse_currentLeadStatus|null
     */
@@ -192,6 +205,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
             'activeOutboundPhoneNumberId' => fn(ParseNode $n) => $o->setActiveOutboundPhoneNumberId($n->getStringValue()),
             'archivedAt' => fn(ParseNode $n) => $o->setArchivedAt($n->getDateTimeValue()),
             'archiveReason' => fn(ParseNode $n) => $o->setArchiveReason($n->getIntegerValue()),
+            'avatarUrl' => fn(ParseNode $n) => $o->setAvatarUrl($n->getStringValue()),
             'currentLeadStatus' => fn(ParseNode $n) => $o->setCurrentLeadStatus($n->getObjectValue([ConversationResponse_currentLeadStatus::class, 'createFromDiscriminatorValue'])),
             'email' => fn(ParseNode $n) => $o->setEmail($n->getStringValue()),
             'firstName' => fn(ParseNode $n) => $o->setFirstName($n->getStringValue()),
@@ -340,6 +354,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('activeOutboundPhoneNumberId', $this->getActiveOutboundPhoneNumberId());
         $writer->writeDateTimeValue('archivedAt', $this->getArchivedAt());
         $writer->writeIntegerValue('archiveReason', $this->getArchiveReason());
+        $writer->writeStringValue('avatarUrl', $this->getAvatarUrl());
         $writer->writeObjectValue('currentLeadStatus', $this->getCurrentLeadStatus());
         $writer->writeStringValue('email', $this->getEmail());
         $writer->writeStringValue('firstName', $this->getFirstName());
@@ -390,6 +405,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     */
     public function setArchiveReason(?int $value): void {
         $this->archiveReason = $value;
+    }
+
+    /**
+     * Sets the avatarUrl property value. Optional profile image URL explicitly associated with the lead.
+     * @param string|null $value Value to set for the avatarUrl property.
+    */
+    public function setAvatarUrl(?string $value): void {
+        $this->avatarUrl = $value;
     }
 
     /**

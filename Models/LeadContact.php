@@ -18,6 +18,11 @@ class LeadContact implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var string|null $avatarUrl Optional profile image URL for the contact. Clients fall back to Gravatarand then initials when this value is not supplied.
+    */
+    private ?string $avatarUrl = null;
+    
+    /**
      * @var LeadContact_coordinate|null $coordinate Latitude and longitude coordinate for this lead contact profile.
     */
     private ?LeadContact_coordinate $coordinate = null;
@@ -77,6 +82,14 @@ class LeadContact implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the avatarUrl property value. Optional profile image URL for the contact. Clients fall back to Gravatarand then initials when this value is not supplied.
+     * @return string|null
+    */
+    public function getAvatarUrl(): ?string {
+        return $this->avatarUrl;
+    }
+
+    /**
      * Gets the coordinate property value. Latitude and longitude coordinate for this lead contact profile.
      * @return LeadContact_coordinate|null
     */
@@ -99,6 +112,7 @@ class LeadContact implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'avatarUrl' => fn(ParseNode $n) => $o->setAvatarUrl($n->getStringValue()),
             'coordinate' => fn(ParseNode $n) => $o->setCoordinate($n->getObjectValue([LeadContact_coordinate::class, 'createFromDiscriminatorValue'])),
             'email' => fn(ParseNode $n) => $o->setEmail($n->getStringValue()),
             'firstName' => fn(ParseNode $n) => $o->setFirstName($n->getStringValue()),
@@ -154,6 +168,7 @@ class LeadContact implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeStringValue('avatarUrl', $this->getAvatarUrl());
         $writer->writeObjectValue('coordinate', $this->getCoordinate());
         $writer->writeStringValue('email', $this->getEmail());
         $writer->writeStringValue('firstName', $this->getFirstName());
@@ -170,6 +185,14 @@ class LeadContact implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the avatarUrl property value. Optional profile image URL for the contact. Clients fall back to Gravatarand then initials when this value is not supplied.
+     * @param string|null $value Value to set for the avatarUrl property.
+    */
+    public function setAvatarUrl(?string $value): void {
+        $this->avatarUrl = $value;
     }
 
     /**
