@@ -6,6 +6,7 @@ use Leadping\OpenApiClient\Notifications\Announcements\AnnouncementsRequestBuild
 use Leadping\OpenApiClient\Notifications\Item\NotificationsItemRequestBuilder;
 use Leadping\OpenApiClient\Notifications\MarkAllRead\MarkAllReadRequestBuilder;
 use Leadping\OpenApiClient\Notifications\Me\MeRequestBuilder;
+use Leadping\OpenApiClient\Notifications\Push\PushRequestBuilder;
 use Leadping\OpenApiClient\Notifications\UnreadCount\UnreadCountRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
@@ -34,6 +35,13 @@ class NotificationsRequestBuilder extends BaseRequestBuilder
     */
     public function me(): MeRequestBuilder {
         return new MeRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The push property
+    */
+    public function push(): PushRequestBuilder {
+        return new PushRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**

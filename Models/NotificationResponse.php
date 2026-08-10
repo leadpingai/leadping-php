@@ -69,6 +69,11 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     private ?NotificationPriority $priority = null;
     
     /**
+     * @var bool|null $pushEnabled Whether this notification should also be delivered as a device push notification.
+    */
+    private ?bool $pushEnabled = null;
+    
+    /**
      * @var DateTime|null $readAt The date and time for the read at value on this notification.
     */
     private ?DateTime $readAt = null;
@@ -166,6 +171,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'priority' => fn(ParseNode $n) => $o->setPriority($n->getEnumValue(NotificationPriority::class)),
+            'pushEnabled' => fn(ParseNode $n) => $o->setPushEnabled($n->getBooleanValue()),
             'readAt' => fn(ParseNode $n) => $o->setReadAt($n->getDateTimeValue()),
             'relatedEntityId' => fn(ParseNode $n) => $o->setRelatedEntityId($n->getStringValue()),
             'relatedEntityType' => fn(ParseNode $n) => $o->setRelatedEntityType($n->getStringValue()),
@@ -223,6 +229,14 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the pushEnabled property value. Whether this notification should also be delivered as a device push notification.
+     * @return bool|null
+    */
+    public function getPushEnabled(): ?bool {
+        return $this->pushEnabled;
+    }
+
+    /**
      * Gets the readAt property value. The date and time for the read at value on this notification.
      * @return DateTime|null
     */
@@ -277,6 +291,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeEnumValue('priority', $this->getPriority());
+        $writer->writeBooleanValue('pushEnabled', $this->getPushEnabled());
         $writer->writeDateTimeValue('readAt', $this->getReadAt());
         $writer->writeStringValue('relatedEntityId', $this->getRelatedEntityId());
         $writer->writeStringValue('relatedEntityType', $this->getRelatedEntityType());
@@ -371,6 +386,14 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     */
     public function setPriority(?NotificationPriority $value): void {
         $this->priority = $value;
+    }
+
+    /**
+     * Sets the pushEnabled property value. Whether this notification should also be delivered as a device push notification.
+     * @param bool|null $value Value to set for the pushEnabled property.
+    */
+    public function setPushEnabled(?bool $value): void {
+        $this->pushEnabled = $value;
     }
 
     /**
