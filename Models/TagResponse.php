@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Response schema for the Leadping API tag response returned to authenticated clients.
+ * Describes tag data returned by Leadping.
 */
 class TagResponse implements AdditionalDataHolder, Parsable 
 {

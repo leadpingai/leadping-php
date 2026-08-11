@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API DTO containing user compliance data used by Leadping API contracts.
+ * Describes user compliance data used in Leadping API requests and responses.
 */
 class UserCompliance implements AdditionalDataHolder, Parsable 
 {

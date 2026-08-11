@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API DTO containing usage summary response data.
+ * Describes usage summary response data used by Leadping.
 */
 class UsageSummaryResponse implements AdditionalDataHolder, Parsable 
 {
@@ -49,12 +49,12 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     private ?int $pendingInvoiceCount = null;
     
     /**
-     * @var DateTime|null $periodEnd The date and time for the period end value on this usage summary.
+     * @var DateTime|null $periodEnd UTC timestamp for period end on this usage summary.
     */
     private ?DateTime $periodEnd = null;
     
     /**
-     * @var DateTime|null $periodStart The date and time for the period start value on this usage summary.
+     * @var DateTime|null $periodStart UTC timestamp for period start on this usage summary.
     */
     private ?DateTime $periodStart = null;
     
@@ -155,7 +155,7 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the periodEnd property value. The date and time for the period end value on this usage summary.
+     * Gets the periodEnd property value. UTC timestamp for period end on this usage summary.
      * @return DateTime|null
     */
     public function getPeriodEnd(): ?DateTime {
@@ -163,7 +163,7 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the periodStart property value. The date and time for the period start value on this usage summary.
+     * Gets the periodStart property value. UTC timestamp for period start on this usage summary.
      * @return DateTime|null
     */
     public function getPeriodStart(): ?DateTime {
@@ -252,7 +252,7 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the periodEnd property value. The date and time for the period end value on this usage summary.
+     * Sets the periodEnd property value. UTC timestamp for period end on this usage summary.
      * @param DateTime|null $value Value to set for the periodEnd property.
     */
     public function setPeriodEnd(?DateTime $value): void {
@@ -260,7 +260,7 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the periodStart property value. The date and time for the period start value on this usage summary.
+     * Sets the periodStart property value. UTC timestamp for period start on this usage summary.
      * @param DateTime|null $value Value to set for the periodStart property.
     */
     public function setPeriodStart(?DateTime $value): void {

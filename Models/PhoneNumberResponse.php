@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Response schema for the Leadping API phone number returned to authenticated clients.
+ * Describes a Leadping-managed phone number, including capabilities, messaging registration, health, and assignment details.
 */
 class PhoneNumberResponse implements AdditionalDataHolder, Parsable 
 {

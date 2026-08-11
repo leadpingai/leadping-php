@@ -19,7 +19,7 @@ class LeadStatusesRequestBuilder extends BaseRequestBuilder
 {
     /**
      * Gets an item from the Leadping/OpenApiClient.leadStatuses.item collection
-     * @param string $id Unique identifier of the item
+     * @param string $id The unique identifier of the lead status to update.
      * @return LeadStatusesItemRequestBuilder
     */
     public function byId(string $id): LeadStatusesItemRequestBuilder {

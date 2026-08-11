@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Request payload for organization invitation.
+ * Defines the input used for organization invitation.
 */
 class OrganizationInvitationRequest implements AdditionalDataHolder, Parsable 
 {
@@ -23,7 +23,7 @@ class OrganizationInvitationRequest implements AdditionalDataHolder, Parsable
     private ?string $email = null;
     
     /**
-     * @var OrganizationMemberRole|null $role The role value for this organization invitation.
+     * @var OrganizationMemberRole|null $role Role for this organization invitation.
     */
     private ?OrganizationMemberRole $role = null;
     
@@ -72,7 +72,7 @@ class OrganizationInvitationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the role property value. The role value for this organization invitation.
+     * Gets the role property value. Role for this organization invitation.
      * @return OrganizationMemberRole|null
     */
     public function getRole(): ?OrganizationMemberRole {
@@ -106,7 +106,7 @@ class OrganizationInvitationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the role property value. The role value for this organization invitation.
+     * Sets the role property value. Role for this organization invitation.
      * @param OrganizationMemberRole|null $value Value to set for the role property.
     */
     public function setRole(?OrganizationMemberRole $value): void {

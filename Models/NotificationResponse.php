@@ -9,12 +9,12 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API DTO containing notification data used by Leadping API contracts.
+ * Describes notification data used in Leadping API requests and responses.
 */
 class NotificationResponse implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var string|null $actionButtonText The action button text value for this notification.
+     * @var string|null $actionButtonText Action button text for this notification.
     */
     private ?string $actionButtonText = null;
     
@@ -34,7 +34,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $createdAt = null;
     
     /**
-     * @var string|null $details The details value for this notification.
+     * @var string|null $details Optional supporting details displayed beneath the notification message.
     */
     private ?string $details = null;
     
@@ -49,7 +49,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     private ?bool $isRead = null;
     
     /**
-     * @var string|null $message The message value for this notification.
+     * @var string|null $message Message for this notification.
     */
     private ?string $message = null;
     
@@ -64,7 +64,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     private ?string $name = null;
     
     /**
-     * @var NotificationPriority|null $priority The priority value for this notification.
+     * @var NotificationPriority|null $priority Priority for this notification.
     */
     private ?NotificationPriority $priority = null;
     
@@ -74,7 +74,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     private ?bool $pushEnabled = null;
     
     /**
-     * @var DateTime|null $readAt The date and time for the read at value on this notification.
+     * @var DateTime|null $readAt UTC timestamp for read at on this notification.
     */
     private ?DateTime $readAt = null;
     
@@ -115,7 +115,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the actionButtonText property value. The action button text value for this notification.
+     * Gets the actionButtonText property value. Action button text for this notification.
      * @return string|null
     */
     public function getActionButtonText(): ?string {
@@ -147,7 +147,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the details property value. The details value for this notification.
+     * Gets the details property value. Optional supporting details displayed beneath the notification message.
      * @return string|null
     */
     public function getDetails(): ?string {
@@ -197,7 +197,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the message property value. The message value for this notification.
+     * Gets the message property value. Message for this notification.
      * @return string|null
     */
     public function getMessage(): ?string {
@@ -221,7 +221,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the priority property value. The priority value for this notification.
+     * Gets the priority property value. Priority for this notification.
      * @return NotificationPriority|null
     */
     public function getPriority(): ?NotificationPriority {
@@ -237,7 +237,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the readAt property value. The date and time for the read at value on this notification.
+     * Gets the readAt property value. UTC timestamp for read at on this notification.
      * @return DateTime|null
     */
     public function getReadAt(): ?DateTime {
@@ -301,7 +301,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the actionButtonText property value. The action button text value for this notification.
+     * Sets the actionButtonText property value. Action button text for this notification.
      * @param string|null $value Value to set for the actionButtonText property.
     */
     public function setActionButtonText(?string $value): void {
@@ -333,7 +333,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the details property value. The details value for this notification.
+     * Sets the details property value. Optional supporting details displayed beneath the notification message.
      * @param string|null $value Value to set for the details property.
     */
     public function setDetails(?string $value): void {
@@ -357,7 +357,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the message property value. The message value for this notification.
+     * Sets the message property value. Message for this notification.
      * @param string|null $value Value to set for the message property.
     */
     public function setMessage(?string $value): void {
@@ -381,7 +381,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the priority property value. The priority value for this notification.
+     * Sets the priority property value. Priority for this notification.
      * @param NotificationPriority|null $value Value to set for the priority property.
     */
     public function setPriority(?NotificationPriority $value): void {
@@ -397,7 +397,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the readAt property value. The date and time for the read at value on this notification.
+     * Sets the readAt property value. UTC timestamp for read at on this notification.
      * @param DateTime|null $value Value to set for the readAt property.
     */
     public function setReadAt(?DateTime $value): void {

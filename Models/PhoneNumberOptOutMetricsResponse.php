@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Response schema for the Leadping API phone number opt-out metrics response returned to authenticated clients.
+ * Describes phone number opt-out metrics data returned by Leadping.
 */
 class PhoneNumberOptOutMetricsResponse implements AdditionalDataHolder, Parsable 
 {

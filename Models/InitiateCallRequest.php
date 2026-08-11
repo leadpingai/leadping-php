@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Request schema for the Leadping API phone call initiation request, including the fields clients can send.
+ * Defines the fields clients can send when working with phone call initiation.
 */
 class InitiateCallRequest implements AdditionalDataHolder, Parsable 
 {

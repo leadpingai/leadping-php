@@ -33,7 +33,7 @@ class SendRequestBuilder extends BaseRequestBuilder
 
     /**
      * Sends an SMS message to a lead or phone number, applying current-organization sender selection, scheduling, and delivery rules.
-     * @param SendSmsRequest $body Request schema for the Leadping API SMS send request, including the fields clients can send.
+     * @param SendSmsRequest $body Defines the fields clients can send when working with SMS send.
      * @param SendRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<SmsResponse|null>
      * @throws Exception
@@ -50,7 +50,7 @@ class SendRequestBuilder extends BaseRequestBuilder
 
     /**
      * Sends an SMS message to a lead or phone number, applying current-organization sender selection, scheduling, and delivery rules.
-     * @param SendSmsRequest $body Request schema for the Leadping API SMS send request, including the fields clients can send.
+     * @param SendSmsRequest $body Defines the fields clients can send when working with SMS send.
      * @param SendRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

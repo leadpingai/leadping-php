@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API DTO containing usage ledger data used by Leadping API contracts.
+ * Describes usage ledger data used in Leadping API requests and responses.
 */
 class UsageLedgerTableRow implements AdditionalDataHolder, Parsable 
 {
@@ -19,22 +19,22 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var int|null $billableSeconds The billable seconds value for this usage ledger.
+     * @var int|null $billableSeconds Billable seconds for this usage ledger.
     */
     private ?int $billableSeconds = null;
     
     /**
-     * @var BillableUnit|null $billableUnit The billable unit value for this usage ledger.
+     * @var BillableUnit|null $billableUnit Billable unit for this usage ledger.
     */
     private ?BillableUnit $billableUnit = null;
     
     /**
-     * @var UsageChannel|null $channel The channel value for this usage ledger.
+     * @var UsageChannel|null $channel Channel for this usage ledger.
     */
     private ?UsageChannel $channel = null;
     
     /**
-     * @var DateTime|null $createdAt The date and time for the created at value on this usage ledger.
+     * @var DateTime|null $createdAt UTC timestamp for created at on this usage ledger.
     */
     private ?DateTime $createdAt = null;
     
@@ -49,12 +49,12 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     private ?string $description = null;
     
     /**
-     * @var int|null $durationSeconds The duration seconds value for this usage ledger.
+     * @var int|null $durationSeconds Duration seconds for this usage ledger.
     */
     private ?int $durationSeconds = null;
     
     /**
-     * @var string|null $id The unique ID for this usage ledger.
+     * @var string|null $id Unique Leadping identifier for this usage ledger.
     */
     private ?string $id = null;
     
@@ -64,12 +64,12 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     private ?bool $isBillable = null;
     
     /**
-     * @var UsageLedgerTableRow_lead|null $lead The ID and name for this lead.
+     * @var UsageLedgerTableRow_lead|null $lead Identifier and display name of the related lead.
     */
     private ?UsageLedgerTableRow_lead $lead = null;
     
     /**
-     * @var UsageLedgerTableRow_organization|null $organization The ID and name for this organization.
+     * @var UsageLedgerTableRow_organization|null $organization Identifier and display name of the related organization.
     */
     private ?UsageLedgerTableRow_organization $organization = null;
     
@@ -84,12 +84,12 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     private ?string $phoneNumberId = null;
     
     /**
-     * @var float|null $quantity The quantity value for this usage ledger.
+     * @var float|null $quantity Quantity for this usage ledger.
     */
     private ?float $quantity = null;
     
     /**
-     * @var int|null $smsSegments The SMS segments value for this usage ledger.
+     * @var int|null $smsSegments SMS segments for this usage ledger.
     */
     private ?int $smsSegments = null;
     
@@ -99,12 +99,12 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     private ?UsageStatus $status = null;
     
     /**
-     * @var float|null $unitPrice The unit price value for this usage ledger.
+     * @var float|null $unitPrice Unit price for this usage ledger.
     */
     private ?float $unitPrice = null;
     
     /**
-     * @var UsageLedgerTableRow_user|null $user The ID and name for this user.
+     * @var UsageLedgerTableRow_user|null $user Identifier and display name of the related user.
     */
     private ?UsageLedgerTableRow_user $user = null;
     
@@ -133,7 +133,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billableSeconds property value. The billable seconds value for this usage ledger.
+     * Gets the billableSeconds property value. Billable seconds for this usage ledger.
      * @return int|null
     */
     public function getBillableSeconds(): ?int {
@@ -141,7 +141,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billableUnit property value. The billable unit value for this usage ledger.
+     * Gets the billableUnit property value. Billable unit for this usage ledger.
      * @return BillableUnit|null
     */
     public function getBillableUnit(): ?BillableUnit {
@@ -149,7 +149,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the channel property value. The channel value for this usage ledger.
+     * Gets the channel property value. Channel for this usage ledger.
      * @return UsageChannel|null
     */
     public function getChannel(): ?UsageChannel {
@@ -157,7 +157,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the createdAt property value. The date and time for the created at value on this usage ledger.
+     * Gets the createdAt property value. UTC timestamp for created at on this usage ledger.
      * @return DateTime|null
     */
     public function getCreatedAt(): ?DateTime {
@@ -181,7 +181,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the durationSeconds property value. The duration seconds value for this usage ledger.
+     * Gets the durationSeconds property value. Duration seconds for this usage ledger.
      * @return int|null
     */
     public function getDurationSeconds(): ?int {
@@ -217,7 +217,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The unique ID for this usage ledger.
+     * Gets the id property value. Unique Leadping identifier for this usage ledger.
      * @return string|null
     */
     public function getId(): ?string {
@@ -233,7 +233,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lead property value. The ID and name for this lead.
+     * Gets the lead property value. Identifier and display name of the related lead.
      * @return UsageLedgerTableRow_lead|null
     */
     public function getLead(): ?UsageLedgerTableRow_lead {
@@ -241,7 +241,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organization property value. The ID and name for this organization.
+     * Gets the organization property value. Identifier and display name of the related organization.
      * @return UsageLedgerTableRow_organization|null
     */
     public function getOrganization(): ?UsageLedgerTableRow_organization {
@@ -265,7 +265,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the quantity property value. The quantity value for this usage ledger.
+     * Gets the quantity property value. Quantity for this usage ledger.
      * @return float|null
     */
     public function getQuantity(): ?float {
@@ -273,7 +273,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the smsSegments property value. The SMS segments value for this usage ledger.
+     * Gets the smsSegments property value. SMS segments for this usage ledger.
      * @return int|null
     */
     public function getSmsSegments(): ?int {
@@ -289,7 +289,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the unitPrice property value. The unit price value for this usage ledger.
+     * Gets the unitPrice property value. Unit price for this usage ledger.
      * @return float|null
     */
     public function getUnitPrice(): ?float {
@@ -297,7 +297,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the user property value. The ID and name for this user.
+     * Gets the user property value. Identifier and display name of the related user.
      * @return UsageLedgerTableRow_user|null
     */
     public function getUser(): ?UsageLedgerTableRow_user {
@@ -339,7 +339,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billableSeconds property value. The billable seconds value for this usage ledger.
+     * Sets the billableSeconds property value. Billable seconds for this usage ledger.
      * @param int|null $value Value to set for the billableSeconds property.
     */
     public function setBillableSeconds(?int $value): void {
@@ -347,7 +347,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billableUnit property value. The billable unit value for this usage ledger.
+     * Sets the billableUnit property value. Billable unit for this usage ledger.
      * @param BillableUnit|null $value Value to set for the billableUnit property.
     */
     public function setBillableUnit(?BillableUnit $value): void {
@@ -355,7 +355,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the channel property value. The channel value for this usage ledger.
+     * Sets the channel property value. Channel for this usage ledger.
      * @param UsageChannel|null $value Value to set for the channel property.
     */
     public function setChannel(?UsageChannel $value): void {
@@ -363,7 +363,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the createdAt property value. The date and time for the created at value on this usage ledger.
+     * Sets the createdAt property value. UTC timestamp for created at on this usage ledger.
      * @param DateTime|null $value Value to set for the createdAt property.
     */
     public function setCreatedAt(?DateTime $value): void {
@@ -387,7 +387,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the durationSeconds property value. The duration seconds value for this usage ledger.
+     * Sets the durationSeconds property value. Duration seconds for this usage ledger.
      * @param int|null $value Value to set for the durationSeconds property.
     */
     public function setDurationSeconds(?int $value): void {
@@ -395,7 +395,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The unique ID for this usage ledger.
+     * Sets the id property value. Unique Leadping identifier for this usage ledger.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -411,7 +411,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lead property value. The ID and name for this lead.
+     * Sets the lead property value. Identifier and display name of the related lead.
      * @param UsageLedgerTableRow_lead|null $value Value to set for the lead property.
     */
     public function setLead(?UsageLedgerTableRow_lead $value): void {
@@ -419,7 +419,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organization property value. The ID and name for this organization.
+     * Sets the organization property value. Identifier and display name of the related organization.
      * @param UsageLedgerTableRow_organization|null $value Value to set for the organization property.
     */
     public function setOrganization(?UsageLedgerTableRow_organization $value): void {
@@ -443,7 +443,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the quantity property value. The quantity value for this usage ledger.
+     * Sets the quantity property value. Quantity for this usage ledger.
      * @param float|null $value Value to set for the quantity property.
     */
     public function setQuantity(?float $value): void {
@@ -451,7 +451,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the smsSegments property value. The SMS segments value for this usage ledger.
+     * Sets the smsSegments property value. SMS segments for this usage ledger.
      * @param int|null $value Value to set for the smsSegments property.
     */
     public function setSmsSegments(?int $value): void {
@@ -467,7 +467,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the unitPrice property value. The unit price value for this usage ledger.
+     * Sets the unitPrice property value. Unit price for this usage ledger.
      * @param float|null $value Value to set for the unitPrice property.
     */
     public function setUnitPrice(?float $value): void {
@@ -475,7 +475,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the user property value. The ID and name for this user.
+     * Sets the user property value. Identifier and display name of the related user.
      * @param UsageLedgerTableRow_user|null $value Value to set for the user property.
     */
     public function setUser(?UsageLedgerTableRow_user $value): void {

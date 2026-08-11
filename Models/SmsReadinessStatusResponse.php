@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API response containing SMS warmup status data returned to callers.
+ * Describes SMS warmup status data returned by Leadping.
 */
 class SmsReadinessStatusResponse implements AdditionalDataHolder, Parsable 
 {

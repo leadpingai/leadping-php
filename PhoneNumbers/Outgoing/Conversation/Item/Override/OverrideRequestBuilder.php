@@ -48,7 +48,7 @@ class OverrideRequestBuilder extends BaseRequestBuilder
 
     /**
      * Sets the outgoing phone number override for a conversation so future lead messages use the selected eligible number.
-     * @param OutgoingNumberManualOverrideRequest $body Request schema for the Leadping API outgoing number manual override request, including the fields clients can send.
+     * @param OutgoingNumberManualOverrideRequest $body Defines the fields clients can send when working with outgoing number manual override.
      * @param OverrideRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<OutgoingNumberSelectionResponse|null>
      * @throws Exception
@@ -82,7 +82,7 @@ class OverrideRequestBuilder extends BaseRequestBuilder
 
     /**
      * Sets the outgoing phone number override for a conversation so future lead messages use the selected eligible number.
-     * @param OutgoingNumberManualOverrideRequest $body Request schema for the Leadping API outgoing number manual override request, including the fields clients can send.
+     * @param OutgoingNumberManualOverrideRequest $body Defines the fields clients can send when working with outgoing number manual override.
      * @param OverrideRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

@@ -41,7 +41,7 @@ class ContactRequestBuilder extends BaseRequestBuilder
 
     /**
      * Submits a public contact request to Leadping support, capturing sender details and message content without requiring authentication.
-     * @param ContactRequest $body Request schema for the Leadping API contact form request, including the fields clients can send.
+     * @param ContactRequest $body Defines the fields clients can send when working with contact form.
      * @param ContactRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<ContactResponse|null>
      * @throws Exception
@@ -56,7 +56,7 @@ class ContactRequestBuilder extends BaseRequestBuilder
 
     /**
      * Submits a public contact request to Leadping support, capturing sender details and message content without requiring authentication.
-     * @param ContactRequest $body Request schema for the Leadping API contact form request, including the fields clients can send.
+     * @param ContactRequest $body Defines the fields clients can send when working with contact form.
      * @param ContactRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Request schema for the Leadping API lead archive request, including the fields clients can send.
+ * Defines the fields clients can send when working with lead archive.
 */
 class ArchivePostRequestBody extends LeadArchiveRequest implements Parsable 
 {

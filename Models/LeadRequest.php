@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 use Microsoft\Kiota\Abstractions\Types\TypeUtils;
 
 /**
- * Request schema for the Leadping API lead request, including the fields clients can send.
+ * Defines the fields clients can send when working with lead.
 */
 class LeadRequest implements AdditionalDataHolder, Parsable 
 {

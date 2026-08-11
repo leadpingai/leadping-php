@@ -60,7 +60,7 @@ class InvitationsRequestBuilder extends BaseRequestBuilder
 
     /**
      * Creates an invitation for the current organization so another user can join with the requested role and account access.
-     * @param OrganizationInvitationRequest $body Request payload for organization invitation.
+     * @param OrganizationInvitationRequest $body Defines the input used for organization invitation.
      * @param InvitationsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<OrganizationInvitationResponse|null>
      * @throws Exception
@@ -94,7 +94,7 @@ class InvitationsRequestBuilder extends BaseRequestBuilder
 
     /**
      * Creates an invitation for the current organization so another user can join with the requested role and account access.
-     * @param OrganizationInvitationRequest $body Request payload for organization invitation.
+     * @param OrganizationInvitationRequest $body Defines the input used for organization invitation.
      * @param InvitationsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

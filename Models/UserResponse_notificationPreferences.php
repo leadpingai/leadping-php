@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * The notification preferences value for this user.
+ * Notification preferences for this user.
 */
 class UserResponse_notificationPreferences extends UserNotificationPreferences implements Parsable 
 {

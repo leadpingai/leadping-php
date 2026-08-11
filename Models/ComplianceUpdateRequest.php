@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Request payload for compliance update.
+ * Defines the input used for compliance update.
 */
 class ComplianceUpdateRequest implements AdditionalDataHolder, Parsable 
 {
@@ -18,12 +18,12 @@ class ComplianceUpdateRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var ComplianceUpdateRequest_compliance|null $compliance The compliance value for this compliance update.
+     * @var ComplianceUpdateRequest_compliance|null $compliance Compliance for this compliance update.
     */
     private ?ComplianceUpdateRequest_compliance $compliance = null;
     
     /**
-     * @var string|null $source The source value for this compliance update.
+     * @var string|null $source Source for this compliance update.
     */
     private ?string $source = null;
     
@@ -52,7 +52,7 @@ class ComplianceUpdateRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the compliance property value. The compliance value for this compliance update.
+     * Gets the compliance property value. Compliance for this compliance update.
      * @return ComplianceUpdateRequest_compliance|null
     */
     public function getCompliance(): ?ComplianceUpdateRequest_compliance {
@@ -72,7 +72,7 @@ class ComplianceUpdateRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the source property value. The source value for this compliance update.
+     * Gets the source property value. Source for this compliance update.
      * @return string|null
     */
     public function getSource(): ?string {
@@ -98,7 +98,7 @@ class ComplianceUpdateRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the compliance property value. The compliance value for this compliance update.
+     * Sets the compliance property value. Compliance for this compliance update.
      * @param ComplianceUpdateRequest_compliance|null $value Value to set for the compliance property.
     */
     public function setCompliance(?ComplianceUpdateRequest_compliance $value): void {
@@ -106,7 +106,7 @@ class ComplianceUpdateRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the source property value. The source value for this compliance update.
+     * Sets the source property value. Source for this compliance update.
      * @param string|null $value Value to set for the source property.
     */
     public function setSource(?string $value): void {

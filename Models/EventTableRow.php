@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * List item schema for Leadping API event timeline table row results shown in searchable tables.
+ * Summarizes event timeline data in paginated and searchable results.
 */
 class EventTableRow implements AdditionalDataHolder, Parsable 
 {

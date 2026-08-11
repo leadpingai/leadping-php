@@ -33,7 +33,7 @@ class AcceptRequestBuilder extends BaseRequestBuilder
 
     /**
      * Accepts an organization invitation for the signed-in user, creating membership and setting organization access context.
-     * @param AcceptOrganizationInvitationRequest $body Request payload for accept organization invitation.
+     * @param AcceptOrganizationInvitationRequest $body Defines the input used for accept organization invitation.
      * @param AcceptRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<OrganizationInvitationResponse|null>
      * @throws Exception
@@ -48,7 +48,7 @@ class AcceptRequestBuilder extends BaseRequestBuilder
 
     /**
      * Accepts an organization invitation for the signed-in user, creating membership and setting organization access context.
-     * @param AcceptOrganizationInvitationRequest $body Request payload for accept organization invitation.
+     * @param AcceptOrganizationInvitationRequest $body Defines the input used for accept organization invitation.
      * @param AcceptRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

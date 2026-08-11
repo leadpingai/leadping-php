@@ -32,7 +32,7 @@ class MyRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Get all for current organization
+     * Returns a filtered, paginated list of recipients the current organization has blocked from phone, SMS, or email outreach.
      * @param RequestDataOptions $body Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
      * @param MyRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<PagedResultOfSuppressionEntryResponse|null>
@@ -47,7 +47,7 @@ class MyRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Get all for current organization
+     * Returns a filtered, paginated list of recipients the current organization has blocked from phone, SMS, or email outreach.
      * @param RequestDataOptions $body Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
      * @param MyRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

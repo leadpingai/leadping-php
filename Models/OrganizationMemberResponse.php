@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API response containing organization user data returned to callers.
+ * Describes organization user data returned by Leadping.
 */
 class OrganizationMemberResponse implements AdditionalDataHolder, Parsable 
 {
@@ -34,7 +34,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * @var DateTime|null $lastUsedAt The date and time for the last used at value on this organization user.
+     * @var DateTime|null $lastUsedAt UTC timestamp for last used at on this organization user.
     */
     private ?DateTime $lastUsedAt = null;
     
@@ -64,12 +64,12 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     private ?string $name = null;
     
     /**
-     * @var IdNamePair|null $organization The organization value for this organization user.
+     * @var IdNamePair|null $organization Organization for this organization user.
     */
     private ?IdNamePair $organization = null;
     
     /**
-     * @var DateTime|null $removedAt The date and time for the removed at value on this organization user.
+     * @var DateTime|null $removedAt UTC timestamp for removed at on this organization user.
     */
     private ?DateTime $removedAt = null;
     
@@ -79,17 +79,17 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     private ?string $removedByUserId = null;
     
     /**
-     * @var OrganizationMemberRole|null $role The role value for this organization user.
+     * @var OrganizationMemberRole|null $role Role for this organization user.
     */
     private ?OrganizationMemberRole $role = null;
     
     /**
-     * @var IdNamePair|null $user The user value for this organization user.
+     * @var IdNamePair|null $user User for this organization user.
     */
     private ?IdNamePair $user = null;
     
     /**
-     * @var string|null $userEmail The user email value for this organization user.
+     * @var string|null $userEmail User email for this organization user.
     */
     private ?string $userEmail = null;
     
@@ -167,7 +167,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lastUsedAt property value. The date and time for the last used at value on this organization user.
+     * Gets the lastUsedAt property value. UTC timestamp for last used at on this organization user.
      * @return DateTime|null
     */
     public function getLastUsedAt(): ?DateTime {
@@ -215,7 +215,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organization property value. The organization value for this organization user.
+     * Gets the organization property value. Organization for this organization user.
      * @return IdNamePair|null
     */
     public function getOrganization(): ?IdNamePair {
@@ -223,7 +223,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the removedAt property value. The date and time for the removed at value on this organization user.
+     * Gets the removedAt property value. UTC timestamp for removed at on this organization user.
      * @return DateTime|null
     */
     public function getRemovedAt(): ?DateTime {
@@ -239,7 +239,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the role property value. The role value for this organization user.
+     * Gets the role property value. Role for this organization user.
      * @return OrganizationMemberRole|null
     */
     public function getRole(): ?OrganizationMemberRole {
@@ -247,7 +247,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the user property value. The user value for this organization user.
+     * Gets the user property value. User for this organization user.
      * @return IdNamePair|null
     */
     public function getUser(): ?IdNamePair {
@@ -255,7 +255,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the userEmail property value. The user email value for this organization user.
+     * Gets the userEmail property value. User email for this organization user.
      * @return string|null
     */
     public function getUserEmail(): ?string {
@@ -318,7 +318,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lastUsedAt property value. The date and time for the last used at value on this organization user.
+     * Sets the lastUsedAt property value. UTC timestamp for last used at on this organization user.
      * @param DateTime|null $value Value to set for the lastUsedAt property.
     */
     public function setLastUsedAt(?DateTime $value): void {
@@ -366,7 +366,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organization property value. The organization value for this organization user.
+     * Sets the organization property value. Organization for this organization user.
      * @param IdNamePair|null $value Value to set for the organization property.
     */
     public function setOrganization(?IdNamePair $value): void {
@@ -374,7 +374,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the removedAt property value. The date and time for the removed at value on this organization user.
+     * Sets the removedAt property value. UTC timestamp for removed at on this organization user.
      * @param DateTime|null $value Value to set for the removedAt property.
     */
     public function setRemovedAt(?DateTime $value): void {
@@ -390,7 +390,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the role property value. The role value for this organization user.
+     * Sets the role property value. Role for this organization user.
      * @param OrganizationMemberRole|null $value Value to set for the role property.
     */
     public function setRole(?OrganizationMemberRole $value): void {
@@ -398,7 +398,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the user property value. The user value for this organization user.
+     * Sets the user property value. User for this organization user.
      * @param IdNamePair|null $value Value to set for the user property.
     */
     public function setUser(?IdNamePair $value): void {
@@ -406,7 +406,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the userEmail property value. The user email value for this organization user.
+     * Sets the userEmail property value. User email for this organization user.
      * @param string|null $value Value to set for the userEmail property.
     */
     public function setUserEmail(?string $value): void {

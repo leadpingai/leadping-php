@@ -8,13 +8,13 @@ namespace Leadping\OpenApiClient\Tags;
 class TagsRequestBuilderGetQueryParameters 
 {
     /**
-     * @var bool|null $includeArchived 
+     * @var bool|null $includeArchived Whether to include tags that are no longer available for new assignments.
     */
     public ?bool $includeArchived = null;
     
     /**
      * Instantiates a new TagsRequestBuilderGetQueryParameters and sets the default values.
-     * @param bool|null $includeArchived 
+     * @param bool|null $includeArchived Whether to include tags that are no longer available for new assignments.
     */
     public function __construct(?bool $includeArchived = null) {
         $this->includeArchived = $includeArchived;

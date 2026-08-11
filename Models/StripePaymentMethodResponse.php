@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API DTO containing stripe payment method data used by Leadping API contracts.
+ * Describes stripe payment method data used in Leadping API requests and responses.
 */
 class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable 
 {
@@ -19,27 +19,27 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $brand The brand value for this Stripe payment method.
+     * @var string|null $brand Card network brand, such as Visa, Mastercard, or American Express.
     */
     private ?string $brand = null;
     
     /**
-     * @var DateTime|null $createdAt The date and time for the created at value on this Stripe payment method.
+     * @var DateTime|null $createdAt UTC timestamp for created at on this Stripe payment method.
     */
     private ?DateTime $createdAt = null;
     
     /**
-     * @var int|null $expMonth The exp month value for this Stripe payment method.
+     * @var int|null $expMonth Two-digit month when the card expires.
     */
     private ?int $expMonth = null;
     
     /**
-     * @var int|null $expYear The exp year value for this Stripe payment method.
+     * @var int|null $expYear Four-digit year when the card expires.
     */
     private ?int $expYear = null;
     
     /**
-     * @var string|null $id The unique ID for this Stripe payment method.
+     * @var string|null $id Unique Leadping identifier for this Stripe payment method.
     */
     private ?string $id = null;
     
@@ -49,7 +49,7 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     private ?bool $isDefault = null;
     
     /**
-     * @var string|null $last4 The date and time for the last4 value on this Stripe payment method.
+     * @var string|null $last4 UTC timestamp for last4 on this Stripe payment method.
     */
     private ?string $last4 = null;
     
@@ -78,7 +78,7 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the brand property value. The brand value for this Stripe payment method.
+     * Gets the brand property value. Card network brand, such as Visa, Mastercard, or American Express.
      * @return string|null
     */
     public function getBrand(): ?string {
@@ -86,7 +86,7 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the createdAt property value. The date and time for the created at value on this Stripe payment method.
+     * Gets the createdAt property value. UTC timestamp for created at on this Stripe payment method.
      * @return DateTime|null
     */
     public function getCreatedAt(): ?DateTime {
@@ -94,7 +94,7 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the expMonth property value. The exp month value for this Stripe payment method.
+     * Gets the expMonth property value. Two-digit month when the card expires.
      * @return int|null
     */
     public function getExpMonth(): ?int {
@@ -102,7 +102,7 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the expYear property value. The exp year value for this Stripe payment method.
+     * Gets the expYear property value. Four-digit year when the card expires.
      * @return int|null
     */
     public function getExpYear(): ?int {
@@ -127,7 +127,7 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The unique ID for this Stripe payment method.
+     * Gets the id property value. Unique Leadping identifier for this Stripe payment method.
      * @return string|null
     */
     public function getId(): ?string {
@@ -143,7 +143,7 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the last4 property value. The date and time for the last4 value on this Stripe payment method.
+     * Gets the last4 property value. UTC timestamp for last4 on this Stripe payment method.
      * @return string|null
     */
     public function getLast4(): ?string {
@@ -174,7 +174,7 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the brand property value. The brand value for this Stripe payment method.
+     * Sets the brand property value. Card network brand, such as Visa, Mastercard, or American Express.
      * @param string|null $value Value to set for the brand property.
     */
     public function setBrand(?string $value): void {
@@ -182,7 +182,7 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the createdAt property value. The date and time for the created at value on this Stripe payment method.
+     * Sets the createdAt property value. UTC timestamp for created at on this Stripe payment method.
      * @param DateTime|null $value Value to set for the createdAt property.
     */
     public function setCreatedAt(?DateTime $value): void {
@@ -190,7 +190,7 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the expMonth property value. The exp month value for this Stripe payment method.
+     * Sets the expMonth property value. Two-digit month when the card expires.
      * @param int|null $value Value to set for the expMonth property.
     */
     public function setExpMonth(?int $value): void {
@@ -198,7 +198,7 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the expYear property value. The exp year value for this Stripe payment method.
+     * Sets the expYear property value. Four-digit year when the card expires.
      * @param int|null $value Value to set for the expYear property.
     */
     public function setExpYear(?int $value): void {
@@ -206,7 +206,7 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The unique ID for this Stripe payment method.
+     * Sets the id property value. Unique Leadping identifier for this Stripe payment method.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -222,7 +222,7 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the last4 property value. The date and time for the last4 value on this Stripe payment method.
+     * Sets the last4 property value. UTC timestamp for last4 on this Stripe payment method.
      * @param string|null $value Value to set for the last4 property.
     */
     public function setLast4(?string $value): void {

@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Response schema for the Leadping API SMS message returned to authenticated clients.
+ * Describes an SMS or MMS message, including participants, delivery state, scheduling, media, and billing details.
 */
 class SmsResponse implements AdditionalDataHolder, Parsable 
 {

@@ -10,19 +10,19 @@ use DateTime;
 class WithOrganizationItemRequestBuilderPostQueryParameters 
 {
     /**
-     * @var DateTime|null $endAt 
+     * @var DateTime|null $endAt Optional exclusive end timestamp for event occurrence.
     */
     public ?DateTime $endAt = null;
     
     /**
-     * @var DateTime|null $startAt 
+     * @var DateTime|null $startAt Optional inclusive start timestamp for event occurrence.
     */
     public ?DateTime $startAt = null;
     
     /**
      * Instantiates a new WithOrganizationItemRequestBuilderPostQueryParameters and sets the default values.
-     * @param DateTime|null $endAt 
-     * @param DateTime|null $startAt 
+     * @param DateTime|null $endAt Optional exclusive end timestamp for event occurrence.
+     * @param DateTime|null $startAt Optional inclusive start timestamp for event occurrence.
     */
     public function __construct(?DateTime $endAt = null, ?DateTime $startAt = null) {
         $this->endAt = $endAt;

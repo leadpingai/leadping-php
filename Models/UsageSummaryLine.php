@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API DTO containing usage summary line data used by Leadping API contracts.
+ * Describes usage summary line data used in Leadping API requests and responses.
 */
 class UsageSummaryLine implements AdditionalDataHolder, Parsable 
 {
@@ -18,12 +18,12 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var BillableUnit|null $billableUnit The billable unit value for this usage summary line.
+     * @var BillableUnit|null $billableUnit Billable unit for this usage summary line.
     */
     private ?BillableUnit $billableUnit = null;
     
     /**
-     * @var UsageChannel|null $channel The channel value for this usage summary line.
+     * @var UsageChannel|null $channel Channel for this usage summary line.
     */
     private ?UsageChannel $channel = null;
     
@@ -33,7 +33,7 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     private ?float $customerChargeAmount = null;
     
     /**
-     * @var float|null $quantity The quantity value for this usage summary line.
+     * @var float|null $quantity Quantity for this usage summary line.
     */
     private ?float $quantity = null;
     
@@ -72,7 +72,7 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billableUnit property value. The billable unit value for this usage summary line.
+     * Gets the billableUnit property value. Billable unit for this usage summary line.
      * @return BillableUnit|null
     */
     public function getBillableUnit(): ?BillableUnit {
@@ -80,7 +80,7 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the channel property value. The channel value for this usage summary line.
+     * Gets the channel property value. Channel for this usage summary line.
      * @return UsageChannel|null
     */
     public function getChannel(): ?UsageChannel {
@@ -112,7 +112,7 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the quantity property value. The quantity value for this usage summary line.
+     * Gets the quantity property value. Quantity for this usage summary line.
      * @return float|null
     */
     public function getQuantity(): ?float {
@@ -158,7 +158,7 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billableUnit property value. The billable unit value for this usage summary line.
+     * Sets the billableUnit property value. Billable unit for this usage summary line.
      * @param BillableUnit|null $value Value to set for the billableUnit property.
     */
     public function setBillableUnit(?BillableUnit $value): void {
@@ -166,7 +166,7 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the channel property value. The channel value for this usage summary line.
+     * Sets the channel property value. Channel for this usage summary line.
      * @param UsageChannel|null $value Value to set for the channel property.
     */
     public function setChannel(?UsageChannel $value): void {
@@ -182,7 +182,7 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the quantity property value. The quantity value for this usage summary line.
+     * Sets the quantity property value. Quantity for this usage summary line.
      * @param float|null $value Value to set for the quantity property.
     */
     public function setQuantity(?float $value): void {

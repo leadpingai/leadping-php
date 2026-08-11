@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * The safe metadata key-value data carried with this ion entry audit; values must be safe to expose in API responses.
+ * Non-sensitive metadata that provides additional audit context.
 */
 class SuppressionEntryAudit_safeMetadata implements AdditionalDataHolder, Parsable 
 {

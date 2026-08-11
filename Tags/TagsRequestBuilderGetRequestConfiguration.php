@@ -28,7 +28,7 @@ class TagsRequestBuilderGetRequestConfiguration extends BaseRequestConfiguration
 
     /**
      * Instantiates a new TagsRequestBuilderGetQueryParameters.
-     * @param bool|null $includeArchived 
+     * @param bool|null $includeArchived Whether to include tags that are no longer available for new assignments.
      * @return TagsRequestBuilderGetQueryParameters
     */
     public static function createQueryParameters(?bool $includeArchived = null): TagsRequestBuilderGetQueryParameters {

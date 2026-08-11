@@ -31,7 +31,7 @@ class MediaRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Uploads media for a subsequent MMS send.
+     * Uploads and validates one media attachment, returning the metadata needed to include the asset in a subsequent Leadping MMS send.
      * @param MediaPostRequestBody $body The request body
      * @param MediaRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<MessageMediaAttachment|null>
@@ -46,7 +46,7 @@ class MediaRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Uploads media for a subsequent MMS send.
+     * Uploads and validates one media attachment, returning the metadata needed to include the asset in a subsequent Leadping MMS send.
      * @param MediaPostRequestBody $body The request body
      * @param MediaRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

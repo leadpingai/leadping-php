@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * The 10DLC draft value for this organization activation state.
+ * 10DLC draft for this organization activation state.
 */
 class OrganizationActivationState_tenDlcDraft extends TenDlcApplicationDraft implements Parsable 
 {

@@ -33,7 +33,7 @@ class ManualOverrideRequestBuilder extends BaseRequestBuilder
 
     /**
      * Validates a manual outgoing-number override before use, checking ownership, destination, and delivery eligibility.
-     * @param OutgoingNumberManualOverrideRequest $body Request schema for the Leadping API outgoing number manual override request, including the fields clients can send.
+     * @param OutgoingNumberManualOverrideRequest $body Defines the fields clients can send when working with outgoing number manual override.
      * @param ManualOverrideRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<OutgoingNumberSelectionResponse|null>
      * @throws Exception
@@ -49,7 +49,7 @@ class ManualOverrideRequestBuilder extends BaseRequestBuilder
 
     /**
      * Validates a manual outgoing-number override before use, checking ownership, destination, and delivery eligibility.
-     * @param OutgoingNumberManualOverrideRequest $body Request schema for the Leadping API outgoing number manual override request, including the fields clients can send.
+     * @param OutgoingNumberManualOverrideRequest $body Defines the fields clients can send when working with outgoing number manual override.
      * @param ManualOverrideRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

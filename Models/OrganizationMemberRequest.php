@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Request schema for the Leadping API organization user request, including the fields clients can send.
+ * Defines the fields clients can send when working with organization user.
 */
 class OrganizationMemberRequest implements AdditionalDataHolder, Parsable 
 {

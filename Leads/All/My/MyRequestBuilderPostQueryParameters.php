@@ -8,31 +8,31 @@ namespace Leadping\OpenApiClient\Leads\All\My;
 class MyRequestBuilderPostQueryParameters 
 {
     /**
-     * @var string|null $archiveFilter 
+     * @var string|null $archiveFilter Optional filter selecting active, archived, or all leads.
     */
     public ?string $archiveFilter = null;
     
     /**
-     * @var array<string>|null $tagIds 
+     * @var array<string>|null $tagIds Optional tag identifiers used to filter the lead list.
     */
     public ?array $tagIds = null;
     
     /**
-     * @var bool|null $tagMatchAll 
+     * @var bool|null $tagMatchAll Whether a lead must contain every supplied tag instead of any supplied tag.
     */
     public ?bool $tagMatchAll = null;
     
     /**
-     * @var bool|null $untagged 
+     * @var bool|null $untagged Whether to include only leads that have no tags.
     */
     public ?bool $untagged = null;
     
     /**
      * Instantiates a new MyRequestBuilderPostQueryParameters and sets the default values.
-     * @param string|null $archiveFilter 
-     * @param array<string>|null $tagIds 
-     * @param bool|null $tagMatchAll 
-     * @param bool|null $untagged 
+     * @param string|null $archiveFilter Optional filter selecting active, archived, or all leads.
+     * @param array<string>|null $tagIds Optional tag identifiers used to filter the lead list.
+     * @param bool|null $tagMatchAll Whether a lead must contain every supplied tag instead of any supplied tag.
+     * @param bool|null $untagged Whether to include only leads that have no tags.
     */
     public function __construct(?string $archiveFilter = null, ?array $tagIds = null, ?bool $tagMatchAll = null, ?bool $untagged = null) {
         $this->archiveFilter = $archiveFilter;

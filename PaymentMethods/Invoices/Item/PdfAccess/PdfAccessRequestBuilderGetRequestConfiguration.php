@@ -28,7 +28,7 @@ class PdfAccessRequestBuilderGetRequestConfiguration extends BaseRequestConfigur
 
     /**
      * Instantiates a new PdfAccessRequestBuilderGetQueryParameters.
-     * @param bool|null $download 
+     * @param bool|null $download Whether the secure URL should download the PDF instead of displaying it inline.
      * @return PdfAccessRequestBuilderGetQueryParameters
     */
     public static function createQueryParameters(?bool $download = null): PdfAccessRequestBuilderGetQueryParameters {

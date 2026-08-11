@@ -20,7 +20,7 @@ class TagsRequestBuilder extends BaseRequestBuilder
 {
     /**
      * Gets an item from the Leadping/OpenApiClient.tags.item collection
-     * @param string $id Unique identifier of the item
+     * @param string $id The unique identifier of the tag to update.
      * @return TagsItemRequestBuilder
     */
     public function byId(string $id): TagsItemRequestBuilder {
@@ -59,7 +59,7 @@ class TagsRequestBuilder extends BaseRequestBuilder
 
     /**
      * Creates a tag for the current organization so leads can be segmented, filtered, routed, and reviewed by label.
-     * @param TagRequest $body Request schema for the Leadping API tag request, including the fields clients can send.
+     * @param TagRequest $body Defines the fields clients can send when working with tag.
      * @param TagsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<TagResponse|null>
      * @throws Exception
@@ -96,7 +96,7 @@ class TagsRequestBuilder extends BaseRequestBuilder
 
     /**
      * Creates a tag for the current organization so leads can be segmented, filtered, routed, and reviewed by label.
-     * @param TagRequest $body Request schema for the Leadping API tag request, including the fields clients can send.
+     * @param TagRequest $body Defines the fields clients can send when working with tag.
      * @param TagsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

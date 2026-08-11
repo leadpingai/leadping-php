@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * The ID and name for this currentStep.
+ * Identifier and display name of the workflow step currently awaiting or performing work.
 */
 class AutomationWorkflowRunResponse_currentStep extends IdNamePair implements Parsable 
 {

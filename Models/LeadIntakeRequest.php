@@ -10,7 +10,7 @@ use Microsoft\Kiota\Abstractions\Types\Date;
 use Microsoft\Kiota\Abstractions\Types\TypeUtils;
 
 /**
- * Request schema for the Leadping API lead intake request, including the fields clients can send.
+ * Defines the fields clients can send when working with lead intake.
 */
 class LeadIntakeRequest implements AdditionalDataHolder, Parsable 
 {

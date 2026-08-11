@@ -33,7 +33,7 @@ class ReleaseRequestBuilder extends BaseRequestBuilder
 
     /**
      * Releases an active Leadping suppression entry so a recipient can be contacted again, returning the updated suppression record when available.
-     * @param SuppressionEntryRequest $body Request payload for suppression entry.
+     * @param SuppressionEntryRequest $body Defines a recipient and communication channel to suppress, release, or check before Leadping sends outreach.
      * @param ReleaseRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<SuppressionEntryResponse|null>
      * @throws Exception
@@ -49,7 +49,7 @@ class ReleaseRequestBuilder extends BaseRequestBuilder
 
     /**
      * Releases an active Leadping suppression entry so a recipient can be contacted again, returning the updated suppression record when available.
-     * @param SuppressionEntryRequest $body Request payload for suppression entry.
+     * @param SuppressionEntryRequest $body Defines a recipient and communication channel to suppress, release, or check before Leadping sends outreach.
      * @param ReleaseRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

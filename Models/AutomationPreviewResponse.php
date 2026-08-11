@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 use Microsoft\Kiota\Abstractions\Types\TypeUtils;
 
 /**
- * Response schema for the Leadping API automation preview response returned to authenticated clients.
+ * Describes automation preview data returned by Leadping.
 */
 class AutomationPreviewResponse implements AdditionalDataHolder, Parsable 
 {

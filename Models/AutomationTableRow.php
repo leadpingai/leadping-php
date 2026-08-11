@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * List item schema for Leadping API automation table row results shown in searchable tables.
+ * Summarizes automation data in paginated and searchable results.
 */
 class AutomationTableRow implements AdditionalDataHolder, Parsable 
 {

@@ -79,7 +79,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $requestedAt = null;
     
     /**
-     * @var int|null $sizeBytes File size in bytes.
+     * @var int|null $sizeBytes Size of the generated export archive in bytes, when the export is ready.
     */
     private ?int $sizeBytes = null;
     
@@ -239,7 +239,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the sizeBytes property value. File size in bytes.
+     * Gets the sizeBytes property value. Size of the generated export archive in bytes, when the export is ready.
      * @return int|null
     */
     public function getSizeBytes(): ?int {
@@ -390,7 +390,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the sizeBytes property value. File size in bytes.
+     * Sets the sizeBytes property value. Size of the generated export archive in bytes, when the export is ready.
      * @param int|null $value Value to set for the sizeBytes property.
     */
     public function setSizeBytes(?int $value): void {

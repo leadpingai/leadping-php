@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API response containing lead status change export data returned to callers.
+ * Describes lead status change export data returned by Leadping.
 */
 class LeadStatusChangeExportResponse implements AdditionalDataHolder, Parsable 
 {
@@ -18,17 +18,17 @@ class LeadStatusChangeExportResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $contentType The content type classification for this lead status change export.
+     * @var string|null $contentType MIME content type of the exported document.
     */
     private ?string $contentType = null;
     
     /**
-     * @var string|null $csv The csv value for this lead status change export.
+     * @var string|null $csv Complete comma-separated values content encoded as text.
     */
     private ?string $csv = null;
     
     /**
-     * @var string|null $fileName The file name value for this lead status change export.
+     * @var string|null $fileName Suggested file name for the exported CSV document.
     */
     private ?string $fileName = null;
     
@@ -62,7 +62,7 @@ class LeadStatusChangeExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the contentType property value. The content type classification for this lead status change export.
+     * Gets the contentType property value. MIME content type of the exported document.
      * @return string|null
     */
     public function getContentType(): ?string {
@@ -70,7 +70,7 @@ class LeadStatusChangeExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the csv property value. The csv value for this lead status change export.
+     * Gets the csv property value. Complete comma-separated values content encoded as text.
      * @return string|null
     */
     public function getCsv(): ?string {
@@ -92,7 +92,7 @@ class LeadStatusChangeExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the fileName property value. The file name value for this lead status change export.
+     * Gets the fileName property value. Suggested file name for the exported CSV document.
      * @return string|null
     */
     public function getFileName(): ?string {
@@ -128,7 +128,7 @@ class LeadStatusChangeExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the contentType property value. The content type classification for this lead status change export.
+     * Sets the contentType property value. MIME content type of the exported document.
      * @param string|null $value Value to set for the contentType property.
     */
     public function setContentType(?string $value): void {
@@ -136,7 +136,7 @@ class LeadStatusChangeExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the csv property value. The csv value for this lead status change export.
+     * Sets the csv property value. Complete comma-separated values content encoded as text.
      * @param string|null $value Value to set for the csv property.
     */
     public function setCsv(?string $value): void {
@@ -144,7 +144,7 @@ class LeadStatusChangeExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the fileName property value. The file name value for this lead status change export.
+     * Sets the fileName property value. Suggested file name for the exported CSV document.
      * @param string|null $value Value to set for the fileName property.
     */
     public function setFileName(?string $value): void {

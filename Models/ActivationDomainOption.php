@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API DTO containing activation domain option data used by Leadping API contracts.
+ * Describes activation domain option data used in Leadping API requests and responses.
 */
 class ActivationDomainOption implements AdditionalDataHolder, Parsable 
 {
@@ -28,12 +28,12 @@ class ActivationDomainOption implements AdditionalDataHolder, Parsable
     private ?string $domainName = null;
     
     /**
-     * @var float|null $estimatedAnnualCost The estimated annual cost value for this activation domain option.
+     * @var float|null $estimatedAnnualCost Estimated annual cost for this activation domain option.
     */
     private ?float $estimatedAnnualCost = null;
     
     /**
-     * @var string|null $industryRelevance The industry relevance value for this activation domain option.
+     * @var string|null $industryRelevance Industry relevance for this activation domain option.
     */
     private ?string $industryRelevance = null;
     
@@ -43,12 +43,12 @@ class ActivationDomainOption implements AdditionalDataHolder, Parsable
     private ?bool $recommended = null;
     
     /**
-     * @var string|null $trustConcerns The trust concerns value for this activation domain option.
+     * @var string|null $trustConcerns Trust concerns for this activation domain option.
     */
     private ?string $trustConcerns = null;
     
     /**
-     * @var string|null $whyItFits The why it fits value for this activation domain option.
+     * @var string|null $whyItFits Why it fits for this activation domain option.
     */
     private ?string $whyItFits = null;
     
@@ -93,7 +93,7 @@ class ActivationDomainOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the estimatedAnnualCost property value. The estimated annual cost value for this activation domain option.
+     * Gets the estimatedAnnualCost property value. Estimated annual cost for this activation domain option.
      * @return float|null
     */
     public function getEstimatedAnnualCost(): ?float {
@@ -118,7 +118,7 @@ class ActivationDomainOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the industryRelevance property value. The industry relevance value for this activation domain option.
+     * Gets the industryRelevance property value. Industry relevance for this activation domain option.
      * @return string|null
     */
     public function getIndustryRelevance(): ?string {
@@ -134,7 +134,7 @@ class ActivationDomainOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the trustConcerns property value. The trust concerns value for this activation domain option.
+     * Gets the trustConcerns property value. Trust concerns for this activation domain option.
      * @return string|null
     */
     public function getTrustConcerns(): ?string {
@@ -142,7 +142,7 @@ class ActivationDomainOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the whyItFits property value. The why it fits value for this activation domain option.
+     * Gets the whyItFits property value. Why it fits for this activation domain option.
      * @return string|null
     */
     public function getWhyItFits(): ?string {
@@ -189,7 +189,7 @@ class ActivationDomainOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the estimatedAnnualCost property value. The estimated annual cost value for this activation domain option.
+     * Sets the estimatedAnnualCost property value. Estimated annual cost for this activation domain option.
      * @param float|null $value Value to set for the estimatedAnnualCost property.
     */
     public function setEstimatedAnnualCost(?float $value): void {
@@ -197,7 +197,7 @@ class ActivationDomainOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the industryRelevance property value. The industry relevance value for this activation domain option.
+     * Sets the industryRelevance property value. Industry relevance for this activation domain option.
      * @param string|null $value Value to set for the industryRelevance property.
     */
     public function setIndustryRelevance(?string $value): void {
@@ -213,7 +213,7 @@ class ActivationDomainOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the trustConcerns property value. The trust concerns value for this activation domain option.
+     * Sets the trustConcerns property value. Trust concerns for this activation domain option.
      * @param string|null $value Value to set for the trustConcerns property.
     */
     public function setTrustConcerns(?string $value): void {
@@ -221,7 +221,7 @@ class ActivationDomainOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the whyItFits property value. The why it fits value for this activation domain option.
+     * Sets the whyItFits property value. Why it fits for this activation domain option.
      * @param string|null $value Value to set for the whyItFits property.
     */
     public function setWhyItFits(?string $value): void {

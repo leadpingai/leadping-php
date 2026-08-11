@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * The compliance value for this user.
+ * Compliance for this user.
 */
 class UserResponse_compliance extends UserCompliance implements Parsable 
 {

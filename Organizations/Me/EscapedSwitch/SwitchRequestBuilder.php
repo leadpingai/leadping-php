@@ -33,7 +33,7 @@ class SwitchRequestBuilder extends BaseRequestBuilder
 
     /**
      * Switches the authenticated user's active organization context so subsequent lead, billing, and communication requests target that organization.
-     * @param OrganizationSwitchRequest $body Request schema for the Leadping API organization switch request, including the fields clients can send.
+     * @param OrganizationSwitchRequest $body Defines the fields clients can send when working with organization switch.
      * @param SwitchRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<OrganizationResponse|null>
      * @throws Exception
@@ -49,7 +49,7 @@ class SwitchRequestBuilder extends BaseRequestBuilder
 
     /**
      * Switches the authenticated user's active organization context so subsequent lead, billing, and communication requests target that organization.
-     * @param OrganizationSwitchRequest $body Request schema for the Leadping API organization switch request, including the fields clients can send.
+     * @param OrganizationSwitchRequest $body Defines the fields clients can send when working with organization switch.
      * @param SwitchRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

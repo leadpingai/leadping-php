@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Response schema for the Leadping API automation configuration response returned to authenticated clients.
+ * Describes automation configuration data returned by Leadping.
 */
 class AutomationResponse implements AdditionalDataHolder, Parsable 
 {

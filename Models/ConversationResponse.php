@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Response schema for the Leadping API conversation response returned to authenticated clients.
+ * Describes conversation data returned by Leadping.
 */
 class ConversationResponse implements AdditionalDataHolder, Parsable 
 {

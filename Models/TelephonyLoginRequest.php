@@ -18,7 +18,7 @@ class TelephonyLoginRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var TelephonyLoginRequest_device|null $device The ID and name for this device.
+     * @var TelephonyLoginRequest_device|null $device Identifier and display name of the related device.
     */
     private ?TelephonyLoginRequest_device $device = null;
     
@@ -47,7 +47,7 @@ class TelephonyLoginRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the device property value. The ID and name for this device.
+     * Gets the device property value. Identifier and display name of the related device.
      * @return TelephonyLoginRequest_device|null
     */
     public function getDevice(): ?TelephonyLoginRequest_device {
@@ -83,7 +83,7 @@ class TelephonyLoginRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the device property value. The ID and name for this device.
+     * Sets the device property value. Identifier and display name of the related device.
      * @param TelephonyLoginRequest_device|null $value Value to set for the device property.
     */
     public function setDevice(?TelephonyLoginRequest_device $value): void {

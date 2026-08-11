@@ -44,7 +44,7 @@ class SuppressionsRequestBuilder extends BaseRequestBuilder
     
     /**
      * Gets an item from the Leadping/OpenApiClient.suppressions.item collection
-     * @param string $id Unique identifier of the item
+     * @param string $id The unique identifier of the suppression entry to retrieve.
      * @return SuppressionsItemRequestBuilder
     */
     public function byId(string $id): SuppressionsItemRequestBuilder {
@@ -69,7 +69,7 @@ class SuppressionsRequestBuilder extends BaseRequestBuilder
 
     /**
      * Creates or reactivates a Leadping suppression entry that blocks future outreach to a recipient across the selected communication channel.
-     * @param SuppressionEntryRequest $body Request payload for suppression entry.
+     * @param SuppressionEntryRequest $body Defines a recipient and communication channel to suppress, release, or check before Leadping sends outreach.
      * @param SuppressionsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<SuppressionEntryResponse|null>
      * @throws Exception
@@ -85,7 +85,7 @@ class SuppressionsRequestBuilder extends BaseRequestBuilder
 
     /**
      * Creates or reactivates a Leadping suppression entry that blocks future outreach to a recipient across the selected communication channel.
-     * @param SuppressionEntryRequest $body Request payload for suppression entry.
+     * @param SuppressionEntryRequest $body Defines a recipient and communication channel to suppress, release, or check before Leadping sends outreach.
      * @param SuppressionsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

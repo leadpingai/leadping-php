@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Response schema for the Leadping API phone number search response returned to authenticated clients.
+ * Describes phone number search data returned by Leadping.
 */
 class PhoneNumberSearchResponse implements AdditionalDataHolder, Parsable 
 {

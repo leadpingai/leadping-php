@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API response containing user data returned to callers.
+ * Describes user data returned by Leadping.
 */
 class UserResponse implements AdditionalDataHolder, Parsable 
 {
@@ -29,7 +29,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?UserResponse_billingState $billingState = null;
     
     /**
-     * @var UserResponse_compliance|null $compliance The compliance value for this user.
+     * @var UserResponse_compliance|null $compliance Compliance for this user.
     */
     private ?UserResponse_compliance $compliance = null;
     
@@ -39,7 +39,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $createdAt = null;
     
     /**
-     * @var UserResponse_currentOrganization|null $currentOrganization The current organization value for this user.
+     * @var UserResponse_currentOrganization|null $currentOrganization Current organization for this user.
     */
     private ?UserResponse_currentOrganization $currentOrganization = null;
     
@@ -49,7 +49,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?string $email = null;
     
     /**
-     * @var string|null $firstName The first name value for this user.
+     * @var string|null $firstName First name for this user.
     */
     private ?string $firstName = null;
     
@@ -69,7 +69,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $lastLoggedInAt = null;
     
     /**
-     * @var string|null $lastName The date and time for the last name value on this user.
+     * @var string|null $lastName UTC timestamp for last name on this user.
     */
     private ?string $lastName = null;
     
@@ -89,12 +89,12 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?string $name = null;
     
     /**
-     * @var UserResponse_notificationPreferences|null $notificationPreferences The notification preferences value for this user.
+     * @var UserResponse_notificationPreferences|null $notificationPreferences Notification preferences for this user.
     */
     private ?UserResponse_notificationPreferences $notificationPreferences = null;
     
     /**
-     * @var DateTime|null $personalDataDeletedAt The date and time for the personal data deleted at value on this user.
+     * @var DateTime|null $personalDataDeletedAt UTC timestamp for personal data deleted at on this user.
     */
     private ?DateTime $personalDataDeletedAt = null;
     
@@ -104,7 +104,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?string $personalDataDeletionReason = null;
     
     /**
-     * @var DateTime|null $personalDataDeletionRequestedAt The date and time for the personal data deletion requested at value on this user.
+     * @var DateTime|null $personalDataDeletionRequestedAt UTC timestamp for personal data deletion requested at on this user.
     */
     private ?DateTime $personalDataDeletionRequestedAt = null;
     
@@ -169,7 +169,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the compliance property value. The compliance value for this user.
+     * Gets the compliance property value. Compliance for this user.
      * @return UserResponse_compliance|null
     */
     public function getCompliance(): ?UserResponse_compliance {
@@ -185,7 +185,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the currentOrganization property value. The current organization value for this user.
+     * Gets the currentOrganization property value. Current organization for this user.
      * @return UserResponse_currentOrganization|null
     */
     public function getCurrentOrganization(): ?UserResponse_currentOrganization {
@@ -233,7 +233,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the firstName property value. The first name value for this user.
+     * Gets the firstName property value. First name for this user.
      * @return string|null
     */
     public function getFirstName(): ?string {
@@ -265,7 +265,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lastName property value. The date and time for the last name value on this user.
+     * Gets the lastName property value. UTC timestamp for last name on this user.
      * @return string|null
     */
     public function getLastName(): ?string {
@@ -297,7 +297,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the notificationPreferences property value. The notification preferences value for this user.
+     * Gets the notificationPreferences property value. Notification preferences for this user.
      * @return UserResponse_notificationPreferences|null
     */
     public function getNotificationPreferences(): ?UserResponse_notificationPreferences {
@@ -305,7 +305,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the personalDataDeletedAt property value. The date and time for the personal data deleted at value on this user.
+     * Gets the personalDataDeletedAt property value. UTC timestamp for personal data deleted at on this user.
      * @return DateTime|null
     */
     public function getPersonalDataDeletedAt(): ?DateTime {
@@ -321,7 +321,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the personalDataDeletionRequestedAt property value. The date and time for the personal data deletion requested at value on this user.
+     * Gets the personalDataDeletionRequestedAt property value. UTC timestamp for personal data deletion requested at on this user.
      * @return DateTime|null
     */
     public function getPersonalDataDeletionRequestedAt(): ?DateTime {
@@ -415,7 +415,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the compliance property value. The compliance value for this user.
+     * Sets the compliance property value. Compliance for this user.
      * @param UserResponse_compliance|null $value Value to set for the compliance property.
     */
     public function setCompliance(?UserResponse_compliance $value): void {
@@ -431,7 +431,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the currentOrganization property value. The current organization value for this user.
+     * Sets the currentOrganization property value. Current organization for this user.
      * @param UserResponse_currentOrganization|null $value Value to set for the currentOrganization property.
     */
     public function setCurrentOrganization(?UserResponse_currentOrganization $value): void {
@@ -447,7 +447,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the firstName property value. The first name value for this user.
+     * Sets the firstName property value. First name for this user.
      * @param string|null $value Value to set for the firstName property.
     */
     public function setFirstName(?string $value): void {
@@ -479,7 +479,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lastName property value. The date and time for the last name value on this user.
+     * Sets the lastName property value. UTC timestamp for last name on this user.
      * @param string|null $value Value to set for the lastName property.
     */
     public function setLastName(?string $value): void {
@@ -511,7 +511,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the notificationPreferences property value. The notification preferences value for this user.
+     * Sets the notificationPreferences property value. Notification preferences for this user.
      * @param UserResponse_notificationPreferences|null $value Value to set for the notificationPreferences property.
     */
     public function setNotificationPreferences(?UserResponse_notificationPreferences $value): void {
@@ -519,7 +519,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the personalDataDeletedAt property value. The date and time for the personal data deleted at value on this user.
+     * Sets the personalDataDeletedAt property value. UTC timestamp for personal data deleted at on this user.
      * @param DateTime|null $value Value to set for the personalDataDeletedAt property.
     */
     public function setPersonalDataDeletedAt(?DateTime $value): void {
@@ -535,7 +535,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the personalDataDeletionRequestedAt property value. The date and time for the personal data deletion requested at value on this user.
+     * Sets the personalDataDeletionRequestedAt property value. UTC timestamp for personal data deletion requested at on this user.
      * @param DateTime|null $value Value to set for the personalDataDeletionRequestedAt property.
     */
     public function setPersonalDataDeletionRequestedAt(?DateTime $value): void {

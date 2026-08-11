@@ -29,7 +29,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     private ?PhoneLookup_carrier $carrier = null;
     
     /**
-     * @var DateTime|null $createdAt Gets or sets created at.
+     * @var DateTime|null $createdAt UTC timestamp when the phone lookup record was created.
     */
     private ?DateTime $createdAt = null;
     
@@ -39,7 +39,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     private ?string $fraud = null;
     
     /**
-     * @var string|null $id Gets or sets id.
+     * @var string|null $id Unique Leadping identifier for the saved phone lookup record.
     */
     private ?string $id = null;
     
@@ -59,7 +59,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     private ?PhoneLookup_location $location = null;
     
     /**
-     * @var DateTime|null $modifiedAt Gets or sets modified at.
+     * @var DateTime|null $modifiedAt UTC timestamp when the phone lookup record was last updated.
     */
     private ?DateTime $modifiedAt = null;
     
@@ -124,7 +124,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the createdAt property value. Gets or sets created at.
+     * Gets the createdAt property value. UTC timestamp when the phone lookup record was created.
      * @return DateTime|null
     */
     public function getCreatedAt(): ?DateTime {
@@ -163,7 +163,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. Gets or sets id.
+     * Gets the id property value. Unique Leadping identifier for the saved phone lookup record.
      * @return string|null
     */
     public function getId(): ?string {
@@ -195,7 +195,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the modifiedAt property value. Gets or sets modified at.
+     * Gets the modifiedAt property value. UTC timestamp when the phone lookup record was last updated.
      * @return DateTime|null
     */
     public function getModifiedAt(): ?DateTime {
@@ -280,7 +280,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the createdAt property value. Gets or sets created at.
+     * Sets the createdAt property value. UTC timestamp when the phone lookup record was created.
      * @param DateTime|null $value Value to set for the createdAt property.
     */
     public function setCreatedAt(?DateTime $value): void {
@@ -296,7 +296,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. Gets or sets id.
+     * Sets the id property value. Unique Leadping identifier for the saved phone lookup record.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -328,7 +328,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the modifiedAt property value. Gets or sets modified at.
+     * Sets the modifiedAt property value. UTC timestamp when the phone lookup record was last updated.
      * @param DateTime|null $value Value to set for the modifiedAt property.
     */
     public function setModifiedAt(?DateTime $value): void {

@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Request payload for create note.
+ * Defines the input used for create note.
 */
 class CreateNoteRequest implements AdditionalDataHolder, Parsable 
 {
@@ -18,7 +18,7 @@ class CreateNoteRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $text The text value for this note.
+     * @var string|null $text Plain-text note content to add to the conversation timeline.
     */
     private ?string $text = null;
     
@@ -58,7 +58,7 @@ class CreateNoteRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the text property value. The text value for this note.
+     * Gets the text property value. Plain-text note content to add to the conversation timeline.
      * @return string|null
     */
     public function getText(): ?string {
@@ -83,7 +83,7 @@ class CreateNoteRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the text property value. The text value for this note.
+     * Sets the text property value. Plain-text note content to add to the conversation timeline.
      * @param string|null $value Value to set for the text property.
     */
     public function setText(?string $value): void {

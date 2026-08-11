@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Response schema for the Leadping API organization profile response returned to authenticated clients.
+ * Describes organization profile data returned by Leadping.
 */
 class OrganizationResponse implements AdditionalDataHolder, Parsable 
 {

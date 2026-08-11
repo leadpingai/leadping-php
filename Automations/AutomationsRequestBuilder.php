@@ -61,7 +61,7 @@ class AutomationsRequestBuilder extends BaseRequestBuilder
 
     /**
      * Creates an automation for current-organization leads, configuring triggers, message steps, and follow-up behavior.
-     * @param AutomationRequest $body Request schema for the Leadping API automation configuration request, including the fields clients can send.
+     * @param AutomationRequest $body Defines the fields clients can send when working with automation configuration.
      * @param AutomationsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<AutomationResponse|null>
      * @throws Exception
@@ -77,7 +77,7 @@ class AutomationsRequestBuilder extends BaseRequestBuilder
 
     /**
      * Creates an automation for current-organization leads, configuring triggers, message steps, and follow-up behavior.
-     * @param AutomationRequest $body Request schema for the Leadping API automation configuration request, including the fields clients can send.
+     * @param AutomationRequest $body Defines the fields clients can send when working with automation configuration.
      * @param AutomationsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

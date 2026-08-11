@@ -19,27 +19,27 @@ class PhoneLookupProviderSnapshot implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $lookupType The lookupType property
+     * @var string|null $lookupType The provider lookup product or operation that produced this snapshot.
     */
     private ?string $lookupType = null;
     
     /**
-     * @var string|null $provider The provider property
+     * @var string|null $provider The provider that supplied the phone lookup record.
     */
     private ?string $provider = null;
     
     /**
-     * @var string|null $rawRecordJson The rawRecordJson property
+     * @var string|null $rawRecordJson The complete provider response serialized as JSON for lossless audit and replay.
     */
     private ?string $rawRecordJson = null;
     
     /**
-     * @var DateTime|null $retrievedAt The retrievedAt property
+     * @var DateTime|null $retrievedAt The UTC timestamp when Leadping retrieved the provider record.
     */
     private ?DateTime $retrievedAt = null;
     
     /**
-     * @var int|null $schemaVersion The schemaVersion property
+     * @var int|null $schemaVersion The Leadping schema version used to interpret the stored provider record.
     */
     private ?int $schemaVersion = null;
     
@@ -83,7 +83,7 @@ class PhoneLookupProviderSnapshot implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lookupType property value. The lookupType property
+     * Gets the lookupType property value. The provider lookup product or operation that produced this snapshot.
      * @return string|null
     */
     public function getLookupType(): ?string {
@@ -91,7 +91,7 @@ class PhoneLookupProviderSnapshot implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the provider property value. The provider property
+     * Gets the provider property value. The provider that supplied the phone lookup record.
      * @return string|null
     */
     public function getProvider(): ?string {
@@ -99,7 +99,7 @@ class PhoneLookupProviderSnapshot implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the rawRecordJson property value. The rawRecordJson property
+     * Gets the rawRecordJson property value. The complete provider response serialized as JSON for lossless audit and replay.
      * @return string|null
     */
     public function getRawRecordJson(): ?string {
@@ -107,7 +107,7 @@ class PhoneLookupProviderSnapshot implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the retrievedAt property value. The retrievedAt property
+     * Gets the retrievedAt property value. The UTC timestamp when Leadping retrieved the provider record.
      * @return DateTime|null
     */
     public function getRetrievedAt(): ?DateTime {
@@ -115,7 +115,7 @@ class PhoneLookupProviderSnapshot implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the schemaVersion property value. The schemaVersion property
+     * Gets the schemaVersion property value. The Leadping schema version used to interpret the stored provider record.
      * @return int|null
     */
     public function getSchemaVersion(): ?int {
@@ -144,7 +144,7 @@ class PhoneLookupProviderSnapshot implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lookupType property value. The lookupType property
+     * Sets the lookupType property value. The provider lookup product or operation that produced this snapshot.
      * @param string|null $value Value to set for the lookupType property.
     */
     public function setLookupType(?string $value): void {
@@ -152,7 +152,7 @@ class PhoneLookupProviderSnapshot implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the provider property value. The provider property
+     * Sets the provider property value. The provider that supplied the phone lookup record.
      * @param string|null $value Value to set for the provider property.
     */
     public function setProvider(?string $value): void {
@@ -160,7 +160,7 @@ class PhoneLookupProviderSnapshot implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the rawRecordJson property value. The rawRecordJson property
+     * Sets the rawRecordJson property value. The complete provider response serialized as JSON for lossless audit and replay.
      * @param string|null $value Value to set for the rawRecordJson property.
     */
     public function setRawRecordJson(?string $value): void {
@@ -168,7 +168,7 @@ class PhoneLookupProviderSnapshot implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the retrievedAt property value. The retrievedAt property
+     * Sets the retrievedAt property value. The UTC timestamp when Leadping retrieved the provider record.
      * @param DateTime|null $value Value to set for the retrievedAt property.
     */
     public function setRetrievedAt(?DateTime $value): void {
@@ -176,7 +176,7 @@ class PhoneLookupProviderSnapshot implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the schemaVersion property value. The schemaVersion property
+     * Sets the schemaVersion property value. The Leadping schema version used to interpret the stored provider record.
      * @param int|null $value Value to set for the schemaVersion property.
     */
     public function setSchemaVersion(?int $value): void {

@@ -10,7 +10,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 use Microsoft\Kiota\Abstractions\Types\TypeUtils;
 
 /**
- * API DTO containing ten dlc application draft data used by Leadping API contracts.
+ * Describes ten dlc application draft data used in Leadping API requests and responses.
 */
 class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable 
 {
@@ -30,7 +30,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     private ?TenDlcRegistrationStatus $campaignStatus = null;
     
     /**
-     * @var string|null $companyName The company name value for this 10DLC application draft.
+     * @var string|null $companyName Company name for this 10DLC application draft.
     */
     private ?string $companyName = null;
     
@@ -40,27 +40,27 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     private ?array $complianceWarnings = null;
     
     /**
-     * @var string|null $contactEmail The contact email value for this 10DLC application draft.
+     * @var string|null $contactEmail Contact email for this 10DLC application draft.
     */
     private ?string $contactEmail = null;
     
     /**
-     * @var string|null $contactName The contact name value for this 10DLC application draft.
+     * @var string|null $contactName Contact name for this 10DLC application draft.
     */
     private ?string $contactName = null;
     
     /**
-     * @var string|null $contactPhone The contact phone value for this 10DLC application draft.
+     * @var string|null $contactPhone Contact phone for this 10DLC application draft.
     */
     private ?string $contactPhone = null;
     
     /**
-     * @var string|null $ein The EIN value for this 10DLC application draft.
+     * @var string|null $ein EIN for this 10DLC application draft.
     */
     private ?string $ein = null;
     
     /**
-     * @var int|null $expectedMonthlyVolume The expected monthly volume value for this 10DLC application draft.
+     * @var int|null $expectedMonthlyVolume Expected monthly volume for this 10DLC application draft.
     */
     private ?int $expectedMonthlyVolume = null;
     
@@ -70,14 +70,9 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     private ?string $industry = null;
     
     /**
-     * @var DateTime|null $lastSubmittedAt The date and time for the last submitted at value on this 10DLC application draft.
+     * @var DateTime|null $lastSubmittedAt UTC timestamp for last submitted at on this 10DLC application draft.
     */
     private ?DateTime $lastSubmittedAt = null;
-    
-    /**
-     * @var string|null $leadSource The lead source value for this 10DLC application draft.
-    */
-    private ?string $leadSource = null;
     
     /**
      * @var array<string>|null $messageExamples The message examples included with this 10DLC application draft.
@@ -90,12 +85,12 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     private ?array $missingFields = null;
     
     /**
-     * @var string|null $optInLanguage The opt in language value for this 10DLC application draft.
+     * @var string|null $optInLanguage Opt in language for this 10DLC application draft.
     */
     private ?string $optInLanguage = null;
     
     /**
-     * @var string|null $privacyPolicyUrl The URL associated with this 10DLC application draft.
+     * @var string|null $privacyPolicyUrl Public privacy-policy URL that explains how messaging recipient data is handled.
     */
     private ?string $privacyPolicyUrl = null;
     
@@ -105,7 +100,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     private ?string $rejectionReason = null;
     
     /**
-     * @var string|null $termsUrl The URL associated with this 10DLC application draft.
+     * @var string|null $termsUrl Public terms-of-service URL governing the messaging program.
     */
     private ?string $termsUrl = null;
     
@@ -115,27 +110,27 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     private ?bool $trustedFormRequired = null;
     
     /**
-     * @var DateTime|null $updatedAt The date and time for the updated at value on this 10DLC application draft.
+     * @var DateTime|null $updatedAt UTC timestamp for updated at on this 10DLC application draft.
     */
     private ?DateTime $updatedAt = null;
     
     /**
-     * @var string|null $useCase The use case value for this 10DLC application draft.
+     * @var string|null $useCase Use case for this 10DLC application draft.
     */
     private ?string $useCase = null;
     
     /**
-     * @var string|null $useCaseDescription The use case description value for this 10DLC application draft.
+     * @var string|null $useCaseDescription Use case description for this 10DLC application draft.
     */
     private ?string $useCaseDescription = null;
     
     /**
-     * @var int|null $version The version value for this 10DLC application draft.
+     * @var int|null $version Version for this 10DLC application draft.
     */
     private ?int $version = null;
     
     /**
-     * @var string|null $websiteUrl The URL associated with this 10DLC application draft.
+     * @var string|null $websiteUrl Public business website URL submitted to carriers during brand review.
     */
     private ?string $websiteUrl = null;
     
@@ -180,7 +175,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the companyName property value. The company name value for this 10DLC application draft.
+     * Gets the companyName property value. Company name for this 10DLC application draft.
      * @return string|null
     */
     public function getCompanyName(): ?string {
@@ -196,7 +191,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the contactEmail property value. The contact email value for this 10DLC application draft.
+     * Gets the contactEmail property value. Contact email for this 10DLC application draft.
      * @return string|null
     */
     public function getContactEmail(): ?string {
@@ -204,7 +199,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the contactName property value. The contact name value for this 10DLC application draft.
+     * Gets the contactName property value. Contact name for this 10DLC application draft.
      * @return string|null
     */
     public function getContactName(): ?string {
@@ -212,7 +207,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the contactPhone property value. The contact phone value for this 10DLC application draft.
+     * Gets the contactPhone property value. Contact phone for this 10DLC application draft.
      * @return string|null
     */
     public function getContactPhone(): ?string {
@@ -220,7 +215,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the ein property value. The EIN value for this 10DLC application draft.
+     * Gets the ein property value. EIN for this 10DLC application draft.
      * @return string|null
     */
     public function getEin(): ?string {
@@ -228,7 +223,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the expectedMonthlyVolume property value. The expected monthly volume value for this 10DLC application draft.
+     * Gets the expectedMonthlyVolume property value. Expected monthly volume for this 10DLC application draft.
      * @return int|null
     */
     public function getExpectedMonthlyVolume(): ?int {
@@ -260,7 +255,6 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
             'expectedMonthlyVolume' => fn(ParseNode $n) => $o->setExpectedMonthlyVolume($n->getIntegerValue()),
             'industry' => fn(ParseNode $n) => $o->setIndustry($n->getStringValue()),
             'lastSubmittedAt' => fn(ParseNode $n) => $o->setLastSubmittedAt($n->getDateTimeValue()),
-            'leadSource' => fn(ParseNode $n) => $o->setLeadSource($n->getStringValue()),
             'messageExamples' => function (ParseNode $n) {
                 $val = $n->getCollectionOfPrimitiveValues();
                 if (is_array($val)) {
@@ -299,19 +293,11 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lastSubmittedAt property value. The date and time for the last submitted at value on this 10DLC application draft.
+     * Gets the lastSubmittedAt property value. UTC timestamp for last submitted at on this 10DLC application draft.
      * @return DateTime|null
     */
     public function getLastSubmittedAt(): ?DateTime {
         return $this->lastSubmittedAt;
-    }
-
-    /**
-     * Gets the leadSource property value. The lead source value for this 10DLC application draft.
-     * @return string|null
-    */
-    public function getLeadSource(): ?string {
-        return $this->leadSource;
     }
 
     /**
@@ -331,7 +317,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the optInLanguage property value. The opt in language value for this 10DLC application draft.
+     * Gets the optInLanguage property value. Opt in language for this 10DLC application draft.
      * @return string|null
     */
     public function getOptInLanguage(): ?string {
@@ -339,7 +325,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the privacyPolicyUrl property value. The URL associated with this 10DLC application draft.
+     * Gets the privacyPolicyUrl property value. Public privacy-policy URL that explains how messaging recipient data is handled.
      * @return string|null
     */
     public function getPrivacyPolicyUrl(): ?string {
@@ -355,7 +341,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the termsUrl property value. The URL associated with this 10DLC application draft.
+     * Gets the termsUrl property value. Public terms-of-service URL governing the messaging program.
      * @return string|null
     */
     public function getTermsUrl(): ?string {
@@ -371,7 +357,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the updatedAt property value. The date and time for the updated at value on this 10DLC application draft.
+     * Gets the updatedAt property value. UTC timestamp for updated at on this 10DLC application draft.
      * @return DateTime|null
     */
     public function getUpdatedAt(): ?DateTime {
@@ -379,7 +365,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the useCase property value. The use case value for this 10DLC application draft.
+     * Gets the useCase property value. Use case for this 10DLC application draft.
      * @return string|null
     */
     public function getUseCase(): ?string {
@@ -387,7 +373,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the useCaseDescription property value. The use case description value for this 10DLC application draft.
+     * Gets the useCaseDescription property value. Use case description for this 10DLC application draft.
      * @return string|null
     */
     public function getUseCaseDescription(): ?string {
@@ -395,7 +381,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the version property value. The version value for this 10DLC application draft.
+     * Gets the version property value. Version for this 10DLC application draft.
      * @return int|null
     */
     public function getVersion(): ?int {
@@ -403,7 +389,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the websiteUrl property value. The URL associated with this 10DLC application draft.
+     * Gets the websiteUrl property value. Public business website URL submitted to carriers during brand review.
      * @return string|null
     */
     public function getWebsiteUrl(): ?string {
@@ -426,7 +412,6 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
         $writer->writeIntegerValue('expectedMonthlyVolume', $this->getExpectedMonthlyVolume());
         $writer->writeStringValue('industry', $this->getIndustry());
         $writer->writeDateTimeValue('lastSubmittedAt', $this->getLastSubmittedAt());
-        $writer->writeStringValue('leadSource', $this->getLeadSource());
         $writer->writeCollectionOfPrimitiveValues('messageExamples', $this->getMessageExamples());
         $writer->writeCollectionOfPrimitiveValues('missingFields', $this->getMissingFields());
         $writer->writeStringValue('optInLanguage', $this->getOptInLanguage());
@@ -467,7 +452,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the companyName property value. The company name value for this 10DLC application draft.
+     * Sets the companyName property value. Company name for this 10DLC application draft.
      * @param string|null $value Value to set for the companyName property.
     */
     public function setCompanyName(?string $value): void {
@@ -483,7 +468,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the contactEmail property value. The contact email value for this 10DLC application draft.
+     * Sets the contactEmail property value. Contact email for this 10DLC application draft.
      * @param string|null $value Value to set for the contactEmail property.
     */
     public function setContactEmail(?string $value): void {
@@ -491,7 +476,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the contactName property value. The contact name value for this 10DLC application draft.
+     * Sets the contactName property value. Contact name for this 10DLC application draft.
      * @param string|null $value Value to set for the contactName property.
     */
     public function setContactName(?string $value): void {
@@ -499,7 +484,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the contactPhone property value. The contact phone value for this 10DLC application draft.
+     * Sets the contactPhone property value. Contact phone for this 10DLC application draft.
      * @param string|null $value Value to set for the contactPhone property.
     */
     public function setContactPhone(?string $value): void {
@@ -507,7 +492,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the ein property value. The EIN value for this 10DLC application draft.
+     * Sets the ein property value. EIN for this 10DLC application draft.
      * @param string|null $value Value to set for the ein property.
     */
     public function setEin(?string $value): void {
@@ -515,7 +500,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the expectedMonthlyVolume property value. The expected monthly volume value for this 10DLC application draft.
+     * Sets the expectedMonthlyVolume property value. Expected monthly volume for this 10DLC application draft.
      * @param int|null $value Value to set for the expectedMonthlyVolume property.
     */
     public function setExpectedMonthlyVolume(?int $value): void {
@@ -531,19 +516,11 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lastSubmittedAt property value. The date and time for the last submitted at value on this 10DLC application draft.
+     * Sets the lastSubmittedAt property value. UTC timestamp for last submitted at on this 10DLC application draft.
      * @param DateTime|null $value Value to set for the lastSubmittedAt property.
     */
     public function setLastSubmittedAt(?DateTime $value): void {
         $this->lastSubmittedAt = $value;
-    }
-
-    /**
-     * Sets the leadSource property value. The lead source value for this 10DLC application draft.
-     * @param string|null $value Value to set for the leadSource property.
-    */
-    public function setLeadSource(?string $value): void {
-        $this->leadSource = $value;
     }
 
     /**
@@ -563,7 +540,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the optInLanguage property value. The opt in language value for this 10DLC application draft.
+     * Sets the optInLanguage property value. Opt in language for this 10DLC application draft.
      * @param string|null $value Value to set for the optInLanguage property.
     */
     public function setOptInLanguage(?string $value): void {
@@ -571,7 +548,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the privacyPolicyUrl property value. The URL associated with this 10DLC application draft.
+     * Sets the privacyPolicyUrl property value. Public privacy-policy URL that explains how messaging recipient data is handled.
      * @param string|null $value Value to set for the privacyPolicyUrl property.
     */
     public function setPrivacyPolicyUrl(?string $value): void {
@@ -587,7 +564,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the termsUrl property value. The URL associated with this 10DLC application draft.
+     * Sets the termsUrl property value. Public terms-of-service URL governing the messaging program.
      * @param string|null $value Value to set for the termsUrl property.
     */
     public function setTermsUrl(?string $value): void {
@@ -603,7 +580,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the updatedAt property value. The date and time for the updated at value on this 10DLC application draft.
+     * Sets the updatedAt property value. UTC timestamp for updated at on this 10DLC application draft.
      * @param DateTime|null $value Value to set for the updatedAt property.
     */
     public function setUpdatedAt(?DateTime $value): void {
@@ -611,7 +588,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the useCase property value. The use case value for this 10DLC application draft.
+     * Sets the useCase property value. Use case for this 10DLC application draft.
      * @param string|null $value Value to set for the useCase property.
     */
     public function setUseCase(?string $value): void {
@@ -619,7 +596,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the useCaseDescription property value. The use case description value for this 10DLC application draft.
+     * Sets the useCaseDescription property value. Use case description for this 10DLC application draft.
      * @param string|null $value Value to set for the useCaseDescription property.
     */
     public function setUseCaseDescription(?string $value): void {
@@ -627,7 +604,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the version property value. The version value for this 10DLC application draft.
+     * Sets the version property value. Version for this 10DLC application draft.
      * @param int|null $value Value to set for the version property.
     */
     public function setVersion(?int $value): void {
@@ -635,7 +612,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the websiteUrl property value. The URL associated with this 10DLC application draft.
+     * Sets the websiteUrl property value. Public business website URL submitted to carriers during brand review.
      * @param string|null $value Value to set for the websiteUrl property.
     */
     public function setWebsiteUrl(?string $value): void {

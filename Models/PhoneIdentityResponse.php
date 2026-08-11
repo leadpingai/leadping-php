@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Response schema for a canonical phone identity returned by the Leadping API.
+ * Describes Leadping's canonical identity for a phone number, including normalization, carrier, line type, reputation, and lookup history.
 */
 class PhoneIdentityResponse implements AdditionalDataHolder, Parsable 
 {
@@ -37,6 +37,11 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
      * @var PhoneIdentityResponse_lookup|null $lookup Provider lookup and enrichment data for the number.
     */
     private ?PhoneIdentityResponse_lookup $lookup = null;
+    
+    /**
+     * @var array<PhoneIdentityLookupAction>|null $lookupActions Lookup, enrichment, and reputation actions performed for this identity.
+    */
+    private ?array $lookupActions = null;
     
     /**
      * @var DateTime|null $modifiedAt The date and time when the entity was last modified, if applicable.
@@ -101,6 +106,7 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'lastEnrichedAt' => fn(ParseNode $n) => $o->setLastEnrichedAt($n->getDateTimeValue()),
             'lookup' => fn(ParseNode $n) => $o->setLookup($n->getObjectValue([PhoneIdentityResponse_lookup::class, 'createFromDiscriminatorValue'])),
+            'lookupActions' => fn(ParseNode $n) => $o->setLookupActions($n->getCollectionOfObjectValues([PhoneIdentityLookupAction::class, 'createFromDiscriminatorValue'])),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'number' => fn(ParseNode $n) => $o->setNumber($n->getStringValue()),
@@ -130,6 +136,14 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
     */
     public function getLookup(): ?PhoneIdentityResponse_lookup {
         return $this->lookup;
+    }
+
+    /**
+     * Gets the lookupActions property value. Lookup, enrichment, and reputation actions performed for this identity.
+     * @return array<PhoneIdentityLookupAction>|null
+    */
+    public function getLookupActions(): ?array {
+        return $this->lookupActions;
     }
 
     /**
@@ -173,6 +187,7 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('id', $this->getId());
         $writer->writeDateTimeValue('lastEnrichedAt', $this->getLastEnrichedAt());
         $writer->writeObjectValue('lookup', $this->getLookup());
+        $writer->writeCollectionOfObjectValues('lookupActions', $this->getLookupActions());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeStringValue('number', $this->getNumber());
@@ -218,6 +233,14 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
     */
     public function setLookup(?PhoneIdentityResponse_lookup $value): void {
         $this->lookup = $value;
+    }
+
+    /**
+     * Sets the lookupActions property value. Lookup, enrichment, and reputation actions performed for this identity.
+     * @param array<PhoneIdentityLookupAction>|null $value Value to set for the lookupActions property.
+    */
+    public function setLookupActions(?array $value): void {
+        $this->lookupActions = $value;
     }
 
     /**

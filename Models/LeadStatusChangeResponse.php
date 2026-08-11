@@ -19,17 +19,17 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var DateTime|null $appointmentEndAt The date and time for the appointment end at value on this lead status change.
+     * @var DateTime|null $appointmentEndAt UTC timestamp for appointment end at on this lead status change.
     */
     private ?DateTime $appointmentEndAt = null;
     
     /**
-     * @var string|null $appointmentNotes The appointment notes value for this lead status change.
+     * @var string|null $appointmentNotes Additional scheduling or preparation notes for the related appointment.
     */
     private ?string $appointmentNotes = null;
     
     /**
-     * @var DateTime|null $appointmentStartAt The date and time for the appointment start at value on this lead status change.
+     * @var DateTime|null $appointmentStartAt UTC timestamp for appointment start at on this lead status change.
     */
     private ?DateTime $appointmentStartAt = null;
     
@@ -39,7 +39,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     private ?string $assignedToUserId = null;
     
     /**
-     * @var DateTime|null $callbackAt The date and time for the callback at value on this lead status change.
+     * @var DateTime|null $callbackAt UTC timestamp for callback at on this lead status change.
     */
     private ?DateTime $callbackAt = null;
     
@@ -69,7 +69,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     private ?LeadStatusChangeResponse_changeSource $changeSource = null;
     
     /**
-     * @var DateTime|null $createdAt The date and time for the created at value on this lead status change.
+     * @var DateTime|null $createdAt UTC timestamp for created at on this lead status change.
     */
     private ?DateTime $createdAt = null;
     
@@ -79,7 +79,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     private ?string $followUpStatus = null;
     
     /**
-     * @var string|null $id The unique ID for this lead status change.
+     * @var string|null $id Unique Leadping identifier for this lead status change.
     */
     private ?string $id = null;
     
@@ -124,7 +124,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     private ?string $oldLeadStatusChangeType = null;
     
     /**
-     * @var string|null $outcome The outcome value for this lead status change.
+     * @var string|null $outcome Result of the interaction or workflow step that caused the status change.
     */
     private ?string $outcome = null;
     
@@ -144,22 +144,22 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     private ?string $sourceId = null;
     
     /**
-     * @var DateTime|null $taskDueAt The date and time for the task due at value on this lead status change.
+     * @var DateTime|null $taskDueAt UTC timestamp for task due at on this lead status change.
     */
     private ?DateTime $taskDueAt = null;
     
     /**
-     * @var DateTime|null $timestamp The date and time for the timestamp value on this lead status change.
+     * @var DateTime|null $timestamp UTC timestamp for timestamp on this lead status change.
     */
     private ?DateTime $timestamp = null;
     
     /**
-     * @var string|null $type The type classification for this lead status change.
+     * @var string|null $type Category of status change recorded for the lead.
     */
     private ?string $type = null;
     
     /**
-     * @var DateTime|null $updatedAt The date and time for the updated at value on this lead status change.
+     * @var DateTime|null $updatedAt UTC timestamp for updated at on this lead status change.
     */
     private ?DateTime $updatedAt = null;
     
@@ -188,7 +188,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the appointmentEndAt property value. The date and time for the appointment end at value on this lead status change.
+     * Gets the appointmentEndAt property value. UTC timestamp for appointment end at on this lead status change.
      * @return DateTime|null
     */
     public function getAppointmentEndAt(): ?DateTime {
@@ -196,7 +196,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the appointmentNotes property value. The appointment notes value for this lead status change.
+     * Gets the appointmentNotes property value. Additional scheduling or preparation notes for the related appointment.
      * @return string|null
     */
     public function getAppointmentNotes(): ?string {
@@ -204,7 +204,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the appointmentStartAt property value. The date and time for the appointment start at value on this lead status change.
+     * Gets the appointmentStartAt property value. UTC timestamp for appointment start at on this lead status change.
      * @return DateTime|null
     */
     public function getAppointmentStartAt(): ?DateTime {
@@ -220,7 +220,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the callbackAt property value. The date and time for the callback at value on this lead status change.
+     * Gets the callbackAt property value. UTC timestamp for callback at on this lead status change.
      * @return DateTime|null
     */
     public function getCallbackAt(): ?DateTime {
@@ -268,7 +268,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the createdAt property value. The date and time for the created at value on this lead status change.
+     * Gets the createdAt property value. UTC timestamp for created at on this lead status change.
      * @return DateTime|null
     */
     public function getCreatedAt(): ?DateTime {
@@ -323,7 +323,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The unique ID for this lead status change.
+     * Gets the id property value. Unique Leadping identifier for this lead status change.
      * @return string|null
     */
     public function getId(): ?string {
@@ -395,7 +395,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the outcome property value. The outcome value for this lead status change.
+     * Gets the outcome property value. Result of the interaction or workflow step that caused the status change.
      * @return string|null
     */
     public function getOutcome(): ?string {
@@ -427,7 +427,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the taskDueAt property value. The date and time for the task due at value on this lead status change.
+     * Gets the taskDueAt property value. UTC timestamp for task due at on this lead status change.
      * @return DateTime|null
     */
     public function getTaskDueAt(): ?DateTime {
@@ -435,7 +435,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the timestamp property value. The date and time for the timestamp value on this lead status change.
+     * Gets the timestamp property value. UTC timestamp for timestamp on this lead status change.
      * @return DateTime|null
     */
     public function getTimestamp(): ?DateTime {
@@ -443,7 +443,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the type property value. The type classification for this lead status change.
+     * Gets the type property value. Category of status change recorded for the lead.
      * @return string|null
     */
     public function getType(): ?string {
@@ -451,7 +451,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the updatedAt property value. The date and time for the updated at value on this lead status change.
+     * Gets the updatedAt property value. UTC timestamp for updated at on this lead status change.
      * @return DateTime|null
     */
     public function getUpdatedAt(): ?DateTime {
@@ -504,7 +504,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the appointmentEndAt property value. The date and time for the appointment end at value on this lead status change.
+     * Sets the appointmentEndAt property value. UTC timestamp for appointment end at on this lead status change.
      * @param DateTime|null $value Value to set for the appointmentEndAt property.
     */
     public function setAppointmentEndAt(?DateTime $value): void {
@@ -512,7 +512,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the appointmentNotes property value. The appointment notes value for this lead status change.
+     * Sets the appointmentNotes property value. Additional scheduling or preparation notes for the related appointment.
      * @param string|null $value Value to set for the appointmentNotes property.
     */
     public function setAppointmentNotes(?string $value): void {
@@ -520,7 +520,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the appointmentStartAt property value. The date and time for the appointment start at value on this lead status change.
+     * Sets the appointmentStartAt property value. UTC timestamp for appointment start at on this lead status change.
      * @param DateTime|null $value Value to set for the appointmentStartAt property.
     */
     public function setAppointmentStartAt(?DateTime $value): void {
@@ -536,7 +536,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the callbackAt property value. The date and time for the callback at value on this lead status change.
+     * Sets the callbackAt property value. UTC timestamp for callback at on this lead status change.
      * @param DateTime|null $value Value to set for the callbackAt property.
     */
     public function setCallbackAt(?DateTime $value): void {
@@ -584,7 +584,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the createdAt property value. The date and time for the created at value on this lead status change.
+     * Sets the createdAt property value. UTC timestamp for created at on this lead status change.
      * @param DateTime|null $value Value to set for the createdAt property.
     */
     public function setCreatedAt(?DateTime $value): void {
@@ -600,7 +600,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The unique ID for this lead status change.
+     * Sets the id property value. Unique Leadping identifier for this lead status change.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -672,7 +672,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the outcome property value. The outcome value for this lead status change.
+     * Sets the outcome property value. Result of the interaction or workflow step that caused the status change.
      * @param string|null $value Value to set for the outcome property.
     */
     public function setOutcome(?string $value): void {
@@ -704,7 +704,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the taskDueAt property value. The date and time for the task due at value on this lead status change.
+     * Sets the taskDueAt property value. UTC timestamp for task due at on this lead status change.
      * @param DateTime|null $value Value to set for the taskDueAt property.
     */
     public function setTaskDueAt(?DateTime $value): void {
@@ -712,7 +712,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the timestamp property value. The date and time for the timestamp value on this lead status change.
+     * Sets the timestamp property value. UTC timestamp for timestamp on this lead status change.
      * @param DateTime|null $value Value to set for the timestamp property.
     */
     public function setTimestamp(?DateTime $value): void {
@@ -720,7 +720,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the type property value. The type classification for this lead status change.
+     * Sets the type property value. Category of status change recorded for the lead.
      * @param string|null $value Value to set for the type property.
     */
     public function setType(?string $value): void {
@@ -728,7 +728,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the updatedAt property value. The date and time for the updated at value on this lead status change.
+     * Sets the updatedAt property value. UTC timestamp for updated at on this lead status change.
      * @param DateTime|null $value Value to set for the updatedAt property.
     */
     public function setUpdatedAt(?DateTime $value): void {

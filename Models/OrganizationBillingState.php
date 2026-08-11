@@ -24,12 +24,12 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     private ?DateTime $billingPlanChangeEffectiveAt = null;
     
     /**
-     * @var DateTime|null $cancelAt Gets or sets when the active subscription is scheduled to cancel.
+     * @var DateTime|null $cancelAt UTC timestamp when the active subscription is scheduled to cancel.
     */
     private ?DateTime $cancelAt = null;
     
     /**
-     * @var OrganizationBillingState_dunning|null $dunning Gets or sets the customer-safe payment recovery state for the organization.
+     * @var OrganizationBillingState_dunning|null $dunning Customer-safe payment recovery state for the organization.
     */
     private ?OrganizationBillingState_dunning $dunning = null;
     
@@ -44,22 +44,22 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     private ?bool $hasStripeCustomer = null;
     
     /**
-     * @var DateTime|null $lastPaymentMethodEventAt Gets or sets when Leadping last processed a payment-method event for the organization.
+     * @var DateTime|null $lastPaymentMethodEventAt UTC timestamp when Leadping last processed a payment-method event for the organization.
     */
     private ?DateTime $lastPaymentMethodEventAt = null;
     
     /**
-     * @var DateTime|null $lastSubscriptionEventAt Gets or sets when Leadping last processed a subscription event for the organization.
+     * @var DateTime|null $lastSubscriptionEventAt UTC timestamp when Leadping last processed a subscription event for the organization.
     */
     private ?DateTime $lastSubscriptionEventAt = null;
     
     /**
-     * @var int|null $organizationMemberAssignedQuantity Gets or sets the number of user licenses currently assigned by the organization.
+     * @var int|null $organizationMemberAssignedQuantity Number of user licenses currently assigned to organization members.
     */
     private ?int $organizationMemberAssignedQuantity = null;
     
     /**
-     * @var int|null $organizationMemberQuantity Gets or sets the number of user licenses included in the organization subscription.
+     * @var int|null $organizationMemberQuantity Number of user licenses included in the organization's subscription plan.
     */
     private ?int $organizationMemberQuantity = null;
     
@@ -69,7 +69,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     private ?OrganizationBillingState_pendingBillingPlan $pendingBillingPlan = null;
     
     /**
-     * @var int|null $phoneNumberQuantity Gets or sets the number of phone numbers included in the organization subscription.
+     * @var int|null $phoneNumberQuantity Number of phone numbers included in the organization's subscription plan.
     */
     private ?int $phoneNumberQuantity = null;
     
@@ -116,7 +116,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the cancelAt property value. Gets or sets when the active subscription is scheduled to cancel.
+     * Gets the cancelAt property value. UTC timestamp when the active subscription is scheduled to cancel.
      * @return DateTime|null
     */
     public function getCancelAt(): ?DateTime {
@@ -124,7 +124,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the dunning property value. Gets or sets the customer-safe payment recovery state for the organization.
+     * Gets the dunning property value. Customer-safe payment recovery state for the organization.
      * @return OrganizationBillingState_dunning|null
     */
     public function getDunning(): ?OrganizationBillingState_dunning {
@@ -171,7 +171,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lastPaymentMethodEventAt property value. Gets or sets when Leadping last processed a payment-method event for the organization.
+     * Gets the lastPaymentMethodEventAt property value. UTC timestamp when Leadping last processed a payment-method event for the organization.
      * @return DateTime|null
     */
     public function getLastPaymentMethodEventAt(): ?DateTime {
@@ -179,7 +179,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lastSubscriptionEventAt property value. Gets or sets when Leadping last processed a subscription event for the organization.
+     * Gets the lastSubscriptionEventAt property value. UTC timestamp when Leadping last processed a subscription event for the organization.
      * @return DateTime|null
     */
     public function getLastSubscriptionEventAt(): ?DateTime {
@@ -187,7 +187,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organizationMemberAssignedQuantity property value. Gets or sets the number of user licenses currently assigned by the organization.
+     * Gets the organizationMemberAssignedQuantity property value. Number of user licenses currently assigned to organization members.
      * @return int|null
     */
     public function getOrganizationMemberAssignedQuantity(): ?int {
@@ -195,7 +195,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organizationMemberQuantity property value. Gets or sets the number of user licenses included in the organization subscription.
+     * Gets the organizationMemberQuantity property value. Number of user licenses included in the organization's subscription plan.
      * @return int|null
     */
     public function getOrganizationMemberQuantity(): ?int {
@@ -211,7 +211,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the phoneNumberQuantity property value. Gets or sets the number of phone numbers included in the organization subscription.
+     * Gets the phoneNumberQuantity property value. Number of phone numbers included in the organization's subscription plan.
      * @return int|null
     */
     public function getPhoneNumberQuantity(): ?int {
@@ -272,7 +272,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the cancelAt property value. Gets or sets when the active subscription is scheduled to cancel.
+     * Sets the cancelAt property value. UTC timestamp when the active subscription is scheduled to cancel.
      * @param DateTime|null $value Value to set for the cancelAt property.
     */
     public function setCancelAt(?DateTime $value): void {
@@ -280,7 +280,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the dunning property value. Gets or sets the customer-safe payment recovery state for the organization.
+     * Sets the dunning property value. Customer-safe payment recovery state for the organization.
      * @param OrganizationBillingState_dunning|null $value Value to set for the dunning property.
     */
     public function setDunning(?OrganizationBillingState_dunning $value): void {
@@ -304,7 +304,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lastPaymentMethodEventAt property value. Gets or sets when Leadping last processed a payment-method event for the organization.
+     * Sets the lastPaymentMethodEventAt property value. UTC timestamp when Leadping last processed a payment-method event for the organization.
      * @param DateTime|null $value Value to set for the lastPaymentMethodEventAt property.
     */
     public function setLastPaymentMethodEventAt(?DateTime $value): void {
@@ -312,7 +312,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lastSubscriptionEventAt property value. Gets or sets when Leadping last processed a subscription event for the organization.
+     * Sets the lastSubscriptionEventAt property value. UTC timestamp when Leadping last processed a subscription event for the organization.
      * @param DateTime|null $value Value to set for the lastSubscriptionEventAt property.
     */
     public function setLastSubscriptionEventAt(?DateTime $value): void {
@@ -320,7 +320,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organizationMemberAssignedQuantity property value. Gets or sets the number of user licenses currently assigned by the organization.
+     * Sets the organizationMemberAssignedQuantity property value. Number of user licenses currently assigned to organization members.
      * @param int|null $value Value to set for the organizationMemberAssignedQuantity property.
     */
     public function setOrganizationMemberAssignedQuantity(?int $value): void {
@@ -328,7 +328,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organizationMemberQuantity property value. Gets or sets the number of user licenses included in the organization subscription.
+     * Sets the organizationMemberQuantity property value. Number of user licenses included in the organization's subscription plan.
      * @param int|null $value Value to set for the organizationMemberQuantity property.
     */
     public function setOrganizationMemberQuantity(?int $value): void {
@@ -344,7 +344,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the phoneNumberQuantity property value. Gets or sets the number of phone numbers included in the organization subscription.
+     * Sets the phoneNumberQuantity property value. Number of phone numbers included in the organization's subscription plan.
      * @param int|null $value Value to set for the phoneNumberQuantity property.
     */
     public function setPhoneNumberQuantity(?int $value): void {

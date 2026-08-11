@@ -33,7 +33,7 @@ class ChangeBillingPlanRequestBuilder extends BaseRequestBuilder
 
     /**
      * Changes the current user's billing plan selection, updating account billing state and plan-specific capabilities.
-     * @param ChangeBillingPlanRequest $body Request payload for change billing plan.
+     * @param ChangeBillingPlanRequest $body Defines the input used for change billing plan.
      * @param ChangeBillingPlanRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<UserResponse|null>
      * @throws Exception
@@ -50,7 +50,7 @@ class ChangeBillingPlanRequestBuilder extends BaseRequestBuilder
 
     /**
      * Changes the current user's billing plan selection, updating account billing state and plan-specific capabilities.
-     * @param ChangeBillingPlanRequest $body Request payload for change billing plan.
+     * @param ChangeBillingPlanRequest $body Defines the input used for change billing plan.
      * @param ChangeBillingPlanRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

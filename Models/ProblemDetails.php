@@ -8,6 +8,9 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
+/**
+ * Standard problem-details response containing machine-readable and human-readable information about an HTTP API error.
+*/
 class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsable 
 {
     /**

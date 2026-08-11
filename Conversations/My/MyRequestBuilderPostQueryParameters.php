@@ -8,13 +8,13 @@ namespace Leadping\OpenApiClient\Conversations\My;
 class MyRequestBuilderPostQueryParameters 
 {
     /**
-     * @var string|null $archiveFilter 
+     * @var string|null $archiveFilter Optional filter selecting active, archived, or all lead conversations.
     */
     public ?string $archiveFilter = null;
     
     /**
      * Instantiates a new MyRequestBuilderPostQueryParameters and sets the default values.
-     * @param string|null $archiveFilter 
+     * @param string|null $archiveFilter Optional filter selecting active, archived, or all lead conversations.
     */
     public function __construct(?string $archiveFilter = null) {
         $this->archiveFilter = $archiveFilter;

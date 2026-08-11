@@ -21,7 +21,7 @@ class ExportsRequestBuilder extends BaseRequestBuilder
     
     /**
      * Gets an item from the Leadping/OpenApiClient.reports.exports.item collection
-     * @param string $exportId Unique identifier of the item
+     * @param string $exportId The unique identifier of the current user's data export.
      * @return WithExportItemRequestBuilder
     */
     public function byExportId(string $exportId): WithExportItemRequestBuilder {

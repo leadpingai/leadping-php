@@ -50,7 +50,7 @@ class TagsItemRequestBuilder extends BaseRequestBuilder
 
     /**
      * Updates a current-organization tag's name, color, or archived state so lead segmentation and filters stay consistent.
-     * @param TagRequest $body Request schema for the Leadping API tag request, including the fields clients can send.
+     * @param TagRequest $body Defines the fields clients can send when working with tag.
      * @param TagsItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<TagResponse|null>
      * @throws Exception
@@ -85,7 +85,7 @@ class TagsItemRequestBuilder extends BaseRequestBuilder
 
     /**
      * Updates a current-organization tag's name, color, or archived state so lead segmentation and filters stay consistent.
-     * @param TagRequest $body Request schema for the Leadping API tag request, including the fields clients can send.
+     * @param TagRequest $body Defines the fields clients can send when working with tag.
      * @param TagsItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

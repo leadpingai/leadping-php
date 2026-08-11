@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Request payload for suppression entry.
+ * Defines a recipient and communication channel to suppress, release, or check before Leadping sends outreach.
 */
 class SuppressionEntryRequest implements AdditionalDataHolder, Parsable 
 {
@@ -18,32 +18,32 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $channel The channel value for this ion entry.
+     * @var string|null $channel Communication channel affected by the suppression, such as SMS, voice, email, or all channels.
     */
     private ?string $channel = null;
     
     /**
-     * @var string|null $email The email address associated with this ion entry.
+     * @var string|null $email Recipient email address to suppress or check.
     */
     private ?string $email = null;
     
     /**
-     * @var string|null $organizationId The organization ID associated with this ion entry.
+     * @var string|null $organizationId Organization whose suppression list should be used.
     */
     private ?string $organizationId = null;
     
     /**
-     * @var string|null $phoneNumber The phone number associated with this ion entry.
+     * @var string|null $phoneNumber Recipient phone number to suppress or check, preferably in E.164 format.
     */
     private ?string $phoneNumber = null;
     
     /**
-     * @var string|null $reason The human-readable reason explaining this ion entry.
+     * @var string|null $reason Human-readable reason for creating or releasing the suppression.
     */
     private ?string $reason = null;
     
     /**
-     * @var string|null $recipientIdentifier The recipient identifier value for this ion entry.
+     * @var string|null $recipientIdentifier Optional provider or customer identifier that uniquely identifies the recipient.
     */
     private ?string $recipientIdentifier = null;
     
@@ -72,7 +72,7 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the channel property value. The channel value for this ion entry.
+     * Gets the channel property value. Communication channel affected by the suppression, such as SMS, voice, email, or all channels.
      * @return string|null
     */
     public function getChannel(): ?string {
@@ -80,7 +80,7 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the email property value. The email address associated with this ion entry.
+     * Gets the email property value. Recipient email address to suppress or check.
      * @return string|null
     */
     public function getEmail(): ?string {
@@ -104,7 +104,7 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organizationId property value. The organization ID associated with this ion entry.
+     * Gets the organizationId property value. Organization whose suppression list should be used.
      * @return string|null
     */
     public function getOrganizationId(): ?string {
@@ -112,7 +112,7 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the phoneNumber property value. The phone number associated with this ion entry.
+     * Gets the phoneNumber property value. Recipient phone number to suppress or check, preferably in E.164 format.
      * @return string|null
     */
     public function getPhoneNumber(): ?string {
@@ -120,7 +120,7 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the reason property value. The human-readable reason explaining this ion entry.
+     * Gets the reason property value. Human-readable reason for creating or releasing the suppression.
      * @return string|null
     */
     public function getReason(): ?string {
@@ -128,7 +128,7 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the recipientIdentifier property value. The recipient identifier value for this ion entry.
+     * Gets the recipientIdentifier property value. Optional provider or customer identifier that uniquely identifies the recipient.
      * @return string|null
     */
     public function getRecipientIdentifier(): ?string {
@@ -158,7 +158,7 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the channel property value. The channel value for this ion entry.
+     * Sets the channel property value. Communication channel affected by the suppression, such as SMS, voice, email, or all channels.
      * @param string|null $value Value to set for the channel property.
     */
     public function setChannel(?string $value): void {
@@ -166,7 +166,7 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the email property value. The email address associated with this ion entry.
+     * Sets the email property value. Recipient email address to suppress or check.
      * @param string|null $value Value to set for the email property.
     */
     public function setEmail(?string $value): void {
@@ -174,7 +174,7 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organizationId property value. The organization ID associated with this ion entry.
+     * Sets the organizationId property value. Organization whose suppression list should be used.
      * @param string|null $value Value to set for the organizationId property.
     */
     public function setOrganizationId(?string $value): void {
@@ -182,7 +182,7 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the phoneNumber property value. The phone number associated with this ion entry.
+     * Sets the phoneNumber property value. Recipient phone number to suppress or check, preferably in E.164 format.
      * @param string|null $value Value to set for the phoneNumber property.
     */
     public function setPhoneNumber(?string $value): void {
@@ -190,7 +190,7 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the reason property value. The human-readable reason explaining this ion entry.
+     * Sets the reason property value. Human-readable reason for creating or releasing the suppression.
      * @param string|null $value Value to set for the reason property.
     */
     public function setReason(?string $value): void {
@@ -198,7 +198,7 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the recipientIdentifier property value. The recipient identifier value for this ion entry.
+     * Sets the recipientIdentifier property value. Optional provider or customer identifier that uniquely identifies the recipient.
      * @param string|null $value Value to set for the recipientIdentifier property.
     */
     public function setRecipientIdentifier(?string $value): void {

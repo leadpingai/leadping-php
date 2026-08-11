@@ -29,8 +29,8 @@ class WithOrganizationItemRequestBuilderPostRequestConfiguration extends BaseReq
 
     /**
      * Instantiates a new WithOrganizationItemRequestBuilderPostQueryParameters.
-     * @param DateTime|null $endAt 
-     * @param DateTime|null $startAt 
+     * @param DateTime|null $endAt Optional exclusive end timestamp for event occurrence.
+     * @param DateTime|null $startAt Optional inclusive start timestamp for event occurrence.
      * @return WithOrganizationItemRequestBuilderPostQueryParameters
     */
     public static function createQueryParameters(?DateTime $endAt = null, ?DateTime $startAt = null): WithOrganizationItemRequestBuilderPostQueryParameters {

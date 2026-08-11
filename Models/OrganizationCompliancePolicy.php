@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 use Microsoft\Kiota\Abstractions\Types\TypeUtils;
 
 /**
- * API DTO containing organization compliance policy data used by Leadping API contracts.
+ * Describes organization compliance policy data used in Leadping API requests and responses.
 */
 class OrganizationCompliancePolicy implements AdditionalDataHolder, Parsable 
 {

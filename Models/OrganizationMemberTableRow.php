@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API DTO containing organization user data used by Leadping API contracts.
+ * Describes organization user data used in Leadping API requests and responses.
 */
 class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable 
 {
@@ -19,12 +19,12 @@ class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var DateTime|null $createdAt The date and time for the created at value on this organization user.
+     * @var DateTime|null $createdAt UTC timestamp for created at on this organization user.
     */
     private ?DateTime $createdAt = null;
     
     /**
-     * @var string|null $id The unique ID for this organization user.
+     * @var string|null $id Unique Leadping identifier for this organization user.
     */
     private ?string $id = null;
     
@@ -39,17 +39,17 @@ class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable
     private ?DateTime $licenseRenewalDate = null;
     
     /**
-     * @var OrganizationMemberRole|null $role The role value for this organization user.
+     * @var OrganizationMemberRole|null $role Role for this organization user.
     */
     private ?OrganizationMemberRole $role = null;
     
     /**
-     * @var IdNamePair|null $user The ID and name for this user.
+     * @var IdNamePair|null $user Identifier and display name of the related user.
     */
     private ?IdNamePair $user = null;
     
     /**
-     * @var string|null $userEmail The user email value for this organization user.
+     * @var string|null $userEmail User email for this organization user.
     */
     private ?string $userEmail = null;
     
@@ -78,7 +78,7 @@ class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the createdAt property value. The date and time for the created at value on this organization user.
+     * Gets the createdAt property value. UTC timestamp for created at on this organization user.
      * @return DateTime|null
     */
     public function getCreatedAt(): ?DateTime {
@@ -103,7 +103,7 @@ class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The unique ID for this organization user.
+     * Gets the id property value. Unique Leadping identifier for this organization user.
      * @return string|null
     */
     public function getId(): ?string {
@@ -127,7 +127,7 @@ class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the role property value. The role value for this organization user.
+     * Gets the role property value. Role for this organization user.
      * @return OrganizationMemberRole|null
     */
     public function getRole(): ?OrganizationMemberRole {
@@ -135,7 +135,7 @@ class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the user property value. The ID and name for this user.
+     * Gets the user property value. Identifier and display name of the related user.
      * @return IdNamePair|null
     */
     public function getUser(): ?IdNamePair {
@@ -143,7 +143,7 @@ class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the userEmail property value. The user email value for this organization user.
+     * Gets the userEmail property value. User email for this organization user.
      * @return string|null
     */
     public function getUserEmail(): ?string {
@@ -174,7 +174,7 @@ class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the createdAt property value. The date and time for the created at value on this organization user.
+     * Sets the createdAt property value. UTC timestamp for created at on this organization user.
      * @param DateTime|null $value Value to set for the createdAt property.
     */
     public function setCreatedAt(?DateTime $value): void {
@@ -182,7 +182,7 @@ class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The unique ID for this organization user.
+     * Sets the id property value. Unique Leadping identifier for this organization user.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -206,7 +206,7 @@ class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the role property value. The role value for this organization user.
+     * Sets the role property value. Role for this organization user.
      * @param OrganizationMemberRole|null $value Value to set for the role property.
     */
     public function setRole(?OrganizationMemberRole $value): void {
@@ -214,7 +214,7 @@ class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the user property value. The ID and name for this user.
+     * Sets the user property value. Identifier and display name of the related user.
      * @param IdNamePair|null $value Value to set for the user property.
     */
     public function setUser(?IdNamePair $value): void {
@@ -222,7 +222,7 @@ class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the userEmail property value. The user email value for this organization user.
+     * Sets the userEmail property value. User email for this organization user.
      * @param string|null $value Value to set for the userEmail property.
     */
     public function setUserEmail(?string $value): void {

@@ -7,6 +7,9 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
+/**
+ * Optional client metadata stored with the push installation.
+*/
 class PushInstallationRequest_metadata implements AdditionalDataHolder, Parsable 
 {
     /**

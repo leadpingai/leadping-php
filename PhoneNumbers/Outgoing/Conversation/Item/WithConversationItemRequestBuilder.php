@@ -41,7 +41,7 @@ class WithConversationItemRequestBuilder extends BaseRequestBuilder
 
     /**
      * Selects the outgoing phone number for an existing conversation, considering assignments, overrides, and delivery eligibility.
-     * @param OutgoingNumberSelectionRequest $body Request schema for the Leadping API outgoing number selection request, including the fields clients can send.
+     * @param OutgoingNumberSelectionRequest $body Defines the fields clients can send when working with outgoing number selection.
      * @param WithConversationItemRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<OutgoingNumberSelectionResponse|null>
      * @throws Exception
@@ -57,7 +57,7 @@ class WithConversationItemRequestBuilder extends BaseRequestBuilder
 
     /**
      * Selects the outgoing phone number for an existing conversation, considering assignments, overrides, and delivery eligibility.
-     * @param OutgoingNumberSelectionRequest $body Request schema for the Leadping API outgoing number selection request, including the fields clients can send.
+     * @param OutgoingNumberSelectionRequest $body Defines the fields clients can send when working with outgoing number selection.
      * @param WithConversationItemRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

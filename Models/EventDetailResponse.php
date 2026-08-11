@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Response schema for the Leadping API event detail response returned to authenticated clients.
+ * Describes event detail data returned by Leadping.
 */
 class EventDetailResponse implements AdditionalDataHolder, Parsable 
 {

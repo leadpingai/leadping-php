@@ -30,7 +30,7 @@ class WithInstallationItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Unregister the current user's mobile push installation.
+     * Removes a mobile push installation from the authenticated user's account so Leadping no longer sends notifications to that device.
      * @param WithInstallationItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<bool|null>
      * @throws Exception
@@ -46,7 +46,7 @@ class WithInstallationItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Unregister the current user's mobile push installation.
+     * Removes a mobile push installation from the authenticated user's account so Leadping no longer sends notifications to that device.
      * @param WithInstallationItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

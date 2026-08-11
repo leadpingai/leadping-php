@@ -60,7 +60,7 @@ class MembersRequestBuilder extends BaseRequestBuilder
 
     /**
      * Adds an existing user to the current organization with the requested role for shared lead communication and account access.
-     * @param OrganizationMemberRequest $body Request schema for the Leadping API organization user request, including the fields clients can send.
+     * @param OrganizationMemberRequest $body Defines the fields clients can send when working with organization user.
      * @param MembersRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<OrganizationMemberResponse|null>
      * @throws Exception
@@ -95,7 +95,7 @@ class MembersRequestBuilder extends BaseRequestBuilder
 
     /**
      * Adds an existing user to the current organization with the requested role for shared lead communication and account access.
-     * @param OrganizationMemberRequest $body Request schema for the Leadping API organization user request, including the fields clients can send.
+     * @param OrganizationMemberRequest $body Defines the fields clients can send when working with organization user.
      * @param MembersRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

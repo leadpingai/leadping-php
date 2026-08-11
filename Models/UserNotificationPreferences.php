@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API DTO containing user notification preferences data used by Leadping API contracts.
+ * Describes user notification preferences data used in Leadping API requests and responses.
 */
 class UserNotificationPreferences implements AdditionalDataHolder, Parsable 
 {

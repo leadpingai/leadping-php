@@ -18,7 +18,7 @@ class InvoicesRequestBuilder extends BaseRequestBuilder
 {
     /**
      * Gets an item from the Leadping/OpenApiClient.paymentMethods.invoices.item collection
-     * @param string $invoiceId Unique identifier of the item
+     * @param string $invoiceId The Stripe invoice identifier whose PDF should be accessed.
      * @return WithInvoiceItemRequestBuilder
     */
     public function byInvoiceId(string $invoiceId): WithInvoiceItemRequestBuilder {

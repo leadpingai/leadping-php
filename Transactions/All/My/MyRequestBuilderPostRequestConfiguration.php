@@ -29,8 +29,8 @@ class MyRequestBuilderPostRequestConfiguration extends BaseRequestConfiguration
 
     /**
      * Instantiates a new MyRequestBuilderPostQueryParameters.
-     * @param DateTime|null $endAt 
-     * @param DateTime|null $startAt 
+     * @param DateTime|null $endAt Optional exclusive end timestamp for transaction creation.
+     * @param DateTime|null $startAt Optional inclusive start timestamp for transaction creation.
      * @return MyRequestBuilderPostQueryParameters
     */
     public static function createQueryParameters(?DateTime $endAt = null, ?DateTime $startAt = null): MyRequestBuilderPostQueryParameters {

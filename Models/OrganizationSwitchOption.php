@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API DTO containing organization switch option data used by Leadping API contracts.
+ * Describes organization switch option data used in Leadping API requests and responses.
 */
 class OrganizationSwitchOption implements AdditionalDataHolder, Parsable 
 {
@@ -19,7 +19,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     private ?OrganizationSwitchOption_activationStatus $activationStatus = null;
     
     /**
-     * @var string|null $activationSummary The activation summary value for this organization switch option.
+     * @var string|null $activationSummary Activation summary for this organization switch option.
     */
     private ?string $activationSummary = null;
     
@@ -34,7 +34,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     private ?bool $hasPaymentMethod = null;
     
     /**
-     * @var string|null $id The unique ID for this organization switch option.
+     * @var string|null $id Unique Leadping identifier for this organization switch option.
     */
     private ?string $id = null;
     
@@ -44,7 +44,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     private ?bool $isCurrent = null;
     
     /**
-     * @var DateTime|null $lastUsedAt The date and time for the last used at value on this organization switch option.
+     * @var DateTime|null $lastUsedAt UTC timestamp for last used at on this organization switch option.
     */
     private ?DateTime $lastUsedAt = null;
     
@@ -69,7 +69,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     private ?bool $readyForCustomerTraffic = null;
     
     /**
-     * @var OrganizationMemberRole|null $role The role value for this organization switch option.
+     * @var OrganizationMemberRole|null $role Role for this organization switch option.
     */
     private ?OrganizationMemberRole $role = null;
     
@@ -103,7 +103,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the activationSummary property value. The activation summary value for this organization switch option.
+     * Gets the activationSummary property value. Activation summary for this organization switch option.
      * @return string|null
     */
     public function getActivationSummary(): ?string {
@@ -149,7 +149,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The unique ID for this organization switch option.
+     * Gets the id property value. Unique Leadping identifier for this organization switch option.
      * @return string|null
     */
     public function getId(): ?string {
@@ -165,7 +165,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lastUsedAt property value. The date and time for the last used at value on this organization switch option.
+     * Gets the lastUsedAt property value. UTC timestamp for last used at on this organization switch option.
      * @return DateTime|null
     */
     public function getLastUsedAt(): ?DateTime {
@@ -205,7 +205,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the role property value. The role value for this organization switch option.
+     * Gets the role property value. Role for this organization switch option.
      * @return OrganizationMemberRole|null
     */
     public function getRole(): ?OrganizationMemberRole {
@@ -249,7 +249,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the activationSummary property value. The activation summary value for this organization switch option.
+     * Sets the activationSummary property value. Activation summary for this organization switch option.
      * @param string|null $value Value to set for the activationSummary property.
     */
     public function setActivationSummary(?string $value): void {
@@ -273,7 +273,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The unique ID for this organization switch option.
+     * Sets the id property value. Unique Leadping identifier for this organization switch option.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -289,7 +289,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lastUsedAt property value. The date and time for the last used at value on this organization switch option.
+     * Sets the lastUsedAt property value. UTC timestamp for last used at on this organization switch option.
      * @param DateTime|null $value Value to set for the lastUsedAt property.
     */
     public function setLastUsedAt(?DateTime $value): void {
@@ -329,7 +329,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the role property value. The role value for this organization switch option.
+     * Sets the role property value. Role for this organization switch option.
      * @param OrganizationMemberRole|null $value Value to set for the role property.
     */
     public function setRole(?OrganizationMemberRole $value): void {

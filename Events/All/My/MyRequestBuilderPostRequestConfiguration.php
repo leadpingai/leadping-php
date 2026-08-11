@@ -29,9 +29,9 @@ class MyRequestBuilderPostRequestConfiguration extends BaseRequestConfiguration
 
     /**
      * Instantiates a new MyRequestBuilderPostQueryParameters.
-     * @param string|null $category 
-     * @param DateTime|null $endAt 
-     * @param DateTime|null $startAt 
+     * @param string|null $category Optional event category used to narrow the results.
+     * @param DateTime|null $endAt Optional exclusive end timestamp for event occurrence.
+     * @param DateTime|null $startAt Optional inclusive start timestamp for event occurrence.
      * @return MyRequestBuilderPostQueryParameters
     */
     public static function createQueryParameters(?string $category = null, ?DateTime $endAt = null, ?DateTime $startAt = null): MyRequestBuilderPostQueryParameters {

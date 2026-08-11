@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * The ID and name for this device.
+ * Identifier and display name of the related device.
 */
 class TelephonyLoginRequest_device extends IdNamePair implements Parsable 
 {

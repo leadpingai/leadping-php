@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * The ID and name for this organization.
+ * Identifier and display name of the related organization.
 */
 class TransactionResponse_organization extends IdNamePair implements Parsable 
 {

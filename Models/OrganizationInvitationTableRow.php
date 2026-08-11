@@ -9,12 +9,12 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API DTO containing organization invitation data used by Leadping API contracts.
+ * Describes organization invitation data used in Leadping API requests and responses.
 */
 class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var DateTime|null $acceptedAt The date and time for the accepted at value on this organization invitation.
+     * @var DateTime|null $acceptedAt UTC timestamp for accepted at on this organization invitation.
     */
     private ?DateTime $acceptedAt = null;
     
@@ -24,7 +24,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var DateTime|null $createdAt The date and time for the created at value on this organization invitation.
+     * @var DateTime|null $createdAt UTC timestamp for created at on this organization invitation.
     */
     private ?DateTime $createdAt = null;
     
@@ -34,12 +34,12 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     private ?string $email = null;
     
     /**
-     * @var DateTime|null $expiresAt The date and time for the expires at value on this organization invitation.
+     * @var DateTime|null $expiresAt UTC timestamp for expires at on this organization invitation.
     */
     private ?DateTime $expiresAt = null;
     
     /**
-     * @var string|null $id The unique ID for this organization invitation.
+     * @var string|null $id Unique Leadping identifier for this organization invitation.
     */
     private ?string $id = null;
     
@@ -69,22 +69,22 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     private ?DateTime $licenseRenewalDate = null;
     
     /**
-     * @var IdNamePair|null $organization The ID and name for this organization.
+     * @var IdNamePair|null $organization Identifier and display name of the related organization.
     */
     private ?IdNamePair $organization = null;
     
     /**
-     * @var DateTime|null $resentAt The date and time for the resent at value on this organization invitation.
+     * @var DateTime|null $resentAt UTC timestamp for resent at on this organization invitation.
     */
     private ?DateTime $resentAt = null;
     
     /**
-     * @var DateTime|null $revokedAt The date and time for the revoked at value on this organization invitation.
+     * @var DateTime|null $revokedAt UTC timestamp for revoked at on this organization invitation.
     */
     private ?DateTime $revokedAt = null;
     
     /**
-     * @var OrganizationMemberRole|null $role The role value for this organization invitation.
+     * @var OrganizationMemberRole|null $role Role for this organization invitation.
     */
     private ?OrganizationMemberRole $role = null;
     
@@ -94,7 +94,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     private ?string $sendFailureReason = null;
     
     /**
-     * @var DateTime|null $sentAt The date and time for the sent at value on this organization invitation.
+     * @var DateTime|null $sentAt UTC timestamp for sent at on this organization invitation.
     */
     private ?DateTime $sentAt = null;
     
@@ -120,7 +120,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the acceptedAt property value. The date and time for the accepted at value on this organization invitation.
+     * Gets the acceptedAt property value. UTC timestamp for accepted at on this organization invitation.
      * @return DateTime|null
     */
     public function getAcceptedAt(): ?DateTime {
@@ -136,7 +136,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the createdAt property value. The date and time for the created at value on this organization invitation.
+     * Gets the createdAt property value. UTC timestamp for created at on this organization invitation.
      * @return DateTime|null
     */
     public function getCreatedAt(): ?DateTime {
@@ -152,7 +152,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the expiresAt property value. The date and time for the expires at value on this organization invitation.
+     * Gets the expiresAt property value. UTC timestamp for expires at on this organization invitation.
      * @return DateTime|null
     */
     public function getExpiresAt(): ?DateTime {
@@ -187,7 +187,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The unique ID for this organization invitation.
+     * Gets the id property value. Unique Leadping identifier for this organization invitation.
      * @return string|null
     */
     public function getId(): ?string {
@@ -235,7 +235,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organization property value. The ID and name for this organization.
+     * Gets the organization property value. Identifier and display name of the related organization.
      * @return IdNamePair|null
     */
     public function getOrganization(): ?IdNamePair {
@@ -243,7 +243,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the resentAt property value. The date and time for the resent at value on this organization invitation.
+     * Gets the resentAt property value. UTC timestamp for resent at on this organization invitation.
      * @return DateTime|null
     */
     public function getResentAt(): ?DateTime {
@@ -251,7 +251,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the revokedAt property value. The date and time for the revoked at value on this organization invitation.
+     * Gets the revokedAt property value. UTC timestamp for revoked at on this organization invitation.
      * @return DateTime|null
     */
     public function getRevokedAt(): ?DateTime {
@@ -259,7 +259,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the role property value. The role value for this organization invitation.
+     * Gets the role property value. Role for this organization invitation.
      * @return OrganizationMemberRole|null
     */
     public function getRole(): ?OrganizationMemberRole {
@@ -275,7 +275,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the sentAt property value. The date and time for the sent at value on this organization invitation.
+     * Gets the sentAt property value. UTC timestamp for sent at on this organization invitation.
      * @return DateTime|null
     */
     public function getSentAt(): ?DateTime {
@@ -316,7 +316,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the acceptedAt property value. The date and time for the accepted at value on this organization invitation.
+     * Sets the acceptedAt property value. UTC timestamp for accepted at on this organization invitation.
      * @param DateTime|null $value Value to set for the acceptedAt property.
     */
     public function setAcceptedAt(?DateTime $value): void {
@@ -332,7 +332,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the createdAt property value. The date and time for the created at value on this organization invitation.
+     * Sets the createdAt property value. UTC timestamp for created at on this organization invitation.
      * @param DateTime|null $value Value to set for the createdAt property.
     */
     public function setCreatedAt(?DateTime $value): void {
@@ -348,7 +348,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the expiresAt property value. The date and time for the expires at value on this organization invitation.
+     * Sets the expiresAt property value. UTC timestamp for expires at on this organization invitation.
      * @param DateTime|null $value Value to set for the expiresAt property.
     */
     public function setExpiresAt(?DateTime $value): void {
@@ -356,7 +356,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The unique ID for this organization invitation.
+     * Sets the id property value. Unique Leadping identifier for this organization invitation.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -404,7 +404,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organization property value. The ID and name for this organization.
+     * Sets the organization property value. Identifier and display name of the related organization.
      * @param IdNamePair|null $value Value to set for the organization property.
     */
     public function setOrganization(?IdNamePair $value): void {
@@ -412,7 +412,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the resentAt property value. The date and time for the resent at value on this organization invitation.
+     * Sets the resentAt property value. UTC timestamp for resent at on this organization invitation.
      * @param DateTime|null $value Value to set for the resentAt property.
     */
     public function setResentAt(?DateTime $value): void {
@@ -420,7 +420,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the revokedAt property value. The date and time for the revoked at value on this organization invitation.
+     * Sets the revokedAt property value. UTC timestamp for revoked at on this organization invitation.
      * @param DateTime|null $value Value to set for the revokedAt property.
     */
     public function setRevokedAt(?DateTime $value): void {
@@ -428,7 +428,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the role property value. The role value for this organization invitation.
+     * Sets the role property value. Role for this organization invitation.
      * @param OrganizationMemberRole|null $value Value to set for the role property.
     */
     public function setRole(?OrganizationMemberRole $value): void {
@@ -444,7 +444,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the sentAt property value. The date and time for the sent at value on this organization invitation.
+     * Sets the sentAt property value. UTC timestamp for sent at on this organization invitation.
      * @param DateTime|null $value Value to set for the sentAt property.
     */
     public function setSentAt(?DateTime $value): void {

@@ -33,7 +33,7 @@ class NewRequestBuilder extends BaseRequestBuilder
 
     /**
      * Selects an outgoing phone number for a new outbound lead message using destination, source, and delivery eligibility rules.
-     * @param OutgoingNumberSelectionRequest $body Request schema for the Leadping API outgoing number selection request, including the fields clients can send.
+     * @param OutgoingNumberSelectionRequest $body Defines the fields clients can send when working with outgoing number selection.
      * @param NewRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<OutgoingNumberSelectionResponse|null>
      * @throws Exception
@@ -49,7 +49,7 @@ class NewRequestBuilder extends BaseRequestBuilder
 
     /**
      * Selects an outgoing phone number for a new outbound lead message using destination, source, and delivery eligibility rules.
-     * @param OutgoingNumberSelectionRequest $body Request schema for the Leadping API outgoing number selection request, including the fields clients can send.
+     * @param OutgoingNumberSelectionRequest $body Defines the fields clients can send when working with outgoing number selection.
      * @param NewRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

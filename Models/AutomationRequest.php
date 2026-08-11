@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Request schema for the Leadping API automation configuration request, including the fields clients can send.
+ * Defines the fields clients can send when working with automation configuration.
 */
 class AutomationRequest implements AdditionalDataHolder, Parsable 
 {

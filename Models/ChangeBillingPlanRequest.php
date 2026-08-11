@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Request payload for change billing plan.
+ * Defines the input used for change billing plan.
 */
 class ChangeBillingPlanRequest implements AdditionalDataHolder, Parsable 
 {
@@ -18,7 +18,7 @@ class ChangeBillingPlanRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var BillingPlan|null $billingPlan The billing plan value for this billing plan.
+     * @var BillingPlan|null $billingPlan Billing plan for this billing plan.
     */
     private ?BillingPlan $billingPlan = null;
     
@@ -52,7 +52,7 @@ class ChangeBillingPlanRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billingPlan property value. The billing plan value for this billing plan.
+     * Gets the billingPlan property value. Billing plan for this billing plan.
      * @return BillingPlan|null
     */
     public function getBillingPlan(): ?BillingPlan {
@@ -98,7 +98,7 @@ class ChangeBillingPlanRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billingPlan property value. The billing plan value for this billing plan.
+     * Sets the billingPlan property value. Billing plan for this billing plan.
      * @param BillingPlan|null $value Value to set for the billingPlan property.
     */
     public function setBillingPlan(?BillingPlan $value): void {

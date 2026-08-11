@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API response containing suppression check result data returned to callers.
+ * Reports whether Leadping may contact a recipient and identifies the active suppression when contact is blocked.
 */
 class SuppressionCheckResult implements AdditionalDataHolder, Parsable 
 {
@@ -19,37 +19,37 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var bool|null $allowed Whether this ion check result allows ed.
+     * @var bool|null $allowed Whether outreach to the recipient is allowed for the requested channel.
     */
     private ?bool $allowed = null;
     
     /**
-     * @var string|null $channel The channel value for this ion check result.
+     * @var string|null $channel Communication channel evaluated by the suppression check.
     */
     private ?string $channel = null;
     
     /**
-     * @var string|null $customerReason The human-readable customer reason explaining this ion check result.
+     * @var string|null $customerReason Customer-safe explanation of why contact is blocked or allowed.
     */
     private ?string $customerReason = null;
     
     /**
-     * @var string|null $normalizedEmail The normalized email value for this ion check result.
+     * @var string|null $normalizedEmail Email address used for matching, normalized for comparison.
     */
     private ?string $normalizedEmail = null;
     
     /**
-     * @var string|null $normalizedPhoneNumber The phone number associated with this ion check result.
+     * @var string|null $normalizedPhoneNumber Phone number used for matching, normalized to a consistent format.
     */
     private ?string $normalizedPhoneNumber = null;
     
     /**
-     * @var string|null $organizationId The organization ID associated with this ion check result.
+     * @var string|null $organizationId Identifier of the organization whose suppression list was checked.
     */
     private ?string $organizationId = null;
     
     /**
-     * @var string|null $recipientIdentifier The recipient identifier value for this ion check result.
+     * @var string|null $recipientIdentifier Provider or customer identifier used to match the recipient.
     */
     private ?string $recipientIdentifier = null;
     
@@ -64,7 +64,7 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     private ?DateTime $suppressedAt = null;
     
     /**
-     * @var string|null $suppressionEntryId The suppression entry ID associated with this ion check result.
+     * @var string|null $suppressionEntryId Identifier of the active suppression that blocked contact, when one matched.
     */
     private ?string $suppressionEntryId = null;
     
@@ -93,7 +93,7 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the allowed property value. Whether this ion check result allows ed.
+     * Gets the allowed property value. Whether outreach to the recipient is allowed for the requested channel.
      * @return bool|null
     */
     public function getAllowed(): ?bool {
@@ -101,7 +101,7 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the channel property value. The channel value for this ion check result.
+     * Gets the channel property value. Communication channel evaluated by the suppression check.
      * @return string|null
     */
     public function getChannel(): ?string {
@@ -109,7 +109,7 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the customerReason property value. The human-readable customer reason explaining this ion check result.
+     * Gets the customerReason property value. Customer-safe explanation of why contact is blocked or allowed.
      * @return string|null
     */
     public function getCustomerReason(): ?string {
@@ -137,7 +137,7 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the normalizedEmail property value. The normalized email value for this ion check result.
+     * Gets the normalizedEmail property value. Email address used for matching, normalized for comparison.
      * @return string|null
     */
     public function getNormalizedEmail(): ?string {
@@ -145,7 +145,7 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the normalizedPhoneNumber property value. The phone number associated with this ion check result.
+     * Gets the normalizedPhoneNumber property value. Phone number used for matching, normalized to a consistent format.
      * @return string|null
     */
     public function getNormalizedPhoneNumber(): ?string {
@@ -153,7 +153,7 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organizationId property value. The organization ID associated with this ion check result.
+     * Gets the organizationId property value. Identifier of the organization whose suppression list was checked.
      * @return string|null
     */
     public function getOrganizationId(): ?string {
@@ -161,7 +161,7 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the recipientIdentifier property value. The recipient identifier value for this ion check result.
+     * Gets the recipientIdentifier property value. Provider or customer identifier used to match the recipient.
      * @return string|null
     */
     public function getRecipientIdentifier(): ?string {
@@ -185,7 +185,7 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the suppressionEntryId property value. The suppression entry ID associated with this ion check result.
+     * Gets the suppressionEntryId property value. Identifier of the active suppression that blocked contact, when one matched.
      * @return string|null
     */
     public function getSuppressionEntryId(): ?string {
@@ -219,7 +219,7 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the allowed property value. Whether this ion check result allows ed.
+     * Sets the allowed property value. Whether outreach to the recipient is allowed for the requested channel.
      * @param bool|null $value Value to set for the allowed property.
     */
     public function setAllowed(?bool $value): void {
@@ -227,7 +227,7 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the channel property value. The channel value for this ion check result.
+     * Sets the channel property value. Communication channel evaluated by the suppression check.
      * @param string|null $value Value to set for the channel property.
     */
     public function setChannel(?string $value): void {
@@ -235,7 +235,7 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the customerReason property value. The human-readable customer reason explaining this ion check result.
+     * Sets the customerReason property value. Customer-safe explanation of why contact is blocked or allowed.
      * @param string|null $value Value to set for the customerReason property.
     */
     public function setCustomerReason(?string $value): void {
@@ -243,7 +243,7 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the normalizedEmail property value. The normalized email value for this ion check result.
+     * Sets the normalizedEmail property value. Email address used for matching, normalized for comparison.
      * @param string|null $value Value to set for the normalizedEmail property.
     */
     public function setNormalizedEmail(?string $value): void {
@@ -251,7 +251,7 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the normalizedPhoneNumber property value. The phone number associated with this ion check result.
+     * Sets the normalizedPhoneNumber property value. Phone number used for matching, normalized to a consistent format.
      * @param string|null $value Value to set for the normalizedPhoneNumber property.
     */
     public function setNormalizedPhoneNumber(?string $value): void {
@@ -259,7 +259,7 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organizationId property value. The organization ID associated with this ion check result.
+     * Sets the organizationId property value. Identifier of the organization whose suppression list was checked.
      * @param string|null $value Value to set for the organizationId property.
     */
     public function setOrganizationId(?string $value): void {
@@ -267,7 +267,7 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the recipientIdentifier property value. The recipient identifier value for this ion check result.
+     * Sets the recipientIdentifier property value. Provider or customer identifier used to match the recipient.
      * @param string|null $value Value to set for the recipientIdentifier property.
     */
     public function setRecipientIdentifier(?string $value): void {
@@ -291,7 +291,7 @@ class SuppressionCheckResult implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the suppressionEntryId property value. The suppression entry ID associated with this ion check result.
+     * Sets the suppressionEntryId property value. Identifier of the active suppression that blocked contact, when one matched.
      * @param string|null $value Value to set for the suppressionEntryId property.
     */
     public function setSuppressionEntryId(?string $value): void {

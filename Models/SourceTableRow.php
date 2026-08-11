@@ -10,7 +10,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 use Microsoft\Kiota\Abstractions\Types\TypeUtils;
 
 /**
- * List item schema for Leadping API lead source table row results shown in searchable tables.
+ * Summarizes lead source data in paginated and searchable results.
 */
 class SourceTableRow implements AdditionalDataHolder, Parsable 
 {

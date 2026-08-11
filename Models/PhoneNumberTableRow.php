@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * List item schema for Leadping API phone number table row results shown in searchable tables.
+ * Summarizes phone number data in paginated and searchable results.
 */
 class PhoneNumberTableRow implements AdditionalDataHolder, Parsable 
 {

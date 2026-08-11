@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API DTO containing a named usage counter shown in usage summaries.
+ * Describes one named usage total displayed in organization billing and activity summaries.
 */
 class UsageCounterLine implements AdditionalDataHolder, Parsable 
 {
@@ -38,7 +38,7 @@ class UsageCounterLine implements AdditionalDataHolder, Parsable
     private ?string $unit = null;
     
     /**
-     * @var float|null $value The numeric value for this usage counter.
+     * @var float|null $value Numeric for this usage counter.
     */
     private ?float $value = null;
     
@@ -114,7 +114,7 @@ class UsageCounterLine implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the value property value. The numeric value for this usage counter.
+     * Gets the value property value. Numeric for this usage counter.
      * @return float|null
     */
     public function getValue(): ?float {
@@ -175,7 +175,7 @@ class UsageCounterLine implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the value property value. The numeric value for this usage counter.
+     * Sets the value property value. Numeric for this usage counter.
      * @param float|null $value Value to set for the value property.
     */
     public function setValue(?float $value): void {

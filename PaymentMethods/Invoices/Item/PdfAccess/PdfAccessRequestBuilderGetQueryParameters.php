@@ -8,13 +8,13 @@ namespace Leadping\OpenApiClient\PaymentMethods\Invoices\Item\PdfAccess;
 class PdfAccessRequestBuilderGetQueryParameters 
 {
     /**
-     * @var bool|null $download 
+     * @var bool|null $download Whether the secure URL should download the PDF instead of displaying it inline.
     */
     public ?bool $download = null;
     
     /**
      * Instantiates a new PdfAccessRequestBuilderGetQueryParameters and sets the default values.
-     * @param bool|null $download 
+     * @param bool|null $download Whether the secure URL should download the PDF instead of displaying it inline.
     */
     public function __construct(?bool $download = null) {
         $this->download = $download;

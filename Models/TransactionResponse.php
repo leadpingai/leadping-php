@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Response schema for the Leadping API billing transaction response returned to authenticated clients.
+ * Describes billing transaction data returned by Leadping.
 */
 class TransactionResponse implements AdditionalDataHolder, Parsable 
 {
@@ -29,7 +29,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     private ?TransactionResponse_billableUnit $billableUnit = null;
     
     /**
-     * @var float|null $billedAmount The billedAmount property
+     * @var float|null $billedAmount Customer-facing amount billed for the transaction.
     */
     private ?float $billedAmount = null;
     
@@ -64,7 +64,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * @var TransactionResponse_lead|null $lead The ID and name for this lead.
+     * @var TransactionResponse_lead|null $lead Identifier and display name of the related lead.
     */
     private ?TransactionResponse_lead $lead = null;
     
@@ -84,7 +84,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     private ?string $notes = null;
     
     /**
-     * @var TransactionResponse_organization|null $organization The ID and name for this organization.
+     * @var TransactionResponse_organization|null $organization Identifier and display name of the related organization.
     */
     private ?TransactionResponse_organization $organization = null;
     
@@ -149,7 +149,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billedAmount property value. The billedAmount property
+     * Gets the billedAmount property value. Customer-facing amount billed for the transaction.
      * @return float|null
     */
     public function getBilledAmount(): ?float {
@@ -233,7 +233,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lead property value. The ID and name for this lead.
+     * Gets the lead property value. Identifier and display name of the related lead.
      * @return TransactionResponse_lead|null
     */
     public function getLead(): ?TransactionResponse_lead {
@@ -265,7 +265,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organization property value. The ID and name for this organization.
+     * Gets the organization property value. Identifier and display name of the related organization.
      * @return TransactionResponse_organization|null
     */
     public function getOrganization(): ?TransactionResponse_organization {
@@ -355,7 +355,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billedAmount property value. The billedAmount property
+     * Sets the billedAmount property value. Customer-facing amount billed for the transaction.
      * @param float|null $value Value to set for the billedAmount property.
     */
     public function setBilledAmount(?float $value): void {
@@ -411,7 +411,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lead property value. The ID and name for this lead.
+     * Sets the lead property value. Identifier and display name of the related lead.
      * @param TransactionResponse_lead|null $value Value to set for the lead property.
     */
     public function setLead(?TransactionResponse_lead $value): void {
@@ -443,7 +443,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organization property value. The ID and name for this organization.
+     * Sets the organization property value. Identifier and display name of the related organization.
      * @param TransactionResponse_organization|null $value Value to set for the organization property.
     */
     public function setOrganization(?TransactionResponse_organization $value): void {

@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API response containing lead status change export row data returned to callers.
+ * Describes lead status change export row data returned by Leadping.
 */
 class LeadStatusChangeExportRow implements AdditionalDataHolder, Parsable 
 {
@@ -19,12 +19,12 @@ class LeadStatusChangeExportRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var DateTime|null $appointmentEndAt The date and time for the appointment end at value on this lead status change export row.
+     * @var DateTime|null $appointmentEndAt UTC timestamp for appointment end at on this lead status change export row.
     */
     private ?DateTime $appointmentEndAt = null;
     
     /**
-     * @var DateTime|null $appointmentStartAt The date and time for the appointment start at value on this lead status change export row.
+     * @var DateTime|null $appointmentStartAt UTC timestamp for appointment start at on this lead status change export row.
     */
     private ?DateTime $appointmentStartAt = null;
     
@@ -34,7 +34,7 @@ class LeadStatusChangeExportRow implements AdditionalDataHolder, Parsable
     private ?string $assignedToUserId = null;
     
     /**
-     * @var DateTime|null $callbackAt The date and time for the callback at value on this lead status change export row.
+     * @var DateTime|null $callbackAt UTC timestamp for callback at on this lead status change export row.
     */
     private ?DateTime $callbackAt = null;
     
@@ -64,7 +64,7 @@ class LeadStatusChangeExportRow implements AdditionalDataHolder, Parsable
     private ?LeadStatusChangeExportRow_changeSource $changeSource = null;
     
     /**
-     * @var DateTime|null $createdAt The date and time for the created at value on this lead status change export row.
+     * @var DateTime|null $createdAt UTC timestamp for created at on this lead status change export row.
     */
     private ?DateTime $createdAt = null;
     
@@ -114,7 +114,7 @@ class LeadStatusChangeExportRow implements AdditionalDataHolder, Parsable
     private ?string $oldLeadStatusChangeType = null;
     
     /**
-     * @var string|null $outcome The outcome value for this lead status change export row.
+     * @var string|null $outcome Result of the interaction or workflow step represented by this exported row.
     */
     private ?string $outcome = null;
     
@@ -134,17 +134,17 @@ class LeadStatusChangeExportRow implements AdditionalDataHolder, Parsable
     private ?string $sourceId = null;
     
     /**
-     * @var DateTime|null $taskDueAt The date and time for the task due at value on this lead status change export row.
+     * @var DateTime|null $taskDueAt UTC timestamp for task due at on this lead status change export row.
     */
     private ?DateTime $taskDueAt = null;
     
     /**
-     * @var string|null $type The type classification for this lead status change export row.
+     * @var string|null $type Category of status change represented by this exported row.
     */
     private ?string $type = null;
     
     /**
-     * @var DateTime|null $updatedAt The date and time for the updated at value on this lead status change export row.
+     * @var DateTime|null $updatedAt UTC timestamp for updated at on this lead status change export row.
     */
     private ?DateTime $updatedAt = null;
     
@@ -173,7 +173,7 @@ class LeadStatusChangeExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the appointmentEndAt property value. The date and time for the appointment end at value on this lead status change export row.
+     * Gets the appointmentEndAt property value. UTC timestamp for appointment end at on this lead status change export row.
      * @return DateTime|null
     */
     public function getAppointmentEndAt(): ?DateTime {
@@ -181,7 +181,7 @@ class LeadStatusChangeExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the appointmentStartAt property value. The date and time for the appointment start at value on this lead status change export row.
+     * Gets the appointmentStartAt property value. UTC timestamp for appointment start at on this lead status change export row.
      * @return DateTime|null
     */
     public function getAppointmentStartAt(): ?DateTime {
@@ -197,7 +197,7 @@ class LeadStatusChangeExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the callbackAt property value. The date and time for the callback at value on this lead status change export row.
+     * Gets the callbackAt property value. UTC timestamp for callback at on this lead status change export row.
      * @return DateTime|null
     */
     public function getCallbackAt(): ?DateTime {
@@ -245,7 +245,7 @@ class LeadStatusChangeExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the createdAt property value. The date and time for the created at value on this lead status change export row.
+     * Gets the createdAt property value. UTC timestamp for created at on this lead status change export row.
      * @return DateTime|null
     */
     public function getCreatedAt(): ?DateTime {
@@ -361,7 +361,7 @@ class LeadStatusChangeExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the outcome property value. The outcome value for this lead status change export row.
+     * Gets the outcome property value. Result of the interaction or workflow step represented by this exported row.
      * @return string|null
     */
     public function getOutcome(): ?string {
@@ -393,7 +393,7 @@ class LeadStatusChangeExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the taskDueAt property value. The date and time for the task due at value on this lead status change export row.
+     * Gets the taskDueAt property value. UTC timestamp for task due at on this lead status change export row.
      * @return DateTime|null
     */
     public function getTaskDueAt(): ?DateTime {
@@ -401,7 +401,7 @@ class LeadStatusChangeExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the type property value. The type classification for this lead status change export row.
+     * Gets the type property value. Category of status change represented by this exported row.
      * @return string|null
     */
     public function getType(): ?string {
@@ -409,7 +409,7 @@ class LeadStatusChangeExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the updatedAt property value. The date and time for the updated at value on this lead status change export row.
+     * Gets the updatedAt property value. UTC timestamp for updated at on this lead status change export row.
      * @return DateTime|null
     */
     public function getUpdatedAt(): ?DateTime {
@@ -459,7 +459,7 @@ class LeadStatusChangeExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the appointmentEndAt property value. The date and time for the appointment end at value on this lead status change export row.
+     * Sets the appointmentEndAt property value. UTC timestamp for appointment end at on this lead status change export row.
      * @param DateTime|null $value Value to set for the appointmentEndAt property.
     */
     public function setAppointmentEndAt(?DateTime $value): void {
@@ -467,7 +467,7 @@ class LeadStatusChangeExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the appointmentStartAt property value. The date and time for the appointment start at value on this lead status change export row.
+     * Sets the appointmentStartAt property value. UTC timestamp for appointment start at on this lead status change export row.
      * @param DateTime|null $value Value to set for the appointmentStartAt property.
     */
     public function setAppointmentStartAt(?DateTime $value): void {
@@ -483,7 +483,7 @@ class LeadStatusChangeExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the callbackAt property value. The date and time for the callback at value on this lead status change export row.
+     * Sets the callbackAt property value. UTC timestamp for callback at on this lead status change export row.
      * @param DateTime|null $value Value to set for the callbackAt property.
     */
     public function setCallbackAt(?DateTime $value): void {
@@ -531,7 +531,7 @@ class LeadStatusChangeExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the createdAt property value. The date and time for the created at value on this lead status change export row.
+     * Sets the createdAt property value. UTC timestamp for created at on this lead status change export row.
      * @param DateTime|null $value Value to set for the createdAt property.
     */
     public function setCreatedAt(?DateTime $value): void {
@@ -611,7 +611,7 @@ class LeadStatusChangeExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the outcome property value. The outcome value for this lead status change export row.
+     * Sets the outcome property value. Result of the interaction or workflow step represented by this exported row.
      * @param string|null $value Value to set for the outcome property.
     */
     public function setOutcome(?string $value): void {
@@ -643,7 +643,7 @@ class LeadStatusChangeExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the taskDueAt property value. The date and time for the task due at value on this lead status change export row.
+     * Sets the taskDueAt property value. UTC timestamp for task due at on this lead status change export row.
      * @param DateTime|null $value Value to set for the taskDueAt property.
     */
     public function setTaskDueAt(?DateTime $value): void {
@@ -651,7 +651,7 @@ class LeadStatusChangeExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the type property value. The type classification for this lead status change export row.
+     * Sets the type property value. Category of status change represented by this exported row.
      * @param string|null $value Value to set for the type property.
     */
     public function setType(?string $value): void {
@@ -659,7 +659,7 @@ class LeadStatusChangeExportRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the updatedAt property value. The date and time for the updated at value on this lead status change export row.
+     * Sets the updatedAt property value. UTC timestamp for updated at on this lead status change export row.
      * @param DateTime|null $value Value to set for the updatedAt property.
     */
     public function setUpdatedAt(?DateTime $value): void {

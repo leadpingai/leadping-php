@@ -49,7 +49,7 @@ class IntakeRequestBuilder extends BaseRequestBuilder
 
     /**
      * Creates a source-authenticated lead from a flat intake payload, capturing contact fields, metadata, and automation-ready lead details.
-     * @param LeadIntakeRequest $body Request schema for the Leadping API lead intake request, including the fields clients can send.
+     * @param LeadIntakeRequest $body Defines the fields clients can send when working with lead intake.
      * @param IntakeRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<LeadResponse|null>
      * @throws Exception
@@ -87,7 +87,7 @@ class IntakeRequestBuilder extends BaseRequestBuilder
 
     /**
      * Creates a source-authenticated lead from a flat intake payload, capturing contact fields, metadata, and automation-ready lead details.
-     * @param LeadIntakeRequest $body Request schema for the Leadping API lead intake request, including the fields clients can send.
+     * @param LeadIntakeRequest $body Defines the fields clients can send when working with lead intake.
      * @param IntakeRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

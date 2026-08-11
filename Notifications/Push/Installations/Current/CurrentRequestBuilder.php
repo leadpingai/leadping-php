@@ -31,7 +31,7 @@ class CurrentRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Register or refresh the current user's mobile push installation.
+     * Registers or refreshes the authenticated user's mobile push installation so Leadping can deliver account and workflow notifications to the device.
      * @param PushInstallationRequest $body Describes a mobile push installation. Identity and Azure tags are derived by the API.
      * @param CurrentRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<bool|null>
@@ -49,7 +49,7 @@ class CurrentRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Register or refresh the current user's mobile push installation.
+     * Registers or refreshes the authenticated user's mobile push installation so Leadping can deliver account and workflow notifications to the device.
      * @param PushInstallationRequest $body Describes a mobile push installation. Identity and Azure tags are derived by the API.
      * @param CurrentRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

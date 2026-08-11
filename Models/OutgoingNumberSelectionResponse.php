@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Response schema for the Leadping API outgoing number selection response returned to authenticated clients.
+ * Describes outgoing number selection data returned by Leadping.
 */
 class OutgoingNumberSelectionResponse implements AdditionalDataHolder, Parsable 
 {

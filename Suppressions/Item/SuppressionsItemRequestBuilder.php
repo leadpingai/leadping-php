@@ -31,7 +31,7 @@ class SuppressionsItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Get
+     * Returns one suppression entry for the current organization, including its recipient, channel, reason, status, and audit timestamps.
      * @param SuppressionsItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<SuppressionEntryResponse|null>
      * @throws Exception
@@ -46,7 +46,7 @@ class SuppressionsItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Get
+     * Returns one suppression entry for the current organization, including its recipient, channel, reason, status, and audit timestamps.
      * @param SuppressionsItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

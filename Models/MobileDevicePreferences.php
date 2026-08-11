@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API DTO containing Leadping mobile preferences for a single user device.
+ * Describes notification and calling preferences saved for one of the user's mobile devices.
 */
 class MobileDevicePreferences implements AdditionalDataHolder, Parsable 
 {
@@ -19,7 +19,7 @@ class MobileDevicePreferences implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var IdNamePair|null $device The ID and name for this device.
+     * @var IdNamePair|null $device Identifier and display name of the related device.
     */
     private ?IdNamePair $device = null;
     
@@ -58,7 +58,7 @@ class MobileDevicePreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the device property value. The ID and name for this device.
+     * Gets the device property value. Identifier and display name of the related device.
      * @return IdNamePair|null
     */
     public function getDevice(): ?IdNamePair {
@@ -114,7 +114,7 @@ class MobileDevicePreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the device property value. The ID and name for this device.
+     * Sets the device property value. Identifier and display name of the related device.
      * @param IdNamePair|null $value Value to set for the device property.
     */
     public function setDevice(?IdNamePair $value): void {

@@ -10,7 +10,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 use Microsoft\Kiota\Abstractions\Types\TypeUtils;
 
 /**
- * Request schema for the Leadping API SMS send request, including the fields clients can send.
+ * Defines the fields clients can send when working with SMS send.
 */
 class SendSmsRequest implements AdditionalDataHolder, Parsable 
 {

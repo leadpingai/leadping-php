@@ -111,7 +111,7 @@ class ItemRequestBuilder extends BaseRequestBuilder
 
     /**
      * Updates lead details for the current organization, keeping contact data, status, source, and follow-up context current.
-     * @param LeadRequest $body Request schema for the Leadping API lead request, including the fields clients can send.
+     * @param LeadRequest $body Defines the fields clients can send when working with lead.
      * @param ItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<LeadResponse|null>
      * @throws Exception
@@ -164,7 +164,7 @@ class ItemRequestBuilder extends BaseRequestBuilder
 
     /**
      * Updates lead details for the current organization, keeping contact data, status, source, and follow-up context current.
-     * @param LeadRequest $body Request schema for the Leadping API lead request, including the fields clients can send.
+     * @param LeadRequest $body Defines the fields clients can send when working with lead.
      * @param ItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

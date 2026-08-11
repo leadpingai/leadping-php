@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Response schema for the Leadping API billing wallet response returned to authenticated clients.
+ * Describes billing wallet data returned by Leadping.
 */
 class WalletResponse implements AdditionalDataHolder, Parsable 
 {

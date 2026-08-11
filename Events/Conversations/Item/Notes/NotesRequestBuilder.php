@@ -33,7 +33,7 @@ class NotesRequestBuilder extends BaseRequestBuilder
 
     /**
      * Creates a note event on a conversation so users can document lead context, handoffs, and follow-up details.
-     * @param CreateNoteRequest $body Request payload for create note.
+     * @param CreateNoteRequest $body Defines the input used for create note.
      * @param NotesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<EventTableRow|null>
      * @throws Exception
@@ -49,7 +49,7 @@ class NotesRequestBuilder extends BaseRequestBuilder
 
     /**
      * Creates a note event on a conversation so users can document lead context, handoffs, and follow-up details.
-     * @param CreateNoteRequest $body Request payload for create note.
+     * @param CreateNoteRequest $body Defines the input used for create note.
      * @param NotesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

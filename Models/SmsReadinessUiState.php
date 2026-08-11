@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API DTO containing SMS readiness UI state data used by Leadping API contracts.
+ * Describes SMS readiness UI state data used in Leadping API requests and responses.
 */
 class SmsReadinessUiState implements AdditionalDataHolder, Parsable 
 {
@@ -28,7 +28,7 @@ class SmsReadinessUiState implements AdditionalDataHolder, Parsable
     private ?SmsReadinessState $label = null;
     
     /**
-     * @var string|null $tone The tone value for this SMS readiness UI state.
+     * @var string|null $tone Tone for this SMS readiness UI state.
     */
     private ?string $tone = null;
     
@@ -86,7 +86,7 @@ class SmsReadinessUiState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the tone property value. The tone value for this SMS readiness UI state.
+     * Gets the tone property value. Tone for this SMS readiness UI state.
      * @return string|null
     */
     public function getTone(): ?string {
@@ -129,7 +129,7 @@ class SmsReadinessUiState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the tone property value. The tone value for this SMS readiness UI state.
+     * Sets the tone property value. Tone for this SMS readiness UI state.
      * @param string|null $value Value to set for the tone property.
     */
     public function setTone(?string $value): void {

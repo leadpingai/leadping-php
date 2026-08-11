@@ -10,12 +10,12 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 use Microsoft\Kiota\Abstractions\Types\TypeUtils;
 
 /**
- * API DTO containing organization data used by Leadping API contracts.
+ * Describes organization data used in Leadping API requests and responses.
 */
 class OrganizationTableRow implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var float|null $accountBalance The account balance value for this organization.
+     * @var float|null $accountBalance Account balance for this organization.
     */
     private ?float $accountBalance = null;
     
@@ -75,12 +75,12 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     private ?bool $enabled = null;
     
     /**
-     * @var string|null $id The unique ID for this organization.
+     * @var string|null $id Unique Leadping identifier for this organization.
     */
     private ?string $id = null;
     
     /**
-     * @var string|null $industry The industry value for this organization.
+     * @var string|null $industry Industry for this organization.
     */
     private ?string $industry = null;
     
@@ -90,7 +90,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     private ?DateTime $lastSubscriptionEventAt = null;
     
     /**
-     * @var DateTime|null $modifiedAt The date and time for the modified at value on this organization.
+     * @var DateTime|null $modifiedAt UTC timestamp for modified at on this organization.
     */
     private ?DateTime $modifiedAt = null;
     
@@ -105,7 +105,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     private ?bool $needsAdminReview = null;
     
     /**
-     * @var OrganizationTableRow_organization|null $organization The ID and name for this organization.
+     * @var OrganizationTableRow_organization|null $organization Identifier and display name of the related organization.
     */
     private ?OrganizationTableRow_organization $organization = null;
     
@@ -176,7 +176,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the accountBalance property value. The account balance value for this organization.
+     * Gets the accountBalance property value. Account balance for this organization.
      * @return float|null
     */
     public function getAccountBalance(): ?float {
@@ -317,7 +317,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The unique ID for this organization.
+     * Gets the id property value. Unique Leadping identifier for this organization.
      * @return string|null
     */
     public function getId(): ?string {
@@ -325,7 +325,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the industry property value. The industry value for this organization.
+     * Gets the industry property value. Industry for this organization.
      * @return string|null
     */
     public function getIndustry(): ?string {
@@ -341,7 +341,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the modifiedAt property value. The date and time for the modified at value on this organization.
+     * Gets the modifiedAt property value. UTC timestamp for modified at on this organization.
      * @return DateTime|null
     */
     public function getModifiedAt(): ?DateTime {
@@ -365,7 +365,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organization property value. The ID and name for this organization.
+     * Gets the organization property value. Identifier and display name of the related organization.
      * @return OrganizationTableRow_organization|null
     */
     public function getOrganization(): ?OrganizationTableRow_organization {
@@ -489,7 +489,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the accountBalance property value. The account balance value for this organization.
+     * Sets the accountBalance property value. Account balance for this organization.
      * @param float|null $value Value to set for the accountBalance property.
     */
     public function setAccountBalance(?float $value): void {
@@ -585,7 +585,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The unique ID for this organization.
+     * Sets the id property value. Unique Leadping identifier for this organization.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -593,7 +593,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the industry property value. The industry value for this organization.
+     * Sets the industry property value. Industry for this organization.
      * @param string|null $value Value to set for the industry property.
     */
     public function setIndustry(?string $value): void {
@@ -609,7 +609,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the modifiedAt property value. The date and time for the modified at value on this organization.
+     * Sets the modifiedAt property value. UTC timestamp for modified at on this organization.
      * @param DateTime|null $value Value to set for the modifiedAt property.
     */
     public function setModifiedAt(?DateTime $value): void {
@@ -633,7 +633,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organization property value. The ID and name for this organization.
+     * Sets the organization property value. Identifier and display name of the related organization.
      * @param OrganizationTableRow_organization|null $value Value to set for the organization property.
     */
     public function setOrganization(?OrganizationTableRow_organization $value): void {

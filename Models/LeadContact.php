@@ -18,7 +18,7 @@ class LeadContact implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $avatarUrl Optional profile image URL for the contact. Clients fall back to Gravatarand then initials when this value is not supplied.
+     * @var string|null $avatarUrl Optional profile image URL for the contact. Clients fall back to Gravatar and then initials when this value is not supplied.
     */
     private ?string $avatarUrl = null;
     
@@ -82,7 +82,7 @@ class LeadContact implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the avatarUrl property value. Optional profile image URL for the contact. Clients fall back to Gravatarand then initials when this value is not supplied.
+     * Gets the avatarUrl property value. Optional profile image URL for the contact. Clients fall back to Gravatar and then initials when this value is not supplied.
      * @return string|null
     */
     public function getAvatarUrl(): ?string {
@@ -188,7 +188,7 @@ class LeadContact implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the avatarUrl property value. Optional profile image URL for the contact. Clients fall back to Gravatarand then initials when this value is not supplied.
+     * Sets the avatarUrl property value. Optional profile image URL for the contact. Clients fall back to Gravatar and then initials when this value is not supplied.
      * @param string|null $value Value to set for the avatarUrl property.
     */
     public function setAvatarUrl(?string $value): void {

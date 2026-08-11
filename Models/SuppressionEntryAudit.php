@@ -9,12 +9,12 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API DTO containing ion entry audit data used by Leadping API contracts.
+ * Records one auditable change to a recipient suppression entry.
 */
 class SuppressionEntryAudit implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var string|null $actorId The actor ID associated with this ion entry audit.
+     * @var string|null $actorId Identifier of the user or system actor responsible for the change.
     */
     private ?string $actorId = null;
     
@@ -24,32 +24,32 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $id The unique ID for this ion entry audit.
+     * @var string|null $id Unique identifier for this suppression audit record.
     */
     private ?string $id = null;
     
     /**
-     * @var string|null $reason The human-readable reason explaining this ion entry audit.
+     * @var string|null $reason Human-readable reason recorded for the suppression change.
     */
     private ?string $reason = null;
     
     /**
-     * @var SuppressionEntryAudit_safeMetadata|null $safeMetadata The safe metadata key-value data carried with this ion entry audit; values must be safe to expose in API responses.
+     * @var SuppressionEntryAudit_safeMetadata|null $safeMetadata Non-sensitive metadata that provides additional audit context.
     */
     private ?SuppressionEntryAudit_safeMetadata $safeMetadata = null;
     
     /**
-     * @var string|null $source The source value for this ion entry audit.
+     * @var string|null $source System or workflow that initiated the change.
     */
     private ?string $source = null;
     
     /**
-     * @var string|null $status The current status for this ion entry audit.
+     * @var string|null $status Suppression status established by this change, such as active or released.
     */
     private ?string $status = null;
     
     /**
-     * @var DateTime|null $timestamp The date and time for the timestamp value on this ion entry audit.
+     * @var DateTime|null $timestamp UTC timestamp when the suppression change occurred.
     */
     private ?DateTime $timestamp = null;
     
@@ -70,7 +70,7 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the actorId property value. The actor ID associated with this ion entry audit.
+     * Gets the actorId property value. Identifier of the user or system actor responsible for the change.
      * @return string|null
     */
     public function getActorId(): ?string {
@@ -103,7 +103,7 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The unique ID for this ion entry audit.
+     * Gets the id property value. Unique identifier for this suppression audit record.
      * @return string|null
     */
     public function getId(): ?string {
@@ -111,7 +111,7 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the reason property value. The human-readable reason explaining this ion entry audit.
+     * Gets the reason property value. Human-readable reason recorded for the suppression change.
      * @return string|null
     */
     public function getReason(): ?string {
@@ -119,7 +119,7 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the safeMetadata property value. The safe metadata key-value data carried with this ion entry audit; values must be safe to expose in API responses.
+     * Gets the safeMetadata property value. Non-sensitive metadata that provides additional audit context.
      * @return SuppressionEntryAudit_safeMetadata|null
     */
     public function getSafeMetadata(): ?SuppressionEntryAudit_safeMetadata {
@@ -127,7 +127,7 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the source property value. The source value for this ion entry audit.
+     * Gets the source property value. System or workflow that initiated the change.
      * @return string|null
     */
     public function getSource(): ?string {
@@ -135,7 +135,7 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. The current status for this ion entry audit.
+     * Gets the status property value. Suppression status established by this change, such as active or released.
      * @return string|null
     */
     public function getStatus(): ?string {
@@ -143,7 +143,7 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the timestamp property value. The date and time for the timestamp value on this ion entry audit.
+     * Gets the timestamp property value. UTC timestamp when the suppression change occurred.
      * @return DateTime|null
     */
     public function getTimestamp(): ?DateTime {
@@ -166,7 +166,7 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the actorId property value. The actor ID associated with this ion entry audit.
+     * Sets the actorId property value. Identifier of the user or system actor responsible for the change.
      * @param string|null $value Value to set for the actorId property.
     */
     public function setActorId(?string $value): void {
@@ -182,7 +182,7 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The unique ID for this ion entry audit.
+     * Sets the id property value. Unique identifier for this suppression audit record.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -190,7 +190,7 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the reason property value. The human-readable reason explaining this ion entry audit.
+     * Sets the reason property value. Human-readable reason recorded for the suppression change.
      * @param string|null $value Value to set for the reason property.
     */
     public function setReason(?string $value): void {
@@ -198,7 +198,7 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the safeMetadata property value. The safe metadata key-value data carried with this ion entry audit; values must be safe to expose in API responses.
+     * Sets the safeMetadata property value. Non-sensitive metadata that provides additional audit context.
      * @param SuppressionEntryAudit_safeMetadata|null $value Value to set for the safeMetadata property.
     */
     public function setSafeMetadata(?SuppressionEntryAudit_safeMetadata $value): void {
@@ -206,7 +206,7 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the source property value. The source value for this ion entry audit.
+     * Sets the source property value. System or workflow that initiated the change.
      * @param string|null $value Value to set for the source property.
     */
     public function setSource(?string $value): void {
@@ -214,7 +214,7 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. The current status for this ion entry audit.
+     * Sets the status property value. Suppression status established by this change, such as active or released.
      * @param string|null $value Value to set for the status property.
     */
     public function setStatus(?string $value): void {
@@ -222,7 +222,7 @@ class SuppressionEntryAudit implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the timestamp property value. The date and time for the timestamp value on this ion entry audit.
+     * Sets the timestamp property value. UTC timestamp when the suppression change occurred.
      * @param DateTime|null $value Value to set for the timestamp property.
     */
     public function setTimestamp(?DateTime $value): void {

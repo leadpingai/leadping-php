@@ -33,7 +33,7 @@ class PreviewRequestBuilder extends BaseRequestBuilder
 
     /**
      * Previews automation execution for a sample lead, showing matched steps and messages without creating follow-up events.
-     * @param AutomationPreviewRequest $body Request schema for the Leadping API automation preview request, including the fields clients can send.
+     * @param AutomationPreviewRequest $body Defines the fields clients can send when working with automation preview.
      * @param PreviewRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<AutomationPreviewResponse|null>
      * @throws Exception
@@ -49,7 +49,7 @@ class PreviewRequestBuilder extends BaseRequestBuilder
 
     /**
      * Previews automation execution for a sample lead, showing matched steps and messages without creating follow-up events.
-     * @param AutomationPreviewRequest $body Request schema for the Leadping API automation preview request, including the fields clients can send.
+     * @param AutomationPreviewRequest $body Defines the fields clients can send when working with automation preview.
      * @param PreviewRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

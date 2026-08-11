@@ -9,12 +9,12 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API DTO containing organization activation state data used by Leadping API contracts.
+ * Describes organization activation state data used in Leadping API requests and responses.
 */
 class OrganizationActivationState implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var DateTime|null $activatedAt The date and time for the activated at value on this organization activation state.
+     * @var DateTime|null $activatedAt UTC timestamp for activated at on this organization activation state.
     */
     private ?DateTime $activatedAt = null;
     
@@ -34,7 +34,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     private ?ActivationSubscriptionStatus $billingSubscriptionStatus = null;
     
     /**
-     * @var string|null $complianceNotes The compliance notes value for this organization activation state.
+     * @var string|null $complianceNotes Compliance notes for this organization activation state.
     */
     private ?string $complianceNotes = null;
     
@@ -44,7 +44,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     private ?bool $controlledLaunch = null;
     
     /**
-     * @var DateTime|null $createdAt The date and time for the created at value on this organization activation state.
+     * @var DateTime|null $createdAt UTC timestamp for created at on this organization activation state.
     */
     private ?DateTime $createdAt = null;
     
@@ -54,7 +54,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     private ?string $customerFacingStatus = null;
     
     /**
-     * @var DateTime|null $domainApprovedAt The date and time for the domain approved at value on this organization activation state.
+     * @var DateTime|null $domainApprovedAt UTC timestamp for domain approved at on this organization activation state.
     */
     private ?DateTime $domainApprovedAt = null;
     
@@ -94,22 +94,22 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     private ?array $events = null;
     
     /**
-     * @var DateTime|null $failedAt The date and time for the failed at value on this organization activation state.
+     * @var DateTime|null $failedAt UTC timestamp for failed at on this organization activation state.
     */
     private ?DateTime $failedAt = null;
     
     /**
-     * @var string|null $industry The industry value for this organization activation state.
+     * @var string|null $industry Industry for this organization activation state.
     */
     private ?string $industry = null;
     
     /**
-     * @var DateTime|null $launchApprovedAt The date and time for the launch approved at value on this organization activation state.
+     * @var DateTime|null $launchApprovedAt UTC timestamp for launch approved at on this organization activation state.
     */
     private ?DateTime $launchApprovedAt = null;
     
     /**
-     * @var DateTime|null $launchReviewRequestedAt The date and time for the launch review requested at value on this organization activation state.
+     * @var DateTime|null $launchReviewRequestedAt UTC timestamp for launch review requested at on this organization activation state.
     */
     private ?DateTime $launchReviewRequestedAt = null;
     
@@ -119,7 +119,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     private ?ActivationLaunchReviewStatus $launchReviewStatus = null;
     
     /**
-     * @var string|null $offer The offer value for this organization activation state.
+     * @var string|null $offer Offer for this organization activation state.
     */
     private ?string $offer = null;
     
@@ -129,12 +129,12 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     private ?ActivationOnboardingStatus $onboardingStatus = null;
     
     /**
-     * @var string|null $organizationDescription The organization description value for this organization activation state.
+     * @var string|null $organizationDescription Organization description for this organization activation state.
     */
     private ?string $organizationDescription = null;
     
     /**
-     * @var DateTime|null $paymentMethodConfirmedAt The date and time for the payment method confirmed at value on this organization activation state.
+     * @var DateTime|null $paymentMethodConfirmedAt UTC timestamp for payment method confirmed at on this organization activation state.
     */
     private ?DateTime $paymentMethodConfirmedAt = null;
     
@@ -144,12 +144,12 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     private ?ActivationPaymentStatus $paymentStatus = null;
     
     /**
-     * @var string|null $selectedDomain The selected domain value for this organization activation state.
+     * @var string|null $selectedDomain Selected domain for this organization activation state.
     */
     private ?string $selectedDomain = null;
     
     /**
-     * @var string|null $serviceArea The service area value for this organization activation state.
+     * @var string|null $serviceArea Service area for this organization activation state.
     */
     private ?string $serviceArea = null;
     
@@ -159,32 +159,32 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     private ?CustomerActivationStatus $status = null;
     
     /**
-     * @var DateTime|null $subscriptionActiveAt The date and time for the subscription active at value on this organization activation state.
+     * @var DateTime|null $subscriptionActiveAt UTC timestamp for subscription active at on this organization activation state.
     */
     private ?DateTime $subscriptionActiveAt = null;
     
     /**
-     * @var DateTime|null $subscriptionPendingAt The date and time for the subscription pending at value on this organization activation state.
+     * @var DateTime|null $subscriptionPendingAt UTC timestamp for subscription pending at on this organization activation state.
     */
     private ?DateTime $subscriptionPendingAt = null;
     
     /**
-     * @var string|null $targetAudience The target audience value for this organization activation state.
+     * @var string|null $targetAudience Target audience for this organization activation state.
     */
     private ?string $targetAudience = null;
     
     /**
-     * @var DateTime|null $telephonyPartiallyProvisionedAt The date and time for the telephony partially provisioned at value on this organization activation state.
+     * @var DateTime|null $telephonyPartiallyProvisionedAt UTC timestamp for telephony partially provisioned at on this organization activation state.
     */
     private ?DateTime $telephonyPartiallyProvisionedAt = null;
     
     /**
-     * @var DateTime|null $telephonyProvisioningStartedAt The date and time for the telephony provisioning started at value on this organization activation state.
+     * @var DateTime|null $telephonyProvisioningStartedAt UTC timestamp for telephony provisioning started at on this organization activation state.
     */
     private ?DateTime $telephonyProvisioningStartedAt = null;
     
     /**
-     * @var DateTime|null $telephonyReadyAt The date and time for the telephony ready at value on this organization activation state.
+     * @var DateTime|null $telephonyReadyAt UTC timestamp for telephony ready at on this organization activation state.
     */
     private ?DateTime $telephonyReadyAt = null;
     
@@ -199,7 +199,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     private ?string $tenDlcApplicationId = null;
     
     /**
-     * @var OrganizationActivationState_tenDlcDraft|null $tenDlcDraft The 10DLC draft value for this organization activation state.
+     * @var OrganizationActivationState_tenDlcDraft|null $tenDlcDraft 10DLC draft for this organization activation state.
     */
     private ?OrganizationActivationState_tenDlcDraft $tenDlcDraft = null;
     
@@ -209,7 +209,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     private ?TenDlcApplicationStatus $tenDlcStatus = null;
     
     /**
-     * @var DateTime|null $updatedAt The date and time for the updated at value on this organization activation state.
+     * @var DateTime|null $updatedAt UTC timestamp for updated at on this organization activation state.
     */
     private ?DateTime $updatedAt = null;
     
@@ -219,7 +219,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     private ?string $websiteGenerationResult = null;
     
     /**
-     * @var string|null $websiteNeeds The website needs value for this organization activation state.
+     * @var string|null $websiteNeeds Website needs for this organization activation state.
     */
     private ?string $websiteNeeds = null;
     
@@ -250,7 +250,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the activatedAt property value. The date and time for the activated at value on this organization activation state.
+     * Gets the activatedAt property value. UTC timestamp for activated at on this organization activation state.
      * @return DateTime|null
     */
     public function getActivatedAt(): ?DateTime {
@@ -282,7 +282,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the complianceNotes property value. The compliance notes value for this organization activation state.
+     * Gets the complianceNotes property value. Compliance notes for this organization activation state.
      * @return string|null
     */
     public function getComplianceNotes(): ?string {
@@ -298,7 +298,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the createdAt property value. The date and time for the created at value on this organization activation state.
+     * Gets the createdAt property value. UTC timestamp for created at on this organization activation state.
      * @return DateTime|null
     */
     public function getCreatedAt(): ?DateTime {
@@ -314,7 +314,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the domainApprovedAt property value. The date and time for the domain approved at value on this organization activation state.
+     * Gets the domainApprovedAt property value. UTC timestamp for domain approved at on this organization activation state.
      * @return DateTime|null
     */
     public function getDomainApprovedAt(): ?DateTime {
@@ -378,7 +378,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the failedAt property value. The date and time for the failed at value on this organization activation state.
+     * Gets the failedAt property value. UTC timestamp for failed at on this organization activation state.
      * @return DateTime|null
     */
     public function getFailedAt(): ?DateTime {
@@ -439,7 +439,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the industry property value. The industry value for this organization activation state.
+     * Gets the industry property value. Industry for this organization activation state.
      * @return string|null
     */
     public function getIndustry(): ?string {
@@ -447,7 +447,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the launchApprovedAt property value. The date and time for the launch approved at value on this organization activation state.
+     * Gets the launchApprovedAt property value. UTC timestamp for launch approved at on this organization activation state.
      * @return DateTime|null
     */
     public function getLaunchApprovedAt(): ?DateTime {
@@ -455,7 +455,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the launchReviewRequestedAt property value. The date and time for the launch review requested at value on this organization activation state.
+     * Gets the launchReviewRequestedAt property value. UTC timestamp for launch review requested at on this organization activation state.
      * @return DateTime|null
     */
     public function getLaunchReviewRequestedAt(): ?DateTime {
@@ -471,7 +471,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the offer property value. The offer value for this organization activation state.
+     * Gets the offer property value. Offer for this organization activation state.
      * @return string|null
     */
     public function getOffer(): ?string {
@@ -487,7 +487,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organizationDescription property value. The organization description value for this organization activation state.
+     * Gets the organizationDescription property value. Organization description for this organization activation state.
      * @return string|null
     */
     public function getOrganizationDescription(): ?string {
@@ -495,7 +495,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the paymentMethodConfirmedAt property value. The date and time for the payment method confirmed at value on this organization activation state.
+     * Gets the paymentMethodConfirmedAt property value. UTC timestamp for payment method confirmed at on this organization activation state.
      * @return DateTime|null
     */
     public function getPaymentMethodConfirmedAt(): ?DateTime {
@@ -511,7 +511,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the selectedDomain property value. The selected domain value for this organization activation state.
+     * Gets the selectedDomain property value. Selected domain for this organization activation state.
      * @return string|null
     */
     public function getSelectedDomain(): ?string {
@@ -519,7 +519,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the serviceArea property value. The service area value for this organization activation state.
+     * Gets the serviceArea property value. Service area for this organization activation state.
      * @return string|null
     */
     public function getServiceArea(): ?string {
@@ -535,7 +535,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the subscriptionActiveAt property value. The date and time for the subscription active at value on this organization activation state.
+     * Gets the subscriptionActiveAt property value. UTC timestamp for subscription active at on this organization activation state.
      * @return DateTime|null
     */
     public function getSubscriptionActiveAt(): ?DateTime {
@@ -543,7 +543,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the subscriptionPendingAt property value. The date and time for the subscription pending at value on this organization activation state.
+     * Gets the subscriptionPendingAt property value. UTC timestamp for subscription pending at on this organization activation state.
      * @return DateTime|null
     */
     public function getSubscriptionPendingAt(): ?DateTime {
@@ -551,7 +551,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the targetAudience property value. The target audience value for this organization activation state.
+     * Gets the targetAudience property value. Target audience for this organization activation state.
      * @return string|null
     */
     public function getTargetAudience(): ?string {
@@ -559,7 +559,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the telephonyPartiallyProvisionedAt property value. The date and time for the telephony partially provisioned at value on this organization activation state.
+     * Gets the telephonyPartiallyProvisionedAt property value. UTC timestamp for telephony partially provisioned at on this organization activation state.
      * @return DateTime|null
     */
     public function getTelephonyPartiallyProvisionedAt(): ?DateTime {
@@ -567,7 +567,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the telephonyProvisioningStartedAt property value. The date and time for the telephony provisioning started at value on this organization activation state.
+     * Gets the telephonyProvisioningStartedAt property value. UTC timestamp for telephony provisioning started at on this organization activation state.
      * @return DateTime|null
     */
     public function getTelephonyProvisioningStartedAt(): ?DateTime {
@@ -575,7 +575,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the telephonyReadyAt property value. The date and time for the telephony ready at value on this organization activation state.
+     * Gets the telephonyReadyAt property value. UTC timestamp for telephony ready at on this organization activation state.
      * @return DateTime|null
     */
     public function getTelephonyReadyAt(): ?DateTime {
@@ -599,7 +599,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the tenDlcDraft property value. The 10DLC draft value for this organization activation state.
+     * Gets the tenDlcDraft property value. 10DLC draft for this organization activation state.
      * @return OrganizationActivationState_tenDlcDraft|null
     */
     public function getTenDlcDraft(): ?OrganizationActivationState_tenDlcDraft {
@@ -615,7 +615,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the updatedAt property value. The date and time for the updated at value on this organization activation state.
+     * Gets the updatedAt property value. UTC timestamp for updated at on this organization activation state.
      * @return DateTime|null
     */
     public function getUpdatedAt(): ?DateTime {
@@ -631,7 +631,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the websiteNeeds property value. The website needs value for this organization activation state.
+     * Gets the websiteNeeds property value. Website needs for this organization activation state.
      * @return string|null
     */
     public function getWebsiteNeeds(): ?string {
@@ -706,7 +706,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the activatedAt property value. The date and time for the activated at value on this organization activation state.
+     * Sets the activatedAt property value. UTC timestamp for activated at on this organization activation state.
      * @param DateTime|null $value Value to set for the activatedAt property.
     */
     public function setActivatedAt(?DateTime $value): void {
@@ -738,7 +738,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the complianceNotes property value. The compliance notes value for this organization activation state.
+     * Sets the complianceNotes property value. Compliance notes for this organization activation state.
      * @param string|null $value Value to set for the complianceNotes property.
     */
     public function setComplianceNotes(?string $value): void {
@@ -754,7 +754,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the createdAt property value. The date and time for the created at value on this organization activation state.
+     * Sets the createdAt property value. UTC timestamp for created at on this organization activation state.
      * @param DateTime|null $value Value to set for the createdAt property.
     */
     public function setCreatedAt(?DateTime $value): void {
@@ -770,7 +770,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the domainApprovedAt property value. The date and time for the domain approved at value on this organization activation state.
+     * Sets the domainApprovedAt property value. UTC timestamp for domain approved at on this organization activation state.
      * @param DateTime|null $value Value to set for the domainApprovedAt property.
     */
     public function setDomainApprovedAt(?DateTime $value): void {
@@ -834,7 +834,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the failedAt property value. The date and time for the failed at value on this organization activation state.
+     * Sets the failedAt property value. UTC timestamp for failed at on this organization activation state.
      * @param DateTime|null $value Value to set for the failedAt property.
     */
     public function setFailedAt(?DateTime $value): void {
@@ -842,7 +842,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the industry property value. The industry value for this organization activation state.
+     * Sets the industry property value. Industry for this organization activation state.
      * @param string|null $value Value to set for the industry property.
     */
     public function setIndustry(?string $value): void {
@@ -850,7 +850,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the launchApprovedAt property value. The date and time for the launch approved at value on this organization activation state.
+     * Sets the launchApprovedAt property value. UTC timestamp for launch approved at on this organization activation state.
      * @param DateTime|null $value Value to set for the launchApprovedAt property.
     */
     public function setLaunchApprovedAt(?DateTime $value): void {
@@ -858,7 +858,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the launchReviewRequestedAt property value. The date and time for the launch review requested at value on this organization activation state.
+     * Sets the launchReviewRequestedAt property value. UTC timestamp for launch review requested at on this organization activation state.
      * @param DateTime|null $value Value to set for the launchReviewRequestedAt property.
     */
     public function setLaunchReviewRequestedAt(?DateTime $value): void {
@@ -874,7 +874,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the offer property value. The offer value for this organization activation state.
+     * Sets the offer property value. Offer for this organization activation state.
      * @param string|null $value Value to set for the offer property.
     */
     public function setOffer(?string $value): void {
@@ -890,7 +890,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organizationDescription property value. The organization description value for this organization activation state.
+     * Sets the organizationDescription property value. Organization description for this organization activation state.
      * @param string|null $value Value to set for the organizationDescription property.
     */
     public function setOrganizationDescription(?string $value): void {
@@ -898,7 +898,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the paymentMethodConfirmedAt property value. The date and time for the payment method confirmed at value on this organization activation state.
+     * Sets the paymentMethodConfirmedAt property value. UTC timestamp for payment method confirmed at on this organization activation state.
      * @param DateTime|null $value Value to set for the paymentMethodConfirmedAt property.
     */
     public function setPaymentMethodConfirmedAt(?DateTime $value): void {
@@ -914,7 +914,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the selectedDomain property value. The selected domain value for this organization activation state.
+     * Sets the selectedDomain property value. Selected domain for this organization activation state.
      * @param string|null $value Value to set for the selectedDomain property.
     */
     public function setSelectedDomain(?string $value): void {
@@ -922,7 +922,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the serviceArea property value. The service area value for this organization activation state.
+     * Sets the serviceArea property value. Service area for this organization activation state.
      * @param string|null $value Value to set for the serviceArea property.
     */
     public function setServiceArea(?string $value): void {
@@ -938,7 +938,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the subscriptionActiveAt property value. The date and time for the subscription active at value on this organization activation state.
+     * Sets the subscriptionActiveAt property value. UTC timestamp for subscription active at on this organization activation state.
      * @param DateTime|null $value Value to set for the subscriptionActiveAt property.
     */
     public function setSubscriptionActiveAt(?DateTime $value): void {
@@ -946,7 +946,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the subscriptionPendingAt property value. The date and time for the subscription pending at value on this organization activation state.
+     * Sets the subscriptionPendingAt property value. UTC timestamp for subscription pending at on this organization activation state.
      * @param DateTime|null $value Value to set for the subscriptionPendingAt property.
     */
     public function setSubscriptionPendingAt(?DateTime $value): void {
@@ -954,7 +954,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the targetAudience property value. The target audience value for this organization activation state.
+     * Sets the targetAudience property value. Target audience for this organization activation state.
      * @param string|null $value Value to set for the targetAudience property.
     */
     public function setTargetAudience(?string $value): void {
@@ -962,7 +962,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the telephonyPartiallyProvisionedAt property value. The date and time for the telephony partially provisioned at value on this organization activation state.
+     * Sets the telephonyPartiallyProvisionedAt property value. UTC timestamp for telephony partially provisioned at on this organization activation state.
      * @param DateTime|null $value Value to set for the telephonyPartiallyProvisionedAt property.
     */
     public function setTelephonyPartiallyProvisionedAt(?DateTime $value): void {
@@ -970,7 +970,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the telephonyProvisioningStartedAt property value. The date and time for the telephony provisioning started at value on this organization activation state.
+     * Sets the telephonyProvisioningStartedAt property value. UTC timestamp for telephony provisioning started at on this organization activation state.
      * @param DateTime|null $value Value to set for the telephonyProvisioningStartedAt property.
     */
     public function setTelephonyProvisioningStartedAt(?DateTime $value): void {
@@ -978,7 +978,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the telephonyReadyAt property value. The date and time for the telephony ready at value on this organization activation state.
+     * Sets the telephonyReadyAt property value. UTC timestamp for telephony ready at on this organization activation state.
      * @param DateTime|null $value Value to set for the telephonyReadyAt property.
     */
     public function setTelephonyReadyAt(?DateTime $value): void {
@@ -1002,7 +1002,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the tenDlcDraft property value. The 10DLC draft value for this organization activation state.
+     * Sets the tenDlcDraft property value. 10DLC draft for this organization activation state.
      * @param OrganizationActivationState_tenDlcDraft|null $value Value to set for the tenDlcDraft property.
     */
     public function setTenDlcDraft(?OrganizationActivationState_tenDlcDraft $value): void {
@@ -1018,7 +1018,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the updatedAt property value. The date and time for the updated at value on this organization activation state.
+     * Sets the updatedAt property value. UTC timestamp for updated at on this organization activation state.
      * @param DateTime|null $value Value to set for the updatedAt property.
     */
     public function setUpdatedAt(?DateTime $value): void {
@@ -1034,7 +1034,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the websiteNeeds property value. The website needs value for this organization activation state.
+     * Sets the websiteNeeds property value. Website needs for this organization activation state.
      * @param string|null $value Value to set for the websiteNeeds property.
     */
     public function setWebsiteNeeds(?string $value): void {

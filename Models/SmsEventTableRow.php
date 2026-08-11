@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * List item schema for Leadping API SMS event table row results shown in searchable tables.
+ * Summarizes SMS event data in paginated and searchable results.
 */
 class SmsEventTableRow implements AdditionalDataHolder, Parsable 
 {
@@ -114,7 +114,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     private ?bool $isAutomated = null;
     
     /**
-     * @var IdNamePair|null $lead The ID and name for this lead.
+     * @var IdNamePair|null $lead Identifier and display name of the related lead.
     */
     private ?IdNamePair $lead = null;
     
@@ -445,7 +445,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lead property value. The ID and name for this lead.
+     * Gets the lead property value. Identifier and display name of the related lead.
      * @return IdNamePair|null
     */
     public function getLead(): ?IdNamePair {
@@ -821,7 +821,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lead property value. The ID and name for this lead.
+     * Sets the lead property value. Identifier and display name of the related lead.
      * @param IdNamePair|null $value Value to set for the lead property.
     */
     public function setLead(?IdNamePair $value): void {

@@ -24,6 +24,11 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     private ?bool $capacityAvailable = null;
     
     /**
+     * @var string|null $healthReason Human-readable reason for the current phone-number health state.
+    */
+    private ?string $healthReason = null;
+    
+    /**
      * @var PhoneNumberOutboundHealthStatus|null $healthStatus Current health status for this Leadping outbound phone number capacity.
     */
     private ?PhoneNumberOutboundHealthStatus $healthStatus = null;
@@ -37,6 +42,11 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
      * @var string|null $phoneNumberId Unique identifier of the phone number associated with this Leadping outbound phone number capacity.
     */
     private ?string $phoneNumberId = null;
+    
+    /**
+     * @var bool|null $smsApproved Indicates whether this phone number has an approved 10DLC messaging campaign assignment.
+    */
+    private ?bool $smsApproved = null;
     
     /**
      * @var DateTime|null $smsDailyResetsAt Next midnight Eastern time, when SMS daily capacity resets.
@@ -67,6 +77,11 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
      * @var DateTime|null $smsMinutelyResetsAt The next time SMS capacity becomes available in the rolling minute window.
     */
     private ?DateTime $smsMinutelyResetsAt = null;
+    
+    /**
+     * @var bool|null $smsRamping Indicates whether SMS limits for this phone number are still ramping up.
+    */
+    private ?bool $smsRamping = null;
     
     /**
      * @var int|null $smsRemainingThisHour SMS remaining this hour for the applicable messaging or voice capacity window.
@@ -127,6 +142,11 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
      * @var DateTime|null $voiceMinutelyResetsAt The next time voice capacity becomes available in the rolling minute window.
     */
     private ?DateTime $voiceMinutelyResetsAt = null;
+    
+    /**
+     * @var bool|null $voiceRamping Indicates whether call limits for this phone number are still ramping up.
+    */
+    private ?bool $voiceRamping = null;
     
     /**
      * @var int|null $voiceRemainingThisHour Voice remaining this hour for the applicable messaging or voice capacity window.
@@ -198,15 +218,18 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'capacityAvailable' => fn(ParseNode $n) => $o->setCapacityAvailable($n->getBooleanValue()),
+            'healthReason' => fn(ParseNode $n) => $o->setHealthReason($n->getStringValue()),
             'healthStatus' => fn(ParseNode $n) => $o->setHealthStatus($n->getEnumValue(PhoneNumberOutboundHealthStatus::class)),
             'phoneNumber' => fn(ParseNode $n) => $o->setPhoneNumber($n->getStringValue()),
             'phoneNumberId' => fn(ParseNode $n) => $o->setPhoneNumberId($n->getStringValue()),
+            'smsApproved' => fn(ParseNode $n) => $o->setSmsApproved($n->getBooleanValue()),
             'smsDailyResetsAt' => fn(ParseNode $n) => $o->setSmsDailyResetsAt($n->getDateTimeValue()),
             'smsHourlyResetsAt' => fn(ParseNode $n) => $o->setSmsHourlyResetsAt($n->getDateTimeValue()),
             'smsLimitThisHour' => fn(ParseNode $n) => $o->setSmsLimitThisHour($n->getIntegerValue()),
             'smsLimitThisMinute' => fn(ParseNode $n) => $o->setSmsLimitThisMinute($n->getIntegerValue()),
             'smsLimitToday' => fn(ParseNode $n) => $o->setSmsLimitToday($n->getIntegerValue()),
             'smsMinutelyResetsAt' => fn(ParseNode $n) => $o->setSmsMinutelyResetsAt($n->getDateTimeValue()),
+            'smsRamping' => fn(ParseNode $n) => $o->setSmsRamping($n->getBooleanValue()),
             'smsRemainingThisHour' => fn(ParseNode $n) => $o->setSmsRemainingThisHour($n->getIntegerValue()),
             'smsRemainingThisMinute' => fn(ParseNode $n) => $o->setSmsRemainingThisMinute($n->getIntegerValue()),
             'smsRemainingToday' => fn(ParseNode $n) => $o->setSmsRemainingToday($n->getIntegerValue()),
@@ -219,6 +242,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
             'voiceLimitThisMinute' => fn(ParseNode $n) => $o->setVoiceLimitThisMinute($n->getIntegerValue()),
             'voiceLimitToday' => fn(ParseNode $n) => $o->setVoiceLimitToday($n->getIntegerValue()),
             'voiceMinutelyResetsAt' => fn(ParseNode $n) => $o->setVoiceMinutelyResetsAt($n->getDateTimeValue()),
+            'voiceRamping' => fn(ParseNode $n) => $o->setVoiceRamping($n->getBooleanValue()),
             'voiceRemainingThisHour' => fn(ParseNode $n) => $o->setVoiceRemainingThisHour($n->getIntegerValue()),
             'voiceRemainingThisMinute' => fn(ParseNode $n) => $o->setVoiceRemainingThisMinute($n->getIntegerValue()),
             'voiceRemainingToday' => fn(ParseNode $n) => $o->setVoiceRemainingToday($n->getIntegerValue()),
@@ -226,6 +250,14 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
             'voiceUsedThisMinute' => fn(ParseNode $n) => $o->setVoiceUsedThisMinute($n->getIntegerValue()),
             'voiceUsedToday' => fn(ParseNode $n) => $o->setVoiceUsedToday($n->getIntegerValue()),
         ];
+    }
+
+    /**
+     * Gets the healthReason property value. Human-readable reason for the current phone-number health state.
+     * @return string|null
+    */
+    public function getHealthReason(): ?string {
+        return $this->healthReason;
     }
 
     /**
@@ -250,6 +282,14 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     */
     public function getPhoneNumberId(): ?string {
         return $this->phoneNumberId;
+    }
+
+    /**
+     * Gets the smsApproved property value. Indicates whether this phone number has an approved 10DLC messaging campaign assignment.
+     * @return bool|null
+    */
+    public function getSmsApproved(): ?bool {
+        return $this->smsApproved;
     }
 
     /**
@@ -298,6 +338,14 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     */
     public function getSmsMinutelyResetsAt(): ?DateTime {
         return $this->smsMinutelyResetsAt;
+    }
+
+    /**
+     * Gets the smsRamping property value. Indicates whether SMS limits for this phone number are still ramping up.
+     * @return bool|null
+    */
+    public function getSmsRamping(): ?bool {
+        return $this->smsRamping;
     }
 
     /**
@@ -397,6 +445,14 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the voiceRamping property value. Indicates whether call limits for this phone number are still ramping up.
+     * @return bool|null
+    */
+    public function getVoiceRamping(): ?bool {
+        return $this->voiceRamping;
+    }
+
+    /**
      * Gets the voiceRemainingThisHour property value. Voice remaining this hour for the applicable messaging or voice capacity window.
      * @return int|null
     */
@@ -450,15 +506,18 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeBooleanValue('capacityAvailable', $this->getCapacityAvailable());
+        $writer->writeStringValue('healthReason', $this->getHealthReason());
         $writer->writeEnumValue('healthStatus', $this->getHealthStatus());
         $writer->writeStringValue('phoneNumber', $this->getPhoneNumber());
         $writer->writeStringValue('phoneNumberId', $this->getPhoneNumberId());
+        $writer->writeBooleanValue('smsApproved', $this->getSmsApproved());
         $writer->writeDateTimeValue('smsDailyResetsAt', $this->getSmsDailyResetsAt());
         $writer->writeDateTimeValue('smsHourlyResetsAt', $this->getSmsHourlyResetsAt());
         $writer->writeIntegerValue('smsLimitThisHour', $this->getSmsLimitThisHour());
         $writer->writeIntegerValue('smsLimitThisMinute', $this->getSmsLimitThisMinute());
         $writer->writeIntegerValue('smsLimitToday', $this->getSmsLimitToday());
         $writer->writeDateTimeValue('smsMinutelyResetsAt', $this->getSmsMinutelyResetsAt());
+        $writer->writeBooleanValue('smsRamping', $this->getSmsRamping());
         $writer->writeIntegerValue('smsRemainingThisHour', $this->getSmsRemainingThisHour());
         $writer->writeIntegerValue('smsRemainingThisMinute', $this->getSmsRemainingThisMinute());
         $writer->writeIntegerValue('smsRemainingToday', $this->getSmsRemainingToday());
@@ -471,6 +530,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
         $writer->writeIntegerValue('voiceLimitThisMinute', $this->getVoiceLimitThisMinute());
         $writer->writeIntegerValue('voiceLimitToday', $this->getVoiceLimitToday());
         $writer->writeDateTimeValue('voiceMinutelyResetsAt', $this->getVoiceMinutelyResetsAt());
+        $writer->writeBooleanValue('voiceRamping', $this->getVoiceRamping());
         $writer->writeIntegerValue('voiceRemainingThisHour', $this->getVoiceRemainingThisHour());
         $writer->writeIntegerValue('voiceRemainingThisMinute', $this->getVoiceRemainingThisMinute());
         $writer->writeIntegerValue('voiceRemainingToday', $this->getVoiceRemainingToday());
@@ -497,6 +557,14 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the healthReason property value. Human-readable reason for the current phone-number health state.
+     * @param string|null $value Value to set for the healthReason property.
+    */
+    public function setHealthReason(?string $value): void {
+        $this->healthReason = $value;
+    }
+
+    /**
      * Sets the healthStatus property value. Current health status for this Leadping outbound phone number capacity.
      * @param PhoneNumberOutboundHealthStatus|null $value Value to set for the healthStatus property.
     */
@@ -518,6 +586,14 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     */
     public function setPhoneNumberId(?string $value): void {
         $this->phoneNumberId = $value;
+    }
+
+    /**
+     * Sets the smsApproved property value. Indicates whether this phone number has an approved 10DLC messaging campaign assignment.
+     * @param bool|null $value Value to set for the smsApproved property.
+    */
+    public function setSmsApproved(?bool $value): void {
+        $this->smsApproved = $value;
     }
 
     /**
@@ -566,6 +642,14 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     */
     public function setSmsMinutelyResetsAt(?DateTime $value): void {
         $this->smsMinutelyResetsAt = $value;
+    }
+
+    /**
+     * Sets the smsRamping property value. Indicates whether SMS limits for this phone number are still ramping up.
+     * @param bool|null $value Value to set for the smsRamping property.
+    */
+    public function setSmsRamping(?bool $value): void {
+        $this->smsRamping = $value;
     }
 
     /**
@@ -662,6 +746,14 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     */
     public function setVoiceMinutelyResetsAt(?DateTime $value): void {
         $this->voiceMinutelyResetsAt = $value;
+    }
+
+    /**
+     * Sets the voiceRamping property value. Indicates whether call limits for this phone number are still ramping up.
+     * @param bool|null $value Value to set for the voiceRamping property.
+    */
+    public function setVoiceRamping(?bool $value): void {
+        $this->voiceRamping = $value;
     }
 
     /**

@@ -43,6 +43,11 @@ class OutboundCapacityOverview implements AdditionalDataHolder, Parsable
     private ?array $phoneNumbers = null;
     
     /**
+     * @var int|null $rampingPhoneNumbers Number of phone numbers whose SMS or calling capacity is still ramping up.
+    */
+    private ?int $rampingPhoneNumbers = null;
+    
+    /**
      * @var array<OutboundQueueItem>|null $recentDecisions Collection of recent decisions included with this Leadping outbound capacity overview.
     */
     private ?array $recentDecisions = null;
@@ -114,6 +119,7 @@ class OutboundCapacityOverview implements AdditionalDataHolder, Parsable
             'healthyPhoneNumbers' => fn(ParseNode $n) => $o->setHealthyPhoneNumbers($n->getIntegerValue()),
             'limitedPhoneNumbers' => fn(ParseNode $n) => $o->setLimitedPhoneNumbers($n->getIntegerValue()),
             'phoneNumbers' => fn(ParseNode $n) => $o->setPhoneNumbers($n->getCollectionOfObjectValues([OutboundPhoneNumberCapacity::class, 'createFromDiscriminatorValue'])),
+            'rampingPhoneNumbers' => fn(ParseNode $n) => $o->setRampingPhoneNumbers($n->getIntegerValue()),
             'recentDecisions' => fn(ParseNode $n) => $o->setRecentDecisions($n->getCollectionOfObjectValues([OutboundQueueItem::class, 'createFromDiscriminatorValue'])),
             'scheduledCount' => fn(ParseNode $n) => $o->setScheduledCount($n->getIntegerValue()),
             'smsCapacityRemainingToday' => fn(ParseNode $n) => $o->setSmsCapacityRemainingToday($n->getIntegerValue()),
@@ -143,6 +149,14 @@ class OutboundCapacityOverview implements AdditionalDataHolder, Parsable
     */
     public function getPhoneNumbers(): ?array {
         return $this->phoneNumbers;
+    }
+
+    /**
+     * Gets the rampingPhoneNumbers property value. Number of phone numbers whose SMS or calling capacity is still ramping up.
+     * @return int|null
+    */
+    public function getRampingPhoneNumbers(): ?int {
+        return $this->rampingPhoneNumbers;
     }
 
     /**
@@ -187,6 +201,7 @@ class OutboundCapacityOverview implements AdditionalDataHolder, Parsable
         $writer->writeIntegerValue('healthyPhoneNumbers', $this->getHealthyPhoneNumbers());
         $writer->writeIntegerValue('limitedPhoneNumbers', $this->getLimitedPhoneNumbers());
         $writer->writeCollectionOfObjectValues('phoneNumbers', $this->getPhoneNumbers());
+        $writer->writeIntegerValue('rampingPhoneNumbers', $this->getRampingPhoneNumbers());
         $writer->writeCollectionOfObjectValues('recentDecisions', $this->getRecentDecisions());
         $writer->writeIntegerValue('scheduledCount', $this->getScheduledCount());
         $writer->writeIntegerValue('smsCapacityRemainingToday', $this->getSmsCapacityRemainingToday());
@@ -240,6 +255,14 @@ class OutboundCapacityOverview implements AdditionalDataHolder, Parsable
     */
     public function setPhoneNumbers(?array $value): void {
         $this->phoneNumbers = $value;
+    }
+
+    /**
+     * Sets the rampingPhoneNumbers property value. Number of phone numbers whose SMS or calling capacity is still ramping up.
+     * @param int|null $value Value to set for the rampingPhoneNumbers property.
+    */
+    public function setRampingPhoneNumbers(?int $value): void {
+        $this->rampingPhoneNumbers = $value;
     }
 
     /**

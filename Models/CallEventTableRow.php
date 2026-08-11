@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * List item schema for Leadping API call event table row results shown in searchable tables.
+ * Summarizes call event data in paginated and searchable results.
 */
 class CallEventTableRow implements AdditionalDataHolder, Parsable 
 {

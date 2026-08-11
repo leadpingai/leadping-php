@@ -28,7 +28,7 @@ class DownloadRequestBuilderGetRequestConfiguration extends BaseRequestConfigura
 
     /**
      * Instantiates a new DownloadRequestBuilderGetQueryParameters.
-     * @param string|null $token 
+     * @param string|null $token The short-lived download token issued for this export.
      * @return DownloadRequestBuilderGetQueryParameters
     */
     public static function createQueryParameters(?string $token = null): DownloadRequestBuilderGetQueryParameters {

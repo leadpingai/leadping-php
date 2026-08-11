@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * List item schema for Leadping API billing transaction table row results shown in searchable tables.
+ * Summarizes billing transaction data in paginated and searchable results.
 */
 class TransactionTableRow implements AdditionalDataHolder, Parsable 
 {
@@ -29,7 +29,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     private ?TransactionTableRow_billableUnit $billableUnit = null;
     
     /**
-     * @var float|null $billedAmount The billedAmount property
+     * @var float|null $billedAmount Customer-facing amount billed for the metered usage or wallet transaction.
     */
     private ?float $billedAmount = null;
     
@@ -54,7 +54,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * @var TransactionTableRow_lead|null $lead The ID and name for this lead.
+     * @var TransactionTableRow_lead|null $lead Identifier and display name of the related lead.
     */
     private ?TransactionTableRow_lead $lead = null;
     
@@ -64,7 +64,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     private ?float $netAmount = null;
     
     /**
-     * @var TransactionTableRow_organization|null $organization The ID and name for this organization.
+     * @var TransactionTableRow_organization|null $organization Identifier and display name of the related organization.
     */
     private ?TransactionTableRow_organization $organization = null;
     
@@ -74,22 +74,22 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     private ?string $paymentMethodDisplay = null;
     
     /**
-     * @var string|null $pricingVersion The pricingVersion property
+     * @var string|null $pricingVersion Version of the pricing rules used to calculate the billed amount.
     */
     private ?string $pricingVersion = null;
     
     /**
-     * @var float|null $quantity The quantity property
+     * @var float|null $quantity Number of billable units measured for this transaction, when usage-based pricing applies.
     */
     private ?float $quantity = null;
     
     /**
-     * @var string|null $sourceEventId The sourceEventId property
+     * @var string|null $sourceEventId Identifier of the event that created this billing transaction, when available.
     */
     private ?string $sourceEventId = null;
     
     /**
-     * @var string|null $sourceEventType The sourceEventType property
+     * @var string|null $sourceEventType Event type that created this billing transaction, when available.
     */
     private ?string $sourceEventType = null;
     
@@ -104,7 +104,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     private ?TransactionType $transactionType = null;
     
     /**
-     * @var float|null $unitPrice The unitPrice property
+     * @var float|null $unitPrice Price charged per billable unit when usage-based pricing applies.
     */
     private ?float $unitPrice = null;
     
@@ -149,7 +149,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billedAmount property value. The billedAmount property
+     * Gets the billedAmount property value. Customer-facing amount billed for the metered usage or wallet transaction.
      * @return float|null
     */
     public function getBilledAmount(): ?float {
@@ -217,7 +217,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lead property value. The ID and name for this lead.
+     * Gets the lead property value. Identifier and display name of the related lead.
      * @return TransactionTableRow_lead|null
     */
     public function getLead(): ?TransactionTableRow_lead {
@@ -233,7 +233,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organization property value. The ID and name for this organization.
+     * Gets the organization property value. Identifier and display name of the related organization.
      * @return TransactionTableRow_organization|null
     */
     public function getOrganization(): ?TransactionTableRow_organization {
@@ -249,7 +249,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the pricingVersion property value. The pricingVersion property
+     * Gets the pricingVersion property value. Version of the pricing rules used to calculate the billed amount.
      * @return string|null
     */
     public function getPricingVersion(): ?string {
@@ -257,7 +257,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the quantity property value. The quantity property
+     * Gets the quantity property value. Number of billable units measured for this transaction, when usage-based pricing applies.
      * @return float|null
     */
     public function getQuantity(): ?float {
@@ -265,7 +265,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the sourceEventId property value. The sourceEventId property
+     * Gets the sourceEventId property value. Identifier of the event that created this billing transaction, when available.
      * @return string|null
     */
     public function getSourceEventId(): ?string {
@@ -273,7 +273,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the sourceEventType property value. The sourceEventType property
+     * Gets the sourceEventType property value. Event type that created this billing transaction, when available.
      * @return string|null
     */
     public function getSourceEventType(): ?string {
@@ -297,7 +297,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the unitPrice property value. The unitPrice property
+     * Gets the unitPrice property value. Price charged per billable unit when usage-based pricing applies.
      * @return float|null
     */
     public function getUnitPrice(): ?float {
@@ -355,7 +355,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billedAmount property value. The billedAmount property
+     * Sets the billedAmount property value. Customer-facing amount billed for the metered usage or wallet transaction.
      * @param float|null $value Value to set for the billedAmount property.
     */
     public function setBilledAmount(?float $value): void {
@@ -395,7 +395,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lead property value. The ID and name for this lead.
+     * Sets the lead property value. Identifier and display name of the related lead.
      * @param TransactionTableRow_lead|null $value Value to set for the lead property.
     */
     public function setLead(?TransactionTableRow_lead $value): void {
@@ -411,7 +411,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organization property value. The ID and name for this organization.
+     * Sets the organization property value. Identifier and display name of the related organization.
      * @param TransactionTableRow_organization|null $value Value to set for the organization property.
     */
     public function setOrganization(?TransactionTableRow_organization $value): void {
@@ -427,7 +427,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the pricingVersion property value. The pricingVersion property
+     * Sets the pricingVersion property value. Version of the pricing rules used to calculate the billed amount.
      * @param string|null $value Value to set for the pricingVersion property.
     */
     public function setPricingVersion(?string $value): void {
@@ -435,7 +435,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the quantity property value. The quantity property
+     * Sets the quantity property value. Number of billable units measured for this transaction, when usage-based pricing applies.
      * @param float|null $value Value to set for the quantity property.
     */
     public function setQuantity(?float $value): void {
@@ -443,7 +443,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the sourceEventId property value. The sourceEventId property
+     * Sets the sourceEventId property value. Identifier of the event that created this billing transaction, when available.
      * @param string|null $value Value to set for the sourceEventId property.
     */
     public function setSourceEventId(?string $value): void {
@@ -451,7 +451,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the sourceEventType property value. The sourceEventType property
+     * Sets the sourceEventType property value. Event type that created this billing transaction, when available.
      * @param string|null $value Value to set for the sourceEventType property.
     */
     public function setSourceEventType(?string $value): void {
@@ -475,7 +475,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the unitPrice property value. The unitPrice property
+     * Sets the unitPrice property value. Price charged per billable unit when usage-based pricing applies.
      * @param float|null $value Value to set for the unitPrice property.
     */
     public function setUnitPrice(?float $value): void {

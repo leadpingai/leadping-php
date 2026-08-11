@@ -71,7 +71,7 @@ class SourcesItemRequestBuilder extends BaseRequestBuilder
 
     /**
      * Updates a lead source for the current organization, changing intake settings, credentials, routing context, or active status.
-     * @param SourceRequest $body Request schema for the Leadping API lead source request, including the fields clients can send.
+     * @param SourceRequest $body Defines the fields clients can send when working with lead source.
      * @param SourcesItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<SourceResponse|null>
      * @throws Exception
@@ -123,7 +123,7 @@ class SourcesItemRequestBuilder extends BaseRequestBuilder
 
     /**
      * Updates a lead source for the current organization, changing intake settings, credentials, routing context, or active status.
-     * @param SourceRequest $body Request schema for the Leadping API lead source request, including the fields clients can send.
+     * @param SourceRequest $body Defines the fields clients can send when working with lead source.
      * @param SourcesItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

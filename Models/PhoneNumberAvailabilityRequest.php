@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Request schema for checking phone number availability before purchase or assignment.
+ * Defines the phone number and capability requirements Leadping should verify before purchase or assignment.
 */
 class PhoneNumberAvailabilityRequest implements AdditionalDataHolder, Parsable 
 {

@@ -32,7 +32,7 @@ class ArchiveRequestBuilder extends BaseRequestBuilder
 
     /**
      * Archives a lead without deleting history, removing it from active pipeline views while preserving communication and event records.
-     * @param ArchivePostRequestBody $body Request schema for the Leadping API lead archive request, including the fields clients can send.
+     * @param ArchivePostRequestBody $body Defines the fields clients can send when working with lead archive.
      * @param ArchiveRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<LeadResponse|null>
      * @throws Exception
@@ -49,7 +49,7 @@ class ArchiveRequestBuilder extends BaseRequestBuilder
 
     /**
      * Archives a lead without deleting history, removing it from active pipeline views while preserving communication and event records.
-     * @param ArchivePostRequestBody $body Request schema for the Leadping API lead archive request, including the fields clients can send.
+     * @param ArchivePostRequestBody $body Defines the fields clients can send when working with lead archive.
      * @param ArchiveRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

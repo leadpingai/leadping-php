@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Response schema for the Leadping API contact form response returned to authenticated clients.
+ * Describes contact form data returned by Leadping.
 */
 class ContactResponse implements AdditionalDataHolder, Parsable 
 {

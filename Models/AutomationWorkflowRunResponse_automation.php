@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * The ID and name for this automation.
+ * Identifier and display name of the related automation.
 */
 class AutomationWorkflowRunResponse_automation extends IdNamePair implements Parsable 
 {

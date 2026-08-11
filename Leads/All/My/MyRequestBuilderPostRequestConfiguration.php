@@ -28,10 +28,10 @@ class MyRequestBuilderPostRequestConfiguration extends BaseRequestConfiguration
 
     /**
      * Instantiates a new MyRequestBuilderPostQueryParameters.
-     * @param string|null $archiveFilter 
-     * @param array<string>|null $tagIds 
-     * @param bool|null $tagMatchAll 
-     * @param bool|null $untagged 
+     * @param string|null $archiveFilter Optional filter selecting active, archived, or all leads.
+     * @param array<string>|null $tagIds Optional tag identifiers used to filter the lead list.
+     * @param bool|null $tagMatchAll Whether a lead must contain every supplied tag instead of any supplied tag.
+     * @param bool|null $untagged Whether to include only leads that have no tags.
      * @return MyRequestBuilderPostQueryParameters
     */
     public static function createQueryParameters(?string $archiveFilter = null, ?array $tagIds = null, ?bool $tagMatchAll = null, ?bool $untagged = null): MyRequestBuilderPostQueryParameters {

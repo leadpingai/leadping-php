@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * List item schema for Leadping API lead table row results shown in searchable tables.
+ * Summarizes lead data in paginated and searchable results.
 */
 class LeadTableRow implements AdditionalDataHolder, Parsable 
 {
@@ -74,7 +74,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     private ?string $lastName = null;
     
     /**
-     * @var LeadTableRow_organization|null $organization The ID and name for this organization.
+     * @var LeadTableRow_organization|null $organization Identifier and display name of the related organization.
     */
     private ?LeadTableRow_organization $organization = null;
     
@@ -89,7 +89,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     private ?float $price = null;
     
     /**
-     * @var LeadTableRow_source|null $source The ID and name for this source.
+     * @var LeadTableRow_source|null $source Identifier and display name of the related source.
     */
     private ?LeadTableRow_source $source = null;
     
@@ -255,7 +255,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organization property value. The ID and name for this organization.
+     * Gets the organization property value. Identifier and display name of the related organization.
      * @return LeadTableRow_organization|null
     */
     public function getOrganization(): ?LeadTableRow_organization {
@@ -279,7 +279,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the source property value. The ID and name for this source.
+     * Gets the source property value. Identifier and display name of the related source.
      * @return LeadTableRow_source|null
     */
     public function getSource(): ?LeadTableRow_source {
@@ -442,7 +442,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organization property value. The ID and name for this organization.
+     * Sets the organization property value. Identifier and display name of the related organization.
      * @param LeadTableRow_organization|null $value Value to set for the organization property.
     */
     public function setOrganization(?LeadTableRow_organization $value): void {
@@ -466,7 +466,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the source property value. The ID and name for this source.
+     * Sets the source property value. Identifier and display name of the related source.
      * @param LeadTableRow_source|null $value Value to set for the source property.
     */
     public function setSource(?LeadTableRow_source $value): void {

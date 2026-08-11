@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Response schema for the Leadping API phone call returned to authenticated clients.
+ * Describes a Leadping phone call, including participants, direction, provider state, timing, recording, and billing details.
 */
 class PhoneCallResponse implements AdditionalDataHolder, Parsable 
 {

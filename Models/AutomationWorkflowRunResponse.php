@@ -24,7 +24,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var AutomationWorkflowRunResponse_automation|null $automation The ID and name for this automation.
+     * @var AutomationWorkflowRunResponse_automation|null $automation Identifier and display name of the related automation.
     */
     private ?AutomationWorkflowRunResponse_automation $automation = null;
     
@@ -39,7 +39,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $completedAt = null;
     
     /**
-     * @var AutomationWorkflowRunResponse_currentStep|null $currentStep The ID and name for this currentStep.
+     * @var AutomationWorkflowRunResponse_currentStep|null $currentStep Identifier and display name of the workflow step currently awaiting or performing work.
     */
     private ?AutomationWorkflowRunResponse_currentStep $currentStep = null;
     
@@ -69,7 +69,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     private ?string $lastActionSummary = null;
     
     /**
-     * @var string|null $lastErrorCode Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
+     * @var string|null $lastErrorCode Machine-readable code for the most recent workflow execution error.
     */
     private ?string $lastErrorCode = null;
     
@@ -114,7 +114,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     private ?int $retryCount = null;
     
     /**
-     * @var string|null $skipReasonCode Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
+     * @var string|null $skipReasonCode Machine-readable code explaining why the workflow run or action was skipped.
     */
     private ?string $skipReasonCode = null;
     
@@ -186,7 +186,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the automation property value. The ID and name for this automation.
+     * Gets the automation property value. Identifier and display name of the related automation.
      * @return AutomationWorkflowRunResponse_automation|null
     */
     public function getAutomation(): ?AutomationWorkflowRunResponse_automation {
@@ -210,7 +210,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the currentStep property value. The ID and name for this currentStep.
+     * Gets the currentStep property value. Identifier and display name of the workflow step currently awaiting or performing work.
      * @return AutomationWorkflowRunResponse_currentStep|null
     */
     public function getCurrentStep(): ?AutomationWorkflowRunResponse_currentStep {
@@ -295,7 +295,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lastErrorCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
+     * Gets the lastErrorCode property value. Machine-readable code for the most recent workflow execution error.
      * @return string|null
     */
     public function getLastErrorCode(): ?string {
@@ -367,7 +367,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the skipReasonCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
+     * Gets the skipReasonCode property value. Machine-readable code explaining why the workflow run or action was skipped.
      * @return string|null
     */
     public function getSkipReasonCode(): ?string {
@@ -482,7 +482,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the automation property value. The ID and name for this automation.
+     * Sets the automation property value. Identifier and display name of the related automation.
      * @param AutomationWorkflowRunResponse_automation|null $value Value to set for the automation property.
     */
     public function setAutomation(?AutomationWorkflowRunResponse_automation $value): void {
@@ -506,7 +506,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the currentStep property value. The ID and name for this currentStep.
+     * Sets the currentStep property value. Identifier and display name of the workflow step currently awaiting or performing work.
      * @param AutomationWorkflowRunResponse_currentStep|null $value Value to set for the currentStep property.
     */
     public function setCurrentStep(?AutomationWorkflowRunResponse_currentStep $value): void {
@@ -554,7 +554,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lastErrorCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
+     * Sets the lastErrorCode property value. Machine-readable code for the most recent workflow execution error.
      * @param string|null $value Value to set for the lastErrorCode property.
     */
     public function setLastErrorCode(?string $value): void {
@@ -626,7 +626,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the skipReasonCode property value. Reason or diagnostic code that explains the current outcome for this Leadping automation workflow run.
+     * Sets the skipReasonCode property value. Machine-readable code explaining why the workflow run or action was skipped.
      * @param string|null $value Value to set for the skipReasonCode property.
     */
     public function setSkipReasonCode(?string $value): void {

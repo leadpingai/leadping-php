@@ -61,7 +61,7 @@ class LeadsRequestBuilder extends BaseRequestBuilder
 
     /**
      * Creates a source-authenticated lead captured outside Leadping, starting follow-up, routing, and automation from structured lead data.
-     * @param LeadRequest $body Request schema for the Leadping API lead request, including the fields clients can send.
+     * @param LeadRequest $body Defines the fields clients can send when working with lead.
      * @param LeadsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<LeadResponse|null>
      * @throws Exception
@@ -79,7 +79,7 @@ class LeadsRequestBuilder extends BaseRequestBuilder
 
     /**
      * Creates a source-authenticated lead captured outside Leadping, starting follow-up, routing, and automation from structured lead data.
-     * @param LeadRequest $body Request schema for the Leadping API lead request, including the fields clients can send.
+     * @param LeadRequest $body Defines the fields clients can send when working with lead.
      * @param LeadsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

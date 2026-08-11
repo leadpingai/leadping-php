@@ -9,12 +9,12 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API DTO containing activation timeline event data used by Leadping API contracts.
+ * Describes activation timeline event data used in Leadping API requests and responses.
 */
 class ActivationTimelineEvent implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var ActivationTimelineEvent_actor|null $actor The ID and name for this actor.
+     * @var ActivationTimelineEvent_actor|null $actor Identifier and display name of the related actor.
     */
     private ?ActivationTimelineEvent_actor $actor = null;
     
@@ -24,12 +24,12 @@ class ActivationTimelineEvent implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var DateTime|null $createdAt The date and time for the created at value on this activation timeline event.
+     * @var DateTime|null $createdAt UTC timestamp for created at on this activation timeline event.
     */
     private ?DateTime $createdAt = null;
     
     /**
-     * @var string|null $details The details value for this activation timeline event.
+     * @var string|null $details Details for this activation timeline event.
     */
     private ?string $details = null;
     
@@ -39,7 +39,7 @@ class ActivationTimelineEvent implements AdditionalDataHolder, Parsable
     private ?string $failureReason = null;
     
     /**
-     * @var string|null $id The unique ID for this activation timeline event.
+     * @var string|null $id Unique Leadping identifier for this activation timeline event.
     */
     private ?string $id = null;
     
@@ -49,7 +49,7 @@ class ActivationTimelineEvent implements AdditionalDataHolder, Parsable
     private ?string $status = null;
     
     /**
-     * @var string|null $title The title value for this activation timeline event.
+     * @var string|null $title Title for this activation timeline event.
     */
     private ?string $title = null;
     
@@ -75,7 +75,7 @@ class ActivationTimelineEvent implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the actor property value. The ID and name for this actor.
+     * Gets the actor property value. Identifier and display name of the related actor.
      * @return ActivationTimelineEvent_actor|null
     */
     public function getActor(): ?ActivationTimelineEvent_actor {
@@ -91,7 +91,7 @@ class ActivationTimelineEvent implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the createdAt property value. The date and time for the created at value on this activation timeline event.
+     * Gets the createdAt property value. UTC timestamp for created at on this activation timeline event.
      * @return DateTime|null
     */
     public function getCreatedAt(): ?DateTime {
@@ -99,7 +99,7 @@ class ActivationTimelineEvent implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the details property value. The details value for this activation timeline event.
+     * Gets the details property value. Details for this activation timeline event.
      * @return string|null
     */
     public function getDetails(): ?string {
@@ -133,7 +133,7 @@ class ActivationTimelineEvent implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The unique ID for this activation timeline event.
+     * Gets the id property value. Unique Leadping identifier for this activation timeline event.
      * @return string|null
     */
     public function getId(): ?string {
@@ -149,7 +149,7 @@ class ActivationTimelineEvent implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the title property value. The title value for this activation timeline event.
+     * Gets the title property value. Title for this activation timeline event.
      * @return string|null
     */
     public function getTitle(): ?string {
@@ -181,7 +181,7 @@ class ActivationTimelineEvent implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the actor property value. The ID and name for this actor.
+     * Sets the actor property value. Identifier and display name of the related actor.
      * @param ActivationTimelineEvent_actor|null $value Value to set for the actor property.
     */
     public function setActor(?ActivationTimelineEvent_actor $value): void {
@@ -197,7 +197,7 @@ class ActivationTimelineEvent implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the createdAt property value. The date and time for the created at value on this activation timeline event.
+     * Sets the createdAt property value. UTC timestamp for created at on this activation timeline event.
      * @param DateTime|null $value Value to set for the createdAt property.
     */
     public function setCreatedAt(?DateTime $value): void {
@@ -205,7 +205,7 @@ class ActivationTimelineEvent implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the details property value. The details value for this activation timeline event.
+     * Sets the details property value. Details for this activation timeline event.
      * @param string|null $value Value to set for the details property.
     */
     public function setDetails(?string $value): void {
@@ -221,7 +221,7 @@ class ActivationTimelineEvent implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The unique ID for this activation timeline event.
+     * Sets the id property value. Unique Leadping identifier for this activation timeline event.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -237,7 +237,7 @@ class ActivationTimelineEvent implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the title property value. The title value for this activation timeline event.
+     * Sets the title property value. Title for this activation timeline event.
      * @param string|null $value Value to set for the title property.
     */
     public function setTitle(?string $value): void {

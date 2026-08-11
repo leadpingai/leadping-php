@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API DTO containing trusted form certificate data used by Leadping API contracts.
+ * Describes trusted form certificate data used in Leadping API requests and responses.
 */
 class TrustedFormCertificate implements AdditionalDataHolder, Parsable 
 {
@@ -19,17 +19,17 @@ class TrustedFormCertificate implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var DateTime|null $createdAt The date and time for the created at value on this TrustedForm certificate.
+     * @var DateTime|null $createdAt UTC timestamp for created at on this TrustedForm certificate.
     */
     private ?DateTime $createdAt = null;
     
     /**
-     * @var string|null $id The unique ID for this TrustedForm certificate.
+     * @var string|null $id Unique Leadping identifier for this TrustedForm certificate.
     */
     private ?string $id = null;
     
     /**
-     * @var string|null $source The source value for this TrustedForm certificate.
+     * @var string|null $source Source for this TrustedForm certificate.
     */
     private ?string $source = null;
     
@@ -63,7 +63,7 @@ class TrustedFormCertificate implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the createdAt property value. The date and time for the created at value on this TrustedForm certificate.
+     * Gets the createdAt property value. UTC timestamp for created at on this TrustedForm certificate.
      * @return DateTime|null
     */
     public function getCreatedAt(): ?DateTime {
@@ -85,7 +85,7 @@ class TrustedFormCertificate implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The unique ID for this TrustedForm certificate.
+     * Gets the id property value. Unique Leadping identifier for this TrustedForm certificate.
      * @return string|null
     */
     public function getId(): ?string {
@@ -93,7 +93,7 @@ class TrustedFormCertificate implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the source property value. The source value for this TrustedForm certificate.
+     * Gets the source property value. Source for this TrustedForm certificate.
      * @return string|null
     */
     public function getSource(): ?string {
@@ -129,7 +129,7 @@ class TrustedFormCertificate implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the createdAt property value. The date and time for the created at value on this TrustedForm certificate.
+     * Sets the createdAt property value. UTC timestamp for created at on this TrustedForm certificate.
      * @param DateTime|null $value Value to set for the createdAt property.
     */
     public function setCreatedAt(?DateTime $value): void {
@@ -137,7 +137,7 @@ class TrustedFormCertificate implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The unique ID for this TrustedForm certificate.
+     * Sets the id property value. Unique Leadping identifier for this TrustedForm certificate.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -145,7 +145,7 @@ class TrustedFormCertificate implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the source property value. The source value for this TrustedForm certificate.
+     * Sets the source property value. Source for this TrustedForm certificate.
      * @param string|null $value Value to set for the source property.
     */
     public function setSource(?string $value): void {

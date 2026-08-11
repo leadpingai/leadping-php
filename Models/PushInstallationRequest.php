@@ -18,57 +18,57 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $appBuild The appBuild property
+     * @var string|null $appBuild The application build number reported by the client.
     */
     private ?string $appBuild = null;
     
     /**
-     * @var string|null $appIdentifier The appIdentifier property
+     * @var string|null $appIdentifier The application bundle identifier or package name.
     */
     private ?string $appIdentifier = null;
     
     /**
-     * @var string|null $appName The appName property
+     * @var string|null $appName The human-readable application name reported by the client.
     */
     private ?string $appName = null;
     
     /**
-     * @var string|null $appVersion The appVersion property
+     * @var string|null $appVersion The semantic application version reported by the client.
     */
     private ?string $appVersion = null;
     
     /**
-     * @var string|null $deviceModel The deviceModel property
+     * @var string|null $deviceModel The device model reported by the client.
     */
     private ?string $deviceModel = null;
     
     /**
-     * @var string|null $devicePlatform The devicePlatform property
+     * @var string|null $devicePlatform The mobile operating-system platform reported by the device.
     */
     private ?string $devicePlatform = null;
     
     /**
-     * @var string|null $deviceVersion The deviceVersion property
+     * @var string|null $deviceVersion The mobile operating-system version reported by the device.
     */
     private ?string $deviceVersion = null;
     
     /**
-     * @var string|null $installationId The installationId property
+     * @var string|null $installationId The stable installation identifier assigned by the mobile client.
     */
     private ?string $installationId = null;
     
     /**
-     * @var PushInstallationRequest_metadata|null $metadata The metadata property
+     * @var PushInstallationRequest_metadata|null $metadata Optional client metadata stored with the push installation.
     */
     private ?PushInstallationRequest_metadata $metadata = null;
     
     /**
-     * @var string|null $platform The platform property
+     * @var string|null $platform The Azure Notification Hubs platform name, such as apns or fcmv1.
     */
     private ?string $platform = null;
     
     /**
-     * @var string|null $pushChannel The pushChannel property
+     * @var string|null $pushChannel The provider-issued push token or channel used to deliver notifications.
     */
     private ?string $pushChannel = null;
     
@@ -97,7 +97,7 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the appBuild property value. The appBuild property
+     * Gets the appBuild property value. The application build number reported by the client.
      * @return string|null
     */
     public function getAppBuild(): ?string {
@@ -105,7 +105,7 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the appIdentifier property value. The appIdentifier property
+     * Gets the appIdentifier property value. The application bundle identifier or package name.
      * @return string|null
     */
     public function getAppIdentifier(): ?string {
@@ -113,7 +113,7 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the appName property value. The appName property
+     * Gets the appName property value. The human-readable application name reported by the client.
      * @return string|null
     */
     public function getAppName(): ?string {
@@ -121,7 +121,7 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the appVersion property value. The appVersion property
+     * Gets the appVersion property value. The semantic application version reported by the client.
      * @return string|null
     */
     public function getAppVersion(): ?string {
@@ -129,7 +129,7 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the deviceModel property value. The deviceModel property
+     * Gets the deviceModel property value. The device model reported by the client.
      * @return string|null
     */
     public function getDeviceModel(): ?string {
@@ -137,7 +137,7 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the devicePlatform property value. The devicePlatform property
+     * Gets the devicePlatform property value. The mobile operating-system platform reported by the device.
      * @return string|null
     */
     public function getDevicePlatform(): ?string {
@@ -145,7 +145,7 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the deviceVersion property value. The deviceVersion property
+     * Gets the deviceVersion property value. The mobile operating-system version reported by the device.
      * @return string|null
     */
     public function getDeviceVersion(): ?string {
@@ -174,7 +174,7 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the installationId property value. The installationId property
+     * Gets the installationId property value. The stable installation identifier assigned by the mobile client.
      * @return string|null
     */
     public function getInstallationId(): ?string {
@@ -182,7 +182,7 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the metadata property value. The metadata property
+     * Gets the metadata property value. Optional client metadata stored with the push installation.
      * @return PushInstallationRequest_metadata|null
     */
     public function getMetadata(): ?PushInstallationRequest_metadata {
@@ -190,7 +190,7 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the platform property value. The platform property
+     * Gets the platform property value. The Azure Notification Hubs platform name, such as apns or fcmv1.
      * @return string|null
     */
     public function getPlatform(): ?string {
@@ -198,7 +198,7 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the pushChannel property value. The pushChannel property
+     * Gets the pushChannel property value. The provider-issued push token or channel used to deliver notifications.
      * @return string|null
     */
     public function getPushChannel(): ?string {
@@ -233,7 +233,7 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the appBuild property value. The appBuild property
+     * Sets the appBuild property value. The application build number reported by the client.
      * @param string|null $value Value to set for the appBuild property.
     */
     public function setAppBuild(?string $value): void {
@@ -241,7 +241,7 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the appIdentifier property value. The appIdentifier property
+     * Sets the appIdentifier property value. The application bundle identifier or package name.
      * @param string|null $value Value to set for the appIdentifier property.
     */
     public function setAppIdentifier(?string $value): void {
@@ -249,7 +249,7 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the appName property value. The appName property
+     * Sets the appName property value. The human-readable application name reported by the client.
      * @param string|null $value Value to set for the appName property.
     */
     public function setAppName(?string $value): void {
@@ -257,7 +257,7 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the appVersion property value. The appVersion property
+     * Sets the appVersion property value. The semantic application version reported by the client.
      * @param string|null $value Value to set for the appVersion property.
     */
     public function setAppVersion(?string $value): void {
@@ -265,7 +265,7 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the deviceModel property value. The deviceModel property
+     * Sets the deviceModel property value. The device model reported by the client.
      * @param string|null $value Value to set for the deviceModel property.
     */
     public function setDeviceModel(?string $value): void {
@@ -273,7 +273,7 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the devicePlatform property value. The devicePlatform property
+     * Sets the devicePlatform property value. The mobile operating-system platform reported by the device.
      * @param string|null $value Value to set for the devicePlatform property.
     */
     public function setDevicePlatform(?string $value): void {
@@ -281,7 +281,7 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the deviceVersion property value. The deviceVersion property
+     * Sets the deviceVersion property value. The mobile operating-system version reported by the device.
      * @param string|null $value Value to set for the deviceVersion property.
     */
     public function setDeviceVersion(?string $value): void {
@@ -289,7 +289,7 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the installationId property value. The installationId property
+     * Sets the installationId property value. The stable installation identifier assigned by the mobile client.
      * @param string|null $value Value to set for the installationId property.
     */
     public function setInstallationId(?string $value): void {
@@ -297,7 +297,7 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the metadata property value. The metadata property
+     * Sets the metadata property value. Optional client metadata stored with the push installation.
      * @param PushInstallationRequest_metadata|null $value Value to set for the metadata property.
     */
     public function setMetadata(?PushInstallationRequest_metadata $value): void {
@@ -305,7 +305,7 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the platform property value. The platform property
+     * Sets the platform property value. The Azure Notification Hubs platform name, such as apns or fcmv1.
      * @param string|null $value Value to set for the platform property.
     */
     public function setPlatform(?string $value): void {
@@ -313,7 +313,7 @@ class PushInstallationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the pushChannel property value. The pushChannel property
+     * Sets the pushChannel property value. The provider-issued push token or channel used to deliver notifications.
      * @param string|null $value Value to set for the pushChannel property.
     */
     public function setPushChannel(?string $value): void {

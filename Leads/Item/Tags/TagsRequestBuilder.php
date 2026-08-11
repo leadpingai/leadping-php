@@ -20,7 +20,7 @@ class TagsRequestBuilder extends BaseRequestBuilder
 {
     /**
      * Gets an item from the Leadping/OpenApiClient.leads.item.tags.item collection
-     * @param string $tagId Unique identifier of the item
+     * @param string $tagId The unique identifier of the organization tag to remove.
      * @return WithTagItemRequestBuilder
     */
     public function byTagId(string $tagId): WithTagItemRequestBuilder {
@@ -45,7 +45,7 @@ class TagsRequestBuilder extends BaseRequestBuilder
 
     /**
      * Adds one or more current-organization tags to a lead so users can segment, filter, route, and review follow-up work.
-     * @param LeadTagsRequest $body Request schema for the Leadping API lead tag update request, including the fields clients can send.
+     * @param LeadTagsRequest $body Defines the fields clients can send when working with lead tag update.
      * @param TagsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<LeadResponse|null>
      * @throws Exception
@@ -62,7 +62,7 @@ class TagsRequestBuilder extends BaseRequestBuilder
 
     /**
      * Replaces all tags on a lead with the supplied current-organization tags, keeping segmentation and routing labels in sync.
-     * @param LeadTagsRequest $body Request schema for the Leadping API lead tag update request, including the fields clients can send.
+     * @param LeadTagsRequest $body Defines the fields clients can send when working with lead tag update.
      * @param TagsRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<LeadResponse|null>
      * @throws Exception
@@ -79,7 +79,7 @@ class TagsRequestBuilder extends BaseRequestBuilder
 
     /**
      * Adds one or more current-organization tags to a lead so users can segment, filter, route, and review follow-up work.
-     * @param LeadTagsRequest $body Request schema for the Leadping API lead tag update request, including the fields clients can send.
+     * @param LeadTagsRequest $body Defines the fields clients can send when working with lead tag update.
      * @param TagsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -99,7 +99,7 @@ class TagsRequestBuilder extends BaseRequestBuilder
 
     /**
      * Replaces all tags on a lead with the supplied current-organization tags, keeping segmentation and routing labels in sync.
-     * @param LeadTagsRequest $body Request schema for the Leadping API lead tag update request, including the fields clients can send.
+     * @param LeadTagsRequest $body Defines the fields clients can send when working with lead tag update.
      * @param TagsRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

@@ -88,7 +88,7 @@ class MeRequestBuilder extends BaseRequestBuilder
 
     /**
      * Creates an organization account for the authenticated user, assigns them as its owner, and makes it their active organization context.
-     * @param OrganizationRequest $body Request schema for the Leadping API organization profile request, including the fields clients can send.
+     * @param OrganizationRequest $body Defines the fields clients can send when working with organization profile.
      * @param MeRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<OrganizationResponse|null>
      * @throws Exception
@@ -104,7 +104,7 @@ class MeRequestBuilder extends BaseRequestBuilder
 
     /**
      * Updates the authenticated user's current organization profile, including contact, settings, and communication configuration.
-     * @param OrganizationRequest $body Request schema for the Leadping API organization profile request, including the fields clients can send.
+     * @param OrganizationRequest $body Defines the fields clients can send when working with organization profile.
      * @param MeRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<OrganizationResponse|null>
      * @throws Exception
@@ -138,7 +138,7 @@ class MeRequestBuilder extends BaseRequestBuilder
 
     /**
      * Creates an organization account for the authenticated user, assigns them as its owner, and makes it their active organization context.
-     * @param OrganizationRequest $body Request schema for the Leadping API organization profile request, including the fields clients can send.
+     * @param OrganizationRequest $body Defines the fields clients can send when working with organization profile.
      * @param MeRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -158,7 +158,7 @@ class MeRequestBuilder extends BaseRequestBuilder
 
     /**
      * Updates the authenticated user's current organization profile, including contact, settings, and communication configuration.
-     * @param OrganizationRequest $body Request schema for the Leadping API organization profile request, including the fields clients can send.
+     * @param OrganizationRequest $body Defines the fields clients can send when working with organization profile.
      * @param MeRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

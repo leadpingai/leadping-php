@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * API response containing suppression entry data returned to callers.
+ * Describes a recipient suppression that prevents outreach through one or more communication channels.
 */
 class SuppressionEntryResponse implements AdditionalDataHolder, Parsable 
 {
@@ -19,62 +19,62 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var array<SuppressionEntryAudit>|null $audit The audit included with this ion entry.
+     * @var array<SuppressionEntryAudit>|null $audit Chronological audit history of suppression and release changes.
     */
     private ?array $audit = null;
     
     /**
-     * @var string|null $channel The channel value for this ion entry.
+     * @var string|null $channel Communication channel affected by the suppression, such as SMS, voice, email, or all channels.
     */
     private ?string $channel = null;
     
     /**
-     * @var string|null $id The unique ID for this ion entry.
+     * @var string|null $id Unique Leadping identifier for the suppression entry.
     */
     private ?string $id = null;
     
     /**
-     * @var string|null $normalizedEmail The normalized email value for this ion entry.
+     * @var string|null $normalizedEmail Suppressed email address normalized for matching.
     */
     private ?string $normalizedEmail = null;
     
     /**
-     * @var string|null $normalizedPhoneNumber The phone number associated with this ion entry.
+     * @var string|null $normalizedPhoneNumber Suppressed phone number normalized to a consistent format.
     */
     private ?string $normalizedPhoneNumber = null;
     
     /**
-     * @var string|null $organizationId The organization ID associated with this ion entry.
+     * @var string|null $organizationId Identifier of the organization that owns the suppression entry.
     */
     private ?string $organizationId = null;
     
     /**
-     * @var string|null $reason The human-readable reason explaining this ion entry.
+     * @var string|null $reason Human-readable reason the recipient was suppressed or subsequently released.
     */
     private ?string $reason = null;
     
     /**
-     * @var string|null $recipientIdentifier The recipient identifier value for this ion entry.
+     * @var string|null $recipientIdentifier Provider or customer identifier used to recognize the suppressed recipient.
     */
     private ?string $recipientIdentifier = null;
     
     /**
-     * @var DateTime|null $releasedAt The date and time for the released at value on this ion entry.
+     * @var DateTime|null $releasedAt UTC timestamp when the suppression was released, or while it remains active.
     */
     private ?DateTime $releasedAt = null;
     
     /**
-     * @var string|null $source The source value for this ion entry.
+     * @var string|null $source System or workflow that created the suppression.
     */
     private ?string $source = null;
     
     /**
-     * @var string|null $status The current status for this ion entry.
+     * @var string|null $status Current lifecycle state, such as active or released.
     */
     private ?string $status = null;
     
     /**
-     * @var DateTime|null $suppressedAt The date and time for the suppressed at value on this ion entry.
+     * @var DateTime|null $suppressedAt UTC timestamp when the suppression became active.
     */
     private ?DateTime $suppressedAt = null;
     
@@ -103,7 +103,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the audit property value. The audit included with this ion entry.
+     * Gets the audit property value. Chronological audit history of suppression and release changes.
      * @return array<SuppressionEntryAudit>|null
     */
     public function getAudit(): ?array {
@@ -111,7 +111,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the channel property value. The channel value for this ion entry.
+     * Gets the channel property value. Communication channel affected by the suppression, such as SMS, voice, email, or all channels.
      * @return string|null
     */
     public function getChannel(): ?string {
@@ -141,7 +141,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The unique ID for this ion entry.
+     * Gets the id property value. Unique Leadping identifier for the suppression entry.
      * @return string|null
     */
     public function getId(): ?string {
@@ -149,7 +149,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the normalizedEmail property value. The normalized email value for this ion entry.
+     * Gets the normalizedEmail property value. Suppressed email address normalized for matching.
      * @return string|null
     */
     public function getNormalizedEmail(): ?string {
@@ -157,7 +157,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the normalizedPhoneNumber property value. The phone number associated with this ion entry.
+     * Gets the normalizedPhoneNumber property value. Suppressed phone number normalized to a consistent format.
      * @return string|null
     */
     public function getNormalizedPhoneNumber(): ?string {
@@ -165,7 +165,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organizationId property value. The organization ID associated with this ion entry.
+     * Gets the organizationId property value. Identifier of the organization that owns the suppression entry.
      * @return string|null
     */
     public function getOrganizationId(): ?string {
@@ -173,7 +173,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the reason property value. The human-readable reason explaining this ion entry.
+     * Gets the reason property value. Human-readable reason the recipient was suppressed or subsequently released.
      * @return string|null
     */
     public function getReason(): ?string {
@@ -181,7 +181,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the recipientIdentifier property value. The recipient identifier value for this ion entry.
+     * Gets the recipientIdentifier property value. Provider or customer identifier used to recognize the suppressed recipient.
      * @return string|null
     */
     public function getRecipientIdentifier(): ?string {
@@ -189,7 +189,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the releasedAt property value. The date and time for the released at value on this ion entry.
+     * Gets the releasedAt property value. UTC timestamp when the suppression was released, or while it remains active.
      * @return DateTime|null
     */
     public function getReleasedAt(): ?DateTime {
@@ -197,7 +197,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the source property value. The source value for this ion entry.
+     * Gets the source property value. System or workflow that created the suppression.
      * @return string|null
     */
     public function getSource(): ?string {
@@ -205,7 +205,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. The current status for this ion entry.
+     * Gets the status property value. Current lifecycle state, such as active or released.
      * @return string|null
     */
     public function getStatus(): ?string {
@@ -213,7 +213,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the suppressedAt property value. The date and time for the suppressed at value on this ion entry.
+     * Gets the suppressedAt property value. UTC timestamp when the suppression became active.
      * @return DateTime|null
     */
     public function getSuppressedAt(): ?DateTime {
@@ -249,7 +249,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the audit property value. The audit included with this ion entry.
+     * Sets the audit property value. Chronological audit history of suppression and release changes.
      * @param array<SuppressionEntryAudit>|null $value Value to set for the audit property.
     */
     public function setAudit(?array $value): void {
@@ -257,7 +257,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the channel property value. The channel value for this ion entry.
+     * Sets the channel property value. Communication channel affected by the suppression, such as SMS, voice, email, or all channels.
      * @param string|null $value Value to set for the channel property.
     */
     public function setChannel(?string $value): void {
@@ -265,7 +265,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The unique ID for this ion entry.
+     * Sets the id property value. Unique Leadping identifier for the suppression entry.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -273,7 +273,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the normalizedEmail property value. The normalized email value for this ion entry.
+     * Sets the normalizedEmail property value. Suppressed email address normalized for matching.
      * @param string|null $value Value to set for the normalizedEmail property.
     */
     public function setNormalizedEmail(?string $value): void {
@@ -281,7 +281,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the normalizedPhoneNumber property value. The phone number associated with this ion entry.
+     * Sets the normalizedPhoneNumber property value. Suppressed phone number normalized to a consistent format.
      * @param string|null $value Value to set for the normalizedPhoneNumber property.
     */
     public function setNormalizedPhoneNumber(?string $value): void {
@@ -289,7 +289,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organizationId property value. The organization ID associated with this ion entry.
+     * Sets the organizationId property value. Identifier of the organization that owns the suppression entry.
      * @param string|null $value Value to set for the organizationId property.
     */
     public function setOrganizationId(?string $value): void {
@@ -297,7 +297,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the reason property value. The human-readable reason explaining this ion entry.
+     * Sets the reason property value. Human-readable reason the recipient was suppressed or subsequently released.
      * @param string|null $value Value to set for the reason property.
     */
     public function setReason(?string $value): void {
@@ -305,7 +305,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the recipientIdentifier property value. The recipient identifier value for this ion entry.
+     * Sets the recipientIdentifier property value. Provider or customer identifier used to recognize the suppressed recipient.
      * @param string|null $value Value to set for the recipientIdentifier property.
     */
     public function setRecipientIdentifier(?string $value): void {
@@ -313,7 +313,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the releasedAt property value. The date and time for the released at value on this ion entry.
+     * Sets the releasedAt property value. UTC timestamp when the suppression was released, or while it remains active.
      * @param DateTime|null $value Value to set for the releasedAt property.
     */
     public function setReleasedAt(?DateTime $value): void {
@@ -321,7 +321,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the source property value. The source value for this ion entry.
+     * Sets the source property value. System or workflow that created the suppression.
      * @param string|null $value Value to set for the source property.
     */
     public function setSource(?string $value): void {
@@ -329,7 +329,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. The current status for this ion entry.
+     * Sets the status property value. Current lifecycle state, such as active or released.
      * @param string|null $value Value to set for the status property.
     */
     public function setStatus(?string $value): void {
@@ -337,7 +337,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the suppressedAt property value. The date and time for the suppressed at value on this ion entry.
+     * Sets the suppressedAt property value. UTC timestamp when the suppression became active.
      * @param DateTime|null $value Value to set for the suppressedAt property.
     */
     public function setSuppressedAt(?DateTime $value): void {

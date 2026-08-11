@@ -19,22 +19,22 @@ class TelephonyLoginResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $callbackToken The callback token value for this telephony login.
+     * @var string|null $callbackToken Callback token for this telephony login.
     */
     private ?string $callbackToken = null;
     
     /**
-     * @var DateTime|null $expiresAt The date and time for the expires at value on this telephony login.
+     * @var DateTime|null $expiresAt UTC timestamp for expires at on this telephony login.
     */
     private ?DateTime $expiresAt = null;
     
     /**
-     * @var string|null $password The password value for this telephony login.
+     * @var string|null $password Password for this telephony login.
     */
     private ?string $password = null;
     
     /**
-     * @var string|null $username The username value for this telephony login.
+     * @var string|null $username Username for this telephony login.
     */
     private ?string $username = null;
     
@@ -63,7 +63,7 @@ class TelephonyLoginResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the callbackToken property value. The callback token value for this telephony login.
+     * Gets the callbackToken property value. Callback token for this telephony login.
      * @return string|null
     */
     public function getCallbackToken(): ?string {
@@ -71,7 +71,7 @@ class TelephonyLoginResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the expiresAt property value. The date and time for the expires at value on this telephony login.
+     * Gets the expiresAt property value. UTC timestamp for expires at on this telephony login.
      * @return DateTime|null
     */
     public function getExpiresAt(): ?DateTime {
@@ -93,7 +93,7 @@ class TelephonyLoginResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the password property value. The password value for this telephony login.
+     * Gets the password property value. Password for this telephony login.
      * @return string|null
     */
     public function getPassword(): ?string {
@@ -101,7 +101,7 @@ class TelephonyLoginResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the username property value. The username value for this telephony login.
+     * Gets the username property value. Username for this telephony login.
      * @return string|null
     */
     public function getUsername(): ?string {
@@ -129,7 +129,7 @@ class TelephonyLoginResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the callbackToken property value. The callback token value for this telephony login.
+     * Sets the callbackToken property value. Callback token for this telephony login.
      * @param string|null $value Value to set for the callbackToken property.
     */
     public function setCallbackToken(?string $value): void {
@@ -137,7 +137,7 @@ class TelephonyLoginResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the expiresAt property value. The date and time for the expires at value on this telephony login.
+     * Sets the expiresAt property value. UTC timestamp for expires at on this telephony login.
      * @param DateTime|null $value Value to set for the expiresAt property.
     */
     public function setExpiresAt(?DateTime $value): void {
@@ -145,7 +145,7 @@ class TelephonyLoginResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the password property value. The password value for this telephony login.
+     * Sets the password property value. Password for this telephony login.
      * @param string|null $value Value to set for the password property.
     */
     public function setPassword(?string $value): void {
@@ -153,7 +153,7 @@ class TelephonyLoginResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the username property value. The username value for this telephony login.
+     * Sets the username property value. Username for this telephony login.
      * @param string|null $value Value to set for the username property.
     */
     public function setUsername(?string $value): void {

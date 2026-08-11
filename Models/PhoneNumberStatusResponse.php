@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Response schema for the Leadping API phone number warmup status returned to authenticated clients.
+ * Describes a phone number's current warmup stage, limits, progress, and readiness for production traffic.
 */
 class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable 
 {

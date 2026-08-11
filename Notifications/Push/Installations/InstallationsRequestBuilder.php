@@ -21,7 +21,7 @@ class InstallationsRequestBuilder extends BaseRequestBuilder
     
     /**
      * Gets an item from the Leadping/OpenApiClient.notifications.push.installations.item collection
-     * @param string $installationId Unique identifier of the item
+     * @param string $installationId The stable mobile installation identifier to unregister.
      * @return WithInstallationItemRequestBuilder
     */
     public function byInstallationId(string $installationId): WithInstallationItemRequestBuilder {

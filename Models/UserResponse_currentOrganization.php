@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * The current organization value for this user.
+ * Current organization for this user.
 */
 class UserResponse_currentOrganization extends IdNamePair implements Parsable 
 {

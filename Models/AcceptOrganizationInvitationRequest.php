@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Request payload for accept organization invitation.
+ * Defines the input used for accept organization invitation.
 */
 class AcceptOrganizationInvitationRequest implements AdditionalDataHolder, Parsable 
 {
@@ -23,12 +23,12 @@ class AcceptOrganizationInvitationRequest implements AdditionalDataHolder, Parsa
     private ?string $email = null;
     
     /**
-     * @var string|null $firstName The first name value for this organization invitation.
+     * @var string|null $firstName First name for this organization invitation.
     */
     private ?string $firstName = null;
     
     /**
-     * @var string|null $lastName The date and time for the last name value on this organization invitation.
+     * @var string|null $lastName UTC timestamp for last name on this organization invitation.
     */
     private ?string $lastName = null;
     
@@ -84,7 +84,7 @@ class AcceptOrganizationInvitationRequest implements AdditionalDataHolder, Parsa
     }
 
     /**
-     * Gets the firstName property value. The first name value for this organization invitation.
+     * Gets the firstName property value. First name for this organization invitation.
      * @return string|null
     */
     public function getFirstName(): ?string {
@@ -92,7 +92,7 @@ class AcceptOrganizationInvitationRequest implements AdditionalDataHolder, Parsa
     }
 
     /**
-     * Gets the lastName property value. The date and time for the last name value on this organization invitation.
+     * Gets the lastName property value. UTC timestamp for last name on this organization invitation.
      * @return string|null
     */
     public function getLastName(): ?string {
@@ -136,7 +136,7 @@ class AcceptOrganizationInvitationRequest implements AdditionalDataHolder, Parsa
     }
 
     /**
-     * Sets the firstName property value. The first name value for this organization invitation.
+     * Sets the firstName property value. First name for this organization invitation.
      * @param string|null $value Value to set for the firstName property.
     */
     public function setFirstName(?string $value): void {
@@ -144,7 +144,7 @@ class AcceptOrganizationInvitationRequest implements AdditionalDataHolder, Parsa
     }
 
     /**
-     * Sets the lastName property value. The date and time for the last name value on this organization invitation.
+     * Sets the lastName property value. UTC timestamp for last name on this organization invitation.
      * @param string|null $value Value to set for the lastName property.
     */
     public function setLastName(?string $value): void {
