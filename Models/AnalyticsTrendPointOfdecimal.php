@@ -34,11 +34,6 @@ class AnalyticsTrendPointOfdecimal implements AdditionalDataHolder, Parsable
     private ?DateTime $startAt = null;
     
     /**
-     * @var float|null $value Value associated with this Leadping analytics trend point.
-    */
-    private ?float $value = null;
-    
-    /**
      * Instantiates a new AnalyticsTrendPointOfdecimal and sets the default values.
     */
     public function __construct() {
@@ -80,7 +75,6 @@ class AnalyticsTrendPointOfdecimal implements AdditionalDataHolder, Parsable
             'endAt' => fn(ParseNode $n) => $o->setEndAt($n->getDateTimeValue()),
             'label' => fn(ParseNode $n) => $o->setLabel($n->getStringValue()),
             'startAt' => fn(ParseNode $n) => $o->setStartAt($n->getDateTimeValue()),
-            'value' => fn(ParseNode $n) => $o->setValue($n->getFloatValue()),
         ];
     }
 
@@ -101,14 +95,6 @@ class AnalyticsTrendPointOfdecimal implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the value property value. Value associated with this Leadping analytics trend point.
-     * @return float|null
-    */
-    public function getValue(): ?float {
-        return $this->value;
-    }
-
-    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -116,7 +102,6 @@ class AnalyticsTrendPointOfdecimal implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('endAt', $this->getEndAt());
         $writer->writeStringValue('label', $this->getLabel());
         $writer->writeDateTimeValue('startAt', $this->getStartAt());
-        $writer->writeFloatValue('value', $this->getValue());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -150,14 +135,6 @@ class AnalyticsTrendPointOfdecimal implements AdditionalDataHolder, Parsable
     */
     public function setStartAt(?DateTime $value): void {
         $this->startAt = $value;
-    }
-
-    /**
-     * Sets the value property value. Value associated with this Leadping analytics trend point.
-     * @param float|null $value Value to set for the value property.
-    */
-    public function setValue(?float $value): void {
-        $this->value = $value;
     }
 
 }

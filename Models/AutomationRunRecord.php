@@ -64,11 +64,6 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     private ?string $organizationId = null;
     
     /**
-     * @var int|null $processingAttempts Number of processing attempts made for this workflow or delivery request.
-    */
-    private ?int $processingAttempts = null;
-    
-    /**
      * @var string|null $skippedReason Human-readable reason explaining why Leadping skipped this automation run.
     */
     private ?string $skippedReason = null;
@@ -168,7 +163,6 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
             'lastAttemptAt' => fn(ParseNode $n) => $o->setLastAttemptAt($n->getDateTimeValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
             'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
-            'processingAttempts' => fn(ParseNode $n) => $o->setProcessingAttempts($n->getIntegerValue()),
             'skippedReason' => fn(ParseNode $n) => $o->setSkippedReason($n->getStringValue()),
             'startedAt' => fn(ParseNode $n) => $o->setStartedAt($n->getDateTimeValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getStringValue()),
@@ -206,14 +200,6 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     */
     public function getOrganizationId(): ?string {
         return $this->organizationId;
-    }
-
-    /**
-     * Gets the processingAttempts property value. Number of processing attempts made for this workflow or delivery request.
-     * @return int|null
-    */
-    public function getProcessingAttempts(): ?int {
-        return $this->processingAttempts;
     }
 
     /**
@@ -262,7 +248,6 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('lastAttemptAt', $this->getLastAttemptAt());
         $writer->writeStringValue('leadId', $this->getLeadId());
         $writer->writeStringValue('organizationId', $this->getOrganizationId());
-        $writer->writeIntegerValue('processingAttempts', $this->getProcessingAttempts());
         $writer->writeStringValue('skippedReason', $this->getSkippedReason());
         $writer->writeDateTimeValue('startedAt', $this->getStartedAt());
         $writer->writeStringValue('status', $this->getStatus());
@@ -348,14 +333,6 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     */
     public function setOrganizationId(?string $value): void {
         $this->organizationId = $value;
-    }
-
-    /**
-     * Sets the processingAttempts property value. Number of processing attempts made for this workflow or delivery request.
-     * @param int|null $value Value to set for the processingAttempts property.
-    */
-    public function setProcessingAttempts(?int $value): void {
-        $this->processingAttempts = $value;
     }
 
     /**

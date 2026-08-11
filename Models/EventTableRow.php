@@ -34,11 +34,6 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var float|null $billableAmount Monetary amount billed for this Leadping communication or transaction.
-    */
-    private ?float $billableAmount = null;
-    
-    /**
      * @var string|null $billingStatus Billing state for this communication, charge, or transaction.
     */
     private ?string $billingStatus = null;
@@ -174,11 +169,6 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     private ?string $relatedEntityType = null;
     
     /**
-     * @var int|null $retryCount Number of retry attempts already made for this event timeline table row.
-    */
-    private ?int $retryCount = null;
-    
-    /**
      * @var DateTime|null $scheduledFor UTC timestamp when the related delivery or workflow action is scheduled to run.
     */
     private ?DateTime $scheduledFor = null;
@@ -299,14 +289,6 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function getAdditionalData(): ?array {
         return $this->additionalData;
-    }
-
-    /**
-     * Gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-     * @return float|null
-    */
-    public function getBillableAmount(): ?float {
-        return $this->billableAmount;
     }
 
     /**
@@ -447,7 +429,6 @@ class EventTableRow implements AdditionalDataHolder, Parsable
             'actorDisplayName' => fn(ParseNode $n) => $o->setActorDisplayName($n->getStringValue()),
             'actorEmail' => fn(ParseNode $n) => $o->setActorEmail($n->getStringValue()),
             'actorUserId' => fn(ParseNode $n) => $o->setActorUserId($n->getStringValue()),
-            'billableAmount' => fn(ParseNode $n) => $o->setBillableAmount($n->getFloatValue()),
             'billingStatus' => fn(ParseNode $n) => $o->setBillingStatus($n->getStringValue()),
             'blockedAt' => fn(ParseNode $n) => $o->setBlockedAt($n->getDateTimeValue()),
             'campaignId' => fn(ParseNode $n) => $o->setCampaignId($n->getStringValue()),
@@ -475,7 +456,6 @@ class EventTableRow implements AdditionalDataHolder, Parsable
             'receivedAt' => fn(ParseNode $n) => $o->setReceivedAt($n->getDateTimeValue()),
             'relatedEntityId' => fn(ParseNode $n) => $o->setRelatedEntityId($n->getStringValue()),
             'relatedEntityType' => fn(ParseNode $n) => $o->setRelatedEntityType($n->getStringValue()),
-            'retryCount' => fn(ParseNode $n) => $o->setRetryCount($n->getIntegerValue()),
             'scheduledFor' => fn(ParseNode $n) => $o->setScheduledFor($n->getDateTimeValue()),
             'scheduledReason' => fn(ParseNode $n) => $o->setScheduledReason($n->getStringValue()),
             'selectionReason' => fn(ParseNode $n) => $o->setSelectionReason($n->getEnumValue(EventTableRow_selectionReason::class)),
@@ -580,14 +560,6 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function getRelatedEntityType(): ?string {
         return $this->relatedEntityType;
-    }
-
-    /**
-     * Gets the retryCount property value. Number of retry attempts already made for this event timeline table row.
-     * @return int|null
-    */
-    public function getRetryCount(): ?int {
-        return $this->retryCount;
     }
 
     /**
@@ -718,7 +690,6 @@ class EventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('actorDisplayName', $this->getActorDisplayName());
         $writer->writeStringValue('actorEmail', $this->getActorEmail());
         $writer->writeStringValue('actorUserId', $this->getActorUserId());
-        $writer->writeFloatValue('billableAmount', $this->getBillableAmount());
         $writer->writeStringValue('billingStatus', $this->getBillingStatus());
         $writer->writeDateTimeValue('blockedAt', $this->getBlockedAt());
         $writer->writeStringValue('campaignId', $this->getCampaignId());
@@ -746,7 +717,6 @@ class EventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('receivedAt', $this->getReceivedAt());
         $writer->writeStringValue('relatedEntityId', $this->getRelatedEntityId());
         $writer->writeStringValue('relatedEntityType', $this->getRelatedEntityType());
-        $writer->writeIntegerValue('retryCount', $this->getRetryCount());
         $writer->writeDateTimeValue('scheduledFor', $this->getScheduledFor());
         $writer->writeStringValue('scheduledReason', $this->getScheduledReason());
         $writer->writeEnumValue('selectionReason', $this->getSelectionReason());
@@ -795,14 +765,6 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-     * @param float|null $value Value to set for the billableAmount property.
-    */
-    public function setBillableAmount(?float $value): void {
-        $this->billableAmount = $value;
     }
 
     /**
@@ -1019,14 +981,6 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setRelatedEntityType(?string $value): void {
         $this->relatedEntityType = $value;
-    }
-
-    /**
-     * Sets the retryCount property value. Number of retry attempts already made for this event timeline table row.
-     * @param int|null $value Value to set for the retryCount property.
-    */
-    public function setRetryCount(?int $value): void {
-        $this->retryCount = $value;
     }
 
     /**

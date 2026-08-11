@@ -33,11 +33,6 @@ class MessageMediaAttachment implements AdditionalDataHolder, Parsable
     private ?string $sha256 = null;
     
     /**
-     * @var int|null $size Size of the media attachment in bytes.
-    */
-    private ?int $size = null;
-    
-    /**
      * @var string|null $url URL from which the media attachment can be retrieved.
     */
     private ?string $url = null;
@@ -84,7 +79,6 @@ class MessageMediaAttachment implements AdditionalDataHolder, Parsable
             'contentType' => fn(ParseNode $n) => $o->setContentType($n->getStringValue()),
             'fileName' => fn(ParseNode $n) => $o->setFileName($n->getStringValue()),
             'sha256' => fn(ParseNode $n) => $o->setSha256($n->getStringValue()),
-            'size' => fn(ParseNode $n) => $o->setSize($n->getIntegerValue()),
             'url' => fn(ParseNode $n) => $o->setUrl($n->getStringValue()),
         ];
     }
@@ -106,14 +100,6 @@ class MessageMediaAttachment implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the size property value. Size of the media attachment in bytes.
-     * @return int|null
-    */
-    public function getSize(): ?int {
-        return $this->size;
-    }
-
-    /**
      * Gets the url property value. URL from which the media attachment can be retrieved.
      * @return string|null
     */
@@ -129,7 +115,6 @@ class MessageMediaAttachment implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('contentType', $this->getContentType());
         $writer->writeStringValue('fileName', $this->getFileName());
         $writer->writeStringValue('sha256', $this->getSha256());
-        $writer->writeIntegerValue('size', $this->getSize());
         $writer->writeStringValue('url', $this->getUrl());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -164,14 +149,6 @@ class MessageMediaAttachment implements AdditionalDataHolder, Parsable
     */
     public function setSha256(?string $value): void {
         $this->sha256 = $value;
-    }
-
-    /**
-     * Sets the size property value. Size of the media attachment in bytes.
-     * @param int|null $value Value to set for the size property.
-    */
-    public function setSize(?int $value): void {
-        $this->size = $value;
     }
 
     /**

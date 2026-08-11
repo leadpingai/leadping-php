@@ -31,10 +31,10 @@ class StatusRequestBuilderGetRequestConfiguration extends BaseRequestConfigurati
      * Instantiates a new StatusRequestBuilderGetQueryParameters.
      * @param Date|null $endDate The end date.
      * @param Date|null $startDate The start date.
-     * @param int|null $windowDays The window days.
+     * @param string|null $windowDays The window days.
      * @return StatusRequestBuilderGetQueryParameters
     */
-    public static function createQueryParameters(?Date $endDate = null, ?Date $startDate = null, ?int $windowDays = null): StatusRequestBuilderGetQueryParameters {
+    public static function createQueryParameters(?Date $endDate = null, ?Date $startDate = null, ?string $windowDays = null): StatusRequestBuilderGetQueryParameters {
         return new StatusRequestBuilderGetQueryParameters($endDate, $startDate, $windowDays);
     }
 

@@ -18,16 +18,6 @@ class Coordinate implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var float|null $latitude Latitude of the geographic coordinate in decimal degrees, from -90 through 90.
-    */
-    private ?float $latitude = null;
-    
-    /**
-     * @var float|null $longitude Longitude of the geographic coordinate in decimal degrees, from -180 through 180.
-    */
-    private ?float $longitude = null;
-    
-    /**
      * Instantiates a new Coordinate and sets the default values.
     */
     public function __construct() {
@@ -58,25 +48,7 @@ class Coordinate implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'latitude' => fn(ParseNode $n) => $o->setLatitude($n->getFloatValue()),
-            'longitude' => fn(ParseNode $n) => $o->setLongitude($n->getFloatValue()),
         ];
-    }
-
-    /**
-     * Gets the latitude property value. Latitude of the geographic coordinate in decimal degrees, from -90 through 90.
-     * @return float|null
-    */
-    public function getLatitude(): ?float {
-        return $this->latitude;
-    }
-
-    /**
-     * Gets the longitude property value. Longitude of the geographic coordinate in decimal degrees, from -180 through 180.
-     * @return float|null
-    */
-    public function getLongitude(): ?float {
-        return $this->longitude;
     }
 
     /**
@@ -84,8 +56,6 @@ class Coordinate implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeFloatValue('latitude', $this->getLatitude());
-        $writer->writeFloatValue('longitude', $this->getLongitude());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -95,22 +65,6 @@ class Coordinate implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the latitude property value. Latitude of the geographic coordinate in decimal degrees, from -90 through 90.
-     * @param float|null $value Value to set for the latitude property.
-    */
-    public function setLatitude(?float $value): void {
-        $this->latitude = $value;
-    }
-
-    /**
-     * Sets the longitude property value. Longitude of the geographic coordinate in decimal degrees, from -180 through 180.
-     * @param float|null $value Value to set for the longitude property.
-    */
-    public function setLongitude(?float $value): void {
-        $this->longitude = $value;
     }
 
 }

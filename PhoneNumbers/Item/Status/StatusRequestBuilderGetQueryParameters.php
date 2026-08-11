@@ -20,17 +20,17 @@ class StatusRequestBuilderGetQueryParameters
     public ?Date $startDate = null;
     
     /**
-     * @var int|null $windowDays The window days.
+     * @var string|null $windowDays The window days.
     */
-    public ?int $windowDays = null;
+    public ?string $windowDays = null;
     
     /**
      * Instantiates a new StatusRequestBuilderGetQueryParameters and sets the default values.
      * @param Date|null $endDate The end date.
      * @param Date|null $startDate The start date.
-     * @param int|null $windowDays The window days.
+     * @param string|null $windowDays The window days.
     */
-    public function __construct(?Date $endDate = null, ?Date $startDate = null, ?int $windowDays = null) {
+    public function __construct(?Date $endDate = null, ?Date $startDate = null, ?string $windowDays = null) {
         $this->endDate = $endDate;
         $this->startDate = $startDate;
         $this->windowDays = $windowDays;

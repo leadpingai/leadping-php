@@ -29,12 +29,12 @@ class MetricsRequestBuilderGetRequestConfiguration extends BaseRequestConfigurat
 
     /**
      * Instantiates a new MetricsRequestBuilderGetQueryParameters.
-     * @param int|null $days Optional rolling day count when explicit dates are not provided.
+     * @param string|null $days Optional rolling day count when explicit dates are not provided.
      * @param DateTime|null $endAt Optional end date/time for the metric range.
      * @param DateTime|null $startAt Optional start date/time for the metric range.
      * @return MetricsRequestBuilderGetQueryParameters
     */
-    public static function createQueryParameters(?int $days = null, ?DateTime $endAt = null, ?DateTime $startAt = null): MetricsRequestBuilderGetQueryParameters {
+    public static function createQueryParameters(?string $days = null, ?DateTime $endAt = null, ?DateTime $startAt = null): MetricsRequestBuilderGetQueryParameters {
         return new MetricsRequestBuilderGetQueryParameters($days, $endAt, $startAt);
     }
 

@@ -84,11 +84,6 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     private ?string $phone = null;
     
     /**
-     * @var float|null $price Lead price or transaction price supplied to the Leadping API.
-    */
-    private ?float $price = null;
-    
-    /**
      * @var LeadTableRow_source|null $source Identifier and display name of the related source.
     */
     private ?LeadTableRow_source $source = null;
@@ -213,7 +208,6 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
             'lastName' => fn(ParseNode $n) => $o->setLastName($n->getStringValue()),
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([LeadTableRow_organization::class, 'createFromDiscriminatorValue'])),
             'phone' => fn(ParseNode $n) => $o->setPhone($n->getStringValue()),
-            'price' => fn(ParseNode $n) => $o->setPrice($n->getFloatValue()),
             'source' => fn(ParseNode $n) => $o->setSource($n->getObjectValue([LeadTableRow_source::class, 'createFromDiscriminatorValue'])),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getStringValue()),
             'statusTone' => fn(ParseNode $n) => $o->setStatusTone($n->getStringValue()),
@@ -268,14 +262,6 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     */
     public function getPhone(): ?string {
         return $this->phone;
-    }
-
-    /**
-     * Gets the price property value. Lead price or transaction price supplied to the Leadping API.
-     * @return float|null
-    */
-    public function getPrice(): ?float {
-        return $this->price;
     }
 
     /**
@@ -336,7 +322,6 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('lastName', $this->getLastName());
         $writer->writeObjectValue('organization', $this->getOrganization());
         $writer->writeStringValue('phone', $this->getPhone());
-        $writer->writeFloatValue('price', $this->getPrice());
         $writer->writeObjectValue('source', $this->getSource());
         $writer->writeStringValue('status', $this->getStatus());
         $writer->writeStringValue('statusTone', $this->getStatusTone());
@@ -455,14 +440,6 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     */
     public function setPhone(?string $value): void {
         $this->phone = $value;
-    }
-
-    /**
-     * Sets the price property value. Lead price or transaction price supplied to the Leadping API.
-     * @param float|null $value Value to set for the price property.
-    */
-    public function setPrice(?float $value): void {
-        $this->price = $value;
     }
 
     /**

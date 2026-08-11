@@ -24,11 +24,6 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var int|null $availableDomainCount The number of registrar-verified domains found by the current search.
-    */
-    private ?int $availableDomainCount = null;
-    
-    /**
      * @var ActivationSubscriptionStatus|null $billingSubscriptionStatus The current billing subscription status for this organization activation state.
     */
     private ?ActivationSubscriptionStatus $billingSubscriptionStatus = null;
@@ -67,11 +62,6 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
      * @var DateTime|null $domainPurchasedAt The date and time the selected domain was purchased.
     */
     private ?DateTime $domainPurchasedAt = null;
-    
-    /**
-     * @var int|null $domainSearchAttempt The current domain generation attempt.
-    */
-    private ?int $domainSearchAttempt = null;
     
     /**
      * @var string|null $domainSearchId Identifies the active domain search run.
@@ -266,14 +256,6 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the availableDomainCount property value. The number of registrar-verified domains found by the current search.
-     * @return int|null
-    */
-    public function getAvailableDomainCount(): ?int {
-        return $this->availableDomainCount;
-    }
-
-    /**
      * Gets the billingSubscriptionStatus property value. The current billing subscription status for this organization activation state.
      * @return ActivationSubscriptionStatus|null
     */
@@ -338,14 +320,6 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the domainSearchAttempt property value. The current domain generation attempt.
-     * @return int|null
-    */
-    public function getDomainSearchAttempt(): ?int {
-        return $this->domainSearchAttempt;
-    }
-
-    /**
      * Gets the domainSearchId property value. Identifies the active domain search run.
      * @return string|null
     */
@@ -393,7 +367,6 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'activatedAt' => fn(ParseNode $n) => $o->setActivatedAt($n->getDateTimeValue()),
-            'availableDomainCount' => fn(ParseNode $n) => $o->setAvailableDomainCount($n->getIntegerValue()),
             'billingSubscriptionStatus' => fn(ParseNode $n) => $o->setBillingSubscriptionStatus($n->getEnumValue(ActivationSubscriptionStatus::class)),
             'complianceNotes' => fn(ParseNode $n) => $o->setComplianceNotes($n->getStringValue()),
             'controlledLaunch' => fn(ParseNode $n) => $o->setControlledLaunch($n->getBooleanValue()),
@@ -402,7 +375,6 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
             'domainApprovedAt' => fn(ParseNode $n) => $o->setDomainApprovedAt($n->getDateTimeValue()),
             'domainOptions' => fn(ParseNode $n) => $o->setDomainOptions($n->getCollectionOfObjectValues([ActivationDomainOption::class, 'createFromDiscriminatorValue'])),
             'domainPurchasedAt' => fn(ParseNode $n) => $o->setDomainPurchasedAt($n->getDateTimeValue()),
-            'domainSearchAttempt' => fn(ParseNode $n) => $o->setDomainSearchAttempt($n->getIntegerValue()),
             'domainSearchId' => fn(ParseNode $n) => $o->setDomainSearchId($n->getStringValue()),
             'domainSearchStage' => fn(ParseNode $n) => $o->setDomainSearchStage($n->getEnumValue(OrganizationActivationState_domainSearchStage::class)),
             'domainSearchUpdatedAt' => fn(ParseNode $n) => $o->setDomainSearchUpdatedAt($n->getDateTimeValue()),
@@ -660,7 +632,6 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeDateTimeValue('activatedAt', $this->getActivatedAt());
-        $writer->writeIntegerValue('availableDomainCount', $this->getAvailableDomainCount());
         $writer->writeEnumValue('billingSubscriptionStatus', $this->getBillingSubscriptionStatus());
         $writer->writeStringValue('complianceNotes', $this->getComplianceNotes());
         $writer->writeBooleanValue('controlledLaunch', $this->getControlledLaunch());
@@ -669,7 +640,6 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('domainApprovedAt', $this->getDomainApprovedAt());
         $writer->writeCollectionOfObjectValues('domainOptions', $this->getDomainOptions());
         $writer->writeDateTimeValue('domainPurchasedAt', $this->getDomainPurchasedAt());
-        $writer->writeIntegerValue('domainSearchAttempt', $this->getDomainSearchAttempt());
         $writer->writeStringValue('domainSearchId', $this->getDomainSearchId());
         $writer->writeEnumValue('domainSearchStage', $this->getDomainSearchStage());
         $writer->writeDateTimeValue('domainSearchUpdatedAt', $this->getDomainSearchUpdatedAt());
@@ -719,14 +689,6 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the availableDomainCount property value. The number of registrar-verified domains found by the current search.
-     * @param int|null $value Value to set for the availableDomainCount property.
-    */
-    public function setAvailableDomainCount(?int $value): void {
-        $this->availableDomainCount = $value;
     }
 
     /**
@@ -791,14 +753,6 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     */
     public function setDomainPurchasedAt(?DateTime $value): void {
         $this->domainPurchasedAt = $value;
-    }
-
-    /**
-     * Sets the domainSearchAttempt property value. The current domain generation attempt.
-     * @param int|null $value Value to set for the domainSearchAttempt property.
-    */
-    public function setDomainSearchAttempt(?int $value): void {
-        $this->domainSearchAttempt = $value;
     }
 
     /**

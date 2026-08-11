@@ -44,11 +44,6 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     private ?AutomationWorkflowRunResponse_currentStep $currentStep = null;
     
     /**
-     * @var int|null $currentStepOrder Current step order associated with this Leadping automation workflow run.
-    */
-    private ?int $currentStepOrder = null;
-    
-    /**
      * @var array<AutomationWorkflowEventResponse>|null $events Collection of events included with this Leadping automation workflow run.
     */
     private ?array $events = null;
@@ -89,11 +84,6 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     private ?string $leadId = null;
     
     /**
-     * @var int|null $maxRetryCount Total number of max retry records represented by this Leadping automation workflow run.
-    */
-    private ?int $maxRetryCount = null;
-    
-    /**
      * @var DateTime|null $nextExecutionAt Date and time when the next execution is scheduled.
     */
     private ?DateTime $nextExecutionAt = null;
@@ -107,11 +97,6 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
      * @var string|null $organizationId Unique identifier of the organization associated with this Leadping automation workflow run.
     */
     private ?string $organizationId = null;
-    
-    /**
-     * @var int|null $retryCount Total number of retry records represented by this Leadping automation workflow run.
-    */
-    private ?int $retryCount = null;
     
     /**
      * @var string|null $skipReasonCode Machine-readable code explaining why the workflow run or action was skipped.
@@ -218,14 +203,6 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the currentStepOrder property value. Current step order associated with this Leadping automation workflow run.
-     * @return int|null
-    */
-    public function getCurrentStepOrder(): ?int {
-        return $this->currentStepOrder;
-    }
-
-    /**
      * Gets the events property value. Collection of events included with this Leadping automation workflow run.
      * @return array<AutomationWorkflowEventResponse>|null
     */
@@ -253,7 +230,6 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
             'cancelledAt' => fn(ParseNode $n) => $o->setCancelledAt($n->getDateTimeValue()),
             'completedAt' => fn(ParseNode $n) => $o->setCompletedAt($n->getDateTimeValue()),
             'currentStep' => fn(ParseNode $n) => $o->setCurrentStep($n->getObjectValue([AutomationWorkflowRunResponse_currentStep::class, 'createFromDiscriminatorValue'])),
-            'currentStepOrder' => fn(ParseNode $n) => $o->setCurrentStepOrder($n->getIntegerValue()),
             'events' => fn(ParseNode $n) => $o->setEvents($n->getCollectionOfObjectValues([AutomationWorkflowEventResponse::class, 'createFromDiscriminatorValue'])),
             'failedAt' => fn(ParseNode $n) => $o->setFailedAt($n->getDateTimeValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
@@ -262,11 +238,9 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
             'lastErrorMessage' => fn(ParseNode $n) => $o->setLastErrorMessage($n->getStringValue()),
             'lastExecutionAt' => fn(ParseNode $n) => $o->setLastExecutionAt($n->getDateTimeValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
-            'maxRetryCount' => fn(ParseNode $n) => $o->setMaxRetryCount($n->getIntegerValue()),
             'nextExecutionAt' => fn(ParseNode $n) => $o->setNextExecutionAt($n->getDateTimeValue()),
             'nextRetryAt' => fn(ParseNode $n) => $o->setNextRetryAt($n->getDateTimeValue()),
             'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
-            'retryCount' => fn(ParseNode $n) => $o->setRetryCount($n->getIntegerValue()),
             'skipReasonCode' => fn(ParseNode $n) => $o->setSkipReasonCode($n->getStringValue()),
             'skipReasonDisplay' => fn(ParseNode $n) => $o->setSkipReasonDisplay($n->getStringValue()),
             'startedAt' => fn(ParseNode $n) => $o->setStartedAt($n->getDateTimeValue()),
@@ -327,14 +301,6 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the maxRetryCount property value. Total number of max retry records represented by this Leadping automation workflow run.
-     * @return int|null
-    */
-    public function getMaxRetryCount(): ?int {
-        return $this->maxRetryCount;
-    }
-
-    /**
      * Gets the nextExecutionAt property value. Date and time when the next execution is scheduled.
      * @return DateTime|null
     */
@@ -356,14 +322,6 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     */
     public function getOrganizationId(): ?string {
         return $this->organizationId;
-    }
-
-    /**
-     * Gets the retryCount property value. Total number of retry records represented by this Leadping automation workflow run.
-     * @return int|null
-    */
-    public function getRetryCount(): ?int {
-        return $this->retryCount;
     }
 
     /**
@@ -440,7 +398,6 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('cancelledAt', $this->getCancelledAt());
         $writer->writeDateTimeValue('completedAt', $this->getCompletedAt());
         $writer->writeObjectValue('currentStep', $this->getCurrentStep());
-        $writer->writeIntegerValue('currentStepOrder', $this->getCurrentStepOrder());
         $writer->writeCollectionOfObjectValues('events', $this->getEvents());
         $writer->writeDateTimeValue('failedAt', $this->getFailedAt());
         $writer->writeStringValue('id', $this->getId());
@@ -449,11 +406,9 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('lastErrorMessage', $this->getLastErrorMessage());
         $writer->writeDateTimeValue('lastExecutionAt', $this->getLastExecutionAt());
         $writer->writeStringValue('leadId', $this->getLeadId());
-        $writer->writeIntegerValue('maxRetryCount', $this->getMaxRetryCount());
         $writer->writeDateTimeValue('nextExecutionAt', $this->getNextExecutionAt());
         $writer->writeDateTimeValue('nextRetryAt', $this->getNextRetryAt());
         $writer->writeStringValue('organizationId', $this->getOrganizationId());
-        $writer->writeIntegerValue('retryCount', $this->getRetryCount());
         $writer->writeStringValue('skipReasonCode', $this->getSkipReasonCode());
         $writer->writeStringValue('skipReasonDisplay', $this->getSkipReasonDisplay());
         $writer->writeDateTimeValue('startedAt', $this->getStartedAt());
@@ -511,14 +466,6 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     */
     public function setCurrentStep(?AutomationWorkflowRunResponse_currentStep $value): void {
         $this->currentStep = $value;
-    }
-
-    /**
-     * Sets the currentStepOrder property value. Current step order associated with this Leadping automation workflow run.
-     * @param int|null $value Value to set for the currentStepOrder property.
-    */
-    public function setCurrentStepOrder(?int $value): void {
-        $this->currentStepOrder = $value;
     }
 
     /**
@@ -586,14 +533,6 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the maxRetryCount property value. Total number of max retry records represented by this Leadping automation workflow run.
-     * @param int|null $value Value to set for the maxRetryCount property.
-    */
-    public function setMaxRetryCount(?int $value): void {
-        $this->maxRetryCount = $value;
-    }
-
-    /**
      * Sets the nextExecutionAt property value. Date and time when the next execution is scheduled.
      * @param DateTime|null $value Value to set for the nextExecutionAt property.
     */
@@ -615,14 +554,6 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     */
     public function setOrganizationId(?string $value): void {
         $this->organizationId = $value;
-    }
-
-    /**
-     * Sets the retryCount property value. Total number of retry records represented by this Leadping automation workflow run.
-     * @param int|null $value Value to set for the retryCount property.
-    */
-    public function setRetryCount(?int $value): void {
-        $this->retryCount = $value;
     }
 
     /**

@@ -14,11 +14,6 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class OrganizationResponse implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var float|null $accountBalance Current wallet balance available to the organization.
-    */
-    private ?float $accountBalance = null;
-    
-    /**
      * @var OrganizationResponse_activation|null $activation Organization activation state covering site, billing, compliance, and telephony readiness.
     */
     private ?OrganizationResponse_activation $activation = null;
@@ -34,19 +29,9 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     private ?OrganizationResponse_address $address = null;
     
     /**
-     * @var float|null $autoRefillAmount Wallet refill amount charged when automatic refill is triggered.
-    */
-    private ?float $autoRefillAmount = null;
-    
-    /**
      * @var bool|null $autoRefillEnabled Indicates whether automatic wallet refill is enabled for the organization.
     */
     private ?bool $autoRefillEnabled = null;
-    
-    /**
-     * @var float|null $autoRefillTrigger Wallet balance threshold that triggers automatic refill.
-    */
-    private ?float $autoRefillTrigger = null;
     
     /**
      * @var OrganizationResponse_billingAddress|null $billingAddress Postal address used for invoices, receipts, and payment processor billing records.
@@ -195,14 +180,6 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the accountBalance property value. Current wallet balance available to the organization.
-     * @return float|null
-    */
-    public function getAccountBalance(): ?float {
-        return $this->accountBalance;
-    }
-
-    /**
      * Gets the activation property value. Organization activation state covering site, billing, compliance, and telephony readiness.
      * @return OrganizationResponse_activation|null
     */
@@ -227,27 +204,11 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the autoRefillAmount property value. Wallet refill amount charged when automatic refill is triggered.
-     * @return float|null
-    */
-    public function getAutoRefillAmount(): ?float {
-        return $this->autoRefillAmount;
-    }
-
-    /**
      * Gets the autoRefillEnabled property value. Indicates whether automatic wallet refill is enabled for the organization.
      * @return bool|null
     */
     public function getAutoRefillEnabled(): ?bool {
         return $this->autoRefillEnabled;
-    }
-
-    /**
-     * Gets the autoRefillTrigger property value. Wallet balance threshold that triggers automatic refill.
-     * @return float|null
-    */
-    public function getAutoRefillTrigger(): ?float {
-        return $this->autoRefillTrigger;
     }
 
     /**
@@ -353,12 +314,9 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'accountBalance' => fn(ParseNode $n) => $o->setAccountBalance($n->getFloatValue()),
             'activation' => fn(ParseNode $n) => $o->setActivation($n->getObjectValue([OrganizationResponse_activation::class, 'createFromDiscriminatorValue'])),
             'address' => fn(ParseNode $n) => $o->setAddress($n->getObjectValue([OrganizationResponse_address::class, 'createFromDiscriminatorValue'])),
-            'autoRefillAmount' => fn(ParseNode $n) => $o->setAutoRefillAmount($n->getFloatValue()),
             'autoRefillEnabled' => fn(ParseNode $n) => $o->setAutoRefillEnabled($n->getBooleanValue()),
-            'autoRefillTrigger' => fn(ParseNode $n) => $o->setAutoRefillTrigger($n->getFloatValue()),
             'billingAddress' => fn(ParseNode $n) => $o->setBillingAddress($n->getObjectValue([OrganizationResponse_billingAddress::class, 'createFromDiscriminatorValue'])),
             'billingName' => fn(ParseNode $n) => $o->setBillingName($n->getStringValue()),
             'billingPlan' => fn(ParseNode $n) => $o->setBillingPlan($n->getEnumValue(OrganizationResponse_billingPlan::class)),
@@ -505,12 +463,9 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeFloatValue('accountBalance', $this->getAccountBalance());
         $writer->writeObjectValue('activation', $this->getActivation());
         $writer->writeObjectValue('address', $this->getAddress());
-        $writer->writeFloatValue('autoRefillAmount', $this->getAutoRefillAmount());
         $writer->writeBooleanValue('autoRefillEnabled', $this->getAutoRefillEnabled());
-        $writer->writeFloatValue('autoRefillTrigger', $this->getAutoRefillTrigger());
         $writer->writeObjectValue('billingAddress', $this->getBillingAddress());
         $writer->writeStringValue('billingName', $this->getBillingName());
         $writer->writeEnumValue('billingPlan', $this->getBillingPlan());
@@ -541,14 +496,6 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the accountBalance property value. Current wallet balance available to the organization.
-     * @param float|null $value Value to set for the accountBalance property.
-    */
-    public function setAccountBalance(?float $value): void {
-        $this->accountBalance = $value;
-    }
-
-    /**
      * Sets the activation property value. Organization activation state covering site, billing, compliance, and telephony readiness.
      * @param OrganizationResponse_activation|null $value Value to set for the activation property.
     */
@@ -573,27 +520,11 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the autoRefillAmount property value. Wallet refill amount charged when automatic refill is triggered.
-     * @param float|null $value Value to set for the autoRefillAmount property.
-    */
-    public function setAutoRefillAmount(?float $value): void {
-        $this->autoRefillAmount = $value;
-    }
-
-    /**
      * Sets the autoRefillEnabled property value. Indicates whether automatic wallet refill is enabled for the organization.
      * @param bool|null $value Value to set for the autoRefillEnabled property.
     */
     public function setAutoRefillEnabled(?bool $value): void {
         $this->autoRefillEnabled = $value;
-    }
-
-    /**
-     * Sets the autoRefillTrigger property value. Wallet balance threshold that triggers automatic refill.
-     * @param float|null $value Value to set for the autoRefillTrigger property.
-    */
-    public function setAutoRefillTrigger(?float $value): void {
-        $this->autoRefillTrigger = $value;
     }
 
     /**

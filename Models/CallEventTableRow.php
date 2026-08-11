@@ -24,16 +24,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     private ?DateTime $answeredAt = null;
     
     /**
-     * @var float|null $billableAmount Monetary amount billed for this Leadping communication or transaction.
-    */
-    private ?float $billableAmount = null;
-    
-    /**
-     * @var int|null $billableSeconds Billable call duration in seconds.
-    */
-    private ?int $billableSeconds = null;
-    
-    /**
      * @var string|null $billingStatus Billing state for this communication, charge, or transaction.
     */
     private ?string $billingStatus = null;
@@ -57,11 +47,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
      * @var string|null $direction Communication direction for this call event table row, such as inbound or outbound.
     */
     private ?string $direction = null;
-    
-    /**
-     * @var int|null $duration Call duration or processing duration represented by this call event table row.
-    */
-    private ?int $duration = null;
     
     /**
      * @var DateTime|null $endedAt UTC timestamp when the call ended.
@@ -171,22 +156,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-     * @return float|null
-    */
-    public function getBillableAmount(): ?float {
-        return $this->billableAmount;
-    }
-
-    /**
-     * Gets the billableSeconds property value. Billable call duration in seconds.
-     * @return int|null
-    */
-    public function getBillableSeconds(): ?int {
-        return $this->billableSeconds;
-    }
-
-    /**
      * Gets the billingStatus property value. Billing state for this communication, charge, or transaction.
      * @return string|null
     */
@@ -227,14 +196,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the duration property value. Call duration or processing duration represented by this call event table row.
-     * @return int|null
-    */
-    public function getDuration(): ?int {
-        return $this->duration;
-    }
-
-    /**
      * Gets the endedAt property value. UTC timestamp when the call ended.
      * @return DateTime|null
     */
@@ -250,14 +211,11 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'answeredAt' => fn(ParseNode $n) => $o->setAnsweredAt($n->getDateTimeValue()),
-            'billableAmount' => fn(ParseNode $n) => $o->setBillableAmount($n->getFloatValue()),
-            'billableSeconds' => fn(ParseNode $n) => $o->setBillableSeconds($n->getIntegerValue()),
             'billingStatus' => fn(ParseNode $n) => $o->setBillingStatus($n->getStringValue()),
             'callerId' => fn(ParseNode $n) => $o->setCallerId($n->getStringValue()),
             'conversationId' => fn(ParseNode $n) => $o->setConversationId($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'direction' => fn(ParseNode $n) => $o->setDirection($n->getStringValue()),
-            'duration' => fn(ParseNode $n) => $o->setDuration($n->getIntegerValue()),
             'endedAt' => fn(ParseNode $n) => $o->setEndedAt($n->getDateTimeValue()),
             'fromPhoneNumber' => fn(ParseNode $n) => $o->setFromPhoneNumber($n->getStringValue()),
             'fromPhoneNumberId' => fn(ParseNode $n) => $o->setFromPhoneNumberId($n->getStringValue()),
@@ -394,14 +352,11 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeDateTimeValue('answeredAt', $this->getAnsweredAt());
-        $writer->writeFloatValue('billableAmount', $this->getBillableAmount());
-        $writer->writeIntegerValue('billableSeconds', $this->getBillableSeconds());
         $writer->writeStringValue('billingStatus', $this->getBillingStatus());
         $writer->writeStringValue('callerId', $this->getCallerId());
         $writer->writeStringValue('conversationId', $this->getConversationId());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('direction', $this->getDirection());
-        $writer->writeIntegerValue('duration', $this->getDuration());
         $writer->writeDateTimeValue('endedAt', $this->getEndedAt());
         $writer->writeStringValue('fromPhoneNumber', $this->getFromPhoneNumber());
         $writer->writeStringValue('fromPhoneNumberId', $this->getFromPhoneNumberId());
@@ -434,22 +389,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setAnsweredAt(?DateTime $value): void {
         $this->answeredAt = $value;
-    }
-
-    /**
-     * Sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-     * @param float|null $value Value to set for the billableAmount property.
-    */
-    public function setBillableAmount(?float $value): void {
-        $this->billableAmount = $value;
-    }
-
-    /**
-     * Sets the billableSeconds property value. Billable call duration in seconds.
-     * @param int|null $value Value to set for the billableSeconds property.
-    */
-    public function setBillableSeconds(?int $value): void {
-        $this->billableSeconds = $value;
     }
 
     /**
@@ -490,14 +429,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setDirection(?string $value): void {
         $this->direction = $value;
-    }
-
-    /**
-     * Sets the duration property value. Call duration or processing duration represented by this call event table row.
-     * @param int|null $value Value to set for the duration property.
-    */
-    public function setDuration(?int $value): void {
-        $this->duration = $value;
     }
 
     /**

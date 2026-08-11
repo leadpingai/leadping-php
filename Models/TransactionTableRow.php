@@ -19,19 +19,9 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var float|null $amount Monetary amount for this billing transaction or wallet operation.
-    */
-    private ?float $amount = null;
-    
-    /**
      * @var TransactionTableRow_billableUnit|null $billableUnit Defines the supported Billable Unit values.
     */
     private ?TransactionTableRow_billableUnit $billableUnit = null;
-    
-    /**
-     * @var float|null $billedAmount Customer-facing amount billed for the metered usage or wallet transaction.
-    */
-    private ?float $billedAmount = null;
     
     /**
      * @var TransactionTableRow_billingChannel|null $billingChannel Defines the supported Usage Channel values.
@@ -59,11 +49,6 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     private ?TransactionTableRow_lead $lead = null;
     
     /**
-     * @var float|null $netAmount Net monetary amount after fees, credits, or adjustments.
-    */
-    private ?float $netAmount = null;
-    
-    /**
      * @var TransactionTableRow_organization|null $organization Identifier and display name of the related organization.
     */
     private ?TransactionTableRow_organization $organization = null;
@@ -77,11 +62,6 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
      * @var string|null $pricingVersion Version of the pricing rules used to calculate the billed amount.
     */
     private ?string $pricingVersion = null;
-    
-    /**
-     * @var float|null $quantity Number of billable units measured for this transaction, when usage-based pricing applies.
-    */
-    private ?float $quantity = null;
     
     /**
      * @var string|null $sourceEventId Identifier of the event that created this billing transaction, when available.
@@ -102,11 +82,6 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
      * @var TransactionType|null $transactionType Debit or credit classification for this wallet transaction.
     */
     private ?TransactionType $transactionType = null;
-    
-    /**
-     * @var float|null $unitPrice Price charged per billable unit when usage-based pricing applies.
-    */
-    private ?float $unitPrice = null;
     
     /**
      * Instantiates a new TransactionTableRow and sets the default values.
@@ -133,27 +108,11 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the amount property value. Monetary amount for this billing transaction or wallet operation.
-     * @return float|null
-    */
-    public function getAmount(): ?float {
-        return $this->amount;
-    }
-
-    /**
      * Gets the billableUnit property value. Defines the supported Billable Unit values.
      * @return TransactionTableRow_billableUnit|null
     */
     public function getBillableUnit(): ?TransactionTableRow_billableUnit {
         return $this->billableUnit;
-    }
-
-    /**
-     * Gets the billedAmount property value. Customer-facing amount billed for the metered usage or wallet transaction.
-     * @return float|null
-    */
-    public function getBilledAmount(): ?float {
-        return $this->billedAmount;
     }
 
     /**
@@ -187,24 +146,19 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'amount' => fn(ParseNode $n) => $o->setAmount($n->getFloatValue()),
             'billableUnit' => fn(ParseNode $n) => $o->setBillableUnit($n->getEnumValue(TransactionTableRow_billableUnit::class)),
-            'billedAmount' => fn(ParseNode $n) => $o->setBilledAmount($n->getFloatValue()),
             'billingChannel' => fn(ParseNode $n) => $o->setBillingChannel($n->getEnumValue(TransactionTableRow_billingChannel::class)),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'lead' => fn(ParseNode $n) => $o->setLead($n->getObjectValue([TransactionTableRow_lead::class, 'createFromDiscriminatorValue'])),
-            'netAmount' => fn(ParseNode $n) => $o->setNetAmount($n->getFloatValue()),
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([TransactionTableRow_organization::class, 'createFromDiscriminatorValue'])),
             'paymentMethodDisplay' => fn(ParseNode $n) => $o->setPaymentMethodDisplay($n->getStringValue()),
             'pricingVersion' => fn(ParseNode $n) => $o->setPricingVersion($n->getStringValue()),
-            'quantity' => fn(ParseNode $n) => $o->setQuantity($n->getFloatValue()),
             'sourceEventId' => fn(ParseNode $n) => $o->setSourceEventId($n->getStringValue()),
             'sourceEventType' => fn(ParseNode $n) => $o->setSourceEventType($n->getStringValue()),
             'transactionStatus' => fn(ParseNode $n) => $o->setTransactionStatus($n->getEnumValue(TransactionStatus::class)),
             'transactionType' => fn(ParseNode $n) => $o->setTransactionType($n->getEnumValue(TransactionType::class)),
-            'unitPrice' => fn(ParseNode $n) => $o->setUnitPrice($n->getFloatValue()),
         ];
     }
 
@@ -222,14 +176,6 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     */
     public function getLead(): ?TransactionTableRow_lead {
         return $this->lead;
-    }
-
-    /**
-     * Gets the netAmount property value. Net monetary amount after fees, credits, or adjustments.
-     * @return float|null
-    */
-    public function getNetAmount(): ?float {
-        return $this->netAmount;
     }
 
     /**
@@ -254,14 +200,6 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     */
     public function getPricingVersion(): ?string {
         return $this->pricingVersion;
-    }
-
-    /**
-     * Gets the quantity property value. Number of billable units measured for this transaction, when usage-based pricing applies.
-     * @return float|null
-    */
-    public function getQuantity(): ?float {
-        return $this->quantity;
     }
 
     /**
@@ -297,36 +235,23 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the unitPrice property value. Price charged per billable unit when usage-based pricing applies.
-     * @return float|null
-    */
-    public function getUnitPrice(): ?float {
-        return $this->unitPrice;
-    }
-
-    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeFloatValue('amount', $this->getAmount());
         $writer->writeEnumValue('billableUnit', $this->getBillableUnit());
-        $writer->writeFloatValue('billedAmount', $this->getBilledAmount());
         $writer->writeEnumValue('billingChannel', $this->getBillingChannel());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('description', $this->getDescription());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeObjectValue('lead', $this->getLead());
-        $writer->writeFloatValue('netAmount', $this->getNetAmount());
         $writer->writeObjectValue('organization', $this->getOrganization());
         $writer->writeStringValue('paymentMethodDisplay', $this->getPaymentMethodDisplay());
         $writer->writeStringValue('pricingVersion', $this->getPricingVersion());
-        $writer->writeFloatValue('quantity', $this->getQuantity());
         $writer->writeStringValue('sourceEventId', $this->getSourceEventId());
         $writer->writeStringValue('sourceEventType', $this->getSourceEventType());
         $writer->writeEnumValue('transactionStatus', $this->getTransactionStatus());
         $writer->writeEnumValue('transactionType', $this->getTransactionType());
-        $writer->writeFloatValue('unitPrice', $this->getUnitPrice());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -339,27 +264,11 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the amount property value. Monetary amount for this billing transaction or wallet operation.
-     * @param float|null $value Value to set for the amount property.
-    */
-    public function setAmount(?float $value): void {
-        $this->amount = $value;
-    }
-
-    /**
      * Sets the billableUnit property value. Defines the supported Billable Unit values.
      * @param TransactionTableRow_billableUnit|null $value Value to set for the billableUnit property.
     */
     public function setBillableUnit(?TransactionTableRow_billableUnit $value): void {
         $this->billableUnit = $value;
-    }
-
-    /**
-     * Sets the billedAmount property value. Customer-facing amount billed for the metered usage or wallet transaction.
-     * @param float|null $value Value to set for the billedAmount property.
-    */
-    public function setBilledAmount(?float $value): void {
-        $this->billedAmount = $value;
     }
 
     /**
@@ -403,14 +312,6 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the netAmount property value. Net monetary amount after fees, credits, or adjustments.
-     * @param float|null $value Value to set for the netAmount property.
-    */
-    public function setNetAmount(?float $value): void {
-        $this->netAmount = $value;
-    }
-
-    /**
      * Sets the organization property value. Identifier and display name of the related organization.
      * @param TransactionTableRow_organization|null $value Value to set for the organization property.
     */
@@ -432,14 +333,6 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     */
     public function setPricingVersion(?string $value): void {
         $this->pricingVersion = $value;
-    }
-
-    /**
-     * Sets the quantity property value. Number of billable units measured for this transaction, when usage-based pricing applies.
-     * @param float|null $value Value to set for the quantity property.
-    */
-    public function setQuantity(?float $value): void {
-        $this->quantity = $value;
     }
 
     /**
@@ -472,14 +365,6 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     */
     public function setTransactionType(?TransactionType $value): void {
         $this->transactionType = $value;
-    }
-
-    /**
-     * Sets the unitPrice property value. Price charged per billable unit when usage-based pricing applies.
-     * @param float|null $value Value to set for the unitPrice property.
-    */
-    public function setUnitPrice(?float $value): void {
-        $this->unitPrice = $value;
     }
 
 }

@@ -33,11 +33,6 @@ class UserDataExportFile implements AdditionalDataHolder, Parsable
     private ?string $fileName = null;
     
     /**
-     * @var int|null $rowCount Total number of row records represented by this Leadping user data export file.
-    */
-    private ?int $rowCount = null;
-    
-    /**
      * Instantiates a new UserDataExportFile and sets the default values.
     */
     public function __construct() {
@@ -87,7 +82,6 @@ class UserDataExportFile implements AdditionalDataHolder, Parsable
             'category' => fn(ParseNode $n) => $o->setCategory($n->getStringValue()),
             'contentType' => fn(ParseNode $n) => $o->setContentType($n->getStringValue()),
             'fileName' => fn(ParseNode $n) => $o->setFileName($n->getStringValue()),
-            'rowCount' => fn(ParseNode $n) => $o->setRowCount($n->getIntegerValue()),
         ];
     }
 
@@ -100,14 +94,6 @@ class UserDataExportFile implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the rowCount property value. Total number of row records represented by this Leadping user data export file.
-     * @return int|null
-    */
-    public function getRowCount(): ?int {
-        return $this->rowCount;
-    }
-
-    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -115,7 +101,6 @@ class UserDataExportFile implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('category', $this->getCategory());
         $writer->writeStringValue('contentType', $this->getContentType());
         $writer->writeStringValue('fileName', $this->getFileName());
-        $writer->writeIntegerValue('rowCount', $this->getRowCount());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -149,14 +134,6 @@ class UserDataExportFile implements AdditionalDataHolder, Parsable
     */
     public function setFileName(?string $value): void {
         $this->fileName = $value;
-    }
-
-    /**
-     * Sets the rowCount property value. Total number of row records represented by this Leadping user data export file.
-     * @param int|null $value Value to set for the rowCount property.
-    */
-    public function setRowCount(?int $value): void {
-        $this->rowCount = $value;
     }
 
 }

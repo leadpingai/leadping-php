@@ -54,24 +54,9 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     private ?DateTime $lastSubscriptionEventAt = null;
     
     /**
-     * @var int|null $organizationMemberAssignedQuantity Number of user licenses currently assigned to organization members.
-    */
-    private ?int $organizationMemberAssignedQuantity = null;
-    
-    /**
-     * @var int|null $organizationMemberQuantity Number of user licenses included in the organization's subscription plan.
-    */
-    private ?int $organizationMemberQuantity = null;
-    
-    /**
      * @var OrganizationBillingState_pendingBillingPlan|null $pendingBillingPlan Defines the supported Billing Plan values.
     */
     private ?OrganizationBillingState_pendingBillingPlan $pendingBillingPlan = null;
-    
-    /**
-     * @var int|null $phoneNumberQuantity Number of phone numbers included in the organization's subscription plan.
-    */
-    private ?int $phoneNumberQuantity = null;
     
     /**
      * @var DateTime|null $planPeriodStartAt Start of the current plan billing period.
@@ -145,10 +130,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
             'hasStripeCustomer' => fn(ParseNode $n) => $o->setHasStripeCustomer($n->getBooleanValue()),
             'lastPaymentMethodEventAt' => fn(ParseNode $n) => $o->setLastPaymentMethodEventAt($n->getDateTimeValue()),
             'lastSubscriptionEventAt' => fn(ParseNode $n) => $o->setLastSubscriptionEventAt($n->getDateTimeValue()),
-            'organizationMemberAssignedQuantity' => fn(ParseNode $n) => $o->setOrganizationMemberAssignedQuantity($n->getIntegerValue()),
-            'organizationMemberQuantity' => fn(ParseNode $n) => $o->setOrganizationMemberQuantity($n->getIntegerValue()),
             'pendingBillingPlan' => fn(ParseNode $n) => $o->setPendingBillingPlan($n->getEnumValue(OrganizationBillingState_pendingBillingPlan::class)),
-            'phoneNumberQuantity' => fn(ParseNode $n) => $o->setPhoneNumberQuantity($n->getIntegerValue()),
             'planPeriodStartAt' => fn(ParseNode $n) => $o->setPlanPeriodStartAt($n->getDateTimeValue()),
             'planRenewalAt' => fn(ParseNode $n) => $o->setPlanRenewalAt($n->getDateTimeValue()),
         ];
@@ -187,35 +169,11 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organizationMemberAssignedQuantity property value. Number of user licenses currently assigned to organization members.
-     * @return int|null
-    */
-    public function getOrganizationMemberAssignedQuantity(): ?int {
-        return $this->organizationMemberAssignedQuantity;
-    }
-
-    /**
-     * Gets the organizationMemberQuantity property value. Number of user licenses included in the organization's subscription plan.
-     * @return int|null
-    */
-    public function getOrganizationMemberQuantity(): ?int {
-        return $this->organizationMemberQuantity;
-    }
-
-    /**
      * Gets the pendingBillingPlan property value. Defines the supported Billing Plan values.
      * @return OrganizationBillingState_pendingBillingPlan|null
     */
     public function getPendingBillingPlan(): ?OrganizationBillingState_pendingBillingPlan {
         return $this->pendingBillingPlan;
-    }
-
-    /**
-     * Gets the phoneNumberQuantity property value. Number of phone numbers included in the organization's subscription plan.
-     * @return int|null
-    */
-    public function getPhoneNumberQuantity(): ?int {
-        return $this->phoneNumberQuantity;
     }
 
     /**
@@ -246,10 +204,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('hasStripeCustomer', $this->getHasStripeCustomer());
         $writer->writeDateTimeValue('lastPaymentMethodEventAt', $this->getLastPaymentMethodEventAt());
         $writer->writeDateTimeValue('lastSubscriptionEventAt', $this->getLastSubscriptionEventAt());
-        $writer->writeIntegerValue('organizationMemberAssignedQuantity', $this->getOrganizationMemberAssignedQuantity());
-        $writer->writeIntegerValue('organizationMemberQuantity', $this->getOrganizationMemberQuantity());
         $writer->writeEnumValue('pendingBillingPlan', $this->getPendingBillingPlan());
-        $writer->writeIntegerValue('phoneNumberQuantity', $this->getPhoneNumberQuantity());
         $writer->writeDateTimeValue('planPeriodStartAt', $this->getPlanPeriodStartAt());
         $writer->writeDateTimeValue('planRenewalAt', $this->getPlanRenewalAt());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -320,35 +275,11 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organizationMemberAssignedQuantity property value. Number of user licenses currently assigned to organization members.
-     * @param int|null $value Value to set for the organizationMemberAssignedQuantity property.
-    */
-    public function setOrganizationMemberAssignedQuantity(?int $value): void {
-        $this->organizationMemberAssignedQuantity = $value;
-    }
-
-    /**
-     * Sets the organizationMemberQuantity property value. Number of user licenses included in the organization's subscription plan.
-     * @param int|null $value Value to set for the organizationMemberQuantity property.
-    */
-    public function setOrganizationMemberQuantity(?int $value): void {
-        $this->organizationMemberQuantity = $value;
-    }
-
-    /**
      * Sets the pendingBillingPlan property value. Defines the supported Billing Plan values.
      * @param OrganizationBillingState_pendingBillingPlan|null $value Value to set for the pendingBillingPlan property.
     */
     public function setPendingBillingPlan(?OrganizationBillingState_pendingBillingPlan $value): void {
         $this->pendingBillingPlan = $value;
-    }
-
-    /**
-     * Sets the phoneNumberQuantity property value. Number of phone numbers included in the organization's subscription plan.
-     * @param int|null $value Value to set for the phoneNumberQuantity property.
-    */
-    public function setPhoneNumberQuantity(?int $value): void {
-        $this->phoneNumberQuantity = $value;
     }
 
     /**

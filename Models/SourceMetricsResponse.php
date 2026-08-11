@@ -34,11 +34,6 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
     private ?AnalyticsDateRange $range = null;
     
     /**
-     * @var int|null $totalLeads Total number of leads records represented by this Leadping source metrics.
-    */
-    private ?int $totalLeads = null;
-    
-    /**
      * Instantiates a new SourceMetricsResponse and sets the default values.
     */
     public function __construct() {
@@ -72,7 +67,6 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
             'generatedAt' => fn(ParseNode $n) => $o->setGeneratedAt($n->getDateTimeValue()),
             'points' => fn(ParseNode $n) => $o->setPoints($n->getCollectionOfObjectValues([AnalyticsTrendPointOfint::class, 'createFromDiscriminatorValue'])),
             'range' => fn(ParseNode $n) => $o->setRange($n->getObjectValue([AnalyticsDateRange::class, 'createFromDiscriminatorValue'])),
-            'totalLeads' => fn(ParseNode $n) => $o->setTotalLeads($n->getIntegerValue()),
         ];
     }
 
@@ -101,14 +95,6 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the totalLeads property value. Total number of leads records represented by this Leadping source metrics.
-     * @return int|null
-    */
-    public function getTotalLeads(): ?int {
-        return $this->totalLeads;
-    }
-
-    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -116,7 +102,6 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('generatedAt', $this->getGeneratedAt());
         $writer->writeCollectionOfObjectValues('points', $this->getPoints());
         $writer->writeObjectValue('range', $this->getRange());
-        $writer->writeIntegerValue('totalLeads', $this->getTotalLeads());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -150,14 +135,6 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
     */
     public function setRange(?AnalyticsDateRange $value): void {
         $this->range = $value;
-    }
-
-    /**
-     * Sets the totalLeads property value. Total number of leads records represented by this Leadping source metrics.
-     * @param int|null $value Value to set for the totalLeads property.
-    */
-    public function setTotalLeads(?int $value): void {
-        $this->totalLeads = $value;
     }
 
 }

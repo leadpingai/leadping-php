@@ -35,11 +35,6 @@ class MediaPostRequestBody implements AdditionalDataHolder, Parsable
     private ?MediaPostRequestBody_Headers $headers = null;
     
     /**
-     * @var int|null $length The Length property
-    */
-    private ?int $length = null;
-    
-    /**
      * @var string|null $name The Name property
     */
     private ?string $name = null;
@@ -95,7 +90,6 @@ class MediaPostRequestBody implements AdditionalDataHolder, Parsable
             'ContentType' => fn(ParseNode $n) => $o->setContentType($n->getStringValue()),
             'FileName' => fn(ParseNode $n) => $o->setFileName($n->getStringValue()),
             'Headers' => fn(ParseNode $n) => $o->setHeaders($n->getObjectValue([MediaPostRequestBody_Headers::class, 'createFromDiscriminatorValue'])),
-            'Length' => fn(ParseNode $n) => $o->setLength($n->getIntegerValue()),
             'Name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
         ];
     }
@@ -117,14 +111,6 @@ class MediaPostRequestBody implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the Length property value. The Length property
-     * @return int|null
-    */
-    public function getLength(): ?int {
-        return $this->length;
-    }
-
-    /**
      * Gets the Name property value. The Name property
      * @return string|null
     */
@@ -141,7 +127,6 @@ class MediaPostRequestBody implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('ContentType', $this->getContentType());
         $writer->writeStringValue('FileName', $this->getFileName());
         $writer->writeObjectValue('Headers', $this->getHeaders());
-        $writer->writeIntegerValue('Length', $this->getLength());
         $writer->writeStringValue('Name', $this->getName());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -184,14 +169,6 @@ class MediaPostRequestBody implements AdditionalDataHolder, Parsable
     */
     public function setHeaders(?MediaPostRequestBody_Headers $value): void {
         $this->headers = $value;
-    }
-
-    /**
-     * Sets the Length property value. The Length property
-     * @param int|null $value Value to set for the Length property.
-    */
-    public function setLength(?int $value): void {
-        $this->length = $value;
     }
 
     /**

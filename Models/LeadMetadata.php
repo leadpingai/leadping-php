@@ -39,11 +39,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     private ?DateTime $createdAt = null;
     
     /**
-     * @var float|null $directPostPrice Direct-post price supplied by the lead source during intake.
-    */
-    private ?float $directPostPrice = null;
-    
-    /**
      * @var string|null $externalId External system identifier used to reconcile this lead attribution metadata across integrations.
     */
     private ?string $externalId = null;
@@ -77,11 +72,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
      * @var string|null $origin System or workflow that created this event.
     */
     private ?string $origin = null;
-    
-    /**
-     * @var float|null $price Lead price or transaction price supplied to the Leadping API.
-    */
-    private ?float $price = null;
     
     /**
      * @var string|null $product Product or offer associated with the lead or source.
@@ -250,14 +240,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
-     * @return float|null
-    */
-    public function getDirectPostPrice(): ?float {
-        return $this->directPostPrice;
-    }
-
-    /**
      * Gets the externalId property value. External system identifier used to reconcile this lead attribution metadata across integrations.
      * @return string|null
     */
@@ -276,7 +258,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
             'complianceBlockedReason' => fn(ParseNode $n) => $o->setComplianceBlockedReason($n->getStringValue()),
             'complianceStatus' => fn(ParseNode $n) => $o->setComplianceStatus($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
-            'directPostPrice' => fn(ParseNode $n) => $o->setDirectPostPrice($n->getFloatValue()),
             'externalId' => fn(ParseNode $n) => $o->setExternalId($n->getStringValue()),
             'importBatchId' => fn(ParseNode $n) => $o->setImportBatchId($n->getStringValue()),
             'ipAddress' => fn(ParseNode $n) => $o->setIpAddress($n->getStringValue()),
@@ -284,7 +265,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
             'landingPage' => fn(ParseNode $n) => $o->setLandingPage($n->getStringValue()),
             'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'origin' => fn(ParseNode $n) => $o->setOrigin($n->getStringValue()),
-            'price' => fn(ParseNode $n) => $o->setPrice($n->getFloatValue()),
             'product' => fn(ParseNode $n) => $o->setProduct($n->getStringValue()),
             'pubId' => fn(ParseNode $n) => $o->setPubId($n->getStringValue()),
             'referrer' => fn(ParseNode $n) => $o->setReferrer($n->getStringValue()),
@@ -356,14 +336,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function getOrigin(): ?string {
         return $this->origin;
-    }
-
-    /**
-     * Gets the price property value. Lead price or transaction price supplied to the Leadping API.
-     * @return float|null
-    */
-    public function getPrice(): ?float {
-        return $this->price;
     }
 
     /**
@@ -551,7 +523,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('complianceBlockedReason', $this->getComplianceBlockedReason());
         $writer->writeStringValue('complianceStatus', $this->getComplianceStatus());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
-        $writer->writeFloatValue('directPostPrice', $this->getDirectPostPrice());
         $writer->writeStringValue('externalId', $this->getExternalId());
         $writer->writeStringValue('importBatchId', $this->getImportBatchId());
         $writer->writeStringValue('ipAddress', $this->getIpAddress());
@@ -559,7 +530,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('landingPage', $this->getLandingPage());
         $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeStringValue('origin', $this->getOrigin());
-        $writer->writeFloatValue('price', $this->getPrice());
         $writer->writeStringValue('product', $this->getProduct());
         $writer->writeStringValue('pubId', $this->getPubId());
         $writer->writeStringValue('referrer', $this->getReferrer());
@@ -626,14 +596,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
-     * @param float|null $value Value to set for the directPostPrice property.
-    */
-    public function setDirectPostPrice(?float $value): void {
-        $this->directPostPrice = $value;
-    }
-
-    /**
      * Sets the externalId property value. External system identifier used to reconcile this lead attribution metadata across integrations.
      * @param string|null $value Value to set for the externalId property.
     */
@@ -687,14 +649,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function setOrigin(?string $value): void {
         $this->origin = $value;
-    }
-
-    /**
-     * Sets the price property value. Lead price or transaction price supplied to the Leadping API.
-     * @param float|null $value Value to set for the price property.
-    */
-    public function setPrice(?float $value): void {
-        $this->price = $value;
     }
 
     /**

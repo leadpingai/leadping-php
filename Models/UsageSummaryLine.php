@@ -28,21 +28,6 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     private ?UsageChannel $channel = null;
     
     /**
-     * @var float|null $customerChargeAmount The monetary customer charge amount for this usage summary line.
-    */
-    private ?float $customerChargeAmount = null;
-    
-    /**
-     * @var float|null $quantity Quantity for this usage summary line.
-    */
-    private ?float $quantity = null;
-    
-    /**
-     * @var int|null $recordCount The record count for this usage summary line.
-    */
-    private ?int $recordCount = null;
-    
-    /**
      * @var UsageStatus|null $status The current status for this usage summary line.
     */
     private ?UsageStatus $status = null;
@@ -88,14 +73,6 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the customerChargeAmount property value. The monetary customer charge amount for this usage summary line.
-     * @return float|null
-    */
-    public function getCustomerChargeAmount(): ?float {
-        return $this->customerChargeAmount;
-    }
-
-    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
@@ -104,27 +81,8 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
         return  [
             'billableUnit' => fn(ParseNode $n) => $o->setBillableUnit($n->getEnumValue(BillableUnit::class)),
             'channel' => fn(ParseNode $n) => $o->setChannel($n->getEnumValue(UsageChannel::class)),
-            'customerChargeAmount' => fn(ParseNode $n) => $o->setCustomerChargeAmount($n->getFloatValue()),
-            'quantity' => fn(ParseNode $n) => $o->setQuantity($n->getFloatValue()),
-            'recordCount' => fn(ParseNode $n) => $o->setRecordCount($n->getIntegerValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(UsageStatus::class)),
         ];
-    }
-
-    /**
-     * Gets the quantity property value. Quantity for this usage summary line.
-     * @return float|null
-    */
-    public function getQuantity(): ?float {
-        return $this->quantity;
-    }
-
-    /**
-     * Gets the recordCount property value. The record count for this usage summary line.
-     * @return int|null
-    */
-    public function getRecordCount(): ?int {
-        return $this->recordCount;
     }
 
     /**
@@ -142,9 +100,6 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeEnumValue('billableUnit', $this->getBillableUnit());
         $writer->writeEnumValue('channel', $this->getChannel());
-        $writer->writeFloatValue('customerChargeAmount', $this->getCustomerChargeAmount());
-        $writer->writeFloatValue('quantity', $this->getQuantity());
-        $writer->writeIntegerValue('recordCount', $this->getRecordCount());
         $writer->writeEnumValue('status', $this->getStatus());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -171,30 +126,6 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     */
     public function setChannel(?UsageChannel $value): void {
         $this->channel = $value;
-    }
-
-    /**
-     * Sets the customerChargeAmount property value. The monetary customer charge amount for this usage summary line.
-     * @param float|null $value Value to set for the customerChargeAmount property.
-    */
-    public function setCustomerChargeAmount(?float $value): void {
-        $this->customerChargeAmount = $value;
-    }
-
-    /**
-     * Sets the quantity property value. Quantity for this usage summary line.
-     * @param float|null $value Value to set for the quantity property.
-    */
-    public function setQuantity(?float $value): void {
-        $this->quantity = $value;
-    }
-
-    /**
-     * Sets the recordCount property value. The record count for this usage summary line.
-     * @param int|null $value Value to set for the recordCount property.
-    */
-    public function setRecordCount(?int $value): void {
-        $this->recordCount = $value;
     }
 
     /**

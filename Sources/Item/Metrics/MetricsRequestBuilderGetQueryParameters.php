@@ -10,9 +10,9 @@ use DateTime;
 class MetricsRequestBuilderGetQueryParameters 
 {
     /**
-     * @var int|null $days Optional rolling day count when explicit dates are not provided.
+     * @var string|null $days Optional rolling day count when explicit dates are not provided.
     */
-    public ?int $days = null;
+    public ?string $days = null;
     
     /**
      * @var DateTime|null $endAt Optional end date/time for the metric range.
@@ -26,11 +26,11 @@ class MetricsRequestBuilderGetQueryParameters
     
     /**
      * Instantiates a new MetricsRequestBuilderGetQueryParameters and sets the default values.
-     * @param int|null $days Optional rolling day count when explicit dates are not provided.
+     * @param string|null $days Optional rolling day count when explicit dates are not provided.
      * @param DateTime|null $endAt Optional end date/time for the metric range.
      * @param DateTime|null $startAt Optional start date/time for the metric range.
     */
-    public function __construct(?int $days = null, ?DateTime $endAt = null, ?DateTime $startAt = null) {
+    public function __construct(?string $days = null, ?DateTime $endAt = null, ?DateTime $startAt = null) {
         $this->days = $days;
         $this->endAt = $endAt;
         $this->startAt = $startAt;

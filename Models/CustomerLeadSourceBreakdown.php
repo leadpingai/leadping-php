@@ -18,16 +18,6 @@ class CustomerLeadSourceBreakdown implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var int|null $leads Number of leads represented by this Leadping customer lead source breakdown.
-    */
-    private ?int $leads = null;
-    
-    /**
-     * @var float|null $percent Percent expressed as a percentage.
-    */
-    private ?float $percent = null;
-    
-    /**
      * @var string|null $source Source classification for this Leadping customer lead source breakdown.
     */
     private ?string $source = null;
@@ -63,26 +53,8 @@ class CustomerLeadSourceBreakdown implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'leads' => fn(ParseNode $n) => $o->setLeads($n->getIntegerValue()),
-            'percent' => fn(ParseNode $n) => $o->setPercent($n->getFloatValue()),
             'source' => fn(ParseNode $n) => $o->setSource($n->getStringValue()),
         ];
-    }
-
-    /**
-     * Gets the leads property value. Number of leads represented by this Leadping customer lead source breakdown.
-     * @return int|null
-    */
-    public function getLeads(): ?int {
-        return $this->leads;
-    }
-
-    /**
-     * Gets the percent property value. Percent expressed as a percentage.
-     * @return float|null
-    */
-    public function getPercent(): ?float {
-        return $this->percent;
     }
 
     /**
@@ -98,8 +70,6 @@ class CustomerLeadSourceBreakdown implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeIntegerValue('leads', $this->getLeads());
-        $writer->writeFloatValue('percent', $this->getPercent());
         $writer->writeStringValue('source', $this->getSource());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -110,22 +80,6 @@ class CustomerLeadSourceBreakdown implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the leads property value. Number of leads represented by this Leadping customer lead source breakdown.
-     * @param int|null $value Value to set for the leads property.
-    */
-    public function setLeads(?int $value): void {
-        $this->leads = $value;
-    }
-
-    /**
-     * Sets the percent property value. Percent expressed as a percentage.
-     * @param float|null $value Value to set for the percent property.
-    */
-    public function setPercent(?float $value): void {
-        $this->percent = $value;
     }
 
     /**

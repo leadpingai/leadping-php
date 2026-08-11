@@ -54,11 +54,6 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     private ?string $organizationId = null;
     
     /**
-     * @var int|null $sortOrder Relative display order of the lead status.
-    */
-    private ?int $sortOrder = null;
-    
-    /**
      * Instantiates a new LeadStatusResponse and sets the default values.
     */
     public function __construct() {
@@ -112,7 +107,6 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
-            'sortOrder' => fn(ParseNode $n) => $o->setSortOrder($n->getIntegerValue()),
         ];
     }
 
@@ -157,14 +151,6 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the sortOrder property value. Relative display order of the lead status.
-     * @return int|null
-    */
-    public function getSortOrder(): ?int {
-        return $this->sortOrder;
-    }
-
-    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -176,7 +162,6 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeStringValue('organizationId', $this->getOrganizationId());
-        $writer->writeIntegerValue('sortOrder', $this->getSortOrder());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -242,14 +227,6 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     */
     public function setOrganizationId(?string $value): void {
         $this->organizationId = $value;
-    }
-
-    /**
-     * Sets the sortOrder property value. Relative display order of the lead status.
-     * @param int|null $value Value to set for the sortOrder property.
-    */
-    public function setSortOrder(?int $value): void {
-        $this->sortOrder = $value;
     }
 
 }

@@ -10,9 +10,9 @@ use DateTime;
 class MyRequestBuilderGetQueryParameters 
 {
     /**
-     * @var int|null $days Optional number of recent days to include when explicit timestamps are not supplied.
+     * @var string|null $days Optional number of recent days to include when explicit timestamps are not supplied.
     */
-    public ?int $days = null;
+    public ?string $days = null;
     
     /**
      * @var DateTime|null $endAt Optional exclusive end timestamp for the analytics period.
@@ -26,11 +26,11 @@ class MyRequestBuilderGetQueryParameters
     
     /**
      * Instantiates a new MyRequestBuilderGetQueryParameters and sets the default values.
-     * @param int|null $days Optional number of recent days to include when explicit timestamps are not supplied.
+     * @param string|null $days Optional number of recent days to include when explicit timestamps are not supplied.
      * @param DateTime|null $endAt Optional exclusive end timestamp for the analytics period.
      * @param DateTime|null $startAt Optional inclusive start timestamp for the analytics period.
     */
-    public function __construct(?int $days = null, ?DateTime $endAt = null, ?DateTime $startAt = null) {
+    public function __construct(?string $days = null, ?DateTime $endAt = null, ?DateTime $startAt = null) {
         $this->days = $days;
         $this->endAt = $endAt;
         $this->startAt = $startAt;

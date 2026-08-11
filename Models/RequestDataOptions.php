@@ -39,11 +39,6 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     private ?array $orderBy = null;
     
     /**
-     * @var int|null $pageSize Maximum items to return in one page
-    */
-    private ?int $pageSize = null;
-    
-    /**
      * @var array<RangeFilter>|null $rangeFilters Advanced range-based filters (e.g., Price > 50 and Price <= 200).
     */
     private ?array $rangeFilters = null;
@@ -101,7 +96,6 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
             'filters' => fn(ParseNode $n) => $o->setFilters($n->getCollectionOfObjectValues([ExactMatchFilter::class, 'createFromDiscriminatorValue'])),
             'includeCount' => fn(ParseNode $n) => $o->setIncludeCount($n->getBooleanValue()),
             'orderBy' => fn(ParseNode $n) => $o->setOrderBy($n->getCollectionOfObjectValues([OrderByOption::class, 'createFromDiscriminatorValue'])),
-            'pageSize' => fn(ParseNode $n) => $o->setPageSize($n->getIntegerValue()),
             'rangeFilters' => fn(ParseNode $n) => $o->setRangeFilters($n->getCollectionOfObjectValues([RangeFilter::class, 'createFromDiscriminatorValue'])),
             'search' => fn(ParseNode $n) => $o->setSearch($n->getStringValue()),
             'searchFields' => function (ParseNode $n) {
@@ -140,14 +134,6 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the pageSize property value. Maximum items to return in one page
-     * @return int|null
-    */
-    public function getPageSize(): ?int {
-        return $this->pageSize;
-    }
-
-    /**
      * Gets the rangeFilters property value. Advanced range-based filters (e.g., Price > 50 and Price <= 200).
      * @return array<RangeFilter>|null
     */
@@ -180,7 +166,6 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
         $writer->writeCollectionOfObjectValues('filters', $this->getFilters());
         $writer->writeBooleanValue('includeCount', $this->getIncludeCount());
         $writer->writeCollectionOfObjectValues('orderBy', $this->getOrderBy());
-        $writer->writeIntegerValue('pageSize', $this->getPageSize());
         $writer->writeCollectionOfObjectValues('rangeFilters', $this->getRangeFilters());
         $writer->writeStringValue('search', $this->getSearch());
         $writer->writeCollectionOfPrimitiveValues('searchFields', $this->getSearchFields());
@@ -225,14 +210,6 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     */
     public function setOrderBy(?array $value): void {
         $this->orderBy = $value;
-    }
-
-    /**
-     * Sets the pageSize property value. Maximum items to return in one page
-     * @param int|null $value Value to set for the pageSize property.
-    */
-    public function setPageSize(?int $value): void {
-        $this->pageSize = $value;
     }
 
     /**

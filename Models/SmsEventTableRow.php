@@ -29,11 +29,6 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var float|null $billableAmount Monetary amount billed for this Leadping communication or transaction.
-    */
-    private ?float $billableAmount = null;
-    
-    /**
      * @var string|null $billingStatus Billing state for this communication, charge, or transaction.
     */
     private ?string $billingStatus = null;
@@ -259,14 +254,6 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-     * @return float|null
-    */
-    public function getBillableAmount(): ?float {
-        return $this->billableAmount;
-    }
-
-    /**
      * Gets the billingStatus property value. Billing state for this communication, charge, or transaction.
      * @return string|null
     */
@@ -371,7 +358,6 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
         return  [
             'actorDisplayName' => fn(ParseNode $n) => $o->setActorDisplayName($n->getStringValue()),
             'actorUserId' => fn(ParseNode $n) => $o->setActorUserId($n->getStringValue()),
-            'billableAmount' => fn(ParseNode $n) => $o->setBillableAmount($n->getFloatValue()),
             'billingStatus' => fn(ParseNode $n) => $o->setBillingStatus($n->getStringValue()),
             'blockedAt' => fn(ParseNode $n) => $o->setBlockedAt($n->getDateTimeValue()),
             'canceledAt' => fn(ParseNode $n) => $o->setCanceledAt($n->getDateTimeValue()),
@@ -619,7 +605,6 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('actorDisplayName', $this->getActorDisplayName());
         $writer->writeStringValue('actorUserId', $this->getActorUserId());
-        $writer->writeFloatValue('billableAmount', $this->getBillableAmount());
         $writer->writeStringValue('billingStatus', $this->getBillingStatus());
         $writer->writeDateTimeValue('blockedAt', $this->getBlockedAt());
         $writer->writeDateTimeValue('canceledAt', $this->getCanceledAt());
@@ -682,14 +667,6 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
-     * @param float|null $value Value to set for the billableAmount property.
-    */
-    public function setBillableAmount(?float $value): void {
-        $this->billableAmount = $value;
     }
 
     /**

@@ -18,16 +18,6 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var int|null $callsPossible Indicates whether this phone number can currently place outbound calls.
-    */
-    private ?int $callsPossible = null;
-    
-    /**
-     * @var int|null $messagesPossible Indicates whether this phone number can currently send SMS messages.
-    */
-    private ?int $messagesPossible = null;
-    
-    /**
      * @var string|null $number E.164 phone number exposed by this phone number warmup status.
     */
     private ?string $number = null;
@@ -82,22 +72,12 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the callsPossible property value. Indicates whether this phone number can currently place outbound calls.
-     * @return int|null
-    */
-    public function getCallsPossible(): ?int {
-        return $this->callsPossible;
-    }
-
-    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'callsPossible' => fn(ParseNode $n) => $o->setCallsPossible($n->getIntegerValue()),
-            'messagesPossible' => fn(ParseNode $n) => $o->setMessagesPossible($n->getIntegerValue()),
             'number' => fn(ParseNode $n) => $o->setNumber($n->getStringValue()),
             'optOutMetrics' => fn(ParseNode $n) => $o->setOptOutMetrics($n->getObjectValue([PhoneNumberOptOutMetricsResponse::class, 'createFromDiscriminatorValue'])),
             'outboundCapacity' => fn(ParseNode $n) => $o->setOutboundCapacity($n->getObjectValue([PhoneNumberStatusResponse_outboundCapacity::class, 'createFromDiscriminatorValue'])),
@@ -105,14 +85,6 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
             'smsWarmup' => fn(ParseNode $n) => $o->setSmsWarmup($n->getObjectValue([PhoneNumberStatusResponse_smsWarmup::class, 'createFromDiscriminatorValue'])),
             'trafficMetrics' => fn(ParseNode $n) => $o->setTrafficMetrics($n->getObjectValue([PhoneNumberTrafficMetricsResponse::class, 'createFromDiscriminatorValue'])),
         ];
-    }
-
-    /**
-     * Gets the messagesPossible property value. Indicates whether this phone number can currently send SMS messages.
-     * @return int|null
-    */
-    public function getMessagesPossible(): ?int {
-        return $this->messagesPossible;
     }
 
     /**
@@ -168,8 +140,6 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeIntegerValue('callsPossible', $this->getCallsPossible());
-        $writer->writeIntegerValue('messagesPossible', $this->getMessagesPossible());
         $writer->writeStringValue('number', $this->getNumber());
         $writer->writeObjectValue('optOutMetrics', $this->getOptOutMetrics());
         $writer->writeObjectValue('outboundCapacity', $this->getOutboundCapacity());
@@ -185,22 +155,6 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the callsPossible property value. Indicates whether this phone number can currently place outbound calls.
-     * @param int|null $value Value to set for the callsPossible property.
-    */
-    public function setCallsPossible(?int $value): void {
-        $this->callsPossible = $value;
-    }
-
-    /**
-     * Sets the messagesPossible property value. Indicates whether this phone number can currently send SMS messages.
-     * @param int|null $value Value to set for the messagesPossible property.
-    */
-    public function setMessagesPossible(?int $value): void {
-        $this->messagesPossible = $value;
     }
 
     /**

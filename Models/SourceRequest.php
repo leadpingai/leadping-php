@@ -34,11 +34,6 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     private ?string $apiKey = null;
     
     /**
-     * @var float|null $costPerLead Configured cost charged when this source creates a billable lead.
-    */
-    private ?float $costPerLead = null;
-    
-    /**
      * @var array<string>|null $defaultTagIds Tag IDs automatically assigned to leads created by this source.
     */
     private ?array $defaultTagIds = null;
@@ -127,14 +122,6 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the costPerLead property value. Configured cost charged when this source creates a billable lead.
-     * @return float|null
-    */
-    public function getCostPerLead(): ?float {
-        return $this->costPerLead;
-    }
-
-    /**
      * Gets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
      * @return array<string>|null
     */
@@ -190,7 +177,6 @@ class SourceRequest implements AdditionalDataHolder, Parsable
                 $this->setAllowedStates($val);
             },
             'apiKey' => fn(ParseNode $n) => $o->setApiKey($n->getStringValue()),
-            'costPerLead' => fn(ParseNode $n) => $o->setCostPerLead($n->getFloatValue()),
             'defaultTagIds' => function (ParseNode $n) {
                 $val = $n->getCollectionOfPrimitiveValues();
                 if (is_array($val)) {
@@ -256,7 +242,6 @@ class SourceRequest implements AdditionalDataHolder, Parsable
         $writer->writeCollectionOfPrimitiveValues('allowedProducts', $this->getAllowedProducts());
         $writer->writeCollectionOfPrimitiveValues('allowedStates', $this->getAllowedStates());
         $writer->writeStringValue('apiKey', $this->getApiKey());
-        $writer->writeFloatValue('costPerLead', $this->getCostPerLead());
         $writer->writeCollectionOfPrimitiveValues('defaultTagIds', $this->getDefaultTagIds());
         $writer->writeCollectionOfPrimitiveValues('defaultTagNames', $this->getDefaultTagNames());
         $writer->writeStringValue('description', $this->getDescription());
@@ -298,14 +283,6 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     */
     public function setApiKey(?string $value): void {
         $this->apiKey = $value;
-    }
-
-    /**
-     * Sets the costPerLead property value. Configured cost charged when this source creates a billable lead.
-     * @param float|null $value Value to set for the costPerLead property.
-    */
-    public function setCostPerLead(?float $value): void {
-        $this->costPerLead = $value;
     }
 
     /**

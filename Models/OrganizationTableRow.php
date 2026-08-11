@@ -15,11 +15,6 @@ use Microsoft\Kiota\Abstractions\Types\TypeUtils;
 class OrganizationTableRow implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var float|null $accountBalance Account balance for this organization.
-    */
-    private ?float $accountBalance = null;
-    
-    /**
      * @var OrganizationTableRow_activationStatus|null $activationStatus Defines the supported Customer Activation Status values.
     */
     private ?OrganizationTableRow_activationStatus $activationStatus = null;
@@ -58,11 +53,6 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
      * @var string|null $apiKeyPreview The masked API key preview owned by this organization.
     */
     private ?string $apiKeyPreview = null;
-    
-    /**
-     * @var int|null $apiKeyTotalUses The total number of tracked uses for this organization API key.
-    */
-    private ?int $apiKeyTotalUses = null;
     
     /**
      * @var OrganizationTableRow_billingPlan|null $billingPlan Defines the supported Billing Plan values.
@@ -145,11 +135,6 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     private ?OrganizationTableRow_tenDlcStatus $tenDlcStatus = null;
     
     /**
-     * @var int|null $userCount The user count for this organization.
-    */
-    private ?int $userCount = null;
-    
-    /**
      * @var string|null $website The website URL associated with this organization.
     */
     private ?string $website = null;
@@ -173,14 +158,6 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     */
     public static function createFromDiscriminatorValue(ParseNode $parseNode): OrganizationTableRow {
         return new OrganizationTableRow();
-    }
-
-    /**
-     * Gets the accountBalance property value. Account balance for this organization.
-     * @return float|null
-    */
-    public function getAccountBalance(): ?float {
-        return $this->accountBalance;
     }
 
     /**
@@ -248,14 +225,6 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the apiKeyTotalUses property value. The total number of tracked uses for this organization API key.
-     * @return int|null
-    */
-    public function getApiKeyTotalUses(): ?int {
-        return $this->apiKeyTotalUses;
-    }
-
-    /**
      * Gets the billingPlan property value. Defines the supported Billing Plan values.
      * @return OrganizationTableRow_billingPlan|null
     */
@@ -278,7 +247,6 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'accountBalance' => fn(ParseNode $n) => $o->setAccountBalance($n->getFloatValue()),
             'activationStatus' => fn(ParseNode $n) => $o->setActivationStatus($n->getEnumValue(OrganizationTableRow_activationStatus::class)),
             'apiKeyExpiresAt' => fn(ParseNode $n) => $o->setApiKeyExpiresAt($n->getDateTimeValue()),
             'apiKeyFirstUsedAt' => fn(ParseNode $n) => $o->setApiKeyFirstUsedAt($n->getDateTimeValue()),
@@ -293,7 +261,6 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
                 $this->setApiKeyPermissions($val);
             },
             'apiKeyPreview' => fn(ParseNode $n) => $o->setApiKeyPreview($n->getStringValue()),
-            'apiKeyTotalUses' => fn(ParseNode $n) => $o->setApiKeyTotalUses($n->getIntegerValue()),
             'billingPlan' => fn(ParseNode $n) => $o->setBillingPlan($n->getEnumValue(OrganizationTableRow_billingPlan::class)),
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
@@ -310,7 +277,6 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
             'subscriptionCancelAt' => fn(ParseNode $n) => $o->setSubscriptionCancelAt($n->getDateTimeValue()),
             'subscriptionStatus' => fn(ParseNode $n) => $o->setSubscriptionStatus($n->getEnumValue(OrganizationTableRow_subscriptionStatus::class)),
             'tenDlcStatus' => fn(ParseNode $n) => $o->setTenDlcStatus($n->getEnumValue(OrganizationTableRow_tenDlcStatus::class)),
-            'userCount' => fn(ParseNode $n) => $o->setUserCount($n->getIntegerValue()),
             'website' => fn(ParseNode $n) => $o->setWebsite($n->getStringValue()),
             'websiteStatus' => fn(ParseNode $n) => $o->setWebsiteStatus($n->getEnumValue(OrganizationTableRow_websiteStatus::class)),
         ];
@@ -429,14 +395,6 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the userCount property value. The user count for this organization.
-     * @return int|null
-    */
-    public function getUserCount(): ?int {
-        return $this->userCount;
-    }
-
-    /**
      * Gets the website property value. The website URL associated with this organization.
      * @return string|null
     */
@@ -457,7 +415,6 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeFloatValue('accountBalance', $this->getAccountBalance());
         $writer->writeEnumValue('activationStatus', $this->getActivationStatus());
         $writer->writeDateTimeValue('apiKeyExpiresAt', $this->getApiKeyExpiresAt());
         $writer->writeDateTimeValue('apiKeyFirstUsedAt', $this->getApiKeyFirstUsedAt());
@@ -465,7 +422,6 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('apiKeyLastUsedAt', $this->getApiKeyLastUsedAt());
         $writer->writeCollectionOfPrimitiveValues('apiKeyPermissions', $this->getApiKeyPermissions());
         $writer->writeStringValue('apiKeyPreview', $this->getApiKeyPreview());
-        $writer->writeIntegerValue('apiKeyTotalUses', $this->getApiKeyTotalUses());
         $writer->writeEnumValue('billingPlan', $this->getBillingPlan());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeStringValue('id', $this->getId());
@@ -482,18 +438,9 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('subscriptionCancelAt', $this->getSubscriptionCancelAt());
         $writer->writeEnumValue('subscriptionStatus', $this->getSubscriptionStatus());
         $writer->writeEnumValue('tenDlcStatus', $this->getTenDlcStatus());
-        $writer->writeIntegerValue('userCount', $this->getUserCount());
         $writer->writeStringValue('website', $this->getWebsite());
         $writer->writeEnumValue('websiteStatus', $this->getWebsiteStatus());
         $writer->writeAdditionalData($this->getAdditionalData());
-    }
-
-    /**
-     * Sets the accountBalance property value. Account balance for this organization.
-     * @param float|null $value Value to set for the accountBalance property.
-    */
-    public function setAccountBalance(?float $value): void {
-        $this->accountBalance = $value;
     }
 
     /**
@@ -558,14 +505,6 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     */
     public function setApiKeyPreview(?string $value): void {
         $this->apiKeyPreview = $value;
-    }
-
-    /**
-     * Sets the apiKeyTotalUses property value. The total number of tracked uses for this organization API key.
-     * @param int|null $value Value to set for the apiKeyTotalUses property.
-    */
-    public function setApiKeyTotalUses(?int $value): void {
-        $this->apiKeyTotalUses = $value;
     }
 
     /**
@@ -694,14 +633,6 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     */
     public function setTenDlcStatus(?OrganizationTableRow_tenDlcStatus $value): void {
         $this->tenDlcStatus = $value;
-    }
-
-    /**
-     * Sets the userCount property value. The user count for this organization.
-     * @param int|null $value Value to set for the userCount property.
-    */
-    public function setUserCount(?int $value): void {
-        $this->userCount = $value;
     }
 
     /**

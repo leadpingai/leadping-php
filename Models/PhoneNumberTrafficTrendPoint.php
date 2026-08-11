@@ -19,16 +19,6 @@ class PhoneNumberTrafficTrendPoint implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var int|null $callFailedCount Number of outbound calls that failed during this metrics window.
-    */
-    private ?int $callFailedCount = null;
-    
-    /**
-     * @var int|null $callPlacedCount Number of outbound calls placed during this metrics window.
-    */
-    private ?int $callPlacedCount = null;
-    
-    /**
      * @var DateTime|null $endAt UTC timestamp when this reporting bucket ends.
     */
     private ?DateTime $endAt = null;
@@ -37,26 +27,6 @@ class PhoneNumberTrafficTrendPoint implements AdditionalDataHolder, Parsable
      * @var string|null $label Short display label for this phone number traffic trend bucket, formatted for charts, filters, or list views.
     */
     private ?string $label = null;
-    
-    /**
-     * @var int|null $mmsFailedCount Number of MMS messages that failed during this metrics window.
-    */
-    private ?int $mmsFailedCount = null;
-    
-    /**
-     * @var int|null $mmsSentCount Number of MMS messages sent during this metrics window.
-    */
-    private ?int $mmsSentCount = null;
-    
-    /**
-     * @var int|null $smsFailedCount Number of SMS messages that failed during this metrics window.
-    */
-    private ?int $smsFailedCount = null;
-    
-    /**
-     * @var int|null $smsSentCount Number of SMS messages sent during this metrics window.
-    */
-    private ?int $smsSentCount = null;
     
     /**
      * @var DateTime|null $startAt UTC timestamp when this reporting bucket starts.
@@ -88,22 +58,6 @@ class PhoneNumberTrafficTrendPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the callFailedCount property value. Number of outbound calls that failed during this metrics window.
-     * @return int|null
-    */
-    public function getCallFailedCount(): ?int {
-        return $this->callFailedCount;
-    }
-
-    /**
-     * Gets the callPlacedCount property value. Number of outbound calls placed during this metrics window.
-     * @return int|null
-    */
-    public function getCallPlacedCount(): ?int {
-        return $this->callPlacedCount;
-    }
-
-    /**
      * Gets the endAt property value. UTC timestamp when this reporting bucket ends.
      * @return DateTime|null
     */
@@ -118,14 +72,8 @@ class PhoneNumberTrafficTrendPoint implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'callFailedCount' => fn(ParseNode $n) => $o->setCallFailedCount($n->getIntegerValue()),
-            'callPlacedCount' => fn(ParseNode $n) => $o->setCallPlacedCount($n->getIntegerValue()),
             'endAt' => fn(ParseNode $n) => $o->setEndAt($n->getDateTimeValue()),
             'label' => fn(ParseNode $n) => $o->setLabel($n->getStringValue()),
-            'mmsFailedCount' => fn(ParseNode $n) => $o->setMmsFailedCount($n->getIntegerValue()),
-            'mmsSentCount' => fn(ParseNode $n) => $o->setMmsSentCount($n->getIntegerValue()),
-            'smsFailedCount' => fn(ParseNode $n) => $o->setSmsFailedCount($n->getIntegerValue()),
-            'smsSentCount' => fn(ParseNode $n) => $o->setSmsSentCount($n->getIntegerValue()),
             'startAt' => fn(ParseNode $n) => $o->setStartAt($n->getDateTimeValue()),
         ];
     }
@@ -136,38 +84,6 @@ class PhoneNumberTrafficTrendPoint implements AdditionalDataHolder, Parsable
     */
     public function getLabel(): ?string {
         return $this->label;
-    }
-
-    /**
-     * Gets the mmsFailedCount property value. Number of MMS messages that failed during this metrics window.
-     * @return int|null
-    */
-    public function getMmsFailedCount(): ?int {
-        return $this->mmsFailedCount;
-    }
-
-    /**
-     * Gets the mmsSentCount property value. Number of MMS messages sent during this metrics window.
-     * @return int|null
-    */
-    public function getMmsSentCount(): ?int {
-        return $this->mmsSentCount;
-    }
-
-    /**
-     * Gets the smsFailedCount property value. Number of SMS messages that failed during this metrics window.
-     * @return int|null
-    */
-    public function getSmsFailedCount(): ?int {
-        return $this->smsFailedCount;
-    }
-
-    /**
-     * Gets the smsSentCount property value. Number of SMS messages sent during this metrics window.
-     * @return int|null
-    */
-    public function getSmsSentCount(): ?int {
-        return $this->smsSentCount;
     }
 
     /**
@@ -183,14 +99,8 @@ class PhoneNumberTrafficTrendPoint implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeIntegerValue('callFailedCount', $this->getCallFailedCount());
-        $writer->writeIntegerValue('callPlacedCount', $this->getCallPlacedCount());
         $writer->writeDateTimeValue('endAt', $this->getEndAt());
         $writer->writeStringValue('label', $this->getLabel());
-        $writer->writeIntegerValue('mmsFailedCount', $this->getMmsFailedCount());
-        $writer->writeIntegerValue('mmsSentCount', $this->getMmsSentCount());
-        $writer->writeIntegerValue('smsFailedCount', $this->getSmsFailedCount());
-        $writer->writeIntegerValue('smsSentCount', $this->getSmsSentCount());
         $writer->writeDateTimeValue('startAt', $this->getStartAt());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -201,22 +111,6 @@ class PhoneNumberTrafficTrendPoint implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the callFailedCount property value. Number of outbound calls that failed during this metrics window.
-     * @param int|null $value Value to set for the callFailedCount property.
-    */
-    public function setCallFailedCount(?int $value): void {
-        $this->callFailedCount = $value;
-    }
-
-    /**
-     * Sets the callPlacedCount property value. Number of outbound calls placed during this metrics window.
-     * @param int|null $value Value to set for the callPlacedCount property.
-    */
-    public function setCallPlacedCount(?int $value): void {
-        $this->callPlacedCount = $value;
     }
 
     /**
@@ -233,38 +127,6 @@ class PhoneNumberTrafficTrendPoint implements AdditionalDataHolder, Parsable
     */
     public function setLabel(?string $value): void {
         $this->label = $value;
-    }
-
-    /**
-     * Sets the mmsFailedCount property value. Number of MMS messages that failed during this metrics window.
-     * @param int|null $value Value to set for the mmsFailedCount property.
-    */
-    public function setMmsFailedCount(?int $value): void {
-        $this->mmsFailedCount = $value;
-    }
-
-    /**
-     * Sets the mmsSentCount property value. Number of MMS messages sent during this metrics window.
-     * @param int|null $value Value to set for the mmsSentCount property.
-    */
-    public function setMmsSentCount(?int $value): void {
-        $this->mmsSentCount = $value;
-    }
-
-    /**
-     * Sets the smsFailedCount property value. Number of SMS messages that failed during this metrics window.
-     * @param int|null $value Value to set for the smsFailedCount property.
-    */
-    public function setSmsFailedCount(?int $value): void {
-        $this->smsFailedCount = $value;
-    }
-
-    /**
-     * Sets the smsSentCount property value. Number of SMS messages sent during this metrics window.
-     * @param int|null $value Value to set for the smsSentCount property.
-    */
-    public function setSmsSentCount(?int $value): void {
-        $this->smsSentCount = $value;
     }
 
     /**
