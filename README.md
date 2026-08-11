@@ -5,42 +5,87 @@
 
 # ![Leadping](https://leadping.ai/favicon.ico) Leadping PHP SDK
 
-Type-safe PHP client for the Leadping API.
+The official, type-safe PHP SDK for the Leadping API. Use it to integrate lead management, conversations, SMS and calling, automations, reporting, billing, and business settings into PHP applications.
 
-## Install
+The package is generated from the [Leadping OpenAPI specification](https://leadping.ai/docs/openapi.json) with Microsoft Kiota. It contains request builders and models; your application supplies credentials, retry policy, and credential storage.
+
+## Installation
 
 ```bash
 composer require leadpingai/sdk
 ```
 
-The generated client uses a Kiota request adapter. Install the Kiota bundle in the application that will call Leadping:
+The package already depends on `microsoft/kiota-bundle`, so Composer installs the Guzzle request adapter and serializers automatically.
 
-```bash
-composer require microsoft/kiota-bundle:^2.0.2
-```
+## Authentication
 
-## Use
+Set `LEADPING_API_KEY` to a WorkOS organization API key (`sk_...`). The SDK sends it as `Authorization: Bearer <credential>`. User access tokens are also supported when acting for a signed-in user; `lp_src_...` keys are only for lead-ingestion endpoints. See [API authentication](https://leadping.ai/docs/api-authentication).
+
+## Create a client
+
+The following small authentication provider attaches the Bearer credential to each Kiota request:
 
 ```php
 <?php
 
+use Http\Promise\FulfilledPromise;
+use Http\Promise\Promise;
 use Leadping\OpenApiClient\LeadpingOpenApiClient;
+use Microsoft\Kiota\Abstractions\Authentication\AuthenticationProvider;
+use Microsoft\Kiota\Abstractions\RequestInformation;
+use Microsoft\Kiota\Http\GuzzleRequestAdapter;
 
-$adapter = createLeadpingRequestAdapter();
+final class LeadpingAuthenticationProvider implements AuthenticationProvider
+{
+    public function __construct(private readonly string $credential)
+    {
+    }
+
+    public function authenticateRequest(
+        RequestInformation $request,
+        array $additionalAuthenticationContext = []
+    ): Promise {
+        $request->getHeaders()->tryAdd('Authorization', 'Bearer ' . $this->credential);
+        return new FulfilledPromise($request);
+    }
+}
+
+$credential = getenv('LEADPING_API_KEY');
+if ($credential === false || $credential === '') {
+    throw new RuntimeException('LEADPING_API_KEY is not set.');
+}
+
+$adapter = new GuzzleRequestAdapter(
+    new LeadpingAuthenticationProvider($credential)
+);
 $client = new LeadpingOpenApiClient($adapter);
 
-$me = $client->users()->me()->get()->wait();
+$lead = $client->leads()->byId('lead-id')->get()->wait();
+echo $lead->getId();
 ```
 
-`createLeadpingRequestAdapter` is application code. Configure it to send one of:
+The client defaults to `https://api.leadping.ai`.
 
-- `Authorization: Bearer <token>`
-- `X-Leadping-Api-Key: <key>`
+## Common operations
 
-The client defaults to `https://api.leadping.ai` when the adapter does not already have a base URL.
+Request builders mirror the API path. Methods such as `byId()` select a resource; terminal methods return promises. Call `wait()` when using the SDK synchronously.
 
-## Links
+```php
+// Requires a user access token.
+$currentUser = $client->users()->me()->get()->wait();
 
-- [Documentation](https://leadping.ai/docs)
+// Retrieve organization resources by ID.
+$source = $client->sources()->byId('source-id')->get()->wait();
+$lead = $client->leads()->byId('lead-id')->get()->wait();
+```
+
+Create and update operations accept generated request classes from `Leadping\OpenApiClient`.
+
+## Resources
+
+- [Leadping introduction](https://leadping.ai/docs/introduction)
+- [API authentication](https://leadping.ai/docs/api-authentication)
 - [API reference](https://leadping.ai/docs/api-reference)
+- [OpenAPI specification](https://leadping.ai/docs/openapi.json)
+- [Packagist package](https://packagist.org/packages/leadpingai/sdk)
 - [License](LICENSE)
