@@ -5,7 +5,7 @@ namespace Leadping\OpenApiClient\Sources\Item\Metrics;
 use DateTime;
 
 /**
- * Returns lead creation metrics for one organization intake source, including accepted, rejected, duplicate, validation, and recent activity counts for monitoring.
+ * View lead creation metrics for an organization intake source, including accepted, rejected, duplicate, validation, and recent activity counts.
 */
 class MetricsRequestBuilderGetQueryParameters 
 {
