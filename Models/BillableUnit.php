@@ -18,6 +18,8 @@ class BillableUnit extends Enum {
     public const OPENAI_OPERATION = "openai_operation";
     public const DOMAIN_REGISTRATION = "domain_registration";
     public const ONE_ZERODLC_APPLICATION = "10dlc_application";
+    public const ONE_ZERODLC_CAMPAIGN_MONTH = "10dlc_campaign_month";
+    public const PAYMENT_PROCESSING_FEE = "payment_processing_fee";
     public const CONNECTION_ACTION = "connection_action";
     public const AUTOMATION_RUN = "automation_run";
 }

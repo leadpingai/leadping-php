@@ -59,6 +59,16 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     private ?LeadProfile $customer = null;
     
     /**
+     * @var DateTime|null $deletedAt UTC timestamp when this lead was soft deleted.
+    */
+    private ?DateTime $deletedAt = null;
+    
+    /**
+     * @var string|null $deletedByUserId User ID of the person who soft deleted this lead.
+    */
+    private ?string $deletedByUserId = null;
+    
+    /**
      * @var bool|null $enabled Indicates whether this lead response is active and available in the Leadping API.
     */
     private ?bool $enabled = null;
@@ -87,6 +97,21 @@ class LeadResponse implements AdditionalDataHolder, Parsable
      * @var LeadResponse_phoneIdentity|null $phoneIdentity Canonical phone identity and provider lookup details for this lead.
     */
     private ?LeadResponse_phoneIdentity $phoneIdentity = null;
+    
+    /**
+     * @var LeadResponse_processingStatus|null $processingStatus Defines the asynchronous verification and enrichment lifecycle for a lead.
+    */
+    private ?LeadResponse_processingStatus $processingStatus = null;
+    
+    /**
+     * @var DateTime|null $processingStatusChangedAt UTC timestamp when the processing stage last changed.
+    */
+    private ?DateTime $processingStatusChangedAt = null;
+    
+    /**
+     * @var string|null $processingStatusReason Explanation when asynchronous lead processing is blocked or fails.
+    */
+    private ?string $processingStatusReason = null;
     
     /**
      * @var array<TagSummary>|null $tags Tags currently attached to this lead, source, or record.
@@ -182,6 +207,22 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the deletedAt property value. UTC timestamp when this lead was soft deleted.
+     * @return DateTime|null
+    */
+    public function getDeletedAt(): ?DateTime {
+        return $this->deletedAt;
+    }
+
+    /**
+     * Gets the deletedByUserId property value. User ID of the person who soft deleted this lead.
+     * @return string|null
+    */
+    public function getDeletedByUserId(): ?string {
+        return $this->deletedByUserId;
+    }
+
+    /**
      * Gets the enabled property value. Indicates whether this lead response is active and available in the Leadping API.
      * @return bool|null
     */
@@ -204,12 +245,17 @@ class LeadResponse implements AdditionalDataHolder, Parsable
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'currentLeadStatus' => fn(ParseNode $n) => $o->setCurrentLeadStatus($n->getObjectValue([LeadResponse_currentLeadStatus::class, 'createFromDiscriminatorValue'])),
             'customer' => fn(ParseNode $n) => $o->setCustomer($n->getObjectValue([LeadProfile::class, 'createFromDiscriminatorValue'])),
+            'deletedAt' => fn(ParseNode $n) => $o->setDeletedAt($n->getDateTimeValue()),
+            'deletedByUserId' => fn(ParseNode $n) => $o->setDeletedByUserId($n->getStringValue()),
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isArchived' => fn(ParseNode $n) => $o->setIsArchived($n->getBooleanValue()),
             'metadata' => fn(ParseNode $n) => $o->setMetadata($n->getObjectValue([LeadMetadata::class, 'createFromDiscriminatorValue'])),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'phoneIdentity' => fn(ParseNode $n) => $o->setPhoneIdentity($n->getObjectValue([LeadResponse_phoneIdentity::class, 'createFromDiscriminatorValue'])),
+            'processingStatus' => fn(ParseNode $n) => $o->setProcessingStatus($n->getEnumValue(LeadResponse_processingStatus::class)),
+            'processingStatusChangedAt' => fn(ParseNode $n) => $o->setProcessingStatusChangedAt($n->getDateTimeValue()),
+            'processingStatusReason' => fn(ParseNode $n) => $o->setProcessingStatusReason($n->getStringValue()),
             'tags' => fn(ParseNode $n) => $o->setTags($n->getCollectionOfObjectValues([TagSummary::class, 'createFromDiscriminatorValue'])),
         ];
     }
@@ -255,6 +301,30 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the processingStatus property value. Defines the asynchronous verification and enrichment lifecycle for a lead.
+     * @return LeadResponse_processingStatus|null
+    */
+    public function getProcessingStatus(): ?LeadResponse_processingStatus {
+        return $this->processingStatus;
+    }
+
+    /**
+     * Gets the processingStatusChangedAt property value. UTC timestamp when the processing stage last changed.
+     * @return DateTime|null
+    */
+    public function getProcessingStatusChangedAt(): ?DateTime {
+        return $this->processingStatusChangedAt;
+    }
+
+    /**
+     * Gets the processingStatusReason property value. Explanation when asynchronous lead processing is blocked or fails.
+     * @return string|null
+    */
+    public function getProcessingStatusReason(): ?string {
+        return $this->processingStatusReason;
+    }
+
+    /**
      * Gets the tags property value. Tags currently attached to this lead, source, or record.
      * @return array<TagSummary>|null
     */
@@ -275,12 +345,17 @@ class LeadResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeObjectValue('currentLeadStatus', $this->getCurrentLeadStatus());
         $writer->writeObjectValue('customer', $this->getCustomer());
+        $writer->writeDateTimeValue('deletedAt', $this->getDeletedAt());
+        $writer->writeStringValue('deletedByUserId', $this->getDeletedByUserId());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isArchived', $this->getIsArchived());
         $writer->writeObjectValue('metadata', $this->getMetadata());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeObjectValue('phoneIdentity', $this->getPhoneIdentity());
+        $writer->writeEnumValue('processingStatus', $this->getProcessingStatus());
+        $writer->writeDateTimeValue('processingStatusChangedAt', $this->getProcessingStatusChangedAt());
+        $writer->writeStringValue('processingStatusReason', $this->getProcessingStatusReason());
         $writer->writeCollectionOfObjectValues('tags', $this->getTags());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -358,6 +433,22 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the deletedAt property value. UTC timestamp when this lead was soft deleted.
+     * @param DateTime|null $value Value to set for the deletedAt property.
+    */
+    public function setDeletedAt(?DateTime $value): void {
+        $this->deletedAt = $value;
+    }
+
+    /**
+     * Sets the deletedByUserId property value. User ID of the person who soft deleted this lead.
+     * @param string|null $value Value to set for the deletedByUserId property.
+    */
+    public function setDeletedByUserId(?string $value): void {
+        $this->deletedByUserId = $value;
+    }
+
+    /**
      * Sets the enabled property value. Indicates whether this lead response is active and available in the Leadping API.
      * @param bool|null $value Value to set for the enabled property.
     */
@@ -403,6 +494,30 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     */
     public function setPhoneIdentity(?LeadResponse_phoneIdentity $value): void {
         $this->phoneIdentity = $value;
+    }
+
+    /**
+     * Sets the processingStatus property value. Defines the asynchronous verification and enrichment lifecycle for a lead.
+     * @param LeadResponse_processingStatus|null $value Value to set for the processingStatus property.
+    */
+    public function setProcessingStatus(?LeadResponse_processingStatus $value): void {
+        $this->processingStatus = $value;
+    }
+
+    /**
+     * Sets the processingStatusChangedAt property value. UTC timestamp when the processing stage last changed.
+     * @param DateTime|null $value Value to set for the processingStatusChangedAt property.
+    */
+    public function setProcessingStatusChangedAt(?DateTime $value): void {
+        $this->processingStatusChangedAt = $value;
+    }
+
+    /**
+     * Sets the processingStatusReason property value. Explanation when asynchronous lead processing is blocked or fails.
+     * @param string|null $value Value to set for the processingStatusReason property.
+    */
+    public function setProcessingStatusReason(?string $value): void {
+        $this->processingStatusReason = $value;
     }
 
     /**

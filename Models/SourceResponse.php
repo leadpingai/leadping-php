@@ -55,6 +55,11 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     private ?SourceResponse_createdByUser $createdByUser = null;
     
     /**
+     * @var string|null $createdByUserEmail Email used to resolve the creator's avatar.
+    */
+    private ?string $createdByUserEmail = null;
+    
+    /**
      * @var array<string>|null $defaultTagIds Tag IDs automatically assigned to leads created by this source.
     */
     private ?array $defaultTagIds = null;
@@ -200,6 +205,14 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the createdByUserEmail property value. Email used to resolve the creator's avatar.
+     * @return string|null
+    */
+    public function getCreatedByUserEmail(): ?string {
+        return $this->createdByUserEmail;
+    }
+
+    /**
      * Gets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
      * @return array<string>|null
     */
@@ -259,6 +272,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
             'complianceApproved' => fn(ParseNode $n) => $o->setComplianceApproved($n->getBooleanValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'createdByUser' => fn(ParseNode $n) => $o->setCreatedByUser($n->getObjectValue([SourceResponse_createdByUser::class, 'createFromDiscriminatorValue'])),
+            'createdByUserEmail' => fn(ParseNode $n) => $o->setCreatedByUserEmail($n->getStringValue()),
             'defaultTagIds' => function (ParseNode $n) {
                 $val = $n->getCollectionOfPrimitiveValues();
                 if (is_array($val)) {
@@ -366,6 +380,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('complianceApproved', $this->getComplianceApproved());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeObjectValue('createdByUser', $this->getCreatedByUser());
+        $writer->writeStringValue('createdByUserEmail', $this->getCreatedByUserEmail());
         $writer->writeCollectionOfPrimitiveValues('defaultTagIds', $this->getDefaultTagIds());
         $writer->writeCollectionOfObjectValues('defaultTags', $this->getDefaultTags());
         $writer->writeStringValue('description', $this->getDescription());
@@ -444,6 +459,14 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     */
     public function setCreatedByUser(?SourceResponse_createdByUser $value): void {
         $this->createdByUser = $value;
+    }
+
+    /**
+     * Sets the createdByUserEmail property value. Email used to resolve the creator's avatar.
+     * @param string|null $value Value to set for the createdByUserEmail property.
+    */
+    public function setCreatedByUserEmail(?string $value): void {
+        $this->createdByUserEmail = $value;
     }
 
     /**

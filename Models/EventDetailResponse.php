@@ -169,6 +169,11 @@ class EventDetailResponse implements AdditionalDataHolder, Parsable
     private ?EventDetailResponse_user $user = null;
     
     /**
+     * @var string|null $userEmail Email address for the user connected to this event detail response.
+    */
+    private ?string $userEmail = null;
+    
+    /**
      * @var string|null $userId User ID associated with the activity that created this event.
     */
     private ?string $userId = null;
@@ -314,6 +319,7 @@ class EventDetailResponse implements AdditionalDataHolder, Parsable
             'toPhoneNumber' => fn(ParseNode $n) => $o->setToPhoneNumber($n->getStringValue()),
             'undeliverableAt' => fn(ParseNode $n) => $o->setUndeliverableAt($n->getDateTimeValue()),
             'user' => fn(ParseNode $n) => $o->setUser($n->getObjectValue([EventDetailResponse_user::class, 'createFromDiscriminatorValue'])),
+            'userEmail' => fn(ParseNode $n) => $o->setUserEmail($n->getStringValue()),
             'userId' => fn(ParseNode $n) => $o->setUserId($n->getStringValue()),
         ];
     }
@@ -479,6 +485,14 @@ class EventDetailResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the userEmail property value. Email address for the user connected to this event detail response.
+     * @return string|null
+    */
+    public function getUserEmail(): ?string {
+        return $this->userEmail;
+    }
+
+    /**
      * Gets the userId property value. User ID associated with the activity that created this event.
      * @return string|null
     */
@@ -521,6 +535,7 @@ class EventDetailResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('toPhoneNumber', $this->getToPhoneNumber());
         $writer->writeDateTimeValue('undeliverableAt', $this->getUndeliverableAt());
         $writer->writeObjectValue('user', $this->getUser());
+        $writer->writeStringValue('userEmail', $this->getUserEmail());
         $writer->writeStringValue('userId', $this->getUserId());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -771,6 +786,14 @@ class EventDetailResponse implements AdditionalDataHolder, Parsable
     */
     public function setUser(?EventDetailResponse_user $value): void {
         $this->user = $value;
+    }
+
+    /**
+     * Sets the userEmail property value. Email address for the user connected to this event detail response.
+     * @param string|null $value Value to set for the userEmail property.
+    */
+    public function setUserEmail(?string $value): void {
+        $this->userEmail = $value;
     }
 
     /**

@@ -84,6 +84,21 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     private ?string $phone = null;
     
     /**
+     * @var LeadTableRow_processingStatus|null $processingStatus Defines the asynchronous verification and enrichment lifecycle for a lead.
+    */
+    private ?LeadTableRow_processingStatus $processingStatus = null;
+    
+    /**
+     * @var DateTime|null $processingStatusChangedAt UTC timestamp when the processing stage last changed.
+    */
+    private ?DateTime $processingStatusChangedAt = null;
+    
+    /**
+     * @var string|null $processingStatusReason Explanation when asynchronous lead processing is blocked or fails.
+    */
+    private ?string $processingStatusReason = null;
+    
+    /**
      * @var LeadTableRow_source|null $source Identifier and display name of the related source.
     */
     private ?LeadTableRow_source $source = null;
@@ -208,6 +223,9 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
             'lastName' => fn(ParseNode $n) => $o->setLastName($n->getStringValue()),
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([LeadTableRow_organization::class, 'createFromDiscriminatorValue'])),
             'phone' => fn(ParseNode $n) => $o->setPhone($n->getStringValue()),
+            'processingStatus' => fn(ParseNode $n) => $o->setProcessingStatus($n->getEnumValue(LeadTableRow_processingStatus::class)),
+            'processingStatusChangedAt' => fn(ParseNode $n) => $o->setProcessingStatusChangedAt($n->getDateTimeValue()),
+            'processingStatusReason' => fn(ParseNode $n) => $o->setProcessingStatusReason($n->getStringValue()),
             'source' => fn(ParseNode $n) => $o->setSource($n->getObjectValue([LeadTableRow_source::class, 'createFromDiscriminatorValue'])),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getStringValue()),
             'statusTone' => fn(ParseNode $n) => $o->setStatusTone($n->getStringValue()),
@@ -262,6 +280,30 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     */
     public function getPhone(): ?string {
         return $this->phone;
+    }
+
+    /**
+     * Gets the processingStatus property value. Defines the asynchronous verification and enrichment lifecycle for a lead.
+     * @return LeadTableRow_processingStatus|null
+    */
+    public function getProcessingStatus(): ?LeadTableRow_processingStatus {
+        return $this->processingStatus;
+    }
+
+    /**
+     * Gets the processingStatusChangedAt property value. UTC timestamp when the processing stage last changed.
+     * @return DateTime|null
+    */
+    public function getProcessingStatusChangedAt(): ?DateTime {
+        return $this->processingStatusChangedAt;
+    }
+
+    /**
+     * Gets the processingStatusReason property value. Explanation when asynchronous lead processing is blocked or fails.
+     * @return string|null
+    */
+    public function getProcessingStatusReason(): ?string {
+        return $this->processingStatusReason;
     }
 
     /**
@@ -322,6 +364,9 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('lastName', $this->getLastName());
         $writer->writeObjectValue('organization', $this->getOrganization());
         $writer->writeStringValue('phone', $this->getPhone());
+        $writer->writeEnumValue('processingStatus', $this->getProcessingStatus());
+        $writer->writeDateTimeValue('processingStatusChangedAt', $this->getProcessingStatusChangedAt());
+        $writer->writeStringValue('processingStatusReason', $this->getProcessingStatusReason());
         $writer->writeObjectValue('source', $this->getSource());
         $writer->writeStringValue('status', $this->getStatus());
         $writer->writeStringValue('statusTone', $this->getStatusTone());
@@ -440,6 +485,30 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     */
     public function setPhone(?string $value): void {
         $this->phone = $value;
+    }
+
+    /**
+     * Sets the processingStatus property value. Defines the asynchronous verification and enrichment lifecycle for a lead.
+     * @param LeadTableRow_processingStatus|null $value Value to set for the processingStatus property.
+    */
+    public function setProcessingStatus(?LeadTableRow_processingStatus $value): void {
+        $this->processingStatus = $value;
+    }
+
+    /**
+     * Sets the processingStatusChangedAt property value. UTC timestamp when the processing stage last changed.
+     * @param DateTime|null $value Value to set for the processingStatusChangedAt property.
+    */
+    public function setProcessingStatusChangedAt(?DateTime $value): void {
+        $this->processingStatusChangedAt = $value;
+    }
+
+    /**
+     * Sets the processingStatusReason property value. Explanation when asynchronous lead processing is blocked or fails.
+     * @param string|null $value Value to set for the processingStatusReason property.
+    */
+    public function setProcessingStatusReason(?string $value): void {
+        $this->processingStatusReason = $value;
     }
 
     /**

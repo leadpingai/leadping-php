@@ -80,7 +80,7 @@ class ItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Deletes a lead from the current organization when it should no longer appear in communication, routing, or event workflows.
+     * Marks a lead as deleted so it no longer appears in user-facing lead, conversation, routing, or event workflows. The stored lead,conversation, and event records are retained.
      * @param ItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<void|null>
      * @throws Exception
@@ -127,7 +127,7 @@ class ItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Deletes a lead from the current organization when it should no longer appear in communication, routing, or event workflows.
+     * Marks a lead as deleted so it no longer appears in user-facing lead, conversation, routing, or event workflows. The stored lead,conversation, and event records are retained.
      * @param ItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

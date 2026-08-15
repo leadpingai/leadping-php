@@ -119,9 +119,19 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     private ?string $user = null;
     
     /**
+     * @var string|null $userEmail Email address for the person or agent who initiated this call event.
+    */
+    private ?string $userEmail = null;
+    
+    /**
      * @var string|null $userId User ID associated with the person or agent who initiated this call event.
     */
     private ?string $userId = null;
+    
+    /**
+     * @var string|null $userName Display name for the person or agent who initiated this call event.
+    */
+    private ?string $userName = null;
     
     /**
      * Instantiates a new CallEventTableRow and sets the default values.
@@ -230,7 +240,9 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
             'statusReason' => fn(ParseNode $n) => $o->setStatusReason($n->getStringValue()),
             'toPhoneNumber' => fn(ParseNode $n) => $o->setToPhoneNumber($n->getStringValue()),
             'user' => fn(ParseNode $n) => $o->setUser($n->getStringValue()),
+            'userEmail' => fn(ParseNode $n) => $o->setUserEmail($n->getStringValue()),
             'userId' => fn(ParseNode $n) => $o->setUserId($n->getStringValue()),
+            'userName' => fn(ParseNode $n) => $o->setUserName($n->getStringValue()),
         ];
     }
 
@@ -339,11 +351,27 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the userEmail property value. Email address for the person or agent who initiated this call event.
+     * @return string|null
+    */
+    public function getUserEmail(): ?string {
+        return $this->userEmail;
+    }
+
+    /**
      * Gets the userId property value. User ID associated with the person or agent who initiated this call event.
      * @return string|null
     */
     public function getUserId(): ?string {
         return $this->userId;
+    }
+
+    /**
+     * Gets the userName property value. Display name for the person or agent who initiated this call event.
+     * @return string|null
+    */
+    public function getUserName(): ?string {
+        return $this->userName;
     }
 
     /**
@@ -371,7 +399,9 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('statusReason', $this->getStatusReason());
         $writer->writeStringValue('toPhoneNumber', $this->getToPhoneNumber());
         $writer->writeStringValue('user', $this->getUser());
+        $writer->writeStringValue('userEmail', $this->getUserEmail());
         $writer->writeStringValue('userId', $this->getUserId());
+        $writer->writeStringValue('userName', $this->getUserName());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -544,11 +574,27 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the userEmail property value. Email address for the person or agent who initiated this call event.
+     * @param string|null $value Value to set for the userEmail property.
+    */
+    public function setUserEmail(?string $value): void {
+        $this->userEmail = $value;
+    }
+
+    /**
      * Sets the userId property value. User ID associated with the person or agent who initiated this call event.
      * @param string|null $value Value to set for the userId property.
     */
     public function setUserId(?string $value): void {
         $this->userId = $value;
+    }
+
+    /**
+     * Sets the userName property value. Display name for the person or agent who initiated this call event.
+     * @param string|null $value Value to set for the userName property.
+    */
+    public function setUserName(?string $value): void {
+        $this->userName = $value;
     }
 
 }

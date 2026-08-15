@@ -4,6 +4,8 @@ namespace Leadping\OpenApiClient\Automations\Item;
 
 use Exception;
 use Http\Promise\Promise;
+use Leadping\OpenApiClient\Automations\Item\Run\RunRequestBuilder;
+use Leadping\OpenApiClient\Automations\Item\Runs\RunsRequestBuilder;
 use Leadping\OpenApiClient\Models\AutomationRequest;
 use Leadping\OpenApiClient\Models\AutomationResponse;
 use Leadping\OpenApiClient\Models\ProblemDetails;
@@ -17,6 +19,20 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 */
 class AutomationsItemRequestBuilder extends BaseRequestBuilder 
 {
+    /**
+     * The run property
+    */
+    public function run(): RunRequestBuilder {
+        return new RunRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The runs property
+    */
+    public function runs(): RunsRequestBuilder {
+        return new RunsRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
     /**
      * Instantiates a new AutomationsItemRequestBuilder and sets the default values.
      * @param array<string, mixed>|string $pathParametersOrRawUrl Path parameters for the request or a String representing the raw URL.

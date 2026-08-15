@@ -16,6 +16,7 @@ class UsageChannel extends Enum {
     public const OPENAI = "openai";
     public const DOMAIN = "domain";
     public const ONE_ZERODLC = "10dlc";
+    public const PAYMENT = "payment";
     public const CONNECTION = "connection";
     public const AUTOMATION = "automation";
 }
