@@ -34,6 +34,11 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     private ?string $callerId = null;
     
     /**
+     * @var array<CommunicationConsoleEntry>|null $consoleEntries Ordered diagnostic entries recorded while Leadping processed this call.
+    */
+    private ?array $consoleEntries = null;
+    
+    /**
      * @var string|null $conversationId Conversation ID that links this call event table row to the Leadping inbox thread.
     */
     private ?string $conversationId = null;
@@ -182,6 +187,14 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the consoleEntries property value. Ordered diagnostic entries recorded while Leadping processed this call.
+     * @return array<CommunicationConsoleEntry>|null
+    */
+    public function getConsoleEntries(): ?array {
+        return $this->consoleEntries;
+    }
+
+    /**
      * Gets the conversationId property value. Conversation ID that links this call event table row to the Leadping inbox thread.
      * @return string|null
     */
@@ -223,6 +236,7 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
             'answeredAt' => fn(ParseNode $n) => $o->setAnsweredAt($n->getDateTimeValue()),
             'billingStatus' => fn(ParseNode $n) => $o->setBillingStatus($n->getStringValue()),
             'callerId' => fn(ParseNode $n) => $o->setCallerId($n->getStringValue()),
+            'consoleEntries' => fn(ParseNode $n) => $o->setConsoleEntries($n->getCollectionOfObjectValues([CommunicationConsoleEntry::class, 'createFromDiscriminatorValue'])),
             'conversationId' => fn(ParseNode $n) => $o->setConversationId($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'direction' => fn(ParseNode $n) => $o->setDirection($n->getStringValue()),
@@ -382,6 +396,7 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('answeredAt', $this->getAnsweredAt());
         $writer->writeStringValue('billingStatus', $this->getBillingStatus());
         $writer->writeStringValue('callerId', $this->getCallerId());
+        $writer->writeCollectionOfObjectValues('consoleEntries', $this->getConsoleEntries());
         $writer->writeStringValue('conversationId', $this->getConversationId());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('direction', $this->getDirection());
@@ -435,6 +450,14 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setCallerId(?string $value): void {
         $this->callerId = $value;
+    }
+
+    /**
+     * Sets the consoleEntries property value. Ordered diagnostic entries recorded while Leadping processed this call.
+     * @param array<CommunicationConsoleEntry>|null $value Value to set for the consoleEntries property.
+    */
+    public function setConsoleEntries(?array $value): void {
+        $this->consoleEntries = $value;
     }
 
     /**

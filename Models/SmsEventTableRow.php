@@ -54,6 +54,11 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     private ?string $complianceAction = null;
     
     /**
+     * @var array<CommunicationConsoleEntry>|null $consoleEntries Ordered diagnostic entries recorded while Leadping processed this message.
+    */
+    private ?array $consoleEntries = null;
+    
+    /**
      * @var string|null $conversationId Conversation ID that links this SMS event table row to the Leadping inbox thread.
     */
     private ?string $conversationId = null;
@@ -294,6 +299,14 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the consoleEntries property value. Ordered diagnostic entries recorded while Leadping processed this message.
+     * @return array<CommunicationConsoleEntry>|null
+    */
+    public function getConsoleEntries(): ?array {
+        return $this->consoleEntries;
+    }
+
+    /**
      * Gets the conversationId property value. Conversation ID that links this SMS event table row to the Leadping inbox thread.
      * @return string|null
     */
@@ -363,6 +376,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
             'canceledAt' => fn(ParseNode $n) => $o->setCanceledAt($n->getDateTimeValue()),
             'cancelReason' => fn(ParseNode $n) => $o->setCancelReason($n->getStringValue()),
             'complianceAction' => fn(ParseNode $n) => $o->setComplianceAction($n->getStringValue()),
+            'consoleEntries' => fn(ParseNode $n) => $o->setConsoleEntries($n->getCollectionOfObjectValues([CommunicationConsoleEntry::class, 'createFromDiscriminatorValue'])),
             'conversationId' => fn(ParseNode $n) => $o->setConversationId($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'deliveredAt' => fn(ParseNode $n) => $o->setDeliveredAt($n->getDateTimeValue()),
@@ -610,6 +624,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('canceledAt', $this->getCanceledAt());
         $writer->writeStringValue('cancelReason', $this->getCancelReason());
         $writer->writeStringValue('complianceAction', $this->getComplianceAction());
+        $writer->writeCollectionOfObjectValues('consoleEntries', $this->getConsoleEntries());
         $writer->writeStringValue('conversationId', $this->getConversationId());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeDateTimeValue('deliveredAt', $this->getDeliveredAt());
@@ -707,6 +722,14 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setComplianceAction(?string $value): void {
         $this->complianceAction = $value;
+    }
+
+    /**
+     * Sets the consoleEntries property value. Ordered diagnostic entries recorded while Leadping processed this message.
+     * @param array<CommunicationConsoleEntry>|null $value Value to set for the consoleEntries property.
+    */
+    public function setConsoleEntries(?array $value): void {
+        $this->consoleEntries = $value;
     }
 
     /**
