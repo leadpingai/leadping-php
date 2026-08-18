@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * A generic object for handling range filtering during querying
+ * Selects records by applying inclusive or exclusive lower and upper bounds to a named comparable field.
 */
 class RangeFilter implements AdditionalDataHolder, Parsable 
 {
@@ -18,7 +18,7 @@ class RangeFilter implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $field The field to filter by.
+     * @var string|null $field Serializable field name to evaluate; supported names are determined by the queried resource.
     */
     private ?string $field = null;
     
@@ -47,7 +47,7 @@ class RangeFilter implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the field property value. The field to filter by.
+     * Gets the field property value. Serializable field name to evaluate; supported names are determined by the queried resource.
      * @return string|null
     */
     public function getField(): ?string {
@@ -83,7 +83,7 @@ class RangeFilter implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the field property value. The field to filter by.
+     * Sets the field property value. Serializable field name to evaluate; supported names are determined by the queried resource.
      * @param string|null $value Value to set for the field property.
     */
     public function setField(?string $value): void {

@@ -18,7 +18,7 @@ class OrderByOption implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var OrderByOption_direction|null $direction An enumerator for sort direction during querying
+     * @var OrderByOption_direction|null $direction Identifies whether query results are ordered from lower to higher values or from higher to lower values.
     */
     private ?OrderByOption_direction $direction = null;
     
@@ -52,7 +52,7 @@ class OrderByOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the direction property value. An enumerator for sort direction during querying
+     * Gets the direction property value. Identifies whether query results are ordered from lower to higher values or from higher to lower values.
      * @return OrderByOption_direction|null
     */
     public function getDirection(): ?OrderByOption_direction {
@@ -98,7 +98,7 @@ class OrderByOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the direction property value. An enumerator for sort direction during querying
+     * Sets the direction property value. Identifies whether query results are ordered from lower to higher values or from higher to lower values.
      * @param OrderByOption_direction|null $value Value to set for the direction property.
     */
     public function setDirection(?OrderByOption_direction $value): void {

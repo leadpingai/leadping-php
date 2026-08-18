@@ -59,7 +59,7 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     private ?bool $enabled = null;
     
     /**
-     * @var string|null $id The unique identifier for the entity, when updating an existing entity.
+     * @var string|null $id Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
     */
     private ?string $id = null;
     
@@ -217,7 +217,7 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The unique identifier for the entity, when updating an existing entity.
+     * Gets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
      * @return string|null
     */
     public function getId(): ?string {
@@ -341,7 +341,7 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The unique identifier for the entity, when updating an existing entity.
+     * Sets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
