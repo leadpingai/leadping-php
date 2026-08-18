@@ -41,6 +41,7 @@ class DefaultRequestBuilder extends BaseRequestBuilder
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [StripePaymentMethodResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }

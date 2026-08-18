@@ -29,12 +29,12 @@ class MyRequestBuilderGetRequestConfiguration extends BaseRequestConfiguration
 
     /**
      * Instantiates a new MyRequestBuilderGetQueryParameters.
-     * @param string|null $days Optional number of recent days to include when explicit timestamps are not supplied.
+     * @param int|null $days Optional number of recent days to include when explicit timestamps are not supplied.
      * @param DateTime|null $endAt Optional exclusive end timestamp for the analytics period.
      * @param DateTime|null $startAt Optional inclusive start timestamp for the analytics period.
      * @return MyRequestBuilderGetQueryParameters
     */
-    public static function createQueryParameters(?string $days = null, ?DateTime $endAt = null, ?DateTime $startAt = null): MyRequestBuilderGetQueryParameters {
+    public static function createQueryParameters(?int $days = null, ?DateTime $endAt = null, ?DateTime $startAt = null): MyRequestBuilderGetQueryParameters {
         return new MyRequestBuilderGetQueryParameters($days, $endAt, $startAt);
     }
 

@@ -40,6 +40,7 @@ class WebsiteRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toPostRequestInformation($body, $requestConfiguration);
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendNoContentAsync($requestInfo, $errorMappings);
     }
@@ -59,7 +60,7 @@ class WebsiteRequestBuilder extends BaseRequestBuilder
             $requestInfo->addHeaders($requestConfiguration->headers);
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
-        $requestInfo->tryAddHeader('Accept', "application/json, text/plain;q=0.9");
+        $requestInfo->tryAddHeader('Accept', "application/json, application/problem+json, text/plain;q=0.9");
         $requestInfo->setContentFromParsable($this->requestAdapter, "application/x-www-form-urlencoded", $body);
         return $requestInfo;
     }

@@ -19,7 +19,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $continuationToken Opaque Cosmos DB continuation token. ‑ on the **first** request. ‑ Client must echo back the NextToken it received from the previous page.
+     * @var string|null $continuationToken Opaque Cosmos DB continuation token. ‑ null on the **first** request. ‑ Client must echo back the NextToken it received from the previous page.
     */
     private ?string $continuationToken = null;
     
@@ -39,12 +39,17 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     private ?array $orderBy = null;
     
     /**
+     * @var int|null $pageSize Maximum items to return in one page
+    */
+    private ?int $pageSize = null;
+    
+    /**
      * @var array<RangeFilter>|null $rangeFilters Advanced range-based filters (e.g., Price > 50 and Price <= 200).
     */
     private ?array $rangeFilters = null;
     
     /**
-     * @var string|null $search The search term to filter results (applied to ).
+     * @var string|null $search The search term to filter results (applied to SearchFields).
     */
     private ?string $search = null;
     
@@ -78,7 +83,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the continuationToken property value. Opaque Cosmos DB continuation token. ‑ on the **first** request. ‑ Client must echo back the NextToken it received from the previous page.
+     * Gets the continuationToken property value. Opaque Cosmos DB continuation token. ‑ null on the **first** request. ‑ Client must echo back the NextToken it received from the previous page.
      * @return string|null
     */
     public function getContinuationToken(): ?string {
@@ -96,6 +101,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
             'filters' => fn(ParseNode $n) => $o->setFilters($n->getCollectionOfObjectValues([ExactMatchFilter::class, 'createFromDiscriminatorValue'])),
             'includeCount' => fn(ParseNode $n) => $o->setIncludeCount($n->getBooleanValue()),
             'orderBy' => fn(ParseNode $n) => $o->setOrderBy($n->getCollectionOfObjectValues([OrderByOption::class, 'createFromDiscriminatorValue'])),
+            'pageSize' => fn(ParseNode $n) => $o->setPageSize($n->getIntegerValue()),
             'rangeFilters' => fn(ParseNode $n) => $o->setRangeFilters($n->getCollectionOfObjectValues([RangeFilter::class, 'createFromDiscriminatorValue'])),
             'search' => fn(ParseNode $n) => $o->setSearch($n->getStringValue()),
             'searchFields' => function (ParseNode $n) {
@@ -134,6 +140,14 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the pageSize property value. Maximum items to return in one page
+     * @return int|null
+    */
+    public function getPageSize(): ?int {
+        return $this->pageSize;
+    }
+
+    /**
      * Gets the rangeFilters property value. Advanced range-based filters (e.g., Price > 50 and Price <= 200).
      * @return array<RangeFilter>|null
     */
@@ -142,7 +156,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the search property value. The search term to filter results (applied to ).
+     * Gets the search property value. The search term to filter results (applied to SearchFields).
      * @return string|null
     */
     public function getSearch(): ?string {
@@ -166,6 +180,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
         $writer->writeCollectionOfObjectValues('filters', $this->getFilters());
         $writer->writeBooleanValue('includeCount', $this->getIncludeCount());
         $writer->writeCollectionOfObjectValues('orderBy', $this->getOrderBy());
+        $writer->writeIntegerValue('pageSize', $this->getPageSize());
         $writer->writeCollectionOfObjectValues('rangeFilters', $this->getRangeFilters());
         $writer->writeStringValue('search', $this->getSearch());
         $writer->writeCollectionOfPrimitiveValues('searchFields', $this->getSearchFields());
@@ -181,7 +196,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the continuationToken property value. Opaque Cosmos DB continuation token. ‑ on the **first** request. ‑ Client must echo back the NextToken it received from the previous page.
+     * Sets the continuationToken property value. Opaque Cosmos DB continuation token. ‑ null on the **first** request. ‑ Client must echo back the NextToken it received from the previous page.
      * @param string|null $value Value to set for the continuationToken property.
     */
     public function setContinuationToken(?string $value): void {
@@ -213,6 +228,14 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the pageSize property value. Maximum items to return in one page
+     * @param int|null $value Value to set for the pageSize property.
+    */
+    public function setPageSize(?int $value): void {
+        $this->pageSize = $value;
+    }
+
+    /**
      * Sets the rangeFilters property value. Advanced range-based filters (e.g., Price > 50 and Price <= 200).
      * @param array<RangeFilter>|null $value Value to set for the rangeFilters property.
     */
@@ -221,7 +244,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the search property value. The search term to filter results (applied to ).
+     * Sets the search property value. The search term to filter results (applied to SearchFields).
      * @param string|null $value Value to set for the search property.
     */
     public function setSearch(?string $value): void {

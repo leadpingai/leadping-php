@@ -18,12 +18,12 @@ class AutomationConsoleResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $automationId The automationId property
+     * @var string|null $automationId Unique identifier of the automation whose execution history is returned.
     */
     private ?string $automationId = null;
     
     /**
-     * @var array<AutomationWorkflowRunResponse>|null $runs The runs property
+     * @var array<AutomationWorkflowRunResponse>|null $runs Recent persisted workflow runs for the automation, ordered for console display.
     */
     private ?array $runs = null;
     
@@ -52,7 +52,7 @@ class AutomationConsoleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the automationId property value. The automationId property
+     * Gets the automationId property value. Unique identifier of the automation whose execution history is returned.
      * @return string|null
     */
     public function getAutomationId(): ?string {
@@ -72,7 +72,7 @@ class AutomationConsoleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the runs property value. The runs property
+     * Gets the runs property value. Recent persisted workflow runs for the automation, ordered for console display.
      * @return array<AutomationWorkflowRunResponse>|null
     */
     public function getRuns(): ?array {
@@ -98,7 +98,7 @@ class AutomationConsoleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the automationId property value. The automationId property
+     * Sets the automationId property value. Unique identifier of the automation whose execution history is returned.
      * @param string|null $value Value to set for the automationId property.
     */
     public function setAutomationId(?string $value): void {
@@ -106,7 +106,7 @@ class AutomationConsoleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the runs property value. The runs property
+     * Sets the runs property value. Recent persisted workflow runs for the automation, ordered for console display.
      * @param array<AutomationWorkflowRunResponse>|null $value Value to set for the runs property.
     */
     public function setRuns(?array $value): void {

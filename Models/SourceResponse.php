@@ -45,6 +45,11 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     private ?bool $complianceApproved = null;
     
     /**
+     * @var float|null $costPerLead Configured cost charged when this source creates a billable lead.
+    */
+    private ?float $costPerLead = null;
+    
+    /**
      * @var DateTime|null $createdAt The date and time when the entity was created.
     */
     private ?DateTime $createdAt = null;
@@ -189,6 +194,14 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the costPerLead property value. Configured cost charged when this source creates a billable lead.
+     * @return float|null
+    */
+    public function getCostPerLead(): ?float {
+        return $this->costPerLead;
+    }
+
+    /**
      * Gets the createdAt property value. The date and time when the entity was created.
      * @return DateTime|null
     */
@@ -270,6 +283,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
             'apiKey' => fn(ParseNode $n) => $o->setApiKey($n->getStringValue()),
             'apiKeyPreview' => fn(ParseNode $n) => $o->setApiKeyPreview($n->getStringValue()),
             'complianceApproved' => fn(ParseNode $n) => $o->setComplianceApproved($n->getBooleanValue()),
+            'costPerLead' => fn(ParseNode $n) => $o->setCostPerLead($n->getFloatValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'createdByUser' => fn(ParseNode $n) => $o->setCreatedByUser($n->getObjectValue([SourceResponse_createdByUser::class, 'createFromDiscriminatorValue'])),
             'createdByUserEmail' => fn(ParseNode $n) => $o->setCreatedByUserEmail($n->getStringValue()),
@@ -378,6 +392,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('apiKey', $this->getApiKey());
         $writer->writeStringValue('apiKeyPreview', $this->getApiKeyPreview());
         $writer->writeBooleanValue('complianceApproved', $this->getComplianceApproved());
+        $writer->writeFloatValue('costPerLead', $this->getCostPerLead());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeObjectValue('createdByUser', $this->getCreatedByUser());
         $writer->writeStringValue('createdByUserEmail', $this->getCreatedByUserEmail());
@@ -443,6 +458,14 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     */
     public function setComplianceApproved(?bool $value): void {
         $this->complianceApproved = $value;
+    }
+
+    /**
+     * Sets the costPerLead property value. Configured cost charged when this source creates a billable lead.
+     * @param float|null $value Value to set for the costPerLead property.
+    */
+    public function setCostPerLead(?float $value): void {
+        $this->costPerLead = $value;
     }
 
     /**

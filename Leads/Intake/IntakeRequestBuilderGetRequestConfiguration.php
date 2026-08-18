@@ -34,7 +34,7 @@ class IntakeRequestBuilderGetRequestConfiguration extends BaseRequestConfigurati
      * @param Date|null $birthDate Lead birth date used for demographic matching and insurance intake workflows.
      * @param string|null $city City for the lead or organization postal address.
      * @param Date|null $dateOfBirth Lead date of birth supplied by intake sources and normalized into the lead profile.
-     * @param string|null $directPostPrice Direct-post price supplied by the lead source during intake.
+     * @param float|null $directPostPrice Direct-post price supplied by the lead source during intake.
      * @param string|null $email Email address for the person represented by this lead intake request.
      * @param string|null $externalId External system identifier used to reconcile this lead intake request across integrations.
      * @param string|null $firstName First name of the lead, user, or contact represented by this lead intake request.
@@ -44,7 +44,7 @@ class IntakeRequestBuilderGetRequestConfiguration extends BaseRequestConfigurati
      * @param string|null $phone Phone details for the lead, user, or organization represented by this lead intake request.
      * @param string|null $phoneType Source-provided phone type, such as mobile, landline, or VoIP, used during lead intake normalization.
      * @param string|null $postalCode Postal code for the lead or organization address.
-     * @param string|null $price Lead price or transaction price supplied to the Leadping API.
+     * @param float|null $price Lead price or transaction price supplied to the Leadping API.
      * @param string|null $product Product or offer associated with the lead or source.
      * @param string|null $referrer Referring page or traffic source that sent the lead into Leadping.
      * @param string|null $sellerLeadId Seller-provided lead identifier used to deduplicate and reconcile lead delivery.
@@ -65,7 +65,7 @@ class IntakeRequestBuilderGetRequestConfiguration extends BaseRequestConfigurati
      * @param string|null $zip ZIP code submitted by the lead intake source.
      * @return IntakeRequestBuilderGetQueryParameters
     */
-    public static function createQueryParameters(?string $address1 = null, ?string $address2 = null, ?Date $birthDate = null, ?string $city = null, ?Date $dateOfBirth = null, ?string $directPostPrice = null, ?string $email = null, ?string $externalId = null, ?string $firstName = null, ?string $gender = null, ?string $landingPage = null, ?string $lastName = null, ?string $phone = null, ?string $phoneType = null, ?string $postalCode = null, ?string $price = null, ?string $product = null, ?string $referrer = null, ?string $sellerLeadId = null, ?string $sellerLeadIdentifier = null, ?string $sourceKey = null, ?string $sourceMetadata = null, ?string $state = null, ?string $subId = null, ?array $tagIds = null, ?array $tagNames = null, ?string $trustedFormUrl = null, ?string $utmCampaign = null, ?string $utmContent = null, ?string $utmMedium = null, ?string $utmSource = null, ?string $utmTerm = null, ?string $vertical = null, ?string $zip = null): IntakeRequestBuilderGetQueryParameters {
+    public static function createQueryParameters(?string $address1 = null, ?string $address2 = null, ?Date $birthDate = null, ?string $city = null, ?Date $dateOfBirth = null, ?float $directPostPrice = null, ?string $email = null, ?string $externalId = null, ?string $firstName = null, ?string $gender = null, ?string $landingPage = null, ?string $lastName = null, ?string $phone = null, ?string $phoneType = null, ?string $postalCode = null, ?float $price = null, ?string $product = null, ?string $referrer = null, ?string $sellerLeadId = null, ?string $sellerLeadIdentifier = null, ?string $sourceKey = null, ?string $sourceMetadata = null, ?string $state = null, ?string $subId = null, ?array $tagIds = null, ?array $tagNames = null, ?string $trustedFormUrl = null, ?string $utmCampaign = null, ?string $utmContent = null, ?string $utmMedium = null, ?string $utmSource = null, ?string $utmTerm = null, ?string $vertical = null, ?string $zip = null): IntakeRequestBuilderGetQueryParameters {
         return new IntakeRequestBuilderGetQueryParameters($address1, $address2, $birthDate, $city, $dateOfBirth, $directPostPrice, $email, $externalId, $firstName, $gender, $landingPage, $lastName, $phone, $phoneType, $postalCode, $price, $product, $referrer, $sellerLeadId, $sellerLeadIdentifier, $sourceKey, $sourceMetadata, $state, $subId, $tagIds, $tagNames, $trustedFormUrl, $utmCampaign, $utmContent, $utmMedium, $utmSource, $utmTerm, $vertical, $zip);
     }
 

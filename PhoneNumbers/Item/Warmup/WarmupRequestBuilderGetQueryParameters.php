@@ -20,17 +20,17 @@ class WarmupRequestBuilderGetQueryParameters
     public ?Date $startDate = null;
     
     /**
-     * @var string|null $windowDays The window days.
+     * @var int|null $windowDays The window days.
     */
-    public ?string $windowDays = null;
+    public ?int $windowDays = null;
     
     /**
      * Instantiates a new WarmupRequestBuilderGetQueryParameters and sets the default values.
      * @param Date|null $endDate The end date.
      * @param Date|null $startDate The start date.
-     * @param string|null $windowDays The window days.
+     * @param int|null $windowDays The window days.
     */
-    public function __construct(?Date $endDate = null, ?Date $startDate = null, ?string $windowDays = null) {
+    public function __construct(?Date $endDate = null, ?Date $startDate = null, ?int $windowDays = null) {
         $this->endDate = $endDate;
         $this->startDate = $startDate;
         $this->windowDays = $windowDays;

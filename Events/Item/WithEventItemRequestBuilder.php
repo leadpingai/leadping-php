@@ -4,7 +4,6 @@ namespace Leadping\OpenApiClient\Events\Item;
 
 use Exception;
 use Http\Promise\Promise;
-use Leadping\OpenApiClient\Events\Item\Detail\DetailRequestBuilder;
 use Leadping\OpenApiClient\Models\EventTableRow;
 use Leadping\OpenApiClient\Models\ProblemDetails;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
@@ -17,13 +16,6 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 */
 class WithEventItemRequestBuilder extends BaseRequestBuilder 
 {
-    /**
-     * The detail property
-    */
-    public function detail(): DetailRequestBuilder {
-        return new DetailRequestBuilder($this->pathParameters, $this->requestAdapter);
-    }
-    
     /**
      * Instantiates a new WithEventItemRequestBuilder and sets the default values.
      * @param array<string, mixed>|string $pathParametersOrRawUrl Path parameters for the request or a String representing the raw URL.
@@ -48,7 +40,9 @@ class WithEventItemRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [EventTableRow::class, 'createFromDiscriminatorValue'], $errorMappings);
     }

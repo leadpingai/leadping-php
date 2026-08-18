@@ -45,9 +45,19 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     private ?string $apiKeyPreview = null;
     
     /**
+     * @var int|null $apiKeyTotalUses Total number of authenticated requests made with this source API key.
+    */
+    private ?int $apiKeyTotalUses = null;
+    
+    /**
      * @var bool|null $complianceApproved Indicates whether the organization or sender passed compliance review.
     */
     private ?bool $complianceApproved = null;
+    
+    /**
+     * @var float|null $costPerLead Configured cost charged when this source creates a billable lead.
+    */
+    private ?float $costPerLead = null;
     
     /**
      * @var DateTime|null $createdAt UTC timestamp when this lead source table row was created.
@@ -194,11 +204,27 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the apiKeyTotalUses property value. Total number of authenticated requests made with this source API key.
+     * @return int|null
+    */
+    public function getApiKeyTotalUses(): ?int {
+        return $this->apiKeyTotalUses;
+    }
+
+    /**
      * Gets the complianceApproved property value. Indicates whether the organization or sender passed compliance review.
      * @return bool|null
     */
     public function getComplianceApproved(): ?bool {
         return $this->complianceApproved;
+    }
+
+    /**
+     * Gets the costPerLead property value. Configured cost charged when this source creates a billable lead.
+     * @return float|null
+    */
+    public function getCostPerLead(): ?float {
+        return $this->costPerLead;
     }
 
     /**
@@ -275,7 +301,9 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
             'apiKey' => fn(ParseNode $n) => $o->setApiKey($n->getStringValue()),
             'apiKeyLastUsedAt' => fn(ParseNode $n) => $o->setApiKeyLastUsedAt($n->getDateTimeValue()),
             'apiKeyPreview' => fn(ParseNode $n) => $o->setApiKeyPreview($n->getStringValue()),
+            'apiKeyTotalUses' => fn(ParseNode $n) => $o->setApiKeyTotalUses($n->getIntegerValue()),
             'complianceApproved' => fn(ParseNode $n) => $o->setComplianceApproved($n->getBooleanValue()),
+            'costPerLead' => fn(ParseNode $n) => $o->setCostPerLead($n->getFloatValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'createdByUser' => fn(ParseNode $n) => $o->setCreatedByUser($n->getObjectValue([SourceTableRow_createdByUser::class, 'createFromDiscriminatorValue'])),
             'defaultTagIds' => function (ParseNode $n) {
@@ -392,7 +420,9 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('apiKey', $this->getApiKey());
         $writer->writeDateTimeValue('apiKeyLastUsedAt', $this->getApiKeyLastUsedAt());
         $writer->writeStringValue('apiKeyPreview', $this->getApiKeyPreview());
+        $writer->writeIntegerValue('apiKeyTotalUses', $this->getApiKeyTotalUses());
         $writer->writeBooleanValue('complianceApproved', $this->getComplianceApproved());
+        $writer->writeFloatValue('costPerLead', $this->getCostPerLead());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeObjectValue('createdByUser', $this->getCreatedByUser());
         $writer->writeCollectionOfPrimitiveValues('defaultTagIds', $this->getDefaultTagIds());
@@ -461,11 +491,27 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the apiKeyTotalUses property value. Total number of authenticated requests made with this source API key.
+     * @param int|null $value Value to set for the apiKeyTotalUses property.
+    */
+    public function setApiKeyTotalUses(?int $value): void {
+        $this->apiKeyTotalUses = $value;
+    }
+
+    /**
      * Sets the complianceApproved property value. Indicates whether the organization or sender passed compliance review.
      * @param bool|null $value Value to set for the complianceApproved property.
     */
     public function setComplianceApproved(?bool $value): void {
         $this->complianceApproved = $value;
+    }
+
+    /**
+     * Sets the costPerLead property value. Configured cost charged when this source creates a billable lead.
+     * @param float|null $value Value to set for the costPerLead property.
+    */
+    public function setCostPerLead(?float $value): void {
+        $this->costPerLead = $value;
     }
 
     /**

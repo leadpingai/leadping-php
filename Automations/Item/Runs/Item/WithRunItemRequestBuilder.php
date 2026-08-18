@@ -31,7 +31,7 @@ class WithRunItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Gets one persisted automation execution run for its console.
+     * Returns the specified persisted execution run for an automation in the current organization, including its current console state.
      * @param WithRunItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<AutomationConsoleResponse|null>
      * @throws Exception
@@ -40,13 +40,15 @@ class WithRunItemRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [AutomationConsoleResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
 
     /**
-     * Gets one persisted automation execution run for its console.
+     * Returns the specified persisted execution run for an automation in the current organization, including its current console state.
      * @param WithRunItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

@@ -5,6 +5,7 @@ namespace Leadping\OpenApiClient\Events;
 use Leadping\OpenApiClient\Events\All\AllRequestBuilder;
 use Leadping\OpenApiClient\Events\Calls\CallsRequestBuilder;
 use Leadping\OpenApiClient\Events\Conversations\ConversationsRequestBuilder;
+use Leadping\OpenApiClient\Events\Detail\DetailRequestBuilder;
 use Leadping\OpenApiClient\Events\Item\WithEventItemRequestBuilder;
 use Leadping\OpenApiClient\Events\Leads\LeadsRequestBuilder;
 use Leadping\OpenApiClient\Events\Organizations\OrganizationsRequestBuilder;
@@ -36,6 +37,13 @@ class EventsRequestBuilder extends BaseRequestBuilder
     */
     public function conversations(): ConversationsRequestBuilder {
         return new ConversationsRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The detail property
+    */
+    public function detail(): DetailRequestBuilder {
+        return new DetailRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**

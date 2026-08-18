@@ -18,6 +18,11 @@ class SmsReadinessStatusResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var int|null $healthScore The health score metric for this SMS warmup status.
+    */
+    private ?int $healthScore = null;
+    
+    /**
      * @var SmsReadinessHealthStatus|null $healthStatus The current delivery-health assessment for this SMS warmup status.
     */
     private ?SmsReadinessHealthStatus $healthStatus = null;
@@ -31,6 +36,11 @@ class SmsReadinessStatusResponse implements AdditionalDataHolder, Parsable
      * @var string|null $phoneNumberId The phone number ID associated with this SMS warmup status.
     */
     private ?string $phoneNumberId = null;
+    
+    /**
+     * @var int|null $progressPercent The progress percent metric for this SMS warmup status.
+    */
+    private ?int $progressPercent = null;
     
     /**
      * @var SmsReadinessState|null $status The current state for this SMS warmup status.
@@ -78,13 +88,23 @@ class SmsReadinessStatusResponse implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'healthScore' => fn(ParseNode $n) => $o->setHealthScore($n->getIntegerValue()),
             'healthStatus' => fn(ParseNode $n) => $o->setHealthStatus($n->getEnumValue(SmsReadinessHealthStatus::class)),
             'phoneNumber' => fn(ParseNode $n) => $o->setPhoneNumber($n->getStringValue()),
             'phoneNumberId' => fn(ParseNode $n) => $o->setPhoneNumberId($n->getStringValue()),
+            'progressPercent' => fn(ParseNode $n) => $o->setProgressPercent($n->getIntegerValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(SmsReadinessState::class)),
             'uiState' => fn(ParseNode $n) => $o->setUiState($n->getObjectValue([SmsReadinessUiState::class, 'createFromDiscriminatorValue'])),
             'warmupEnabled' => fn(ParseNode $n) => $o->setWarmupEnabled($n->getBooleanValue()),
         ];
+    }
+
+    /**
+     * Gets the healthScore property value. The health score metric for this SMS warmup status.
+     * @return int|null
+    */
+    public function getHealthScore(): ?int {
+        return $this->healthScore;
     }
 
     /**
@@ -109,6 +129,14 @@ class SmsReadinessStatusResponse implements AdditionalDataHolder, Parsable
     */
     public function getPhoneNumberId(): ?string {
         return $this->phoneNumberId;
+    }
+
+    /**
+     * Gets the progressPercent property value. The progress percent metric for this SMS warmup status.
+     * @return int|null
+    */
+    public function getProgressPercent(): ?int {
+        return $this->progressPercent;
     }
 
     /**
@@ -140,9 +168,11 @@ class SmsReadinessStatusResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeIntegerValue('healthScore', $this->getHealthScore());
         $writer->writeEnumValue('healthStatus', $this->getHealthStatus());
         $writer->writeStringValue('phoneNumber', $this->getPhoneNumber());
         $writer->writeStringValue('phoneNumberId', $this->getPhoneNumberId());
+        $writer->writeIntegerValue('progressPercent', $this->getProgressPercent());
         $writer->writeEnumValue('status', $this->getStatus());
         $writer->writeObjectValue('uiState', $this->getUiState());
         $writer->writeBooleanValue('warmupEnabled', $this->getWarmupEnabled());
@@ -155,6 +185,14 @@ class SmsReadinessStatusResponse implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the healthScore property value. The health score metric for this SMS warmup status.
+     * @param int|null $value Value to set for the healthScore property.
+    */
+    public function setHealthScore(?int $value): void {
+        $this->healthScore = $value;
     }
 
     /**
@@ -179,6 +217,14 @@ class SmsReadinessStatusResponse implements AdditionalDataHolder, Parsable
     */
     public function setPhoneNumberId(?string $value): void {
         $this->phoneNumberId = $value;
+    }
+
+    /**
+     * Sets the progressPercent property value. The progress percent metric for this SMS warmup status.
+     * @param int|null $value Value to set for the progressPercent property.
+    */
+    public function setProgressPercent(?int $value): void {
+        $this->progressPercent = $value;
     }
 
     /**

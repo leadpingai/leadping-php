@@ -40,6 +40,7 @@ class WithTokenItemRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [OrganizationInvitationResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }

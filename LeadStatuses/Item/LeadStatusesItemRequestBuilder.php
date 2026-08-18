@@ -6,6 +6,7 @@ use Exception;
 use Http\Promise\Promise;
 use Leadping\OpenApiClient\Models\LeadStatusRequest;
 use Leadping\OpenApiClient\Models\LeadStatusResponse;
+use Leadping\OpenApiClient\Models\ProblemDetails;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
@@ -38,8 +39,13 @@ class LeadStatusesItemRequestBuilder extends BaseRequestBuilder
     */
     public function delete(?LeadStatusesItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toDeleteRequestInformation($requestConfiguration);
+        $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+        ];
         /** @var Promise<bool|null> $result */
-        $result = $this->requestAdapter->sendPrimitiveAsync($requestInfo, 'bool', null);
+        $result = $this->requestAdapter->sendPrimitiveAsync($requestInfo, 'bool', $errorMappings);
         return $result;
     }
 
@@ -52,7 +58,12 @@ class LeadStatusesItemRequestBuilder extends BaseRequestBuilder
     */
     public function put(LeadStatusRequest $body, ?LeadStatusesItemRequestBuilderPutRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toPutRequestInformation($body, $requestConfiguration);
-        return $this->requestAdapter->sendAsync($requestInfo, [LeadStatusResponse::class, 'createFromDiscriminatorValue'], null);
+        $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+        ];
+        return $this->requestAdapter->sendAsync($requestInfo, [LeadStatusResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
 
     /**

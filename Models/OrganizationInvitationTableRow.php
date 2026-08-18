@@ -54,6 +54,11 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     private ?string $licenseBillingStatus = null;
     
     /**
+     * @var int|null $licenseQuantity The quantity on the shared organization user license subscription item after this change.
+    */
+    private ?int $licenseQuantity = null;
+    
+    /**
      * @var DateTime|null $licenseReleasedAt The date and time this invitation's paid license was released.
     */
     private ?DateTime $licenseReleasedAt = null;
@@ -168,6 +173,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'licenseActivatedAt' => fn(ParseNode $n) => $o->setLicenseActivatedAt($n->getDateTimeValue()),
             'licenseBillingStatus' => fn(ParseNode $n) => $o->setLicenseBillingStatus($n->getStringValue()),
+            'licenseQuantity' => fn(ParseNode $n) => $o->setLicenseQuantity($n->getIntegerValue()),
             'licenseReleasedAt' => fn(ParseNode $n) => $o->setLicenseReleasedAt($n->getDateTimeValue()),
             'licenseRenewalDate' => fn(ParseNode $n) => $o->setLicenseRenewalDate($n->getDateTimeValue()),
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([IdNamePair::class, 'createFromDiscriminatorValue'])),
@@ -202,6 +208,14 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     */
     public function getLicenseBillingStatus(): ?string {
         return $this->licenseBillingStatus;
+    }
+
+    /**
+     * Gets the licenseQuantity property value. The quantity on the shared organization user license subscription item after this change.
+     * @return int|null
+    */
+    public function getLicenseQuantity(): ?int {
+        return $this->licenseQuantity;
     }
 
     /**
@@ -288,6 +302,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('id', $this->getId());
         $writer->writeDateTimeValue('licenseActivatedAt', $this->getLicenseActivatedAt());
         $writer->writeStringValue('licenseBillingStatus', $this->getLicenseBillingStatus());
+        $writer->writeIntegerValue('licenseQuantity', $this->getLicenseQuantity());
         $writer->writeDateTimeValue('licenseReleasedAt', $this->getLicenseReleasedAt());
         $writer->writeDateTimeValue('licenseRenewalDate', $this->getLicenseRenewalDate());
         $writer->writeObjectValue('organization', $this->getOrganization());
@@ -362,6 +377,14 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     */
     public function setLicenseBillingStatus(?string $value): void {
         $this->licenseBillingStatus = $value;
+    }
+
+    /**
+     * Sets the licenseQuantity property value. The quantity on the shared organization user license subscription item after this change.
+     * @param int|null $value Value to set for the licenseQuantity property.
+    */
+    public function setLicenseQuantity(?int $value): void {
+        $this->licenseQuantity = $value;
     }
 
     /**

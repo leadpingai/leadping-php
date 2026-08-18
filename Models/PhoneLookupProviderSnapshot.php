@@ -39,6 +39,11 @@ class PhoneLookupProviderSnapshot implements AdditionalDataHolder, Parsable
     private ?DateTime $retrievedAt = null;
     
     /**
+     * @var int|null $schemaVersion The Leadping schema version used to interpret the stored provider record.
+    */
+    private ?int $schemaVersion = null;
+    
+    /**
      * Instantiates a new PhoneLookupProviderSnapshot and sets the default values.
     */
     public function __construct() {
@@ -73,6 +78,7 @@ class PhoneLookupProviderSnapshot implements AdditionalDataHolder, Parsable
             'provider' => fn(ParseNode $n) => $o->setProvider($n->getStringValue()),
             'rawRecordJson' => fn(ParseNode $n) => $o->setRawRecordJson($n->getStringValue()),
             'retrievedAt' => fn(ParseNode $n) => $o->setRetrievedAt($n->getDateTimeValue()),
+            'schemaVersion' => fn(ParseNode $n) => $o->setSchemaVersion($n->getIntegerValue()),
         ];
     }
 
@@ -109,6 +115,14 @@ class PhoneLookupProviderSnapshot implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the schemaVersion property value. The Leadping schema version used to interpret the stored provider record.
+     * @return int|null
+    */
+    public function getSchemaVersion(): ?int {
+        return $this->schemaVersion;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -117,6 +131,7 @@ class PhoneLookupProviderSnapshot implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('provider', $this->getProvider());
         $writer->writeStringValue('rawRecordJson', $this->getRawRecordJson());
         $writer->writeDateTimeValue('retrievedAt', $this->getRetrievedAt());
+        $writer->writeIntegerValue('schemaVersion', $this->getSchemaVersion());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -158,6 +173,14 @@ class PhoneLookupProviderSnapshot implements AdditionalDataHolder, Parsable
     */
     public function setRetrievedAt(?DateTime $value): void {
         $this->retrievedAt = $value;
+    }
+
+    /**
+     * Sets the schemaVersion property value. The Leadping schema version used to interpret the stored provider record.
+     * @param int|null $value Value to set for the schemaVersion property.
+    */
+    public function setSchemaVersion(?int $value): void {
+        $this->schemaVersion = $value;
     }
 
 }

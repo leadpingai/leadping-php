@@ -39,7 +39,9 @@ class PdfAccessRequestBuilder extends BaseRequestBuilder
     public function get(?PdfAccessRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [InvoicePdfAccessResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }

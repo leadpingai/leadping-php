@@ -45,6 +45,11 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     private ?Date $dateOfBirth = null;
     
     /**
+     * @var float|null $directPostPrice Direct-post price supplied by the lead source during intake.
+    */
+    private ?float $directPostPrice = null;
+    
+    /**
      * @var string|null $email Email address for the person represented by this lead intake request.
     */
     private ?string $email = null;
@@ -88,6 +93,11 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
      * @var string|null $postalCode Postal code for the lead or organization address.
     */
     private ?string $postalCode = null;
+    
+    /**
+     * @var float|null $price Lead price or transaction price supplied to the Leadping API.
+    */
+    private ?float $price = null;
     
     /**
      * @var string|null $product Product or offer associated with the lead or source.
@@ -239,6 +249,14 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
+     * @return float|null
+    */
+    public function getDirectPostPrice(): ?float {
+        return $this->directPostPrice;
+    }
+
+    /**
      * Gets the email property value. Email address for the person represented by this lead intake request.
      * @return string|null
     */
@@ -266,6 +284,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
             'birthDate' => fn(ParseNode $n) => $o->setBirthDate($n->getDateValue()),
             'city' => fn(ParseNode $n) => $o->setCity($n->getStringValue()),
             'dateOfBirth' => fn(ParseNode $n) => $o->setDateOfBirth($n->getDateValue()),
+            'directPostPrice' => fn(ParseNode $n) => $o->setDirectPostPrice($n->getFloatValue()),
             'email' => fn(ParseNode $n) => $o->setEmail($n->getStringValue()),
             'externalId' => fn(ParseNode $n) => $o->setExternalId($n->getStringValue()),
             'firstName' => fn(ParseNode $n) => $o->setFirstName($n->getStringValue()),
@@ -275,6 +294,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
             'phone' => fn(ParseNode $n) => $o->setPhone($n->getStringValue()),
             'phoneType' => fn(ParseNode $n) => $o->setPhoneType($n->getStringValue()),
             'postalCode' => fn(ParseNode $n) => $o->setPostalCode($n->getStringValue()),
+            'price' => fn(ParseNode $n) => $o->setPrice($n->getFloatValue()),
             'product' => fn(ParseNode $n) => $o->setProduct($n->getStringValue()),
             'referrer' => fn(ParseNode $n) => $o->setReferrer($n->getStringValue()),
             'sellerLeadId' => fn(ParseNode $n) => $o->setSellerLeadId($n->getStringValue()),
@@ -363,6 +383,14 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     */
     public function getPostalCode(): ?string {
         return $this->postalCode;
+    }
+
+    /**
+     * Gets the price property value. Lead price or transaction price supplied to the Leadping API.
+     * @return float|null
+    */
+    public function getPrice(): ?float {
+        return $this->price;
     }
 
     /**
@@ -511,6 +539,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
         $writer->writeDateValue('birthDate', $this->getBirthDate());
         $writer->writeStringValue('city', $this->getCity());
         $writer->writeDateValue('dateOfBirth', $this->getDateOfBirth());
+        $writer->writeFloatValue('directPostPrice', $this->getDirectPostPrice());
         $writer->writeStringValue('email', $this->getEmail());
         $writer->writeStringValue('externalId', $this->getExternalId());
         $writer->writeStringValue('firstName', $this->getFirstName());
@@ -520,6 +549,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('phone', $this->getPhone());
         $writer->writeStringValue('phoneType', $this->getPhoneType());
         $writer->writeStringValue('postalCode', $this->getPostalCode());
+        $writer->writeFloatValue('price', $this->getPrice());
         $writer->writeStringValue('product', $this->getProduct());
         $writer->writeStringValue('referrer', $this->getReferrer());
         $writer->writeStringValue('sellerLeadId', $this->getSellerLeadId());
@@ -586,6 +616,14 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     */
     public function setDateOfBirth(?Date $value): void {
         $this->dateOfBirth = $value;
+    }
+
+    /**
+     * Sets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
+     * @param float|null $value Value to set for the directPostPrice property.
+    */
+    public function setDirectPostPrice(?float $value): void {
+        $this->directPostPrice = $value;
     }
 
     /**
@@ -658,6 +696,14 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     */
     public function setPostalCode(?string $value): void {
         $this->postalCode = $value;
+    }
+
+    /**
+     * Sets the price property value. Lead price or transaction price supplied to the Leadping API.
+     * @param float|null $value Value to set for the price property.
+    */
+    public function setPrice(?float $value): void {
+        $this->price = $value;
     }
 
     /**

@@ -54,6 +54,8 @@ class MembersRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendCollectionAsync($requestInfo, [OrganizationMemberTableRow::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
@@ -71,6 +73,7 @@ class MembersRequestBuilder extends BaseRequestBuilder
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [OrganizationMemberResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }

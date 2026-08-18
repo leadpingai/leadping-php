@@ -28,9 +28,19 @@ class UsageCounterLine implements AdditionalDataHolder, Parsable
     private ?string $label = null;
     
     /**
+     * @var int|null $sortOrder The display order for this usage counter.
+    */
+    private ?int $sortOrder = null;
+    
+    /**
      * @var string|null $unit The unit label for this usage counter.
     */
     private ?string $unit = null;
+    
+    /**
+     * @var float|null $value Numeric for this usage counter.
+    */
+    private ?float $value = null;
     
     /**
      * Instantiates a new UsageCounterLine and sets the default values.
@@ -65,7 +75,9 @@ class UsageCounterLine implements AdditionalDataHolder, Parsable
         return  [
             'key' => fn(ParseNode $n) => $o->setKey($n->getStringValue()),
             'label' => fn(ParseNode $n) => $o->setLabel($n->getStringValue()),
+            'sortOrder' => fn(ParseNode $n) => $o->setSortOrder($n->getIntegerValue()),
             'unit' => fn(ParseNode $n) => $o->setUnit($n->getStringValue()),
+            'value' => fn(ParseNode $n) => $o->setValue($n->getFloatValue()),
         ];
     }
 
@@ -86,11 +98,27 @@ class UsageCounterLine implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the sortOrder property value. The display order for this usage counter.
+     * @return int|null
+    */
+    public function getSortOrder(): ?int {
+        return $this->sortOrder;
+    }
+
+    /**
      * Gets the unit property value. The unit label for this usage counter.
      * @return string|null
     */
     public function getUnit(): ?string {
         return $this->unit;
+    }
+
+    /**
+     * Gets the value property value. Numeric for this usage counter.
+     * @return float|null
+    */
+    public function getValue(): ?float {
+        return $this->value;
     }
 
     /**
@@ -100,7 +128,9 @@ class UsageCounterLine implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('key', $this->getKey());
         $writer->writeStringValue('label', $this->getLabel());
+        $writer->writeIntegerValue('sortOrder', $this->getSortOrder());
         $writer->writeStringValue('unit', $this->getUnit());
+        $writer->writeFloatValue('value', $this->getValue());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -129,11 +159,27 @@ class UsageCounterLine implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the sortOrder property value. The display order for this usage counter.
+     * @param int|null $value Value to set for the sortOrder property.
+    */
+    public function setSortOrder(?int $value): void {
+        $this->sortOrder = $value;
+    }
+
+    /**
      * Sets the unit property value. The unit label for this usage counter.
      * @param string|null $value Value to set for the unit property.
     */
     public function setUnit(?string $value): void {
         $this->unit = $value;
+    }
+
+    /**
+     * Sets the value property value. Numeric for this usage counter.
+     * @param float|null $value Value to set for the value property.
+    */
+    public function setValue(?float $value): void {
+        $this->value = $value;
     }
 
 }

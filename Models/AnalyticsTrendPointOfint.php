@@ -34,6 +34,11 @@ class AnalyticsTrendPointOfint implements AdditionalDataHolder, Parsable
     private ?DateTime $startAt = null;
     
     /**
+     * @var int|null $value Value associated with this Leadping analytics trend point.
+    */
+    private ?int $value = null;
+    
+    /**
      * Instantiates a new AnalyticsTrendPointOfint and sets the default values.
     */
     public function __construct() {
@@ -75,6 +80,7 @@ class AnalyticsTrendPointOfint implements AdditionalDataHolder, Parsable
             'endAt' => fn(ParseNode $n) => $o->setEndAt($n->getDateTimeValue()),
             'label' => fn(ParseNode $n) => $o->setLabel($n->getStringValue()),
             'startAt' => fn(ParseNode $n) => $o->setStartAt($n->getDateTimeValue()),
+            'value' => fn(ParseNode $n) => $o->setValue($n->getIntegerValue()),
         ];
     }
 
@@ -95,6 +101,14 @@ class AnalyticsTrendPointOfint implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the value property value. Value associated with this Leadping analytics trend point.
+     * @return int|null
+    */
+    public function getValue(): ?int {
+        return $this->value;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -102,6 +116,7 @@ class AnalyticsTrendPointOfint implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('endAt', $this->getEndAt());
         $writer->writeStringValue('label', $this->getLabel());
         $writer->writeDateTimeValue('startAt', $this->getStartAt());
+        $writer->writeIntegerValue('value', $this->getValue());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -135,6 +150,14 @@ class AnalyticsTrendPointOfint implements AdditionalDataHolder, Parsable
     */
     public function setStartAt(?DateTime $value): void {
         $this->startAt = $value;
+    }
+
+    /**
+     * Sets the value property value. Value associated with this Leadping analytics trend point.
+     * @param int|null $value Value to set for the value property.
+    */
+    public function setValue(?int $value): void {
+        $this->value = $value;
     }
 
 }

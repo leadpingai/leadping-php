@@ -40,6 +40,7 @@ class OptionsRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendCollectionAsync($requestInfo, [OrganizationSwitchOption::class, 'createFromDiscriminatorValue'], $errorMappings);
     }

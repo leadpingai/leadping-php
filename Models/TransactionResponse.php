@@ -19,9 +19,19 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var float|null $amount Monetary amount for this billing transaction or wallet operation.
+    */
+    private ?float $amount = null;
+    
+    /**
      * @var TransactionResponse_billableUnit|null $billableUnit Defines the supported Billable Unit values.
     */
     private ?TransactionResponse_billableUnit $billableUnit = null;
+    
+    /**
+     * @var float|null $billedAmount Customer-facing amount billed for the transaction.
+    */
+    private ?float $billedAmount = null;
     
     /**
      * @var TransactionResponse_billingChannel|null $billingChannel Defines the supported Usage Channel values.
@@ -37,6 +47,11 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
      * @var string|null $description Human-readable description that explains this billing transaction response to API users.
     */
     private ?string $description = null;
+    
+    /**
+     * @var float|null $gatewayFeeAmount Payment gateway fee amount charged for the wallet transaction.
+    */
+    private ?float $gatewayFeeAmount = null;
     
     /**
      * @var string|null $gatewayStatus Payment gateway status returned for this transaction.
@@ -59,6 +74,11 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $modifiedAt = null;
     
     /**
+     * @var float|null $netAmount Net monetary amount after fees, credits, or adjustments.
+    */
+    private ?float $netAmount = null;
+    
+    /**
      * @var string|null $notes Additional billing notes that explain the transaction for admins or customers.
     */
     private ?string $notes = null;
@@ -72,6 +92,11 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
      * @var string|null $paymentMethodDisplay Masked or human-readable payment method shown for this transaction.
     */
     private ?string $paymentMethodDisplay = null;
+    
+    /**
+     * @var float|null $platformFeeAmount Leadping platform fee amount included in the transaction.
+    */
+    private ?float $platformFeeAmount = null;
     
     /**
      * @var TransactionStatus|null $transactionStatus Processing status for this wallet transaction.
@@ -108,11 +133,27 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the amount property value. Monetary amount for this billing transaction or wallet operation.
+     * @return float|null
+    */
+    public function getAmount(): ?float {
+        return $this->amount;
+    }
+
+    /**
      * Gets the billableUnit property value. Defines the supported Billable Unit values.
      * @return TransactionResponse_billableUnit|null
     */
     public function getBillableUnit(): ?TransactionResponse_billableUnit {
         return $this->billableUnit;
+    }
+
+    /**
+     * Gets the billedAmount property value. Customer-facing amount billed for the transaction.
+     * @return float|null
+    */
+    public function getBilledAmount(): ?float {
+        return $this->billedAmount;
     }
 
     /**
@@ -146,20 +187,33 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'amount' => fn(ParseNode $n) => $o->setAmount($n->getFloatValue()),
             'billableUnit' => fn(ParseNode $n) => $o->setBillableUnit($n->getEnumValue(TransactionResponse_billableUnit::class)),
+            'billedAmount' => fn(ParseNode $n) => $o->setBilledAmount($n->getFloatValue()),
             'billingChannel' => fn(ParseNode $n) => $o->setBillingChannel($n->getEnumValue(TransactionResponse_billingChannel::class)),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
+            'gatewayFeeAmount' => fn(ParseNode $n) => $o->setGatewayFeeAmount($n->getFloatValue()),
             'gatewayStatus' => fn(ParseNode $n) => $o->setGatewayStatus($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'lead' => fn(ParseNode $n) => $o->setLead($n->getObjectValue([TransactionResponse_lead::class, 'createFromDiscriminatorValue'])),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
+            'netAmount' => fn(ParseNode $n) => $o->setNetAmount($n->getFloatValue()),
             'notes' => fn(ParseNode $n) => $o->setNotes($n->getStringValue()),
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([TransactionResponse_organization::class, 'createFromDiscriminatorValue'])),
             'paymentMethodDisplay' => fn(ParseNode $n) => $o->setPaymentMethodDisplay($n->getStringValue()),
+            'platformFeeAmount' => fn(ParseNode $n) => $o->setPlatformFeeAmount($n->getFloatValue()),
             'transactionStatus' => fn(ParseNode $n) => $o->setTransactionStatus($n->getEnumValue(TransactionStatus::class)),
             'transactionType' => fn(ParseNode $n) => $o->setTransactionType($n->getEnumValue(TransactionType::class)),
         ];
+    }
+
+    /**
+     * Gets the gatewayFeeAmount property value. Payment gateway fee amount charged for the wallet transaction.
+     * @return float|null
+    */
+    public function getGatewayFeeAmount(): ?float {
+        return $this->gatewayFeeAmount;
     }
 
     /**
@@ -195,6 +249,14 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the netAmount property value. Net monetary amount after fees, credits, or adjustments.
+     * @return float|null
+    */
+    public function getNetAmount(): ?float {
+        return $this->netAmount;
+    }
+
+    /**
      * Gets the notes property value. Additional billing notes that explain the transaction for admins or customers.
      * @return string|null
     */
@@ -219,6 +281,14 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the platformFeeAmount property value. Leadping platform fee amount included in the transaction.
+     * @return float|null
+    */
+    public function getPlatformFeeAmount(): ?float {
+        return $this->platformFeeAmount;
+    }
+
+    /**
      * Gets the transactionStatus property value. Processing status for this wallet transaction.
      * @return TransactionStatus|null
     */
@@ -239,17 +309,22 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeFloatValue('amount', $this->getAmount());
         $writer->writeEnumValue('billableUnit', $this->getBillableUnit());
+        $writer->writeFloatValue('billedAmount', $this->getBilledAmount());
         $writer->writeEnumValue('billingChannel', $this->getBillingChannel());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('description', $this->getDescription());
+        $writer->writeFloatValue('gatewayFeeAmount', $this->getGatewayFeeAmount());
         $writer->writeStringValue('gatewayStatus', $this->getGatewayStatus());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeObjectValue('lead', $this->getLead());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
+        $writer->writeFloatValue('netAmount', $this->getNetAmount());
         $writer->writeStringValue('notes', $this->getNotes());
         $writer->writeObjectValue('organization', $this->getOrganization());
         $writer->writeStringValue('paymentMethodDisplay', $this->getPaymentMethodDisplay());
+        $writer->writeFloatValue('platformFeeAmount', $this->getPlatformFeeAmount());
         $writer->writeEnumValue('transactionStatus', $this->getTransactionStatus());
         $writer->writeEnumValue('transactionType', $this->getTransactionType());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -264,11 +339,27 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the amount property value. Monetary amount for this billing transaction or wallet operation.
+     * @param float|null $value Value to set for the amount property.
+    */
+    public function setAmount(?float $value): void {
+        $this->amount = $value;
+    }
+
+    /**
      * Sets the billableUnit property value. Defines the supported Billable Unit values.
      * @param TransactionResponse_billableUnit|null $value Value to set for the billableUnit property.
     */
     public function setBillableUnit(?TransactionResponse_billableUnit $value): void {
         $this->billableUnit = $value;
+    }
+
+    /**
+     * Sets the billedAmount property value. Customer-facing amount billed for the transaction.
+     * @param float|null $value Value to set for the billedAmount property.
+    */
+    public function setBilledAmount(?float $value): void {
+        $this->billedAmount = $value;
     }
 
     /**
@@ -293,6 +384,14 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     */
     public function setDescription(?string $value): void {
         $this->description = $value;
+    }
+
+    /**
+     * Sets the gatewayFeeAmount property value. Payment gateway fee amount charged for the wallet transaction.
+     * @param float|null $value Value to set for the gatewayFeeAmount property.
+    */
+    public function setGatewayFeeAmount(?float $value): void {
+        $this->gatewayFeeAmount = $value;
     }
 
     /**
@@ -328,6 +427,14 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the netAmount property value. Net monetary amount after fees, credits, or adjustments.
+     * @param float|null $value Value to set for the netAmount property.
+    */
+    public function setNetAmount(?float $value): void {
+        $this->netAmount = $value;
+    }
+
+    /**
      * Sets the notes property value. Additional billing notes that explain the transaction for admins or customers.
      * @param string|null $value Value to set for the notes property.
     */
@@ -349,6 +456,14 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     */
     public function setPaymentMethodDisplay(?string $value): void {
         $this->paymentMethodDisplay = $value;
+    }
+
+    /**
+     * Sets the platformFeeAmount property value. Leadping platform fee amount included in the transaction.
+     * @param float|null $value Value to set for the platformFeeAmount property.
+    */
+    public function setPlatformFeeAmount(?float $value): void {
+        $this->platformFeeAmount = $value;
     }
 
     /**

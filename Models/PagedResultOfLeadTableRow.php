@@ -28,6 +28,16 @@ class PagedResultOfLeadTableRow implements AdditionalDataHolder, Parsable
     private ?array $items = null;
     
     /**
+     * @var int|null $pageSize The number of items returned per page in the response. This may reflect the client's requested page size, or a server-defined default or limit.
+    */
+    private ?int $pageSize = null;
+    
+    /**
+     * @var int|null $totalCount The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
+    */
+    private ?int $totalCount = null;
+    
+    /**
      * Instantiates a new PagedResultOfLeadTableRow and sets the default values.
     */
     public function __construct() {
@@ -68,6 +78,8 @@ class PagedResultOfLeadTableRow implements AdditionalDataHolder, Parsable
         return  [
             'continuationToken' => fn(ParseNode $n) => $o->setContinuationToken($n->getStringValue()),
             'items' => fn(ParseNode $n) => $o->setItems($n->getCollectionOfObjectValues([LeadTableRow::class, 'createFromDiscriminatorValue'])),
+            'pageSize' => fn(ParseNode $n) => $o->setPageSize($n->getIntegerValue()),
+            'totalCount' => fn(ParseNode $n) => $o->setTotalCount($n->getIntegerValue()),
         ];
     }
 
@@ -80,12 +92,30 @@ class PagedResultOfLeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the pageSize property value. The number of items returned per page in the response. This may reflect the client's requested page size, or a server-defined default or limit.
+     * @return int|null
+    */
+    public function getPageSize(): ?int {
+        return $this->pageSize;
+    }
+
+    /**
+     * Gets the totalCount property value. The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
+     * @return int|null
+    */
+    public function getTotalCount(): ?int {
+        return $this->totalCount;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('continuationToken', $this->getContinuationToken());
         $writer->writeCollectionOfObjectValues('items', $this->getItems());
+        $writer->writeIntegerValue('pageSize', $this->getPageSize());
+        $writer->writeIntegerValue('totalCount', $this->getTotalCount());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -111,6 +141,22 @@ class PagedResultOfLeadTableRow implements AdditionalDataHolder, Parsable
     */
     public function setItems(?array $value): void {
         $this->items = $value;
+    }
+
+    /**
+     * Sets the pageSize property value. The number of items returned per page in the response. This may reflect the client's requested page size, or a server-defined default or limit.
+     * @param int|null $value Value to set for the pageSize property.
+    */
+    public function setPageSize(?int $value): void {
+        $this->pageSize = $value;
+    }
+
+    /**
+     * Sets the totalCount property value. The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
+     * @param int|null $value Value to set for the totalCount property.
+    */
+    public function setTotalCount(?int $value): void {
+        $this->totalCount = $value;
     }
 
 }

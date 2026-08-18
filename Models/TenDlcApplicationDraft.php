@@ -60,6 +60,11 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     private ?string $ein = null;
     
     /**
+     * @var int|null $expectedMonthlyVolume Expected monthly volume for this 10DLC application draft.
+    */
+    private ?int $expectedMonthlyVolume = null;
+    
+    /**
      * @var string|null $industry The Telnyx brand vertical for this 10DLC application draft. The JSON name is retained for backward compatibility.
     */
     private ?string $industry = null;
@@ -118,6 +123,11 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
      * @var string|null $useCaseDescription Use case description for this 10DLC application draft.
     */
     private ?string $useCaseDescription = null;
+    
+    /**
+     * @var int|null $version Version for this 10DLC application draft.
+    */
+    private ?int $version = null;
     
     /**
      * @var string|null $websiteUrl Public business website URL submitted to carriers during brand review.
@@ -213,6 +223,14 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the expectedMonthlyVolume property value. Expected monthly volume for this 10DLC application draft.
+     * @return int|null
+    */
+    public function getExpectedMonthlyVolume(): ?int {
+        return $this->expectedMonthlyVolume;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
@@ -234,6 +252,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
             'contactName' => fn(ParseNode $n) => $o->setContactName($n->getStringValue()),
             'contactPhone' => fn(ParseNode $n) => $o->setContactPhone($n->getStringValue()),
             'ein' => fn(ParseNode $n) => $o->setEin($n->getStringValue()),
+            'expectedMonthlyVolume' => fn(ParseNode $n) => $o->setExpectedMonthlyVolume($n->getIntegerValue()),
             'industry' => fn(ParseNode $n) => $o->setIndustry($n->getStringValue()),
             'lastSubmittedAt' => fn(ParseNode $n) => $o->setLastSubmittedAt($n->getDateTimeValue()),
             'messageExamples' => function (ParseNode $n) {
@@ -260,6 +279,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
             'updatedAt' => fn(ParseNode $n) => $o->setUpdatedAt($n->getDateTimeValue()),
             'useCase' => fn(ParseNode $n) => $o->setUseCase($n->getStringValue()),
             'useCaseDescription' => fn(ParseNode $n) => $o->setUseCaseDescription($n->getStringValue()),
+            'version' => fn(ParseNode $n) => $o->setVersion($n->getIntegerValue()),
             'websiteUrl' => fn(ParseNode $n) => $o->setWebsiteUrl($n->getStringValue()),
         ];
     }
@@ -361,6 +381,14 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the version property value. Version for this 10DLC application draft.
+     * @return int|null
+    */
+    public function getVersion(): ?int {
+        return $this->version;
+    }
+
+    /**
      * Gets the websiteUrl property value. Public business website URL submitted to carriers during brand review.
      * @return string|null
     */
@@ -381,6 +409,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('contactName', $this->getContactName());
         $writer->writeStringValue('contactPhone', $this->getContactPhone());
         $writer->writeStringValue('ein', $this->getEin());
+        $writer->writeIntegerValue('expectedMonthlyVolume', $this->getExpectedMonthlyVolume());
         $writer->writeStringValue('industry', $this->getIndustry());
         $writer->writeDateTimeValue('lastSubmittedAt', $this->getLastSubmittedAt());
         $writer->writeCollectionOfPrimitiveValues('messageExamples', $this->getMessageExamples());
@@ -393,6 +422,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('updatedAt', $this->getUpdatedAt());
         $writer->writeStringValue('useCase', $this->getUseCase());
         $writer->writeStringValue('useCaseDescription', $this->getUseCaseDescription());
+        $writer->writeIntegerValue('version', $this->getVersion());
         $writer->writeStringValue('websiteUrl', $this->getWebsiteUrl());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -467,6 +497,14 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     */
     public function setEin(?string $value): void {
         $this->ein = $value;
+    }
+
+    /**
+     * Sets the expectedMonthlyVolume property value. Expected monthly volume for this 10DLC application draft.
+     * @param int|null $value Value to set for the expectedMonthlyVolume property.
+    */
+    public function setExpectedMonthlyVolume(?int $value): void {
+        $this->expectedMonthlyVolume = $value;
     }
 
     /**
@@ -563,6 +601,14 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     */
     public function setUseCaseDescription(?string $value): void {
         $this->useCaseDescription = $value;
+    }
+
+    /**
+     * Sets the version property value. Version for this 10DLC application draft.
+     * @param int|null $value Value to set for the version property.
+    */
+    public function setVersion(?int $value): void {
+        $this->version = $value;
     }
 
     /**

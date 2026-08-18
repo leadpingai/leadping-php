@@ -29,6 +29,16 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $createdAt = null;
     
     /**
+     * @var int|null $expMonth Two-digit month when the card expires.
+    */
+    private ?int $expMonth = null;
+    
+    /**
+     * @var int|null $expYear Four-digit year when the card expires.
+    */
+    private ?int $expYear = null;
+    
+    /**
      * @var string|null $id Unique Leadping identifier for this Stripe payment method.
     */
     private ?string $id = null;
@@ -84,6 +94,22 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the expMonth property value. Two-digit month when the card expires.
+     * @return int|null
+    */
+    public function getExpMonth(): ?int {
+        return $this->expMonth;
+    }
+
+    /**
+     * Gets the expYear property value. Four-digit year when the card expires.
+     * @return int|null
+    */
+    public function getExpYear(): ?int {
+        return $this->expYear;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
@@ -92,6 +118,8 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
         return  [
             'brand' => fn(ParseNode $n) => $o->setBrand($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
+            'expMonth' => fn(ParseNode $n) => $o->setExpMonth($n->getIntegerValue()),
+            'expYear' => fn(ParseNode $n) => $o->setExpYear($n->getIntegerValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isDefault' => fn(ParseNode $n) => $o->setIsDefault($n->getBooleanValue()),
             'last4' => fn(ParseNode $n) => $o->setLast4($n->getStringValue()),
@@ -129,6 +157,8 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('brand', $this->getBrand());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
+        $writer->writeIntegerValue('expMonth', $this->getExpMonth());
+        $writer->writeIntegerValue('expYear', $this->getExpYear());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isDefault', $this->getIsDefault());
         $writer->writeStringValue('last4', $this->getLast4());
@@ -157,6 +187,22 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     */
     public function setCreatedAt(?DateTime $value): void {
         $this->createdAt = $value;
+    }
+
+    /**
+     * Sets the expMonth property value. Two-digit month when the card expires.
+     * @param int|null $value Value to set for the expMonth property.
+    */
+    public function setExpMonth(?int $value): void {
+        $this->expMonth = $value;
+    }
+
+    /**
+     * Sets the expYear property value. Four-digit year when the card expires.
+     * @param int|null $value Value to set for the expYear property.
+    */
+    public function setExpYear(?int $value): void {
+        $this->expYear = $value;
     }
 
     /**

@@ -31,7 +31,7 @@ class RunRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Runs an automation through its Manual trigger.
+     * Starts the specified automation through its manual trigger and returns the newly created execution record.
      * @param RunRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<AutomationRunRecord|null>
      * @throws Exception
@@ -40,13 +40,15 @@ class RunRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toPostRequestInformation($requestConfiguration);
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [AutomationRunRecord::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
 
     /**
-     * Runs an automation through its Manual trigger.
+     * Starts the specified automation through its manual trigger and returns the newly created execution record.
      * @param RunRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

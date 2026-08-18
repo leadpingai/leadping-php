@@ -19,6 +19,11 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var float|null $billableAmount Monetary amount billed for this Leadping communication or transaction.
+    */
+    private ?float $billableAmount = null;
+    
+    /**
      * @var string|null $billingStatus Billing state for this communication, charge, or transaction.
     */
     private ?string $billingStatus = null;
@@ -134,6 +139,11 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $receivedAt = null;
     
     /**
+     * @var int|null $retryCount Number of retry attempts already made for this SMS message.
+    */
+    private ?int $retryCount = null;
+    
+    /**
      * @var DateTime|null $scheduledFor UTC timestamp when Leadping is scheduled to send this SMS message.
     */
     private ?DateTime $scheduledFor = null;
@@ -215,6 +225,14 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     */
     public function getAdditionalData(): ?array {
         return $this->additionalData;
+    }
+
+    /**
+     * Gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
+     * @return float|null
+    */
+    public function getBillableAmount(): ?float {
+        return $this->billableAmount;
     }
 
     /**
@@ -328,6 +346,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'billableAmount' => fn(ParseNode $n) => $o->setBillableAmount($n->getFloatValue()),
             'billingStatus' => fn(ParseNode $n) => $o->setBillingStatus($n->getStringValue()),
             'blockedAt' => fn(ParseNode $n) => $o->setBlockedAt($n->getDateTimeValue()),
             'campaignId' => fn(ParseNode $n) => $o->setCampaignId($n->getStringValue()),
@@ -351,6 +370,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
             'outboundPhoneNumberId' => fn(ParseNode $n) => $o->setOutboundPhoneNumberId($n->getStringValue()),
             'queuedAt' => fn(ParseNode $n) => $o->setQueuedAt($n->getDateTimeValue()),
             'receivedAt' => fn(ParseNode $n) => $o->setReceivedAt($n->getDateTimeValue()),
+            'retryCount' => fn(ParseNode $n) => $o->setRetryCount($n->getIntegerValue()),
             'scheduledFor' => fn(ParseNode $n) => $o->setScheduledFor($n->getDateTimeValue()),
             'scheduledReason' => fn(ParseNode $n) => $o->setScheduledReason($n->getStringValue()),
             'selectionReason' => fn(ParseNode $n) => $o->setSelectionReason($n->getEnumValue(SmsResponse_selectionReason::class)),
@@ -444,6 +464,14 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     */
     public function getReceivedAt(): ?DateTime {
         return $this->receivedAt;
+    }
+
+    /**
+     * Gets the retryCount property value. Number of retry attempts already made for this SMS message.
+     * @return int|null
+    */
+    public function getRetryCount(): ?int {
+        return $this->retryCount;
     }
 
     /**
@@ -547,6 +575,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeFloatValue('billableAmount', $this->getBillableAmount());
         $writer->writeStringValue('billingStatus', $this->getBillingStatus());
         $writer->writeDateTimeValue('blockedAt', $this->getBlockedAt());
         $writer->writeStringValue('campaignId', $this->getCampaignId());
@@ -570,6 +599,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('outboundPhoneNumberId', $this->getOutboundPhoneNumberId());
         $writer->writeDateTimeValue('queuedAt', $this->getQueuedAt());
         $writer->writeDateTimeValue('receivedAt', $this->getReceivedAt());
+        $writer->writeIntegerValue('retryCount', $this->getRetryCount());
         $writer->writeDateTimeValue('scheduledFor', $this->getScheduledFor());
         $writer->writeStringValue('scheduledReason', $this->getScheduledReason());
         $writer->writeEnumValue('selectionReason', $this->getSelectionReason());
@@ -591,6 +621,14 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
+     * @param float|null $value Value to set for the billableAmount property.
+    */
+    public function setBillableAmount(?float $value): void {
+        $this->billableAmount = $value;
     }
 
     /**
@@ -775,6 +813,14 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     */
     public function setReceivedAt(?DateTime $value): void {
         $this->receivedAt = $value;
+    }
+
+    /**
+     * Sets the retryCount property value. Number of retry attempts already made for this SMS message.
+     * @param int|null $value Value to set for the retryCount property.
+    */
+    public function setRetryCount(?int $value): void {
+        $this->retryCount = $value;
     }
 
     /**

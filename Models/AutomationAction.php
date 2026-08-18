@@ -28,6 +28,11 @@ class AutomationAction implements AdditionalDataHolder, Parsable
     private ?bool $isEnabled = null;
     
     /**
+     * @var int|null $order Sort order used to evaluate or display this automation action.
+    */
+    private ?int $order = null;
+    
+    /**
      * @var AutomationAction_settings|null $settings Key-value settings that configure how this automation action behaves.
     */
     private ?AutomationAction_settings $settings = null;
@@ -70,6 +75,7 @@ class AutomationAction implements AdditionalDataHolder, Parsable
         return  [
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isEnabled' => fn(ParseNode $n) => $o->setIsEnabled($n->getBooleanValue()),
+            'order' => fn(ParseNode $n) => $o->setOrder($n->getIntegerValue()),
             'settings' => fn(ParseNode $n) => $o->setSettings($n->getObjectValue([AutomationAction_settings::class, 'createFromDiscriminatorValue'])),
             'type' => fn(ParseNode $n) => $o->setType($n->getStringValue()),
         ];
@@ -89,6 +95,14 @@ class AutomationAction implements AdditionalDataHolder, Parsable
     */
     public function getIsEnabled(): ?bool {
         return $this->isEnabled;
+    }
+
+    /**
+     * Gets the order property value. Sort order used to evaluate or display this automation action.
+     * @return int|null
+    */
+    public function getOrder(): ?int {
+        return $this->order;
     }
 
     /**
@@ -114,6 +128,7 @@ class AutomationAction implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isEnabled', $this->getIsEnabled());
+        $writer->writeIntegerValue('order', $this->getOrder());
         $writer->writeObjectValue('settings', $this->getSettings());
         $writer->writeStringValue('type', $this->getType());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -141,6 +156,14 @@ class AutomationAction implements AdditionalDataHolder, Parsable
     */
     public function setIsEnabled(?bool $value): void {
         $this->isEnabled = $value;
+    }
+
+    /**
+     * Sets the order property value. Sort order used to evaluate or display this automation action.
+     * @param int|null $value Value to set for the order property.
+    */
+    public function setOrder(?int $value): void {
+        $this->order = $value;
     }
 
     /**

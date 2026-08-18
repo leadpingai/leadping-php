@@ -59,6 +59,11 @@ class OrganizationDunningInfo implements AdditionalDataHolder, Parsable
     private ?DateTime $paymentFailedAt = null;
     
     /**
+     * @var int|null $retryAttemptCount Total number of retry attempt records represented by this Leadping organization dunning info.
+    */
+    private ?int $retryAttemptCount = null;
+    
+    /**
      * @var string|null $stage Current stage for this Leadping organization dunning info.
     */
     private ?string $stage = null;
@@ -102,6 +107,7 @@ class OrganizationDunningInfo implements AdditionalDataHolder, Parsable
             'outboundRestrictedAt' => fn(ParseNode $n) => $o->setOutboundRestrictedAt($n->getDateTimeValue()),
             'outboundSuspendedAt' => fn(ParseNode $n) => $o->setOutboundSuspendedAt($n->getDateTimeValue()),
             'paymentFailedAt' => fn(ParseNode $n) => $o->setPaymentFailedAt($n->getDateTimeValue()),
+            'retryAttemptCount' => fn(ParseNode $n) => $o->setRetryAttemptCount($n->getIntegerValue()),
             'stage' => fn(ParseNode $n) => $o->setStage($n->getStringValue()),
         ];
     }
@@ -171,6 +177,14 @@ class OrganizationDunningInfo implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the retryAttemptCount property value. Total number of retry attempt records represented by this Leadping organization dunning info.
+     * @return int|null
+    */
+    public function getRetryAttemptCount(): ?int {
+        return $this->retryAttemptCount;
+    }
+
+    /**
      * Gets the stage property value. Current stage for this Leadping organization dunning info.
      * @return string|null
     */
@@ -191,6 +205,7 @@ class OrganizationDunningInfo implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('outboundRestrictedAt', $this->getOutboundRestrictedAt());
         $writer->writeDateTimeValue('outboundSuspendedAt', $this->getOutboundSuspendedAt());
         $writer->writeDateTimeValue('paymentFailedAt', $this->getPaymentFailedAt());
+        $writer->writeIntegerValue('retryAttemptCount', $this->getRetryAttemptCount());
         $writer->writeStringValue('stage', $this->getStage());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -265,6 +280,14 @@ class OrganizationDunningInfo implements AdditionalDataHolder, Parsable
     */
     public function setPaymentFailedAt(?DateTime $value): void {
         $this->paymentFailedAt = $value;
+    }
+
+    /**
+     * Sets the retryAttemptCount property value. Total number of retry attempt records represented by this Leadping organization dunning info.
+     * @param int|null $value Value to set for the retryAttemptCount property.
+    */
+    public function setRetryAttemptCount(?int $value): void {
+        $this->retryAttemptCount = $value;
     }
 
     /**

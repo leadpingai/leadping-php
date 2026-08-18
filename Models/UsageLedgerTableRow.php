@@ -19,6 +19,11 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var int|null $billableSeconds Billable seconds for this usage ledger.
+    */
+    private ?int $billableSeconds = null;
+    
+    /**
      * @var BillableUnit|null $billableUnit Billable unit for this usage ledger.
     */
     private ?BillableUnit $billableUnit = null;
@@ -34,9 +39,19 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     private ?DateTime $createdAt = null;
     
     /**
+     * @var float|null $customerChargeAmount The monetary customer charge amount for this usage ledger.
+    */
+    private ?float $customerChargeAmount = null;
+    
+    /**
      * @var string|null $description The human-readable description of this usage ledger.
     */
     private ?string $description = null;
+    
+    /**
+     * @var int|null $durationSeconds Duration seconds for this usage ledger.
+    */
+    private ?int $durationSeconds = null;
     
     /**
      * @var string|null $id Unique Leadping identifier for this usage ledger.
@@ -69,9 +84,24 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     private ?string $phoneNumberId = null;
     
     /**
+     * @var float|null $quantity Quantity for this usage ledger.
+    */
+    private ?float $quantity = null;
+    
+    /**
+     * @var int|null $smsSegments SMS segments for this usage ledger.
+    */
+    private ?int $smsSegments = null;
+    
+    /**
      * @var UsageStatus|null $status The current status for this usage ledger.
     */
     private ?UsageStatus $status = null;
+    
+    /**
+     * @var float|null $unitPrice Unit price for this usage ledger.
+    */
+    private ?float $unitPrice = null;
     
     /**
      * @var UsageLedgerTableRow_user|null $user Identifier and display name of the related user.
@@ -103,6 +133,14 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the billableSeconds property value. Billable seconds for this usage ledger.
+     * @return int|null
+    */
+    public function getBillableSeconds(): ?int {
+        return $this->billableSeconds;
+    }
+
+    /**
      * Gets the billableUnit property value. Billable unit for this usage ledger.
      * @return BillableUnit|null
     */
@@ -127,11 +165,27 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the customerChargeAmount property value. The monetary customer charge amount for this usage ledger.
+     * @return float|null
+    */
+    public function getCustomerChargeAmount(): ?float {
+        return $this->customerChargeAmount;
+    }
+
+    /**
      * Gets the description property value. The human-readable description of this usage ledger.
      * @return string|null
     */
     public function getDescription(): ?string {
         return $this->description;
+    }
+
+    /**
+     * Gets the durationSeconds property value. Duration seconds for this usage ledger.
+     * @return int|null
+    */
+    public function getDurationSeconds(): ?int {
+        return $this->durationSeconds;
     }
 
     /**
@@ -141,17 +195,23 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'billableSeconds' => fn(ParseNode $n) => $o->setBillableSeconds($n->getIntegerValue()),
             'billableUnit' => fn(ParseNode $n) => $o->setBillableUnit($n->getEnumValue(BillableUnit::class)),
             'channel' => fn(ParseNode $n) => $o->setChannel($n->getEnumValue(UsageChannel::class)),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
+            'customerChargeAmount' => fn(ParseNode $n) => $o->setCustomerChargeAmount($n->getFloatValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
+            'durationSeconds' => fn(ParseNode $n) => $o->setDurationSeconds($n->getIntegerValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isBillable' => fn(ParseNode $n) => $o->setIsBillable($n->getBooleanValue()),
             'lead' => fn(ParseNode $n) => $o->setLead($n->getObjectValue([UsageLedgerTableRow_lead::class, 'createFromDiscriminatorValue'])),
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([UsageLedgerTableRow_organization::class, 'createFromDiscriminatorValue'])),
             'phoneNumber' => fn(ParseNode $n) => $o->setPhoneNumber($n->getStringValue()),
             'phoneNumberId' => fn(ParseNode $n) => $o->setPhoneNumberId($n->getStringValue()),
+            'quantity' => fn(ParseNode $n) => $o->setQuantity($n->getFloatValue()),
+            'smsSegments' => fn(ParseNode $n) => $o->setSmsSegments($n->getIntegerValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(UsageStatus::class)),
+            'unitPrice' => fn(ParseNode $n) => $o->setUnitPrice($n->getFloatValue()),
             'user' => fn(ParseNode $n) => $o->setUser($n->getObjectValue([UsageLedgerTableRow_user::class, 'createFromDiscriminatorValue'])),
         ];
     }
@@ -205,11 +265,35 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the quantity property value. Quantity for this usage ledger.
+     * @return float|null
+    */
+    public function getQuantity(): ?float {
+        return $this->quantity;
+    }
+
+    /**
+     * Gets the smsSegments property value. SMS segments for this usage ledger.
+     * @return int|null
+    */
+    public function getSmsSegments(): ?int {
+        return $this->smsSegments;
+    }
+
+    /**
      * Gets the status property value. The current status for this usage ledger.
      * @return UsageStatus|null
     */
     public function getStatus(): ?UsageStatus {
         return $this->status;
+    }
+
+    /**
+     * Gets the unitPrice property value. Unit price for this usage ledger.
+     * @return float|null
+    */
+    public function getUnitPrice(): ?float {
+        return $this->unitPrice;
     }
 
     /**
@@ -225,17 +309,23 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeIntegerValue('billableSeconds', $this->getBillableSeconds());
         $writer->writeEnumValue('billableUnit', $this->getBillableUnit());
         $writer->writeEnumValue('channel', $this->getChannel());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
+        $writer->writeFloatValue('customerChargeAmount', $this->getCustomerChargeAmount());
         $writer->writeStringValue('description', $this->getDescription());
+        $writer->writeIntegerValue('durationSeconds', $this->getDurationSeconds());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isBillable', $this->getIsBillable());
         $writer->writeObjectValue('lead', $this->getLead());
         $writer->writeObjectValue('organization', $this->getOrganization());
         $writer->writeStringValue('phoneNumber', $this->getPhoneNumber());
         $writer->writeStringValue('phoneNumberId', $this->getPhoneNumberId());
+        $writer->writeFloatValue('quantity', $this->getQuantity());
+        $writer->writeIntegerValue('smsSegments', $this->getSmsSegments());
         $writer->writeEnumValue('status', $this->getStatus());
+        $writer->writeFloatValue('unitPrice', $this->getUnitPrice());
         $writer->writeObjectValue('user', $this->getUser());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -246,6 +336,14 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the billableSeconds property value. Billable seconds for this usage ledger.
+     * @param int|null $value Value to set for the billableSeconds property.
+    */
+    public function setBillableSeconds(?int $value): void {
+        $this->billableSeconds = $value;
     }
 
     /**
@@ -273,11 +371,27 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the customerChargeAmount property value. The monetary customer charge amount for this usage ledger.
+     * @param float|null $value Value to set for the customerChargeAmount property.
+    */
+    public function setCustomerChargeAmount(?float $value): void {
+        $this->customerChargeAmount = $value;
+    }
+
+    /**
      * Sets the description property value. The human-readable description of this usage ledger.
      * @param string|null $value Value to set for the description property.
     */
     public function setDescription(?string $value): void {
         $this->description = $value;
+    }
+
+    /**
+     * Sets the durationSeconds property value. Duration seconds for this usage ledger.
+     * @param int|null $value Value to set for the durationSeconds property.
+    */
+    public function setDurationSeconds(?int $value): void {
+        $this->durationSeconds = $value;
     }
 
     /**
@@ -329,11 +443,35 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the quantity property value. Quantity for this usage ledger.
+     * @param float|null $value Value to set for the quantity property.
+    */
+    public function setQuantity(?float $value): void {
+        $this->quantity = $value;
+    }
+
+    /**
+     * Sets the smsSegments property value. SMS segments for this usage ledger.
+     * @param int|null $value Value to set for the smsSegments property.
+    */
+    public function setSmsSegments(?int $value): void {
+        $this->smsSegments = $value;
+    }
+
+    /**
      * Sets the status property value. The current status for this usage ledger.
      * @param UsageStatus|null $value Value to set for the status property.
     */
     public function setStatus(?UsageStatus $value): void {
         $this->status = $value;
+    }
+
+    /**
+     * Sets the unitPrice property value. Unit price for this usage ledger.
+     * @param float|null $value Value to set for the unitPrice property.
+    */
+    public function setUnitPrice(?float $value): void {
+        $this->unitPrice = $value;
     }
 
     /**

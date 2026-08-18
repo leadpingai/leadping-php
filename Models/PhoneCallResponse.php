@@ -24,6 +24,11 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $answeredAt = null;
     
     /**
+     * @var float|null $billableAmount Monetary amount billed for this Leadping communication or transaction.
+    */
+    private ?float $billableAmount = null;
+    
+    /**
      * @var string|null $billingStatus Billing state for this communication, charge, or transaction.
     */
     private ?string $billingStatus = null;
@@ -57,6 +62,11 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
      * @var string|null $direction Communication direction for this phone call, such as inbound or outbound.
     */
     private ?string $direction = null;
+    
+    /**
+     * @var int|null $durationSeconds Call duration in seconds.
+    */
+    private ?int $durationSeconds = null;
     
     /**
      * @var DateTime|null $endedAt UTC timestamp when the call ended.
@@ -171,6 +181,14 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
+     * @return float|null
+    */
+    public function getBillableAmount(): ?float {
+        return $this->billableAmount;
+    }
+
+    /**
      * Gets the billingStatus property value. Billing state for this communication, charge, or transaction.
      * @return string|null
     */
@@ -227,6 +245,14 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the durationSeconds property value. Call duration in seconds.
+     * @return int|null
+    */
+    public function getDurationSeconds(): ?int {
+        return $this->durationSeconds;
+    }
+
+    /**
      * Gets the endedAt property value. UTC timestamp when the call ended.
      * @return DateTime|null
     */
@@ -242,6 +268,7 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'answeredAt' => fn(ParseNode $n) => $o->setAnsweredAt($n->getDateTimeValue()),
+            'billableAmount' => fn(ParseNode $n) => $o->setBillableAmount($n->getFloatValue()),
             'billingStatus' => fn(ParseNode $n) => $o->setBillingStatus($n->getStringValue()),
             'callerId' => fn(ParseNode $n) => $o->setCallerId($n->getStringValue()),
             'campaignId' => fn(ParseNode $n) => $o->setCampaignId($n->getStringValue()),
@@ -249,6 +276,7 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
             'conversationId' => fn(ParseNode $n) => $o->setConversationId($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'direction' => fn(ParseNode $n) => $o->setDirection($n->getStringValue()),
+            'durationSeconds' => fn(ParseNode $n) => $o->setDurationSeconds($n->getIntegerValue()),
             'endedAt' => fn(ParseNode $n) => $o->setEndedAt($n->getDateTimeValue()),
             'fromPhoneNumber' => fn(ParseNode $n) => $o->setFromPhoneNumber($n->getStringValue()),
             'fromPhoneNumberId' => fn(ParseNode $n) => $o->setFromPhoneNumberId($n->getStringValue()),
@@ -394,6 +422,7 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeDateTimeValue('answeredAt', $this->getAnsweredAt());
+        $writer->writeFloatValue('billableAmount', $this->getBillableAmount());
         $writer->writeStringValue('billingStatus', $this->getBillingStatus());
         $writer->writeStringValue('callerId', $this->getCallerId());
         $writer->writeStringValue('campaignId', $this->getCampaignId());
@@ -401,6 +430,7 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('conversationId', $this->getConversationId());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('direction', $this->getDirection());
+        $writer->writeIntegerValue('durationSeconds', $this->getDurationSeconds());
         $writer->writeDateTimeValue('endedAt', $this->getEndedAt());
         $writer->writeStringValue('fromPhoneNumber', $this->getFromPhoneNumber());
         $writer->writeStringValue('fromPhoneNumberId', $this->getFromPhoneNumberId());
@@ -434,6 +464,14 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     */
     public function setAnsweredAt(?DateTime $value): void {
         $this->answeredAt = $value;
+    }
+
+    /**
+     * Sets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
+     * @param float|null $value Value to set for the billableAmount property.
+    */
+    public function setBillableAmount(?float $value): void {
+        $this->billableAmount = $value;
     }
 
     /**
@@ -490,6 +528,14 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     */
     public function setDirection(?string $value): void {
         $this->direction = $value;
+    }
+
+    /**
+     * Sets the durationSeconds property value. Call duration in seconds.
+     * @param int|null $value Value to set for the durationSeconds property.
+    */
+    public function setDurationSeconds(?int $value): void {
+        $this->durationSeconds = $value;
     }
 
     /**

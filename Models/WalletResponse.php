@@ -19,6 +19,21 @@ class WalletResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var float|null $amountPurchased Amount of wallet credit purchased in this deposit.
+    */
+    private ?float $amountPurchased = null;
+    
+    /**
+     * @var float|null $amountRemaining Amount of wallet credit still available for future usage.
+    */
+    private ?float $amountRemaining = null;
+    
+    /**
+     * @var float|null $balance Wallet or account balance after this transaction is applied.
+    */
+    private ?float $balance = null;
+    
+    /**
      * @var DateTime|null $balanceCalculatedAt UTC timestamp when Leadping last calculated the wallet balance.
     */
     private ?DateTime $balanceCalculatedAt = null;
@@ -37,6 +52,11 @@ class WalletResponse implements AdditionalDataHolder, Parsable
      * @var string|null $currency ISO currency code used for the monetary amounts in this billing wallet response.
     */
     private ?string $currency = null;
+    
+    /**
+     * @var float|null $expiredCreditAmount Amount of wallet credit that has expired.
+    */
+    private ?float $expiredCreditAmount = null;
     
     /**
      * @var DateTime|null $expiresAt UTC timestamp when the wallet credit expires.
@@ -62,6 +82,11 @@ class WalletResponse implements AdditionalDataHolder, Parsable
      * @var DateTime|null $nextCreditExpirationAt UTC timestamp when the next wallet credit amount expires.
     */
     private ?DateTime $nextCreditExpirationAt = null;
+    
+    /**
+     * @var float|null $nextExpiringCreditAmount Amount of wallet credit scheduled to expire next.
+    */
+    private ?float $nextExpiringCreditAmount = null;
     
     /**
      * @var string|null $organizationId Organization ID that owns this wallet balance or credit.
@@ -108,6 +133,30 @@ class WalletResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the amountPurchased property value. Amount of wallet credit purchased in this deposit.
+     * @return float|null
+    */
+    public function getAmountPurchased(): ?float {
+        return $this->amountPurchased;
+    }
+
+    /**
+     * Gets the amountRemaining property value. Amount of wallet credit still available for future usage.
+     * @return float|null
+    */
+    public function getAmountRemaining(): ?float {
+        return $this->amountRemaining;
+    }
+
+    /**
+     * Gets the balance property value. Wallet or account balance after this transaction is applied.
+     * @return float|null
+    */
+    public function getBalance(): ?float {
+        return $this->balance;
+    }
+
+    /**
      * Gets the balanceCalculatedAt property value. UTC timestamp when Leadping last calculated the wallet balance.
      * @return DateTime|null
     */
@@ -140,6 +189,14 @@ class WalletResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the expiredCreditAmount property value. Amount of wallet credit that has expired.
+     * @return float|null
+    */
+    public function getExpiredCreditAmount(): ?float {
+        return $this->expiredCreditAmount;
+    }
+
+    /**
      * Gets the expiresAt property value. UTC timestamp when the wallet credit expires.
      * @return DateTime|null
     */
@@ -154,15 +211,20 @@ class WalletResponse implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'amountPurchased' => fn(ParseNode $n) => $o->setAmountPurchased($n->getFloatValue()),
+            'amountRemaining' => fn(ParseNode $n) => $o->setAmountRemaining($n->getFloatValue()),
+            'balance' => fn(ParseNode $n) => $o->setBalance($n->getFloatValue()),
             'balanceCalculatedAt' => fn(ParseNode $n) => $o->setBalanceCalculatedAt($n->getDateTimeValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'creditStatus' => fn(ParseNode $n) => $o->setCreditStatus($n->getEnumValue(WalletResponse_creditStatus::class)),
             'currency' => fn(ParseNode $n) => $o->setCurrency($n->getStringValue()),
+            'expiredCreditAmount' => fn(ParseNode $n) => $o->setExpiredCreditAmount($n->getFloatValue()),
             'expiresAt' => fn(ParseNode $n) => $o->setExpiresAt($n->getDateTimeValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'nextCreditExpirationAt' => fn(ParseNode $n) => $o->setNextCreditExpirationAt($n->getDateTimeValue()),
+            'nextExpiringCreditAmount' => fn(ParseNode $n) => $o->setNextExpiringCreditAmount($n->getFloatValue()),
             'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'originalTransactionId' => fn(ParseNode $n) => $o->setOriginalTransactionId($n->getStringValue()),
             'purchasedAt' => fn(ParseNode $n) => $o->setPurchasedAt($n->getDateTimeValue()),
@@ -203,6 +265,14 @@ class WalletResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the nextExpiringCreditAmount property value. Amount of wallet credit scheduled to expire next.
+     * @return float|null
+    */
+    public function getNextExpiringCreditAmount(): ?float {
+        return $this->nextExpiringCreditAmount;
+    }
+
+    /**
      * Gets the organizationId property value. Organization ID that owns this wallet balance or credit.
      * @return string|null
     */
@@ -239,15 +309,20 @@ class WalletResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeFloatValue('amountPurchased', $this->getAmountPurchased());
+        $writer->writeFloatValue('amountRemaining', $this->getAmountRemaining());
+        $writer->writeFloatValue('balance', $this->getBalance());
         $writer->writeDateTimeValue('balanceCalculatedAt', $this->getBalanceCalculatedAt());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeEnumValue('creditStatus', $this->getCreditStatus());
         $writer->writeStringValue('currency', $this->getCurrency());
+        $writer->writeFloatValue('expiredCreditAmount', $this->getExpiredCreditAmount());
         $writer->writeDateTimeValue('expiresAt', $this->getExpiresAt());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeDateTimeValue('nextCreditExpirationAt', $this->getNextCreditExpirationAt());
+        $writer->writeFloatValue('nextExpiringCreditAmount', $this->getNextExpiringCreditAmount());
         $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeStringValue('originalTransactionId', $this->getOriginalTransactionId());
         $writer->writeDateTimeValue('purchasedAt', $this->getPurchasedAt());
@@ -261,6 +336,30 @@ class WalletResponse implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the amountPurchased property value. Amount of wallet credit purchased in this deposit.
+     * @param float|null $value Value to set for the amountPurchased property.
+    */
+    public function setAmountPurchased(?float $value): void {
+        $this->amountPurchased = $value;
+    }
+
+    /**
+     * Sets the amountRemaining property value. Amount of wallet credit still available for future usage.
+     * @param float|null $value Value to set for the amountRemaining property.
+    */
+    public function setAmountRemaining(?float $value): void {
+        $this->amountRemaining = $value;
+    }
+
+    /**
+     * Sets the balance property value. Wallet or account balance after this transaction is applied.
+     * @param float|null $value Value to set for the balance property.
+    */
+    public function setBalance(?float $value): void {
+        $this->balance = $value;
     }
 
     /**
@@ -293,6 +392,14 @@ class WalletResponse implements AdditionalDataHolder, Parsable
     */
     public function setCurrency(?string $value): void {
         $this->currency = $value;
+    }
+
+    /**
+     * Sets the expiredCreditAmount property value. Amount of wallet credit that has expired.
+     * @param float|null $value Value to set for the expiredCreditAmount property.
+    */
+    public function setExpiredCreditAmount(?float $value): void {
+        $this->expiredCreditAmount = $value;
     }
 
     /**
@@ -333,6 +440,14 @@ class WalletResponse implements AdditionalDataHolder, Parsable
     */
     public function setNextCreditExpirationAt(?DateTime $value): void {
         $this->nextCreditExpirationAt = $value;
+    }
+
+    /**
+     * Sets the nextExpiringCreditAmount property value. Amount of wallet credit scheduled to expire next.
+     * @param float|null $value Value to set for the nextExpiringCreditAmount property.
+    */
+    public function setNextExpiringCreditAmount(?float $value): void {
+        $this->nextExpiringCreditAmount = $value;
     }
 
     /**

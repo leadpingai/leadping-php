@@ -19,14 +19,34 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var float|null $billableQuantityTotal The billable quantity total for this usage summary.
+    */
+    private ?float $billableQuantityTotal = null;
+    
+    /**
      * @var array<UsageCounterLine>|null $counters The named usage counters included with this usage summary.
     */
     private ?array $counters = null;
     
     /**
+     * @var float|null $customerChargeTotal The customer charge total for this usage summary.
+    */
+    private ?float $customerChargeTotal = null;
+    
+    /**
+     * @var int|null $failedCount The failed count for this usage summary.
+    */
+    private ?int $failedCount = null;
+    
+    /**
      * @var array<UsageSummaryLine>|null $lines The lines included with this usage summary.
     */
     private ?array $lines = null;
+    
+    /**
+     * @var int|null $pendingInvoiceCount The pending invoice count for this usage summary.
+    */
+    private ?int $pendingInvoiceCount = null;
     
     /**
      * @var DateTime|null $periodEnd UTC timestamp for period end on this usage summary.
@@ -37,6 +57,11 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
      * @var DateTime|null $periodStart UTC timestamp for period start on this usage summary.
     */
     private ?DateTime $periodStart = null;
+    
+    /**
+     * @var int|null $transactionCount The usage record count for this usage summary.
+    */
+    private ?int $transactionCount = null;
     
     /**
      * Instantiates a new UsageSummaryResponse and sets the default values.
@@ -63,11 +88,35 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the billableQuantityTotal property value. The billable quantity total for this usage summary.
+     * @return float|null
+    */
+    public function getBillableQuantityTotal(): ?float {
+        return $this->billableQuantityTotal;
+    }
+
+    /**
      * Gets the counters property value. The named usage counters included with this usage summary.
      * @return array<UsageCounterLine>|null
     */
     public function getCounters(): ?array {
         return $this->counters;
+    }
+
+    /**
+     * Gets the customerChargeTotal property value. The customer charge total for this usage summary.
+     * @return float|null
+    */
+    public function getCustomerChargeTotal(): ?float {
+        return $this->customerChargeTotal;
+    }
+
+    /**
+     * Gets the failedCount property value. The failed count for this usage summary.
+     * @return int|null
+    */
+    public function getFailedCount(): ?int {
+        return $this->failedCount;
     }
 
     /**
@@ -77,10 +126,15 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'billableQuantityTotal' => fn(ParseNode $n) => $o->setBillableQuantityTotal($n->getFloatValue()),
             'counters' => fn(ParseNode $n) => $o->setCounters($n->getCollectionOfObjectValues([UsageCounterLine::class, 'createFromDiscriminatorValue'])),
+            'customerChargeTotal' => fn(ParseNode $n) => $o->setCustomerChargeTotal($n->getFloatValue()),
+            'failedCount' => fn(ParseNode $n) => $o->setFailedCount($n->getIntegerValue()),
             'lines' => fn(ParseNode $n) => $o->setLines($n->getCollectionOfObjectValues([UsageSummaryLine::class, 'createFromDiscriminatorValue'])),
+            'pendingInvoiceCount' => fn(ParseNode $n) => $o->setPendingInvoiceCount($n->getIntegerValue()),
             'periodEnd' => fn(ParseNode $n) => $o->setPeriodEnd($n->getDateTimeValue()),
             'periodStart' => fn(ParseNode $n) => $o->setPeriodStart($n->getDateTimeValue()),
+            'transactionCount' => fn(ParseNode $n) => $o->setTransactionCount($n->getIntegerValue()),
         ];
     }
 
@@ -90,6 +144,14 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     */
     public function getLines(): ?array {
         return $this->lines;
+    }
+
+    /**
+     * Gets the pendingInvoiceCount property value. The pending invoice count for this usage summary.
+     * @return int|null
+    */
+    public function getPendingInvoiceCount(): ?int {
+        return $this->pendingInvoiceCount;
     }
 
     /**
@@ -109,14 +171,27 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the transactionCount property value. The usage record count for this usage summary.
+     * @return int|null
+    */
+    public function getTransactionCount(): ?int {
+        return $this->transactionCount;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeFloatValue('billableQuantityTotal', $this->getBillableQuantityTotal());
         $writer->writeCollectionOfObjectValues('counters', $this->getCounters());
+        $writer->writeFloatValue('customerChargeTotal', $this->getCustomerChargeTotal());
+        $writer->writeIntegerValue('failedCount', $this->getFailedCount());
         $writer->writeCollectionOfObjectValues('lines', $this->getLines());
+        $writer->writeIntegerValue('pendingInvoiceCount', $this->getPendingInvoiceCount());
         $writer->writeDateTimeValue('periodEnd', $this->getPeriodEnd());
         $writer->writeDateTimeValue('periodStart', $this->getPeriodStart());
+        $writer->writeIntegerValue('transactionCount', $this->getTransactionCount());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -129,6 +204,14 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the billableQuantityTotal property value. The billable quantity total for this usage summary.
+     * @param float|null $value Value to set for the billableQuantityTotal property.
+    */
+    public function setBillableQuantityTotal(?float $value): void {
+        $this->billableQuantityTotal = $value;
+    }
+
+    /**
      * Sets the counters property value. The named usage counters included with this usage summary.
      * @param array<UsageCounterLine>|null $value Value to set for the counters property.
     */
@@ -137,11 +220,35 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the customerChargeTotal property value. The customer charge total for this usage summary.
+     * @param float|null $value Value to set for the customerChargeTotal property.
+    */
+    public function setCustomerChargeTotal(?float $value): void {
+        $this->customerChargeTotal = $value;
+    }
+
+    /**
+     * Sets the failedCount property value. The failed count for this usage summary.
+     * @param int|null $value Value to set for the failedCount property.
+    */
+    public function setFailedCount(?int $value): void {
+        $this->failedCount = $value;
+    }
+
+    /**
      * Sets the lines property value. The lines included with this usage summary.
      * @param array<UsageSummaryLine>|null $value Value to set for the lines property.
     */
     public function setLines(?array $value): void {
         $this->lines = $value;
+    }
+
+    /**
+     * Sets the pendingInvoiceCount property value. The pending invoice count for this usage summary.
+     * @param int|null $value Value to set for the pendingInvoiceCount property.
+    */
+    public function setPendingInvoiceCount(?int $value): void {
+        $this->pendingInvoiceCount = $value;
     }
 
     /**
@@ -158,6 +265,14 @@ class UsageSummaryResponse implements AdditionalDataHolder, Parsable
     */
     public function setPeriodStart(?DateTime $value): void {
         $this->periodStart = $value;
+    }
+
+    /**
+     * Sets the transactionCount property value. The usage record count for this usage summary.
+     * @param int|null $value Value to set for the transactionCount property.
+    */
+    public function setTransactionCount(?int $value): void {
+        $this->transactionCount = $value;
     }
 
 }

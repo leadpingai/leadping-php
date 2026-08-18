@@ -19,6 +19,11 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var float|null $amount Total invoice amount in the invoice currency.
+    */
+    private ?float $amount = null;
+    
+    /**
      * @var DateTime|null $createdAt Date and time when the invoice was created.
     */
     private ?DateTime $createdAt = null;
@@ -68,6 +73,14 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the amount property value. Total invoice amount in the invoice currency.
+     * @return float|null
+    */
+    public function getAmount(): ?float {
+        return $this->amount;
+    }
+
+    /**
      * Gets the createdAt property value. Date and time when the invoice was created.
      * @return DateTime|null
     */
@@ -82,6 +95,7 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'amount' => fn(ParseNode $n) => $o->setAmount($n->getFloatValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'hasPdf' => fn(ParseNode $n) => $o->setHasPdf($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
@@ -127,6 +141,7 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeFloatValue('amount', $this->getAmount());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeBooleanValue('hasPdf', $this->getHasPdf());
         $writer->writeStringValue('id', $this->getId());
@@ -141,6 +156,14 @@ class StripeInvoiceResponse implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the amount property value. Total invoice amount in the invoice currency.
+     * @param float|null $value Value to set for the amount property.
+    */
+    public function setAmount(?float $value): void {
+        $this->amount = $value;
     }
 
     /**

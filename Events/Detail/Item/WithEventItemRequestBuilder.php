@@ -1,6 +1,6 @@
 <?php
 
-namespace Leadping\OpenApiClient\Events\Item\Detail;
+namespace Leadping\OpenApiClient\Events\Detail\Item;
 
 use Exception;
 use Http\Promise\Promise;
@@ -12,17 +12,17 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
 
 /**
- * Builds and executes requests for operations under /events/{eventId}/detail
+ * Builds and executes requests for operations under /events/detail/{eventId}
 */
-class DetailRequestBuilder extends BaseRequestBuilder 
+class WithEventItemRequestBuilder extends BaseRequestBuilder 
 {
     /**
-     * Instantiates a new DetailRequestBuilder and sets the default values.
+     * Instantiates a new WithEventItemRequestBuilder and sets the default values.
      * @param array<string, mixed>|string $pathParametersOrRawUrl Path parameters for the request or a String representing the raw URL.
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/events/{eventId}/detail');
+        parent::__construct($requestAdapter, [], '{+baseurl}/events/detail/{eventId}');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {
@@ -32,25 +32,27 @@ class DetailRequestBuilder extends BaseRequestBuilder
 
     /**
      * Returns detailed event data by ID, including the full JSON payload for debugging, audit review, and workflow inspection.
-     * @param DetailRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param WithEventItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<EventDetailResponse|null>
      * @throws Exception
     */
-    public function get(?DetailRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
+    public function get(?WithEventItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [EventDetailResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
 
     /**
      * Returns detailed event data by ID, including the full JSON payload for debugging, audit review, and workflow inspection.
-     * @param DetailRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param WithEventItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
-    public function toGetRequestInformation(?DetailRequestBuilderGetRequestConfiguration $requestConfiguration = null): RequestInformation {
+    public function toGetRequestInformation(?WithEventItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
@@ -66,10 +68,10 @@ class DetailRequestBuilder extends BaseRequestBuilder
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param string $rawUrl The raw URL to use for the request builder.
-     * @return DetailRequestBuilder
+     * @return WithEventItemRequestBuilder
     */
-    public function withUrl(string $rawUrl): DetailRequestBuilder {
-        return new DetailRequestBuilder($rawUrl, $this->requestAdapter);
+    public function withUrl(string $rawUrl): WithEventItemRequestBuilder {
+        return new WithEventItemRequestBuilder($rawUrl, $this->requestAdapter);
     }
 
 }

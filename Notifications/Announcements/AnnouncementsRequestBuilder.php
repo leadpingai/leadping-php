@@ -43,6 +43,7 @@ class AnnouncementsRequestBuilder extends BaseRequestBuilder
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [PagedResultOfNotificationTableRow::class, 'createFromDiscriminatorValue'], $errorMappings);

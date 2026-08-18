@@ -59,6 +59,16 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
     private ?DateTime $nextRetryAt = null;
     
     /**
+     * @var int|null $order Sort order used to evaluate or display this automation action run record.
+    */
+    private ?int $order = null;
+    
+    /**
+     * @var int|null $processingAttempts Number of processing attempts made for this workflow or delivery request.
+    */
+    private ?int $processingAttempts = null;
+    
+    /**
      * @var DateTime|null $scheduledAt UTC timestamp when this automation action run record was scheduled.
     */
     private ?DateTime $scheduledAt = null;
@@ -160,6 +170,8 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
             'failureCode' => fn(ParseNode $n) => $o->setFailureCode($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'nextRetryAt' => fn(ParseNode $n) => $o->setNextRetryAt($n->getDateTimeValue()),
+            'order' => fn(ParseNode $n) => $o->setOrder($n->getIntegerValue()),
+            'processingAttempts' => fn(ParseNode $n) => $o->setProcessingAttempts($n->getIntegerValue()),
             'scheduledAt' => fn(ParseNode $n) => $o->setScheduledAt($n->getDateTimeValue()),
             'startedAt' => fn(ParseNode $n) => $o->setStartedAt($n->getDateTimeValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getStringValue()),
@@ -180,6 +192,22 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
     */
     public function getNextRetryAt(): ?DateTime {
         return $this->nextRetryAt;
+    }
+
+    /**
+     * Gets the order property value. Sort order used to evaluate or display this automation action run record.
+     * @return int|null
+    */
+    public function getOrder(): ?int {
+        return $this->order;
+    }
+
+    /**
+     * Gets the processingAttempts property value. Number of processing attempts made for this workflow or delivery request.
+     * @return int|null
+    */
+    public function getProcessingAttempts(): ?int {
+        return $this->processingAttempts;
     }
 
     /**
@@ -219,6 +247,8 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('failureCode', $this->getFailureCode());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeDateTimeValue('nextRetryAt', $this->getNextRetryAt());
+        $writer->writeIntegerValue('order', $this->getOrder());
+        $writer->writeIntegerValue('processingAttempts', $this->getProcessingAttempts());
         $writer->writeDateTimeValue('scheduledAt', $this->getScheduledAt());
         $writer->writeDateTimeValue('startedAt', $this->getStartedAt());
         $writer->writeStringValue('status', $this->getStatus());
@@ -295,6 +325,22 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
     */
     public function setNextRetryAt(?DateTime $value): void {
         $this->nextRetryAt = $value;
+    }
+
+    /**
+     * Sets the order property value. Sort order used to evaluate or display this automation action run record.
+     * @param int|null $value Value to set for the order property.
+    */
+    public function setOrder(?int $value): void {
+        $this->order = $value;
+    }
+
+    /**
+     * Sets the processingAttempts property value. Number of processing attempts made for this workflow or delivery request.
+     * @param int|null $value Value to set for the processingAttempts property.
+    */
+    public function setProcessingAttempts(?int $value): void {
+        $this->processingAttempts = $value;
     }
 
     /**

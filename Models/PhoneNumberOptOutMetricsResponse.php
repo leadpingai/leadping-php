@@ -19,6 +19,26 @@ class PhoneNumberOptOutMetricsResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var int|null $distinctContactedCount Number of distinct recipients contacted during this metrics window.
+    */
+    private ?int $distinctContactedCount = null;
+    
+    /**
+     * @var int|null $optOutCount Number of recipients who opted out during this metrics window.
+    */
+    private ?int $optOutCount = null;
+    
+    /**
+     * @var float|null $optOutRatePercent Percentage of contacted recipients who opted out during this metrics window.
+    */
+    private ?float $optOutRatePercent = null;
+    
+    /**
+     * @var int|null $windowDays Number of days included in the metrics reporting window.
+    */
+    private ?int $windowDays = null;
+    
+    /**
      * @var DateTime|null $windowStartedAt UTC timestamp when the metrics reporting window starts.
     */
     private ?DateTime $windowStartedAt = null;
@@ -48,14 +68,50 @@ class PhoneNumberOptOutMetricsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the distinctContactedCount property value. Number of distinct recipients contacted during this metrics window.
+     * @return int|null
+    */
+    public function getDistinctContactedCount(): ?int {
+        return $this->distinctContactedCount;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'distinctContactedCount' => fn(ParseNode $n) => $o->setDistinctContactedCount($n->getIntegerValue()),
+            'optOutCount' => fn(ParseNode $n) => $o->setOptOutCount($n->getIntegerValue()),
+            'optOutRatePercent' => fn(ParseNode $n) => $o->setOptOutRatePercent($n->getFloatValue()),
+            'windowDays' => fn(ParseNode $n) => $o->setWindowDays($n->getIntegerValue()),
             'windowStartedAt' => fn(ParseNode $n) => $o->setWindowStartedAt($n->getDateTimeValue()),
         ];
+    }
+
+    /**
+     * Gets the optOutCount property value. Number of recipients who opted out during this metrics window.
+     * @return int|null
+    */
+    public function getOptOutCount(): ?int {
+        return $this->optOutCount;
+    }
+
+    /**
+     * Gets the optOutRatePercent property value. Percentage of contacted recipients who opted out during this metrics window.
+     * @return float|null
+    */
+    public function getOptOutRatePercent(): ?float {
+        return $this->optOutRatePercent;
+    }
+
+    /**
+     * Gets the windowDays property value. Number of days included in the metrics reporting window.
+     * @return int|null
+    */
+    public function getWindowDays(): ?int {
+        return $this->windowDays;
     }
 
     /**
@@ -71,6 +127,10 @@ class PhoneNumberOptOutMetricsResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeIntegerValue('distinctContactedCount', $this->getDistinctContactedCount());
+        $writer->writeIntegerValue('optOutCount', $this->getOptOutCount());
+        $writer->writeFloatValue('optOutRatePercent', $this->getOptOutRatePercent());
+        $writer->writeIntegerValue('windowDays', $this->getWindowDays());
         $writer->writeDateTimeValue('windowStartedAt', $this->getWindowStartedAt());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -81,6 +141,38 @@ class PhoneNumberOptOutMetricsResponse implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the distinctContactedCount property value. Number of distinct recipients contacted during this metrics window.
+     * @param int|null $value Value to set for the distinctContactedCount property.
+    */
+    public function setDistinctContactedCount(?int $value): void {
+        $this->distinctContactedCount = $value;
+    }
+
+    /**
+     * Sets the optOutCount property value. Number of recipients who opted out during this metrics window.
+     * @param int|null $value Value to set for the optOutCount property.
+    */
+    public function setOptOutCount(?int $value): void {
+        $this->optOutCount = $value;
+    }
+
+    /**
+     * Sets the optOutRatePercent property value. Percentage of contacted recipients who opted out during this metrics window.
+     * @param float|null $value Value to set for the optOutRatePercent property.
+    */
+    public function setOptOutRatePercent(?float $value): void {
+        $this->optOutRatePercent = $value;
+    }
+
+    /**
+     * Sets the windowDays property value. Number of days included in the metrics reporting window.
+     * @param int|null $value Value to set for the windowDays property.
+    */
+    public function setWindowDays(?int $value): void {
+        $this->windowDays = $value;
     }
 
     /**

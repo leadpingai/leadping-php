@@ -7,6 +7,7 @@ use Http\Promise\Promise;
 use Leadping\OpenApiClient\LeadStatuses\Item\LeadStatusesItemRequestBuilder;
 use Leadping\OpenApiClient\Models\LeadStatusRequest;
 use Leadping\OpenApiClient\Models\LeadStatusResponse;
+use Leadping\OpenApiClient\Models\ProblemDetails;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
@@ -50,7 +51,12 @@ class LeadStatusesRequestBuilder extends BaseRequestBuilder
     */
     public function get(?LeadStatusesRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
-        return $this->requestAdapter->sendCollectionAsync($requestInfo, [LeadStatusResponse::class, 'createFromDiscriminatorValue'], null);
+        $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+        ];
+        return $this->requestAdapter->sendCollectionAsync($requestInfo, [LeadStatusResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
 
     /**
@@ -62,7 +68,12 @@ class LeadStatusesRequestBuilder extends BaseRequestBuilder
     */
     public function post(LeadStatusRequest $body, ?LeadStatusesRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toPostRequestInformation($body, $requestConfiguration);
-        return $this->requestAdapter->sendAsync($requestInfo, [LeadStatusResponse::class, 'createFromDiscriminatorValue'], null);
+        $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+        ];
+        return $this->requestAdapter->sendAsync($requestInfo, [LeadStatusResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
 
     /**

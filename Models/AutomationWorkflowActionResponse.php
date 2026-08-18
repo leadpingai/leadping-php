@@ -54,6 +54,11 @@ class AutomationWorkflowActionResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $nextRetryAt = null;
     
     /**
+     * @var int|null $retryCount Total number of retry records represented by this Leadping automation workflow action.
+    */
+    private ?int $retryCount = null;
+    
+    /**
      * @var string|null $safeReason Safe reason associated with this Leadping automation workflow action.
     */
     private ?string $safeReason = null;
@@ -92,6 +97,11 @@ class AutomationWorkflowActionResponse implements AdditionalDataHolder, Parsable
      * @var string|null $stepId Unique identifier of the step associated with this Leadping automation workflow action.
     */
     private ?string $stepId = null;
+    
+    /**
+     * @var int|null $stepOrder Step order associated with this Leadping automation workflow action.
+    */
+    private ?int $stepOrder = null;
     
     /**
      * @var string|null $userSummary Human-readable user summary for this Leadping automation workflow action.
@@ -176,6 +186,7 @@ class AutomationWorkflowActionResponse implements AdditionalDataHolder, Parsable
             'failureCode' => fn(ParseNode $n) => $o->setFailureCode($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'nextRetryAt' => fn(ParseNode $n) => $o->setNextRetryAt($n->getDateTimeValue()),
+            'retryCount' => fn(ParseNode $n) => $o->setRetryCount($n->getIntegerValue()),
             'safeReason' => fn(ParseNode $n) => $o->setSafeReason($n->getStringValue()),
             'scheduledAt' => fn(ParseNode $n) => $o->setScheduledAt($n->getDateTimeValue()),
             'skippedAt' => fn(ParseNode $n) => $o->setSkippedAt($n->getDateTimeValue()),
@@ -184,6 +195,7 @@ class AutomationWorkflowActionResponse implements AdditionalDataHolder, Parsable
             'statusDisplay' => fn(ParseNode $n) => $o->setStatusDisplay($n->getStringValue()),
             'stepDisplayName' => fn(ParseNode $n) => $o->setStepDisplayName($n->getStringValue()),
             'stepId' => fn(ParseNode $n) => $o->setStepId($n->getStringValue()),
+            'stepOrder' => fn(ParseNode $n) => $o->setStepOrder($n->getIntegerValue()),
             'userSummary' => fn(ParseNode $n) => $o->setUserSummary($n->getStringValue()),
         ];
     }
@@ -202,6 +214,14 @@ class AutomationWorkflowActionResponse implements AdditionalDataHolder, Parsable
     */
     public function getNextRetryAt(): ?DateTime {
         return $this->nextRetryAt;
+    }
+
+    /**
+     * Gets the retryCount property value. Total number of retry records represented by this Leadping automation workflow action.
+     * @return int|null
+    */
+    public function getRetryCount(): ?int {
+        return $this->retryCount;
     }
 
     /**
@@ -269,6 +289,14 @@ class AutomationWorkflowActionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the stepOrder property value. Step order associated with this Leadping automation workflow action.
+     * @return int|null
+    */
+    public function getStepOrder(): ?int {
+        return $this->stepOrder;
+    }
+
+    /**
      * Gets the userSummary property value. Human-readable user summary for this Leadping automation workflow action.
      * @return string|null
     */
@@ -288,6 +316,7 @@ class AutomationWorkflowActionResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('failureCode', $this->getFailureCode());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeDateTimeValue('nextRetryAt', $this->getNextRetryAt());
+        $writer->writeIntegerValue('retryCount', $this->getRetryCount());
         $writer->writeStringValue('safeReason', $this->getSafeReason());
         $writer->writeDateTimeValue('scheduledAt', $this->getScheduledAt());
         $writer->writeDateTimeValue('skippedAt', $this->getSkippedAt());
@@ -296,6 +325,7 @@ class AutomationWorkflowActionResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('statusDisplay', $this->getStatusDisplay());
         $writer->writeStringValue('stepDisplayName', $this->getStepDisplayName());
         $writer->writeStringValue('stepId', $this->getStepId());
+        $writer->writeIntegerValue('stepOrder', $this->getStepOrder());
         $writer->writeStringValue('userSummary', $this->getUserSummary());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -365,6 +395,14 @@ class AutomationWorkflowActionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the retryCount property value. Total number of retry records represented by this Leadping automation workflow action.
+     * @param int|null $value Value to set for the retryCount property.
+    */
+    public function setRetryCount(?int $value): void {
+        $this->retryCount = $value;
+    }
+
+    /**
      * Sets the safeReason property value. Safe reason associated with this Leadping automation workflow action.
      * @param string|null $value Value to set for the safeReason property.
     */
@@ -426,6 +464,14 @@ class AutomationWorkflowActionResponse implements AdditionalDataHolder, Parsable
     */
     public function setStepId(?string $value): void {
         $this->stepId = $value;
+    }
+
+    /**
+     * Sets the stepOrder property value. Step order associated with this Leadping automation workflow action.
+     * @param int|null $value Value to set for the stepOrder property.
+    */
+    public function setStepOrder(?int $value): void {
+        $this->stepOrder = $value;
     }
 
     /**

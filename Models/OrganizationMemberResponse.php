@@ -44,6 +44,11 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     private ?string $licenseBillingStatus = null;
     
     /**
+     * @var int|null $licenseQuantity The quantity on the shared organization user license item after this change.
+    */
+    private ?int $licenseQuantity = null;
+    
+    /**
      * @var DateTime|null $licenseRenewalDate The renewal date used for this user's license proration.
     */
     private ?DateTime $licenseRenewalDate = null;
@@ -140,6 +145,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'lastUsedAt' => fn(ParseNode $n) => $o->setLastUsedAt($n->getDateTimeValue()),
             'licenseBillingStatus' => fn(ParseNode $n) => $o->setLicenseBillingStatus($n->getStringValue()),
+            'licenseQuantity' => fn(ParseNode $n) => $o->setLicenseQuantity($n->getIntegerValue()),
             'licenseRenewalDate' => fn(ParseNode $n) => $o->setLicenseRenewalDate($n->getDateTimeValue()),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
@@ -174,6 +180,14 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     */
     public function getLicenseBillingStatus(): ?string {
         return $this->licenseBillingStatus;
+    }
+
+    /**
+     * Gets the licenseQuantity property value. The quantity on the shared organization user license item after this change.
+     * @return int|null
+    */
+    public function getLicenseQuantity(): ?int {
+        return $this->licenseQuantity;
     }
 
     /**
@@ -258,6 +272,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('id', $this->getId());
         $writer->writeDateTimeValue('lastUsedAt', $this->getLastUsedAt());
         $writer->writeStringValue('licenseBillingStatus', $this->getLicenseBillingStatus());
+        $writer->writeIntegerValue('licenseQuantity', $this->getLicenseQuantity());
         $writer->writeDateTimeValue('licenseRenewalDate', $this->getLicenseRenewalDate());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('name', $this->getName());
@@ -316,6 +331,14 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     */
     public function setLicenseBillingStatus(?string $value): void {
         $this->licenseBillingStatus = $value;
+    }
+
+    /**
+     * Sets the licenseQuantity property value. The quantity on the shared organization user license item after this change.
+     * @param int|null $value Value to set for the licenseQuantity property.
+    */
+    public function setLicenseQuantity(?int $value): void {
+        $this->licenseQuantity = $value;
     }
 
     /**

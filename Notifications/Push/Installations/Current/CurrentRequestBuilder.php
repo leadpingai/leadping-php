@@ -42,6 +42,7 @@ class CurrentRequestBuilder extends BaseRequestBuilder
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         /** @var Promise<bool|null> $result */
         $result = $this->requestAdapter->sendPrimitiveAsync($requestInfo, 'bool', $errorMappings);

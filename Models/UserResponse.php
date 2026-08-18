@@ -7,6 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
+use Microsoft\Kiota\Abstractions\Types\TypeUtils;
 
 /**
  * Describes user data returned by Leadping.
@@ -119,6 +120,11 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?string $phone = null;
     
     /**
+     * @var array<string>|null $roles The roles included with this user.
+    */
+    private ?array $roles = null;
+    
+    /**
      * @var UserResponse_subscriptionStatus|null $subscriptionStatus Defines the supported Subscription Status values.
     */
     private ?UserResponse_subscriptionStatus $subscriptionStatus = null;
@@ -227,6 +233,14 @@ class UserResponse implements AdditionalDataHolder, Parsable
             'personalDataDeletionRequestedAt' => fn(ParseNode $n) => $o->setPersonalDataDeletionRequestedAt($n->getDateTimeValue()),
             'personalDataDeletionStatus' => fn(ParseNode $n) => $o->setPersonalDataDeletionStatus($n->getStringValue()),
             'phone' => fn(ParseNode $n) => $o->setPhone($n->getStringValue()),
+            'roles' => function (ParseNode $n) {
+                $val = $n->getCollectionOfPrimitiveValues();
+                if (is_array($val)) {
+                    TypeUtils::validateCollectionValues($val, 'string');
+                }
+                /** @var array<string>|null $val */
+                $this->setRoles($val);
+            },
             'subscriptionStatus' => fn(ParseNode $n) => $o->setSubscriptionStatus($n->getEnumValue(UserResponse_subscriptionStatus::class)),
             'timeZoneId' => fn(ParseNode $n) => $o->setTimeZoneId($n->getStringValue()),
         ];
@@ -345,6 +359,14 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the roles property value. The roles included with this user.
+     * @return array<string>|null
+    */
+    public function getRoles(): ?array {
+        return $this->roles;
+    }
+
+    /**
      * Gets the subscriptionStatus property value. Defines the supported Subscription Status values.
      * @return UserResponse_subscriptionStatus|null
     */
@@ -385,6 +407,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('personalDataDeletionRequestedAt', $this->getPersonalDataDeletionRequestedAt());
         $writer->writeStringValue('personalDataDeletionStatus', $this->getPersonalDataDeletionStatus());
         $writer->writeStringValue('phone', $this->getPhone());
+        $writer->writeCollectionOfPrimitiveValues('roles', $this->getRoles());
         $writer->writeEnumValue('subscriptionStatus', $this->getSubscriptionStatus());
         $writer->writeStringValue('timeZoneId', $this->getTimeZoneId());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -556,6 +579,14 @@ class UserResponse implements AdditionalDataHolder, Parsable
     */
     public function setPhone(?string $value): void {
         $this->phone = $value;
+    }
+
+    /**
+     * Sets the roles property value. The roles included with this user.
+     * @param array<string>|null $value Value to set for the roles property.
+    */
+    public function setRoles(?array $value): void {
+        $this->roles = $value;
     }
 
     /**

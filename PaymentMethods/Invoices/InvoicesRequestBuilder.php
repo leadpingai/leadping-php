@@ -4,6 +4,7 @@ namespace Leadping\OpenApiClient\PaymentMethods\Invoices;
 
 use Exception;
 use Http\Promise\Promise;
+use Leadping\OpenApiClient\Models\ProblemDetails;
 use Leadping\OpenApiClient\Models\StripeInvoiceResponse;
 use Leadping\OpenApiClient\PaymentMethods\Invoices\Item\WithInvoiceItemRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
@@ -49,7 +50,11 @@ class InvoicesRequestBuilder extends BaseRequestBuilder
     */
     public function get(?InvoicesRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
-        return $this->requestAdapter->sendCollectionAsync($requestInfo, [StripeInvoiceResponse::class, 'createFromDiscriminatorValue'], null);
+        $errorMappings = [
+                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+        ];
+        return $this->requestAdapter->sendCollectionAsync($requestInfo, [StripeInvoiceResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
 
     /**

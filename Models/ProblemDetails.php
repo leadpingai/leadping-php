@@ -29,6 +29,11 @@ class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsa
     private ?string $instance = null;
     
     /**
+     * @var int|null $status HTTP status code returned for the problem.
+    */
+    private ?int $status = null;
+    
+    /**
      * @var string|null $title Short, human-readable summary of the problem.
     */
     private ?string $title = null;
@@ -79,6 +84,7 @@ class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsa
         return  [
             'detail' => fn(ParseNode $n) => $o->setDetail($n->getStringValue()),
             'instance' => fn(ParseNode $n) => $o->setInstance($n->getStringValue()),
+            'status' => fn(ParseNode $n) => $o->setStatus($n->getIntegerValue()),
             'title' => fn(ParseNode $n) => $o->setTitle($n->getStringValue()),
             'type' => fn(ParseNode $n) => $o->setType($n->getStringValue()),
         ];
@@ -98,6 +104,14 @@ class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsa
     */
     public function getPrimaryErrorMessage(): string {
         return parent::getMessage();
+    }
+
+    /**
+     * Gets the status property value. HTTP status code returned for the problem.
+     * @return int|null
+    */
+    public function getStatus(): ?int {
+        return $this->status;
     }
 
     /**
@@ -123,6 +137,7 @@ class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsa
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('detail', $this->getDetail());
         $writer->writeStringValue('instance', $this->getInstance());
+        $writer->writeIntegerValue('status', $this->getStatus());
         $writer->writeStringValue('title', $this->getTitle());
         $writer->writeStringValue('type', $this->getType());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -150,6 +165,14 @@ class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsa
     */
     public function setInstance(?string $value): void {
         $this->instance = $value;
+    }
+
+    /**
+     * Sets the status property value. HTTP status code returned for the problem.
+     * @param int|null $value Value to set for the status property.
+    */
+    public function setStatus(?int $value): void {
+        $this->status = $value;
     }
 
     /**

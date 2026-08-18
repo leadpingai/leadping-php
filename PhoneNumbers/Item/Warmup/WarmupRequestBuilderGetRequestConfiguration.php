@@ -31,10 +31,10 @@ class WarmupRequestBuilderGetRequestConfiguration extends BaseRequestConfigurati
      * Instantiates a new WarmupRequestBuilderGetQueryParameters.
      * @param Date|null $endDate The end date.
      * @param Date|null $startDate The start date.
-     * @param string|null $windowDays The window days.
+     * @param int|null $windowDays The window days.
      * @return WarmupRequestBuilderGetQueryParameters
     */
-    public static function createQueryParameters(?Date $endDate = null, ?Date $startDate = null, ?string $windowDays = null): WarmupRequestBuilderGetQueryParameters {
+    public static function createQueryParameters(?Date $endDate = null, ?Date $startDate = null, ?int $windowDays = null): WarmupRequestBuilderGetQueryParameters {
         return new WarmupRequestBuilderGetQueryParameters($endDate, $startDate, $windowDays);
     }
 

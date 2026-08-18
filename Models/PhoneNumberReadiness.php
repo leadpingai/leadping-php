@@ -28,9 +28,19 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
     private ?bool $enabled = null;
     
     /**
+     * @var int|null $healthScore Current warmup health score used to assess phone number warmup.
+    */
+    private ?int $healthScore = null;
+    
+    /**
      * @var PhoneNumberReadiness_healthStatus|null $healthStatus Defines the supported SMS readiness health assessments.
     */
     private ?PhoneNumberReadiness_healthStatus $healthStatus = null;
+    
+    /**
+     * @var int|null $progressPercent Warmup completion percentage, from 0 through 100.
+    */
+    private ?int $progressPercent = null;
     
     /**
      * @var PhoneNumberReadiness_state|null $state Defines the supported SMS readiness states.
@@ -86,9 +96,19 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
         return  [
             'callStage' => fn(ParseNode $n) => $o->setCallStage($n->getEnumValue(PhoneNumberReadiness_callStage::class)),
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
+            'healthScore' => fn(ParseNode $n) => $o->setHealthScore($n->getIntegerValue()),
             'healthStatus' => fn(ParseNode $n) => $o->setHealthStatus($n->getEnumValue(PhoneNumberReadiness_healthStatus::class)),
+            'progressPercent' => fn(ParseNode $n) => $o->setProgressPercent($n->getIntegerValue()),
             'state' => fn(ParseNode $n) => $o->setState($n->getEnumValue(PhoneNumberReadiness_state::class)),
         ];
+    }
+
+    /**
+     * Gets the healthScore property value. Current warmup health score used to assess phone number warmup.
+     * @return int|null
+    */
+    public function getHealthScore(): ?int {
+        return $this->healthScore;
     }
 
     /**
@@ -97,6 +117,14 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
     */
     public function getHealthStatus(): ?PhoneNumberReadiness_healthStatus {
         return $this->healthStatus;
+    }
+
+    /**
+     * Gets the progressPercent property value. Warmup completion percentage, from 0 through 100.
+     * @return int|null
+    */
+    public function getProgressPercent(): ?int {
+        return $this->progressPercent;
     }
 
     /**
@@ -114,7 +142,9 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeEnumValue('callStage', $this->getCallStage());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
+        $writer->writeIntegerValue('healthScore', $this->getHealthScore());
         $writer->writeEnumValue('healthStatus', $this->getHealthStatus());
+        $writer->writeIntegerValue('progressPercent', $this->getProgressPercent());
         $writer->writeEnumValue('state', $this->getState());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -144,11 +174,27 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the healthScore property value. Current warmup health score used to assess phone number warmup.
+     * @param int|null $value Value to set for the healthScore property.
+    */
+    public function setHealthScore(?int $value): void {
+        $this->healthScore = $value;
+    }
+
+    /**
      * Sets the healthStatus property value. Defines the supported SMS readiness health assessments.
      * @param PhoneNumberReadiness_healthStatus|null $value Value to set for the healthStatus property.
     */
     public function setHealthStatus(?PhoneNumberReadiness_healthStatus $value): void {
         $this->healthStatus = $value;
+    }
+
+    /**
+     * Sets the progressPercent property value. Warmup completion percentage, from 0 through 100.
+     * @param int|null $value Value to set for the progressPercent property.
+    */
+    public function setProgressPercent(?int $value): void {
+        $this->progressPercent = $value;
     }
 
     /**

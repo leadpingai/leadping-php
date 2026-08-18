@@ -19,7 +19,7 @@ class RunsRequestBuilder extends BaseRequestBuilder
 {
     /**
      * Gets an item from the Leadping/OpenApiClient.automations.item.runs.item collection
-     * @param string $runId Unique identifier of the item
+     * @param string $runId The unique identifier of the persisted automation run.
      * @return WithRunItemRequestBuilder
     */
     public function byRunId(string $runId): WithRunItemRequestBuilder {
@@ -43,7 +43,7 @@ class RunsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Gets recent persisted execution runs for an automation console.
+     * Returns recent execution history for the specified automation in the current organization, including run state and console details.
      * @param RunsRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<AutomationConsoleResponse|null>
      * @throws Exception
@@ -52,12 +52,14 @@ class RunsRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [AutomationConsoleResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
 
     /**
-     * Gets recent persisted execution runs for an automation console.
+     * Returns recent execution history for the specified automation in the current organization, including run state and console details.
      * @param RunsRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

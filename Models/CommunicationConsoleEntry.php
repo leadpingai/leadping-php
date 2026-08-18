@@ -19,27 +19,27 @@ class CommunicationConsoleEntry implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $id The id property
+     * @var string|null $id Unique identifier of this diagnostic console entry.
     */
     private ?string $id = null;
     
     /**
-     * @var string|null $message The message property
+     * @var string|null $message User-safe diagnostic message describing what occurred at this stage.
     */
     private ?string $message = null;
     
     /**
-     * @var DateTime|null $occurredAt The occurredAt property
+     * @var DateTime|null $occurredAt UTC timestamp when this communication-processing event occurred.
     */
     private ?DateTime $occurredAt = null;
     
     /**
-     * @var string|null $stage The stage property
+     * @var string|null $stage Communication-processing stage that produced the entry, such as validation, routing, or provider delivery.
     */
     private ?string $stage = null;
     
     /**
-     * @var string|null $status The status property
+     * @var string|null $status Outcome or state recorded for this processing stage.
     */
     private ?string $status = null;
     
@@ -83,7 +83,7 @@ class CommunicationConsoleEntry implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The id property
+     * Gets the id property value. Unique identifier of this diagnostic console entry.
      * @return string|null
     */
     public function getId(): ?string {
@@ -91,7 +91,7 @@ class CommunicationConsoleEntry implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the message property value. The message property
+     * Gets the message property value. User-safe diagnostic message describing what occurred at this stage.
      * @return string|null
     */
     public function getMessage(): ?string {
@@ -99,7 +99,7 @@ class CommunicationConsoleEntry implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the occurredAt property value. The occurredAt property
+     * Gets the occurredAt property value. UTC timestamp when this communication-processing event occurred.
      * @return DateTime|null
     */
     public function getOccurredAt(): ?DateTime {
@@ -107,7 +107,7 @@ class CommunicationConsoleEntry implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the stage property value. The stage property
+     * Gets the stage property value. Communication-processing stage that produced the entry, such as validation, routing, or provider delivery.
      * @return string|null
     */
     public function getStage(): ?string {
@@ -115,7 +115,7 @@ class CommunicationConsoleEntry implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. The status property
+     * Gets the status property value. Outcome or state recorded for this processing stage.
      * @return string|null
     */
     public function getStatus(): ?string {
@@ -144,7 +144,7 @@ class CommunicationConsoleEntry implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The id property
+     * Sets the id property value. Unique identifier of this diagnostic console entry.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -152,7 +152,7 @@ class CommunicationConsoleEntry implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the message property value. The message property
+     * Sets the message property value. User-safe diagnostic message describing what occurred at this stage.
      * @param string|null $value Value to set for the message property.
     */
     public function setMessage(?string $value): void {
@@ -160,7 +160,7 @@ class CommunicationConsoleEntry implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the occurredAt property value. The occurredAt property
+     * Sets the occurredAt property value. UTC timestamp when this communication-processing event occurred.
      * @param DateTime|null $value Value to set for the occurredAt property.
     */
     public function setOccurredAt(?DateTime $value): void {
@@ -168,7 +168,7 @@ class CommunicationConsoleEntry implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the stage property value. The stage property
+     * Sets the stage property value. Communication-processing stage that produced the entry, such as validation, routing, or provider delivery.
      * @param string|null $value Value to set for the stage property.
     */
     public function setStage(?string $value): void {
@@ -176,7 +176,7 @@ class CommunicationConsoleEntry implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. The status property
+     * Sets the status property value. Outcome or state recorded for this processing stage.
      * @param string|null $value Value to set for the status property.
     */
     public function setStatus(?string $value): void {

@@ -28,6 +28,11 @@ class ActivationDomainOption implements AdditionalDataHolder, Parsable
     private ?string $domainName = null;
     
     /**
+     * @var float|null $estimatedAnnualCost Estimated annual cost for this activation domain option.
+    */
+    private ?float $estimatedAnnualCost = null;
+    
+    /**
      * @var string|null $industryRelevance Industry relevance for this activation domain option.
     */
     private ?string $industryRelevance = null;
@@ -88,6 +93,14 @@ class ActivationDomainOption implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the estimatedAnnualCost property value. Estimated annual cost for this activation domain option.
+     * @return float|null
+    */
+    public function getEstimatedAnnualCost(): ?float {
+        return $this->estimatedAnnualCost;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
@@ -96,6 +109,7 @@ class ActivationDomainOption implements AdditionalDataHolder, Parsable
         return  [
             'availabilityStatus' => fn(ParseNode $n) => $o->setAvailabilityStatus($n->getStringValue()),
             'domainName' => fn(ParseNode $n) => $o->setDomainName($n->getStringValue()),
+            'estimatedAnnualCost' => fn(ParseNode $n) => $o->setEstimatedAnnualCost($n->getFloatValue()),
             'industryRelevance' => fn(ParseNode $n) => $o->setIndustryRelevance($n->getStringValue()),
             'recommended' => fn(ParseNode $n) => $o->setRecommended($n->getBooleanValue()),
             'trustConcerns' => fn(ParseNode $n) => $o->setTrustConcerns($n->getStringValue()),
@@ -142,6 +156,7 @@ class ActivationDomainOption implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('availabilityStatus', $this->getAvailabilityStatus());
         $writer->writeStringValue('domainName', $this->getDomainName());
+        $writer->writeFloatValue('estimatedAnnualCost', $this->getEstimatedAnnualCost());
         $writer->writeStringValue('industryRelevance', $this->getIndustryRelevance());
         $writer->writeBooleanValue('recommended', $this->getRecommended());
         $writer->writeStringValue('trustConcerns', $this->getTrustConcerns());
@@ -171,6 +186,14 @@ class ActivationDomainOption implements AdditionalDataHolder, Parsable
     */
     public function setDomainName(?string $value): void {
         $this->domainName = $value;
+    }
+
+    /**
+     * Sets the estimatedAnnualCost property value. Estimated annual cost for this activation domain option.
+     * @param float|null $value Value to set for the estimatedAnnualCost property.
+    */
+    public function setEstimatedAnnualCost(?float $value): void {
+        $this->estimatedAnnualCost = $value;
     }
 
     /**

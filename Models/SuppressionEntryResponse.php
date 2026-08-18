@@ -59,7 +59,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     private ?string $recipientIdentifier = null;
     
     /**
-     * @var DateTime|null $releasedAt UTC timestamp when the suppression was released, or while it remains active.
+     * @var DateTime|null $releasedAt UTC timestamp when the suppression was released, or null while it remains active.
     */
     private ?DateTime $releasedAt = null;
     
@@ -189,7 +189,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the releasedAt property value. UTC timestamp when the suppression was released, or while it remains active.
+     * Gets the releasedAt property value. UTC timestamp when the suppression was released, or null while it remains active.
      * @return DateTime|null
     */
     public function getReleasedAt(): ?DateTime {
@@ -313,7 +313,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the releasedAt property value. UTC timestamp when the suppression was released, or while it remains active.
+     * Sets the releasedAt property value. UTC timestamp when the suppression was released, or null while it remains active.
      * @param DateTime|null $value Value to set for the releasedAt property.
     */
     public function setReleasedAt(?DateTime $value): void {

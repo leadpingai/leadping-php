@@ -28,6 +28,11 @@ class CustomerLeadTrend implements AdditionalDataHolder, Parsable
     private ?array $points = null;
     
     /**
+     * @var int|null $total Total number of total records represented by this Leadping customer lead trend.
+    */
+    private ?int $total = null;
+    
+    /**
      * Instantiates a new CustomerLeadTrend and sets the default values.
     */
     public function __construct() {
@@ -68,6 +73,7 @@ class CustomerLeadTrend implements AdditionalDataHolder, Parsable
         return  [
             'comparison' => fn(ParseNode $n) => $o->setComparison($n->getObjectValue([AnalyticsComparison::class, 'createFromDiscriminatorValue'])),
             'points' => fn(ParseNode $n) => $o->setPoints($n->getCollectionOfObjectValues([AnalyticsTrendPointOfint::class, 'createFromDiscriminatorValue'])),
+            'total' => fn(ParseNode $n) => $o->setTotal($n->getIntegerValue()),
         ];
     }
 
@@ -80,12 +86,21 @@ class CustomerLeadTrend implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the total property value. Total number of total records represented by this Leadping customer lead trend.
+     * @return int|null
+    */
+    public function getTotal(): ?int {
+        return $this->total;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeObjectValue('comparison', $this->getComparison());
         $writer->writeCollectionOfObjectValues('points', $this->getPoints());
+        $writer->writeIntegerValue('total', $this->getTotal());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -111,6 +126,14 @@ class CustomerLeadTrend implements AdditionalDataHolder, Parsable
     */
     public function setPoints(?array $value): void {
         $this->points = $value;
+    }
+
+    /**
+     * Sets the total property value. Total number of total records represented by this Leadping customer lead trend.
+     * @param int|null $value Value to set for the total property.
+    */
+    public function setTotal(?int $value): void {
+        $this->total = $value;
     }
 
 }

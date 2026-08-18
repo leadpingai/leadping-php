@@ -18,9 +18,24 @@ class AnalyticsComparison implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var float|null $changePercent Percentage change between the current and previous reporting periods.
+    */
+    private ?float $changePercent = null;
+    
+    /**
+     * @var float|null $current Metric value for the current reporting period.
+    */
+    private ?float $current = null;
+    
+    /**
      * @var string|null $direction Direction classification for this Leadping analytics comparison.
     */
     private ?string $direction = null;
+    
+    /**
+     * @var float|null $previous Metric value for the preceding comparison period.
+    */
+    private ?float $previous = null;
     
     /**
      * Instantiates a new AnalyticsComparison and sets the default values.
@@ -47,6 +62,22 @@ class AnalyticsComparison implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the changePercent property value. Percentage change between the current and previous reporting periods.
+     * @return float|null
+    */
+    public function getChangePercent(): ?float {
+        return $this->changePercent;
+    }
+
+    /**
+     * Gets the current property value. Metric value for the current reporting period.
+     * @return float|null
+    */
+    public function getCurrent(): ?float {
+        return $this->current;
+    }
+
+    /**
      * Gets the direction property value. Direction classification for this Leadping analytics comparison.
      * @return string|null
     */
@@ -61,8 +92,19 @@ class AnalyticsComparison implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'changePercent' => fn(ParseNode $n) => $o->setChangePercent($n->getFloatValue()),
+            'current' => fn(ParseNode $n) => $o->setCurrent($n->getFloatValue()),
             'direction' => fn(ParseNode $n) => $o->setDirection($n->getStringValue()),
+            'previous' => fn(ParseNode $n) => $o->setPrevious($n->getFloatValue()),
         ];
+    }
+
+    /**
+     * Gets the previous property value. Metric value for the preceding comparison period.
+     * @return float|null
+    */
+    public function getPrevious(): ?float {
+        return $this->previous;
     }
 
     /**
@@ -70,7 +112,10 @@ class AnalyticsComparison implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeFloatValue('changePercent', $this->getChangePercent());
+        $writer->writeFloatValue('current', $this->getCurrent());
         $writer->writeStringValue('direction', $this->getDirection());
+        $writer->writeFloatValue('previous', $this->getPrevious());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -83,11 +128,35 @@ class AnalyticsComparison implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the changePercent property value. Percentage change between the current and previous reporting periods.
+     * @param float|null $value Value to set for the changePercent property.
+    */
+    public function setChangePercent(?float $value): void {
+        $this->changePercent = $value;
+    }
+
+    /**
+     * Sets the current property value. Metric value for the current reporting period.
+     * @param float|null $value Value to set for the current property.
+    */
+    public function setCurrent(?float $value): void {
+        $this->current = $value;
+    }
+
+    /**
      * Sets the direction property value. Direction classification for this Leadping analytics comparison.
      * @param string|null $value Value to set for the direction property.
     */
     public function setDirection(?string $value): void {
         $this->direction = $value;
+    }
+
+    /**
+     * Sets the previous property value. Metric value for the preceding comparison period.
+     * @param float|null $value Value to set for the previous property.
+    */
+    public function setPrevious(?float $value): void {
+        $this->previous = $value;
     }
 
 }

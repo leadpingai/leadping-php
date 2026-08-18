@@ -33,6 +33,11 @@ class LeadStatusRequest implements AdditionalDataHolder, Parsable
     private ?string $name = null;
     
     /**
+     * @var int|null $sortOrder Relative display order for the lead status.
+    */
+    private ?int $sortOrder = null;
+    
+    /**
      * Instantiates a new LeadStatusRequest and sets the default values.
     */
     public function __construct() {
@@ -82,6 +87,7 @@ class LeadStatusRequest implements AdditionalDataHolder, Parsable
             'category' => fn(ParseNode $n) => $o->setCategory($n->getEnumValue(LeadStatusRequest_category::class)),
             'color' => fn(ParseNode $n) => $o->setColor($n->getStringValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
+            'sortOrder' => fn(ParseNode $n) => $o->setSortOrder($n->getIntegerValue()),
         ];
     }
 
@@ -94,6 +100,14 @@ class LeadStatusRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the sortOrder property value. Relative display order for the lead status.
+     * @return int|null
+    */
+    public function getSortOrder(): ?int {
+        return $this->sortOrder;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -101,6 +115,7 @@ class LeadStatusRequest implements AdditionalDataHolder, Parsable
         $writer->writeEnumValue('category', $this->getCategory());
         $writer->writeStringValue('color', $this->getColor());
         $writer->writeStringValue('name', $this->getName());
+        $writer->writeIntegerValue('sortOrder', $this->getSortOrder());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -134,6 +149,14 @@ class LeadStatusRequest implements AdditionalDataHolder, Parsable
     */
     public function setName(?string $value): void {
         $this->name = $value;
+    }
+
+    /**
+     * Sets the sortOrder property value. Relative display order for the lead status.
+     * @param int|null $value Value to set for the sortOrder property.
+    */
+    public function setSortOrder(?int $value): void {
+        $this->sortOrder = $value;
     }
 
 }

@@ -29,6 +29,11 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     private ?string $contentType = null;
     
     /**
+     * @var int|null $downloadCount Total number of download records represented by this Leadping user data export.
+    */
+    private ?int $downloadCount = null;
+    
+    /**
      * @var string|null $downloadUrl Temporary URL for downloading the completed Leadping data export.
     */
     private ?string $downloadUrl = null;
@@ -59,6 +64,11 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
+     * @var int|null $maxDownloadCount Total number of max download records represented by this Leadping user data export.
+    */
+    private ?int $maxDownloadCount = null;
+    
+    /**
      * @var string|null $message Human-readable message for this Leadping user data export.
     */
     private ?string $message = null;
@@ -67,6 +77,11 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
      * @var DateTime|null $requestedAt Date and time when the user data export was requested.
     */
     private ?DateTime $requestedAt = null;
+    
+    /**
+     * @var int|null $sizeBytes Size of the generated export archive in bytes, when the export is ready.
+    */
+    private ?int $sizeBytes = null;
     
     /**
      * @var DateTime|null $startedAt Date and time when the user data export started.
@@ -119,6 +134,14 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the downloadCount property value. Total number of download records represented by this Leadping user data export.
+     * @return int|null
+    */
+    public function getDownloadCount(): ?int {
+        return $this->downloadCount;
+    }
+
+    /**
      * Gets the downloadUrl property value. Temporary URL for downloading the completed Leadping data export.
      * @return string|null
     */
@@ -151,14 +174,17 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
         return  [
             'completedAt' => fn(ParseNode $n) => $o->setCompletedAt($n->getDateTimeValue()),
             'contentType' => fn(ParseNode $n) => $o->setContentType($n->getStringValue()),
+            'downloadCount' => fn(ParseNode $n) => $o->setDownloadCount($n->getIntegerValue()),
             'downloadUrl' => fn(ParseNode $n) => $o->setDownloadUrl($n->getStringValue()),
             'expiresAt' => fn(ParseNode $n) => $o->setExpiresAt($n->getDateTimeValue()),
             'failedAt' => fn(ParseNode $n) => $o->setFailedAt($n->getDateTimeValue()),
             'fileName' => fn(ParseNode $n) => $o->setFileName($n->getStringValue()),
             'files' => fn(ParseNode $n) => $o->setFiles($n->getCollectionOfObjectValues([UserDataExportFile::class, 'createFromDiscriminatorValue'])),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
+            'maxDownloadCount' => fn(ParseNode $n) => $o->setMaxDownloadCount($n->getIntegerValue()),
             'message' => fn(ParseNode $n) => $o->setMessage($n->getStringValue()),
             'requestedAt' => fn(ParseNode $n) => $o->setRequestedAt($n->getDateTimeValue()),
+            'sizeBytes' => fn(ParseNode $n) => $o->setSizeBytes($n->getIntegerValue()),
             'startedAt' => fn(ParseNode $n) => $o->setStartedAt($n->getDateTimeValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(UserDataExportStatuses::class)),
         ];
@@ -189,6 +215,14 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the maxDownloadCount property value. Total number of max download records represented by this Leadping user data export.
+     * @return int|null
+    */
+    public function getMaxDownloadCount(): ?int {
+        return $this->maxDownloadCount;
+    }
+
+    /**
      * Gets the message property value. Human-readable message for this Leadping user data export.
      * @return string|null
     */
@@ -202,6 +236,14 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     */
     public function getRequestedAt(): ?DateTime {
         return $this->requestedAt;
+    }
+
+    /**
+     * Gets the sizeBytes property value. Size of the generated export archive in bytes, when the export is ready.
+     * @return int|null
+    */
+    public function getSizeBytes(): ?int {
+        return $this->sizeBytes;
     }
 
     /**
@@ -227,14 +269,17 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeDateTimeValue('completedAt', $this->getCompletedAt());
         $writer->writeStringValue('contentType', $this->getContentType());
+        $writer->writeIntegerValue('downloadCount', $this->getDownloadCount());
         $writer->writeStringValue('downloadUrl', $this->getDownloadUrl());
         $writer->writeDateTimeValue('expiresAt', $this->getExpiresAt());
         $writer->writeDateTimeValue('failedAt', $this->getFailedAt());
         $writer->writeStringValue('fileName', $this->getFileName());
         $writer->writeCollectionOfObjectValues('files', $this->getFiles());
         $writer->writeStringValue('id', $this->getId());
+        $writer->writeIntegerValue('maxDownloadCount', $this->getMaxDownloadCount());
         $writer->writeStringValue('message', $this->getMessage());
         $writer->writeDateTimeValue('requestedAt', $this->getRequestedAt());
+        $writer->writeIntegerValue('sizeBytes', $this->getSizeBytes());
         $writer->writeDateTimeValue('startedAt', $this->getStartedAt());
         $writer->writeEnumValue('status', $this->getStatus());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -262,6 +307,14 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     */
     public function setContentType(?string $value): void {
         $this->contentType = $value;
+    }
+
+    /**
+     * Sets the downloadCount property value. Total number of download records represented by this Leadping user data export.
+     * @param int|null $value Value to set for the downloadCount property.
+    */
+    public function setDownloadCount(?int $value): void {
+        $this->downloadCount = $value;
     }
 
     /**
@@ -313,6 +366,14 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the maxDownloadCount property value. Total number of max download records represented by this Leadping user data export.
+     * @param int|null $value Value to set for the maxDownloadCount property.
+    */
+    public function setMaxDownloadCount(?int $value): void {
+        $this->maxDownloadCount = $value;
+    }
+
+    /**
      * Sets the message property value. Human-readable message for this Leadping user data export.
      * @param string|null $value Value to set for the message property.
     */
@@ -326,6 +387,14 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     */
     public function setRequestedAt(?DateTime $value): void {
         $this->requestedAt = $value;
+    }
+
+    /**
+     * Sets the sizeBytes property value. Size of the generated export archive in bytes, when the export is ready.
+     * @param int|null $value Value to set for the sizeBytes property.
+    */
+    public function setSizeBytes(?int $value): void {
+        $this->sizeBytes = $value;
     }
 
     /**

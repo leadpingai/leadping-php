@@ -119,6 +119,11 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     private ?AutomationResponse_user $user = null;
     
     /**
+     * @var int|null $version Version number for this automation configuration response schema or saved configuration.
+    */
+    private ?int $version = null;
+    
+    /**
      * @var string|null $visibility Visibility level that controls who can see this automation configuration response.
     */
     private ?string $visibility = null;
@@ -230,6 +235,7 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
             'scope' => fn(ParseNode $n) => $o->setScope($n->getStringValue()),
             'triggers' => fn(ParseNode $n) => $o->setTriggers($n->getCollectionOfObjectValues([AutomationTrigger::class, 'createFromDiscriminatorValue'])),
             'user' => fn(ParseNode $n) => $o->setUser($n->getObjectValue([AutomationResponse_user::class, 'createFromDiscriminatorValue'])),
+            'version' => fn(ParseNode $n) => $o->setVersion($n->getIntegerValue()),
             'visibility' => fn(ParseNode $n) => $o->setVisibility($n->getStringValue()),
         ];
     }
@@ -339,6 +345,14 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the version property value. Version number for this automation configuration response schema or saved configuration.
+     * @return int|null
+    */
+    public function getVersion(): ?int {
+        return $this->version;
+    }
+
+    /**
      * Gets the visibility property value. Visibility level that controls who can see this automation configuration response.
      * @return string|null
     */
@@ -371,6 +385,7 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('scope', $this->getScope());
         $writer->writeCollectionOfObjectValues('triggers', $this->getTriggers());
         $writer->writeObjectValue('user', $this->getUser());
+        $writer->writeIntegerValue('version', $this->getVersion());
         $writer->writeStringValue('visibility', $this->getVisibility());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -541,6 +556,14 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     */
     public function setUser(?AutomationResponse_user $value): void {
         $this->user = $value;
+    }
+
+    /**
+     * Sets the version property value. Version number for this automation configuration response schema or saved configuration.
+     * @param int|null $value Value to set for the version property.
+    */
+    public function setVersion(?int $value): void {
+        $this->version = $value;
     }
 
     /**
