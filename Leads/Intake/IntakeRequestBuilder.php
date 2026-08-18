@@ -23,7 +23,7 @@ class IntakeRequestBuilder extends BaseRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/leads/intake{?Address1*,Address2*,BirthDate*,City*,DateOfBirth*,DirectPostPrice*,Email*,ExternalId*,FirstName*,Gender*,LandingPage*,LastName*,Phone*,PhoneType*,PostalCode*,Price*,Product*,Referrer*,SellerLeadId*,SellerLeadIdentifier*,SourceMetadata*,State*,SubId*,TagIds*,TagNames*,TrustedFormUrl*,UtmCampaign*,UtmContent*,UtmMedium*,UtmSource*,UtmTerm*,Vertical*,Zip*,sourceKey*}');
+        parent::__construct($requestAdapter, [], '{+baseurl}/leads/intake{?Address1*,Address2*,BirthDate*,City*,DateOfBirth*,DirectPostPrice*,Email*,ExternalId*,FirstName*,Gender*,LandingPage*,LastName*,Phone*,PhoneType*,PostalCode*,Price*,Product*,Referrer*,SellerLeadId*,SellerLeadIdentifier*,SourceMetadata*,State*,SubId*,TagIds*,TagNames*,TrustedFormUrl*,UtmCampaign*,UtmContent*,UtmMedium*,UtmSource*,UtmTerm*,Vertical*,Zip*}');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {
@@ -100,9 +100,6 @@ class IntakeRequestBuilder extends BaseRequestBuilder
         $requestInfo->httpMethod = HttpMethod::POST;
         if ($requestConfiguration !== null) {
             $requestInfo->addHeaders($requestConfiguration->headers);
-            if ($requestConfiguration->queryParameters !== null) {
-                $requestInfo->setQueryParameters($requestConfiguration->queryParameters);
-            }
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
         $requestInfo->tryAddHeader('Accept', "application/json");

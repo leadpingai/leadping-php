@@ -11,28 +11,12 @@ use Microsoft\Kiota\Abstractions\RequestOption;
 class LeadsRequestBuilderPostRequestConfiguration extends BaseRequestConfiguration 
 {
     /**
-     * @var LeadsRequestBuilderPostQueryParameters|null $queryParameters Request query parameters
-    */
-    public ?LeadsRequestBuilderPostQueryParameters $queryParameters = null;
-    
-    /**
      * Instantiates a new LeadsRequestBuilderPostRequestConfiguration and sets the default values.
      * @param array<string, array<string>|string>|null $headers Request headers
      * @param array<RequestOption>|null $options Request options
-     * @param LeadsRequestBuilderPostQueryParameters|null $queryParameters Request query parameters
     */
-    public function __construct(?array $headers = null, ?array $options = null, ?LeadsRequestBuilderPostQueryParameters $queryParameters = null) {
+    public function __construct(?array $headers = null, ?array $options = null) {
         parent::__construct($headers ?? [], $options ?? []);
-        $this->queryParameters = $queryParameters;
-    }
-
-    /**
-     * Instantiates a new LeadsRequestBuilderPostQueryParameters.
-     * @param string|null $sourceKey The Leadping source key supplied as a query string parameter, or omitted when supplied as Authorization: Bearer lp_src_...
-     * @return LeadsRequestBuilderPostQueryParameters
-    */
-    public static function createQueryParameters(?string $sourceKey = null): LeadsRequestBuilderPostQueryParameters {
-        return new LeadsRequestBuilderPostQueryParameters($sourceKey);
     }
 
 }

@@ -51,7 +51,7 @@ class LeadsRequestBuilder extends BaseRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/leads{?sourceKey*}');
+        parent::__construct($requestAdapter, [], '{+baseurl}/leads');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {
@@ -91,9 +91,6 @@ class LeadsRequestBuilder extends BaseRequestBuilder
         $requestInfo->httpMethod = HttpMethod::POST;
         if ($requestConfiguration !== null) {
             $requestInfo->addHeaders($requestConfiguration->headers);
-            if ($requestConfiguration->queryParameters !== null) {
-                $requestInfo->setQueryParameters($requestConfiguration->queryParameters);
-            }
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
         $requestInfo->tryAddHeader('Accept', "application/json");

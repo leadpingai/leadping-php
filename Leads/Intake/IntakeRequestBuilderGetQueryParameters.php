@@ -130,11 +130,6 @@ class IntakeRequestBuilderGetQueryParameters
     public ?string $sellerLeadIdentifier = null;
     
     /**
-     * @var string|null $sourceKey The Leadping source key supplied as a query string parameter, or omitted when supplied as Authorization: Bearer lp_src_...
-    */
-    public ?string $sourceKey = null;
-    
-    /**
      * @QueryParameter("SourceMetadata")
      * @var string|null $sourceMetadata Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
     */
@@ -234,7 +229,6 @@ class IntakeRequestBuilderGetQueryParameters
      * @param string|null $referrer Referring page or traffic source that sent the lead into Leadping.
      * @param string|null $sellerLeadId Seller-provided lead identifier used to deduplicate and reconcile lead delivery.
      * @param string|null $sellerLeadIdentifier Alternate seller-provided lead identifier used during intake normalization.
-     * @param string|null $sourceKey The Leadping source key supplied as a query string parameter, or omitted when supplied as Authorization: Bearer lp_src_...
      * @param string|null $sourceMetadata Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
      * @param string|null $state State, province, or region for the lead or organization postal address.
      * @param string|null $subId Affiliate or publisher sub ID captured for lead attribution.
@@ -249,7 +243,7 @@ class IntakeRequestBuilderGetQueryParameters
      * @param string|null $vertical Industry vertical used for lead routing, compliance review, and reporting.
      * @param string|null $zip ZIP code submitted by the lead intake source.
     */
-    public function __construct(?string $address1 = null, ?string $address2 = null, ?Date $birthDate = null, ?string $city = null, ?Date $dateOfBirth = null, ?float $directPostPrice = null, ?string $email = null, ?string $externalId = null, ?string $firstName = null, ?string $gender = null, ?string $landingPage = null, ?string $lastName = null, ?string $phone = null, ?string $phoneType = null, ?string $postalCode = null, ?float $price = null, ?string $product = null, ?string $referrer = null, ?string $sellerLeadId = null, ?string $sellerLeadIdentifier = null, ?string $sourceKey = null, ?string $sourceMetadata = null, ?string $state = null, ?string $subId = null, ?array $tagIds = null, ?array $tagNames = null, ?string $trustedFormUrl = null, ?string $utmCampaign = null, ?string $utmContent = null, ?string $utmMedium = null, ?string $utmSource = null, ?string $utmTerm = null, ?string $vertical = null, ?string $zip = null) {
+    public function __construct(?string $address1 = null, ?string $address2 = null, ?Date $birthDate = null, ?string $city = null, ?Date $dateOfBirth = null, ?float $directPostPrice = null, ?string $email = null, ?string $externalId = null, ?string $firstName = null, ?string $gender = null, ?string $landingPage = null, ?string $lastName = null, ?string $phone = null, ?string $phoneType = null, ?string $postalCode = null, ?float $price = null, ?string $product = null, ?string $referrer = null, ?string $sellerLeadId = null, ?string $sellerLeadIdentifier = null, ?string $sourceMetadata = null, ?string $state = null, ?string $subId = null, ?array $tagIds = null, ?array $tagNames = null, ?string $trustedFormUrl = null, ?string $utmCampaign = null, ?string $utmContent = null, ?string $utmMedium = null, ?string $utmSource = null, ?string $utmTerm = null, ?string $vertical = null, ?string $zip = null) {
         $this->address1 = $address1;
         $this->address2 = $address2;
         $this->birthDate = $birthDate;
@@ -270,7 +264,6 @@ class IntakeRequestBuilderGetQueryParameters
         $this->referrer = $referrer;
         $this->sellerLeadId = $sellerLeadId;
         $this->sellerLeadIdentifier = $sellerLeadIdentifier;
-        $this->sourceKey = $sourceKey;
         $this->sourceMetadata = $sourceMetadata;
         $this->state = $state;
         $this->subId = $subId;
