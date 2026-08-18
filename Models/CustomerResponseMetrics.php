@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Represents customer response metrics data exposed by Leadping analytics.
+ * Measures how quickly and consistently an organization responds to leads across supported communication channels.
 */
 class CustomerResponseMetrics implements AdditionalDataHolder, Parsable 
 {

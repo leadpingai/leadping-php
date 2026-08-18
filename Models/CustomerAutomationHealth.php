@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Represents customer automation health data exposed by Leadping analytics.
+ * Summarizes automation coverage, execution success, failures, and workflows requiring organization attention.
 */
 class CustomerAutomationHealth implements AdditionalDataHolder, Parsable 
 {

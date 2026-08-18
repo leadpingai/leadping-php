@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Response model for telephony login token generation.
+ * Provides the short-lived access token and client configuration required to initialize an authenticated Leadping calling session.
 */
 class TelephonyLoginResponse implements AdditionalDataHolder, Parsable 
 {

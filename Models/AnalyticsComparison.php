@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Represents analytics comparison data exposed by Leadping analytics.
+ * Compares a metric with the preceding period and reports its absolute and percentage change.
 */
 class AnalyticsComparison implements AdditionalDataHolder, Parsable 
 {

@@ -189,7 +189,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     private ?string $scheduledReason = null;
     
     /**
-     * @var EventTableRow_selectionReason|null $selectionReason Defines the supported Outgoing Number Selection Reason values.
+     * @var EventTableRow_selectionReason|null $selectionReason Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
     */
     private ?EventTableRow_selectionReason $selectionReason = null;
     
@@ -209,7 +209,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     private ?string $sourceId = null;
     
     /**
-     * @var EventTableRow_status|null $status Defines the supported Event timeline status values.
+     * @var EventTableRow_status|null $status Provides the customer-facing outcome shown for an item in a lead or conversation timeline.
     */
     private ?EventTableRow_status $status = null;
     
@@ -239,7 +239,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     private ?string $toPhoneNumber = null;
     
     /**
-     * @var EventTableRow_trafficType|null $trafficType Defines the supported SMS Traffic Type values.
+     * @var EventTableRow_trafficType|null $trafficType Classifies messaging traffic by conversational, informational, marketing, or other compliance-relevant purpose.
     */
     private ?EventTableRow_trafficType $trafficType = null;
     
@@ -607,7 +607,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the selectionReason property value. Defines the supported Outgoing Number Selection Reason values.
+     * Gets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
      * @return EventTableRow_selectionReason|null
     */
     public function getSelectionReason(): ?EventTableRow_selectionReason {
@@ -639,7 +639,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. Defines the supported Event timeline status values.
+     * Gets the status property value. Provides the customer-facing outcome shown for an item in a lead or conversation timeline.
      * @return EventTableRow_status|null
     */
     public function getStatus(): ?EventTableRow_status {
@@ -687,7 +687,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the trafficType property value. Defines the supported SMS Traffic Type values.
+     * Gets the trafficType property value. Classifies messaging traffic by conversational, informational, marketing, or other compliance-relevant purpose.
      * @return EventTableRow_trafficType|null
     */
     public function getTrafficType(): ?EventTableRow_trafficType {
@@ -1046,7 +1046,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the selectionReason property value. Defines the supported Outgoing Number Selection Reason values.
+     * Sets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
      * @param EventTableRow_selectionReason|null $value Value to set for the selectionReason property.
     */
     public function setSelectionReason(?EventTableRow_selectionReason $value): void {
@@ -1078,7 +1078,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. Defines the supported Event timeline status values.
+     * Sets the status property value. Provides the customer-facing outcome shown for an item in a lead or conversation timeline.
      * @param EventTableRow_status|null $value Value to set for the status property.
     */
     public function setStatus(?EventTableRow_status $value): void {
@@ -1126,7 +1126,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the trafficType property value. Defines the supported SMS Traffic Type values.
+     * Sets the trafficType property value. Classifies messaging traffic by conversational, informational, marketing, or other compliance-relevant purpose.
      * @param EventTableRow_trafficType|null $value Value to set for the trafficType property.
     */
     public function setTrafficType(?EventTableRow_trafficType $value): void {

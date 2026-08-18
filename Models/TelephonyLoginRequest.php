@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Request model for telephony login token generation.
+ * Identifies the Leadping user and calling context for which a short-lived telephony client token should be issued.
 */
 class TelephonyLoginRequest implements AdditionalDataHolder, Parsable 
 {

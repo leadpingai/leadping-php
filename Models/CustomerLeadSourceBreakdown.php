@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Represents customer lead source breakdown data exposed by Leadping analytics.
+ * Attributes an organization's lead volume, qualification, and conversion outcomes to a specific acquisition source.
 */
 class CustomerLeadSourceBreakdown implements AdditionalDataHolder, Parsable 
 {

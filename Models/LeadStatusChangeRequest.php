@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Request model for creating or updating a lead status change.
+ * Defines a lead status transition or correction, including its target status, effective time, source, and explanatory context.
 */
 class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable 
 {

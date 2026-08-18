@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Response model for lead status change data.
+ * Describes an auditable lead status transition, including the previous and new status, source, actor, and effective time.
 */
 class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable 
 {

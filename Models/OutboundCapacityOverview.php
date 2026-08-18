@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Represents outbound capacity overview data used by Leadping.
+ * Summarizes organization-wide SMS and voice sending capacity, phone-number health, and recent outbound pacing decisions.
 */
 class OutboundCapacityOverview implements AdditionalDataHolder, Parsable 
 {

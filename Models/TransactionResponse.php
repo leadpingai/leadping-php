@@ -24,7 +24,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     private ?float $amount = null;
     
     /**
-     * @var TransactionResponse_billableUnit|null $billableUnit Defines the supported Billable Unit values.
+     * @var TransactionResponse_billableUnit|null $billableUnit Identifies the metered unit used to price Leadping usage, such as a message, call minute, lookup, or phone number.
     */
     private ?TransactionResponse_billableUnit $billableUnit = null;
     
@@ -34,7 +34,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     private ?float $billedAmount = null;
     
     /**
-     * @var TransactionResponse_billingChannel|null $billingChannel Defines the supported Usage Channel values.
+     * @var TransactionResponse_billingChannel|null $billingChannel Identifies the messaging, calling, phone-number, lookup, or platform channel that generated billable usage.
     */
     private ?TransactionResponse_billingChannel $billingChannel = null;
     
@@ -141,7 +141,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billableUnit property value. Defines the supported Billable Unit values.
+     * Gets the billableUnit property value. Identifies the metered unit used to price Leadping usage, such as a message, call minute, lookup, or phone number.
      * @return TransactionResponse_billableUnit|null
     */
     public function getBillableUnit(): ?TransactionResponse_billableUnit {
@@ -157,7 +157,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billingChannel property value. Defines the supported Usage Channel values.
+     * Gets the billingChannel property value. Identifies the messaging, calling, phone-number, lookup, or platform channel that generated billable usage.
      * @return TransactionResponse_billingChannel|null
     */
     public function getBillingChannel(): ?TransactionResponse_billingChannel {
@@ -347,7 +347,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billableUnit property value. Defines the supported Billable Unit values.
+     * Sets the billableUnit property value. Identifies the metered unit used to price Leadping usage, such as a message, call minute, lookup, or phone number.
      * @param TransactionResponse_billableUnit|null $value Value to set for the billableUnit property.
     */
     public function setBillableUnit(?TransactionResponse_billableUnit $value): void {
@@ -363,7 +363,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billingChannel property value. Defines the supported Usage Channel values.
+     * Sets the billingChannel property value. Identifies the messaging, calling, phone-number, lookup, or platform channel that generated billable usage.
      * @param TransactionResponse_billingChannel|null $value Value to set for the billingChannel property.
     */
     public function setBillingChannel(?TransactionResponse_billingChannel $value): void {

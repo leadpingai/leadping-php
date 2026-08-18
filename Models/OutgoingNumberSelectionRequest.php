@@ -23,7 +23,7 @@ class OutgoingNumberSelectionRequest implements AdditionalDataHolder, Parsable
     private ?string $campaignId = null;
     
     /**
-     * @var OutgoingNumberSelectionRequest_channel|null $channel Defines the supported Outgoing Number Channel values.
+     * @var OutgoingNumberSelectionRequest_channel|null $channel Identifies whether an outgoing phone number is eligible for voice, SMS, MMS, or another communication channel.
     */
     private ?OutgoingNumberSelectionRequest_channel $channel = null;
     
@@ -85,7 +85,7 @@ class OutgoingNumberSelectionRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the channel property value. Defines the supported Outgoing Number Channel values.
+     * Gets the channel property value. Identifies whether an outgoing phone number is eligible for voice, SMS, MMS, or another communication channel.
      * @return OutgoingNumberSelectionRequest_channel|null
     */
     public function getChannel(): ?OutgoingNumberSelectionRequest_channel {
@@ -181,7 +181,7 @@ class OutgoingNumberSelectionRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the channel property value. Defines the supported Outgoing Number Channel values.
+     * Sets the channel property value. Identifies whether an outgoing phone number is eligible for voice, SMS, MMS, or another communication channel.
      * @param OutgoingNumberSelectionRequest_channel|null $value Value to set for the channel property.
     */
     public function setChannel(?OutgoingNumberSelectionRequest_channel $value): void {

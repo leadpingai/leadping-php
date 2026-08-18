@@ -18,7 +18,7 @@ class UserRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var UserRequest_billingPlan|null $billingPlan Defines the supported Billing Plan values.
+     * @var UserRequest_billingPlan|null $billingPlan Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
     */
     private ?UserRequest_billingPlan $billingPlan = null;
     
@@ -102,7 +102,7 @@ class UserRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billingPlan property value. Defines the supported Billing Plan values.
+     * Gets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
      * @return UserRequest_billingPlan|null
     */
     public function getBillingPlan(): ?UserRequest_billingPlan {
@@ -248,7 +248,7 @@ class UserRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billingPlan property value. Defines the supported Billing Plan values.
+     * Sets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
      * @param UserRequest_billingPlan|null $value Value to set for the billingPlan property.
     */
     public function setBillingPlan(?UserRequest_billingPlan $value): void {

@@ -43,7 +43,7 @@ class OutgoingNumberSelectionResponse implements AdditionalDataHolder, Parsable
     private ?string $healthLabel = null;
     
     /**
-     * @var OutgoingNumberSelectionResponse_healthStatus|null $healthStatus Defines the supported SMS readiness health assessments.
+     * @var OutgoingNumberSelectionResponse_healthStatus|null $healthStatus Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
     */
     private ?OutgoingNumberSelectionResponse_healthStatus $healthStatus = null;
     
@@ -68,7 +68,7 @@ class OutgoingNumberSelectionResponse implements AdditionalDataHolder, Parsable
     private ?string $reasonLabel = null;
     
     /**
-     * @var OutgoingNumberSelectionResponse_selectionReason|null $selectionReason Defines the supported Outgoing Number Selection Reason values.
+     * @var OutgoingNumberSelectionResponse_selectionReason|null $selectionReason Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
     */
     private ?OutgoingNumberSelectionResponse_selectionReason $selectionReason = null;
     
@@ -176,7 +176,7 @@ class OutgoingNumberSelectionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the healthStatus property value. Defines the supported SMS readiness health assessments.
+     * Gets the healthStatus property value. Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
      * @return OutgoingNumberSelectionResponse_healthStatus|null
     */
     public function getHealthStatus(): ?OutgoingNumberSelectionResponse_healthStatus {
@@ -216,7 +216,7 @@ class OutgoingNumberSelectionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the selectionReason property value. Defines the supported Outgoing Number Selection Reason values.
+     * Gets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
      * @return OutgoingNumberSelectionResponse_selectionReason|null
     */
     public function getSelectionReason(): ?OutgoingNumberSelectionResponse_selectionReason {
@@ -318,7 +318,7 @@ class OutgoingNumberSelectionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the healthStatus property value. Defines the supported SMS readiness health assessments.
+     * Sets the healthStatus property value. Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
      * @param OutgoingNumberSelectionResponse_healthStatus|null $value Value to set for the healthStatus property.
     */
     public function setHealthStatus(?OutgoingNumberSelectionResponse_healthStatus $value): void {
@@ -358,7 +358,7 @@ class OutgoingNumberSelectionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the selectionReason property value. Defines the supported Outgoing Number Selection Reason values.
+     * Sets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
      * @param OutgoingNumberSelectionResponse_selectionReason|null $value Value to set for the selectionReason property.
     */
     public function setSelectionReason(?OutgoingNumberSelectionResponse_selectionReason $value): void {

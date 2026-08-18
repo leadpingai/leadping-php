@@ -64,7 +64,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     private ?int $organizationMemberQuantity = null;
     
     /**
-     * @var OrganizationBillingState_pendingBillingPlan|null $pendingBillingPlan Defines the supported Billing Plan values.
+     * @var OrganizationBillingState_pendingBillingPlan|null $pendingBillingPlan Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
     */
     private ?OrganizationBillingState_pendingBillingPlan $pendingBillingPlan = null;
     
@@ -203,7 +203,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the pendingBillingPlan property value. Defines the supported Billing Plan values.
+     * Gets the pendingBillingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
      * @return OrganizationBillingState_pendingBillingPlan|null
     */
     public function getPendingBillingPlan(): ?OrganizationBillingState_pendingBillingPlan {
@@ -336,7 +336,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the pendingBillingPlan property value. Defines the supported Billing Plan values.
+     * Sets the pendingBillingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
      * @param OrganizationBillingState_pendingBillingPlan|null $value Value to set for the pendingBillingPlan property.
     */
     public function setPendingBillingPlan(?OrganizationBillingState_pendingBillingPlan $value): void {

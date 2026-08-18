@@ -29,12 +29,12 @@ class LeadProfile implements AdditionalDataHolder, Parsable
     private ?int $creditScore = null;
     
     /**
-     * @var LeadProfile_employmentType|null $employmentType Defines the supported Employment Type values.
+     * @var LeadProfile_employmentType|null $employmentType Classifies a lead's reported employment arrangement for qualification and demographic workflows.
     */
     private ?LeadProfile_employmentType $employmentType = null;
     
     /**
-     * @var LeadProfile_gender|null $gender Represents a gender classification used for demographic or identification purposes.
+     * @var LeadProfile_gender|null $gender Classifies a lead's self-reported gender when required by a qualification, demographic, or integration workflow.
     */
     private ?LeadProfile_gender $gender = null;
     
@@ -64,7 +64,7 @@ class LeadProfile implements AdditionalDataHolder, Parsable
     private ?bool $isHomeowner = null;
     
     /**
-     * @var LeadProfile_maritalStatus|null $maritalStatus Defines the supported Marital Status Type values.
+     * @var LeadProfile_maritalStatus|null $maritalStatus Classifies a lead's reported marital status when required by a qualification or integration workflow.
     */
     private ?LeadProfile_maritalStatus $maritalStatus = null;
     
@@ -124,7 +124,7 @@ class LeadProfile implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the employmentType property value. Defines the supported Employment Type values.
+     * Gets the employmentType property value. Classifies a lead's reported employment arrangement for qualification and demographic workflows.
      * @return LeadProfile_employmentType|null
     */
     public function getEmploymentType(): ?LeadProfile_employmentType {
@@ -155,7 +155,7 @@ class LeadProfile implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the gender property value. Represents a gender classification used for demographic or identification purposes.
+     * Gets the gender property value. Classifies a lead's self-reported gender when required by a qualification, demographic, or integration workflow.
      * @return LeadProfile_gender|null
     */
     public function getGender(): ?LeadProfile_gender {
@@ -203,7 +203,7 @@ class LeadProfile implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the maritalStatus property value. Defines the supported Marital Status Type values.
+     * Gets the maritalStatus property value. Classifies a lead's reported marital status when required by a qualification or integration workflow.
      * @return LeadProfile_maritalStatus|null
     */
     public function getMaritalStatus(): ?LeadProfile_maritalStatus {
@@ -280,7 +280,7 @@ class LeadProfile implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the employmentType property value. Defines the supported Employment Type values.
+     * Sets the employmentType property value. Classifies a lead's reported employment arrangement for qualification and demographic workflows.
      * @param LeadProfile_employmentType|null $value Value to set for the employmentType property.
     */
     public function setEmploymentType(?LeadProfile_employmentType $value): void {
@@ -288,7 +288,7 @@ class LeadProfile implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the gender property value. Represents a gender classification used for demographic or identification purposes.
+     * Sets the gender property value. Classifies a lead's self-reported gender when required by a qualification, demographic, or integration workflow.
      * @param LeadProfile_gender|null $value Value to set for the gender property.
     */
     public function setGender(?LeadProfile_gender $value): void {
@@ -336,7 +336,7 @@ class LeadProfile implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the maritalStatus property value. Defines the supported Marital Status Type values.
+     * Sets the maritalStatus property value. Classifies a lead's reported marital status when required by a qualification or integration workflow.
      * @param LeadProfile_maritalStatus|null $value Value to set for the maritalStatus property.
     */
     public function setMaritalStatus(?LeadProfile_maritalStatus $value): void {

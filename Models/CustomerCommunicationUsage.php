@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Represents customer communication usage data exposed by Leadping analytics.
+ * Aggregates an organization's SMS, MMS, and calling activity, delivery outcomes, and billable usage over time.
 */
 class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable 
 {

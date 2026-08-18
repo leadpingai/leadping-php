@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Represents outbound queue item data used by Leadping.
+ * Describes a queued or recently evaluated outbound delivery request and the pacing decision that controls when it may be sent.
 */
 class OutboundQueueItem implements AdditionalDataHolder, Parsable 
 {

@@ -108,7 +108,7 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     private ?string $secondaryName = null;
     
     /**
-     * @var OrganizationRequest_status|null $status Defines the supported Organization Status values.
+     * @var OrganizationRequest_status|null $status Describes an organization's account lifecycle and whether it can actively use Leadping services.
     */
     private ?OrganizationRequest_status $status = null;
     
@@ -322,7 +322,7 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. Defines the supported Organization Status values.
+     * Gets the status property value. Describes an organization's account lifecycle and whether it can actively use Leadping services.
      * @return OrganizationRequest_status|null
     */
     public function getStatus(): ?OrganizationRequest_status {
@@ -527,7 +527,7 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. Defines the supported Organization Status values.
+     * Sets the status property value. Describes an organization's account lifecycle and whether it can actively use Leadping services.
      * @param OrganizationRequest_status|null $value Value to set for the status property.
     */
     public function setStatus(?OrganizationRequest_status $value): void {

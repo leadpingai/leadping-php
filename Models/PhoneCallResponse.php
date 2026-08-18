@@ -119,7 +119,7 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $ringingAt = null;
     
     /**
-     * @var PhoneCallResponse_selectionReason|null $selectionReason Defines the supported Outgoing Number Selection Reason values.
+     * @var PhoneCallResponse_selectionReason|null $selectionReason Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
     */
     private ?PhoneCallResponse_selectionReason $selectionReason = null;
     
@@ -369,7 +369,7 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the selectionReason property value. Defines the supported Outgoing Number Selection Reason values.
+     * Gets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
      * @return PhoneCallResponse_selectionReason|null
     */
     public function getSelectionReason(): ?PhoneCallResponse_selectionReason {
@@ -619,7 +619,7 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the selectionReason property value. Defines the supported Outgoing Number Selection Reason values.
+     * Sets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
      * @param PhoneCallResponse_selectionReason|null $value Value to set for the selectionReason property.
     */
     public function setSelectionReason(?PhoneCallResponse_selectionReason $value): void {

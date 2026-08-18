@@ -20,7 +20,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var UserResponse_billingPlan|null $billingPlan Defines the supported Billing Plan values.
+     * @var UserResponse_billingPlan|null $billingPlan Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
     */
     private ?UserResponse_billingPlan $billingPlan = null;
     
@@ -125,7 +125,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?array $roles = null;
     
     /**
-     * @var UserResponse_subscriptionStatus|null $subscriptionStatus Defines the supported Subscription Status values.
+     * @var UserResponse_subscriptionStatus|null $subscriptionStatus Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
     */
     private ?UserResponse_subscriptionStatus $subscriptionStatus = null;
     
@@ -159,7 +159,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billingPlan property value. Defines the supported Billing Plan values.
+     * Gets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
      * @return UserResponse_billingPlan|null
     */
     public function getBillingPlan(): ?UserResponse_billingPlan {
@@ -367,7 +367,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the subscriptionStatus property value. Defines the supported Subscription Status values.
+     * Gets the subscriptionStatus property value. Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
      * @return UserResponse_subscriptionStatus|null
     */
     public function getSubscriptionStatus(): ?UserResponse_subscriptionStatus {
@@ -422,7 +422,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billingPlan property value. Defines the supported Billing Plan values.
+     * Sets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
      * @param UserResponse_billingPlan|null $value Value to set for the billingPlan property.
     */
     public function setBillingPlan(?UserResponse_billingPlan $value): void {
@@ -590,7 +590,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the subscriptionStatus property value. Defines the supported Subscription Status values.
+     * Sets the subscriptionStatus property value. Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
      * @param UserResponse_subscriptionStatus|null $value Value to set for the subscriptionStatus property.
     */
     public function setSubscriptionStatus(?UserResponse_subscriptionStatus $value): void {

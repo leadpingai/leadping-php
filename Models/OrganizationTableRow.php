@@ -20,7 +20,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     private ?float $accountBalance = null;
     
     /**
-     * @var OrganizationTableRow_activationStatus|null $activationStatus Defines the supported Customer Activation Status values.
+     * @var OrganizationTableRow_activationStatus|null $activationStatus Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
     */
     private ?OrganizationTableRow_activationStatus $activationStatus = null;
     
@@ -65,7 +65,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     private ?int $apiKeyTotalUses = null;
     
     /**
-     * @var OrganizationTableRow_billingPlan|null $billingPlan Defines the supported Billing Plan values.
+     * @var OrganizationTableRow_billingPlan|null $billingPlan Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
     */
     private ?OrganizationTableRow_billingPlan $billingPlan = null;
     
@@ -120,12 +120,12 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     private ?string $phone = null;
     
     /**
-     * @var OrganizationTableRow_setupStep|null $setupStep Defines the supported Organization Setup Step values.
+     * @var OrganizationTableRow_setupStep|null $setupStep Identifies a discrete billing, telephony, compliance, or configuration stage in organization provisioning.
     */
     private ?OrganizationTableRow_setupStep $setupStep = null;
     
     /**
-     * @var OrganizationTableRow_status|null $status Defines the supported Organization Status values.
+     * @var OrganizationTableRow_status|null $status Describes an organization's account lifecycle and whether it can actively use Leadping services.
     */
     private ?OrganizationTableRow_status $status = null;
     
@@ -135,12 +135,12 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     private ?DateTime $subscriptionCancelAt = null;
     
     /**
-     * @var OrganizationTableRow_subscriptionStatus|null $subscriptionStatus Defines the supported Subscription Status values.
+     * @var OrganizationTableRow_subscriptionStatus|null $subscriptionStatus Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
     */
     private ?OrganizationTableRow_subscriptionStatus $subscriptionStatus = null;
     
     /**
-     * @var OrganizationTableRow_tenDlcStatus|null $tenDlcStatus Defines the supported 10DLC Application Status values.
+     * @var OrganizationTableRow_tenDlcStatus|null $tenDlcStatus Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
     */
     private ?OrganizationTableRow_tenDlcStatus $tenDlcStatus = null;
     
@@ -155,7 +155,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     private ?string $website = null;
     
     /**
-     * @var OrganizationTableRow_websiteStatus|null $websiteStatus Defines the supported Website Lifecycle Status values.
+     * @var OrganizationTableRow_websiteStatus|null $websiteStatus Describes an organization website's lifecycle from discovery and verification through activation, suspension, or removal.
     */
     private ?OrganizationTableRow_websiteStatus $websiteStatus = null;
     
@@ -184,7 +184,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the activationStatus property value. Defines the supported Customer Activation Status values.
+     * Gets the activationStatus property value. Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
      * @return OrganizationTableRow_activationStatus|null
     */
     public function getActivationStatus(): ?OrganizationTableRow_activationStatus {
@@ -256,7 +256,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billingPlan property value. Defines the supported Billing Plan values.
+     * Gets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
      * @return OrganizationTableRow_billingPlan|null
     */
     public function getBillingPlan(): ?OrganizationTableRow_billingPlan {
@@ -389,7 +389,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the setupStep property value. Defines the supported Organization Setup Step values.
+     * Gets the setupStep property value. Identifies a discrete billing, telephony, compliance, or configuration stage in organization provisioning.
      * @return OrganizationTableRow_setupStep|null
     */
     public function getSetupStep(): ?OrganizationTableRow_setupStep {
@@ -397,7 +397,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. Defines the supported Organization Status values.
+     * Gets the status property value. Describes an organization's account lifecycle and whether it can actively use Leadping services.
      * @return OrganizationTableRow_status|null
     */
     public function getStatus(): ?OrganizationTableRow_status {
@@ -413,7 +413,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the subscriptionStatus property value. Defines the supported Subscription Status values.
+     * Gets the subscriptionStatus property value. Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
      * @return OrganizationTableRow_subscriptionStatus|null
     */
     public function getSubscriptionStatus(): ?OrganizationTableRow_subscriptionStatus {
@@ -421,7 +421,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the tenDlcStatus property value. Defines the supported 10DLC Application Status values.
+     * Gets the tenDlcStatus property value. Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
      * @return OrganizationTableRow_tenDlcStatus|null
     */
     public function getTenDlcStatus(): ?OrganizationTableRow_tenDlcStatus {
@@ -445,7 +445,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the websiteStatus property value. Defines the supported Website Lifecycle Status values.
+     * Gets the websiteStatus property value. Describes an organization website's lifecycle from discovery and verification through activation, suspension, or removal.
      * @return OrganizationTableRow_websiteStatus|null
     */
     public function getWebsiteStatus(): ?OrganizationTableRow_websiteStatus {
@@ -497,7 +497,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the activationStatus property value. Defines the supported Customer Activation Status values.
+     * Sets the activationStatus property value. Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
      * @param OrganizationTableRow_activationStatus|null $value Value to set for the activationStatus property.
     */
     public function setActivationStatus(?OrganizationTableRow_activationStatus $value): void {
@@ -569,7 +569,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billingPlan property value. Defines the supported Billing Plan values.
+     * Sets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
      * @param OrganizationTableRow_billingPlan|null $value Value to set for the billingPlan property.
     */
     public function setBillingPlan(?OrganizationTableRow_billingPlan $value): void {
@@ -657,7 +657,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the setupStep property value. Defines the supported Organization Setup Step values.
+     * Sets the setupStep property value. Identifies a discrete billing, telephony, compliance, or configuration stage in organization provisioning.
      * @param OrganizationTableRow_setupStep|null $value Value to set for the setupStep property.
     */
     public function setSetupStep(?OrganizationTableRow_setupStep $value): void {
@@ -665,7 +665,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. Defines the supported Organization Status values.
+     * Sets the status property value. Describes an organization's account lifecycle and whether it can actively use Leadping services.
      * @param OrganizationTableRow_status|null $value Value to set for the status property.
     */
     public function setStatus(?OrganizationTableRow_status $value): void {
@@ -681,7 +681,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the subscriptionStatus property value. Defines the supported Subscription Status values.
+     * Sets the subscriptionStatus property value. Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
      * @param OrganizationTableRow_subscriptionStatus|null $value Value to set for the subscriptionStatus property.
     */
     public function setSubscriptionStatus(?OrganizationTableRow_subscriptionStatus $value): void {
@@ -689,7 +689,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the tenDlcStatus property value. Defines the supported 10DLC Application Status values.
+     * Sets the tenDlcStatus property value. Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
      * @param OrganizationTableRow_tenDlcStatus|null $value Value to set for the tenDlcStatus property.
     */
     public function setTenDlcStatus(?OrganizationTableRow_tenDlcStatus $value): void {
@@ -713,7 +713,7 @@ class OrganizationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the websiteStatus property value. Defines the supported Website Lifecycle Status values.
+     * Sets the websiteStatus property value. Describes an organization website's lifecycle from discovery and verification through activation, suspension, or removal.
      * @param OrganizationTableRow_websiteStatus|null $value Value to set for the websiteStatus property.
     */
     public function setWebsiteStatus(?OrganizationTableRow_websiteStatus $value): void {

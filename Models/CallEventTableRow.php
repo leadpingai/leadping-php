@@ -119,7 +119,7 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     private ?string $recordingUrl = null;
     
     /**
-     * @var CallEventTableRow_status|null $status Defines the supported Phone Call Status values.
+     * @var CallEventTableRow_status|null $status Describes the durable business outcome of a Leadping phone call after provider status normalization.
     */
     private ?CallEventTableRow_status $status = null;
     
@@ -375,7 +375,7 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. Defines the supported Phone Call Status values.
+     * Gets the status property value. Describes the durable business outcome of a Leadping phone call after provider status normalization.
      * @return CallEventTableRow_status|null
     */
     public function getStatus(): ?CallEventTableRow_status {
@@ -634,7 +634,7 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. Defines the supported Phone Call Status values.
+     * Sets the status property value. Describes the durable business outcome of a Leadping phone call after provider status normalization.
      * @param CallEventTableRow_status|null $value Value to set for the status property.
     */
     public function setStatus(?CallEventTableRow_status $value): void {

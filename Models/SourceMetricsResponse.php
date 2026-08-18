@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Response model containing source metrics data returned by the Leadping API.
+ * Aggregates lead volume, conversion, delivery, and activity metrics attributed to a Leadping source over the requested reporting period.
 */
 class SourceMetricsResponse implements AdditionalDataHolder, Parsable 
 {

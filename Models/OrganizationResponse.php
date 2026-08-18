@@ -59,7 +59,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     private ?string $billingName = null;
     
     /**
-     * @var OrganizationResponse_billingPlan|null $billingPlan Defines the supported Billing Plan values.
+     * @var OrganizationResponse_billingPlan|null $billingPlan Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
     */
     private ?OrganizationResponse_billingPlan $billingPlan = null;
     
@@ -139,12 +139,12 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     private ?string $secondaryName = null;
     
     /**
-     * @var OrganizationResponse_setupStatus|null $setupStatus Defines the supported User Setup Status values.
+     * @var OrganizationResponse_setupStatus|null $setupStatus Describes a user's progress through required Leadping profile and account setup tasks.
     */
     private ?OrganizationResponse_setupStatus $setupStatus = null;
     
     /**
-     * @var OrganizationResponse_setupStep|null $setupStep Defines the supported Organization Setup Step values.
+     * @var OrganizationResponse_setupStep|null $setupStep Identifies a discrete billing, telephony, compliance, or configuration stage in organization provisioning.
     */
     private ?OrganizationResponse_setupStep $setupStep = null;
     
@@ -154,12 +154,12 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     private ?OrganizationResponse_site $site = null;
     
     /**
-     * @var OrganizationResponse_status|null $status Defines the supported Organization Status values.
+     * @var OrganizationResponse_status|null $status Describes an organization's account lifecycle and whether it can actively use Leadping services.
     */
     private ?OrganizationResponse_status $status = null;
     
     /**
-     * @var OrganizationResponse_subscriptionStatus|null $subscriptionStatus Defines the supported Subscription Status values.
+     * @var OrganizationResponse_subscriptionStatus|null $subscriptionStatus Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
     */
     private ?OrganizationResponse_subscriptionStatus $subscriptionStatus = null;
     
@@ -267,7 +267,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billingPlan property value. Defines the supported Billing Plan values.
+     * Gets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
      * @return OrganizationResponse_billingPlan|null
     */
     public function getBillingPlan(): ?OrganizationResponse_billingPlan {
@@ -437,7 +437,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the setupStatus property value. Defines the supported User Setup Status values.
+     * Gets the setupStatus property value. Describes a user's progress through required Leadping profile and account setup tasks.
      * @return OrganizationResponse_setupStatus|null
     */
     public function getSetupStatus(): ?OrganizationResponse_setupStatus {
@@ -445,7 +445,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the setupStep property value. Defines the supported Organization Setup Step values.
+     * Gets the setupStep property value. Identifies a discrete billing, telephony, compliance, or configuration stage in organization provisioning.
      * @return OrganizationResponse_setupStep|null
     */
     public function getSetupStep(): ?OrganizationResponse_setupStep {
@@ -461,7 +461,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. Defines the supported Organization Status values.
+     * Gets the status property value. Describes an organization's account lifecycle and whether it can actively use Leadping services.
      * @return OrganizationResponse_status|null
     */
     public function getStatus(): ?OrganizationResponse_status {
@@ -469,7 +469,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the subscriptionStatus property value. Defines the supported Subscription Status values.
+     * Gets the subscriptionStatus property value. Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
      * @return OrganizationResponse_subscriptionStatus|null
     */
     public function getSubscriptionStatus(): ?OrganizationResponse_subscriptionStatus {
@@ -613,7 +613,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billingPlan property value. Defines the supported Billing Plan values.
+     * Sets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
      * @param OrganizationResponse_billingPlan|null $value Value to set for the billingPlan property.
     */
     public function setBillingPlan(?OrganizationResponse_billingPlan $value): void {
@@ -741,7 +741,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the setupStatus property value. Defines the supported User Setup Status values.
+     * Sets the setupStatus property value. Describes a user's progress through required Leadping profile and account setup tasks.
      * @param OrganizationResponse_setupStatus|null $value Value to set for the setupStatus property.
     */
     public function setSetupStatus(?OrganizationResponse_setupStatus $value): void {
@@ -749,7 +749,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the setupStep property value. Defines the supported Organization Setup Step values.
+     * Sets the setupStep property value. Identifies a discrete billing, telephony, compliance, or configuration stage in organization provisioning.
      * @param OrganizationResponse_setupStep|null $value Value to set for the setupStep property.
     */
     public function setSetupStep(?OrganizationResponse_setupStep $value): void {
@@ -765,7 +765,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. Defines the supported Organization Status values.
+     * Sets the status property value. Describes an organization's account lifecycle and whether it can actively use Leadping services.
      * @param OrganizationResponse_status|null $value Value to set for the status property.
     */
     public function setStatus(?OrganizationResponse_status $value): void {
@@ -773,7 +773,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the subscriptionStatus property value. Defines the supported Subscription Status values.
+     * Sets the subscriptionStatus property value. Describes an organization's billing subscription lifecycle, including trial, active, delinquent, canceled, and expired states.
      * @param OrganizationResponse_subscriptionStatus|null $value Value to set for the subscriptionStatus property.
     */
     public function setSubscriptionStatus(?OrganizationResponse_subscriptionStatus $value): void {

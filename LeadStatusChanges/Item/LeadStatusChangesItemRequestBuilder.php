@@ -67,7 +67,7 @@ class LeadStatusChangesItemRequestBuilder extends BaseRequestBuilder
 
     /**
      * Updates a lead status history entry and, when it is current, updates the lead's current status.
-     * @param LeadStatusChangeRequest $body Request model for creating or updating a lead status change.
+     * @param LeadStatusChangeRequest $body Defines a lead status transition or correction, including its target status, effective time, source, and explanatory context.
      * @param LeadStatusChangesItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<LeadStatusChangeResponse|null>
      * @throws Exception
@@ -122,7 +122,7 @@ class LeadStatusChangesItemRequestBuilder extends BaseRequestBuilder
 
     /**
      * Updates a lead status history entry and, when it is current, updates the lead's current status.
-     * @param LeadStatusChangeRequest $body Request model for creating or updating a lead status change.
+     * @param LeadStatusChangeRequest $body Defines a lead status transition or correction, including its target status, effective time, source, and explanatory context.
      * @param LeadStatusChangesItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

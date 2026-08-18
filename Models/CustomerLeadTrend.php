@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Represents customer lead trend data exposed by Leadping analytics.
+ * Measures lead creation, qualification, and conversion activity within one reporting time bucket.
 */
 class CustomerLeadTrend implements AdditionalDataHolder, Parsable 
 {

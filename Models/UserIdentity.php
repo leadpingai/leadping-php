@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Represents a user's sign-in identity, including information about the identity provider and method of authentication.
+ * Identifies an external sign-in identity linked to a Leadping user, including its provider, provider-assigned user identifier, and authentication method.
 */
 class UserIdentity implements AdditionalDataHolder, Parsable 
 {

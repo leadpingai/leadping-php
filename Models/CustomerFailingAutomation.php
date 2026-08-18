@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Represents customer failing automation data exposed by Leadping analytics.
+ * Identifies an automation with recent execution failures and summarizes its affected leads and failure context.
 */
 class CustomerFailingAutomation implements AdditionalDataHolder, Parsable 
 {

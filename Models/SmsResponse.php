@@ -154,7 +154,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     private ?string $scheduledReason = null;
     
     /**
-     * @var SmsResponse_selectionReason|null $selectionReason Defines the supported Outgoing Number Selection Reason values.
+     * @var SmsResponse_selectionReason|null $selectionReason Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
     */
     private ?SmsResponse_selectionReason $selectionReason = null;
     
@@ -174,7 +174,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     private ?string $sourceId = null;
     
     /**
-     * @var SmsResponse_status|null $status Defines the supported SMS Message Status values.
+     * @var SmsResponse_status|null $status Describes the normalized lifecycle of an SMS or MMS message from scheduling through delivery or failure.
     */
     private ?SmsResponse_status $status = null;
     
@@ -189,7 +189,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     private ?string $text = null;
     
     /**
-     * @var SmsResponse_trafficType|null $trafficType Defines the supported SMS Traffic Type values.
+     * @var SmsResponse_trafficType|null $trafficType Classifies messaging traffic by conversational, informational, marketing, or other compliance-relevant purpose.
     */
     private ?SmsResponse_trafficType $trafficType = null;
     
@@ -491,7 +491,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the selectionReason property value. Defines the supported Outgoing Number Selection Reason values.
+     * Gets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
      * @return SmsResponse_selectionReason|null
     */
     public function getSelectionReason(): ?SmsResponse_selectionReason {
@@ -523,7 +523,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. Defines the supported SMS Message Status values.
+     * Gets the status property value. Describes the normalized lifecycle of an SMS or MMS message from scheduling through delivery or failure.
      * @return SmsResponse_status|null
     */
     public function getStatus(): ?SmsResponse_status {
@@ -547,7 +547,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the trafficType property value. Defines the supported SMS Traffic Type values.
+     * Gets the trafficType property value. Classifies messaging traffic by conversational, informational, marketing, or other compliance-relevant purpose.
      * @return SmsResponse_trafficType|null
     */
     public function getTrafficType(): ?SmsResponse_trafficType {
@@ -840,7 +840,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the selectionReason property value. Defines the supported Outgoing Number Selection Reason values.
+     * Sets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
      * @param SmsResponse_selectionReason|null $value Value to set for the selectionReason property.
     */
     public function setSelectionReason(?SmsResponse_selectionReason $value): void {
@@ -872,7 +872,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. Defines the supported SMS Message Status values.
+     * Sets the status property value. Describes the normalized lifecycle of an SMS or MMS message from scheduling through delivery or failure.
      * @param SmsResponse_status|null $value Value to set for the status property.
     */
     public function setStatus(?SmsResponse_status $value): void {
@@ -896,7 +896,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the trafficType property value. Defines the supported SMS Traffic Type values.
+     * Sets the trafficType property value. Classifies messaging traffic by conversational, informational, marketing, or other compliance-relevant purpose.
      * @param SmsResponse_trafficType|null $value Value to set for the trafficType property.
     */
     public function setTrafficType(?SmsResponse_trafficType $value): void {

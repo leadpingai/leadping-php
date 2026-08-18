@@ -14,7 +14,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class OrganizationSwitchOption implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var OrganizationSwitchOption_activationStatus|null $activationStatus Defines the supported Customer Activation Status values.
+     * @var OrganizationSwitchOption_activationStatus|null $activationStatus Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
     */
     private ?OrganizationSwitchOption_activationStatus $activationStatus = null;
     
@@ -59,7 +59,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     private ?bool $needsAdminReview = null;
     
     /**
-     * @var OrganizationSwitchOption_organizationStatus|null $organizationStatus Defines the supported Organization Status values.
+     * @var OrganizationSwitchOption_organizationStatus|null $organizationStatus Describes an organization's account lifecycle and whether it can actively use Leadping services.
     */
     private ?OrganizationSwitchOption_organizationStatus $organizationStatus = null;
     
@@ -74,7 +74,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     private ?OrganizationMemberRole $role = null;
     
     /**
-     * @var OrganizationSwitchOption_tenDlcStatus|null $tenDlcStatus Defines the supported 10DLC Application Status values.
+     * @var OrganizationSwitchOption_tenDlcStatus|null $tenDlcStatus Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
     */
     private ?OrganizationSwitchOption_tenDlcStatus $tenDlcStatus = null;
     
@@ -95,7 +95,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the activationStatus property value. Defines the supported Customer Activation Status values.
+     * Gets the activationStatus property value. Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
      * @return OrganizationSwitchOption_activationStatus|null
     */
     public function getActivationStatus(): ?OrganizationSwitchOption_activationStatus {
@@ -189,7 +189,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organizationStatus property value. Defines the supported Organization Status values.
+     * Gets the organizationStatus property value. Describes an organization's account lifecycle and whether it can actively use Leadping services.
      * @return OrganizationSwitchOption_organizationStatus|null
     */
     public function getOrganizationStatus(): ?OrganizationSwitchOption_organizationStatus {
@@ -213,7 +213,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the tenDlcStatus property value. Defines the supported 10DLC Application Status values.
+     * Gets the tenDlcStatus property value. Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
      * @return OrganizationSwitchOption_tenDlcStatus|null
     */
     public function getTenDlcStatus(): ?OrganizationSwitchOption_tenDlcStatus {
@@ -241,7 +241,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the activationStatus property value. Defines the supported Customer Activation Status values.
+     * Sets the activationStatus property value. Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
      * @param OrganizationSwitchOption_activationStatus|null $value Value to set for the activationStatus property.
     */
     public function setActivationStatus(?OrganizationSwitchOption_activationStatus $value): void {
@@ -313,7 +313,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organizationStatus property value. Defines the supported Organization Status values.
+     * Sets the organizationStatus property value. Describes an organization's account lifecycle and whether it can actively use Leadping services.
      * @param OrganizationSwitchOption_organizationStatus|null $value Value to set for the organizationStatus property.
     */
     public function setOrganizationStatus(?OrganizationSwitchOption_organizationStatus $value): void {
@@ -337,7 +337,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the tenDlcStatus property value. Defines the supported 10DLC Application Status values.
+     * Sets the tenDlcStatus property value. Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
      * @param OrganizationSwitchOption_tenDlcStatus|null $value Value to set for the tenDlcStatus property.
     */
     public function setTenDlcStatus(?OrganizationSwitchOption_tenDlcStatus $value): void {

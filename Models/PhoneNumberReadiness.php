@@ -18,7 +18,7 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var PhoneNumberReadiness_callStage|null $callStage Defines the supported voice call warmup stages for a Leadping-managed phone number.
+     * @var PhoneNumberReadiness_callStage|null $callStage Identifies the current traffic-ramp stage of controlled voice warmup for a Leadping-managed phone number.
     */
     private ?PhoneNumberReadiness_callStage $callStage = null;
     
@@ -33,7 +33,7 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
     private ?int $healthScore = null;
     
     /**
-     * @var PhoneNumberReadiness_healthStatus|null $healthStatus Defines the supported SMS readiness health assessments.
+     * @var PhoneNumberReadiness_healthStatus|null $healthStatus Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
     */
     private ?PhoneNumberReadiness_healthStatus $healthStatus = null;
     
@@ -43,7 +43,7 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
     private ?int $progressPercent = null;
     
     /**
-     * @var PhoneNumberReadiness_state|null $state Defines the supported SMS readiness states.
+     * @var PhoneNumberReadiness_state|null $state Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
     */
     private ?PhoneNumberReadiness_state $state = null;
     
@@ -72,7 +72,7 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the callStage property value. Defines the supported voice call warmup stages for a Leadping-managed phone number.
+     * Gets the callStage property value. Identifies the current traffic-ramp stage of controlled voice warmup for a Leadping-managed phone number.
      * @return PhoneNumberReadiness_callStage|null
     */
     public function getCallStage(): ?PhoneNumberReadiness_callStage {
@@ -112,7 +112,7 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the healthStatus property value. Defines the supported SMS readiness health assessments.
+     * Gets the healthStatus property value. Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
      * @return PhoneNumberReadiness_healthStatus|null
     */
     public function getHealthStatus(): ?PhoneNumberReadiness_healthStatus {
@@ -128,7 +128,7 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the state property value. Defines the supported SMS readiness states.
+     * Gets the state property value. Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
      * @return PhoneNumberReadiness_state|null
     */
     public function getState(): ?PhoneNumberReadiness_state {
@@ -158,7 +158,7 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the callStage property value. Defines the supported voice call warmup stages for a Leadping-managed phone number.
+     * Sets the callStage property value. Identifies the current traffic-ramp stage of controlled voice warmup for a Leadping-managed phone number.
      * @param PhoneNumberReadiness_callStage|null $value Value to set for the callStage property.
     */
     public function setCallStage(?PhoneNumberReadiness_callStage $value): void {
@@ -182,7 +182,7 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the healthStatus property value. Defines the supported SMS readiness health assessments.
+     * Sets the healthStatus property value. Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
      * @param PhoneNumberReadiness_healthStatus|null $value Value to set for the healthStatus property.
     */
     public function setHealthStatus(?PhoneNumberReadiness_healthStatus $value): void {
@@ -198,7 +198,7 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the state property value. Defines the supported SMS readiness states.
+     * Sets the state property value. Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
      * @param PhoneNumberReadiness_state|null $value Value to set for the state property.
     */
     public function setState(?PhoneNumberReadiness_state $value): void {

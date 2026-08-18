@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Represents customer needs attention item data exposed by Leadping analytics.
+ * Identifies an organization-level issue or opportunity and provides severity, supporting context, and a recommended action.
 */
 class CustomerNeedsAttentionItem implements AdditionalDataHolder, Parsable 
 {

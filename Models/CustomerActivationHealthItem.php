@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Represents customer activation health item data exposed by Leadping analytics.
+ * Describes the state, severity, and recommended next action for one organization activation requirement.
 */
 class CustomerActivationHealthItem implements AdditionalDataHolder, Parsable 
 {

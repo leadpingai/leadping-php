@@ -184,7 +184,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     private ?DateTime $sentAt = null;
     
     /**
-     * @var SmsEventTableRow_status|null $status Defines the supported SMS Message Status values.
+     * @var SmsEventTableRow_status|null $status Describes the normalized lifecycle of an SMS or MMS message from scheduling through delivery or failure.
     */
     private ?SmsEventTableRow_status $status = null;
     
@@ -204,7 +204,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     private ?string $toPhoneNumber = null;
     
     /**
-     * @var SmsEventTableRow_trafficType|null $trafficType Defines the supported SMS Traffic Type values.
+     * @var SmsEventTableRow_trafficType|null $trafficType Classifies messaging traffic by conversational, informational, marketing, or other compliance-relevant purpose.
     */
     private ?SmsEventTableRow_trafficType $trafficType = null;
     
@@ -563,7 +563,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. Defines the supported SMS Message Status values.
+     * Gets the status property value. Describes the normalized lifecycle of an SMS or MMS message from scheduling through delivery or failure.
      * @return SmsEventTableRow_status|null
     */
     public function getStatus(): ?SmsEventTableRow_status {
@@ -595,7 +595,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the trafficType property value. Defines the supported SMS Traffic Type values.
+     * Gets the trafficType property value. Classifies messaging traffic by conversational, informational, marketing, or other compliance-relevant purpose.
      * @return SmsEventTableRow_trafficType|null
     */
     public function getTrafficType(): ?SmsEventTableRow_trafficType {
@@ -948,7 +948,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. Defines the supported SMS Message Status values.
+     * Sets the status property value. Describes the normalized lifecycle of an SMS or MMS message from scheduling through delivery or failure.
      * @param SmsEventTableRow_status|null $value Value to set for the status property.
     */
     public function setStatus(?SmsEventTableRow_status $value): void {
@@ -980,7 +980,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the trafficType property value. Defines the supported SMS Traffic Type values.
+     * Sets the trafficType property value. Classifies messaging traffic by conversational, informational, marketing, or other compliance-relevant purpose.
      * @param SmsEventTableRow_trafficType|null $value Value to set for the trafficType property.
     */
     public function setTrafficType(?SmsEventTableRow_trafficType $value): void {

@@ -129,7 +129,7 @@ class EventDetailResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $sentAt = null;
     
     /**
-     * @var EventDetailResponse_status|null $status Defines the supported Event status values.
+     * @var EventDetailResponse_status|null $status Describes whether a Leadping event is pending, processing, completed, failed, or otherwise resolved.
     */
     private ?EventDetailResponse_status $status = null;
     
@@ -149,7 +149,7 @@ class EventDetailResponse implements AdditionalDataHolder, Parsable
     private ?string $timelineCategory = null;
     
     /**
-     * @var EventDetailResponse_timelineType|null $timelineType Defines the supported Event timeline type values.
+     * @var EventDetailResponse_timelineType|null $timelineType Classifies the kind of activity displayed in a lead or conversation event timeline.
     */
     private ?EventDetailResponse_timelineType $timelineType = null;
     
@@ -421,7 +421,7 @@ class EventDetailResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. Defines the supported Event status values.
+     * Gets the status property value. Describes whether a Leadping event is pending, processing, completed, failed, or otherwise resolved.
      * @return EventDetailResponse_status|null
     */
     public function getStatus(): ?EventDetailResponse_status {
@@ -453,7 +453,7 @@ class EventDetailResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the timelineType property value. Defines the supported Event timeline type values.
+     * Gets the timelineType property value. Classifies the kind of activity displayed in a lead or conversation event timeline.
      * @return EventDetailResponse_timelineType|null
     */
     public function getTimelineType(): ?EventDetailResponse_timelineType {
@@ -725,7 +725,7 @@ class EventDetailResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. Defines the supported Event status values.
+     * Sets the status property value. Describes whether a Leadping event is pending, processing, completed, failed, or otherwise resolved.
      * @param EventDetailResponse_status|null $value Value to set for the status property.
     */
     public function setStatus(?EventDetailResponse_status $value): void {
@@ -757,7 +757,7 @@ class EventDetailResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the timelineType property value. Defines the supported Event timeline type values.
+     * Sets the timelineType property value. Classifies the kind of activity displayed in a lead or conversation event timeline.
      * @param EventDetailResponse_timelineType|null $value Value to set for the timelineType property.
     */
     public function setTimelineType(?EventDetailResponse_timelineType $value): void {

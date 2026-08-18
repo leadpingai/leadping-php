@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Response model containing customer analytics data returned by the Leadping API.
+ * Aggregates an organization's lead performance, response speed, communication usage, automation health, and activation insights.
 */
 class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable 
 {

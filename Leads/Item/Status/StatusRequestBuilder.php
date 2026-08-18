@@ -33,7 +33,7 @@ class StatusRequestBuilder extends BaseRequestBuilder
 
     /**
      * Sets the lead's current structured status and records the change for audit, automation, and reporting.
-     * @param LeadStatusChangeRequest $body Request model for creating or updating a lead status change.
+     * @param LeadStatusChangeRequest $body Defines a lead status transition or correction, including its target status, effective time, source, and explanatory context.
      * @param StatusRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<LeadStatusChangeResponse|null>
      * @throws Exception
@@ -52,7 +52,7 @@ class StatusRequestBuilder extends BaseRequestBuilder
 
     /**
      * Sets the lead's current structured status and records the change for audit, automation, and reporting.
-     * @param LeadStatusChangeRequest $body Request model for creating or updating a lead status change.
+     * @param LeadStatusChangeRequest $body Defines a lead status transition or correction, including its target status, effective time, source, and explanatory context.
      * @param StatusRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

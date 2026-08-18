@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Represents analytics trend point data exposed by Leadping analytics.
+ * Associates a typed analytics value with one normalized time bucket in a trend series.
 */
 class AnalyticsTrendPointOfint implements AdditionalDataHolder, Parsable 
 {
