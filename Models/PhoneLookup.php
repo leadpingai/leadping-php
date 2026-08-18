@@ -29,7 +29,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     private ?PhoneLookup_carrier $carrier = null;
     
     /**
-     * @var DateTime|null $createdAt UTC timestamp when the phone lookup record was created.
+     * @var DateTime|null $createdAt UTC timestamp when the resource was created.
     */
     private ?DateTime $createdAt = null;
     
@@ -39,7 +39,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     private ?string $fraud = null;
     
     /**
-     * @var string|null $id Unique Leadping identifier for the saved phone lookup record.
+     * @var string|null $id Stable unique identifier of the resource.
     */
     private ?string $id = null;
     
@@ -49,7 +49,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     private ?bool $isValid = null;
     
     /**
-     * @var PhoneLookup_lineType|null $lineType An enumerator describing phone line types
+     * @var PhoneLookup_lineType|null $lineType Classifies the access technology or service type associated with a telephone number.
     */
     private ?PhoneLookup_lineType $lineType = null;
     
@@ -59,7 +59,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     private ?PhoneLookup_location $location = null;
     
     /**
-     * @var DateTime|null $modifiedAt UTC timestamp when the phone lookup record was last updated.
+     * @var DateTime|null $modifiedAt UTC timestamp when the resource was last modified, or null when it has not been updated.
     */
     private ?DateTime $modifiedAt = null;
     
@@ -124,7 +124,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the createdAt property value. UTC timestamp when the phone lookup record was created.
+     * Gets the createdAt property value. UTC timestamp when the resource was created.
      * @return DateTime|null
     */
     public function getCreatedAt(): ?DateTime {
@@ -163,7 +163,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. Unique Leadping identifier for the saved phone lookup record.
+     * Gets the id property value. Stable unique identifier of the resource.
      * @return string|null
     */
     public function getId(): ?string {
@@ -179,7 +179,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lineType property value. An enumerator describing phone line types
+     * Gets the lineType property value. Classifies the access technology or service type associated with a telephone number.
      * @return PhoneLookup_lineType|null
     */
     public function getLineType(): ?PhoneLookup_lineType {
@@ -195,7 +195,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the modifiedAt property value. UTC timestamp when the phone lookup record was last updated.
+     * Gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
      * @return DateTime|null
     */
     public function getModifiedAt(): ?DateTime {
@@ -280,7 +280,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the createdAt property value. UTC timestamp when the phone lookup record was created.
+     * Sets the createdAt property value. UTC timestamp when the resource was created.
      * @param DateTime|null $value Value to set for the createdAt property.
     */
     public function setCreatedAt(?DateTime $value): void {
@@ -296,7 +296,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. Unique Leadping identifier for the saved phone lookup record.
+     * Sets the id property value. Stable unique identifier of the resource.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -312,7 +312,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lineType property value. An enumerator describing phone line types
+     * Sets the lineType property value. Classifies the access technology or service type associated with a telephone number.
      * @param PhoneLookup_lineType|null $value Value to set for the lineType property.
     */
     public function setLineType(?PhoneLookup_lineType $value): void {
@@ -328,7 +328,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the modifiedAt property value. UTC timestamp when the phone lookup record was last updated.
+     * Sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
      * @param DateTime|null $value Value to set for the modifiedAt property.
     */
     public function setModifiedAt(?DateTime $value): void {

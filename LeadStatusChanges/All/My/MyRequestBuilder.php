@@ -33,7 +33,7 @@ class MyRequestBuilder extends BaseRequestBuilder
 
     /**
      * Returns a filtered, paginated history of lead status changes for the current organization for workflow analysis, reporting, and audit review.
-     * @param RequestDataOptions $body Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
+     * @param RequestDataOptions $body Defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
      * @param MyRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<PagedResultOfLeadStatusChangeResponse|null>
      * @throws Exception
@@ -50,7 +50,7 @@ class MyRequestBuilder extends BaseRequestBuilder
 
     /**
      * Returns a filtered, paginated history of lead status changes for the current organization for workflow analysis, reporting, and audit review.
-     * @param RequestDataOptions $body Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
+     * @param RequestDataOptions $body Defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
      * @param MyRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

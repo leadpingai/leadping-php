@@ -33,7 +33,7 @@ class MyRequestBuilder extends BaseRequestBuilder
 
     /**
      * Lists current-user transactions with paging, sorting, and filters for wallet events, billing history, and reconciliation.
-     * @param RequestDataOptions $body Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
+     * @param RequestDataOptions $body Defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
      * @param MyRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<PagedResultOfTransactionTableRow|null>
      * @throws Exception
@@ -50,7 +50,7 @@ class MyRequestBuilder extends BaseRequestBuilder
 
     /**
      * Lists current-user transactions with paging, sorting, and filters for wallet events, billing history, and reconciliation.
-     * @param RequestDataOptions $body Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
+     * @param RequestDataOptions $body Defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
      * @param MyRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

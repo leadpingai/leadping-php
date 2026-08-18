@@ -18,17 +18,17 @@ class UserIdentity implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $issuer Identity provider or tenant that issued the user's sign-in identity.
+     * @var string|null $issuer Identity provider or tenant that issued the sign-in identity, such as contoso.com or facebook.com.
     */
     private ?string $issuer = null;
     
     /**
-     * @var string|null $issuerAssignedId Unique user identifier assigned by the identity provider.
+     * @var string|null $issuerAssignedId Stable unique user identifier assigned by the identity provider within the issuer's namespace.
     */
     private ?string $issuerAssignedId = null;
     
     /**
-     * @var string|null $signInType Sign-in method represented by the identity, such as email address, username, or federated login.
+     * @var string|null $signInType Sign-in method represented by the identity, such as emailAddress, userName, or federated.
     */
     private ?string $signInType = null;
     
@@ -70,7 +70,7 @@ class UserIdentity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the issuer property value. Identity provider or tenant that issued the user's sign-in identity.
+     * Gets the issuer property value. Identity provider or tenant that issued the sign-in identity, such as contoso.com or facebook.com.
      * @return string|null
     */
     public function getIssuer(): ?string {
@@ -78,7 +78,7 @@ class UserIdentity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the issuerAssignedId property value. Unique user identifier assigned by the identity provider.
+     * Gets the issuerAssignedId property value. Stable unique user identifier assigned by the identity provider within the issuer's namespace.
      * @return string|null
     */
     public function getIssuerAssignedId(): ?string {
@@ -86,7 +86,7 @@ class UserIdentity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the signInType property value. Sign-in method represented by the identity, such as email address, username, or federated login.
+     * Gets the signInType property value. Sign-in method represented by the identity, such as emailAddress, userName, or federated.
      * @return string|null
     */
     public function getSignInType(): ?string {
@@ -113,7 +113,7 @@ class UserIdentity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the issuer property value. Identity provider or tenant that issued the user's sign-in identity.
+     * Sets the issuer property value. Identity provider or tenant that issued the sign-in identity, such as contoso.com or facebook.com.
      * @param string|null $value Value to set for the issuer property.
     */
     public function setIssuer(?string $value): void {
@@ -121,7 +121,7 @@ class UserIdentity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the issuerAssignedId property value. Unique user identifier assigned by the identity provider.
+     * Sets the issuerAssignedId property value. Stable unique user identifier assigned by the identity provider within the issuer's namespace.
      * @param string|null $value Value to set for the issuerAssignedId property.
     */
     public function setIssuerAssignedId(?string $value): void {
@@ -129,7 +129,7 @@ class UserIdentity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the signInType property value. Sign-in method represented by the identity, such as email address, username, or federated login.
+     * Sets the signInType property value. Sign-in method represented by the identity, such as emailAddress, userName, or federated.
      * @param string|null $value Value to set for the signInType property.
     */
     public function setSignInType(?string $value): void {

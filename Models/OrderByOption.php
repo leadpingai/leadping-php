@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * An object for ordering during querying
+ * Defines one field and direction used to order an API query result set.
 */
 class OrderByOption implements AdditionalDataHolder, Parsable 
 {
@@ -23,7 +23,7 @@ class OrderByOption implements AdditionalDataHolder, Parsable
     private ?OrderByOption_direction $direction = null;
     
     /**
-     * @var string|null $field The field to sort by.
+     * @var string|null $field Serializable field name used for sorting; supported names are determined by the queried resource.
     */
     private ?string $field = null;
     
@@ -60,7 +60,7 @@ class OrderByOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the field property value. The field to sort by.
+     * Gets the field property value. Serializable field name used for sorting; supported names are determined by the queried resource.
      * @return string|null
     */
     public function getField(): ?string {
@@ -106,7 +106,7 @@ class OrderByOption implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the field property value. The field to sort by.
+     * Sets the field property value. Serializable field name used for sorting; supported names are determined by the queried resource.
      * @param string|null $value Value to set for the field property.
     */
     public function setField(?string $value): void {

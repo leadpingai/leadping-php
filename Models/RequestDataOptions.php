@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 use Microsoft\Kiota\Abstractions\Types\TypeUtils;
 
 /**
- * Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
+ * Defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
 */
 class RequestDataOptions implements AdditionalDataHolder, Parsable 
 {
@@ -19,42 +19,42 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $continuationToken Opaque Cosmos DB continuation token. ‑ null on the **first** request. ‑ Client must echo back the NextToken it received from the previous page.
+     * @var string|null $continuationToken Opaque cursor returned by the previous paged response; omit it when requesting the first page and do not parse or modify it.
     */
     private ?string $continuationToken = null;
     
     /**
-     * @var array<ExactMatchFilter>|null $filters Key-value exact match filters (e.g., Status = Active).
+     * @var array<ExactMatchFilter>|null $filters Exact-match conditions that require each named field to equal its supplied value.
     */
     private ?array $filters = null;
     
     /**
-     * @var bool|null $includeCount Whether to include the total count in the response (for pagination).
+     * @var bool|null $includeCount Whether the response should include the total number of matching records; counting may increase query cost or latency.
     */
     private ?bool $includeCount = null;
     
     /**
-     * @var array<OrderByOption>|null $orderBy List of sort instructions, in priority order.
+     * @var array<OrderByOption>|null $orderBy Sort instructions applied in priority order, with the first entry acting as the primary sort.
     */
     private ?array $orderBy = null;
     
     /**
-     * @var int|null $pageSize Maximum items to return in one page
+     * @var int|null $pageSize Maximum number of items requested for one page; the server may enforce a lower maximum or apply a default.
     */
     private ?int $pageSize = null;
     
     /**
-     * @var array<RangeFilter>|null $rangeFilters Advanced range-based filters (e.g., Price > 50 and Price <= 200).
+     * @var array<RangeFilter>|null $rangeFilters Range conditions that constrain comparable fields with inclusive or exclusive lower and upper bounds.
     */
     private ?array $rangeFilters = null;
     
     /**
-     * @var string|null $search The search term to filter results (applied to SearchFields).
+     * @var string|null $search Free-text search term applied to the configured SearchFields.
     */
     private ?string $search = null;
     
     /**
-     * @var array<string>|null $searchFields The list of fields to apply the Search term to (must be string properties).
+     * @var array<string>|null $searchFields Serializable string field names searched for Search; supported names are determined by the queried resource.
     */
     private ?array $searchFields = null;
     
@@ -83,7 +83,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the continuationToken property value. Opaque Cosmos DB continuation token. ‑ null on the **first** request. ‑ Client must echo back the NextToken it received from the previous page.
+     * Gets the continuationToken property value. Opaque cursor returned by the previous paged response; omit it when requesting the first page and do not parse or modify it.
      * @return string|null
     */
     public function getContinuationToken(): ?string {
@@ -116,7 +116,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the filters property value. Key-value exact match filters (e.g., Status = Active).
+     * Gets the filters property value. Exact-match conditions that require each named field to equal its supplied value.
      * @return array<ExactMatchFilter>|null
     */
     public function getFilters(): ?array {
@@ -124,7 +124,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the includeCount property value. Whether to include the total count in the response (for pagination).
+     * Gets the includeCount property value. Whether the response should include the total number of matching records; counting may increase query cost or latency.
      * @return bool|null
     */
     public function getIncludeCount(): ?bool {
@@ -132,7 +132,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the orderBy property value. List of sort instructions, in priority order.
+     * Gets the orderBy property value. Sort instructions applied in priority order, with the first entry acting as the primary sort.
      * @return array<OrderByOption>|null
     */
     public function getOrderBy(): ?array {
@@ -140,7 +140,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the pageSize property value. Maximum items to return in one page
+     * Gets the pageSize property value. Maximum number of items requested for one page; the server may enforce a lower maximum or apply a default.
      * @return int|null
     */
     public function getPageSize(): ?int {
@@ -148,7 +148,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the rangeFilters property value. Advanced range-based filters (e.g., Price > 50 and Price <= 200).
+     * Gets the rangeFilters property value. Range conditions that constrain comparable fields with inclusive or exclusive lower and upper bounds.
      * @return array<RangeFilter>|null
     */
     public function getRangeFilters(): ?array {
@@ -156,7 +156,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the search property value. The search term to filter results (applied to SearchFields).
+     * Gets the search property value. Free-text search term applied to the configured SearchFields.
      * @return string|null
     */
     public function getSearch(): ?string {
@@ -164,7 +164,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the searchFields property value. The list of fields to apply the Search term to (must be string properties).
+     * Gets the searchFields property value. Serializable string field names searched for Search; supported names are determined by the queried resource.
      * @return array<string>|null
     */
     public function getSearchFields(): ?array {
@@ -196,7 +196,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the continuationToken property value. Opaque Cosmos DB continuation token. ‑ null on the **first** request. ‑ Client must echo back the NextToken it received from the previous page.
+     * Sets the continuationToken property value. Opaque cursor returned by the previous paged response; omit it when requesting the first page and do not parse or modify it.
      * @param string|null $value Value to set for the continuationToken property.
     */
     public function setContinuationToken(?string $value): void {
@@ -204,7 +204,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the filters property value. Key-value exact match filters (e.g., Status = Active).
+     * Sets the filters property value. Exact-match conditions that require each named field to equal its supplied value.
      * @param array<ExactMatchFilter>|null $value Value to set for the filters property.
     */
     public function setFilters(?array $value): void {
@@ -212,7 +212,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the includeCount property value. Whether to include the total count in the response (for pagination).
+     * Sets the includeCount property value. Whether the response should include the total number of matching records; counting may increase query cost or latency.
      * @param bool|null $value Value to set for the includeCount property.
     */
     public function setIncludeCount(?bool $value): void {
@@ -220,7 +220,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the orderBy property value. List of sort instructions, in priority order.
+     * Sets the orderBy property value. Sort instructions applied in priority order, with the first entry acting as the primary sort.
      * @param array<OrderByOption>|null $value Value to set for the orderBy property.
     */
     public function setOrderBy(?array $value): void {
@@ -228,7 +228,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the pageSize property value. Maximum items to return in one page
+     * Sets the pageSize property value. Maximum number of items requested for one page; the server may enforce a lower maximum or apply a default.
      * @param int|null $value Value to set for the pageSize property.
     */
     public function setPageSize(?int $value): void {
@@ -236,7 +236,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the rangeFilters property value. Advanced range-based filters (e.g., Price > 50 and Price <= 200).
+     * Sets the rangeFilters property value. Range conditions that constrain comparable fields with inclusive or exclusive lower and upper bounds.
      * @param array<RangeFilter>|null $value Value to set for the rangeFilters property.
     */
     public function setRangeFilters(?array $value): void {
@@ -244,7 +244,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the search property value. The search term to filter results (applied to SearchFields).
+     * Sets the search property value. Free-text search term applied to the configured SearchFields.
      * @param string|null $value Value to set for the search property.
     */
     public function setSearch(?string $value): void {
@@ -252,7 +252,7 @@ class RequestDataOptions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the searchFields property value. The list of fields to apply the Search term to (must be string properties).
+     * Sets the searchFields property value. Serializable string field names searched for Search; supported names are determined by the queried resource.
      * @param array<string>|null $value Value to set for the searchFields property.
     */
     public function setSearchFields(?array $value): void {

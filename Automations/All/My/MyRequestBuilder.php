@@ -33,7 +33,7 @@ class MyRequestBuilder extends BaseRequestBuilder
 
     /**
      * Lists current-user automations with paging, sorting, and filters for reviewing follow-up workflows and ownership.
-     * @param RequestDataOptions $body Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
+     * @param RequestDataOptions $body Defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
      * @param MyRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<PagedResultOfAutomationTableRow|null>
      * @throws Exception
@@ -51,7 +51,7 @@ class MyRequestBuilder extends BaseRequestBuilder
 
     /**
      * Lists current-user automations with paging, sorting, and filters for reviewing follow-up workflows and ownership.
-     * @param RequestDataOptions $body Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
+     * @param RequestDataOptions $body Defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
      * @param MyRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

@@ -64,7 +64,7 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * @var string|null $name The display name for the entity.
+     * @var string|null $name Human-readable display name for the resource, subject to the API's maximum name length.
     */
     private ?string $name = null;
     
@@ -225,7 +225,7 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the name property value. The display name for the entity.
+     * Gets the name property value. Human-readable display name for the resource, subject to the API's maximum name length.
      * @return string|null
     */
     public function getName(): ?string {
@@ -349,7 +349,7 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the name property value. The display name for the entity.
+     * Sets the name property value. Human-readable display name for the resource, subject to the API's maximum name length.
      * @param string|null $value Value to set for the name property.
     */
     public function setName(?string $value): void {

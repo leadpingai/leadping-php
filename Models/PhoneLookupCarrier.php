@@ -43,7 +43,7 @@ class PhoneLookupCarrier implements AdditionalDataHolder, Parsable
     private ?string $normalizedCarrier = null;
     
     /**
-     * @var PhoneLookupCarrier_type|null $type An enumerator describing carrier types
+     * @var PhoneLookupCarrier_type|null $type Classifies a telephone number by the network service or carrier category that provides it.
     */
     private ?PhoneLookupCarrier_type $type = null;
     
@@ -128,7 +128,7 @@ class PhoneLookupCarrier implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the type property value. An enumerator describing carrier types
+     * Gets the type property value. Classifies a telephone number by the network service or carrier category that provides it.
      * @return PhoneLookupCarrier_type|null
     */
     public function getType(): ?PhoneLookupCarrier_type {
@@ -198,7 +198,7 @@ class PhoneLookupCarrier implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the type property value. An enumerator describing carrier types
+     * Sets the type property value. Classifies a telephone number by the network service or carrier category that provides it.
      * @param PhoneLookupCarrier_type|null $value Value to set for the type property.
     */
     public function setType(?PhoneLookupCarrier_type $value): void {

@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * A minimal, serializable record type for physical mailing addresses, with support for international formats and compatibility with common APIs.
+ * Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
 */
 class StreetAddress implements AdditionalDataHolder, Parsable 
 {
@@ -18,47 +18,47 @@ class StreetAddress implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $additionalInfo Optional additional notes or delivery instructions.
+     * @var string|null $additionalInfo Additional address context or delivery instructions that do not fit the structured fields.
     */
     private ?string $additionalInfo = null;
     
     /**
-     * @var string|null $city The city, town, or locality.
+     * @var string|null $city City, town, village, or other postal locality.
     */
     private ?string $city = null;
     
     /**
-     * @var string|null $country The ISO 3166-1 alpha-2 country code (e.g., "US", "GB", "CA").
+     * @var string|null $country Two-letter ISO 3166-1 alpha-2 country code, such as US, GB, or CA.
     */
     private ?string $country = null;
     
     /**
-     * @var string|null $line1 The primary address line (e.g., street address, P.O. box, company name).
+     * @var string|null $line1 Primary delivery line, such as a street address, post-office box, or company name.
     */
     private ?string $line1 = null;
     
     /**
-     * @var string|null $line2 The secondary address line (e.g., apartment, suite, unit, or building).
+     * @var string|null $line2 Secondary delivery line, such as an apartment, suite, unit, floor, or building.
     */
     private ?string $line2 = null;
     
     /**
-     * @var string|null $postalCode The postal or ZIP code.
+     * @var string|null $postalCode Postal routing code, such as a ZIP code or postcode, formatted according to the destination country.
     */
     private ?string $postalCode = null;
     
     /**
-     * @var string|null $province The province or territory, if distinct from state in your use case (optional, use with care).
+     * @var string|null $province Province or territory when represented separately from State by the source or destination system.
     */
     private ?string $province = null;
     
     /**
-     * @var string|null $region The broader region, district, or administrative area (e.g., prefecture or county).
+     * @var string|null $region Region, district, county, prefecture, or other administrative area not represented by state or province.
     */
     private ?string $region = null;
     
     /**
-     * @var string|null $state The state, province, or equivalent administrative region. Commonly used in countries like the US, Canada, and Australia.
+     * @var string|null $state State or equivalent first-level administrative subdivision when that label is used by the country.
     */
     private ?string $state = null;
     
@@ -87,7 +87,7 @@ class StreetAddress implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the additionalInfo property value. Optional additional notes or delivery instructions.
+     * Gets the additionalInfo property value. Additional address context or delivery instructions that do not fit the structured fields.
      * @return string|null
     */
     public function getAdditionalInfo(): ?string {
@@ -95,7 +95,7 @@ class StreetAddress implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the city property value. The city, town, or locality.
+     * Gets the city property value. City, town, village, or other postal locality.
      * @return string|null
     */
     public function getCity(): ?string {
@@ -103,7 +103,7 @@ class StreetAddress implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the country property value. The ISO 3166-1 alpha-2 country code (e.g., "US", "GB", "CA").
+     * Gets the country property value. Two-letter ISO 3166-1 alpha-2 country code, such as US, GB, or CA.
      * @return string|null
     */
     public function getCountry(): ?string {
@@ -130,7 +130,7 @@ class StreetAddress implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the line1 property value. The primary address line (e.g., street address, P.O. box, company name).
+     * Gets the line1 property value. Primary delivery line, such as a street address, post-office box, or company name.
      * @return string|null
     */
     public function getLine1(): ?string {
@@ -138,7 +138,7 @@ class StreetAddress implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the line2 property value. The secondary address line (e.g., apartment, suite, unit, or building).
+     * Gets the line2 property value. Secondary delivery line, such as an apartment, suite, unit, floor, or building.
      * @return string|null
     */
     public function getLine2(): ?string {
@@ -146,7 +146,7 @@ class StreetAddress implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the postalCode property value. The postal or ZIP code.
+     * Gets the postalCode property value. Postal routing code, such as a ZIP code or postcode, formatted according to the destination country.
      * @return string|null
     */
     public function getPostalCode(): ?string {
@@ -154,7 +154,7 @@ class StreetAddress implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the province property value. The province or territory, if distinct from state in your use case (optional, use with care).
+     * Gets the province property value. Province or territory when represented separately from State by the source or destination system.
      * @return string|null
     */
     public function getProvince(): ?string {
@@ -162,7 +162,7 @@ class StreetAddress implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the region property value. The broader region, district, or administrative area (e.g., prefecture or county).
+     * Gets the region property value. Region, district, county, prefecture, or other administrative area not represented by state or province.
      * @return string|null
     */
     public function getRegion(): ?string {
@@ -170,7 +170,7 @@ class StreetAddress implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the state property value. The state, province, or equivalent administrative region. Commonly used in countries like the US, Canada, and Australia.
+     * Gets the state property value. State or equivalent first-level administrative subdivision when that label is used by the country.
      * @return string|null
     */
     public function getState(): ?string {
@@ -203,7 +203,7 @@ class StreetAddress implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the additionalInfo property value. Optional additional notes or delivery instructions.
+     * Sets the additionalInfo property value. Additional address context or delivery instructions that do not fit the structured fields.
      * @param string|null $value Value to set for the additionalInfo property.
     */
     public function setAdditionalInfo(?string $value): void {
@@ -211,7 +211,7 @@ class StreetAddress implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the city property value. The city, town, or locality.
+     * Sets the city property value. City, town, village, or other postal locality.
      * @param string|null $value Value to set for the city property.
     */
     public function setCity(?string $value): void {
@@ -219,7 +219,7 @@ class StreetAddress implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the country property value. The ISO 3166-1 alpha-2 country code (e.g., "US", "GB", "CA").
+     * Sets the country property value. Two-letter ISO 3166-1 alpha-2 country code, such as US, GB, or CA.
      * @param string|null $value Value to set for the country property.
     */
     public function setCountry(?string $value): void {
@@ -227,7 +227,7 @@ class StreetAddress implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the line1 property value. The primary address line (e.g., street address, P.O. box, company name).
+     * Sets the line1 property value. Primary delivery line, such as a street address, post-office box, or company name.
      * @param string|null $value Value to set for the line1 property.
     */
     public function setLine1(?string $value): void {
@@ -235,7 +235,7 @@ class StreetAddress implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the line2 property value. The secondary address line (e.g., apartment, suite, unit, or building).
+     * Sets the line2 property value. Secondary delivery line, such as an apartment, suite, unit, floor, or building.
      * @param string|null $value Value to set for the line2 property.
     */
     public function setLine2(?string $value): void {
@@ -243,7 +243,7 @@ class StreetAddress implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the postalCode property value. The postal or ZIP code.
+     * Sets the postalCode property value. Postal routing code, such as a ZIP code or postcode, formatted according to the destination country.
      * @param string|null $value Value to set for the postalCode property.
     */
     public function setPostalCode(?string $value): void {
@@ -251,7 +251,7 @@ class StreetAddress implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the province property value. The province or territory, if distinct from state in your use case (optional, use with care).
+     * Sets the province property value. Province or territory when represented separately from State by the source or destination system.
      * @param string|null $value Value to set for the province property.
     */
     public function setProvince(?string $value): void {
@@ -259,7 +259,7 @@ class StreetAddress implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the region property value. The broader region, district, or administrative area (e.g., prefecture or county).
+     * Sets the region property value. Region, district, county, prefecture, or other administrative area not represented by state or province.
      * @param string|null $value Value to set for the region property.
     */
     public function setRegion(?string $value): void {
@@ -267,7 +267,7 @@ class StreetAddress implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the state property value. The state, province, or equivalent administrative region. Commonly used in countries like the US, Canada, and Australia.
+     * Sets the state property value. State or equivalent first-level administrative subdivision when that label is used by the country.
      * @param string|null $value Value to set for the state property.
     */
     public function setState(?string $value): void {

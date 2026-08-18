@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * A generic container for paginated results returned to the client.
+ * Returns one page of query results together with page-size, optional total-count, and opaque continuation-cursor metadata.
 */
 class PagedResultOfNotificationTableRow implements AdditionalDataHolder, Parsable 
 {
@@ -18,22 +18,22 @@ class PagedResultOfNotificationTableRow implements AdditionalDataHolder, Parsabl
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $continuationToken Opaque storage continuation token. ‑ `null` → the current page was the last page.
+     * @var string|null $continuationToken Opaque cursor for requesting the next page, or null when no additional page is available; clients must not parse or modify it.
     */
     private ?string $continuationToken = null;
     
     /**
-     * @var array<NotificationTableRow>|null $items The subset of items returned for the current page.
+     * @var array<NotificationTableRow>|null $items Items included in the current page, in the order determined by the query.
     */
     private ?array $items = null;
     
     /**
-     * @var int|null $pageSize The number of items returned per page in the response. This may reflect the client's requested page size, or a server-defined default or limit.
+     * @var int|null $pageSize Effective page-size limit used for this response, which may differ from the requested size because of server defaults or limits.
     */
     private ?int $pageSize = null;
     
     /**
-     * @var int|null $totalCount The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
+     * @var int|null $totalCount Total number of records matching the query across all pages, or null when counting was not requested or computed.
     */
     private ?int $totalCount = null;
     
@@ -62,7 +62,7 @@ class PagedResultOfNotificationTableRow implements AdditionalDataHolder, Parsabl
     }
 
     /**
-     * Gets the continuationToken property value. Opaque storage continuation token. ‑ `null` → the current page was the last page.
+     * Gets the continuationToken property value. Opaque cursor for requesting the next page, or null when no additional page is available; clients must not parse or modify it.
      * @return string|null
     */
     public function getContinuationToken(): ?string {
@@ -84,7 +84,7 @@ class PagedResultOfNotificationTableRow implements AdditionalDataHolder, Parsabl
     }
 
     /**
-     * Gets the items property value. The subset of items returned for the current page.
+     * Gets the items property value. Items included in the current page, in the order determined by the query.
      * @return array<NotificationTableRow>|null
     */
     public function getItems(): ?array {
@@ -92,7 +92,7 @@ class PagedResultOfNotificationTableRow implements AdditionalDataHolder, Parsabl
     }
 
     /**
-     * Gets the pageSize property value. The number of items returned per page in the response. This may reflect the client's requested page size, or a server-defined default or limit.
+     * Gets the pageSize property value. Effective page-size limit used for this response, which may differ from the requested size because of server defaults or limits.
      * @return int|null
     */
     public function getPageSize(): ?int {
@@ -100,7 +100,7 @@ class PagedResultOfNotificationTableRow implements AdditionalDataHolder, Parsabl
     }
 
     /**
-     * Gets the totalCount property value. The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
+     * Gets the totalCount property value. Total number of records matching the query across all pages, or null when counting was not requested or computed.
      * @return int|null
     */
     public function getTotalCount(): ?int {
@@ -128,7 +128,7 @@ class PagedResultOfNotificationTableRow implements AdditionalDataHolder, Parsabl
     }
 
     /**
-     * Sets the continuationToken property value. Opaque storage continuation token. ‑ `null` → the current page was the last page.
+     * Sets the continuationToken property value. Opaque cursor for requesting the next page, or null when no additional page is available; clients must not parse or modify it.
      * @param string|null $value Value to set for the continuationToken property.
     */
     public function setContinuationToken(?string $value): void {
@@ -136,7 +136,7 @@ class PagedResultOfNotificationTableRow implements AdditionalDataHolder, Parsabl
     }
 
     /**
-     * Sets the items property value. The subset of items returned for the current page.
+     * Sets the items property value. Items included in the current page, in the order determined by the query.
      * @param array<NotificationTableRow>|null $value Value to set for the items property.
     */
     public function setItems(?array $value): void {
@@ -144,7 +144,7 @@ class PagedResultOfNotificationTableRow implements AdditionalDataHolder, Parsabl
     }
 
     /**
-     * Sets the pageSize property value. The number of items returned per page in the response. This may reflect the client's requested page size, or a server-defined default or limit.
+     * Sets the pageSize property value. Effective page-size limit used for this response, which may differ from the requested size because of server defaults or limits.
      * @param int|null $value Value to set for the pageSize property.
     */
     public function setPageSize(?int $value): void {
@@ -152,7 +152,7 @@ class PagedResultOfNotificationTableRow implements AdditionalDataHolder, Parsabl
     }
 
     /**
-     * Sets the totalCount property value. The total number of items that match the query across all pages. May be null if the count is not computed or not applicable (e.g., in continuation-based pagination).
+     * Sets the totalCount property value. Total number of records matching the query across all pages, or null when counting was not requested or computed.
      * @param int|null $value Value to set for the totalCount property.
     */
     public function setTotalCount(?int $value): void {

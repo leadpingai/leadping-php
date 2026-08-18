@@ -33,7 +33,7 @@ class WithLeadItemRequestBuilder extends BaseRequestBuilder
 
     /**
      * Lists event records for one lead with paging, covering communication, routing, automation, and event changes.
-     * @param RequestDataOptions $body Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
+     * @param RequestDataOptions $body Defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
      * @param WithLeadItemRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<PagedResultOfEventTableRow|null>
      * @throws Exception
@@ -51,7 +51,7 @@ class WithLeadItemRequestBuilder extends BaseRequestBuilder
 
     /**
      * Lists event records for one lead with paging, covering communication, routing, automation, and event changes.
-     * @param RequestDataOptions $body Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
+     * @param RequestDataOptions $body Defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
      * @param WithLeadItemRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

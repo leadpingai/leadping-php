@@ -33,7 +33,7 @@ class WithLeadItemRequestBuilder extends BaseRequestBuilder
 
     /**
      * Lists SMS events for one lead with paging, helping users review sent messages, scheduled messages, and delivery outcomes.
-     * @param RequestDataOptions $body Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
+     * @param RequestDataOptions $body Defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
      * @param WithLeadItemRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<PagedResultOfSmsEventTableRow|null>
      * @throws Exception
@@ -51,7 +51,7 @@ class WithLeadItemRequestBuilder extends BaseRequestBuilder
 
     /**
      * Lists SMS events for one lead with paging, helping users review sent messages, scheduled messages, and delivery outcomes.
-     * @param RequestDataOptions $body Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
+     * @param RequestDataOptions $body Defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
      * @param WithLeadItemRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

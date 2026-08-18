@@ -33,7 +33,7 @@ class MeRequestBuilder extends BaseRequestBuilder
 
     /**
      * Lists current-user notifications with paging, sorting, and filters for operational alerts, announcements, and follow-up updates.
-     * @param RequestDataOptions $body Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
+     * @param RequestDataOptions $body Defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
      * @param MeRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<PagedResultOfNotificationTableRow|null>
      * @throws Exception
@@ -51,7 +51,7 @@ class MeRequestBuilder extends BaseRequestBuilder
 
     /**
      * Lists current-user notifications with paging, sorting, and filters for operational alerts, announcements, and follow-up updates.
-     * @param RequestDataOptions $body Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
+     * @param RequestDataOptions $body Defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
      * @param MeRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * A minimal Record type with an Id (string), Name (string), nullable Value (string?) and maximum JSON compatibility
+ * Extends an identifier-and-name resource reference with an optional string value used for display or selection metadata.
 */
 class IdNameValue implements AdditionalDataHolder, Parsable 
 {
@@ -18,17 +18,17 @@ class IdNameValue implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $id The unique identifier.
+     * @var string|null $id Stable unique identifier of the referenced resource.
     */
     private ?string $id = null;
     
     /**
-     * @var string|null $name The display name.
+     * @var string|null $name Human-readable display name of the referenced resource.
     */
     private ?string $name = null;
     
     /**
-     * @var string|null $value The optional value associated with the identifier and name.
+     * @var string|null $value Optional machine-readable or display value associated with the referenced resource.
     */
     private ?string $value = null;
     
@@ -70,7 +70,7 @@ class IdNameValue implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The unique identifier.
+     * Gets the id property value. Stable unique identifier of the referenced resource.
      * @return string|null
     */
     public function getId(): ?string {
@@ -78,7 +78,7 @@ class IdNameValue implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the name property value. The display name.
+     * Gets the name property value. Human-readable display name of the referenced resource.
      * @return string|null
     */
     public function getName(): ?string {
@@ -86,7 +86,7 @@ class IdNameValue implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the value property value. The optional value associated with the identifier and name.
+     * Gets the value property value. Optional machine-readable or display value associated with the referenced resource.
      * @return string|null
     */
     public function getValue(): ?string {
@@ -113,7 +113,7 @@ class IdNameValue implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The unique identifier.
+     * Sets the id property value. Stable unique identifier of the referenced resource.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -121,7 +121,7 @@ class IdNameValue implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the name property value. The display name.
+     * Sets the name property value. Human-readable display name of the referenced resource.
      * @param string|null $value Value to set for the name property.
     */
     public function setName(?string $value): void {
@@ -129,7 +129,7 @@ class IdNameValue implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the value property value. The optional value associated with the identifier and name.
+     * Sets the value property value. Optional machine-readable or display value associated with the referenced resource.
      * @param string|null $value Value to set for the value property.
     */
     public function setValue(?string $value): void {

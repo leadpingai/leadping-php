@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * A minimal Record type with an Id (string), Name (string), and maximum JSON compatibility. The reason for this type (over something like KeyValuePair, dictionary) is because of JSON serialization support.
+ * Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 */
 class IdNamePair implements AdditionalDataHolder, Parsable 
 {
@@ -18,12 +18,12 @@ class IdNamePair implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $id The unique identifier.
+     * @var string|null $id Stable unique identifier of the referenced resource.
     */
     private ?string $id = null;
     
     /**
-     * @var string|null $name The display name.
+     * @var string|null $name Human-readable display name of the referenced resource.
     */
     private ?string $name = null;
     
@@ -64,7 +64,7 @@ class IdNamePair implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The unique identifier.
+     * Gets the id property value. Stable unique identifier of the referenced resource.
      * @return string|null
     */
     public function getId(): ?string {
@@ -72,7 +72,7 @@ class IdNamePair implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the name property value. The display name.
+     * Gets the name property value. Human-readable display name of the referenced resource.
      * @return string|null
     */
     public function getName(): ?string {
@@ -98,7 +98,7 @@ class IdNamePair implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The unique identifier.
+     * Sets the id property value. Stable unique identifier of the referenced resource.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -106,7 +106,7 @@ class IdNamePair implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the name property value. The display name.
+     * Sets the name property value. Human-readable display name of the referenced resource.
      * @param string|null $value Value to set for the name property.
     */
     public function setName(?string $value): void {

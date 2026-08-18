@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * A generic object for handling exact match filtering during querying
+ * Selects records whose named field equals a supplied scalar value.
 */
 class ExactMatchFilter implements AdditionalDataHolder, Parsable 
 {

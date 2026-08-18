@@ -33,7 +33,7 @@ class AnnouncementsRequestBuilder extends BaseRequestBuilder
 
     /**
      * Lists announcement notifications for the current user with paging and filters for release notes, notices, and operational updates.
-     * @param RequestDataOptions $body Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
+     * @param RequestDataOptions $body Defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
      * @param AnnouncementsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<PagedResultOfNotificationTableRow|null>
      * @throws Exception
@@ -51,7 +51,7 @@ class AnnouncementsRequestBuilder extends BaseRequestBuilder
 
     /**
      * Lists announcement notifications for the current user with paging and filters for release notes, notices, and operational updates.
-     * @param RequestDataOptions $body Options for flexible, efficient, and explicit querying in Cosmos DB or similar repositories.
+     * @param RequestDataOptions $body Defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
      * @param AnnouncementsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

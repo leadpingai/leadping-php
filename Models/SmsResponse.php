@@ -64,7 +64,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     private ?string $conversationId = null;
     
     /**
-     * @var DateTime|null $createdAt The date and time when the entity was created.
+     * @var DateTime|null $createdAt UTC timestamp when the resource was created.
     */
     private ?DateTime $createdAt = null;
     
@@ -99,7 +99,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     private ?string $fromPhoneNumberId = null;
     
     /**
-     * @var string|null $id The unique identifier for the entity.
+     * @var string|null $id Stable unique identifier of the resource.
     */
     private ?string $id = null;
     
@@ -114,7 +114,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     private ?array $media = null;
     
     /**
-     * @var DateTime|null $modifiedAt The date and time when the entity was last modified, if applicable.
+     * @var DateTime|null $modifiedAt UTC timestamp when the resource was last modified, or null when it has not been updated.
     */
     private ?DateTime $modifiedAt = null;
     
@@ -300,7 +300,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the createdAt property value. The date and time when the entity was created.
+     * Gets the createdAt property value. UTC timestamp when the resource was created.
      * @return DateTime|null
     */
     public function getCreatedAt(): ?DateTime {
@@ -403,7 +403,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The unique identifier for the entity.
+     * Gets the id property value. Stable unique identifier of the resource.
      * @return string|null
     */
     public function getId(): ?string {
@@ -427,7 +427,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+     * Gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
      * @return DateTime|null
     */
     public function getModifiedAt(): ?DateTime {
@@ -696,7 +696,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the createdAt property value. The date and time when the entity was created.
+     * Sets the createdAt property value. UTC timestamp when the resource was created.
      * @param DateTime|null $value Value to set for the createdAt property.
     */
     public function setCreatedAt(?DateTime $value): void {
@@ -752,7 +752,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The unique identifier for the entity.
+     * Sets the id property value. Stable unique identifier of the resource.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -776,7 +776,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the modifiedAt property value. The date and time when the entity was last modified, if applicable.
+     * Sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
      * @param DateTime|null $value Value to set for the modifiedAt property.
     */
     public function setModifiedAt(?DateTime $value): void {
