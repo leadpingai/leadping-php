@@ -23,29 +23,12 @@ class IntakeRequestBuilder extends BaseRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/leads/intake{?Address1*,Address2*,BirthDate*,City*,DateOfBirth*,DirectPostPrice*,Email*,ExternalId*,FirstName*,Gender*,LandingPage*,LastName*,Phone*,PhoneType*,PostalCode*,Price*,Product*,Referrer*,SellerLeadId*,SellerLeadIdentifier*,SourceMetadata*,State*,SubId*,TagIds*,TagNames*,TrustedFormUrl*,UtmCampaign*,UtmContent*,UtmMedium*,UtmSource*,UtmTerm*,Vertical*,Zip*}');
+        parent::__construct($requestAdapter, [], '{+baseurl}/leads/intake');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {
             $this->pathParameters = ['request-raw-url' => $pathParametersOrRawUrl];
         }
-    }
-
-    /**
-     * Creates a source-authenticated lead from query parameters, supporting simple form posts, tracking metadata, and follow-up automation.
-     * @param IntakeRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return Promise<LeadResponse|null>
-     * @throws Exception
-    */
-    public function get(?IntakeRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
-        $requestInfo = $this->toGetRequestInformation($requestConfiguration);
-        $errorMappings = [
-                '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
-                '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
-                '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
-                '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
-        ];
-        return $this->requestAdapter->sendAsync($requestInfo, [LeadResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
 
     /**
@@ -64,27 +47,6 @@ class IntakeRequestBuilder extends BaseRequestBuilder
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [LeadResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
-    }
-
-    /**
-     * Creates a source-authenticated lead from query parameters, supporting simple form posts, tracking metadata, and follow-up automation.
-     * @param IntakeRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return RequestInformation
-    */
-    public function toGetRequestInformation(?IntakeRequestBuilderGetRequestConfiguration $requestConfiguration = null): RequestInformation {
-        $requestInfo = new RequestInformation();
-        $requestInfo->urlTemplate = $this->urlTemplate;
-        $requestInfo->pathParameters = $this->pathParameters;
-        $requestInfo->httpMethod = HttpMethod::GET;
-        if ($requestConfiguration !== null) {
-            $requestInfo->addHeaders($requestConfiguration->headers);
-            if ($requestConfiguration->queryParameters !== null) {
-                $requestInfo->setQueryParameters($requestConfiguration->queryParameters);
-            }
-            $requestInfo->addRequestOptions(...$requestConfiguration->options);
-        }
-        $requestInfo->tryAddHeader('Accept', "application/json");
-        return $requestInfo;
     }
 
     /**
