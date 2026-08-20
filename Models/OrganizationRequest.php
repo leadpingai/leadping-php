@@ -33,7 +33,7 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     private ?string $ein = null;
     
     /**
-     * @var bool|null $isYoungerThan90 Indicates whether the organization serves customers younger than 90, for compliance and underwriting context.
+     * @var bool|null $isYoungerThan90 Whether the organization was formed less than 90 days ago.
     */
     private ?bool $isYoungerThan90 = null;
     
@@ -130,7 +130,7 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the isYoungerThan90 property value. Indicates whether the organization serves customers younger than 90, for compliance and underwriting context.
+     * Gets the isYoungerThan90 property value. Whether the organization was formed less than 90 days ago.
      * @return bool|null
     */
     public function getIsYoungerThan90(): ?bool {
@@ -227,7 +227,7 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the isYoungerThan90 property value. Indicates whether the organization serves customers younger than 90, for compliance and underwriting context.
+     * Sets the isYoungerThan90 property value. Whether the organization was formed less than 90 days ago.
      * @param bool|null $value Value to set for the isYoungerThan90 property.
     */
     public function setIsYoungerThan90(?bool $value): void {

@@ -49,7 +49,7 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     private ?bool $isDefault = null;
     
     /**
-     * @var string|null $last4 UTC timestamp for last4 on this Stripe payment method.
+     * @var string|null $last4 Last four digits of the payment card number.
     */
     private ?string $last4 = null;
     
@@ -143,7 +143,7 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the last4 property value. UTC timestamp for last4 on this Stripe payment method.
+     * Gets the last4 property value. Last four digits of the payment card number.
      * @return string|null
     */
     public function getLast4(): ?string {
@@ -222,7 +222,7 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the last4 property value. UTC timestamp for last4 on this Stripe payment method.
+     * Sets the last4 property value. Last four digits of the payment card number.
      * @param string|null $value Value to set for the last4 property.
     */
     public function setLast4(?string $value): void {

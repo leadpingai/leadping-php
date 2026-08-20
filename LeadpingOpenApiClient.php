@@ -2,6 +2,7 @@
 
 namespace Leadping\OpenApiClient;
 
+use Leadping\OpenApiClient\A2a\A2aRequestBuilder;
 use Leadping\OpenApiClient\Analytics\AnalyticsRequestBuilder;
 use Leadping\OpenApiClient\Automations\AutomationsRequestBuilder;
 use Leadping\OpenApiClient\Conversations\ConversationsRequestBuilder;
@@ -26,6 +27,7 @@ use Leadping\OpenApiClient\Transactions\TransactionsRequestBuilder;
 use Leadping\OpenApiClient\Usage\UsageRequestBuilder;
 use Leadping\OpenApiClient\Users\UsersRequestBuilder;
 use Leadping\OpenApiClient\Wallets\WalletsRequestBuilder;
+use Leadping\OpenApiClient\WellKnown\WellKnownRequestBuilder;
 use Microsoft\Kiota\Abstractions\ApiClientBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
@@ -42,6 +44,13 @@ use Microsoft\Kiota\Serialization\Text\TextSerializationWriterFactory;
 */
 class LeadpingOpenApiClient extends BaseRequestBuilder 
 {
+    /**
+     * The a2a property
+    */
+    public function a2a(): A2aRequestBuilder {
+        return new A2aRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
     /**
      * The analytics property
     */
@@ -208,6 +217,13 @@ class LeadpingOpenApiClient extends BaseRequestBuilder
     */
     public function wallets(): WalletsRequestBuilder {
         return new WalletsRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The wellKnown property
+    */
+    public function wellKnown(): WellKnownRequestBuilder {
+        return new WellKnownRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**

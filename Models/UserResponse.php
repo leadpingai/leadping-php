@@ -70,7 +70,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $lastLoggedInAt = null;
     
     /**
-     * @var string|null $lastName UTC timestamp for last name on this user.
+     * @var string|null $lastName Last name of the Leadping user.
     */
     private ?string $lastName = null;
     
@@ -279,7 +279,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lastName property value. UTC timestamp for last name on this user.
+     * Gets the lastName property value. Last name of the Leadping user.
      * @return string|null
     */
     public function getLastName(): ?string {
@@ -502,7 +502,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lastName property value. UTC timestamp for last name on this user.
+     * Sets the lastName property value. Last name of the Leadping user.
      * @param string|null $value Value to set for the lastName property.
     */
     public function setLastName(?string $value): void {
