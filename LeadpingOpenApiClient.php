@@ -4,7 +4,6 @@ namespace Leadping\OpenApiClient;
 
 use Leadping\OpenApiClient\Analytics\AnalyticsRequestBuilder;
 use Leadping\OpenApiClient\Automations\AutomationsRequestBuilder;
-use Leadping\OpenApiClient\Contact\ContactRequestBuilder;
 use Leadping\OpenApiClient\Conversations\ConversationsRequestBuilder;
 use Leadping\OpenApiClient\Events\EventsRequestBuilder;
 use Leadping\OpenApiClient\Feedback\FeedbackRequestBuilder;
@@ -55,13 +54,6 @@ class LeadpingOpenApiClient extends BaseRequestBuilder
     */
     public function automations(): AutomationsRequestBuilder {
         return new AutomationsRequestBuilder($this->pathParameters, $this->requestAdapter);
-    }
-    
-    /**
-     * The contact property
-    */
-    public function contact(): ContactRequestBuilder {
-        return new ContactRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**

@@ -21,7 +21,7 @@ class DownloadRequestBuilder extends BaseRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/reports/exports/{exportId}/download{?token*}');
+        parent::__construct($requestAdapter, [], '{+baseurl}/reports/exports/{exportId}/download?token={token}');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {
@@ -62,7 +62,7 @@ class DownloadRequestBuilder extends BaseRequestBuilder
             }
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
-        $requestInfo->tryAddHeader('Accept', "application/json, text/plain;q=0.9");
+        $requestInfo->tryAddHeader('Accept', "application/problem+json");
         return $requestInfo;
     }
 

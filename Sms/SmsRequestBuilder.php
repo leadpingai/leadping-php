@@ -29,7 +29,7 @@ class SmsRequestBuilder extends BaseRequestBuilder
     
     /**
      * Gets an item from the Leadping/OpenApiClient.sms.item collection
-     * @param string $smsEventId The sms event identifier.
+     * @param string $smsEventId The SMS event identifier.
      * @return WithSmsEventItemRequestBuilder
     */
     public function bySmsEventId(string $smsEventId): WithSmsEventItemRequestBuilder {

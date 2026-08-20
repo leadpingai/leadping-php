@@ -24,6 +24,11 @@ class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsa
     private ?string $detail = null;
     
     /**
+     * @var ProblemDetails_errors|null $errors Validation errors keyed by the JSON request field name. Present for request validation failures.
+    */
+    private ?ProblemDetails_errors $errors = null;
+    
+    /**
      * @var string|null $instance URI reference that identifies this specific occurrence of the problem.
     */
     private ?string $instance = null;
@@ -37,6 +42,11 @@ class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsa
      * @var string|null $title Short, human-readable summary of the problem.
     */
     private ?string $title = null;
+    
+    /**
+     * @var string|null $traceId Request trace identifier used to correlate this problem with Leadping diagnostics.
+    */
+    private ?string $traceId = null;
     
     /**
      * @var string|null $type URI reference that identifies the problem type.
@@ -76,6 +86,14 @@ class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsa
     }
 
     /**
+     * Gets the errors property value. Validation errors keyed by the JSON request field name. Present for request validation failures.
+     * @return ProblemDetails_errors|null
+    */
+    public function getErrors(): ?ProblemDetails_errors {
+        return $this->errors;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
@@ -83,9 +101,11 @@ class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsa
         $o = $this;
         return  [
             'detail' => fn(ParseNode $n) => $o->setDetail($n->getStringValue()),
+            'errors' => fn(ParseNode $n) => $o->setErrors($n->getObjectValue([ProblemDetails_errors::class, 'createFromDiscriminatorValue'])),
             'instance' => fn(ParseNode $n) => $o->setInstance($n->getStringValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getIntegerValue()),
             'title' => fn(ParseNode $n) => $o->setTitle($n->getStringValue()),
+            'traceId' => fn(ParseNode $n) => $o->setTraceId($n->getStringValue()),
             'type' => fn(ParseNode $n) => $o->setType($n->getStringValue()),
         ];
     }
@@ -123,6 +143,14 @@ class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsa
     }
 
     /**
+     * Gets the traceId property value. Request trace identifier used to correlate this problem with Leadping diagnostics.
+     * @return string|null
+    */
+    public function getTraceId(): ?string {
+        return $this->traceId;
+    }
+
+    /**
      * Gets the type property value. URI reference that identifies the problem type.
      * @return string|null
     */
@@ -136,9 +164,11 @@ class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsa
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('detail', $this->getDetail());
+        $writer->writeObjectValue('errors', $this->getErrors());
         $writer->writeStringValue('instance', $this->getInstance());
         $writer->writeIntegerValue('status', $this->getStatus());
         $writer->writeStringValue('title', $this->getTitle());
+        $writer->writeStringValue('traceId', $this->getTraceId());
         $writer->writeStringValue('type', $this->getType());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -157,6 +187,14 @@ class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsa
     */
     public function setDetail(?string $value): void {
         $this->detail = $value;
+    }
+
+    /**
+     * Sets the errors property value. Validation errors keyed by the JSON request field name. Present for request validation failures.
+     * @param ProblemDetails_errors|null $value Value to set for the errors property.
+    */
+    public function setErrors(?ProblemDetails_errors $value): void {
+        $this->errors = $value;
     }
 
     /**
@@ -181,6 +219,14 @@ class ProblemDetails extends ApiException implements AdditionalDataHolder, Parsa
     */
     public function setTitle(?string $value): void {
         $this->title = $value;
+    }
+
+    /**
+     * Sets the traceId property value. Request trace identifier used to correlate this problem with Leadping diagnostics.
+     * @param string|null $value Value to set for the traceId property.
+    */
+    public function setTraceId(?string $value): void {
+        $this->traceId = $value;
     }
 
     /**

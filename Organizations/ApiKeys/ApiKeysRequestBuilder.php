@@ -2,6 +2,7 @@
 
 namespace Leadping\OpenApiClient\Organizations\ApiKeys;
 
+use Leadping\OpenApiClient\Organizations\ApiKeys\Item\ApiKeysItemRequestBuilder;
 use Leadping\OpenApiClient\Organizations\ApiKeys\My\MyRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
@@ -18,6 +19,17 @@ class ApiKeysRequestBuilder extends BaseRequestBuilder
         return new MyRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
+    /**
+     * Gets an item from the Leadping/OpenApiClient.organizations.apiKeys.item collection
+     * @param string $id Unique identifier of the item
+     * @return ApiKeysItemRequestBuilder
+    */
+    public function byId(string $id): ApiKeysItemRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['id'] = $id;
+        return new ApiKeysItemRequestBuilder($urlTplParams, $this->requestAdapter);
+    }
+
     /**
      * Instantiates a new ApiKeysRequestBuilder and sets the default values.
      * @param array<string, mixed>|string $pathParametersOrRawUrl Path parameters for the request or a String representing the raw URL.

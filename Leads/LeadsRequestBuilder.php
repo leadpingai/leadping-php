@@ -36,7 +36,7 @@ class LeadsRequestBuilder extends BaseRequestBuilder
     
     /**
      * Gets an item from the Leadping/OpenApiClient.leads.item collection
-     * @param string $id The ID of the lead to retrieve.
+     * @param string $id Unique identifier of the item
      * @return ItemRequestBuilder
     */
     public function byId(string $id): ItemRequestBuilder {

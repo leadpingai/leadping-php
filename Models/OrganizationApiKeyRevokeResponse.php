@@ -2,15 +2,16 @@
 
 namespace Leadping\OpenApiClient\Models;
 
+use DateTime;
 use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Defines the input used for change billing plan.
+ * Confirms that an organization API key was revoked.
 */
-class ChangeBillingPlanRequest implements AdditionalDataHolder, Parsable 
+class OrganizationApiKeyRevokeResponse implements AdditionalDataHolder, Parsable 
 {
     /**
      * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -18,12 +19,17 @@ class ChangeBillingPlanRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var BillingPlan|null $billingPlan Billing plan for this billing plan.
+     * @var string|null $id Unique identifier of the revoked API key.
     */
-    private ?BillingPlan $billingPlan = null;
+    private ?string $id = null;
     
     /**
-     * Instantiates a new ChangeBillingPlanRequest and sets the default values.
+     * @var DateTime|null $revokedAt Date and time when the API key was revoked.
+    */
+    private ?DateTime $revokedAt = null;
+    
+    /**
+     * Instantiates a new OrganizationApiKeyRevokeResponse and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);
@@ -32,10 +38,10 @@ class ChangeBillingPlanRequest implements AdditionalDataHolder, Parsable
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
-     * @return ChangeBillingPlanRequest
+     * @return OrganizationApiKeyRevokeResponse
     */
-    public static function createFromDiscriminatorValue(ParseNode $parseNode): ChangeBillingPlanRequest {
-        return new ChangeBillingPlanRequest();
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): OrganizationApiKeyRevokeResponse {
+        return new OrganizationApiKeyRevokeResponse();
     }
 
     /**
@@ -47,22 +53,31 @@ class ChangeBillingPlanRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billingPlan property value. Billing plan for this billing plan.
-     * @return BillingPlan|null
-    */
-    public function getBillingPlan(): ?BillingPlan {
-        return $this->billingPlan;
-    }
-
-    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'billingPlan' => fn(ParseNode $n) => $o->setBillingPlan($n->getEnumValue(BillingPlan::class)),
+            'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
+            'revokedAt' => fn(ParseNode $n) => $o->setRevokedAt($n->getDateTimeValue()),
         ];
+    }
+
+    /**
+     * Gets the id property value. Unique identifier of the revoked API key.
+     * @return string|null
+    */
+    public function getId(): ?string {
+        return $this->id;
+    }
+
+    /**
+     * Gets the revokedAt property value. Date and time when the API key was revoked.
+     * @return DateTime|null
+    */
+    public function getRevokedAt(): ?DateTime {
+        return $this->revokedAt;
     }
 
     /**
@@ -70,7 +85,8 @@ class ChangeBillingPlanRequest implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeEnumValue('billingPlan', $this->getBillingPlan());
+        $writer->writeStringValue('id', $this->getId());
+        $writer->writeDateTimeValue('revokedAt', $this->getRevokedAt());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -83,11 +99,19 @@ class ChangeBillingPlanRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billingPlan property value. Billing plan for this billing plan.
-     * @param BillingPlan|null $value Value to set for the billingPlan property.
+     * Sets the id property value. Unique identifier of the revoked API key.
+     * @param string|null $value Value to set for the id property.
     */
-    public function setBillingPlan(?BillingPlan $value): void {
-        $this->billingPlan = $value;
+    public function setId(?string $value): void {
+        $this->id = $value;
+    }
+
+    /**
+     * Sets the revokedAt property value. Date and time when the API key was revoked.
+     * @param DateTime|null $value Value to set for the revokedAt property.
+    */
+    public function setRevokedAt(?DateTime $value): void {
+        $this->revokedAt = $value;
     }
 
 }

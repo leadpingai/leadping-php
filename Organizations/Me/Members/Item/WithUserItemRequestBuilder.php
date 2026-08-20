@@ -80,7 +80,7 @@ class WithUserItemRequestBuilder extends BaseRequestBuilder
             $requestInfo->addHeaders($requestConfiguration->headers);
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
-        $requestInfo->tryAddHeader('Accept', "application/json, application/problem+json, text/plain;q=0.9");
+        $requestInfo->tryAddHeader('Accept', "application/problem+json");
         return $requestInfo;
     }
 

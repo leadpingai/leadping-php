@@ -8,9 +8,9 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Returns one page of query results together with page-size, optional total-count, and opaque continuation-cursor metadata.
+ * A page of safe organization API-key previews.
 */
-class PagedResultOfOrganizationTableRow implements AdditionalDataHolder, Parsable 
+class OrganizationApiKeyListResponse implements AdditionalDataHolder, Parsable 
 {
     /**
      * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -18,27 +18,27 @@ class PagedResultOfOrganizationTableRow implements AdditionalDataHolder, Parsabl
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $continuationToken Opaque cursor for requesting the next page, or null when no additional page is available; clients must not parse or modify it.
+     * @var string|null $continuationToken Opaque token for retrieving the next page, or null when this is the last page.
     */
     private ?string $continuationToken = null;
     
     /**
-     * @var array<OrganizationTableRow>|null $items Items included in the current page, in the order determined by the query.
+     * @var array<OrganizationApiKeyPreviewResponse>|null $items Safe API-key previews in the current page.
     */
     private ?array $items = null;
     
     /**
-     * @var int|null $pageSize Effective page-size limit used for this response, which may differ from the requested size because of server defaults or limits.
+     * @var int|null $pageSize Number of API keys in the current page.
     */
     private ?int $pageSize = null;
     
     /**
-     * @var int|null $totalCount Total number of records matching the query across all pages, or null when counting was not requested or computed.
+     * @var int|null $totalCount Total number of API keys matching the request.
     */
     private ?int $totalCount = null;
     
     /**
-     * Instantiates a new PagedResultOfOrganizationTableRow and sets the default values.
+     * Instantiates a new OrganizationApiKeyListResponse and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);
@@ -47,10 +47,10 @@ class PagedResultOfOrganizationTableRow implements AdditionalDataHolder, Parsabl
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
-     * @return PagedResultOfOrganizationTableRow
+     * @return OrganizationApiKeyListResponse
     */
-    public static function createFromDiscriminatorValue(ParseNode $parseNode): PagedResultOfOrganizationTableRow {
-        return new PagedResultOfOrganizationTableRow();
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): OrganizationApiKeyListResponse {
+        return new OrganizationApiKeyListResponse();
     }
 
     /**
@@ -62,7 +62,7 @@ class PagedResultOfOrganizationTableRow implements AdditionalDataHolder, Parsabl
     }
 
     /**
-     * Gets the continuationToken property value. Opaque cursor for requesting the next page, or null when no additional page is available; clients must not parse or modify it.
+     * Gets the continuationToken property value. Opaque token for retrieving the next page, or null when this is the last page.
      * @return string|null
     */
     public function getContinuationToken(): ?string {
@@ -77,22 +77,22 @@ class PagedResultOfOrganizationTableRow implements AdditionalDataHolder, Parsabl
         $o = $this;
         return  [
             'continuationToken' => fn(ParseNode $n) => $o->setContinuationToken($n->getStringValue()),
-            'items' => fn(ParseNode $n) => $o->setItems($n->getCollectionOfObjectValues([OrganizationTableRow::class, 'createFromDiscriminatorValue'])),
+            'items' => fn(ParseNode $n) => $o->setItems($n->getCollectionOfObjectValues([OrganizationApiKeyPreviewResponse::class, 'createFromDiscriminatorValue'])),
             'pageSize' => fn(ParseNode $n) => $o->setPageSize($n->getIntegerValue()),
             'totalCount' => fn(ParseNode $n) => $o->setTotalCount($n->getIntegerValue()),
         ];
     }
 
     /**
-     * Gets the items property value. Items included in the current page, in the order determined by the query.
-     * @return array<OrganizationTableRow>|null
+     * Gets the items property value. Safe API-key previews in the current page.
+     * @return array<OrganizationApiKeyPreviewResponse>|null
     */
     public function getItems(): ?array {
         return $this->items;
     }
 
     /**
-     * Gets the pageSize property value. Effective page-size limit used for this response, which may differ from the requested size because of server defaults or limits.
+     * Gets the pageSize property value. Number of API keys in the current page.
      * @return int|null
     */
     public function getPageSize(): ?int {
@@ -100,7 +100,7 @@ class PagedResultOfOrganizationTableRow implements AdditionalDataHolder, Parsabl
     }
 
     /**
-     * Gets the totalCount property value. Total number of records matching the query across all pages, or null when counting was not requested or computed.
+     * Gets the totalCount property value. Total number of API keys matching the request.
      * @return int|null
     */
     public function getTotalCount(): ?int {
@@ -128,7 +128,7 @@ class PagedResultOfOrganizationTableRow implements AdditionalDataHolder, Parsabl
     }
 
     /**
-     * Sets the continuationToken property value. Opaque cursor for requesting the next page, or null when no additional page is available; clients must not parse or modify it.
+     * Sets the continuationToken property value. Opaque token for retrieving the next page, or null when this is the last page.
      * @param string|null $value Value to set for the continuationToken property.
     */
     public function setContinuationToken(?string $value): void {
@@ -136,15 +136,15 @@ class PagedResultOfOrganizationTableRow implements AdditionalDataHolder, Parsabl
     }
 
     /**
-     * Sets the items property value. Items included in the current page, in the order determined by the query.
-     * @param array<OrganizationTableRow>|null $value Value to set for the items property.
+     * Sets the items property value. Safe API-key previews in the current page.
+     * @param array<OrganizationApiKeyPreviewResponse>|null $value Value to set for the items property.
     */
     public function setItems(?array $value): void {
         $this->items = $value;
     }
 
     /**
-     * Sets the pageSize property value. Effective page-size limit used for this response, which may differ from the requested size because of server defaults or limits.
+     * Sets the pageSize property value. Number of API keys in the current page.
      * @param int|null $value Value to set for the pageSize property.
     */
     public function setPageSize(?int $value): void {
@@ -152,7 +152,7 @@ class PagedResultOfOrganizationTableRow implements AdditionalDataHolder, Parsabl
     }
 
     /**
-     * Sets the totalCount property value. Total number of records matching the query across all pages, or null when counting was not requested or computed.
+     * Sets the totalCount property value. Total number of API keys matching the request.
      * @param int|null $value Value to set for the totalCount property.
     */
     public function setTotalCount(?int $value): void {

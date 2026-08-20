@@ -4,7 +4,7 @@ namespace Leadping\OpenApiClient\Organizations\ApiKeys\My;
 
 use Exception;
 use Http\Promise\Promise;
-use Leadping\OpenApiClient\Models\PagedResultOfOrganizationTableRow;
+use Leadping\OpenApiClient\Models\OrganizationApiKeyListResponse;
 use Leadping\OpenApiClient\Models\ProblemDetails;
 use Leadping\OpenApiClient\Models\RequestDataOptions;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
@@ -35,7 +35,7 @@ class MyRequestBuilder extends BaseRequestBuilder
      * Retrieves a paged list of API keys owned by the caller's current Leadping organization, with support for filtering, sorting, and pagination.
      * @param RequestDataOptions $body Defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
      * @param MyRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return Promise<PagedResultOfOrganizationTableRow|null>
+     * @return Promise<OrganizationApiKeyListResponse|null>
      * @throws Exception
     */
     public function post(RequestDataOptions $body, ?MyRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
@@ -46,7 +46,7 @@ class MyRequestBuilder extends BaseRequestBuilder
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
-        return $this->requestAdapter->sendAsync($requestInfo, [PagedResultOfOrganizationTableRow::class, 'createFromDiscriminatorValue'], $errorMappings);
+        return $this->requestAdapter->sendAsync($requestInfo, [OrganizationApiKeyListResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
 
     /**

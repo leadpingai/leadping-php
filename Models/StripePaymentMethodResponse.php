@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Describes stripe payment method data used in Leadping API requests and responses.
+ * Describes Stripe payment method data used in Leadping API requests and responses.
 */
 class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable 
 {

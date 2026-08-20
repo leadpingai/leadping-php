@@ -36,7 +36,7 @@ class AutomationsRequestBuilder extends BaseRequestBuilder
     
     /**
      * Gets an item from the Leadping/OpenApiClient.automations.item collection
-     * @param string $id The ID of the automation.
+     * @param string $id Unique identifier of the item
      * @return AutomationsItemRequestBuilder
     */
     public function byId(string $id): AutomationsItemRequestBuilder {

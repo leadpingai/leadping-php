@@ -34,11 +34,6 @@ class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable
     private ?DateTime $appointmentStartAt = null;
     
     /**
-     * @var string|null $assignedToUserId The assigned to user ID associated with this lead status change.
-    */
-    private ?string $assignedToUserId = null;
-    
-    /**
      * @var DateTime|null $callbackAt UTC timestamp for callback at on this lead status change.
     */
     private ?DateTime $callbackAt = null;
@@ -49,24 +44,9 @@ class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable
     private ?LeadStatusChangeRequest_category $category = null;
     
     /**
-     * @var string|null $changedByAutomationId The automation that changed this lead status change, when applicable.
-    */
-    private ?string $changedByAutomationId = null;
-    
-    /**
-     * @var LeadStatusChangeRequest_changeSource|null $changeSource Known sources that can change a lead's current lead status change.
-    */
-    private ?LeadStatusChangeRequest_changeSource $changeSource = null;
-    
-    /**
      * @var string|null $followUpStatus The current follow up status for this lead status change.
     */
     private ?string $followUpStatus = null;
-    
-    /**
-     * @var bool|null $isMissedCallFollowUp Whether this lead status change is missed call follow up.
-    */
-    private ?bool $isMissedCallFollowUp = null;
     
     /**
      * @var string|null $notes The operator or customer notes recorded for this lead status change.
@@ -84,24 +64,9 @@ class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable
     private ?string $reason = null;
     
     /**
-     * @var string|null $relatedCallEventId The related call event ID associated with this lead status change.
-    */
-    private ?string $relatedCallEventId = null;
-    
-    /**
-     * @var string|null $sourceId The source ID associated with this lead status change.
-    */
-    private ?string $sourceId = null;
-    
-    /**
      * @var DateTime|null $taskDueAt UTC timestamp for task due at on this lead status change.
     */
     private ?DateTime $taskDueAt = null;
-    
-    /**
-     * @var DateTime|null $timestamp UTC timestamp for timestamp on this lead status change.
-    */
-    private ?DateTime $timestamp = null;
     
     /**
      * @var string|null $type Category of status change being recorded for the lead.
@@ -157,14 +122,6 @@ class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the assignedToUserId property value. The assigned to user ID associated with this lead status change.
-     * @return string|null
-    */
-    public function getAssignedToUserId(): ?string {
-        return $this->assignedToUserId;
-    }
-
-    /**
      * Gets the callbackAt property value. UTC timestamp for callback at on this lead status change.
      * @return DateTime|null
     */
@@ -181,22 +138,6 @@ class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the changedByAutomationId property value. The automation that changed this lead status change, when applicable.
-     * @return string|null
-    */
-    public function getChangedByAutomationId(): ?string {
-        return $this->changedByAutomationId;
-    }
-
-    /**
-     * Gets the changeSource property value. Known sources that can change a lead's current lead status change.
-     * @return LeadStatusChangeRequest_changeSource|null
-    */
-    public function getChangeSource(): ?LeadStatusChangeRequest_changeSource {
-        return $this->changeSource;
-    }
-
-    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
@@ -206,20 +147,13 @@ class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable
             'appointmentEndAt' => fn(ParseNode $n) => $o->setAppointmentEndAt($n->getDateTimeValue()),
             'appointmentNotes' => fn(ParseNode $n) => $o->setAppointmentNotes($n->getStringValue()),
             'appointmentStartAt' => fn(ParseNode $n) => $o->setAppointmentStartAt($n->getDateTimeValue()),
-            'assignedToUserId' => fn(ParseNode $n) => $o->setAssignedToUserId($n->getStringValue()),
             'callbackAt' => fn(ParseNode $n) => $o->setCallbackAt($n->getDateTimeValue()),
             'category' => fn(ParseNode $n) => $o->setCategory($n->getEnumValue(LeadStatusChangeRequest_category::class)),
-            'changedByAutomationId' => fn(ParseNode $n) => $o->setChangedByAutomationId($n->getStringValue()),
-            'changeSource' => fn(ParseNode $n) => $o->setChangeSource($n->getEnumValue(LeadStatusChangeRequest_changeSource::class)),
             'followUpStatus' => fn(ParseNode $n) => $o->setFollowUpStatus($n->getStringValue()),
-            'isMissedCallFollowUp' => fn(ParseNode $n) => $o->setIsMissedCallFollowUp($n->getBooleanValue()),
             'notes' => fn(ParseNode $n) => $o->setNotes($n->getStringValue()),
             'outcome' => fn(ParseNode $n) => $o->setOutcome($n->getStringValue()),
             'reason' => fn(ParseNode $n) => $o->setReason($n->getStringValue()),
-            'relatedCallEventId' => fn(ParseNode $n) => $o->setRelatedCallEventId($n->getStringValue()),
-            'sourceId' => fn(ParseNode $n) => $o->setSourceId($n->getStringValue()),
             'taskDueAt' => fn(ParseNode $n) => $o->setTaskDueAt($n->getDateTimeValue()),
-            'timestamp' => fn(ParseNode $n) => $o->setTimestamp($n->getDateTimeValue()),
             'type' => fn(ParseNode $n) => $o->setType($n->getStringValue()),
         ];
     }
@@ -230,14 +164,6 @@ class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable
     */
     public function getFollowUpStatus(): ?string {
         return $this->followUpStatus;
-    }
-
-    /**
-     * Gets the isMissedCallFollowUp property value. Whether this lead status change is missed call follow up.
-     * @return bool|null
-    */
-    public function getIsMissedCallFollowUp(): ?bool {
-        return $this->isMissedCallFollowUp;
     }
 
     /**
@@ -265,35 +191,11 @@ class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the relatedCallEventId property value. The related call event ID associated with this lead status change.
-     * @return string|null
-    */
-    public function getRelatedCallEventId(): ?string {
-        return $this->relatedCallEventId;
-    }
-
-    /**
-     * Gets the sourceId property value. The source ID associated with this lead status change.
-     * @return string|null
-    */
-    public function getSourceId(): ?string {
-        return $this->sourceId;
-    }
-
-    /**
      * Gets the taskDueAt property value. UTC timestamp for task due at on this lead status change.
      * @return DateTime|null
     */
     public function getTaskDueAt(): ?DateTime {
         return $this->taskDueAt;
-    }
-
-    /**
-     * Gets the timestamp property value. UTC timestamp for timestamp on this lead status change.
-     * @return DateTime|null
-    */
-    public function getTimestamp(): ?DateTime {
-        return $this->timestamp;
     }
 
     /**
@@ -312,20 +214,13 @@ class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('appointmentEndAt', $this->getAppointmentEndAt());
         $writer->writeStringValue('appointmentNotes', $this->getAppointmentNotes());
         $writer->writeDateTimeValue('appointmentStartAt', $this->getAppointmentStartAt());
-        $writer->writeStringValue('assignedToUserId', $this->getAssignedToUserId());
         $writer->writeDateTimeValue('callbackAt', $this->getCallbackAt());
         $writer->writeEnumValue('category', $this->getCategory());
-        $writer->writeStringValue('changedByAutomationId', $this->getChangedByAutomationId());
-        $writer->writeEnumValue('changeSource', $this->getChangeSource());
         $writer->writeStringValue('followUpStatus', $this->getFollowUpStatus());
-        $writer->writeBooleanValue('isMissedCallFollowUp', $this->getIsMissedCallFollowUp());
         $writer->writeStringValue('notes', $this->getNotes());
         $writer->writeStringValue('outcome', $this->getOutcome());
         $writer->writeStringValue('reason', $this->getReason());
-        $writer->writeStringValue('relatedCallEventId', $this->getRelatedCallEventId());
-        $writer->writeStringValue('sourceId', $this->getSourceId());
         $writer->writeDateTimeValue('taskDueAt', $this->getTaskDueAt());
-        $writer->writeDateTimeValue('timestamp', $this->getTimestamp());
         $writer->writeStringValue('type', $this->getType());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -363,14 +258,6 @@ class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the assignedToUserId property value. The assigned to user ID associated with this lead status change.
-     * @param string|null $value Value to set for the assignedToUserId property.
-    */
-    public function setAssignedToUserId(?string $value): void {
-        $this->assignedToUserId = $value;
-    }
-
-    /**
      * Sets the callbackAt property value. UTC timestamp for callback at on this lead status change.
      * @param DateTime|null $value Value to set for the callbackAt property.
     */
@@ -387,35 +274,11 @@ class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the changedByAutomationId property value. The automation that changed this lead status change, when applicable.
-     * @param string|null $value Value to set for the changedByAutomationId property.
-    */
-    public function setChangedByAutomationId(?string $value): void {
-        $this->changedByAutomationId = $value;
-    }
-
-    /**
-     * Sets the changeSource property value. Known sources that can change a lead's current lead status change.
-     * @param LeadStatusChangeRequest_changeSource|null $value Value to set for the changeSource property.
-    */
-    public function setChangeSource(?LeadStatusChangeRequest_changeSource $value): void {
-        $this->changeSource = $value;
-    }
-
-    /**
      * Sets the followUpStatus property value. The current follow up status for this lead status change.
      * @param string|null $value Value to set for the followUpStatus property.
     */
     public function setFollowUpStatus(?string $value): void {
         $this->followUpStatus = $value;
-    }
-
-    /**
-     * Sets the isMissedCallFollowUp property value. Whether this lead status change is missed call follow up.
-     * @param bool|null $value Value to set for the isMissedCallFollowUp property.
-    */
-    public function setIsMissedCallFollowUp(?bool $value): void {
-        $this->isMissedCallFollowUp = $value;
     }
 
     /**
@@ -443,35 +306,11 @@ class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the relatedCallEventId property value. The related call event ID associated with this lead status change.
-     * @param string|null $value Value to set for the relatedCallEventId property.
-    */
-    public function setRelatedCallEventId(?string $value): void {
-        $this->relatedCallEventId = $value;
-    }
-
-    /**
-     * Sets the sourceId property value. The source ID associated with this lead status change.
-     * @param string|null $value Value to set for the sourceId property.
-    */
-    public function setSourceId(?string $value): void {
-        $this->sourceId = $value;
-    }
-
-    /**
      * Sets the taskDueAt property value. UTC timestamp for task due at on this lead status change.
      * @param DateTime|null $value Value to set for the taskDueAt property.
     */
     public function setTaskDueAt(?DateTime $value): void {
         $this->taskDueAt = $value;
-    }
-
-    /**
-     * Sets the timestamp property value. UTC timestamp for timestamp on this lead status change.
-     * @param DateTime|null $value Value to set for the timestamp property.
-    */
-    public function setTimestamp(?DateTime $value): void {
-        $this->timestamp = $value;
     }
 
     /**

@@ -21,7 +21,7 @@ class TransactionsRequestBuilder extends BaseRequestBuilder
     
     /**
      * Gets an item from the Leadping/OpenApiClient.transactions.item collection
-     * @param string $id The ID of the transaction to retrieve.
+     * @param string $id Unique identifier of the item
      * @return TransactionsItemRequestBuilder
     */
     public function byId(string $id): TransactionsItemRequestBuilder {

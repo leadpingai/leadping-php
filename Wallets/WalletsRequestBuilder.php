@@ -21,7 +21,7 @@ class WalletsRequestBuilder extends BaseRequestBuilder
     
     /**
      * Gets an item from the Leadping/OpenApiClient.wallets.item collection
-     * @param string $id The ID of the wallet to retrieve.
+     * @param string $id Unique identifier of the item
      * @return WalletsItemRequestBuilder
     */
     public function byId(string $id): WalletsItemRequestBuilder {

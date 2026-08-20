@@ -31,7 +31,7 @@ class ArchiveRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Archives a lead without deleting history, removing it from active pipeline views while preserving communication and event records.
+     * Archives a lead without deleting history, removing it from active pipeline views while preserving communication and event records.The request body is intentionally optional. An empty body archives the lead with the default manually-archived reason.
      * @param ArchivePostRequestBody $body Defines the fields clients can send when working with lead archive.
      * @param ArchiveRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<LeadResponse|null>
@@ -50,7 +50,7 @@ class ArchiveRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Archives a lead without deleting history, removing it from active pipeline views while preserving communication and event records.
+     * Archives a lead without deleting history, removing it from active pipeline views while preserving communication and event records.The request body is intentionally optional. An empty body archives the lead with the default manually-archived reason.
      * @param ArchivePostRequestBody $body Defines the fields clients can send when working with lead archive.
      * @param ArchiveRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

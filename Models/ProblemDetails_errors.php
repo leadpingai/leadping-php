@@ -8,9 +8,9 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Describes contact form data returned by Leadping.
+ * Validation errors keyed by the JSON request field name. Present for request validation failures.
 */
-class ContactResponse implements AdditionalDataHolder, Parsable 
+class ProblemDetails_errors implements AdditionalDataHolder, Parsable 
 {
     /**
      * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -18,12 +18,7 @@ class ContactResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $message Message text supplied by the user or returned by the Leadping API for this contact form response.
-    */
-    private ?string $message = null;
-    
-    /**
-     * Instantiates a new ContactResponse and sets the default values.
+     * Instantiates a new ProblemDetails_errors and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);
@@ -32,10 +27,10 @@ class ContactResponse implements AdditionalDataHolder, Parsable
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
-     * @return ContactResponse
+     * @return ProblemDetails_errors
     */
-    public static function createFromDiscriminatorValue(ParseNode $parseNode): ContactResponse {
-        return new ContactResponse();
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): ProblemDetails_errors {
+        return new ProblemDetails_errors();
     }
 
     /**
@@ -53,16 +48,7 @@ class ContactResponse implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'message' => fn(ParseNode $n) => $o->setMessage($n->getStringValue()),
         ];
-    }
-
-    /**
-     * Gets the message property value. Message text supplied by the user or returned by the Leadping API for this contact form response.
-     * @return string|null
-    */
-    public function getMessage(): ?string {
-        return $this->message;
     }
 
     /**
@@ -70,7 +56,6 @@ class ContactResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeStringValue('message', $this->getMessage());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -80,14 +65,6 @@ class ContactResponse implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the message property value. Message text supplied by the user or returned by the Leadping API for this contact form response.
-     * @param string|null $value Value to set for the message property.
-    */
-    public function setMessage(?string $value): void {
-        $this->message = $value;
     }
 
 }

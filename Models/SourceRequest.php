@@ -29,16 +29,6 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     private ?array $allowedStates = null;
     
     /**
-     * @var string|null $apiKey Source API key used to authenticate inbound lead delivery to Leadping.
-    */
-    private ?string $apiKey = null;
-    
-    /**
-     * @var float|null $costPerLead Configured cost charged when this source creates a billable lead.
-    */
-    private ?float $costPerLead = null;
-    
-    /**
      * @var array<string>|null $defaultTagIds Tag IDs automatically assigned to leads created by this source.
     */
     private ?array $defaultTagIds = null;
@@ -54,24 +44,9 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     private ?string $description = null;
     
     /**
-     * @var bool|null $enabled Indicates whether this lead source request is active and available in the Leadping API.
-    */
-    private ?bool $enabled = null;
-    
-    /**
-     * @var string|null $id Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
-    */
-    private ?string $id = null;
-    
-    /**
-     * @var string|null $name Human-readable display name for the resource, subject to the API's maximum name length.
+     * @var string|null $name Human-readable source name.
     */
     private ?string $name = null;
-    
-    /**
-     * @var bool|null $regenerateApiKey Indicates whether Leadping should issue a new API key for this source.
-    */
-    private ?bool $regenerateApiKey = null;
     
     /**
      * @var bool|null $requiresTrustedForm Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
@@ -119,22 +94,6 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping.
-     * @return string|null
-    */
-    public function getApiKey(): ?string {
-        return $this->apiKey;
-    }
-
-    /**
-     * Gets the costPerLead property value. Configured cost charged when this source creates a billable lead.
-     * @return float|null
-    */
-    public function getCostPerLead(): ?float {
-        return $this->costPerLead;
-    }
-
-    /**
      * Gets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
      * @return array<string>|null
     */
@@ -156,14 +115,6 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     */
     public function getDescription(): ?string {
         return $this->description;
-    }
-
-    /**
-     * Gets the enabled property value. Indicates whether this lead source request is active and available in the Leadping API.
-     * @return bool|null
-    */
-    public function getEnabled(): ?bool {
-        return $this->enabled;
     }
 
     /**
@@ -189,8 +140,6 @@ class SourceRequest implements AdditionalDataHolder, Parsable
                 /** @var array<string>|null $val */
                 $this->setAllowedStates($val);
             },
-            'apiKey' => fn(ParseNode $n) => $o->setApiKey($n->getStringValue()),
-            'costPerLead' => fn(ParseNode $n) => $o->setCostPerLead($n->getFloatValue()),
             'defaultTagIds' => function (ParseNode $n) {
                 $val = $n->getCollectionOfPrimitiveValues();
                 if (is_array($val)) {
@@ -208,36 +157,17 @@ class SourceRequest implements AdditionalDataHolder, Parsable
                 $this->setDefaultTagNames($val);
             },
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
-            'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
-            'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
-            'regenerateApiKey' => fn(ParseNode $n) => $o->setRegenerateApiKey($n->getBooleanValue()),
             'requiresTrustedForm' => fn(ParseNode $n) => $o->setRequiresTrustedForm($n->getBooleanValue()),
         ];
     }
 
     /**
-     * Gets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
-     * @return string|null
-    */
-    public function getId(): ?string {
-        return $this->id;
-    }
-
-    /**
-     * Gets the name property value. Human-readable display name for the resource, subject to the API's maximum name length.
+     * Gets the name property value. Human-readable source name.
      * @return string|null
     */
     public function getName(): ?string {
         return $this->name;
-    }
-
-    /**
-     * Gets the regenerateApiKey property value. Indicates whether Leadping should issue a new API key for this source.
-     * @return bool|null
-    */
-    public function getRegenerateApiKey(): ?bool {
-        return $this->regenerateApiKey;
     }
 
     /**
@@ -255,15 +185,10 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeCollectionOfPrimitiveValues('allowedProducts', $this->getAllowedProducts());
         $writer->writeCollectionOfPrimitiveValues('allowedStates', $this->getAllowedStates());
-        $writer->writeStringValue('apiKey', $this->getApiKey());
-        $writer->writeFloatValue('costPerLead', $this->getCostPerLead());
         $writer->writeCollectionOfPrimitiveValues('defaultTagIds', $this->getDefaultTagIds());
         $writer->writeCollectionOfPrimitiveValues('defaultTagNames', $this->getDefaultTagNames());
         $writer->writeStringValue('description', $this->getDescription());
-        $writer->writeBooleanValue('enabled', $this->getEnabled());
-        $writer->writeStringValue('id', $this->getId());
         $writer->writeStringValue('name', $this->getName());
-        $writer->writeBooleanValue('regenerateApiKey', $this->getRegenerateApiKey());
         $writer->writeBooleanValue('requiresTrustedForm', $this->getRequiresTrustedForm());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -293,22 +218,6 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping.
-     * @param string|null $value Value to set for the apiKey property.
-    */
-    public function setApiKey(?string $value): void {
-        $this->apiKey = $value;
-    }
-
-    /**
-     * Sets the costPerLead property value. Configured cost charged when this source creates a billable lead.
-     * @param float|null $value Value to set for the costPerLead property.
-    */
-    public function setCostPerLead(?float $value): void {
-        $this->costPerLead = $value;
-    }
-
-    /**
      * Sets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
      * @param array<string>|null $value Value to set for the defaultTagIds property.
     */
@@ -333,35 +242,11 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the enabled property value. Indicates whether this lead source request is active and available in the Leadping API.
-     * @param bool|null $value Value to set for the enabled property.
-    */
-    public function setEnabled(?bool $value): void {
-        $this->enabled = $value;
-    }
-
-    /**
-     * Sets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
-     * @param string|null $value Value to set for the id property.
-    */
-    public function setId(?string $value): void {
-        $this->id = $value;
-    }
-
-    /**
-     * Sets the name property value. Human-readable display name for the resource, subject to the API's maximum name length.
+     * Sets the name property value. Human-readable source name.
      * @param string|null $value Value to set for the name property.
     */
     public function setName(?string $value): void {
         $this->name = $value;
-    }
-
-    /**
-     * Sets the regenerateApiKey property value. Indicates whether Leadping should issue a new API key for this source.
-     * @param bool|null $value Value to set for the regenerateApiKey property.
-    */
-    public function setRegenerateApiKey(?bool $value): void {
-        $this->regenerateApiKey = $value;
     }
 
     /**

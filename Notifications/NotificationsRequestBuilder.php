@@ -53,7 +53,7 @@ class NotificationsRequestBuilder extends BaseRequestBuilder
     
     /**
      * Gets an item from the Leadping/OpenApiClient.notifications.item collection
-     * @param string $id The notification ID.
+     * @param string $id Unique identifier of the item
      * @return NotificationsItemRequestBuilder
     */
     public function byId(string $id): NotificationsItemRequestBuilder {

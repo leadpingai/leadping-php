@@ -18,7 +18,7 @@ class PhoneLocationSource implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $method The resolution method, such as telnyx-city-state, coordinates, phone-number, or state-default.
+     * @var string|null $method The resolution method, such as Telnyx-city-state, coordinates, phone-number, or state-default.
     */
     private ?string $method = null;
     
@@ -64,7 +64,7 @@ class PhoneLocationSource implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the method property value. The resolution method, such as telnyx-city-state, coordinates, phone-number, or state-default.
+     * Gets the method property value. The resolution method, such as Telnyx-city-state, coordinates, phone-number, or state-default.
      * @return string|null
     */
     public function getMethod(): ?string {
@@ -98,7 +98,7 @@ class PhoneLocationSource implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the method property value. The resolution method, such as telnyx-city-state, coordinates, phone-number, or state-default.
+     * Sets the method property value. The resolution method, such as Telnyx-city-state, coordinates, phone-number, or state-default.
      * @param string|null $value Value to set for the method property.
     */
     public function setMethod(?string $value): void {

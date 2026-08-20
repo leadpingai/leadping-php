@@ -10,7 +10,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 use Microsoft\Kiota\Abstractions\Types\TypeUtils;
 
 /**
- * Describes ten dlc application draft data used in Leadping API requests and responses.
+ * Describes 10DLC application draft data used in Leadping API requests and responses.
 */
 class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable 
 {

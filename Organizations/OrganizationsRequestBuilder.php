@@ -3,7 +3,6 @@
 namespace Leadping\OpenApiClient\Organizations;
 
 use Leadping\OpenApiClient\Organizations\ApiKeys\ApiKeysRequestBuilder;
-use Leadping\OpenApiClient\Organizations\Invitations\InvitationsRequestBuilder;
 use Leadping\OpenApiClient\Organizations\Me\MeRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
@@ -18,13 +17,6 @@ class OrganizationsRequestBuilder extends BaseRequestBuilder
     */
     public function apiKeys(): ApiKeysRequestBuilder {
         return new ApiKeysRequestBuilder($this->pathParameters, $this->requestAdapter);
-    }
-    
-    /**
-     * The invitations property
-    */
-    public function invitations(): InvitationsRequestBuilder {
-        return new InvitationsRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**

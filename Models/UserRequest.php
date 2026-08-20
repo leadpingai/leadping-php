@@ -18,34 +18,9 @@ class UserRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var UserRequest_billingPlan|null $billingPlan Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
-    */
-    private ?UserRequest_billingPlan $billingPlan = null;
-    
-    /**
-     * @var UserRequest_compliance|null $compliance User compliance settings and attestations captured for Leadping account review.
-    */
-    private ?UserRequest_compliance $compliance = null;
-    
-    /**
-     * @var UserRequest_currentOrganization|null $currentOrganization Organization currently selected for the user session or profile.
-    */
-    private ?UserRequest_currentOrganization $currentOrganization = null;
-    
-    /**
-     * @var string|null $email Email address for the person represented by this user profile request.
-    */
-    private ?string $email = null;
-    
-    /**
      * @var string|null $firstName First name of the lead, user, or contact represented by this user profile request.
     */
     private ?string $firstName = null;
-    
-    /**
-     * @var string|null $id Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
-    */
-    private ?string $id = null;
     
     /**
      * @var string|null $lastName Last name of the lead, user, or contact represented by this user profile request.
@@ -53,12 +28,7 @@ class UserRequest implements AdditionalDataHolder, Parsable
     private ?string $lastName = null;
     
     /**
-     * @var array<MobileDevicePreferences>|null $mobileDevicePreferences Mobile notification preferences configured for the user.
-    */
-    private ?array $mobileDevicePreferences = null;
-    
-    /**
-     * @var string|null $name Human-readable display name for the resource, subject to the API's maximum name length.
+     * @var string|null $name Display name for the user.
     */
     private ?string $name = null;
     
@@ -102,52 +72,14 @@ class UserRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
-     * @return UserRequest_billingPlan|null
-    */
-    public function getBillingPlan(): ?UserRequest_billingPlan {
-        return $this->billingPlan;
-    }
-
-    /**
-     * Gets the compliance property value. User compliance settings and attestations captured for Leadping account review.
-     * @return UserRequest_compliance|null
-    */
-    public function getCompliance(): ?UserRequest_compliance {
-        return $this->compliance;
-    }
-
-    /**
-     * Gets the currentOrganization property value. Organization currently selected for the user session or profile.
-     * @return UserRequest_currentOrganization|null
-    */
-    public function getCurrentOrganization(): ?UserRequest_currentOrganization {
-        return $this->currentOrganization;
-    }
-
-    /**
-     * Gets the email property value. Email address for the person represented by this user profile request.
-     * @return string|null
-    */
-    public function getEmail(): ?string {
-        return $this->email;
-    }
-
-    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'billingPlan' => fn(ParseNode $n) => $o->setBillingPlan($n->getEnumValue(UserRequest_billingPlan::class)),
-            'compliance' => fn(ParseNode $n) => $o->setCompliance($n->getObjectValue([UserRequest_compliance::class, 'createFromDiscriminatorValue'])),
-            'currentOrganization' => fn(ParseNode $n) => $o->setCurrentOrganization($n->getObjectValue([UserRequest_currentOrganization::class, 'createFromDiscriminatorValue'])),
-            'email' => fn(ParseNode $n) => $o->setEmail($n->getStringValue()),
             'firstName' => fn(ParseNode $n) => $o->setFirstName($n->getStringValue()),
-            'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'lastName' => fn(ParseNode $n) => $o->setLastName($n->getStringValue()),
-            'mobileDevicePreferences' => fn(ParseNode $n) => $o->setMobileDevicePreferences($n->getCollectionOfObjectValues([MobileDevicePreferences::class, 'createFromDiscriminatorValue'])),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'notificationPreferences' => fn(ParseNode $n) => $o->setNotificationPreferences($n->getObjectValue([UserRequest_notificationPreferences::class, 'createFromDiscriminatorValue'])),
             'phone' => fn(ParseNode $n) => $o->setPhone($n->getStringValue()),
@@ -164,14 +96,6 @@ class UserRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
-     * @return string|null
-    */
-    public function getId(): ?string {
-        return $this->id;
-    }
-
-    /**
      * Gets the lastName property value. Last name of the lead, user, or contact represented by this user profile request.
      * @return string|null
     */
@@ -180,15 +104,7 @@ class UserRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the mobileDevicePreferences property value. Mobile notification preferences configured for the user.
-     * @return array<MobileDevicePreferences>|null
-    */
-    public function getMobileDevicePreferences(): ?array {
-        return $this->mobileDevicePreferences;
-    }
-
-    /**
-     * Gets the name property value. Human-readable display name for the resource, subject to the API's maximum name length.
+     * Gets the name property value. Display name for the user.
      * @return string|null
     */
     public function getName(): ?string {
@@ -224,14 +140,8 @@ class UserRequest implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeEnumValue('billingPlan', $this->getBillingPlan());
-        $writer->writeObjectValue('compliance', $this->getCompliance());
-        $writer->writeObjectValue('currentOrganization', $this->getCurrentOrganization());
-        $writer->writeStringValue('email', $this->getEmail());
         $writer->writeStringValue('firstName', $this->getFirstName());
-        $writer->writeStringValue('id', $this->getId());
         $writer->writeStringValue('lastName', $this->getLastName());
-        $writer->writeCollectionOfObjectValues('mobileDevicePreferences', $this->getMobileDevicePreferences());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeObjectValue('notificationPreferences', $this->getNotificationPreferences());
         $writer->writeStringValue('phone', $this->getPhone());
@@ -248,51 +158,11 @@ class UserRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
-     * @param UserRequest_billingPlan|null $value Value to set for the billingPlan property.
-    */
-    public function setBillingPlan(?UserRequest_billingPlan $value): void {
-        $this->billingPlan = $value;
-    }
-
-    /**
-     * Sets the compliance property value. User compliance settings and attestations captured for Leadping account review.
-     * @param UserRequest_compliance|null $value Value to set for the compliance property.
-    */
-    public function setCompliance(?UserRequest_compliance $value): void {
-        $this->compliance = $value;
-    }
-
-    /**
-     * Sets the currentOrganization property value. Organization currently selected for the user session or profile.
-     * @param UserRequest_currentOrganization|null $value Value to set for the currentOrganization property.
-    */
-    public function setCurrentOrganization(?UserRequest_currentOrganization $value): void {
-        $this->currentOrganization = $value;
-    }
-
-    /**
-     * Sets the email property value. Email address for the person represented by this user profile request.
-     * @param string|null $value Value to set for the email property.
-    */
-    public function setEmail(?string $value): void {
-        $this->email = $value;
-    }
-
-    /**
      * Sets the firstName property value. First name of the lead, user, or contact represented by this user profile request.
      * @param string|null $value Value to set for the firstName property.
     */
     public function setFirstName(?string $value): void {
         $this->firstName = $value;
-    }
-
-    /**
-     * Sets the id property value. Stable unique identifier of an existing resource to update; omit it when the API assigns an identifier during creation.
-     * @param string|null $value Value to set for the id property.
-    */
-    public function setId(?string $value): void {
-        $this->id = $value;
     }
 
     /**
@@ -304,15 +174,7 @@ class UserRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the mobileDevicePreferences property value. Mobile notification preferences configured for the user.
-     * @param array<MobileDevicePreferences>|null $value Value to set for the mobileDevicePreferences property.
-    */
-    public function setMobileDevicePreferences(?array $value): void {
-        $this->mobileDevicePreferences = $value;
-    }
-
-    /**
-     * Sets the name property value. Human-readable display name for the resource, subject to the API's maximum name length.
+     * Sets the name property value. Display name for the user.
      * @param string|null $value Value to set for the name property.
     */
     public function setName(?string $value): void {

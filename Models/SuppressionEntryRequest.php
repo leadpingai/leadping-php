@@ -28,11 +28,6 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
     private ?string $email = null;
     
     /**
-     * @var string|null $organizationId Organization whose suppression list should be used.
-    */
-    private ?string $organizationId = null;
-    
-    /**
      * @var string|null $phoneNumber Recipient phone number to suppress or check, preferably in E.164 format.
     */
     private ?string $phoneNumber = null;
@@ -96,19 +91,10 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
         return  [
             'channel' => fn(ParseNode $n) => $o->setChannel($n->getStringValue()),
             'email' => fn(ParseNode $n) => $o->setEmail($n->getStringValue()),
-            'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'phoneNumber' => fn(ParseNode $n) => $o->setPhoneNumber($n->getStringValue()),
             'reason' => fn(ParseNode $n) => $o->setReason($n->getStringValue()),
             'recipientIdentifier' => fn(ParseNode $n) => $o->setRecipientIdentifier($n->getStringValue()),
         ];
-    }
-
-    /**
-     * Gets the organizationId property value. Organization whose suppression list should be used.
-     * @return string|null
-    */
-    public function getOrganizationId(): ?string {
-        return $this->organizationId;
     }
 
     /**
@@ -142,7 +128,6 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('channel', $this->getChannel());
         $writer->writeStringValue('email', $this->getEmail());
-        $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeStringValue('phoneNumber', $this->getPhoneNumber());
         $writer->writeStringValue('reason', $this->getReason());
         $writer->writeStringValue('recipientIdentifier', $this->getRecipientIdentifier());
@@ -171,14 +156,6 @@ class SuppressionEntryRequest implements AdditionalDataHolder, Parsable
     */
     public function setEmail(?string $value): void {
         $this->email = $value;
-    }
-
-    /**
-     * Sets the organizationId property value. Organization whose suppression list should be used.
-     * @param string|null $value Value to set for the organizationId property.
-    */
-    public function setOrganizationId(?string $value): void {
-        $this->organizationId = $value;
     }
 
     /**
