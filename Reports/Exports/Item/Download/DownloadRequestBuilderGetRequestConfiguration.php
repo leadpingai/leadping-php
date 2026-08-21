@@ -28,11 +28,12 @@ class DownloadRequestBuilderGetRequestConfiguration extends BaseRequestConfigura
 
     /**
      * Instantiates a new DownloadRequestBuilderGetQueryParameters.
+     * @param bool|null $redirect Whether to redirect to the temporary file URL. Set to false to return the URL as JSON.
      * @param string|null $token The short-lived download token issued for this export.
      * @return DownloadRequestBuilderGetQueryParameters
     */
-    public static function createQueryParameters(?string $token = null): DownloadRequestBuilderGetQueryParameters {
-        return new DownloadRequestBuilderGetQueryParameters($token);
+    public static function createQueryParameters(?bool $redirect = null, ?string $token = null): DownloadRequestBuilderGetQueryParameters {
+        return new DownloadRequestBuilderGetQueryParameters($redirect, $token);
     }
 
 }

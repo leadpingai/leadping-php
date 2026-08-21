@@ -5,6 +5,7 @@ namespace Leadping\OpenApiClient\Reports\Exports\Item\Download;
 use Exception;
 use Http\Promise\Promise;
 use Leadping\OpenApiClient\Models\ProblemDetails;
+use Leadping\OpenApiClient\Models\UserDataExportDownloadResponse;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
@@ -21,7 +22,7 @@ class DownloadRequestBuilder extends BaseRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/reports/exports/{exportId}/download?token={token}');
+        parent::__construct($requestAdapter, [], '{+baseurl}/reports/exports/{exportId}/download?token={token}{&redirect*}');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {
@@ -32,7 +33,7 @@ class DownloadRequestBuilder extends BaseRequestBuilder
     /**
      * Validates an export download token and redirects to the generated file when the current-user report is ready.
      * @param DownloadRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return Promise<void|null>
+     * @return Promise<UserDataExportDownloadResponse|null>
      * @throws Exception
     */
     public function get(?DownloadRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
@@ -42,7 +43,7 @@ class DownloadRequestBuilder extends BaseRequestBuilder
                 '410' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
-        return $this->requestAdapter->sendNoContentAsync($requestInfo, $errorMappings);
+        return $this->requestAdapter->sendAsync($requestInfo, [UserDataExportDownloadResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
 
     /**
@@ -62,7 +63,7 @@ class DownloadRequestBuilder extends BaseRequestBuilder
             }
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
-        $requestInfo->tryAddHeader('Accept', "application/problem+json");
+        $requestInfo->tryAddHeader('Accept', "text/plain;q=0.9");
         return $requestInfo;
     }
 
