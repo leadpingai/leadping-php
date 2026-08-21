@@ -27,7 +27,7 @@ class PaymentMethodsRequestBuilder extends BaseRequestBuilder
     
     /**
      * Gets an item from the Leadping/OpenApiClient.paymentMethods.item collection
-     * @param string $id Unique identifier of the item
+     * @param string $id The ID of the payment method to retrieve.
      * @return PaymentMethodsItemRequestBuilder
     */
     public function byId(string $id): PaymentMethodsItemRequestBuilder {

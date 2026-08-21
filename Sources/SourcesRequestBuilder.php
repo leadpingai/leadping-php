@@ -28,7 +28,7 @@ class SourcesRequestBuilder extends BaseRequestBuilder
     
     /**
      * Gets an item from the Leadping/OpenApiClient.sources.item collection
-     * @param string $id Unique identifier of the item
+     * @param string $id The ID of the source to update.
      * @return SourcesItemRequestBuilder
     */
     public function byId(string $id): SourcesItemRequestBuilder {

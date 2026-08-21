@@ -44,7 +44,7 @@ class SuppressionsRequestBuilder extends BaseRequestBuilder
     
     /**
      * Gets an item from the Leadping/OpenApiClient.suppressions.item collection
-     * @param string $id Unique identifier of the item
+     * @param string $id The unique identifier of the suppression entry to retrieve.
      * @return SuppressionsItemRequestBuilder
     */
     public function byId(string $id): SuppressionsItemRequestBuilder {

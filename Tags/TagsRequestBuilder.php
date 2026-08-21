@@ -20,7 +20,7 @@ class TagsRequestBuilder extends BaseRequestBuilder
 {
     /**
      * Gets an item from the Leadping/OpenApiClient.tags.item collection
-     * @param string $id Unique identifier of the item
+     * @param string $id The unique identifier of the tag to update.
      * @return TagsItemRequestBuilder
     */
     public function byId(string $id): TagsItemRequestBuilder {

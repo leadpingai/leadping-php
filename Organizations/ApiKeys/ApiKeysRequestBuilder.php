@@ -21,7 +21,7 @@ class ApiKeysRequestBuilder extends BaseRequestBuilder
     
     /**
      * Gets an item from the Leadping/OpenApiClient.organizations.apiKeys.item collection
-     * @param string $id Unique identifier of the item
+     * @param string $id The API key ID.
      * @return ApiKeysItemRequestBuilder
     */
     public function byId(string $id): ApiKeysItemRequestBuilder {
