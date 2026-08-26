@@ -5,8 +5,8 @@ namespace Leadping\OpenApiClient\Sources;
 use Exception;
 use Http\Promise\Promise;
 use Leadping\OpenApiClient\Models\ProblemDetails;
+use Leadping\OpenApiClient\Models\SourceCredentialIssueResponse;
 use Leadping\OpenApiClient\Models\SourceRequest;
-use Leadping\OpenApiClient\Models\SourceResponse;
 use Leadping\OpenApiClient\Sources\All\AllRequestBuilder;
 use Leadping\OpenApiClient\Sources\Item\SourcesItemRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
@@ -55,7 +55,7 @@ class SourcesRequestBuilder extends BaseRequestBuilder
      * Creates a lead source for the current organization, storing intake credentials and routing context for captured external leads.
      * @param SourceRequest $body Defines the fields clients can send when working with lead source.
      * @param SourcesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return Promise<SourceResponse|null>
+     * @return Promise<SourceCredentialIssueResponse|null>
      * @throws Exception
     */
     public function post(SourceRequest $body, ?SourcesRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
@@ -66,7 +66,7 @@ class SourcesRequestBuilder extends BaseRequestBuilder
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
-        return $this->requestAdapter->sendAsync($requestInfo, [SourceResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
+        return $this->requestAdapter->sendAsync($requestInfo, [SourceCredentialIssueResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
 
     /**

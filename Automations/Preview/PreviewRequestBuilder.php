@@ -23,7 +23,7 @@ class PreviewRequestBuilder extends BaseRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/automations/preview');
+        parent::__construct($requestAdapter, [], '{+baseurl}/automations/preview{?validate_only*}');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {
@@ -32,7 +32,7 @@ class PreviewRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Previews automation execution for a sample lead, showing matched steps and messages without creating follow-up events.
+     * Previews automation execution for a sample lead, showing matched steps and messages without creating follow-up events.Set `validate_only` to return configuration validation without evaluating conditions or actions and without writing a test audit event.
      * @param AutomationPreviewRequest $body Defines the fields clients can send when working with automation preview.
      * @param PreviewRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<AutomationPreviewResponse|null>
@@ -50,7 +50,7 @@ class PreviewRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Previews automation execution for a sample lead, showing matched steps and messages without creating follow-up events.
+     * Previews automation execution for a sample lead, showing matched steps and messages without creating follow-up events.Set `validate_only` to return configuration validation without evaluating conditions or actions and without writing a test audit event.
      * @param AutomationPreviewRequest $body Defines the fields clients can send when working with automation preview.
      * @param PreviewRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -62,6 +62,9 @@ class PreviewRequestBuilder extends BaseRequestBuilder
         $requestInfo->httpMethod = HttpMethod::POST;
         if ($requestConfiguration !== null) {
             $requestInfo->addHeaders($requestConfiguration->headers);
+            if ($requestConfiguration->queryParameters !== null) {
+                $requestInfo->setQueryParameters($requestConfiguration->queryParameters);
+            }
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
         $requestInfo->tryAddHeader('Accept', "application/json");

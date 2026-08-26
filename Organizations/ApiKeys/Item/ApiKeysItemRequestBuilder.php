@@ -34,7 +34,7 @@ class ApiKeysItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Confirmation that identifies the revoked key.
+     * The operation enforces organization ownership or platform-admin authorization and returns state suitable for membership, billing, and support workflows.
      * @param ApiKeysItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<OrganizationApiKeyRevokeResponse|null>
      * @throws Exception
@@ -51,7 +51,7 @@ class ApiKeysItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns the API key row with a safe token preview.
+     * The operation enforces organization ownership or platform-admin authorization and returns state suitable for membership, billing, and support workflows.
      * @param ApiKeysItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<OrganizationApiKeyPreviewResponse|null>
      * @throws Exception
@@ -68,7 +68,7 @@ class ApiKeysItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * The one-time API token and safe key detail row.
+     * The operation enforces organization ownership or platform-admin authorization and returns state suitable for membership, billing, and support workflows.
      * @param OrganizationApiKeyRequest $body Defines the display name and access configuration for a new Leadping organization API key.
      * @param ApiKeysItemRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<OrganizationApiKeyIssueResponse|null>
@@ -86,7 +86,7 @@ class ApiKeysItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Confirmation that identifies the revoked key.
+     * The operation enforces organization ownership or platform-admin authorization and returns state suitable for membership, billing, and support workflows.
      * @param ApiKeysItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -104,7 +104,7 @@ class ApiKeysItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns the API key row with a safe token preview.
+     * The operation enforces organization ownership or platform-admin authorization and returns state suitable for membership, billing, and support workflows.
      * @param ApiKeysItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -122,7 +122,7 @@ class ApiKeysItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * The one-time API token and safe key detail row.
+     * The operation enforces organization ownership or platform-admin authorization and returns state suitable for membership, billing, and support workflows.
      * @param OrganizationApiKeyRequest $body Defines the display name and access configuration for a new Leadping organization API key.
      * @param ApiKeysItemRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

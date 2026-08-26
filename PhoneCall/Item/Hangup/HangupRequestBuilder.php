@@ -31,7 +31,7 @@ class HangupRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Ends an active Leadping phone call by call ID and returns the updated call record, including status and provider routing details.
+     * The call operation validates ownership and current provider state before returning the updated Leadping call representation.
      * @param HangupRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<PhoneCallResponse|null>
      * @throws Exception
@@ -49,7 +49,7 @@ class HangupRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Ends an active Leadping phone call by call ID and returns the updated call record, including status and provider routing details.
+     * The call operation validates ownership and current provider state before returning the updated Leadping call representation.
      * @param HangupRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

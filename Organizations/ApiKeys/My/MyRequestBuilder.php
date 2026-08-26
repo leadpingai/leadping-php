@@ -32,7 +32,7 @@ class MyRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Retrieves a paged list of API keys owned by the caller's current Leadping organization, with support for filtering, sorting, and pagination.
+     * The operation enforces organization ownership or platform-admin authorization and returns state suitable for membership, billing, and support workflows.
      * @param RequestDataOptions $body Defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
      * @param MyRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<OrganizationApiKeyListResponse|null>
@@ -50,7 +50,7 @@ class MyRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Retrieves a paged list of API keys owned by the caller's current Leadping organization, with support for filtering, sorting, and pagination.
+     * The operation enforces organization ownership or platform-admin authorization and returns state suitable for membership, billing, and support workflows.
      * @param RequestDataOptions $body Defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
      * @param MyRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

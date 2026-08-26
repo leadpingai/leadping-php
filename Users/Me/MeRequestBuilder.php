@@ -7,6 +7,7 @@ use Http\Promise\Promise;
 use Leadping\OpenApiClient\Models\ProblemDetails;
 use Leadping\OpenApiClient\Models\UserRequest;
 use Leadping\OpenApiClient\Models\UserResponse;
+use Leadping\OpenApiClient\Users\Me\NotificationPreferences\NotificationPreferencesRequestBuilder;
 use Leadping\OpenApiClient\Users\Me\Paymentmethod\PaymentmethodRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
@@ -18,6 +19,13 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 */
 class MeRequestBuilder extends BaseRequestBuilder 
 {
+    /**
+     * The notificationPreferences property
+    */
+    public function notificationPreferences(): NotificationPreferencesRequestBuilder {
+        return new NotificationPreferencesRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
     /**
      * The paymentmethod property
     */

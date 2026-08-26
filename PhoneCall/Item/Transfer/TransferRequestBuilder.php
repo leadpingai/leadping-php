@@ -31,7 +31,7 @@ class TransferRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Transfers an active Leadping phone call to a new phone number and returns the updated call record with status and routing details.
+     * The call operation validates ownership and current provider state before returning the updated Leadping call representation.
      * @param TransferRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<PhoneCallResponse|null>
      * @throws Exception
@@ -49,7 +49,7 @@ class TransferRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Transfers an active Leadping phone call to a new phone number and returns the updated call record with status and routing details.
+     * The call operation validates ownership and current provider state before returning the updated Leadping call representation.
      * @param TransferRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

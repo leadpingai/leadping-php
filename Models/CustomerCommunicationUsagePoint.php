@@ -19,6 +19,11 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var int|null $callErrors Number of calls that failed or were blocked in this time bucket.
+    */
+    private ?int $callErrors = null;
+    
+    /**
      * @var float|null $callMinutes Total connected call duration, in minutes, during the reporting period.
     */
     private ?float $callMinutes = null;
@@ -29,6 +34,16 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     private ?int $calls = null;
     
     /**
+     * @var int|null $callsPlaced Number of outbound calls placed in this time bucket.
+    */
+    private ?int $callsPlaced = null;
+    
+    /**
+     * @var int|null $callsReceived Number of inbound calls received in this time bucket.
+    */
+    private ?int $callsReceived = null;
+    
+    /**
      * @var DateTime|null $endAt Date and time when this Leadping customer communication usage point was end.
     */
     private ?DateTime $endAt = null;
@@ -37,6 +52,11 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
      * @var string|null $label Human-readable label for this Leadping customer communication usage point.
     */
     private ?string $label = null;
+    
+    /**
+     * @var int|null $smsErrors Number of SMS messages that failed or were blocked in this time bucket.
+    */
+    private ?int $smsErrors = null;
     
     /**
      * @var int|null $smsReceived Number of SMS messages received during the reporting period.
@@ -83,6 +103,14 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the callErrors property value. Number of calls that failed or were blocked in this time bucket.
+     * @return int|null
+    */
+    public function getCallErrors(): ?int {
+        return $this->callErrors;
+    }
+
+    /**
      * Gets the callMinutes property value. Total connected call duration, in minutes, during the reporting period.
      * @return float|null
     */
@@ -96,6 +124,22 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     */
     public function getCalls(): ?int {
         return $this->calls;
+    }
+
+    /**
+     * Gets the callsPlaced property value. Number of outbound calls placed in this time bucket.
+     * @return int|null
+    */
+    public function getCallsPlaced(): ?int {
+        return $this->callsPlaced;
+    }
+
+    /**
+     * Gets the callsReceived property value. Number of inbound calls received in this time bucket.
+     * @return int|null
+    */
+    public function getCallsReceived(): ?int {
+        return $this->callsReceived;
     }
 
     /**
@@ -113,10 +157,14 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'callErrors' => fn(ParseNode $n) => $o->setCallErrors($n->getIntegerValue()),
             'callMinutes' => fn(ParseNode $n) => $o->setCallMinutes($n->getFloatValue()),
             'calls' => fn(ParseNode $n) => $o->setCalls($n->getIntegerValue()),
+            'callsPlaced' => fn(ParseNode $n) => $o->setCallsPlaced($n->getIntegerValue()),
+            'callsReceived' => fn(ParseNode $n) => $o->setCallsReceived($n->getIntegerValue()),
             'endAt' => fn(ParseNode $n) => $o->setEndAt($n->getDateTimeValue()),
             'label' => fn(ParseNode $n) => $o->setLabel($n->getStringValue()),
+            'smsErrors' => fn(ParseNode $n) => $o->setSmsErrors($n->getIntegerValue()),
             'smsReceived' => fn(ParseNode $n) => $o->setSmsReceived($n->getIntegerValue()),
             'smsSent' => fn(ParseNode $n) => $o->setSmsSent($n->getIntegerValue()),
             'spend' => fn(ParseNode $n) => $o->setSpend($n->getFloatValue()),
@@ -130,6 +178,14 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     */
     public function getLabel(): ?string {
         return $this->label;
+    }
+
+    /**
+     * Gets the smsErrors property value. Number of SMS messages that failed or were blocked in this time bucket.
+     * @return int|null
+    */
+    public function getSmsErrors(): ?int {
+        return $this->smsErrors;
     }
 
     /**
@@ -169,10 +225,14 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeIntegerValue('callErrors', $this->getCallErrors());
         $writer->writeFloatValue('callMinutes', $this->getCallMinutes());
         $writer->writeIntegerValue('calls', $this->getCalls());
+        $writer->writeIntegerValue('callsPlaced', $this->getCallsPlaced());
+        $writer->writeIntegerValue('callsReceived', $this->getCallsReceived());
         $writer->writeDateTimeValue('endAt', $this->getEndAt());
         $writer->writeStringValue('label', $this->getLabel());
+        $writer->writeIntegerValue('smsErrors', $this->getSmsErrors());
         $writer->writeIntegerValue('smsReceived', $this->getSmsReceived());
         $writer->writeIntegerValue('smsSent', $this->getSmsSent());
         $writer->writeFloatValue('spend', $this->getSpend());
@@ -186,6 +246,14 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the callErrors property value. Number of calls that failed or were blocked in this time bucket.
+     * @param int|null $value Value to set for the callErrors property.
+    */
+    public function setCallErrors(?int $value): void {
+        $this->callErrors = $value;
     }
 
     /**
@@ -205,6 +273,22 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the callsPlaced property value. Number of outbound calls placed in this time bucket.
+     * @param int|null $value Value to set for the callsPlaced property.
+    */
+    public function setCallsPlaced(?int $value): void {
+        $this->callsPlaced = $value;
+    }
+
+    /**
+     * Sets the callsReceived property value. Number of inbound calls received in this time bucket.
+     * @param int|null $value Value to set for the callsReceived property.
+    */
+    public function setCallsReceived(?int $value): void {
+        $this->callsReceived = $value;
+    }
+
+    /**
      * Sets the endAt property value. Date and time when this Leadping customer communication usage point was end.
      * @param DateTime|null $value Value to set for the endAt property.
     */
@@ -218,6 +302,14 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     */
     public function setLabel(?string $value): void {
         $this->label = $value;
+    }
+
+    /**
+     * Sets the smsErrors property value. Number of SMS messages that failed or were blocked in this time bucket.
+     * @param int|null $value Value to set for the smsErrors property.
+    */
+    public function setSmsErrors(?int $value): void {
+        $this->smsErrors = $value;
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace Leadping\OpenApiClient\Conversations;
 
+use Leadping\OpenApiClient\Conversations\Item\ConversationsItemRequestBuilder;
 use Leadping\OpenApiClient\Conversations\Lead\LeadRequestBuilder;
 use Leadping\OpenApiClient\Conversations\My\MyRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
@@ -26,6 +27,17 @@ class ConversationsRequestBuilder extends BaseRequestBuilder
         return new MyRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
+    /**
+     * Gets an item from the Leadping/OpenApiClient.conversations.item collection
+     * @param string $id The ID of the conversation to mark as read.
+     * @return ConversationsItemRequestBuilder
+    */
+    public function byId(string $id): ConversationsItemRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['id'] = $id;
+        return new ConversationsItemRequestBuilder($urlTplParams, $this->requestAdapter);
+    }
+
     /**
      * Instantiates a new ConversationsRequestBuilder and sets the default values.
      * @param array<string, mixed>|string $pathParametersOrRawUrl Path parameters for the request or a String representing the raw URL.

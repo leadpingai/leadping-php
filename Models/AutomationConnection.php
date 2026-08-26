@@ -33,6 +33,11 @@ class AutomationConnection implements AdditionalDataHolder, Parsable
     private ?string $targetNodeId = null;
     
     /**
+     * @var int|null $weight Percentage chance assigned to this connection when it leaves a weighted random split. Ignored for connections from other node types.
+    */
+    private ?int $weight = null;
+    
+    /**
      * Instantiates a new AutomationConnection and sets the default values.
     */
     public function __construct() {
@@ -66,6 +71,7 @@ class AutomationConnection implements AdditionalDataHolder, Parsable
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'sourceNodeId' => fn(ParseNode $n) => $o->setSourceNodeId($n->getStringValue()),
             'targetNodeId' => fn(ParseNode $n) => $o->setTargetNodeId($n->getStringValue()),
+            'weight' => fn(ParseNode $n) => $o->setWeight($n->getIntegerValue()),
         ];
     }
 
@@ -94,6 +100,14 @@ class AutomationConnection implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the weight property value. Percentage chance assigned to this connection when it leaves a weighted random split. Ignored for connections from other node types.
+     * @return int|null
+    */
+    public function getWeight(): ?int {
+        return $this->weight;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -101,6 +115,7 @@ class AutomationConnection implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('id', $this->getId());
         $writer->writeStringValue('sourceNodeId', $this->getSourceNodeId());
         $writer->writeStringValue('targetNodeId', $this->getTargetNodeId());
+        $writer->writeIntegerValue('weight', $this->getWeight());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -134,6 +149,14 @@ class AutomationConnection implements AdditionalDataHolder, Parsable
     */
     public function setTargetNodeId(?string $value): void {
         $this->targetNodeId = $value;
+    }
+
+    /**
+     * Sets the weight property value. Percentage chance assigned to this connection when it leaves a weighted random split. Ignored for connections from other node types.
+     * @param int|null $value Value to set for the weight property.
+    */
+    public function setWeight(?int $value): void {
+        $this->weight = $value;
     }
 
 }

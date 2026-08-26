@@ -7,6 +7,7 @@ use Http\Promise\Promise;
 use Leadping\OpenApiClient\Models\ProblemDetails;
 use Leadping\OpenApiClient\Models\SourceRequest;
 use Leadping\OpenApiClient\Models\SourceResponse;
+use Leadping\OpenApiClient\Sources\Item\Credentials\CredentialsRequestBuilder;
 use Leadping\OpenApiClient\Sources\Item\Metrics\MetricsRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
@@ -18,6 +19,13 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 */
 class SourcesItemRequestBuilder extends BaseRequestBuilder 
 {
+    /**
+     * The credentials property
+    */
+    public function credentials(): CredentialsRequestBuilder {
+        return new CredentialsRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
     /**
      * The metrics property
     */

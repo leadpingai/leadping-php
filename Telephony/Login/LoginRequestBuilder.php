@@ -32,7 +32,7 @@ class LoginRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Generates a Leadping WebRTC login token so authenticated agents can connect to telephony services and place or receive browser-based calls.
+     * The issued client configuration is scoped to the authenticated user and contains only the short-lived credentials required by the calling client.
      * @param TelephonyLoginRequest $body Identifies the Leadping user and calling context for which a short-lived telephony client token should be issued.
      * @param LoginRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<TelephonyLoginResponse|null>
@@ -50,7 +50,7 @@ class LoginRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Generates a Leadping WebRTC login token so authenticated agents can connect to telephony services and place or receive browser-based calls.
+     * The issued client configuration is scoped to the authenticated user and contains only the short-lived credentials required by the calling client.
      * @param TelephonyLoginRequest $body Identifies the Leadping user and calling context for which a short-lived telephony client token should be issued.
      * @param LoginRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

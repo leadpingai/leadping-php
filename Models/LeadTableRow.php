@@ -34,6 +34,21 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     private ?int $archiveReason = null;
     
     /**
+     * @var LeadTableRow_assignedTo|null $assignedTo Identifier and display name of the assigned organization member.
+    */
+    private ?LeadTableRow_assignedTo $assignedTo = null;
+    
+    /**
+     * @var string|null $assignedToUserId Leadping user currently responsible for this lead, or null when unassigned.
+    */
+    private ?string $assignedToUserId = null;
+    
+    /**
+     * @var string|null $avatarUrl Optional profile image URL explicitly associated with the lead.
+    */
+    private ?string $avatarUrl = null;
+    
+    /**
      * @var DateTime|null $createdAt UTC timestamp when this lead table row was created.
     */
     private ?DateTime $createdAt = null;
@@ -82,6 +97,11 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
      * @var string|null $phone Phone details for the lead, user, or organization represented by this lead table row.
     */
     private ?string $phone = null;
+    
+    /**
+     * @var string|null $phoneIdentityId Identifier of the canonical phone identity associated with this lead's phone number.
+    */
+    private ?string $phoneIdentityId = null;
     
     /**
      * @var float|null $price Lead price or transaction price supplied to the Leadping API.
@@ -177,6 +197,30 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the assignedTo property value. Identifier and display name of the assigned organization member.
+     * @return LeadTableRow_assignedTo|null
+    */
+    public function getAssignedTo(): ?LeadTableRow_assignedTo {
+        return $this->assignedTo;
+    }
+
+    /**
+     * Gets the assignedToUserId property value. Leadping user currently responsible for this lead, or null when unassigned.
+     * @return string|null
+    */
+    public function getAssignedToUserId(): ?string {
+        return $this->assignedToUserId;
+    }
+
+    /**
+     * Gets the avatarUrl property value. Optional profile image URL explicitly associated with the lead.
+     * @return string|null
+    */
+    public function getAvatarUrl(): ?string {
+        return $this->avatarUrl;
+    }
+
+    /**
      * Gets the createdAt property value. UTC timestamp when this lead table row was created.
      * @return DateTime|null
     */
@@ -218,6 +262,9 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
             'archivedAt' => fn(ParseNode $n) => $o->setArchivedAt($n->getDateTimeValue()),
             'archivedByUserId' => fn(ParseNode $n) => $o->setArchivedByUserId($n->getStringValue()),
             'archiveReason' => fn(ParseNode $n) => $o->setArchiveReason($n->getIntegerValue()),
+            'assignedTo' => fn(ParseNode $n) => $o->setAssignedTo($n->getObjectValue([LeadTableRow_assignedTo::class, 'createFromDiscriminatorValue'])),
+            'assignedToUserId' => fn(ParseNode $n) => $o->setAssignedToUserId($n->getStringValue()),
+            'avatarUrl' => fn(ParseNode $n) => $o->setAvatarUrl($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'currentLeadStatus' => fn(ParseNode $n) => $o->setCurrentLeadStatus($n->getObjectValue([LeadTableRow_currentLeadStatus::class, 'createFromDiscriminatorValue'])),
             'email' => fn(ParseNode $n) => $o->setEmail($n->getStringValue()),
@@ -228,6 +275,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
             'lastName' => fn(ParseNode $n) => $o->setLastName($n->getStringValue()),
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([LeadTableRow_organization::class, 'createFromDiscriminatorValue'])),
             'phone' => fn(ParseNode $n) => $o->setPhone($n->getStringValue()),
+            'phoneIdentityId' => fn(ParseNode $n) => $o->setPhoneIdentityId($n->getStringValue()),
             'price' => fn(ParseNode $n) => $o->setPrice($n->getFloatValue()),
             'processingStatus' => fn(ParseNode $n) => $o->setProcessingStatus($n->getEnumValue(LeadTableRow_processingStatus::class)),
             'processingStatusChangedAt' => fn(ParseNode $n) => $o->setProcessingStatusChangedAt($n->getDateTimeValue()),
@@ -286,6 +334,14 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     */
     public function getPhone(): ?string {
         return $this->phone;
+    }
+
+    /**
+     * Gets the phoneIdentityId property value. Identifier of the canonical phone identity associated with this lead's phone number.
+     * @return string|null
+    */
+    public function getPhoneIdentityId(): ?string {
+        return $this->phoneIdentityId;
     }
 
     /**
@@ -368,6 +424,9 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('archivedAt', $this->getArchivedAt());
         $writer->writeStringValue('archivedByUserId', $this->getArchivedByUserId());
         $writer->writeIntegerValue('archiveReason', $this->getArchiveReason());
+        $writer->writeObjectValue('assignedTo', $this->getAssignedTo());
+        $writer->writeStringValue('assignedToUserId', $this->getAssignedToUserId());
+        $writer->writeStringValue('avatarUrl', $this->getAvatarUrl());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeObjectValue('currentLeadStatus', $this->getCurrentLeadStatus());
         $writer->writeStringValue('email', $this->getEmail());
@@ -378,6 +437,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('lastName', $this->getLastName());
         $writer->writeObjectValue('organization', $this->getOrganization());
         $writer->writeStringValue('phone', $this->getPhone());
+        $writer->writeStringValue('phoneIdentityId', $this->getPhoneIdentityId());
         $writer->writeFloatValue('price', $this->getPrice());
         $writer->writeEnumValue('processingStatus', $this->getProcessingStatus());
         $writer->writeDateTimeValue('processingStatusChangedAt', $this->getProcessingStatusChangedAt());
@@ -420,6 +480,30 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     */
     public function setArchiveReason(?int $value): void {
         $this->archiveReason = $value;
+    }
+
+    /**
+     * Sets the assignedTo property value. Identifier and display name of the assigned organization member.
+     * @param LeadTableRow_assignedTo|null $value Value to set for the assignedTo property.
+    */
+    public function setAssignedTo(?LeadTableRow_assignedTo $value): void {
+        $this->assignedTo = $value;
+    }
+
+    /**
+     * Sets the assignedToUserId property value. Leadping user currently responsible for this lead, or null when unassigned.
+     * @param string|null $value Value to set for the assignedToUserId property.
+    */
+    public function setAssignedToUserId(?string $value): void {
+        $this->assignedToUserId = $value;
+    }
+
+    /**
+     * Sets the avatarUrl property value. Optional profile image URL explicitly associated with the lead.
+     * @param string|null $value Value to set for the avatarUrl property.
+    */
+    public function setAvatarUrl(?string $value): void {
+        $this->avatarUrl = $value;
     }
 
     /**
@@ -500,6 +584,14 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     */
     public function setPhone(?string $value): void {
         $this->phone = $value;
+    }
+
+    /**
+     * Sets the phoneIdentityId property value. Identifier of the canonical phone identity associated with this lead's phone number.
+     * @param string|null $value Value to set for the phoneIdentityId property.
+    */
+    public function setPhoneIdentityId(?string $value): void {
+        $this->phoneIdentityId = $value;
     }
 
     /**

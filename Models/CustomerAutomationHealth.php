@@ -53,6 +53,11 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     private ?int $successCount = null;
     
     /**
+     * @var array<CustomerAutomationHealthPoint>|null $trend Automation execution activity over the reporting period.
+    */
+    private ?array $trend = null;
+    
+    /**
      * Instantiates a new CustomerAutomationHealth and sets the default values.
     */
     public function __construct() {
@@ -130,6 +135,7 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
             'failureCount' => fn(ParseNode $n) => $o->setFailureCount($n->getIntegerValue()),
             'lastFailure' => fn(ParseNode $n) => $o->setLastFailure($n->getObjectValue([CustomerAutomationHealth_lastFailure::class, 'createFromDiscriminatorValue'])),
             'successCount' => fn(ParseNode $n) => $o->setSuccessCount($n->getIntegerValue()),
+            'trend' => fn(ParseNode $n) => $o->setTrend($n->getCollectionOfObjectValues([CustomerAutomationHealthPoint::class, 'createFromDiscriminatorValue'])),
         ];
     }
 
@@ -150,6 +156,14 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the trend property value. Automation execution activity over the reporting period.
+     * @return array<CustomerAutomationHealthPoint>|null
+    */
+    public function getTrend(): ?array {
+        return $this->trend;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -161,6 +175,7 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
         $writer->writeIntegerValue('failureCount', $this->getFailureCount());
         $writer->writeObjectValue('lastFailure', $this->getLastFailure());
         $writer->writeIntegerValue('successCount', $this->getSuccessCount());
+        $writer->writeCollectionOfObjectValues('trend', $this->getTrend());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -226,6 +241,14 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     */
     public function setSuccessCount(?int $value): void {
         $this->successCount = $value;
+    }
+
+    /**
+     * Sets the trend property value. Automation execution activity over the reporting period.
+     * @param array<CustomerAutomationHealthPoint>|null $value Value to set for the trend property.
+    */
+    public function setTrend(?array $value): void {
+        $this->trend = $value;
     }
 
 }

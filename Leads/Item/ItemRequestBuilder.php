@@ -5,6 +5,7 @@ namespace Leadping\OpenApiClient\Leads\Item;
 use Exception;
 use Http\Promise\Promise;
 use Leadping\OpenApiClient\Leads\Item\Archive\ArchiveRequestBuilder;
+use Leadping\OpenApiClient\Leads\Item\Assignment\AssignmentRequestBuilder;
 use Leadping\OpenApiClient\Leads\Item\Status\StatusRequestBuilder;
 use Leadping\OpenApiClient\Leads\Item\StatusHistory\StatusHistoryRequestBuilder;
 use Leadping\OpenApiClient\Leads\Item\Tags\TagsRequestBuilder;
@@ -28,6 +29,13 @@ class ItemRequestBuilder extends BaseRequestBuilder
     */
     public function archive(): ArchiveRequestBuilder {
         return new ArchiveRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The assignment property
+    */
+    public function assignment(): AssignmentRequestBuilder {
+        return new AssignmentRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**

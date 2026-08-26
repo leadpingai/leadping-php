@@ -3,7 +3,7 @@
 namespace Leadping\OpenApiClient\PhoneCall\Item\Transfer;
 
 /**
- * Transfers an active Leadping phone call to a new phone number and returns the updated call record with status and routing details.
+ * The call operation validates ownership and current provider state before returning the updated Leadping call representation.
 */
 class TransferRequestBuilderPostQueryParameters 
 {

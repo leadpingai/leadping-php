@@ -23,6 +23,11 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     private ?int $answeredCalls = null;
     
     /**
+     * @var int|null $callErrors Number of calls that failed or were blocked during the reporting period.
+    */
+    private ?int $callErrors = null;
+    
+    /**
      * @var float|null $callMinutes Total connected call duration, in minutes, during the reporting period.
     */
     private ?float $callMinutes = null;
@@ -100,6 +105,14 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the callErrors property value. Number of calls that failed or were blocked during the reporting period.
+     * @return int|null
+    */
+    public function getCallErrors(): ?int {
+        return $this->callErrors;
+    }
+
+    /**
      * Gets the callMinutes property value. Total connected call duration, in minutes, during the reporting period.
      * @return float|null
     */
@@ -139,6 +152,7 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'answeredCalls' => fn(ParseNode $n) => $o->setAnsweredCalls($n->getIntegerValue()),
+            'callErrors' => fn(ParseNode $n) => $o->setCallErrors($n->getIntegerValue()),
             'callMinutes' => fn(ParseNode $n) => $o->setCallMinutes($n->getFloatValue()),
             'callsPlaced' => fn(ParseNode $n) => $o->setCallsPlaced($n->getIntegerValue()),
             'callsReceived' => fn(ParseNode $n) => $o->setCallsReceived($n->getIntegerValue()),
@@ -197,6 +211,7 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeIntegerValue('answeredCalls', $this->getAnsweredCalls());
+        $writer->writeIntegerValue('callErrors', $this->getCallErrors());
         $writer->writeFloatValue('callMinutes', $this->getCallMinutes());
         $writer->writeIntegerValue('callsPlaced', $this->getCallsPlaced());
         $writer->writeIntegerValue('callsReceived', $this->getCallsReceived());
@@ -223,6 +238,14 @@ class CustomerCommunicationUsage implements AdditionalDataHolder, Parsable
     */
     public function setAnsweredCalls(?int $value): void {
         $this->answeredCalls = $value;
+    }
+
+    /**
+     * Sets the callErrors property value. Number of calls that failed or were blocked during the reporting period.
+     * @param int|null $value Value to set for the callErrors property.
+    */
+    public function setCallErrors(?int $value): void {
+        $this->callErrors = $value;
     }
 
     /**

@@ -32,7 +32,7 @@ class InitiateRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Starts an outbound Leadping phone call for an authenticated user and returns the provider call identifiers, status, and routing details.
+     * The call operation validates ownership and current provider state before returning the updated Leadping call representation.
      * @param InitiateCallRequest $body Defines the fields clients can send when working with phone call initiation.
      * @param InitiateRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<PhoneCallResponse|null>
@@ -50,7 +50,7 @@ class InitiateRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Starts an outbound Leadping phone call for an authenticated user and returns the provider call identifiers, status, and routing details.
+     * The call operation validates ownership and current provider state before returning the updated Leadping call representation.
      * @param InitiateCallRequest $body Defines the fields clients can send when working with phone call initiation.
      * @param InitiateRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

@@ -39,6 +39,16 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     private ?int $archiveReason = null;
     
     /**
+     * @var LeadResponse_assignedTo|null $assignedTo Identifier and display name of the active organization member assigned to this lead.
+    */
+    private ?LeadResponse_assignedTo $assignedTo = null;
+    
+    /**
+     * @var string|null $assignedToUserId Leadping user currently responsible for this lead, or null when it is in the unassigned queue.
+    */
+    private ?string $assignedToUserId = null;
+    
+    /**
      * @var LeadContact|null $contact Contact details for the lead or customer represented by this lead response.
     */
     private ?LeadContact $contact = null;
@@ -175,6 +185,22 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the assignedTo property value. Identifier and display name of the active organization member assigned to this lead.
+     * @return LeadResponse_assignedTo|null
+    */
+    public function getAssignedTo(): ?LeadResponse_assignedTo {
+        return $this->assignedTo;
+    }
+
+    /**
+     * Gets the assignedToUserId property value. Leadping user currently responsible for this lead, or null when it is in the unassigned queue.
+     * @return string|null
+    */
+    public function getAssignedToUserId(): ?string {
+        return $this->assignedToUserId;
+    }
+
+    /**
      * Gets the contact property value. Contact details for the lead or customer represented by this lead response.
      * @return LeadContact|null
     */
@@ -241,6 +267,8 @@ class LeadResponse implements AdditionalDataHolder, Parsable
             'archivedByUserId' => fn(ParseNode $n) => $o->setArchivedByUserId($n->getStringValue()),
             'archiveNote' => fn(ParseNode $n) => $o->setArchiveNote($n->getStringValue()),
             'archiveReason' => fn(ParseNode $n) => $o->setArchiveReason($n->getIntegerValue()),
+            'assignedTo' => fn(ParseNode $n) => $o->setAssignedTo($n->getObjectValue([LeadResponse_assignedTo::class, 'createFromDiscriminatorValue'])),
+            'assignedToUserId' => fn(ParseNode $n) => $o->setAssignedToUserId($n->getStringValue()),
             'contact' => fn(ParseNode $n) => $o->setContact($n->getObjectValue([LeadContact::class, 'createFromDiscriminatorValue'])),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'currentLeadStatus' => fn(ParseNode $n) => $o->setCurrentLeadStatus($n->getObjectValue([LeadResponse_currentLeadStatus::class, 'createFromDiscriminatorValue'])),
@@ -341,6 +369,8 @@ class LeadResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('archivedByUserId', $this->getArchivedByUserId());
         $writer->writeStringValue('archiveNote', $this->getArchiveNote());
         $writer->writeIntegerValue('archiveReason', $this->getArchiveReason());
+        $writer->writeObjectValue('assignedTo', $this->getAssignedTo());
+        $writer->writeStringValue('assignedToUserId', $this->getAssignedToUserId());
         $writer->writeObjectValue('contact', $this->getContact());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeObjectValue('currentLeadStatus', $this->getCurrentLeadStatus());
@@ -398,6 +428,22 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     */
     public function setArchiveReason(?int $value): void {
         $this->archiveReason = $value;
+    }
+
+    /**
+     * Sets the assignedTo property value. Identifier and display name of the active organization member assigned to this lead.
+     * @param LeadResponse_assignedTo|null $value Value to set for the assignedTo property.
+    */
+    public function setAssignedTo(?LeadResponse_assignedTo $value): void {
+        $this->assignedTo = $value;
+    }
+
+    /**
+     * Sets the assignedToUserId property value. Leadping user currently responsible for this lead, or null when it is in the unassigned queue.
+     * @param string|null $value Value to set for the assignedToUserId property.
+    */
+    public function setAssignedToUserId(?string $value): void {
+        $this->assignedToUserId = $value;
     }
 
     /**

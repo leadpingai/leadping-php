@@ -10,6 +10,7 @@ use Leadping\OpenApiClient\Models\ProblemDetails;
 use Leadping\OpenApiClient\Organizations\Me\EscapedSwitch\SwitchRequestBuilder;
 use Leadping\OpenApiClient\Organizations\Me\Invitations\InvitationsRequestBuilder;
 use Leadping\OpenApiClient\Organizations\Me\Members\MembersRequestBuilder;
+use Leadping\OpenApiClient\Organizations\Me\Membership\MembershipRequestBuilder;
 use Leadping\OpenApiClient\Organizations\Me\OneZerodlc\OneZerodlcRequestBuilder;
 use Leadping\OpenApiClient\Organizations\Me\Options\OptionsRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
@@ -41,6 +42,13 @@ class MeRequestBuilder extends BaseRequestBuilder
     */
     public function members(): MembersRequestBuilder {
         return new MembersRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The membership property
+    */
+    public function membership(): MembershipRequestBuilder {
+        return new MembershipRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**

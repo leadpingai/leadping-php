@@ -30,11 +30,6 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     private ?array $allowedStates = null;
     
     /**
-     * @var string|null $apiKey Source API key used to authenticate inbound lead delivery to Leadping. Unlike an organization API key, this value remains available to authorized source users.
-    */
-    private ?string $apiKey = null;
-    
-    /**
      * @var DateTime|null $apiKeyLastUsedAt UTC timestamp when the source API key was last used.
     */
     private ?DateTime $apiKeyLastUsedAt = null;
@@ -43,6 +38,11 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
      * @var string|null $apiKeyPreview Masked preview of the source API key for compact display.
     */
     private ?string $apiKeyPreview = null;
+    
+    /**
+     * @var DateTime|null $apiKeyRotatedAt UTC timestamp when the source credential was most recently rotated.
+    */
+    private ?DateTime $apiKeyRotatedAt = null;
     
     /**
      * @var int|null $apiKeyTotalUses Total number of authenticated requests made with this source API key.
@@ -180,14 +180,6 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike an organization API key, this value remains available to authorized source users.
-     * @return string|null
-    */
-    public function getApiKey(): ?string {
-        return $this->apiKey;
-    }
-
-    /**
      * Gets the apiKeyLastUsedAt property value. UTC timestamp when the source API key was last used.
      * @return DateTime|null
     */
@@ -201,6 +193,14 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     */
     public function getApiKeyPreview(): ?string {
         return $this->apiKeyPreview;
+    }
+
+    /**
+     * Gets the apiKeyRotatedAt property value. UTC timestamp when the source credential was most recently rotated.
+     * @return DateTime|null
+    */
+    public function getApiKeyRotatedAt(): ?DateTime {
+        return $this->apiKeyRotatedAt;
     }
 
     /**
@@ -298,9 +298,9 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
                 /** @var array<string>|null $val */
                 $this->setAllowedStates($val);
             },
-            'apiKey' => fn(ParseNode $n) => $o->setApiKey($n->getStringValue()),
             'apiKeyLastUsedAt' => fn(ParseNode $n) => $o->setApiKeyLastUsedAt($n->getDateTimeValue()),
             'apiKeyPreview' => fn(ParseNode $n) => $o->setApiKeyPreview($n->getStringValue()),
+            'apiKeyRotatedAt' => fn(ParseNode $n) => $o->setApiKeyRotatedAt($n->getDateTimeValue()),
             'apiKeyTotalUses' => fn(ParseNode $n) => $o->setApiKeyTotalUses($n->getIntegerValue()),
             'complianceApproved' => fn(ParseNode $n) => $o->setComplianceApproved($n->getBooleanValue()),
             'costPerLead' => fn(ParseNode $n) => $o->setCostPerLead($n->getFloatValue()),
@@ -417,9 +417,9 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeCollectionOfPrimitiveValues('allowedProducts', $this->getAllowedProducts());
         $writer->writeCollectionOfPrimitiveValues('allowedStates', $this->getAllowedStates());
-        $writer->writeStringValue('apiKey', $this->getApiKey());
         $writer->writeDateTimeValue('apiKeyLastUsedAt', $this->getApiKeyLastUsedAt());
         $writer->writeStringValue('apiKeyPreview', $this->getApiKeyPreview());
+        $writer->writeDateTimeValue('apiKeyRotatedAt', $this->getApiKeyRotatedAt());
         $writer->writeIntegerValue('apiKeyTotalUses', $this->getApiKeyTotalUses());
         $writer->writeBooleanValue('complianceApproved', $this->getComplianceApproved());
         $writer->writeFloatValue('costPerLead', $this->getCostPerLead());
@@ -467,14 +467,6 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the apiKey property value. Source API key used to authenticate inbound lead delivery to Leadping. Unlike an organization API key, this value remains available to authorized source users.
-     * @param string|null $value Value to set for the apiKey property.
-    */
-    public function setApiKey(?string $value): void {
-        $this->apiKey = $value;
-    }
-
-    /**
      * Sets the apiKeyLastUsedAt property value. UTC timestamp when the source API key was last used.
      * @param DateTime|null $value Value to set for the apiKeyLastUsedAt property.
     */
@@ -488,6 +480,14 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     */
     public function setApiKeyPreview(?string $value): void {
         $this->apiKeyPreview = $value;
+    }
+
+    /**
+     * Sets the apiKeyRotatedAt property value. UTC timestamp when the source credential was most recently rotated.
+     * @param DateTime|null $value Value to set for the apiKeyRotatedAt property.
+    */
+    public function setApiKeyRotatedAt(?DateTime $value): void {
+        $this->apiKeyRotatedAt = $value;
     }
 
     /**

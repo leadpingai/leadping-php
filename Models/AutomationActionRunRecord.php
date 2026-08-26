@@ -74,6 +74,11 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
     private ?DateTime $scheduledAt = null;
     
     /**
+     * @var string|null $selectedConnectionId Connection selected by a control-flow action such as a weighted random split.
+    */
+    private ?string $selectedConnectionId = null;
+    
+    /**
      * @var DateTime|null $startedAt UTC timestamp when processing started for this automation action run record.
     */
     private ?DateTime $startedAt = null;
@@ -173,6 +178,7 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
             'order' => fn(ParseNode $n) => $o->setOrder($n->getIntegerValue()),
             'processingAttempts' => fn(ParseNode $n) => $o->setProcessingAttempts($n->getIntegerValue()),
             'scheduledAt' => fn(ParseNode $n) => $o->setScheduledAt($n->getDateTimeValue()),
+            'selectedConnectionId' => fn(ParseNode $n) => $o->setSelectedConnectionId($n->getStringValue()),
             'startedAt' => fn(ParseNode $n) => $o->setStartedAt($n->getDateTimeValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getStringValue()),
         ];
@@ -219,6 +225,14 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the selectedConnectionId property value. Connection selected by a control-flow action such as a weighted random split.
+     * @return string|null
+    */
+    public function getSelectedConnectionId(): ?string {
+        return $this->selectedConnectionId;
+    }
+
+    /**
      * Gets the startedAt property value. UTC timestamp when processing started for this automation action run record.
      * @return DateTime|null
     */
@@ -250,6 +264,7 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
         $writer->writeIntegerValue('order', $this->getOrder());
         $writer->writeIntegerValue('processingAttempts', $this->getProcessingAttempts());
         $writer->writeDateTimeValue('scheduledAt', $this->getScheduledAt());
+        $writer->writeStringValue('selectedConnectionId', $this->getSelectedConnectionId());
         $writer->writeDateTimeValue('startedAt', $this->getStartedAt());
         $writer->writeStringValue('status', $this->getStatus());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -349,6 +364,14 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
     */
     public function setScheduledAt(?DateTime $value): void {
         $this->scheduledAt = $value;
+    }
+
+    /**
+     * Sets the selectedConnectionId property value. Connection selected by a control-flow action such as a weighted random split.
+     * @param string|null $value Value to set for the selectedConnectionId property.
+    */
+    public function setSelectedConnectionId(?string $value): void {
+        $this->selectedConnectionId = $value;
     }
 
     /**

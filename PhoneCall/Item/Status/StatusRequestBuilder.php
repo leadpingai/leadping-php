@@ -31,7 +31,7 @@ class StatusRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Retrieves the latest status for a Leadping phone call by call ID, including provider state and call details for tracking progress.
+     * The call operation validates ownership and current provider state before returning the updated Leadping call representation.
      * @param StatusRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<PhoneCallResponse|null>
      * @throws Exception
@@ -48,7 +48,7 @@ class StatusRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Retrieves the latest status for a Leadping phone call by call ID, including provider state and call details for tracking progress.
+     * The call operation validates ownership and current provider state before returning the updated Leadping call representation.
      * @param StatusRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

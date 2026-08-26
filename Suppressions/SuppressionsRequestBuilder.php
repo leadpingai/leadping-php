@@ -68,7 +68,7 @@ class SuppressionsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Creates or reactivates a Leadping suppression entry that blocks future outreach to a recipient across the selected communication channel.
+     * The result reflects the effective compliance state after normalization, organization scoping, and suppression-history checks.
      * @param SuppressionEntryRequest $body Defines a recipient and communication channel to suppress, release, or check before Leadping sends outreach.
      * @param SuppressionsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<SuppressionEntryResponse|null>
@@ -86,7 +86,7 @@ class SuppressionsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Creates or reactivates a Leadping suppression entry that blocks future outreach to a recipient across the selected communication channel.
+     * The result reflects the effective compliance state after normalization, organization scoping, and suppression-history checks.
      * @param SuppressionEntryRequest $body Defines a recipient and communication channel to suppress, release, or check before Leadping sends outreach.
      * @param SuppressionsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
