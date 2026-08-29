@@ -8,6 +8,9 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
+/**
+ * Represents a blog article response.
+*/
 class BlogArticleResponse implements AdditionalDataHolder, Parsable 
 {
     /**
@@ -16,67 +19,67 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $authorName The authorName property
+     * @var string|null $authorName Gets or sets the author name.
     */
     private ?string $authorName = null;
     
     /**
-     * @var string|null $category The category property
+     * @var string|null $category Gets or sets the category.
     */
     private ?string $category = null;
     
     /**
-     * @var string|null $content The content property
+     * @var string|null $content Gets or sets the content.
     */
     private ?string $content = null;
     
     /**
-     * @var string|null $coverImageUrl The coverImageUrl property
+     * @var string|null $coverImageUrl Gets or sets the cover image URL.
     */
     private ?string $coverImageUrl = null;
     
     /**
-     * @var DateTime|null $createdAt The createdAt property
+     * @var DateTime|null $createdAt Gets or sets the created at.
     */
     private ?DateTime $createdAt = null;
     
     /**
-     * @var string|null $excerpt The excerpt property
+     * @var string|null $excerpt Gets or sets the excerpt.
     */
     private ?string $excerpt = null;
     
     /**
-     * @var string|null $id The id property
+     * @var string|null $id Gets or sets the ID.
     */
     private ?string $id = null;
     
     /**
-     * @var bool|null $isFeatured The isFeatured property
+     * @var bool|null $isFeatured Gets or sets the is featured.
     */
     private ?bool $isFeatured = null;
     
     /**
-     * @var bool|null $isPublished The isPublished property
+     * @var bool|null $isPublished Gets or sets the is published.
     */
     private ?bool $isPublished = null;
     
     /**
-     * @var DateTime|null $modifiedAt The modifiedAt property
+     * @var DateTime|null $modifiedAt Gets or sets the modified at.
     */
     private ?DateTime $modifiedAt = null;
     
     /**
-     * @var DateTime|null $publishedAt The publishedAt property
+     * @var DateTime|null $publishedAt Gets or sets the published at.
     */
     private ?DateTime $publishedAt = null;
     
     /**
-     * @var string|null $slug The slug property
+     * @var string|null $slug Gets or sets the slug.
     */
     private ?string $slug = null;
     
     /**
-     * @var string|null $title The title property
+     * @var string|null $title Gets or sets the title.
     */
     private ?string $title = null;
     
@@ -105,7 +108,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the authorName property value. The authorName property
+     * Gets the authorName property value. Gets or sets the author name.
      * @return string|null
     */
     public function getAuthorName(): ?string {
@@ -113,7 +116,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the category property value. The category property
+     * Gets the category property value. Gets or sets the category.
      * @return string|null
     */
     public function getCategory(): ?string {
@@ -121,7 +124,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the content property value. The content property
+     * Gets the content property value. Gets or sets the content.
      * @return string|null
     */
     public function getContent(): ?string {
@@ -129,7 +132,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the coverImageUrl property value. The coverImageUrl property
+     * Gets the coverImageUrl property value. Gets or sets the cover image URL.
      * @return string|null
     */
     public function getCoverImageUrl(): ?string {
@@ -137,7 +140,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the createdAt property value. The createdAt property
+     * Gets the createdAt property value. Gets or sets the created at.
      * @return DateTime|null
     */
     public function getCreatedAt(): ?DateTime {
@@ -145,7 +148,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the excerpt property value. The excerpt property
+     * Gets the excerpt property value. Gets or sets the excerpt.
      * @return string|null
     */
     public function getExcerpt(): ?string {
@@ -176,7 +179,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The id property
+     * Gets the id property value. Gets or sets the ID.
      * @return string|null
     */
     public function getId(): ?string {
@@ -184,7 +187,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the isFeatured property value. The isFeatured property
+     * Gets the isFeatured property value. Gets or sets the is featured.
      * @return bool|null
     */
     public function getIsFeatured(): ?bool {
@@ -192,7 +195,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the isPublished property value. The isPublished property
+     * Gets the isPublished property value. Gets or sets the is published.
      * @return bool|null
     */
     public function getIsPublished(): ?bool {
@@ -200,7 +203,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the modifiedAt property value. The modifiedAt property
+     * Gets the modifiedAt property value. Gets or sets the modified at.
      * @return DateTime|null
     */
     public function getModifiedAt(): ?DateTime {
@@ -208,7 +211,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the publishedAt property value. The publishedAt property
+     * Gets the publishedAt property value. Gets or sets the published at.
      * @return DateTime|null
     */
     public function getPublishedAt(): ?DateTime {
@@ -216,7 +219,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the slug property value. The slug property
+     * Gets the slug property value. Gets or sets the slug.
      * @return string|null
     */
     public function getSlug(): ?string {
@@ -224,7 +227,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the title property value. The title property
+     * Gets the title property value. Gets or sets the title.
      * @return string|null
     */
     public function getTitle(): ?string {
@@ -261,7 +264,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the authorName property value. The authorName property
+     * Sets the authorName property value. Gets or sets the author name.
      * @param string|null $value Value to set for the authorName property.
     */
     public function setAuthorName(?string $value): void {
@@ -269,7 +272,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the category property value. The category property
+     * Sets the category property value. Gets or sets the category.
      * @param string|null $value Value to set for the category property.
     */
     public function setCategory(?string $value): void {
@@ -277,7 +280,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the content property value. The content property
+     * Sets the content property value. Gets or sets the content.
      * @param string|null $value Value to set for the content property.
     */
     public function setContent(?string $value): void {
@@ -285,7 +288,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the coverImageUrl property value. The coverImageUrl property
+     * Sets the coverImageUrl property value. Gets or sets the cover image URL.
      * @param string|null $value Value to set for the coverImageUrl property.
     */
     public function setCoverImageUrl(?string $value): void {
@@ -293,7 +296,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the createdAt property value. The createdAt property
+     * Sets the createdAt property value. Gets or sets the created at.
      * @param DateTime|null $value Value to set for the createdAt property.
     */
     public function setCreatedAt(?DateTime $value): void {
@@ -301,7 +304,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the excerpt property value. The excerpt property
+     * Sets the excerpt property value. Gets or sets the excerpt.
      * @param string|null $value Value to set for the excerpt property.
     */
     public function setExcerpt(?string $value): void {
@@ -309,7 +312,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The id property
+     * Sets the id property value. Gets or sets the ID.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -317,7 +320,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the isFeatured property value. The isFeatured property
+     * Sets the isFeatured property value. Gets or sets the is featured.
      * @param bool|null $value Value to set for the isFeatured property.
     */
     public function setIsFeatured(?bool $value): void {
@@ -325,7 +328,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the isPublished property value. The isPublished property
+     * Sets the isPublished property value. Gets or sets the is published.
      * @param bool|null $value Value to set for the isPublished property.
     */
     public function setIsPublished(?bool $value): void {
@@ -333,7 +336,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the modifiedAt property value. The modifiedAt property
+     * Sets the modifiedAt property value. Gets or sets the modified at.
      * @param DateTime|null $value Value to set for the modifiedAt property.
     */
     public function setModifiedAt(?DateTime $value): void {
@@ -341,7 +344,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the publishedAt property value. The publishedAt property
+     * Sets the publishedAt property value. Gets or sets the published at.
      * @param DateTime|null $value Value to set for the publishedAt property.
     */
     public function setPublishedAt(?DateTime $value): void {
@@ -349,7 +352,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the slug property value. The slug property
+     * Sets the slug property value. Gets or sets the slug.
      * @param string|null $value Value to set for the slug property.
     */
     public function setSlug(?string $value): void {
@@ -357,7 +360,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the title property value. The title property
+     * Sets the title property value. Gets or sets the title.
      * @param string|null $value Value to set for the title property.
     */
     public function setTitle(?string $value): void {

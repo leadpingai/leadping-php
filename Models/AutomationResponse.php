@@ -99,11 +99,6 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     private ?string $organizationId = null;
     
     /**
-     * @var array<AutomationRunRecord>|null $recentRuns Recent automation runs returned for history and troubleshooting.
-    */
-    private ?array $recentRuns = null;
-    
-    /**
      * @var string|null $scope Scope that limits where this automation configuration response applies in Leadping.
     */
     private ?string $scope = null;
@@ -231,7 +226,6 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([AutomationResponse_organization::class, 'createFromDiscriminatorValue'])),
             'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
-            'recentRuns' => fn(ParseNode $n) => $o->setRecentRuns($n->getCollectionOfObjectValues([AutomationRunRecord::class, 'createFromDiscriminatorValue'])),
             'scope' => fn(ParseNode $n) => $o->setScope($n->getStringValue()),
             'triggers' => fn(ParseNode $n) => $o->setTriggers($n->getCollectionOfObjectValues([AutomationTrigger::class, 'createFromDiscriminatorValue'])),
             'user' => fn(ParseNode $n) => $o->setUser($n->getObjectValue([AutomationResponse_user::class, 'createFromDiscriminatorValue'])),
@@ -313,14 +307,6 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the recentRuns property value. Recent automation runs returned for history and troubleshooting.
-     * @return array<AutomationRunRecord>|null
-    */
-    public function getRecentRuns(): ?array {
-        return $this->recentRuns;
-    }
-
-    /**
      * Gets the scope property value. Scope that limits where this automation configuration response applies in Leadping.
      * @return string|null
     */
@@ -381,7 +367,6 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('name', $this->getName());
         $writer->writeObjectValue('organization', $this->getOrganization());
         $writer->writeStringValue('organizationId', $this->getOrganizationId());
-        $writer->writeCollectionOfObjectValues('recentRuns', $this->getRecentRuns());
         $writer->writeStringValue('scope', $this->getScope());
         $writer->writeCollectionOfObjectValues('triggers', $this->getTriggers());
         $writer->writeObjectValue('user', $this->getUser());
@@ -524,14 +509,6 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     */
     public function setOrganizationId(?string $value): void {
         $this->organizationId = $value;
-    }
-
-    /**
-     * Sets the recentRuns property value. Recent automation runs returned for history and troubleshooting.
-     * @param array<AutomationRunRecord>|null $value Value to set for the recentRuns property.
-    */
-    public function setRecentRuns(?array $value): void {
-        $this->recentRuns = $value;
     }
 
     /**

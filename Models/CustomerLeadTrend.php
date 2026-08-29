@@ -23,6 +23,11 @@ class CustomerLeadTrend implements AdditionalDataHolder, Parsable
     private ?AnalyticsComparison $comparison = null;
     
     /**
+     * @var array<AnalyticsTrendPointOfint>|null $errorPoints Lead intake errors grouped into the same reporting buckets as Points.
+    */
+    private ?array $errorPoints = null;
+    
+    /**
      * @var array<AnalyticsTrendPointOfint>|null $points Collection of points included with this Leadping customer lead trend.
     */
     private ?array $points = null;
@@ -31,6 +36,11 @@ class CustomerLeadTrend implements AdditionalDataHolder, Parsable
      * @var int|null $total Total number of total records represented by this Leadping customer lead trend.
     */
     private ?int $total = null;
+    
+    /**
+     * @var int|null $totalErrors Total number of lead submissions rejected during intake.
+    */
+    private ?int $totalErrors = null;
     
     /**
      * Instantiates a new CustomerLeadTrend and sets the default values.
@@ -65,6 +75,14 @@ class CustomerLeadTrend implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the errorPoints property value. Lead intake errors grouped into the same reporting buckets as Points.
+     * @return array<AnalyticsTrendPointOfint>|null
+    */
+    public function getErrorPoints(): ?array {
+        return $this->errorPoints;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
@@ -72,8 +90,10 @@ class CustomerLeadTrend implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'comparison' => fn(ParseNode $n) => $o->setComparison($n->getObjectValue([AnalyticsComparison::class, 'createFromDiscriminatorValue'])),
+            'errorPoints' => fn(ParseNode $n) => $o->setErrorPoints($n->getCollectionOfObjectValues([AnalyticsTrendPointOfint::class, 'createFromDiscriminatorValue'])),
             'points' => fn(ParseNode $n) => $o->setPoints($n->getCollectionOfObjectValues([AnalyticsTrendPointOfint::class, 'createFromDiscriminatorValue'])),
             'total' => fn(ParseNode $n) => $o->setTotal($n->getIntegerValue()),
+            'totalErrors' => fn(ParseNode $n) => $o->setTotalErrors($n->getIntegerValue()),
         ];
     }
 
@@ -94,13 +114,23 @@ class CustomerLeadTrend implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the totalErrors property value. Total number of lead submissions rejected during intake.
+     * @return int|null
+    */
+    public function getTotalErrors(): ?int {
+        return $this->totalErrors;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeObjectValue('comparison', $this->getComparison());
+        $writer->writeCollectionOfObjectValues('errorPoints', $this->getErrorPoints());
         $writer->writeCollectionOfObjectValues('points', $this->getPoints());
         $writer->writeIntegerValue('total', $this->getTotal());
+        $writer->writeIntegerValue('totalErrors', $this->getTotalErrors());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -121,6 +151,14 @@ class CustomerLeadTrend implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the errorPoints property value. Lead intake errors grouped into the same reporting buckets as Points.
+     * @param array<AnalyticsTrendPointOfint>|null $value Value to set for the errorPoints property.
+    */
+    public function setErrorPoints(?array $value): void {
+        $this->errorPoints = $value;
+    }
+
+    /**
      * Sets the points property value. Collection of points included with this Leadping customer lead trend.
      * @param array<AnalyticsTrendPointOfint>|null $value Value to set for the points property.
     */
@@ -134,6 +172,14 @@ class CustomerLeadTrend implements AdditionalDataHolder, Parsable
     */
     public function setTotal(?int $value): void {
         $this->total = $value;
+    }
+
+    /**
+     * Sets the totalErrors property value. Total number of lead submissions rejected during intake.
+     * @param int|null $value Value to set for the totalErrors property.
+    */
+    public function setTotalErrors(?int $value): void {
+        $this->totalErrors = $value;
     }
 
 }

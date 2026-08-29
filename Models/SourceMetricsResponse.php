@@ -19,6 +19,11 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var array<AnalyticsTrendPointOfint>|null $errorPoints Collection of lead intake error points included with this Leadping source metrics.
+    */
+    private ?array $errorPoints = null;
+    
+    /**
      * @var DateTime|null $generatedAt Date and time when the source metrics was generated.
     */
     private ?DateTime $generatedAt = null;
@@ -32,6 +37,11 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
      * @var AnalyticsDateRange|null $range Range associated with this Leadping source metrics.
     */
     private ?AnalyticsDateRange $range = null;
+    
+    /**
+     * @var int|null $totalErrors Total number of lead intake errors represented by this Leadping source metrics.
+    */
+    private ?int $totalErrors = null;
     
     /**
      * @var int|null $totalLeads Total number of leads records represented by this Leadping source metrics.
@@ -63,15 +73,25 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the errorPoints property value. Collection of lead intake error points included with this Leadping source metrics.
+     * @return array<AnalyticsTrendPointOfint>|null
+    */
+    public function getErrorPoints(): ?array {
+        return $this->errorPoints;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'errorPoints' => fn(ParseNode $n) => $o->setErrorPoints($n->getCollectionOfObjectValues([AnalyticsTrendPointOfint::class, 'createFromDiscriminatorValue'])),
             'generatedAt' => fn(ParseNode $n) => $o->setGeneratedAt($n->getDateTimeValue()),
             'points' => fn(ParseNode $n) => $o->setPoints($n->getCollectionOfObjectValues([AnalyticsTrendPointOfint::class, 'createFromDiscriminatorValue'])),
             'range' => fn(ParseNode $n) => $o->setRange($n->getObjectValue([AnalyticsDateRange::class, 'createFromDiscriminatorValue'])),
+            'totalErrors' => fn(ParseNode $n) => $o->setTotalErrors($n->getIntegerValue()),
             'totalLeads' => fn(ParseNode $n) => $o->setTotalLeads($n->getIntegerValue()),
         ];
     }
@@ -101,6 +121,14 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the totalErrors property value. Total number of lead intake errors represented by this Leadping source metrics.
+     * @return int|null
+    */
+    public function getTotalErrors(): ?int {
+        return $this->totalErrors;
+    }
+
+    /**
      * Gets the totalLeads property value. Total number of leads records represented by this Leadping source metrics.
      * @return int|null
     */
@@ -113,9 +141,11 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeCollectionOfObjectValues('errorPoints', $this->getErrorPoints());
         $writer->writeDateTimeValue('generatedAt', $this->getGeneratedAt());
         $writer->writeCollectionOfObjectValues('points', $this->getPoints());
         $writer->writeObjectValue('range', $this->getRange());
+        $writer->writeIntegerValue('totalErrors', $this->getTotalErrors());
         $writer->writeIntegerValue('totalLeads', $this->getTotalLeads());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -126,6 +156,14 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the errorPoints property value. Collection of lead intake error points included with this Leadping source metrics.
+     * @param array<AnalyticsTrendPointOfint>|null $value Value to set for the errorPoints property.
+    */
+    public function setErrorPoints(?array $value): void {
+        $this->errorPoints = $value;
     }
 
     /**
@@ -150,6 +188,14 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
     */
     public function setRange(?AnalyticsDateRange $value): void {
         $this->range = $value;
+    }
+
+    /**
+     * Sets the totalErrors property value. Total number of lead intake errors represented by this Leadping source metrics.
+     * @param int|null $value Value to set for the totalErrors property.
+    */
+    public function setTotalErrors(?int $value): void {
+        $this->totalErrors = $value;
     }
 
     /**
