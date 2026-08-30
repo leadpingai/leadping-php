@@ -29,7 +29,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     private ?PhoneLookup_carrier $carrier = null;
     
     /**
-     * @var DateTime|null $createdAt UTC timestamp when the resource was created.
+     * @var DateTime|null $createdAt Timestamp when the resource was created.
     */
     private ?DateTime $createdAt = null;
     
@@ -59,7 +59,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     private ?PhoneLookup_location $location = null;
     
     /**
-     * @var DateTime|null $modifiedAt UTC timestamp when the resource was last modified, or null when it has not been updated.
+     * @var DateTime|null $modifiedAt Timestamp when the resource was last modified, or null when it has not been updated.
     */
     private ?DateTime $modifiedAt = null;
     
@@ -124,7 +124,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the createdAt property value. UTC timestamp when the resource was created.
+     * Gets the createdAt property value. Timestamp when the resource was created.
      * @return DateTime|null
     */
     public function getCreatedAt(): ?DateTime {
@@ -195,7 +195,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
+     * Gets the modifiedAt property value. Timestamp when the resource was last modified, or null when it has not been updated.
      * @return DateTime|null
     */
     public function getModifiedAt(): ?DateTime {
@@ -280,7 +280,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the createdAt property value. UTC timestamp when the resource was created.
+     * Sets the createdAt property value. Timestamp when the resource was created.
      * @param DateTime|null $value Value to set for the createdAt property.
     */
     public function setCreatedAt(?DateTime $value): void {
@@ -328,7 +328,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
+     * Sets the modifiedAt property value. Timestamp when the resource was last modified, or null when it has not been updated.
      * @param DateTime|null $value Value to set for the modifiedAt property.
     */
     public function setModifiedAt(?DateTime $value): void {

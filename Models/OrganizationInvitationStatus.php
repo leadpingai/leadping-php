@@ -5,7 +5,7 @@ namespace Leadping\OpenApiClient\Models;
 use Microsoft\Kiota\Abstractions\Enum;
 
 class OrganizationInvitationStatus extends Enum {
-    public const AWAITING_WORK_O_S_CONFIRMATION = "Awaiting WorkOS confirmation";
+    public const AWAITING_CONFIRMATION = "Awaiting confirmation";
     public const PENDING = "Pending";
     public const ACCEPTED = "Accepted";
     public const EXPIRED = "Expired";
