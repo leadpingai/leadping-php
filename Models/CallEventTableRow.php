@@ -114,11 +114,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     private ?string $organizationName = null;
     
     /**
-     * @var string|null $recordingUrl URL for the call recording, when the provider makes one available.
-    */
-    private ?string $recordingUrl = null;
-    
-    /**
      * @var CallEventTableRow_status|null $status Describes the durable business outcome of a Leadping phone call after provider status normalization.
     */
     private ?CallEventTableRow_status $status = null;
@@ -152,6 +147,11 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
      * @var string|null $userName Display name for the person or agent who initiated this call event.
     */
     private ?string $userName = null;
+    
+    /**
+     * @var string|null $voicemailUrl URL for voicemail audio, when the call resulted in a voicemail.
+    */
+    private ?string $voicemailUrl = null;
     
     /**
      * Instantiates a new CallEventTableRow and sets the default values.
@@ -291,7 +291,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getStringValue()),
             'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'organizationName' => fn(ParseNode $n) => $o->setOrganizationName($n->getStringValue()),
-            'recordingUrl' => fn(ParseNode $n) => $o->setRecordingUrl($n->getStringValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(CallEventTableRow_status::class)),
             'statusReason' => fn(ParseNode $n) => $o->setStatusReason($n->getStringValue()),
             'toPhoneNumber' => fn(ParseNode $n) => $o->setToPhoneNumber($n->getStringValue()),
@@ -299,6 +298,7 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
             'userEmail' => fn(ParseNode $n) => $o->setUserEmail($n->getStringValue()),
             'userId' => fn(ParseNode $n) => $o->setUserId($n->getStringValue()),
             'userName' => fn(ParseNode $n) => $o->setUserName($n->getStringValue()),
+            'voicemailUrl' => fn(ParseNode $n) => $o->setVoicemailUrl($n->getStringValue()),
         ];
     }
 
@@ -367,14 +367,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the recordingUrl property value. URL for the call recording, when the provider makes one available.
-     * @return string|null
-    */
-    public function getRecordingUrl(): ?string {
-        return $this->recordingUrl;
-    }
-
-    /**
      * Gets the status property value. Describes the durable business outcome of a Leadping phone call after provider status normalization.
      * @return CallEventTableRow_status|null
     */
@@ -431,6 +423,14 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the voicemailUrl property value. URL for voicemail audio, when the call resulted in a voicemail.
+     * @return string|null
+    */
+    public function getVoicemailUrl(): ?string {
+        return $this->voicemailUrl;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -454,7 +454,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('organization', $this->getOrganization());
         $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeStringValue('organizationName', $this->getOrganizationName());
-        $writer->writeStringValue('recordingUrl', $this->getRecordingUrl());
         $writer->writeEnumValue('status', $this->getStatus());
         $writer->writeStringValue('statusReason', $this->getStatusReason());
         $writer->writeStringValue('toPhoneNumber', $this->getToPhoneNumber());
@@ -462,6 +461,7 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('userEmail', $this->getUserEmail());
         $writer->writeStringValue('userId', $this->getUserId());
         $writer->writeStringValue('userName', $this->getUserName());
+        $writer->writeStringValue('voicemailUrl', $this->getVoicemailUrl());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -626,14 +626,6 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the recordingUrl property value. URL for the call recording, when the provider makes one available.
-     * @param string|null $value Value to set for the recordingUrl property.
-    */
-    public function setRecordingUrl(?string $value): void {
-        $this->recordingUrl = $value;
-    }
-
-    /**
      * Sets the status property value. Describes the durable business outcome of a Leadping phone call after provider status normalization.
      * @param CallEventTableRow_status|null $value Value to set for the status property.
     */
@@ -687,6 +679,14 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setUserName(?string $value): void {
         $this->userName = $value;
+    }
+
+    /**
+     * Sets the voicemailUrl property value. URL for voicemail audio, when the call resulted in a voicemail.
+     * @param string|null $value Value to set for the voicemailUrl property.
+    */
+    public function setVoicemailUrl(?string $value): void {
+        $this->voicemailUrl = $value;
     }
 
 }

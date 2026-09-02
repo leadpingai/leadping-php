@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Describes a Leadping phone call, including participants, direction, provider state, timing, recording, and billing details.
+ * Describes a Leadping phone call, including participants, direction, provider state, timing, voicemail, and billing details.
 */
 class PhoneCallResponse implements AdditionalDataHolder, Parsable 
 {
@@ -109,11 +109,6 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $queuedAt = null;
     
     /**
-     * @var string|null $recordingUrl URL for the call recording, when the provider makes one available.
-    */
-    private ?string $recordingUrl = null;
-    
-    /**
      * @var DateTime|null $ringingAt UTC timestamp when the call started ringing.
     */
     private ?DateTime $ringingAt = null;
@@ -142,6 +137,11 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
      * @var string|null $toPhoneNumber Recipient phone number used for this communication.
     */
     private ?string $toPhoneNumber = null;
+    
+    /**
+     * @var string|null $voicemailUrl URL for voicemail audio, when the call resulted in a voicemail.
+    */
+    private ?string $voicemailUrl = null;
     
     /**
      * @var bool|null $wasManuallyOverridden Indicates whether a user manually overrode Leadping's automatic number selection for this phone call.
@@ -285,13 +285,13 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'phoneNumber' => fn(ParseNode $n) => $o->setPhoneNumber($n->getStringValue()),
             'queuedAt' => fn(ParseNode $n) => $o->setQueuedAt($n->getDateTimeValue()),
-            'recordingUrl' => fn(ParseNode $n) => $o->setRecordingUrl($n->getStringValue()),
             'ringingAt' => fn(ParseNode $n) => $o->setRingingAt($n->getDateTimeValue()),
             'selectionReason' => fn(ParseNode $n) => $o->setSelectionReason($n->getEnumValue(PhoneCallResponse_selectionReason::class)),
             'sourceId' => fn(ParseNode $n) => $o->setSourceId($n->getStringValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(PhoneCallStatus::class)),
             'statusReason' => fn(ParseNode $n) => $o->setStatusReason($n->getStringValue()),
             'toPhoneNumber' => fn(ParseNode $n) => $o->setToPhoneNumber($n->getStringValue()),
+            'voicemailUrl' => fn(ParseNode $n) => $o->setVoicemailUrl($n->getStringValue()),
             'wasManuallyOverridden' => fn(ParseNode $n) => $o->setWasManuallyOverridden($n->getBooleanValue()),
         ];
     }
@@ -353,14 +353,6 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the recordingUrl property value. URL for the call recording, when the provider makes one available.
-     * @return string|null
-    */
-    public function getRecordingUrl(): ?string {
-        return $this->recordingUrl;
-    }
-
-    /**
      * Gets the ringingAt property value. UTC timestamp when the call started ringing.
      * @return DateTime|null
     */
@@ -409,6 +401,14 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the voicemailUrl property value. URL for voicemail audio, when the call resulted in a voicemail.
+     * @return string|null
+    */
+    public function getVoicemailUrl(): ?string {
+        return $this->voicemailUrl;
+    }
+
+    /**
      * Gets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this phone call.
      * @return bool|null
     */
@@ -439,13 +439,13 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('phoneNumber', $this->getPhoneNumber());
         $writer->writeDateTimeValue('queuedAt', $this->getQueuedAt());
-        $writer->writeStringValue('recordingUrl', $this->getRecordingUrl());
         $writer->writeDateTimeValue('ringingAt', $this->getRingingAt());
         $writer->writeEnumValue('selectionReason', $this->getSelectionReason());
         $writer->writeStringValue('sourceId', $this->getSourceId());
         $writer->writeEnumValue('status', $this->getStatus());
         $writer->writeStringValue('statusReason', $this->getStatusReason());
         $writer->writeStringValue('toPhoneNumber', $this->getToPhoneNumber());
+        $writer->writeStringValue('voicemailUrl', $this->getVoicemailUrl());
         $writer->writeBooleanValue('wasManuallyOverridden', $this->getWasManuallyOverridden());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -603,14 +603,6 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the recordingUrl property value. URL for the call recording, when the provider makes one available.
-     * @param string|null $value Value to set for the recordingUrl property.
-    */
-    public function setRecordingUrl(?string $value): void {
-        $this->recordingUrl = $value;
-    }
-
-    /**
      * Sets the ringingAt property value. UTC timestamp when the call started ringing.
      * @param DateTime|null $value Value to set for the ringingAt property.
     */
@@ -656,6 +648,14 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     */
     public function setToPhoneNumber(?string $value): void {
         $this->toPhoneNumber = $value;
+    }
+
+    /**
+     * Sets the voicemailUrl property value. URL for voicemail audio, when the call resulted in a voicemail.
+     * @param string|null $value Value to set for the voicemailUrl property.
+    */
+    public function setVoicemailUrl(?string $value): void {
+        $this->voicemailUrl = $value;
     }
 
     /**
