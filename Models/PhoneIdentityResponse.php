@@ -34,7 +34,7 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $lastEnrichedAt = null;
     
     /**
-     * @var PhoneIdentityResponse_lookup|null $lookup Provider lookup and enrichment data for the number.
+     * @var PhoneIdentityResponse_lookup|null $lookup Public Leadping API schema for phone lookup result data.
     */
     private ?PhoneIdentityResponse_lookup $lookup = null;
     
@@ -59,7 +59,7 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
     private ?string $number = null;
     
     /**
-     * @var PhoneIdentityResponse_providerEnrichment|null $providerEnrichment Lossless provider response retained for administrative diagnostics.
+     * @var PhoneIdentityResponse_providerEnrichment|null $providerEnrichment Lossless provider snapshot retained with a phone identity for replay, audits, and fields added by providers later.
     */
     private ?PhoneIdentityResponse_providerEnrichment $providerEnrichment = null;
     
@@ -131,7 +131,7 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lookup property value. Provider lookup and enrichment data for the number.
+     * Gets the lookup property value. Public Leadping API schema for phone lookup result data.
      * @return PhoneIdentityResponse_lookup|null
     */
     public function getLookup(): ?PhoneIdentityResponse_lookup {
@@ -171,7 +171,7 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the providerEnrichment property value. Lossless provider response retained for administrative diagnostics.
+     * Gets the providerEnrichment property value. Lossless provider snapshot retained with a phone identity for replay, audits, and fields added by providers later.
      * @return PhoneIdentityResponse_providerEnrichment|null
     */
     public function getProviderEnrichment(): ?PhoneIdentityResponse_providerEnrichment {
@@ -228,7 +228,7 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lookup property value. Provider lookup and enrichment data for the number.
+     * Sets the lookup property value. Public Leadping API schema for phone lookup result data.
      * @param PhoneIdentityResponse_lookup|null $value Value to set for the lookup property.
     */
     public function setLookup(?PhoneIdentityResponse_lookup $value): void {
@@ -268,7 +268,7 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the providerEnrichment property value. Lossless provider response retained for administrative diagnostics.
+     * Sets the providerEnrichment property value. Lossless provider snapshot retained with a phone identity for replay, audits, and fields added by providers later.
      * @param PhoneIdentityResponse_providerEnrichment|null $value Value to set for the providerEnrichment property.
     */
     public function setProviderEnrichment(?PhoneIdentityResponse_providerEnrichment $value): void {

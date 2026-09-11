@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Current outbound SMS and voice capacity for this phone number.
+ * Reports the sending capacity, current load, and availability of a phone number considered for outbound delivery.
 */
 class PhoneNumberStatusResponse_outboundCapacity extends OutboundPhoneNumberCapacity implements Parsable 
 {

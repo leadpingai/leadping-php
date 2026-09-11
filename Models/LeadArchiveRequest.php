@@ -23,7 +23,7 @@ class LeadArchiveRequest implements AdditionalDataHolder, Parsable
     private ?string $note = null;
     
     /**
-     * @var int|null $reason Human-readable reason supplied for this request or result.
+     * @var int|null $reason Defines why a lead was removed from the active working pipeline.
     */
     private ?int $reason = null;
     
@@ -72,7 +72,7 @@ class LeadArchiveRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the reason property value. Human-readable reason supplied for this request or result.
+     * Gets the reason property value. Defines why a lead was removed from the active working pipeline.
      * @return int|null
     */
     public function getReason(): ?int {
@@ -106,7 +106,7 @@ class LeadArchiveRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the reason property value. Human-readable reason supplied for this request or result.
+     * Sets the reason property value. Defines why a lead was removed from the active working pipeline.
      * @param int|null $value Value to set for the reason property.
     */
     public function setReason(?int $value): void {

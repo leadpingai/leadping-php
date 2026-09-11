@@ -33,7 +33,7 @@ class UserRequest implements AdditionalDataHolder, Parsable
     private ?string $name = null;
     
     /**
-     * @var UserRequest_notificationPreferences|null $notificationPreferences Notification preferences configured for the user.
+     * @var UserRequest_notificationPreferences|null $notificationPreferences Describes user notification preferences data used in Leadping API requests and responses.
     */
     private ?UserRequest_notificationPreferences $notificationPreferences = null;
     
@@ -112,7 +112,7 @@ class UserRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the notificationPreferences property value. Notification preferences configured for the user.
+     * Gets the notificationPreferences property value. Describes user notification preferences data used in Leadping API requests and responses.
      * @return UserRequest_notificationPreferences|null
     */
     public function getNotificationPreferences(): ?UserRequest_notificationPreferences {
@@ -182,7 +182,7 @@ class UserRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the notificationPreferences property value. Notification preferences configured for the user.
+     * Sets the notificationPreferences property value. Describes user notification preferences data used in Leadping API requests and responses.
      * @param UserRequest_notificationPreferences|null $value Value to set for the notificationPreferences property.
     */
     public function setNotificationPreferences(?UserRequest_notificationPreferences $value): void {

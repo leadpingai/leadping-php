@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * 10DLC draft for this organization activation state.
+ * Describes 10DLC application draft data used in Leadping API requests and responses.
 */
 class OrganizationActivationState_tenDlcDraft extends TenDlcApplicationDraft implements Parsable 
 {

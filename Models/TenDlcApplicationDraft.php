@@ -20,12 +20,12 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var TenDlcRegistrationStatus|null $brandStatus The current provider review status for the submitted brand.
+     * @var TenDlcRegistrationStatus|null $brandStatus Defines the provider lifecycle for an individual 10DLC brand or campaign.
     */
     private ?TenDlcRegistrationStatus $brandStatus = null;
     
     /**
-     * @var TenDlcRegistrationStatus|null $campaignStatus The current provider review status for the submitted campaign.
+     * @var TenDlcRegistrationStatus|null $campaignStatus Defines the provider lifecycle for an individual 10DLC brand or campaign.
     */
     private ?TenDlcRegistrationStatus $campaignStatus = null;
     
@@ -159,7 +159,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the brandStatus property value. The current provider review status for the submitted brand.
+     * Gets the brandStatus property value. Defines the provider lifecycle for an individual 10DLC brand or campaign.
      * @return TenDlcRegistrationStatus|null
     */
     public function getBrandStatus(): ?TenDlcRegistrationStatus {
@@ -167,7 +167,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the campaignStatus property value. The current provider review status for the submitted campaign.
+     * Gets the campaignStatus property value. Defines the provider lifecycle for an individual 10DLC brand or campaign.
      * @return TenDlcRegistrationStatus|null
     */
     public function getCampaignStatus(): ?TenDlcRegistrationStatus {
@@ -436,7 +436,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the brandStatus property value. The current provider review status for the submitted brand.
+     * Sets the brandStatus property value. Defines the provider lifecycle for an individual 10DLC brand or campaign.
      * @param TenDlcRegistrationStatus|null $value Value to set for the brandStatus property.
     */
     public function setBrandStatus(?TenDlcRegistrationStatus $value): void {
@@ -444,7 +444,7 @@ class TenDlcApplicationDraft implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the campaignStatus property value. The current provider review status for the submitted campaign.
+     * Sets the campaignStatus property value. Defines the provider lifecycle for an individual 10DLC brand or campaign.
      * @param TenDlcRegistrationStatus|null $value Value to set for the campaignStatus property.
     */
     public function setCampaignStatus(?TenDlcRegistrationStatus $value): void {

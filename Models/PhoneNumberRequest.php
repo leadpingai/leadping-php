@@ -28,6 +28,11 @@ class PhoneNumberRequest implements AdditionalDataHolder, Parsable
     private ?string $number = null;
     
     /**
+     * @var bool|null $numberHealthEnabled Opts this number into the optional $2 monthly number health add-on. Defaults to on on creation; omitted updates preserve the current selection.
+    */
+    private ?bool $numberHealthEnabled = null;
+    
+    /**
      * Instantiates a new PhoneNumberRequest and sets the default values.
     */
     public function __construct() {
@@ -60,6 +65,7 @@ class PhoneNumberRequest implements AdditionalDataHolder, Parsable
         return  [
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'number' => fn(ParseNode $n) => $o->setNumber($n->getStringValue()),
+            'numberHealthEnabled' => fn(ParseNode $n) => $o->setNumberHealthEnabled($n->getBooleanValue()),
         ];
     }
 
@@ -80,12 +86,21 @@ class PhoneNumberRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the numberHealthEnabled property value. Opts this number into the optional $2 monthly number health add-on. Defaults to on on creation; omitted updates preserve the current selection.
+     * @return bool|null
+    */
+    public function getNumberHealthEnabled(): ?bool {
+        return $this->numberHealthEnabled;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('name', $this->getName());
         $writer->writeStringValue('number', $this->getNumber());
+        $writer->writeBooleanValue('numberHealthEnabled', $this->getNumberHealthEnabled());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -111,6 +126,14 @@ class PhoneNumberRequest implements AdditionalDataHolder, Parsable
     */
     public function setNumber(?string $value): void {
         $this->number = $value;
+    }
+
+    /**
+     * Sets the numberHealthEnabled property value. Opts this number into the optional $2 monthly number health add-on. Defaults to on on creation; omitted updates preserve the current selection.
+     * @param bool|null $value Value to set for the numberHealthEnabled property.
+    */
+    public function setNumberHealthEnabled(?bool $value): void {
+        $this->numberHealthEnabled = $value;
     }
 
 }

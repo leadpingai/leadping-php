@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * The TrustedForm certificate captured for the user's most recent SMS opt-in.
+ * Describes trusted form certificate data used in Leadping API requests and responses.
 */
 class UserNotificationPreferences_smsConsentTrustedFormCertificate extends TrustedFormCertificate implements Parsable 
 {

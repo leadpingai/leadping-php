@@ -18,7 +18,7 @@ class LeadAssignmentRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $assignedToUserId Gets or sets the assigned to user ID.
+     * @var string|null $assignedToUserId The assignedToUserId property
     */
     private ?string $assignedToUserId = null;
     
@@ -47,7 +47,7 @@ class LeadAssignmentRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the assignedToUserId property value. Gets or sets the assigned to user ID.
+     * Gets the assignedToUserId property value. The assignedToUserId property
      * @return string|null
     */
     public function getAssignedToUserId(): ?string {
@@ -83,7 +83,7 @@ class LeadAssignmentRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the assignedToUserId property value. Gets or sets the assigned to user ID.
+     * Sets the assignedToUserId property value. The assignedToUserId property
      * @param string|null $value Value to set for the assignedToUserId property.
     */
     public function setAssignedToUserId(?string $value): void {

@@ -23,7 +23,7 @@ class OutgoingNumberManualOverrideRequest implements AdditionalDataHolder, Parsa
     private ?string $fromPhoneNumberId = null;
     
     /**
-     * @var OutgoingNumberSelectionRequest|null $selection Selected outgoing number and selection rationale returned by Leadping.
+     * @var OutgoingNumberSelectionRequest|null $selection Defines the fields clients can send when working with outgoing number selection.
     */
     private ?OutgoingNumberSelectionRequest $selection = null;
     
@@ -72,7 +72,7 @@ class OutgoingNumberManualOverrideRequest implements AdditionalDataHolder, Parsa
     }
 
     /**
-     * Gets the selection property value. Selected outgoing number and selection rationale returned by Leadping.
+     * Gets the selection property value. Defines the fields clients can send when working with outgoing number selection.
      * @return OutgoingNumberSelectionRequest|null
     */
     public function getSelection(): ?OutgoingNumberSelectionRequest {
@@ -106,7 +106,7 @@ class OutgoingNumberManualOverrideRequest implements AdditionalDataHolder, Parsa
     }
 
     /**
-     * Sets the selection property value. Selected outgoing number and selection rationale returned by Leadping.
+     * Sets the selection property value. Defines the fields clients can send when working with outgoing number selection.
      * @param OutgoingNumberSelectionRequest|null $value Value to set for the selection property.
     */
     public function setSelection(?OutgoingNumberSelectionRequest $value): void {

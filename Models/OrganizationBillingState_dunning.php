@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Customer-safe payment recovery state for the organization.
+ * Dunning state recorded after a failed recurring payment.
 */
 class OrganizationBillingState_dunning extends OrganizationDunningInfo implements Parsable 
 {

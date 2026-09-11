@@ -39,7 +39,7 @@ class AutomationPreviewResponse implements AdditionalDataHolder, Parsable
     private ?string $triggerType = null;
     
     /**
-     * @var AutomationValidationResult|null $validation Validation result returned for the automation configuration.
+     * @var AutomationValidationResult|null $validation Result schema for the Leadping API automation validation result returned by lookup and validation endpoints.
     */
     private ?AutomationValidationResult $validation = null;
     
@@ -128,7 +128,7 @@ class AutomationPreviewResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the validation property value. Validation result returned for the automation configuration.
+     * Gets the validation property value. Result schema for the Leadping API automation validation result returned by lookup and validation endpoints.
      * @return AutomationValidationResult|null
     */
     public function getValidation(): ?AutomationValidationResult {
@@ -198,7 +198,7 @@ class AutomationPreviewResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the validation property value. Validation result returned for the automation configuration.
+     * Sets the validation property value. Result schema for the Leadping API automation validation result returned by lookup and validation endpoints.
      * @param AutomationValidationResult|null $value Value to set for the validation property.
     */
     public function setValidation(?AutomationValidationResult $value): void {

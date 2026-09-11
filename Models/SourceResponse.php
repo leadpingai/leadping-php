@@ -55,7 +55,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $createdAt = null;
     
     /**
-     * @var SourceResponse_createdByUser|null $createdByUser User summary for the person who created this lead source response.
+     * @var SourceResponse_createdByUser|null $createdByUser Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?SourceResponse_createdByUser $createdByUser = null;
     
@@ -105,7 +105,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $modifiedAt = null;
     
     /**
-     * @var SourceResponse_modifiedByUser|null $modifiedByUser User summary for the person who last modified this lead source response.
+     * @var SourceResponse_modifiedByUser|null $modifiedByUser Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?SourceResponse_modifiedByUser $modifiedByUser = null;
     
@@ -115,7 +115,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     private ?string $name = null;
     
     /**
-     * @var SourceResponse_organization|null $organization Organization summary connected to this lead source response.
+     * @var SourceResponse_organization|null $organization Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?SourceResponse_organization $organization = null;
     
@@ -125,7 +125,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     private ?bool $requiresTrustedForm = null;
     
     /**
-     * @var SourceResponse_user|null $user User summary connected to this lead source response.
+     * @var SourceResponse_user|null $user Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?SourceResponse_user $user = null;
     
@@ -210,7 +210,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the createdByUser property value. User summary for the person who created this lead source response.
+     * Gets the createdByUser property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return SourceResponse_createdByUser|null
     */
     public function getCreatedByUser(): ?SourceResponse_createdByUser {
@@ -343,7 +343,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the modifiedByUser property value. User summary for the person who last modified this lead source response.
+     * Gets the modifiedByUser property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return SourceResponse_modifiedByUser|null
     */
     public function getModifiedByUser(): ?SourceResponse_modifiedByUser {
@@ -359,7 +359,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organization property value. Organization summary connected to this lead source response.
+     * Gets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return SourceResponse_organization|null
     */
     public function getOrganization(): ?SourceResponse_organization {
@@ -375,7 +375,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the user property value. User summary connected to this lead source response.
+     * Gets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return SourceResponse_user|null
     */
     public function getUser(): ?SourceResponse_user {
@@ -477,7 +477,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the createdByUser property value. User summary for the person who created this lead source response.
+     * Sets the createdByUser property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param SourceResponse_createdByUser|null $value Value to set for the createdByUser property.
     */
     public function setCreatedByUser(?SourceResponse_createdByUser $value): void {
@@ -557,7 +557,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the modifiedByUser property value. User summary for the person who last modified this lead source response.
+     * Sets the modifiedByUser property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param SourceResponse_modifiedByUser|null $value Value to set for the modifiedByUser property.
     */
     public function setModifiedByUser(?SourceResponse_modifiedByUser $value): void {
@@ -573,7 +573,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organization property value. Organization summary connected to this lead source response.
+     * Sets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param SourceResponse_organization|null $value Value to set for the organization property.
     */
     public function setOrganization(?SourceResponse_organization $value): void {
@@ -589,7 +589,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the user property value. User summary connected to this lead source response.
+     * Sets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param SourceResponse_user|null $value Value to set for the user property.
     */
     public function setUser(?SourceResponse_user $value): void {

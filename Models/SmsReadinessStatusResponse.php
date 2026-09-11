@@ -23,7 +23,7 @@ class SmsReadinessStatusResponse implements AdditionalDataHolder, Parsable
     private ?int $healthScore = null;
     
     /**
-     * @var SmsReadinessHealthStatus|null $healthStatus The current delivery-health assessment for this SMS warmup status.
+     * @var SmsReadinessHealthStatus|null $healthStatus Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
     */
     private ?SmsReadinessHealthStatus $healthStatus = null;
     
@@ -43,12 +43,12 @@ class SmsReadinessStatusResponse implements AdditionalDataHolder, Parsable
     private ?int $progressPercent = null;
     
     /**
-     * @var SmsReadinessState|null $status The current state for this SMS warmup status.
+     * @var SmsReadinessState|null $status Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
     */
     private ?SmsReadinessState $status = null;
     
     /**
-     * @var SmsReadinessUiState|null $uiState The current UI state for this SMS warmup status.
+     * @var SmsReadinessUiState|null $uiState Describes SMS readiness UI state data used in Leadping API requests and responses.
     */
     private ?SmsReadinessUiState $uiState = null;
     
@@ -108,7 +108,7 @@ class SmsReadinessStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the healthStatus property value. The current delivery-health assessment for this SMS warmup status.
+     * Gets the healthStatus property value. Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
      * @return SmsReadinessHealthStatus|null
     */
     public function getHealthStatus(): ?SmsReadinessHealthStatus {
@@ -140,7 +140,7 @@ class SmsReadinessStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. The current state for this SMS warmup status.
+     * Gets the status property value. Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
      * @return SmsReadinessState|null
     */
     public function getStatus(): ?SmsReadinessState {
@@ -148,7 +148,7 @@ class SmsReadinessStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the uiState property value. The current UI state for this SMS warmup status.
+     * Gets the uiState property value. Describes SMS readiness UI state data used in Leadping API requests and responses.
      * @return SmsReadinessUiState|null
     */
     public function getUiState(): ?SmsReadinessUiState {
@@ -196,7 +196,7 @@ class SmsReadinessStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the healthStatus property value. The current delivery-health assessment for this SMS warmup status.
+     * Sets the healthStatus property value. Summarizes the severity of conditions affecting an organization's ability to send compliant SMS or MMS traffic.
      * @param SmsReadinessHealthStatus|null $value Value to set for the healthStatus property.
     */
     public function setHealthStatus(?SmsReadinessHealthStatus $value): void {
@@ -228,7 +228,7 @@ class SmsReadinessStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. The current state for this SMS warmup status.
+     * Sets the status property value. Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
      * @param SmsReadinessState|null $value Value to set for the status property.
     */
     public function setStatus(?SmsReadinessState $value): void {
@@ -236,7 +236,7 @@ class SmsReadinessStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the uiState property value. The current UI state for this SMS warmup status.
+     * Sets the uiState property value. Describes SMS readiness UI state data used in Leadping API requests and responses.
      * @param SmsReadinessUiState|null $value Value to set for the uiState property.
     */
     public function setUiState(?SmsReadinessUiState $value): void {

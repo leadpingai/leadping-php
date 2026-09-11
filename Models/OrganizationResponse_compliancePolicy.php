@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Compliance policy configuration for the organization.
+ * Describes organization compliance policy data used in Leadping API requests and responses.
 */
 class OrganizationResponse_compliancePolicy extends OrganizationCompliancePolicy implements Parsable 
 {

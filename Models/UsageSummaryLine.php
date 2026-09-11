@@ -18,12 +18,12 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var BillableUnit|null $billableUnit Billable unit for this usage summary line.
+     * @var BillableUnit|null $billableUnit Identifies the metered unit used to price Leadping usage, such as a message, call minute, lookup, or phone number.
     */
     private ?BillableUnit $billableUnit = null;
     
     /**
-     * @var UsageChannel|null $channel Channel for this usage summary line.
+     * @var UsageChannel|null $channel Identifies the messaging, calling, phone-number, lookup, or platform channel that generated billable usage.
     */
     private ?UsageChannel $channel = null;
     
@@ -43,7 +43,7 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     private ?int $recordCount = null;
     
     /**
-     * @var UsageStatus|null $status The current status for this usage summary line.
+     * @var UsageStatus|null $status Describes whether a metered usage record is pending, rated, billed, reconciled, excluded, or failed.
     */
     private ?UsageStatus $status = null;
     
@@ -72,7 +72,7 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billableUnit property value. Billable unit for this usage summary line.
+     * Gets the billableUnit property value. Identifies the metered unit used to price Leadping usage, such as a message, call minute, lookup, or phone number.
      * @return BillableUnit|null
     */
     public function getBillableUnit(): ?BillableUnit {
@@ -80,7 +80,7 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the channel property value. Channel for this usage summary line.
+     * Gets the channel property value. Identifies the messaging, calling, phone-number, lookup, or platform channel that generated billable usage.
      * @return UsageChannel|null
     */
     public function getChannel(): ?UsageChannel {
@@ -128,7 +128,7 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. The current status for this usage summary line.
+     * Gets the status property value. Describes whether a metered usage record is pending, rated, billed, reconciled, excluded, or failed.
      * @return UsageStatus|null
     */
     public function getStatus(): ?UsageStatus {
@@ -158,7 +158,7 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billableUnit property value. Billable unit for this usage summary line.
+     * Sets the billableUnit property value. Identifies the metered unit used to price Leadping usage, such as a message, call minute, lookup, or phone number.
      * @param BillableUnit|null $value Value to set for the billableUnit property.
     */
     public function setBillableUnit(?BillableUnit $value): void {
@@ -166,7 +166,7 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the channel property value. Channel for this usage summary line.
+     * Sets the channel property value. Identifies the messaging, calling, phone-number, lookup, or platform channel that generated billable usage.
      * @param UsageChannel|null $value Value to set for the channel property.
     */
     public function setChannel(?UsageChannel $value): void {
@@ -198,7 +198,7 @@ class UsageSummaryLine implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. The current status for this usage summary line.
+     * Sets the status property value. Describes whether a metered usage record is pending, rated, billed, reconciled, excluded, or failed.
      * @param UsageStatus|null $value Value to set for the status property.
     */
     public function setStatus(?UsageStatus $value): void {

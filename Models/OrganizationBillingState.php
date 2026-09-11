@@ -29,7 +29,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     private ?DateTime $cancelAt = null;
     
     /**
-     * @var OrganizationBillingState_dunning|null $dunning Customer-safe payment recovery state for the organization.
+     * @var OrganizationBillingState_dunning|null $dunning Dunning state recorded after a failed recurring payment.
     */
     private ?OrganizationBillingState_dunning $dunning = null;
     
@@ -124,7 +124,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the dunning property value. Customer-safe payment recovery state for the organization.
+     * Gets the dunning property value. Dunning state recorded after a failed recurring payment.
      * @return OrganizationBillingState_dunning|null
     */
     public function getDunning(): ?OrganizationBillingState_dunning {
@@ -280,7 +280,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the dunning property value. Customer-safe payment recovery state for the organization.
+     * Sets the dunning property value. Dunning state recorded after a failed recurring payment.
      * @param OrganizationBillingState_dunning|null $value Value to set for the dunning property.
     */
     public function setDunning(?OrganizationBillingState_dunning $value): void {

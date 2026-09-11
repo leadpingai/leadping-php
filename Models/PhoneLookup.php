@@ -19,12 +19,12 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var PhoneLookup_callerName|null $callerName Caller-name data returned by the provider.
+     * @var PhoneLookup_callerName|null $callerName Caller-name data returned by the phone lookup provider.
     */
     private ?PhoneLookup_callerName $callerName = null;
     
     /**
-     * @var PhoneLookup_carrier|null $carrier Complete carrier metadata reported for this phone number.
+     * @var PhoneLookup_carrier|null $carrier Complete carrier metadata returned by a phone number lookup provider.
     */
     private ?PhoneLookup_carrier $carrier = null;
     
@@ -54,7 +54,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     private ?PhoneLookup_lineType $lineType = null;
     
     /**
-     * @var PhoneLookup_location|null $location Geographic location metadata for the phone number, lead, or lookup result.
+     * @var PhoneLookup_location|null $location Public Leadping API schema for phone number location data.
     */
     private ?PhoneLookup_location $location = null;
     
@@ -74,7 +74,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     private ?string $number = null;
     
     /**
-     * @var PhoneLookup_portability|null $portability Complete portability data returned by Telnyx.
+     * @var PhoneLookup_portability|null $portability Number-portability and routing data returned by Telnyx.
     */
     private ?PhoneLookup_portability $portability = null;
     
@@ -108,7 +108,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the callerName property value. Caller-name data returned by the provider.
+     * Gets the callerName property value. Caller-name data returned by the phone lookup provider.
      * @return PhoneLookup_callerName|null
     */
     public function getCallerName(): ?PhoneLookup_callerName {
@@ -116,7 +116,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the carrier property value. Complete carrier metadata reported for this phone number.
+     * Gets the carrier property value. Complete carrier metadata returned by a phone number lookup provider.
      * @return PhoneLookup_carrier|null
     */
     public function getCarrier(): ?PhoneLookup_carrier {
@@ -187,7 +187,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
+     * Gets the location property value. Public Leadping API schema for phone number location data.
      * @return PhoneLookup_location|null
     */
     public function getLocation(): ?PhoneLookup_location {
@@ -219,7 +219,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the portability property value. Complete portability data returned by Telnyx.
+     * Gets the portability property value. Number-portability and routing data returned by Telnyx.
      * @return PhoneLookup_portability|null
     */
     public function getPortability(): ?PhoneLookup_portability {
@@ -264,7 +264,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the callerName property value. Caller-name data returned by the provider.
+     * Sets the callerName property value. Caller-name data returned by the phone lookup provider.
      * @param PhoneLookup_callerName|null $value Value to set for the callerName property.
     */
     public function setCallerName(?PhoneLookup_callerName $value): void {
@@ -272,7 +272,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the carrier property value. Complete carrier metadata reported for this phone number.
+     * Sets the carrier property value. Complete carrier metadata returned by a phone number lookup provider.
      * @param PhoneLookup_carrier|null $value Value to set for the carrier property.
     */
     public function setCarrier(?PhoneLookup_carrier $value): void {
@@ -320,7 +320,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
+     * Sets the location property value. Public Leadping API schema for phone number location data.
      * @param PhoneLookup_location|null $value Value to set for the location property.
     */
     public function setLocation(?PhoneLookup_location $value): void {
@@ -352,7 +352,7 @@ class PhoneLookup implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the portability property value. Complete portability data returned by Telnyx.
+     * Sets the portability property value. Number-portability and routing data returned by Telnyx.
      * @param PhoneLookup_portability|null $value Value to set for the portability property.
     */
     public function setPortability(?PhoneLookup_portability $value): void {

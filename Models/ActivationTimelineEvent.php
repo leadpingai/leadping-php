@@ -14,7 +14,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class ActivationTimelineEvent implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var ActivationTimelineEvent_actor|null $actor Identifier and display name of the related actor.
+     * @var ActivationTimelineEvent_actor|null $actor Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?ActivationTimelineEvent_actor $actor = null;
     
@@ -75,7 +75,7 @@ class ActivationTimelineEvent implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the actor property value. Identifier and display name of the related actor.
+     * Gets the actor property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return ActivationTimelineEvent_actor|null
     */
     public function getActor(): ?ActivationTimelineEvent_actor {
@@ -181,7 +181,7 @@ class ActivationTimelineEvent implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the actor property value. Identifier and display name of the related actor.
+     * Sets the actor property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param ActivationTimelineEvent_actor|null $value Value to set for the actor property.
     */
     public function setActor(?ActivationTimelineEvent_actor $value): void {

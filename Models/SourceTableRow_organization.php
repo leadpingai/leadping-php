@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Organization summary connected to this lead source table row.
+ * Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 */
 class SourceTableRow_organization extends IdNamePair implements Parsable 
 {

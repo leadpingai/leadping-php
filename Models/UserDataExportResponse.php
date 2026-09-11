@@ -89,7 +89,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $startedAt = null;
     
     /**
-     * @var UserDataExportStatuses|null $status Current status for this Leadping user data export.
+     * @var UserDataExportStatuses|null $status Identifies the preparation, availability, failure, expiration, or deletion stage of a Leadping user-data export.
     */
     private ?UserDataExportStatuses $status = null;
     
@@ -255,7 +255,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. Current status for this Leadping user data export.
+     * Gets the status property value. Identifies the preparation, availability, failure, expiration, or deletion stage of a Leadping user-data export.
      * @return UserDataExportStatuses|null
     */
     public function getStatus(): ?UserDataExportStatuses {
@@ -406,7 +406,7 @@ class UserDataExportResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. Current status for this Leadping user data export.
+     * Sets the status property value. Identifies the preparation, availability, failure, expiration, or deletion stage of a Leadping user-data export.
      * @param UserDataExportStatuses|null $value Value to set for the status property.
     */
     public function setStatus(?UserDataExportStatuses $value): void {

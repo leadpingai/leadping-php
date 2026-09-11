@@ -65,7 +65,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     private ?DateTime $createdAt = null;
     
     /**
-     * @var SourceTableRow_createdByUser|null $createdByUser User summary for the person who created this lead source table row.
+     * @var SourceTableRow_createdByUser|null $createdByUser Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?SourceTableRow_createdByUser $createdByUser = null;
     
@@ -110,7 +110,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     private ?DateTime $modifiedAt = null;
     
     /**
-     * @var SourceTableRow_modifiedByUser|null $modifiedByUser User summary for the person who last modified this lead source table row.
+     * @var SourceTableRow_modifiedByUser|null $modifiedByUser Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?SourceTableRow_modifiedByUser $modifiedByUser = null;
     
@@ -120,7 +120,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     private ?string $name = null;
     
     /**
-     * @var SourceTableRow_organization|null $organization Organization summary connected to this lead source table row.
+     * @var SourceTableRow_organization|null $organization Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?SourceTableRow_organization $organization = null;
     
@@ -135,7 +135,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     private ?bool $requiresTrustedForm = null;
     
     /**
-     * @var SourceTableRow_user|null $user User summary connected to this lead source table row.
+     * @var SourceTableRow_user|null $user Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?SourceTableRow_user $user = null;
     
@@ -236,7 +236,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the createdByUser property value. User summary for the person who created this lead source table row.
+     * Gets the createdByUser property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return SourceTableRow_createdByUser|null
     */
     public function getCreatedByUser(): ?SourceTableRow_createdByUser {
@@ -363,7 +363,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the modifiedByUser property value. User summary for the person who last modified this lead source table row.
+     * Gets the modifiedByUser property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return SourceTableRow_modifiedByUser|null
     */
     public function getModifiedByUser(): ?SourceTableRow_modifiedByUser {
@@ -379,7 +379,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organization property value. Organization summary connected to this lead source table row.
+     * Gets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return SourceTableRow_organization|null
     */
     public function getOrganization(): ?SourceTableRow_organization {
@@ -403,7 +403,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the user property value. User summary connected to this lead source table row.
+     * Gets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return SourceTableRow_user|null
     */
     public function getUser(): ?SourceTableRow_user {
@@ -523,7 +523,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the createdByUser property value. User summary for the person who created this lead source table row.
+     * Sets the createdByUser property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param SourceTableRow_createdByUser|null $value Value to set for the createdByUser property.
     */
     public function setCreatedByUser(?SourceTableRow_createdByUser $value): void {
@@ -595,7 +595,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the modifiedByUser property value. User summary for the person who last modified this lead source table row.
+     * Sets the modifiedByUser property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param SourceTableRow_modifiedByUser|null $value Value to set for the modifiedByUser property.
     */
     public function setModifiedByUser(?SourceTableRow_modifiedByUser $value): void {
@@ -611,7 +611,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organization property value. Organization summary connected to this lead source table row.
+     * Sets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param SourceTableRow_organization|null $value Value to set for the organization property.
     */
     public function setOrganization(?SourceTableRow_organization $value): void {
@@ -635,7 +635,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the user property value. User summary connected to this lead source table row.
+     * Sets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param SourceTableRow_user|null $value Value to set for the user property.
     */
     public function setUser(?SourceTableRow_user $value): void {

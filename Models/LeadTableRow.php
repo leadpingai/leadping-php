@@ -34,7 +34,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     private ?int $archiveReason = null;
     
     /**
-     * @var LeadTableRow_assignedTo|null $assignedTo Identifier and display name of the assigned organization member.
+     * @var LeadTableRow_assignedTo|null $assignedTo Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?LeadTableRow_assignedTo $assignedTo = null;
     
@@ -54,7 +54,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     private ?DateTime $createdAt = null;
     
     /**
-     * @var LeadTableRow_currentLeadStatus|null $currentLeadStatus Current lead status change summary that describes the lead outcome.
+     * @var LeadTableRow_currentLeadStatus|null $currentLeadStatus Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
     */
     private ?LeadTableRow_currentLeadStatus $currentLeadStatus = null;
     
@@ -89,7 +89,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     private ?string $lastName = null;
     
     /**
-     * @var LeadTableRow_organization|null $organization Identifier and display name of the related organization.
+     * @var LeadTableRow_organization|null $organization Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?LeadTableRow_organization $organization = null;
     
@@ -124,7 +124,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     private ?string $processingStatusReason = null;
     
     /**
-     * @var LeadTableRow_source|null $source Identifier and display name of the related source.
+     * @var LeadTableRow_source|null $source Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?LeadTableRow_source $source = null;
     
@@ -197,7 +197,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the assignedTo property value. Identifier and display name of the assigned organization member.
+     * Gets the assignedTo property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return LeadTableRow_assignedTo|null
     */
     public function getAssignedTo(): ?LeadTableRow_assignedTo {
@@ -229,7 +229,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
+     * Gets the currentLeadStatus property value. Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
      * @return LeadTableRow_currentLeadStatus|null
     */
     public function getCurrentLeadStatus(): ?LeadTableRow_currentLeadStatus {
@@ -321,7 +321,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organization property value. Identifier and display name of the related organization.
+     * Gets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return LeadTableRow_organization|null
     */
     public function getOrganization(): ?LeadTableRow_organization {
@@ -377,7 +377,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the source property value. Identifier and display name of the related source.
+     * Gets the source property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return LeadTableRow_source|null
     */
     public function getSource(): ?LeadTableRow_source {
@@ -483,7 +483,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the assignedTo property value. Identifier and display name of the assigned organization member.
+     * Sets the assignedTo property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param LeadTableRow_assignedTo|null $value Value to set for the assignedTo property.
     */
     public function setAssignedTo(?LeadTableRow_assignedTo $value): void {
@@ -515,7 +515,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
+     * Sets the currentLeadStatus property value. Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
      * @param LeadTableRow_currentLeadStatus|null $value Value to set for the currentLeadStatus property.
     */
     public function setCurrentLeadStatus(?LeadTableRow_currentLeadStatus $value): void {
@@ -571,7 +571,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organization property value. Identifier and display name of the related organization.
+     * Sets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param LeadTableRow_organization|null $value Value to set for the organization property.
     */
     public function setOrganization(?LeadTableRow_organization $value): void {
@@ -627,7 +627,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the source property value. Identifier and display name of the related source.
+     * Sets the source property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param LeadTableRow_source|null $value Value to set for the source property.
     */
     public function setSource(?LeadTableRow_source $value): void {

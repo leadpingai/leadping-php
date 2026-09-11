@@ -43,7 +43,7 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     private ?int $failureCount = null;
     
     /**
-     * @var CustomerAutomationHealth_lastFailure|null $lastFailure Last failure associated with this Leadping customer automation health.
+     * @var CustomerAutomationHealth_lastFailure|null $lastFailure Identifies an automation with recent execution failures and summarizes its affected leads and failure context.
     */
     private ?CustomerAutomationHealth_lastFailure $lastFailure = null;
     
@@ -140,7 +140,7 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lastFailure property value. Last failure associated with this Leadping customer automation health.
+     * Gets the lastFailure property value. Identifies an automation with recent execution failures and summarizes its affected leads and failure context.
      * @return CustomerAutomationHealth_lastFailure|null
     */
     public function getLastFailure(): ?CustomerAutomationHealth_lastFailure {
@@ -228,7 +228,7 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lastFailure property value. Last failure associated with this Leadping customer automation health.
+     * Sets the lastFailure property value. Identifies an automation with recent execution failures and summarizes its affected leads and failure context.
      * @param CustomerAutomationHealth_lastFailure|null $value Value to set for the lastFailure property.
     */
     public function setLastFailure(?CustomerAutomationHealth_lastFailure $value): void {

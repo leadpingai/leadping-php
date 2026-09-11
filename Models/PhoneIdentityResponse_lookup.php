@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Provider lookup and enrichment data for the number.
+ * Public Leadping API schema for phone lookup result data.
 */
 class PhoneIdentityResponse_lookup extends PhoneLookup implements Parsable 
 {

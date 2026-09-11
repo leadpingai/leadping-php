@@ -28,12 +28,12 @@ class PhoneNumberLocation implements AdditionalDataHolder, Parsable
     private ?string $canonicalState = null;
     
     /**
-     * @var PhoneNumberLocation_coordinate|null $coordinate Latitude and longitude coordinate for this phone number location.
+     * @var PhoneNumberLocation_coordinate|null $coordinate Latitude and longitude coordinate for this lead contact profile.
     */
     private ?PhoneNumberLocation_coordinate $coordinate = null;
     
     /**
-     * @var PhoneNumberLocation_coordinateSource|null $coordinateSource Describes how the coordinate was resolved.
+     * @var PhoneNumberLocation_coordinateSource|null $coordinateSource Describes how a phone location value was resolved.
     */
     private ?PhoneNumberLocation_coordinateSource $coordinateSource = null;
     
@@ -58,7 +58,7 @@ class PhoneNumberLocation implements AdditionalDataHolder, Parsable
     private ?string $timeZoneId = null;
     
     /**
-     * @var PhoneNumberLocation_timeZoneSource|null $timeZoneSource Describes how the time zone was resolved.
+     * @var PhoneNumberLocation_timeZoneSource|null $timeZoneSource Describes how a phone location value was resolved.
     */
     private ?PhoneNumberLocation_timeZoneSource $timeZoneSource = null;
     
@@ -103,7 +103,7 @@ class PhoneNumberLocation implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the coordinate property value. Latitude and longitude coordinate for this phone number location.
+     * Gets the coordinate property value. Latitude and longitude coordinate for this lead contact profile.
      * @return PhoneNumberLocation_coordinate|null
     */
     public function getCoordinate(): ?PhoneNumberLocation_coordinate {
@@ -111,7 +111,7 @@ class PhoneNumberLocation implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the coordinateSource property value. Describes how the coordinate was resolved.
+     * Gets the coordinateSource property value. Describes how a phone location value was resolved.
      * @return PhoneNumberLocation_coordinateSource|null
     */
     public function getCoordinateSource(): ?PhoneNumberLocation_coordinateSource {
@@ -170,7 +170,7 @@ class PhoneNumberLocation implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the timeZoneSource property value. Describes how the time zone was resolved.
+     * Gets the timeZoneSource property value. Describes how a phone location value was resolved.
      * @return PhoneNumberLocation_timeZoneSource|null
     */
     public function getTimeZoneSource(): ?PhoneNumberLocation_timeZoneSource {
@@ -219,7 +219,7 @@ class PhoneNumberLocation implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the coordinate property value. Latitude and longitude coordinate for this phone number location.
+     * Sets the coordinate property value. Latitude and longitude coordinate for this lead contact profile.
      * @param PhoneNumberLocation_coordinate|null $value Value to set for the coordinate property.
     */
     public function setCoordinate(?PhoneNumberLocation_coordinate $value): void {
@@ -227,7 +227,7 @@ class PhoneNumberLocation implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the coordinateSource property value. Describes how the coordinate was resolved.
+     * Sets the coordinateSource property value. Describes how a phone location value was resolved.
      * @param PhoneNumberLocation_coordinateSource|null $value Value to set for the coordinateSource property.
     */
     public function setCoordinateSource(?PhoneNumberLocation_coordinateSource $value): void {
@@ -267,7 +267,7 @@ class PhoneNumberLocation implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the timeZoneSource property value. Describes how the time zone was resolved.
+     * Sets the timeZoneSource property value. Describes how a phone location value was resolved.
      * @param PhoneNumberLocation_timeZoneSource|null $value Value to set for the timeZoneSource property.
     */
     public function setTimeZoneSource(?PhoneNumberLocation_timeZoneSource $value): void {

@@ -28,7 +28,7 @@ class PhoneNumberAvailabilityResponse implements AdditionalDataHolder, Parsable
     private ?bool $isAvailable = null;
     
     /**
-     * @var PhoneNumberAvailabilityResponse_location|null $location Geographic location metadata for the phone number, lead, or lookup result.
+     * @var PhoneNumberAvailabilityResponse_location|null $location Public Leadping API schema for phone number location data.
     */
     private ?PhoneNumberAvailabilityResponse_location $location = null;
     
@@ -98,7 +98,7 @@ class PhoneNumberAvailabilityResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
+     * Gets the location property value. Public Leadping API schema for phone number location data.
      * @return PhoneNumberAvailabilityResponse_location|null
     */
     public function getLocation(): ?PhoneNumberAvailabilityResponse_location {
@@ -159,7 +159,7 @@ class PhoneNumberAvailabilityResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
+     * Sets the location property value. Public Leadping API schema for phone number location data.
      * @param PhoneNumberAvailabilityResponse_location|null $value Value to set for the location property.
     */
     public function setLocation(?PhoneNumberAvailabilityResponse_location $value): void {

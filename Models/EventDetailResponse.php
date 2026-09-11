@@ -164,7 +164,7 @@ class EventDetailResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $undeliverableAt = null;
     
     /**
-     * @var EventDetailResponse_user|null $user User summary connected to this event detail response.
+     * @var EventDetailResponse_user|null $user Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?EventDetailResponse_user $user = null;
     
@@ -477,7 +477,7 @@ class EventDetailResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the user property value. User summary connected to this event detail response.
+     * Gets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return EventDetailResponse_user|null
     */
     public function getUser(): ?EventDetailResponse_user {
@@ -781,7 +781,7 @@ class EventDetailResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the user property value. User summary connected to this event detail response.
+     * Sets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param EventDetailResponse_user|null $value Value to set for the user property.
     */
     public function setUser(?EventDetailResponse_user $value): void {

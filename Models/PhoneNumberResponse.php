@@ -54,7 +54,12 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     private ?string $number = null;
     
     /**
-     * @var PhoneNumberResponse_organization|null $organization Organization summary connected to this phone number.
+     * @var bool|null $numberHealthEnabled Opts this number into the optional $2 monthly number health add-on. Defaults to on; customers can opt out.
+    */
+    private ?bool $numberHealthEnabled = null;
+    
+    /**
+     * @var PhoneNumberResponse_organization|null $organization Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?PhoneNumberResponse_organization $organization = null;
     
@@ -64,12 +69,12 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     private ?string $phoneIdentityId = null;
     
     /**
-     * @var PhoneNumberRoutingMetadata|null $routing Routing metadata that connects this phone number to teams, campaigns, and sources.
+     * @var PhoneNumberRoutingMetadata|null $routing Public Leadping API schema for phone number routing metadata data.
     */
     private ?PhoneNumberRoutingMetadata $routing = null;
     
     /**
-     * @var PhoneNumberReadiness|null $warmup SMS and call warmup for this phone number.
+     * @var PhoneNumberReadiness|null $warmup Messaging and calling warmup for a Leadping phone number.
     */
     private ?PhoneNumberReadiness $warmup = null;
     
@@ -127,6 +132,7 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'number' => fn(ParseNode $n) => $o->setNumber($n->getStringValue()),
+            'numberHealthEnabled' => fn(ParseNode $n) => $o->setNumberHealthEnabled($n->getBooleanValue()),
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([PhoneNumberResponse_organization::class, 'createFromDiscriminatorValue'])),
             'phoneIdentityId' => fn(ParseNode $n) => $o->setPhoneIdentityId($n->getStringValue()),
             'routing' => fn(ParseNode $n) => $o->setRouting($n->getObjectValue([PhoneNumberRoutingMetadata::class, 'createFromDiscriminatorValue'])),
@@ -175,7 +181,15 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organization property value. Organization summary connected to this phone number.
+     * Gets the numberHealthEnabled property value. Opts this number into the optional $2 monthly number health add-on. Defaults to on; customers can opt out.
+     * @return bool|null
+    */
+    public function getNumberHealthEnabled(): ?bool {
+        return $this->numberHealthEnabled;
+    }
+
+    /**
+     * Gets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return PhoneNumberResponse_organization|null
     */
     public function getOrganization(): ?PhoneNumberResponse_organization {
@@ -191,7 +205,7 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the routing property value. Routing metadata that connects this phone number to teams, campaigns, and sources.
+     * Gets the routing property value. Public Leadping API schema for phone number routing metadata data.
      * @return PhoneNumberRoutingMetadata|null
     */
     public function getRouting(): ?PhoneNumberRoutingMetadata {
@@ -199,7 +213,7 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the warmup property value. SMS and call warmup for this phone number.
+     * Gets the warmup property value. Messaging and calling warmup for a Leadping phone number.
      * @return PhoneNumberReadiness|null
     */
     public function getWarmup(): ?PhoneNumberReadiness {
@@ -218,6 +232,7 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeStringValue('number', $this->getNumber());
+        $writer->writeBooleanValue('numberHealthEnabled', $this->getNumberHealthEnabled());
         $writer->writeObjectValue('organization', $this->getOrganization());
         $writer->writeStringValue('phoneIdentityId', $this->getPhoneIdentityId());
         $writer->writeObjectValue('routing', $this->getRouting());
@@ -290,7 +305,15 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organization property value. Organization summary connected to this phone number.
+     * Sets the numberHealthEnabled property value. Opts this number into the optional $2 monthly number health add-on. Defaults to on; customers can opt out.
+     * @param bool|null $value Value to set for the numberHealthEnabled property.
+    */
+    public function setNumberHealthEnabled(?bool $value): void {
+        $this->numberHealthEnabled = $value;
+    }
+
+    /**
+     * Sets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param PhoneNumberResponse_organization|null $value Value to set for the organization property.
     */
     public function setOrganization(?PhoneNumberResponse_organization $value): void {
@@ -306,7 +329,7 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the routing property value. Routing metadata that connects this phone number to teams, campaigns, and sources.
+     * Sets the routing property value. Public Leadping API schema for phone number routing metadata data.
      * @param PhoneNumberRoutingMetadata|null $value Value to set for the routing property.
     */
     public function setRouting(?PhoneNumberRoutingMetadata $value): void {
@@ -314,7 +337,7 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the warmup property value. SMS and call warmup for this phone number.
+     * Sets the warmup property value. Messaging and calling warmup for a Leadping phone number.
      * @param PhoneNumberReadiness|null $value Value to set for the warmup property.
     */
     public function setWarmup(?PhoneNumberReadiness $value): void {

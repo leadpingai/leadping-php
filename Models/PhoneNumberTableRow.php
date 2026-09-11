@@ -78,7 +78,7 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     private ?bool $voiceReady = null;
     
     /**
-     * @var PhoneNumberReadiness|null $warmup Warmup state for this phone number.
+     * @var PhoneNumberReadiness|null $warmup Messaging and calling warmup for a Leadping phone number.
     */
     private ?PhoneNumberReadiness $warmup = null;
     
@@ -226,7 +226,7 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the warmup property value. Warmup state for this phone number.
+     * Gets the warmup property value. Messaging and calling warmup for a Leadping phone number.
      * @return PhoneNumberReadiness|null
     */
     public function getWarmup(): ?PhoneNumberReadiness {
@@ -359,7 +359,7 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the warmup property value. Warmup state for this phone number.
+     * Sets the warmup property value. Messaging and calling warmup for a Leadping phone number.
      * @param PhoneNumberReadiness|null $value Value to set for the warmup property.
     */
     public function setWarmup(?PhoneNumberReadiness $value): void {

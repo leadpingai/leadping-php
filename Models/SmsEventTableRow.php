@@ -119,7 +119,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     private ?bool $isAutomated = null;
     
     /**
-     * @var IdNamePair|null $lead Identifier and display name of the related lead.
+     * @var IdNamePair|null $lead Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?IdNamePair $lead = null;
     
@@ -459,7 +459,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lead property value. Identifier and display name of the related lead.
+     * Gets the lead property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return IdNamePair|null
     */
     public function getLead(): ?IdNamePair {
@@ -844,7 +844,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lead property value. Identifier and display name of the related lead.
+     * Sets the lead property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param IdNamePair|null $value Value to set for the lead property.
     */
     public function setLead(?IdNamePair $value): void {

@@ -104,7 +104,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     private ?bool $smsConsentOptedIn = null;
     
     /**
-     * @var UserNotificationPreferences_smsConsentTrustedFormCertificate|null $smsConsentTrustedFormCertificate The TrustedForm certificate captured for the user's most recent SMS opt-in.
+     * @var UserNotificationPreferences_smsConsentTrustedFormCertificate|null $smsConsentTrustedFormCertificate Describes trusted form certificate data used in Leadping API requests and responses.
     */
     private ?UserNotificationPreferences_smsConsentTrustedFormCertificate $smsConsentTrustedFormCertificate = null;
     
@@ -351,7 +351,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the smsConsentTrustedFormCertificate property value. The TrustedForm certificate captured for the user's most recent SMS opt-in.
+     * Gets the smsConsentTrustedFormCertificate property value. Describes trusted form certificate data used in Leadping API requests and responses.
      * @return UserNotificationPreferences_smsConsentTrustedFormCertificate|null
     */
     public function getSmsConsentTrustedFormCertificate(): ?UserNotificationPreferences_smsConsentTrustedFormCertificate {
@@ -610,7 +610,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the smsConsentTrustedFormCertificate property value. The TrustedForm certificate captured for the user's most recent SMS opt-in.
+     * Sets the smsConsentTrustedFormCertificate property value. Describes trusted form certificate data used in Leadping API requests and responses.
      * @param UserNotificationPreferences_smsConsentTrustedFormCertificate|null $value Value to set for the smsConsentTrustedFormCertificate property.
     */
     public function setSmsConsentTrustedFormCertificate(?UserNotificationPreferences_smsConsentTrustedFormCertificate $value): void {

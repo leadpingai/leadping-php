@@ -25,12 +25,12 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?UserResponse_billingPlan $billingPlan = null;
     
     /**
-     * @var UserResponse_billingState|null $billingState Customer-safe billing state for the user's currently selected organization.
+     * @var UserResponse_billingState|null $billingState Customer-safe billing state for a Leadping organization.
     */
     private ?UserResponse_billingState $billingState = null;
     
     /**
-     * @var UserResponse_compliance|null $compliance Compliance for this user.
+     * @var UserResponse_compliance|null $compliance Describes user compliance data used in Leadping API requests and responses.
     */
     private ?UserResponse_compliance $compliance = null;
     
@@ -40,7 +40,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $createdAt = null;
     
     /**
-     * @var UserResponse_currentOrganization|null $currentOrganization Current organization for this user.
+     * @var UserResponse_currentOrganization|null $currentOrganization Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?UserResponse_currentOrganization $currentOrganization = null;
     
@@ -90,7 +90,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?string $name = null;
     
     /**
-     * @var UserResponse_notificationPreferences|null $notificationPreferences Notification preferences for this user.
+     * @var UserResponse_notificationPreferences|null $notificationPreferences Describes user notification preferences data used in Leadping API requests and responses.
     */
     private ?UserResponse_notificationPreferences $notificationPreferences = null;
     
@@ -167,7 +167,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billingState property value. Customer-safe billing state for the user's currently selected organization.
+     * Gets the billingState property value. Customer-safe billing state for a Leadping organization.
      * @return UserResponse_billingState|null
     */
     public function getBillingState(): ?UserResponse_billingState {
@@ -175,7 +175,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the compliance property value. Compliance for this user.
+     * Gets the compliance property value. Describes user compliance data used in Leadping API requests and responses.
      * @return UserResponse_compliance|null
     */
     public function getCompliance(): ?UserResponse_compliance {
@@ -191,7 +191,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the currentOrganization property value. Current organization for this user.
+     * Gets the currentOrganization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return UserResponse_currentOrganization|null
     */
     public function getCurrentOrganization(): ?UserResponse_currentOrganization {
@@ -311,7 +311,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the notificationPreferences property value. Notification preferences for this user.
+     * Gets the notificationPreferences property value. Describes user notification preferences data used in Leadping API requests and responses.
      * @return UserResponse_notificationPreferences|null
     */
     public function getNotificationPreferences(): ?UserResponse_notificationPreferences {
@@ -430,7 +430,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billingState property value. Customer-safe billing state for the user's currently selected organization.
+     * Sets the billingState property value. Customer-safe billing state for a Leadping organization.
      * @param UserResponse_billingState|null $value Value to set for the billingState property.
     */
     public function setBillingState(?UserResponse_billingState $value): void {
@@ -438,7 +438,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the compliance property value. Compliance for this user.
+     * Sets the compliance property value. Describes user compliance data used in Leadping API requests and responses.
      * @param UserResponse_compliance|null $value Value to set for the compliance property.
     */
     public function setCompliance(?UserResponse_compliance $value): void {
@@ -454,7 +454,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the currentOrganization property value. Current organization for this user.
+     * Sets the currentOrganization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param UserResponse_currentOrganization|null $value Value to set for the currentOrganization property.
     */
     public function setCurrentOrganization(?UserResponse_currentOrganization $value): void {
@@ -534,7 +534,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the notificationPreferences property value. Notification preferences for this user.
+     * Sets the notificationPreferences property value. Describes user notification preferences data used in Leadping API requests and responses.
      * @param UserResponse_notificationPreferences|null $value Value to set for the notificationPreferences property.
     */
     public function setNotificationPreferences(?UserResponse_notificationPreferences $value): void {

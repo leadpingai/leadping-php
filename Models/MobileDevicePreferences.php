@@ -19,7 +19,7 @@ class MobileDevicePreferences implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var IdNamePair|null $device Identifier and display name of the related device.
+     * @var IdNamePair|null $device Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?IdNamePair $device = null;
     
@@ -58,7 +58,7 @@ class MobileDevicePreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the device property value. Identifier and display name of the related device.
+     * Gets the device property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return IdNamePair|null
     */
     public function getDevice(): ?IdNamePair {
@@ -114,7 +114,7 @@ class MobileDevicePreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the device property value. Identifier and display name of the related device.
+     * Sets the device property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param IdNamePair|null $value Value to set for the device property.
     */
     public function setDevice(?IdNamePair $value): void {

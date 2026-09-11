@@ -34,7 +34,7 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
     private ?array $points = null;
     
     /**
-     * @var AnalyticsDateRange|null $range Range associated with this Leadping source metrics.
+     * @var AnalyticsDateRange|null $range Defines the inclusive reporting window and comparison window used to calculate Leadping analytics.
     */
     private ?AnalyticsDateRange $range = null;
     
@@ -113,7 +113,7 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the range property value. Range associated with this Leadping source metrics.
+     * Gets the range property value. Defines the inclusive reporting window and comparison window used to calculate Leadping analytics.
      * @return AnalyticsDateRange|null
     */
     public function getRange(): ?AnalyticsDateRange {
@@ -183,7 +183,7 @@ class SourceMetricsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the range property value. Range associated with this Leadping source metrics.
+     * Sets the range property value. Defines the inclusive reporting window and comparison window used to calculate Leadping analytics.
      * @param AnalyticsDateRange|null $value Value to set for the range property.
     */
     public function setRange(?AnalyticsDateRange $value): void {

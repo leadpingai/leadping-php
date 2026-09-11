@@ -18,7 +18,7 @@ class CustomerLeadTrend implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var AnalyticsComparison|null $comparison Date and time when this Leadping customer lead trend was comparison.
+     * @var AnalyticsComparison|null $comparison Compares a metric with the preceding period and reports its absolute and percentage change.
     */
     private ?AnalyticsComparison $comparison = null;
     
@@ -67,7 +67,7 @@ class CustomerLeadTrend implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the comparison property value. Date and time when this Leadping customer lead trend was comparison.
+     * Gets the comparison property value. Compares a metric with the preceding period and reports its absolute and percentage change.
      * @return AnalyticsComparison|null
     */
     public function getComparison(): ?AnalyticsComparison {
@@ -143,7 +143,7 @@ class CustomerLeadTrend implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the comparison property value. Date and time when this Leadping customer lead trend was comparison.
+     * Sets the comparison property value. Compares a metric with the preceding period and reports its absolute and percentage change.
      * @param AnalyticsComparison|null $value Value to set for the comparison property.
     */
     public function setComparison(?AnalyticsComparison $value): void {

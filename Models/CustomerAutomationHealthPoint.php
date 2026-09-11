@@ -19,32 +19,32 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var DateTime|null $endAt Gets or sets the end at.
+     * @var DateTime|null $endAt The endAt property
     */
     private ?DateTime $endAt = null;
     
     /**
-     * @var int|null $executions Gets or sets the executions.
+     * @var int|null $executions The executions property
     */
     private ?int $executions = null;
     
     /**
-     * @var int|null $failureCount Gets or sets the failure count.
+     * @var int|null $failureCount The failureCount property
     */
     private ?int $failureCount = null;
     
     /**
-     * @var string|null $label Gets or sets the label.
+     * @var string|null $label The label property
     */
     private ?string $label = null;
     
     /**
-     * @var DateTime|null $startAt Gets or sets the start at.
+     * @var DateTime|null $startAt The startAt property
     */
     private ?DateTime $startAt = null;
     
     /**
-     * @var int|null $successCount Gets or sets the success count.
+     * @var int|null $successCount The successCount property
     */
     private ?int $successCount = null;
     
@@ -73,7 +73,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the endAt property value. Gets or sets the end at.
+     * Gets the endAt property value. The endAt property
      * @return DateTime|null
     */
     public function getEndAt(): ?DateTime {
@@ -81,7 +81,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the executions property value. Gets or sets the executions.
+     * Gets the executions property value. The executions property
      * @return int|null
     */
     public function getExecutions(): ?int {
@@ -89,7 +89,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the failureCount property value. Gets or sets the failure count.
+     * Gets the failureCount property value. The failureCount property
      * @return int|null
     */
     public function getFailureCount(): ?int {
@@ -113,7 +113,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the label property value. Gets or sets the label.
+     * Gets the label property value. The label property
      * @return string|null
     */
     public function getLabel(): ?string {
@@ -121,7 +121,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the startAt property value. Gets or sets the start at.
+     * Gets the startAt property value. The startAt property
      * @return DateTime|null
     */
     public function getStartAt(): ?DateTime {
@@ -129,7 +129,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the successCount property value. Gets or sets the success count.
+     * Gets the successCount property value. The successCount property
      * @return int|null
     */
     public function getSuccessCount(): ?int {
@@ -159,7 +159,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the endAt property value. Gets or sets the end at.
+     * Sets the endAt property value. The endAt property
      * @param DateTime|null $value Value to set for the endAt property.
     */
     public function setEndAt(?DateTime $value): void {
@@ -167,7 +167,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the executions property value. Gets or sets the executions.
+     * Sets the executions property value. The executions property
      * @param int|null $value Value to set for the executions property.
     */
     public function setExecutions(?int $value): void {
@@ -175,7 +175,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the failureCount property value. Gets or sets the failure count.
+     * Sets the failureCount property value. The failureCount property
      * @param int|null $value Value to set for the failureCount property.
     */
     public function setFailureCount(?int $value): void {
@@ -183,7 +183,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the label property value. Gets or sets the label.
+     * Sets the label property value. The label property
      * @param string|null $value Value to set for the label property.
     */
     public function setLabel(?string $value): void {
@@ -191,7 +191,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the startAt property value. Gets or sets the start at.
+     * Sets the startAt property value. The startAt property
      * @param DateTime|null $value Value to set for the startAt property.
     */
     public function setStartAt(?DateTime $value): void {
@@ -199,7 +199,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the successCount property value. Gets or sets the success count.
+     * Sets the successCount property value. The successCount property
      * @param int|null $value Value to set for the successCount property.
     */
     public function setSuccessCount(?int $value): void {

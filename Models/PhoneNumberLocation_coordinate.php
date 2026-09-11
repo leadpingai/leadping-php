@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Latitude and longitude coordinate for this phone number location.
+ * Latitude and longitude coordinate for this lead contact profile.
 */
 class PhoneNumberLocation_coordinate extends Coordinate implements Parsable 
 {

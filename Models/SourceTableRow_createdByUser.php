@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * User summary for the person who created this lead source table row.
+ * Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 */
 class SourceTableRow_createdByUser extends IdNamePair implements Parsable 
 {

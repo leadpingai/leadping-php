@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Describes how the time zone was resolved.
+ * Describes how a phone location value was resolved.
 */
 class PhoneNumberLocation_timeZoneSource extends PhoneLocationSource implements Parsable 
 {

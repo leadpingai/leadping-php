@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Notification preferences for this user.
+ * Describes user notification preferences data used in Leadping API requests and responses.
 */
 class UserResponse_notificationPreferences extends UserNotificationPreferences implements Parsable 
 {

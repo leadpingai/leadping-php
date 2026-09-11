@@ -19,7 +19,7 @@ class OrganizationApiKeyIssueResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var OrganizationApiKeyPreviewResponse|null $apiKey API key associated with this Leadping organization API key issue.
+     * @var OrganizationApiKeyPreviewResponse|null $apiKey Safe identifying and usage metadata for an organization API key. This model never contains the secret credential.
     */
     private ?OrganizationApiKeyPreviewResponse $apiKey = null;
     
@@ -58,7 +58,7 @@ class OrganizationApiKeyIssueResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the apiKey property value. API key associated with this Leadping organization API key issue.
+     * Gets the apiKey property value. Safe identifying and usage metadata for an organization API key. This model never contains the secret credential.
      * @return OrganizationApiKeyPreviewResponse|null
     */
     public function getApiKey(): ?OrganizationApiKeyPreviewResponse {
@@ -114,7 +114,7 @@ class OrganizationApiKeyIssueResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the apiKey property value. API key associated with this Leadping organization API key issue.
+     * Sets the apiKey property value. Safe identifying and usage metadata for an organization API key. This model never contains the secret credential.
      * @param OrganizationApiKeyPreviewResponse|null $value Value to set for the apiKey property.
     */
     public function setApiKey(?OrganizationApiKeyPreviewResponse $value): void {

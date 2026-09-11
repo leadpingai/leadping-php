@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Postal street address for the lead contact profile.
+ * Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
 */
 class LeadContact_streetAddress extends StreetAddress implements Parsable 
 {

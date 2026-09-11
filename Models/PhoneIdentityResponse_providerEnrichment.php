@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Lossless provider response retained for administrative diagnostics.
+ * Lossless provider snapshot retained with a phone identity for replay, audits, and fields added by providers later.
 */
 class PhoneIdentityResponse_providerEnrichment extends PhoneLookupProviderSnapshot implements Parsable 
 {

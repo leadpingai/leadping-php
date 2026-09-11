@@ -19,12 +19,12 @@ class LeadRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var LeadContact|null $contact Contact details for the lead or customer represented by this lead request.
+     * @var LeadContact|null $contact Public Leadping API schema for lead contact profile data.
     */
     private ?LeadContact $contact = null;
     
     /**
-     * @var LeadProfile|null $customer Demographic profile details for the lead represented by this lead request.
+     * @var LeadProfile|null $customer Public Leadping API schema for lead demographic profile data.
     */
     private ?LeadProfile $customer = null;
     
@@ -39,7 +39,7 @@ class LeadRequest implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * @var LeadMetadata|null $metadata Structured metadata used for attribution, integrations, and reporting on this lead request.
+     * @var LeadMetadata|null $metadata Public Leadping API schema for lead attribution metadata data.
     */
     private ?LeadMetadata $metadata = null;
     
@@ -78,7 +78,7 @@ class LeadRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the contact property value. Contact details for the lead or customer represented by this lead request.
+     * Gets the contact property value. Public Leadping API schema for lead contact profile data.
      * @return LeadContact|null
     */
     public function getContact(): ?LeadContact {
@@ -86,7 +86,7 @@ class LeadRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the customer property value. Demographic profile details for the lead represented by this lead request.
+     * Gets the customer property value. Public Leadping API schema for lead demographic profile data.
      * @return LeadProfile|null
     */
     public function getCustomer(): ?LeadProfile {
@@ -141,7 +141,7 @@ class LeadRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this lead request.
+     * Gets the metadata property value. Public Leadping API schema for lead attribution metadata data.
      * @return LeadMetadata|null
     */
     public function getMetadata(): ?LeadMetadata {
@@ -188,7 +188,7 @@ class LeadRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the contact property value. Contact details for the lead or customer represented by this lead request.
+     * Sets the contact property value. Public Leadping API schema for lead contact profile data.
      * @param LeadContact|null $value Value to set for the contact property.
     */
     public function setContact(?LeadContact $value): void {
@@ -196,7 +196,7 @@ class LeadRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the customer property value. Demographic profile details for the lead represented by this lead request.
+     * Sets the customer property value. Public Leadping API schema for lead demographic profile data.
      * @param LeadProfile|null $value Value to set for the customer property.
     */
     public function setCustomer(?LeadProfile $value): void {
@@ -220,7 +220,7 @@ class LeadRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this lead request.
+     * Sets the metadata property value. Public Leadping API schema for lead attribution metadata data.
      * @param LeadMetadata|null $value Value to set for the metadata property.
     */
     public function setMetadata(?LeadMetadata $value): void {

@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Current lead status change summary that describes the lead outcome.
+ * Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
 */
 class LeadTableRow_currentLeadStatus extends CurrentLeadStatusSummary implements Parsable 
 {

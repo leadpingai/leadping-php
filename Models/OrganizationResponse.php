@@ -19,7 +19,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     private ?float $accountBalance = null;
     
     /**
-     * @var OrganizationResponse_activation|null $activation Organization activation state covering site, billing, compliance, and telephony readiness.
+     * @var OrganizationResponse_activation|null $activation Describes organization activation state data used in Leadping API requests and responses.
     */
     private ?OrganizationResponse_activation $activation = null;
     
@@ -29,7 +29,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var OrganizationResponse_address|null $address Postal address for the organization, lead, or contact represented by this organization profile response.
+     * @var OrganizationResponse_address|null $address Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
     */
     private ?OrganizationResponse_address $address = null;
     
@@ -49,7 +49,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     private ?float $autoRefillTrigger = null;
     
     /**
-     * @var OrganizationResponse_billingAddress|null $billingAddress Postal address used for invoices, receipts, and payment processor billing records.
+     * @var OrganizationResponse_billingAddress|null $billingAddress Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
     */
     private ?OrganizationResponse_billingAddress $billingAddress = null;
     
@@ -64,7 +64,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     private ?OrganizationResponse_billingPlan $billingPlan = null;
     
     /**
-     * @var OrganizationResponse_billingState|null $billingState Customer-safe billing state for this organization.
+     * @var OrganizationResponse_billingState|null $billingState Customer-safe billing state for a Leadping organization.
     */
     private ?OrganizationResponse_billingState $billingState = null;
     
@@ -74,7 +74,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     private ?string $billingTaxId = null;
     
     /**
-     * @var OrganizationResponse_compliancePolicy|null $compliancePolicy Compliance policy configuration for the organization.
+     * @var OrganizationResponse_compliancePolicy|null $compliancePolicy Describes organization compliance policy data used in Leadping API requests and responses.
     */
     private ?OrganizationResponse_compliancePolicy $compliancePolicy = null;
     
@@ -99,7 +99,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     private ?string $ein = null;
     
     /**
-     * @var OrganizationResponse_einDocument|null $einDocument Uploaded EIN document reference used for organization verification.
+     * @var OrganizationResponse_einDocument|null $einDocument Extends an identifier-and-name resource reference with an optional string value used for display or selection metadata.
     */
     private ?OrganizationResponse_einDocument $einDocument = null;
     
@@ -149,7 +149,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     private ?OrganizationResponse_setupStep $setupStep = null;
     
     /**
-     * @var OrganizationResponse_site|null $site Leadping website record connected to this organization.
+     * @var OrganizationResponse_site|null $site Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?OrganizationResponse_site $site = null;
     
@@ -164,7 +164,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     private ?OrganizationResponse_subscriptionStatus $subscriptionStatus = null;
     
     /**
-     * @var OrganizationResponse_user|null $user User summary connected to this organization profile response.
+     * @var OrganizationResponse_user|null $user Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?OrganizationResponse_user $user = null;
     
@@ -203,7 +203,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the activation property value. Organization activation state covering site, billing, compliance, and telephony readiness.
+     * Gets the activation property value. Describes organization activation state data used in Leadping API requests and responses.
      * @return OrganizationResponse_activation|null
     */
     public function getActivation(): ?OrganizationResponse_activation {
@@ -219,7 +219,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the address property value. Postal address for the organization, lead, or contact represented by this organization profile response.
+     * Gets the address property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
      * @return OrganizationResponse_address|null
     */
     public function getAddress(): ?OrganizationResponse_address {
@@ -251,7 +251,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billingAddress property value. Postal address used for invoices, receipts, and payment processor billing records.
+     * Gets the billingAddress property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
      * @return OrganizationResponse_billingAddress|null
     */
     public function getBillingAddress(): ?OrganizationResponse_billingAddress {
@@ -275,7 +275,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billingState property value. Customer-safe billing state for this organization.
+     * Gets the billingState property value. Customer-safe billing state for a Leadping organization.
      * @return OrganizationResponse_billingState|null
     */
     public function getBillingState(): ?OrganizationResponse_billingState {
@@ -291,7 +291,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the compliancePolicy property value. Compliance policy configuration for the organization.
+     * Gets the compliancePolicy property value. Describes organization compliance policy data used in Leadping API requests and responses.
      * @return OrganizationResponse_compliancePolicy|null
     */
     public function getCompliancePolicy(): ?OrganizationResponse_compliancePolicy {
@@ -331,7 +331,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the einDocument property value. Uploaded EIN document reference used for organization verification.
+     * Gets the einDocument property value. Extends an identifier-and-name resource reference with an optional string value used for display or selection metadata.
      * @return OrganizationResponse_einDocument|null
     */
     public function getEinDocument(): ?OrganizationResponse_einDocument {
@@ -453,7 +453,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the site property value. Leadping website record connected to this organization.
+     * Gets the site property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return OrganizationResponse_site|null
     */
     public function getSite(): ?OrganizationResponse_site {
@@ -477,7 +477,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the user property value. User summary connected to this organization profile response.
+     * Gets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return OrganizationResponse_user|null
     */
     public function getUser(): ?OrganizationResponse_user {
@@ -549,7 +549,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the activation property value. Organization activation state covering site, billing, compliance, and telephony readiness.
+     * Sets the activation property value. Describes organization activation state data used in Leadping API requests and responses.
      * @param OrganizationResponse_activation|null $value Value to set for the activation property.
     */
     public function setActivation(?OrganizationResponse_activation $value): void {
@@ -565,7 +565,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the address property value. Postal address for the organization, lead, or contact represented by this organization profile response.
+     * Sets the address property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
      * @param OrganizationResponse_address|null $value Value to set for the address property.
     */
     public function setAddress(?OrganizationResponse_address $value): void {
@@ -597,7 +597,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billingAddress property value. Postal address used for invoices, receipts, and payment processor billing records.
+     * Sets the billingAddress property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
      * @param OrganizationResponse_billingAddress|null $value Value to set for the billingAddress property.
     */
     public function setBillingAddress(?OrganizationResponse_billingAddress $value): void {
@@ -621,7 +621,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billingState property value. Customer-safe billing state for this organization.
+     * Sets the billingState property value. Customer-safe billing state for a Leadping organization.
      * @param OrganizationResponse_billingState|null $value Value to set for the billingState property.
     */
     public function setBillingState(?OrganizationResponse_billingState $value): void {
@@ -637,7 +637,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the compliancePolicy property value. Compliance policy configuration for the organization.
+     * Sets the compliancePolicy property value. Describes organization compliance policy data used in Leadping API requests and responses.
      * @param OrganizationResponse_compliancePolicy|null $value Value to set for the compliancePolicy property.
     */
     public function setCompliancePolicy(?OrganizationResponse_compliancePolicy $value): void {
@@ -677,7 +677,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the einDocument property value. Uploaded EIN document reference used for organization verification.
+     * Sets the einDocument property value. Extends an identifier-and-name resource reference with an optional string value used for display or selection metadata.
      * @param OrganizationResponse_einDocument|null $value Value to set for the einDocument property.
     */
     public function setEinDocument(?OrganizationResponse_einDocument $value): void {
@@ -757,7 +757,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the site property value. Leadping website record connected to this organization.
+     * Sets the site property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param OrganizationResponse_site|null $value Value to set for the site property.
     */
     public function setSite(?OrganizationResponse_site $value): void {
@@ -781,7 +781,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the user property value. User summary connected to this organization profile response.
+     * Sets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param OrganizationResponse_user|null $value Value to set for the user property.
     */
     public function setUser(?OrganizationResponse_user $value): void {

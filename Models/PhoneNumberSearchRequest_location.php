@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Geographic location metadata for the phone number, lead, or lookup result.
+ * Public Leadping API schema for phone number location data.
 */
 class PhoneNumberSearchRequest_location extends PhoneNumberLocation implements Parsable 
 {

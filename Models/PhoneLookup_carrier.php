@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Complete carrier metadata reported for this phone number.
+ * Complete carrier metadata returned by a phone number lookup provider.
 */
 class PhoneLookup_carrier extends PhoneLookupCarrier implements Parsable 
 {

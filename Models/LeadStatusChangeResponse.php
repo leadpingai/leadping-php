@@ -89,6 +89,16 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     private ?bool $isMissedCallFollowUp = null;
     
     /**
+     * @var string|null $leadAvatarUrl The lead's profile image URL, when available.
+    */
+    private ?string $leadAvatarUrl = null;
+    
+    /**
+     * @var string|null $leadEmail The lead's email address, used for Gravatar fallback.
+    */
+    private ?string $leadEmail = null;
+    
+    /**
      * @var string|null $leadId The lead ID associated with this lead status change.
     */
     private ?string $leadId = null;
@@ -296,6 +306,8 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
             'followUpStatus' => fn(ParseNode $n) => $o->setFollowUpStatus($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isMissedCallFollowUp' => fn(ParseNode $n) => $o->setIsMissedCallFollowUp($n->getBooleanValue()),
+            'leadAvatarUrl' => fn(ParseNode $n) => $o->setLeadAvatarUrl($n->getStringValue()),
+            'leadEmail' => fn(ParseNode $n) => $o->setLeadEmail($n->getStringValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
             'leadName' => fn(ParseNode $n) => $o->setLeadName($n->getStringValue()),
             'newLeadStatusChangeId' => fn(ParseNode $n) => $o->setNewLeadStatusChangeId($n->getStringValue()),
@@ -336,6 +348,22 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     */
     public function getIsMissedCallFollowUp(): ?bool {
         return $this->isMissedCallFollowUp;
+    }
+
+    /**
+     * Gets the leadAvatarUrl property value. The lead's profile image URL, when available.
+     * @return string|null
+    */
+    public function getLeadAvatarUrl(): ?string {
+        return $this->leadAvatarUrl;
+    }
+
+    /**
+     * Gets the leadEmail property value. The lead's email address, used for Gravatar fallback.
+     * @return string|null
+    */
+    public function getLeadEmail(): ?string {
+        return $this->leadEmail;
     }
 
     /**
@@ -477,6 +505,8 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('followUpStatus', $this->getFollowUpStatus());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isMissedCallFollowUp', $this->getIsMissedCallFollowUp());
+        $writer->writeStringValue('leadAvatarUrl', $this->getLeadAvatarUrl());
+        $writer->writeStringValue('leadEmail', $this->getLeadEmail());
         $writer->writeStringValue('leadId', $this->getLeadId());
         $writer->writeStringValue('leadName', $this->getLeadName());
         $writer->writeStringValue('newLeadStatusChangeId', $this->getNewLeadStatusChangeId());
@@ -613,6 +643,22 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     */
     public function setIsMissedCallFollowUp(?bool $value): void {
         $this->isMissedCallFollowUp = $value;
+    }
+
+    /**
+     * Sets the leadAvatarUrl property value. The lead's profile image URL, when available.
+     * @param string|null $value Value to set for the leadAvatarUrl property.
+    */
+    public function setLeadAvatarUrl(?string $value): void {
+        $this->leadAvatarUrl = $value;
+    }
+
+    /**
+     * Sets the leadEmail property value. The lead's email address, used for Gravatar fallback.
+     * @param string|null $value Value to set for the leadEmail property.
+    */
+    public function setLeadEmail(?string $value): void {
+        $this->leadEmail = $value;
     }
 
     /**

@@ -39,7 +39,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     private ?int $archiveReason = null;
     
     /**
-     * @var LeadResponse_assignedTo|null $assignedTo Identifier and display name of the active organization member assigned to this lead.
+     * @var LeadResponse_assignedTo|null $assignedTo Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?LeadResponse_assignedTo $assignedTo = null;
     
@@ -49,7 +49,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     private ?string $assignedToUserId = null;
     
     /**
-     * @var LeadContact|null $contact Contact details for the lead or customer represented by this lead response.
+     * @var LeadContact|null $contact Public Leadping API schema for lead contact profile data.
     */
     private ?LeadContact $contact = null;
     
@@ -59,12 +59,12 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $createdAt = null;
     
     /**
-     * @var LeadResponse_currentLeadStatus|null $currentLeadStatus Current lead status change summary that describes the lead outcome.
+     * @var LeadResponse_currentLeadStatus|null $currentLeadStatus Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
     */
     private ?LeadResponse_currentLeadStatus $currentLeadStatus = null;
     
     /**
-     * @var LeadProfile|null $customer Demographic profile details for the lead represented by this lead response.
+     * @var LeadProfile|null $customer Public Leadping API schema for lead demographic profile data.
     */
     private ?LeadProfile $customer = null;
     
@@ -94,7 +94,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     private ?bool $isArchived = null;
     
     /**
-     * @var LeadMetadata|null $metadata Structured metadata used for attribution, integrations, and reporting on this lead response.
+     * @var LeadMetadata|null $metadata Public Leadping API schema for lead attribution metadata data.
     */
     private ?LeadMetadata $metadata = null;
     
@@ -104,7 +104,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $modifiedAt = null;
     
     /**
-     * @var LeadResponse_phoneIdentity|null $phoneIdentity Canonical phone identity and provider lookup details for this lead.
+     * @var LeadResponse_phoneIdentity|null $phoneIdentity Describes Leadping's canonical identity for a phone number, including normalization, carrier, line type, reputation, and lookup history.
     */
     private ?LeadResponse_phoneIdentity $phoneIdentity = null;
     
@@ -185,7 +185,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the assignedTo property value. Identifier and display name of the active organization member assigned to this lead.
+     * Gets the assignedTo property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return LeadResponse_assignedTo|null
     */
     public function getAssignedTo(): ?LeadResponse_assignedTo {
@@ -201,7 +201,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the contact property value. Contact details for the lead or customer represented by this lead response.
+     * Gets the contact property value. Public Leadping API schema for lead contact profile data.
      * @return LeadContact|null
     */
     public function getContact(): ?LeadContact {
@@ -217,7 +217,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
+     * Gets the currentLeadStatus property value. Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
      * @return LeadResponse_currentLeadStatus|null
     */
     public function getCurrentLeadStatus(): ?LeadResponse_currentLeadStatus {
@@ -225,7 +225,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the customer property value. Demographic profile details for the lead represented by this lead response.
+     * Gets the customer property value. Public Leadping API schema for lead demographic profile data.
      * @return LeadProfile|null
     */
     public function getCustomer(): ?LeadProfile {
@@ -305,7 +305,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this lead response.
+     * Gets the metadata property value. Public Leadping API schema for lead attribution metadata data.
      * @return LeadMetadata|null
     */
     public function getMetadata(): ?LeadMetadata {
@@ -321,7 +321,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the phoneIdentity property value. Canonical phone identity and provider lookup details for this lead.
+     * Gets the phoneIdentity property value. Describes Leadping's canonical identity for a phone number, including normalization, carrier, line type, reputation, and lookup history.
      * @return LeadResponse_phoneIdentity|null
     */
     public function getPhoneIdentity(): ?LeadResponse_phoneIdentity {
@@ -431,7 +431,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the assignedTo property value. Identifier and display name of the active organization member assigned to this lead.
+     * Sets the assignedTo property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param LeadResponse_assignedTo|null $value Value to set for the assignedTo property.
     */
     public function setAssignedTo(?LeadResponse_assignedTo $value): void {
@@ -447,7 +447,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the contact property value. Contact details for the lead or customer represented by this lead response.
+     * Sets the contact property value. Public Leadping API schema for lead contact profile data.
      * @param LeadContact|null $value Value to set for the contact property.
     */
     public function setContact(?LeadContact $value): void {
@@ -463,7 +463,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
+     * Sets the currentLeadStatus property value. Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
      * @param LeadResponse_currentLeadStatus|null $value Value to set for the currentLeadStatus property.
     */
     public function setCurrentLeadStatus(?LeadResponse_currentLeadStatus $value): void {
@@ -471,7 +471,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the customer property value. Demographic profile details for the lead represented by this lead response.
+     * Sets the customer property value. Public Leadping API schema for lead demographic profile data.
      * @param LeadProfile|null $value Value to set for the customer property.
     */
     public function setCustomer(?LeadProfile $value): void {
@@ -519,7 +519,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the metadata property value. Structured metadata used for attribution, integrations, and reporting on this lead response.
+     * Sets the metadata property value. Public Leadping API schema for lead attribution metadata data.
      * @param LeadMetadata|null $value Value to set for the metadata property.
     */
     public function setMetadata(?LeadMetadata $value): void {
@@ -535,7 +535,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the phoneIdentity property value. Canonical phone identity and provider lookup details for this lead.
+     * Sets the phoneIdentity property value. Describes Leadping's canonical identity for a phone number, including normalization, carrier, line type, reputation, and lookup history.
      * @param LeadResponse_phoneIdentity|null $value Value to set for the phoneIdentity property.
     */
     public function setPhoneIdentity(?LeadResponse_phoneIdentity $value): void {

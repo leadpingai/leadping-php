@@ -124,7 +124,7 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     private ?string $sourceId = null;
     
     /**
-     * @var PhoneCallStatus|null $status Current lifecycle status for this phone call in the Leadping API.
+     * @var PhoneCallStatus|null $status Describes the durable business outcome of a Leadping phone call after provider status normalization.
     */
     private ?PhoneCallStatus $status = null;
     
@@ -377,7 +377,7 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. Current lifecycle status for this phone call in the Leadping API.
+     * Gets the status property value. Describes the durable business outcome of a Leadping phone call after provider status normalization.
      * @return PhoneCallStatus|null
     */
     public function getStatus(): ?PhoneCallStatus {
@@ -627,7 +627,7 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. Current lifecycle status for this phone call in the Leadping API.
+     * Sets the status property value. Describes the durable business outcome of a Leadping phone call after provider status normalization.
      * @param PhoneCallStatus|null $value Value to set for the status property.
     */
     public function setStatus(?PhoneCallStatus $value): void {

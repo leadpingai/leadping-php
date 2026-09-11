@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Canonical phone identity and provider lookup details for this lead.
+ * Describes Leadping's canonical identity for a phone number, including normalization, carrier, line type, reputation, and lookup history.
 */
 class LeadResponse_phoneIdentity extends PhoneIdentityResponse implements Parsable 
 {

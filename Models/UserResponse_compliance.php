@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Compliance for this user.
+ * Describes user compliance data used in Leadping API requests and responses.
 */
 class UserResponse_compliance extends UserCompliance implements Parsable 
 {

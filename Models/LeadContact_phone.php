@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Phone details for the lead, user, or organization represented by this lead contact profile.
+ * Public Leadping API schema for lead phone number data.
 */
 class LeadContact_phone extends Phone implements Parsable 
 {

@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Customer-safe billing state for the user's currently selected organization.
+ * Customer-safe billing state for a Leadping organization.
 */
 class UserResponse_billingState extends OrganizationBillingState implements Parsable 
 {

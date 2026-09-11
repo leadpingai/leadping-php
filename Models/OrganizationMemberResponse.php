@@ -64,7 +64,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     private ?string $name = null;
     
     /**
-     * @var IdNamePair|null $organization Organization for this organization user.
+     * @var IdNamePair|null $organization Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?IdNamePair $organization = null;
     
@@ -79,12 +79,12 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     private ?string $removedByUserId = null;
     
     /**
-     * @var OrganizationMemberRole|null $role Role for this organization user.
+     * @var OrganizationMemberRole|null $role Identifies an organization member's access level and permission scope within Leadping.
     */
     private ?OrganizationMemberRole $role = null;
     
     /**
-     * @var IdNamePair|null $user User for this organization user.
+     * @var IdNamePair|null $user Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?IdNamePair $user = null;
     
@@ -215,7 +215,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organization property value. Organization for this organization user.
+     * Gets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return IdNamePair|null
     */
     public function getOrganization(): ?IdNamePair {
@@ -239,7 +239,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the role property value. Role for this organization user.
+     * Gets the role property value. Identifies an organization member's access level and permission scope within Leadping.
      * @return OrganizationMemberRole|null
     */
     public function getRole(): ?OrganizationMemberRole {
@@ -247,7 +247,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the user property value. User for this organization user.
+     * Gets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return IdNamePair|null
     */
     public function getUser(): ?IdNamePair {
@@ -366,7 +366,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organization property value. Organization for this organization user.
+     * Sets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param IdNamePair|null $value Value to set for the organization property.
     */
     public function setOrganization(?IdNamePair $value): void {
@@ -390,7 +390,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the role property value. Role for this organization user.
+     * Sets the role property value. Identifies an organization member's access level and permission scope within Leadping.
      * @param OrganizationMemberRole|null $value Value to set for the role property.
     */
     public function setRole(?OrganizationMemberRole $value): void {
@@ -398,7 +398,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the user property value. User for this organization user.
+     * Sets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param IdNamePair|null $value Value to set for the user property.
     */
     public function setUser(?IdNamePair $value): void {

@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * User summary for the person who last modified this lead source response.
+ * Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 */
 class SourceResponse_modifiedByUser extends IdNamePair implements Parsable 
 {

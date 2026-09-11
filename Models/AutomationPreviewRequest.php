@@ -18,7 +18,7 @@ class AutomationPreviewRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var AutomationRequestSnapshot|null $automation Automation configuration to evaluate without executing live actions.
+     * @var AutomationRequestSnapshot|null $automation Public Leadping API schema for automation request snapshot data.
     */
     private ?AutomationRequestSnapshot $automation = null;
     
@@ -52,7 +52,7 @@ class AutomationPreviewRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the automation property value. Automation configuration to evaluate without executing live actions.
+     * Gets the automation property value. Public Leadping API schema for automation request snapshot data.
      * @return AutomationRequestSnapshot|null
     */
     public function getAutomation(): ?AutomationRequestSnapshot {
@@ -98,7 +98,7 @@ class AutomationPreviewRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the automation property value. Automation configuration to evaluate without executing live actions.
+     * Sets the automation property value. Public Leadping API schema for automation request snapshot data.
      * @param AutomationRequestSnapshot|null $value Value to set for the automation property.
     */
     public function setAutomation(?AutomationRequestSnapshot $value): void {

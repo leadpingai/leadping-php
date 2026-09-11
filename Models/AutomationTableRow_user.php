@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * User summary connected to this automation table row.
+ * Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 */
 class AutomationTableRow_user extends IdNamePair implements Parsable 
 {

@@ -33,12 +33,12 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     private ?string $number = null;
     
     /**
-     * @var PhoneNumberOptOutMetricsResponse|null $optOutMetrics Recent SMS opt-out metrics used to evaluate sender health and compliance risk.
+     * @var PhoneNumberOptOutMetricsResponse|null $optOutMetrics Describes phone number opt-out metrics data returned by Leadping.
     */
     private ?PhoneNumberOptOutMetricsResponse $optOutMetrics = null;
     
     /**
-     * @var PhoneNumberStatusResponse_outboundCapacity|null $outboundCapacity Current outbound SMS and voice capacity for this phone number.
+     * @var PhoneNumberStatusResponse_outboundCapacity|null $outboundCapacity Reports the sending capacity, current load, and availability of a phone number considered for outbound delivery.
     */
     private ?PhoneNumberStatusResponse_outboundCapacity $outboundCapacity = null;
     
@@ -48,12 +48,12 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     private ?array $recentEvents = null;
     
     /**
-     * @var PhoneNumberStatusResponse_smsWarmup|null $smsWarmup SMS warmup status for this phone number.
+     * @var PhoneNumberStatusResponse_smsWarmup|null $smsWarmup Describes SMS warmup status data returned by Leadping.
     */
     private ?PhoneNumberStatusResponse_smsWarmup $smsWarmup = null;
     
     /**
-     * @var PhoneNumberTrafficMetricsResponse|null $trafficMetrics Phone number traffic metrics for recent SMS and call activity.
+     * @var PhoneNumberTrafficMetricsResponse|null $trafficMetrics Describes phone number traffic metrics data returned by Leadping.
     */
     private ?PhoneNumberTrafficMetricsResponse $trafficMetrics = null;
     
@@ -124,7 +124,7 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the optOutMetrics property value. Recent SMS opt-out metrics used to evaluate sender health and compliance risk.
+     * Gets the optOutMetrics property value. Describes phone number opt-out metrics data returned by Leadping.
      * @return PhoneNumberOptOutMetricsResponse|null
     */
     public function getOptOutMetrics(): ?PhoneNumberOptOutMetricsResponse {
@@ -132,7 +132,7 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the outboundCapacity property value. Current outbound SMS and voice capacity for this phone number.
+     * Gets the outboundCapacity property value. Reports the sending capacity, current load, and availability of a phone number considered for outbound delivery.
      * @return PhoneNumberStatusResponse_outboundCapacity|null
     */
     public function getOutboundCapacity(): ?PhoneNumberStatusResponse_outboundCapacity {
@@ -148,7 +148,7 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the smsWarmup property value. SMS warmup status for this phone number.
+     * Gets the smsWarmup property value. Describes SMS warmup status data returned by Leadping.
      * @return PhoneNumberStatusResponse_smsWarmup|null
     */
     public function getSmsWarmup(): ?PhoneNumberStatusResponse_smsWarmup {
@@ -156,7 +156,7 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the trafficMetrics property value. Phone number traffic metrics for recent SMS and call activity.
+     * Gets the trafficMetrics property value. Describes phone number traffic metrics data returned by Leadping.
      * @return PhoneNumberTrafficMetricsResponse|null
     */
     public function getTrafficMetrics(): ?PhoneNumberTrafficMetricsResponse {
@@ -212,7 +212,7 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the optOutMetrics property value. Recent SMS opt-out metrics used to evaluate sender health and compliance risk.
+     * Sets the optOutMetrics property value. Describes phone number opt-out metrics data returned by Leadping.
      * @param PhoneNumberOptOutMetricsResponse|null $value Value to set for the optOutMetrics property.
     */
     public function setOptOutMetrics(?PhoneNumberOptOutMetricsResponse $value): void {
@@ -220,7 +220,7 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the outboundCapacity property value. Current outbound SMS and voice capacity for this phone number.
+     * Sets the outboundCapacity property value. Reports the sending capacity, current load, and availability of a phone number considered for outbound delivery.
      * @param PhoneNumberStatusResponse_outboundCapacity|null $value Value to set for the outboundCapacity property.
     */
     public function setOutboundCapacity(?PhoneNumberStatusResponse_outboundCapacity $value): void {
@@ -236,7 +236,7 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the smsWarmup property value. SMS warmup status for this phone number.
+     * Sets the smsWarmup property value. Describes SMS warmup status data returned by Leadping.
      * @param PhoneNumberStatusResponse_smsWarmup|null $value Value to set for the smsWarmup property.
     */
     public function setSmsWarmup(?PhoneNumberStatusResponse_smsWarmup $value): void {
@@ -244,7 +244,7 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the trafficMetrics property value. Phone number traffic metrics for recent SMS and call activity.
+     * Sets the trafficMetrics property value. Describes phone number traffic metrics data returned by Leadping.
      * @param PhoneNumberTrafficMetricsResponse|null $value Value to set for the trafficMetrics property.
     */
     public function setTrafficMetrics(?PhoneNumberTrafficMetricsResponse $value): void {

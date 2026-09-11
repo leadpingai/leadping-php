@@ -19,7 +19,7 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var OutboundDeliveryChannel|null $channel Channel classification for this Leadping outbound queue item.
+     * @var OutboundDeliveryChannel|null $channel Defines outbound delivery channels protected by delivery control.
     */
     private ?OutboundDeliveryChannel $channel = null;
     
@@ -49,12 +49,12 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     private ?DateTime $scheduledSendAt = null;
     
     /**
-     * @var OutboundDeliverySource|null $source Source classification for this Leadping outbound queue item.
+     * @var OutboundDeliverySource|null $source Defines the source that requested outbound delivery.
     */
     private ?OutboundDeliverySource $source = null;
     
     /**
-     * @var OutboundDeliveryStatus|null $status Current status for this Leadping outbound queue item.
+     * @var OutboundDeliveryStatus|null $status Defines durable outbound delivery request statuses.
     */
     private ?OutboundDeliveryStatus $status = null;
     
@@ -83,7 +83,7 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the channel property value. Channel classification for this Leadping outbound queue item.
+     * Gets the channel property value. Defines outbound delivery channels protected by delivery control.
      * @return OutboundDeliveryChannel|null
     */
     public function getChannel(): ?OutboundDeliveryChannel {
@@ -149,7 +149,7 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the source property value. Source classification for this Leadping outbound queue item.
+     * Gets the source property value. Defines the source that requested outbound delivery.
      * @return OutboundDeliverySource|null
     */
     public function getSource(): ?OutboundDeliverySource {
@@ -157,7 +157,7 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. Current status for this Leadping outbound queue item.
+     * Gets the status property value. Defines durable outbound delivery request statuses.
      * @return OutboundDeliveryStatus|null
     */
     public function getStatus(): ?OutboundDeliveryStatus {
@@ -189,7 +189,7 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the channel property value. Channel classification for this Leadping outbound queue item.
+     * Sets the channel property value. Defines outbound delivery channels protected by delivery control.
      * @param OutboundDeliveryChannel|null $value Value to set for the channel property.
     */
     public function setChannel(?OutboundDeliveryChannel $value): void {
@@ -237,7 +237,7 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the source property value. Source classification for this Leadping outbound queue item.
+     * Sets the source property value. Defines the source that requested outbound delivery.
      * @param OutboundDeliverySource|null $value Value to set for the source property.
     */
     public function setSource(?OutboundDeliverySource $value): void {
@@ -245,7 +245,7 @@ class OutboundQueueItem implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. Current status for this Leadping outbound queue item.
+     * Sets the status property value. Defines durable outbound delivery request statuses.
      * @param OutboundDeliveryStatus|null $value Value to set for the status property.
     */
     public function setStatus(?OutboundDeliveryStatus $value): void {

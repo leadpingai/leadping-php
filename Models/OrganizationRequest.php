@@ -18,7 +18,7 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var OrganizationRequest_address|null $address Postal address for the organization, lead, or contact represented by this organization profile request.
+     * @var OrganizationRequest_address|null $address Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
     */
     private ?OrganizationRequest_address $address = null;
     
@@ -87,7 +87,7 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the address property value. Postal address for the organization, lead, or contact represented by this organization profile request.
+     * Gets the address property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
      * @return OrganizationRequest_address|null
     */
     public function getAddress(): ?OrganizationRequest_address {
@@ -203,7 +203,7 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the address property value. Postal address for the organization, lead, or contact represented by this organization profile request.
+     * Sets the address property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
      * @param OrganizationRequest_address|null $value Value to set for the address property.
     */
     public function setAddress(?OrganizationRequest_address $value): void {

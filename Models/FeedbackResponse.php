@@ -59,12 +59,12 @@ class FeedbackResponse implements AdditionalDataHolder, Parsable
     private ?string $route = null;
     
     /**
-     * @var FeedbackStatus|null $status Current lifecycle status for this feedback item response in the Leadping API.
+     * @var FeedbackStatus|null $status Defines admin triage statuses for durable product feedback.
     */
     private ?FeedbackStatus $status = null;
     
     /**
-     * @var FeedbackType|null $type Type classification used to route and interpret this feedback item response in the Leadping API.
+     * @var FeedbackType|null $type Defines the type of product feedback submitted from inside Leadping.
     */
     private ?FeedbackType $type = null;
     
@@ -183,7 +183,7 @@ class FeedbackResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. Current lifecycle status for this feedback item response in the Leadping API.
+     * Gets the status property value. Defines admin triage statuses for durable product feedback.
      * @return FeedbackStatus|null
     */
     public function getStatus(): ?FeedbackStatus {
@@ -191,7 +191,7 @@ class FeedbackResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the type property value. Type classification used to route and interpret this feedback item response in the Leadping API.
+     * Gets the type property value. Defines the type of product feedback submitted from inside Leadping.
      * @return FeedbackType|null
     */
     public function getType(): ?FeedbackType {
@@ -298,7 +298,7 @@ class FeedbackResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. Current lifecycle status for this feedback item response in the Leadping API.
+     * Sets the status property value. Defines admin triage statuses for durable product feedback.
      * @param FeedbackStatus|null $value Value to set for the status property.
     */
     public function setStatus(?FeedbackStatus $value): void {
@@ -306,7 +306,7 @@ class FeedbackResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the type property value. Type classification used to route and interpret this feedback item response in the Leadping API.
+     * Sets the type property value. Defines the type of product feedback submitted from inside Leadping.
      * @param FeedbackType|null $value Value to set for the type property.
     */
     public function setType(?FeedbackType $value): void {

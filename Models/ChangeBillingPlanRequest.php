@@ -18,7 +18,7 @@ class ChangeBillingPlanRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var BillingPlan|null $billingPlan Billing plan for this billing plan.
+     * @var BillingPlan|null $billingPlan Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
     */
     private ?BillingPlan $billingPlan = null;
     
@@ -47,7 +47,7 @@ class ChangeBillingPlanRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billingPlan property value. Billing plan for this billing plan.
+     * Gets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
      * @return BillingPlan|null
     */
     public function getBillingPlan(): ?BillingPlan {
@@ -83,7 +83,7 @@ class ChangeBillingPlanRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billingPlan property value. Billing plan for this billing plan.
+     * Sets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
      * @param BillingPlan|null $value Value to set for the billingPlan property.
     */
     public function setBillingPlan(?BillingPlan $value): void {

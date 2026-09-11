@@ -29,7 +29,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     private ?int $availableDomainCount = null;
     
     /**
-     * @var ActivationSubscriptionStatus|null $billingSubscriptionStatus The current billing subscription status for this organization activation state.
+     * @var ActivationSubscriptionStatus|null $billingSubscriptionStatus Describes whether an organization's subscription is ready, blocked, or still incomplete during activation.
     */
     private ?ActivationSubscriptionStatus $billingSubscriptionStatus = null;
     
@@ -114,7 +114,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     private ?DateTime $launchReviewRequestedAt = null;
     
     /**
-     * @var ActivationLaunchReviewStatus|null $launchReviewStatus The current launch review status for this organization activation state.
+     * @var ActivationLaunchReviewStatus|null $launchReviewStatus Describes the administrative review decision that determines whether an organization can launch Leadping workflows.
     */
     private ?ActivationLaunchReviewStatus $launchReviewStatus = null;
     
@@ -124,7 +124,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     private ?string $offer = null;
     
     /**
-     * @var ActivationOnboardingStatus|null $onboardingStatus The current onboarding status for this organization activation state.
+     * @var ActivationOnboardingStatus|null $onboardingStatus Describes completion and blocking state for an organization's core Leadping onboarding requirements.
     */
     private ?ActivationOnboardingStatus $onboardingStatus = null;
     
@@ -139,7 +139,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     private ?DateTime $paymentMethodConfirmedAt = null;
     
     /**
-     * @var ActivationPaymentStatus|null $paymentStatus The current payment status for this organization activation state.
+     * @var ActivationPaymentStatus|null $paymentStatus Describes whether valid funding and payment prerequisites are satisfied during organization activation.
     */
     private ?ActivationPaymentStatus $paymentStatus = null;
     
@@ -154,7 +154,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     private ?string $serviceArea = null;
     
     /**
-     * @var CustomerActivationStatus|null $status The current status for this organization activation state.
+     * @var CustomerActivationStatus|null $status Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
     */
     private ?CustomerActivationStatus $status = null;
     
@@ -189,7 +189,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     private ?DateTime $telephonyReadyAt = null;
     
     /**
-     * @var ActivationTelephonyStatus|null $telephonyStatus The current telephony status for this organization activation state.
+     * @var ActivationTelephonyStatus|null $telephonyStatus Describes whether phone numbers, calling, messaging, and provider resources are ready for organization launch.
     */
     private ?ActivationTelephonyStatus $telephonyStatus = null;
     
@@ -199,12 +199,12 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     private ?string $tenDlcApplicationId = null;
     
     /**
-     * @var OrganizationActivationState_tenDlcDraft|null $tenDlcDraft 10DLC draft for this organization activation state.
+     * @var OrganizationActivationState_tenDlcDraft|null $tenDlcDraft Describes 10DLC application draft data used in Leadping API requests and responses.
     */
     private ?OrganizationActivationState_tenDlcDraft $tenDlcDraft = null;
     
     /**
-     * @var TenDlcApplicationStatus|null $tenDlcStatus The current 10DLC status for this organization activation state.
+     * @var TenDlcApplicationStatus|null $tenDlcStatus Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
     */
     private ?TenDlcApplicationStatus $tenDlcStatus = null;
     
@@ -224,7 +224,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     private ?string $websiteNeeds = null;
     
     /**
-     * @var WebsiteLifecycleStatus|null $websiteStatus The current website status for this organization activation state.
+     * @var WebsiteLifecycleStatus|null $websiteStatus Describes an organization website's lifecycle from discovery and verification through activation, suspension, or removal.
     */
     private ?WebsiteLifecycleStatus $websiteStatus = null;
     
@@ -274,7 +274,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billingSubscriptionStatus property value. The current billing subscription status for this organization activation state.
+     * Gets the billingSubscriptionStatus property value. Describes whether an organization's subscription is ready, blocked, or still incomplete during activation.
      * @return ActivationSubscriptionStatus|null
     */
     public function getBillingSubscriptionStatus(): ?ActivationSubscriptionStatus {
@@ -463,7 +463,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the launchReviewStatus property value. The current launch review status for this organization activation state.
+     * Gets the launchReviewStatus property value. Describes the administrative review decision that determines whether an organization can launch Leadping workflows.
      * @return ActivationLaunchReviewStatus|null
     */
     public function getLaunchReviewStatus(): ?ActivationLaunchReviewStatus {
@@ -479,7 +479,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the onboardingStatus property value. The current onboarding status for this organization activation state.
+     * Gets the onboardingStatus property value. Describes completion and blocking state for an organization's core Leadping onboarding requirements.
      * @return ActivationOnboardingStatus|null
     */
     public function getOnboardingStatus(): ?ActivationOnboardingStatus {
@@ -503,7 +503,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the paymentStatus property value. The current payment status for this organization activation state.
+     * Gets the paymentStatus property value. Describes whether valid funding and payment prerequisites are satisfied during organization activation.
      * @return ActivationPaymentStatus|null
     */
     public function getPaymentStatus(): ?ActivationPaymentStatus {
@@ -527,7 +527,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. The current status for this organization activation state.
+     * Gets the status property value. Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
      * @return CustomerActivationStatus|null
     */
     public function getStatus(): ?CustomerActivationStatus {
@@ -583,7 +583,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the telephonyStatus property value. The current telephony status for this organization activation state.
+     * Gets the telephonyStatus property value. Describes whether phone numbers, calling, messaging, and provider resources are ready for organization launch.
      * @return ActivationTelephonyStatus|null
     */
     public function getTelephonyStatus(): ?ActivationTelephonyStatus {
@@ -599,7 +599,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the tenDlcDraft property value. 10DLC draft for this organization activation state.
+     * Gets the tenDlcDraft property value. Describes 10DLC application draft data used in Leadping API requests and responses.
      * @return OrganizationActivationState_tenDlcDraft|null
     */
     public function getTenDlcDraft(): ?OrganizationActivationState_tenDlcDraft {
@@ -607,7 +607,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the tenDlcStatus property value. The current 10DLC status for this organization activation state.
+     * Gets the tenDlcStatus property value. Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
      * @return TenDlcApplicationStatus|null
     */
     public function getTenDlcStatus(): ?TenDlcApplicationStatus {
@@ -639,7 +639,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the websiteStatus property value. The current website status for this organization activation state.
+     * Gets the websiteStatus property value. Describes an organization website's lifecycle from discovery and verification through activation, suspension, or removal.
      * @return WebsiteLifecycleStatus|null
     */
     public function getWebsiteStatus(): ?WebsiteLifecycleStatus {
@@ -730,7 +730,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billingSubscriptionStatus property value. The current billing subscription status for this organization activation state.
+     * Sets the billingSubscriptionStatus property value. Describes whether an organization's subscription is ready, blocked, or still incomplete during activation.
      * @param ActivationSubscriptionStatus|null $value Value to set for the billingSubscriptionStatus property.
     */
     public function setBillingSubscriptionStatus(?ActivationSubscriptionStatus $value): void {
@@ -866,7 +866,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the launchReviewStatus property value. The current launch review status for this organization activation state.
+     * Sets the launchReviewStatus property value. Describes the administrative review decision that determines whether an organization can launch Leadping workflows.
      * @param ActivationLaunchReviewStatus|null $value Value to set for the launchReviewStatus property.
     */
     public function setLaunchReviewStatus(?ActivationLaunchReviewStatus $value): void {
@@ -882,7 +882,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the onboardingStatus property value. The current onboarding status for this organization activation state.
+     * Sets the onboardingStatus property value. Describes completion and blocking state for an organization's core Leadping onboarding requirements.
      * @param ActivationOnboardingStatus|null $value Value to set for the onboardingStatus property.
     */
     public function setOnboardingStatus(?ActivationOnboardingStatus $value): void {
@@ -906,7 +906,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the paymentStatus property value. The current payment status for this organization activation state.
+     * Sets the paymentStatus property value. Describes whether valid funding and payment prerequisites are satisfied during organization activation.
      * @param ActivationPaymentStatus|null $value Value to set for the paymentStatus property.
     */
     public function setPaymentStatus(?ActivationPaymentStatus $value): void {
@@ -930,7 +930,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. The current status for this organization activation state.
+     * Sets the status property value. Summarizes an organization's overall progress from initial Leadping onboarding through launch readiness.
      * @param CustomerActivationStatus|null $value Value to set for the status property.
     */
     public function setStatus(?CustomerActivationStatus $value): void {
@@ -986,7 +986,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the telephonyStatus property value. The current telephony status for this organization activation state.
+     * Sets the telephonyStatus property value. Describes whether phone numbers, calling, messaging, and provider resources are ready for organization launch.
      * @param ActivationTelephonyStatus|null $value Value to set for the telephonyStatus property.
     */
     public function setTelephonyStatus(?ActivationTelephonyStatus $value): void {
@@ -1002,7 +1002,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the tenDlcDraft property value. 10DLC draft for this organization activation state.
+     * Sets the tenDlcDraft property value. Describes 10DLC application draft data used in Leadping API requests and responses.
      * @param OrganizationActivationState_tenDlcDraft|null $value Value to set for the tenDlcDraft property.
     */
     public function setTenDlcDraft(?OrganizationActivationState_tenDlcDraft $value): void {
@@ -1010,7 +1010,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the tenDlcStatus property value. The current 10DLC status for this organization activation state.
+     * Sets the tenDlcStatus property value. Describes an organization's overall 10DLC registration lifecycle across brand and messaging campaign submission.
      * @param TenDlcApplicationStatus|null $value Value to set for the tenDlcStatus property.
     */
     public function setTenDlcStatus(?TenDlcApplicationStatus $value): void {
@@ -1042,7 +1042,7 @@ class OrganizationActivationState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the websiteStatus property value. The current website status for this organization activation state.
+     * Sets the websiteStatus property value. Describes an organization website's lifecycle from discovery and verification through activation, suspension, or removal.
      * @param WebsiteLifecycleStatus|null $value Value to set for the websiteStatus property.
     */
     public function setWebsiteStatus(?WebsiteLifecycleStatus $value): void {

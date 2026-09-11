@@ -24,7 +24,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var AutomationWorkflowRunResponse_automation|null $automation Identifier and display name of the related automation.
+     * @var AutomationWorkflowRunResponse_automation|null $automation Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?AutomationWorkflowRunResponse_automation $automation = null;
     
@@ -39,7 +39,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $completedAt = null;
     
     /**
-     * @var AutomationWorkflowRunResponse_currentStep|null $currentStep Identifier and display name of the workflow step currently awaiting or performing work.
+     * @var AutomationWorkflowRunResponse_currentStep|null $currentStep Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?AutomationWorkflowRunResponse_currentStep $currentStep = null;
     
@@ -186,7 +186,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the automation property value. Identifier and display name of the related automation.
+     * Gets the automation property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return AutomationWorkflowRunResponse_automation|null
     */
     public function getAutomation(): ?AutomationWorkflowRunResponse_automation {
@@ -210,7 +210,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the currentStep property value. Identifier and display name of the workflow step currently awaiting or performing work.
+     * Gets the currentStep property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return AutomationWorkflowRunResponse_currentStep|null
     */
     public function getCurrentStep(): ?AutomationWorkflowRunResponse_currentStep {
@@ -482,7 +482,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the automation property value. Identifier and display name of the related automation.
+     * Sets the automation property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param AutomationWorkflowRunResponse_automation|null $value Value to set for the automation property.
     */
     public function setAutomation(?AutomationWorkflowRunResponse_automation $value): void {
@@ -506,7 +506,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the currentStep property value. Identifier and display name of the workflow step currently awaiting or performing work.
+     * Sets the currentStep property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param AutomationWorkflowRunResponse_currentStep|null $value Value to set for the currentStep property.
     */
     public function setCurrentStep(?AutomationWorkflowRunResponse_currentStep $value): void {

@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Phone number used by this conversation response for calls, SMS, lookup, or routing.
+ * Extends an identifier-and-name resource reference with an optional string value used for display or selection metadata.
 */
 class ConversationResponse_phoneNumber extends IdNameValue implements Parsable 
 {

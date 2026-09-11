@@ -39,7 +39,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     private ?string $avatarUrl = null;
     
     /**
-     * @var ConversationResponse_currentLeadStatus|null $currentLeadStatus Current lead status change summary that describes the lead outcome.
+     * @var ConversationResponse_currentLeadStatus|null $currentLeadStatus Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
     */
     private ?ConversationResponse_currentLeadStatus $currentLeadStatus = null;
     
@@ -109,7 +109,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     private ?string $outboundPhoneNumberOverrideId = null;
     
     /**
-     * @var ConversationResponse_phoneNumber|null $phoneNumber Phone number used by this conversation response for calls, SMS, lookup, or routing.
+     * @var ConversationResponse_phoneNumber|null $phoneNumber Extends an identifier-and-name resource reference with an optional string value used for display or selection metadata.
     */
     private ?ConversationResponse_phoneNumber $phoneNumber = null;
     
@@ -180,7 +180,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
+     * Gets the currentLeadStatus property value. Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
      * @return ConversationResponse_currentLeadStatus|null
     */
     public function getCurrentLeadStatus(): ?ConversationResponse_currentLeadStatus {
@@ -323,7 +323,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the phoneNumber property value. Phone number used by this conversation response for calls, SMS, lookup, or routing.
+     * Gets the phoneNumber property value. Extends an identifier-and-name resource reference with an optional string value used for display or selection metadata.
      * @return ConversationResponse_phoneNumber|null
     */
     public function getPhoneNumber(): ?ConversationResponse_phoneNumber {
@@ -416,7 +416,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the currentLeadStatus property value. Current lead status change summary that describes the lead outcome.
+     * Sets the currentLeadStatus property value. Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
      * @param ConversationResponse_currentLeadStatus|null $value Value to set for the currentLeadStatus property.
     */
     public function setCurrentLeadStatus(?ConversationResponse_currentLeadStatus $value): void {
@@ -528,7 +528,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the phoneNumber property value. Phone number used by this conversation response for calls, SMS, lookup, or routing.
+     * Sets the phoneNumber property value. Extends an identifier-and-name resource reference with an optional string value used for display or selection metadata.
      * @param ConversationResponse_phoneNumber|null $value Value to set for the phoneNumber property.
     */
     public function setPhoneNumber(?ConversationResponse_phoneNumber $value): void {

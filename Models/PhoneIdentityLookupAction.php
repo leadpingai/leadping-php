@@ -44,12 +44,12 @@ class PhoneIdentityLookupAction implements AdditionalDataHolder, Parsable
     private ?string $providerPricingVersion = null;
     
     /**
-     * @var PhoneIdentityLookupActionStatus|null $status The processing outcome reported for the phone identity lookup.
+     * @var PhoneIdentityLookupActionStatus|null $status Identifies the outcome of a phone identity lookup action.
     */
     private ?PhoneIdentityLookupActionStatus $status = null;
     
     /**
-     * @var PhoneIdentityLookupActionType|null $type The category of enrichment, validation, or reputation lookup that was performed.
+     * @var PhoneIdentityLookupActionType|null $type Identifies the kind of lookup action performed for a phone identity.
     */
     private ?PhoneIdentityLookupActionType $type = null;
     
@@ -135,7 +135,7 @@ class PhoneIdentityLookupAction implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. The processing outcome reported for the phone identity lookup.
+     * Gets the status property value. Identifies the outcome of a phone identity lookup action.
      * @return PhoneIdentityLookupActionStatus|null
     */
     public function getStatus(): ?PhoneIdentityLookupActionStatus {
@@ -143,7 +143,7 @@ class PhoneIdentityLookupAction implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the type property value. The category of enrichment, validation, or reputation lookup that was performed.
+     * Gets the type property value. Identifies the kind of lookup action performed for a phone identity.
      * @return PhoneIdentityLookupActionType|null
     */
     public function getType(): ?PhoneIdentityLookupActionType {
@@ -214,7 +214,7 @@ class PhoneIdentityLookupAction implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. The processing outcome reported for the phone identity lookup.
+     * Sets the status property value. Identifies the outcome of a phone identity lookup action.
      * @param PhoneIdentityLookupActionStatus|null $value Value to set for the status property.
     */
     public function setStatus(?PhoneIdentityLookupActionStatus $value): void {
@@ -222,7 +222,7 @@ class PhoneIdentityLookupAction implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the type property value. The category of enrichment, validation, or reputation lookup that was performed.
+     * Sets the type property value. Identifies the kind of lookup action performed for a phone identity.
      * @param PhoneIdentityLookupActionType|null $value Value to set for the type property.
     */
     public function setType(?PhoneIdentityLookupActionType $value): void {

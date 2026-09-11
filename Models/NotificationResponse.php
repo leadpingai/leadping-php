@@ -64,7 +64,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     private ?string $name = null;
     
     /**
-     * @var NotificationPriority|null $priority Priority for this notification.
+     * @var NotificationPriority|null $priority Ranks the urgency and presentation importance of a Leadping user notification.
     */
     private ?NotificationPriority $priority = null;
     
@@ -89,7 +89,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     private ?string $relatedEntityType = null;
     
     /**
-     * @var NotificationType|null $type The type classification for this notification.
+     * @var NotificationType|null $type Identifies the Leadping workflow or account event communicated by a user notification.
     */
     private ?NotificationType $type = null;
     
@@ -221,7 +221,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the priority property value. Priority for this notification.
+     * Gets the priority property value. Ranks the urgency and presentation importance of a Leadping user notification.
      * @return NotificationPriority|null
     */
     public function getPriority(): ?NotificationPriority {
@@ -261,7 +261,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the type property value. The type classification for this notification.
+     * Gets the type property value. Identifies the Leadping workflow or account event communicated by a user notification.
      * @return NotificationType|null
     */
     public function getType(): ?NotificationType {
@@ -381,7 +381,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the priority property value. Priority for this notification.
+     * Sets the priority property value. Ranks the urgency and presentation importance of a Leadping user notification.
      * @param NotificationPriority|null $value Value to set for the priority property.
     */
     public function setPriority(?NotificationPriority $value): void {
@@ -421,7 +421,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the type property value. The type classification for this notification.
+     * Sets the type property value. Identifies the Leadping workflow or account event communicated by a user notification.
      * @param NotificationType|null $value Value to set for the type property.
     */
     public function setType(?NotificationType $value): void {

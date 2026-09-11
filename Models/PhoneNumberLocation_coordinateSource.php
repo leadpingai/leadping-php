@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Describes how the coordinate was resolved.
+ * Describes how a phone location value was resolved.
 */
 class PhoneNumberLocation_coordinateSource extends PhoneLocationSource implements Parsable 
 {

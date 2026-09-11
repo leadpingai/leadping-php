@@ -229,7 +229,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     private ?string $timelineCategory = null;
     
     /**
-     * @var EventTimelineType|null $timelineType Timeline type used to render this event in Leadping activity feeds.
+     * @var EventTimelineType|null $timelineType Classifies the kind of activity displayed in a lead or conversation event timeline.
     */
     private ?EventTimelineType $timelineType = null;
     
@@ -671,7 +671,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the timelineType property value. Timeline type used to render this event in Leadping activity feeds.
+     * Gets the timelineType property value. Classifies the kind of activity displayed in a lead or conversation event timeline.
      * @return EventTimelineType|null
     */
     public function getTimelineType(): ?EventTimelineType {
@@ -1110,7 +1110,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the timelineType property value. Timeline type used to render this event in Leadping activity feeds.
+     * Sets the timelineType property value. Classifies the kind of activity displayed in a lead or conversation event timeline.
      * @param EventTimelineType|null $value Value to set for the timelineType property.
     */
     public function setTimelineType(?EventTimelineType $value): void {

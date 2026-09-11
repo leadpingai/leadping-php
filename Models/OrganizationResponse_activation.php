@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Organization activation state covering site, billing, compliance, and telephony readiness.
+ * Describes organization activation state data used in Leadping API requests and responses.
 */
 class OrganizationResponse_activation extends OrganizationActivationState implements Parsable 
 {

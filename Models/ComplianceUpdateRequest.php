@@ -18,7 +18,7 @@ class ComplianceUpdateRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var ComplianceUpdateRequest_compliance|null $compliance Compliance for this compliance update.
+     * @var ComplianceUpdateRequest_compliance|null $compliance Describes user compliance data used in Leadping API requests and responses.
     */
     private ?ComplianceUpdateRequest_compliance $compliance = null;
     
@@ -52,7 +52,7 @@ class ComplianceUpdateRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the compliance property value. Compliance for this compliance update.
+     * Gets the compliance property value. Describes user compliance data used in Leadping API requests and responses.
      * @return ComplianceUpdateRequest_compliance|null
     */
     public function getCompliance(): ?ComplianceUpdateRequest_compliance {
@@ -98,7 +98,7 @@ class ComplianceUpdateRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the compliance property value. Compliance for this compliance update.
+     * Sets the compliance property value. Describes user compliance data used in Leadping API requests and responses.
      * @param ComplianceUpdateRequest_compliance|null $value Value to set for the compliance property.
     */
     public function setCompliance(?ComplianceUpdateRequest_compliance $value): void {

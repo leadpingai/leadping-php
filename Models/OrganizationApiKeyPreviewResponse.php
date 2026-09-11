@@ -65,7 +65,7 @@ class OrganizationApiKeyPreviewResponse implements AdditionalDataHolder, Parsabl
     private ?string $name = null;
     
     /**
-     * @var IdNamePair|null $organization Organization that owns the API key.
+     * @var IdNamePair|null $organization Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?IdNamePair $organization = null;
     
@@ -211,7 +211,7 @@ class OrganizationApiKeyPreviewResponse implements AdditionalDataHolder, Parsabl
     }
 
     /**
-     * Gets the organization property value. Organization that owns the API key.
+     * Gets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return IdNamePair|null
     */
     public function getOrganization(): ?IdNamePair {
@@ -344,7 +344,7 @@ class OrganizationApiKeyPreviewResponse implements AdditionalDataHolder, Parsabl
     }
 
     /**
-     * Sets the organization property value. Organization that owns the API key.
+     * Sets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param IdNamePair|null $value Value to set for the organization property.
     */
     public function setOrganization(?IdNamePair $value): void {

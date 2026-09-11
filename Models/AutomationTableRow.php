@@ -84,7 +84,7 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     private ?string $name = null;
     
     /**
-     * @var AutomationTableRow_organization|null $organization Organization summary connected to this automation table row.
+     * @var AutomationTableRow_organization|null $organization Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?AutomationTableRow_organization $organization = null;
     
@@ -114,7 +114,7 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     private ?string $triggerType = null;
     
     /**
-     * @var AutomationTableRow_user|null $user User summary connected to this automation table row.
+     * @var AutomationTableRow_user|null $user Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?AutomationTableRow_user $user = null;
     
@@ -283,7 +283,7 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organization property value. Organization summary connected to this automation table row.
+     * Gets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return AutomationTableRow_organization|null
     */
     public function getOrganization(): ?AutomationTableRow_organization {
@@ -331,7 +331,7 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the user property value. User summary connected to this automation table row.
+     * Gets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return AutomationTableRow_user|null
     */
     public function getUser(): ?AutomationTableRow_user {
@@ -488,7 +488,7 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organization property value. Organization summary connected to this automation table row.
+     * Sets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param AutomationTableRow_organization|null $value Value to set for the organization property.
     */
     public function setOrganization(?AutomationTableRow_organization $value): void {
@@ -536,7 +536,7 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the user property value. User summary connected to this automation table row.
+     * Sets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param AutomationTableRow_user|null $value Value to set for the user property.
     */
     public function setUser(?AutomationTableRow_user $value): void {

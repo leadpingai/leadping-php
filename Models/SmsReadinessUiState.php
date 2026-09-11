@@ -23,7 +23,7 @@ class SmsReadinessUiState implements AdditionalDataHolder, Parsable
     private ?string $description = null;
     
     /**
-     * @var SmsReadinessState|null $label The human-readable label shown for this SMS readiness UI state.
+     * @var SmsReadinessState|null $label Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
     */
     private ?SmsReadinessState $label = null;
     
@@ -78,7 +78,7 @@ class SmsReadinessUiState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the label property value. The human-readable label shown for this SMS readiness UI state.
+     * Gets the label property value. Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
      * @return SmsReadinessState|null
     */
     public function getLabel(): ?SmsReadinessState {
@@ -121,7 +121,7 @@ class SmsReadinessUiState implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the label property value. The human-readable label shown for this SMS readiness UI state.
+     * Sets the label property value. Describes whether an organization is configured and permitted to send SMS or MMS traffic through Leadping.
      * @param SmsReadinessState|null $value Value to set for the label property.
     */
     public function setLabel(?SmsReadinessState $value): void {

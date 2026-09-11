@@ -24,12 +24,12 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     private ?int $billableSeconds = null;
     
     /**
-     * @var BillableUnit|null $billableUnit Billable unit for this usage ledger.
+     * @var BillableUnit|null $billableUnit Identifies the metered unit used to price Leadping usage, such as a message, call minute, lookup, or phone number.
     */
     private ?BillableUnit $billableUnit = null;
     
     /**
-     * @var UsageChannel|null $channel Channel for this usage ledger.
+     * @var UsageChannel|null $channel Identifies the messaging, calling, phone-number, lookup, or platform channel that generated billable usage.
     */
     private ?UsageChannel $channel = null;
     
@@ -64,12 +64,12 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     private ?bool $isBillable = null;
     
     /**
-     * @var UsageLedgerTableRow_lead|null $lead Identifier and display name of the related lead.
+     * @var UsageLedgerTableRow_lead|null $lead Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?UsageLedgerTableRow_lead $lead = null;
     
     /**
-     * @var UsageLedgerTableRow_organization|null $organization Identifier and display name of the related organization.
+     * @var UsageLedgerTableRow_organization|null $organization Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?UsageLedgerTableRow_organization $organization = null;
     
@@ -94,7 +94,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     private ?int $smsSegments = null;
     
     /**
-     * @var UsageStatus|null $status The current status for this usage ledger.
+     * @var UsageStatus|null $status Describes whether a metered usage record is pending, rated, billed, reconciled, excluded, or failed.
     */
     private ?UsageStatus $status = null;
     
@@ -104,7 +104,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     private ?float $unitPrice = null;
     
     /**
-     * @var UsageLedgerTableRow_user|null $user Identifier and display name of the related user.
+     * @var UsageLedgerTableRow_user|null $user Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?UsageLedgerTableRow_user $user = null;
     
@@ -141,7 +141,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the billableUnit property value. Billable unit for this usage ledger.
+     * Gets the billableUnit property value. Identifies the metered unit used to price Leadping usage, such as a message, call minute, lookup, or phone number.
      * @return BillableUnit|null
     */
     public function getBillableUnit(): ?BillableUnit {
@@ -149,7 +149,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the channel property value. Channel for this usage ledger.
+     * Gets the channel property value. Identifies the messaging, calling, phone-number, lookup, or platform channel that generated billable usage.
      * @return UsageChannel|null
     */
     public function getChannel(): ?UsageChannel {
@@ -233,7 +233,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lead property value. Identifier and display name of the related lead.
+     * Gets the lead property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return UsageLedgerTableRow_lead|null
     */
     public function getLead(): ?UsageLedgerTableRow_lead {
@@ -241,7 +241,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organization property value. Identifier and display name of the related organization.
+     * Gets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return UsageLedgerTableRow_organization|null
     */
     public function getOrganization(): ?UsageLedgerTableRow_organization {
@@ -281,7 +281,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. The current status for this usage ledger.
+     * Gets the status property value. Describes whether a metered usage record is pending, rated, billed, reconciled, excluded, or failed.
      * @return UsageStatus|null
     */
     public function getStatus(): ?UsageStatus {
@@ -297,7 +297,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the user property value. Identifier and display name of the related user.
+     * Gets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return UsageLedgerTableRow_user|null
     */
     public function getUser(): ?UsageLedgerTableRow_user {
@@ -347,7 +347,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the billableUnit property value. Billable unit for this usage ledger.
+     * Sets the billableUnit property value. Identifies the metered unit used to price Leadping usage, such as a message, call minute, lookup, or phone number.
      * @param BillableUnit|null $value Value to set for the billableUnit property.
     */
     public function setBillableUnit(?BillableUnit $value): void {
@@ -355,7 +355,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the channel property value. Channel for this usage ledger.
+     * Sets the channel property value. Identifies the messaging, calling, phone-number, lookup, or platform channel that generated billable usage.
      * @param UsageChannel|null $value Value to set for the channel property.
     */
     public function setChannel(?UsageChannel $value): void {
@@ -411,7 +411,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lead property value. Identifier and display name of the related lead.
+     * Sets the lead property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param UsageLedgerTableRow_lead|null $value Value to set for the lead property.
     */
     public function setLead(?UsageLedgerTableRow_lead $value): void {
@@ -419,7 +419,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organization property value. Identifier and display name of the related organization.
+     * Sets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param UsageLedgerTableRow_organization|null $value Value to set for the organization property.
     */
     public function setOrganization(?UsageLedgerTableRow_organization $value): void {
@@ -459,7 +459,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. The current status for this usage ledger.
+     * Sets the status property value. Describes whether a metered usage record is pending, rated, billed, reconciled, excluded, or failed.
      * @param UsageStatus|null $value Value to set for the status property.
     */
     public function setStatus(?UsageStatus $value): void {
@@ -475,7 +475,7 @@ class UsageLedgerTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the user property value. Identifier and display name of the related user.
+     * Sets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param UsageLedgerTableRow_user|null $value Value to set for the user property.
     */
     public function setUser(?UsageLedgerTableRow_user $value): void {

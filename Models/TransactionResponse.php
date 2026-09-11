@@ -64,7 +64,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * @var TransactionResponse_lead|null $lead Identifier and display name of the related lead.
+     * @var TransactionResponse_lead|null $lead Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?TransactionResponse_lead $lead = null;
     
@@ -84,7 +84,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     private ?string $notes = null;
     
     /**
-     * @var TransactionResponse_organization|null $organization Identifier and display name of the related organization.
+     * @var TransactionResponse_organization|null $organization Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?TransactionResponse_organization $organization = null;
     
@@ -99,12 +99,12 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     private ?float $platformFeeAmount = null;
     
     /**
-     * @var TransactionStatus|null $transactionStatus Processing status for this wallet transaction.
+     * @var TransactionStatus|null $transactionStatus Describes the processing and settlement lifecycle of a Leadping wallet or billing transaction.
     */
     private ?TransactionStatus $transactionStatus = null;
     
     /**
-     * @var TransactionType|null $transactionType Debit or credit classification for this wallet transaction.
+     * @var TransactionType|null $transactionType Classifies a wallet transaction as a debit, credit, refund, adjustment, deposit, or other balance movement.
     */
     private ?TransactionType $transactionType = null;
     
@@ -233,7 +233,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lead property value. Identifier and display name of the related lead.
+     * Gets the lead property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return TransactionResponse_lead|null
     */
     public function getLead(): ?TransactionResponse_lead {
@@ -265,7 +265,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organization property value. Identifier and display name of the related organization.
+     * Gets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return TransactionResponse_organization|null
     */
     public function getOrganization(): ?TransactionResponse_organization {
@@ -289,7 +289,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the transactionStatus property value. Processing status for this wallet transaction.
+     * Gets the transactionStatus property value. Describes the processing and settlement lifecycle of a Leadping wallet or billing transaction.
      * @return TransactionStatus|null
     */
     public function getTransactionStatus(): ?TransactionStatus {
@@ -297,7 +297,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the transactionType property value. Debit or credit classification for this wallet transaction.
+     * Gets the transactionType property value. Classifies a wallet transaction as a debit, credit, refund, adjustment, deposit, or other balance movement.
      * @return TransactionType|null
     */
     public function getTransactionType(): ?TransactionType {
@@ -411,7 +411,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lead property value. Identifier and display name of the related lead.
+     * Sets the lead property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param TransactionResponse_lead|null $value Value to set for the lead property.
     */
     public function setLead(?TransactionResponse_lead $value): void {
@@ -443,7 +443,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organization property value. Identifier and display name of the related organization.
+     * Sets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param TransactionResponse_organization|null $value Value to set for the organization property.
     */
     public function setOrganization(?TransactionResponse_organization $value): void {
@@ -467,7 +467,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the transactionStatus property value. Processing status for this wallet transaction.
+     * Sets the transactionStatus property value. Describes the processing and settlement lifecycle of a Leadping wallet or billing transaction.
      * @param TransactionStatus|null $value Value to set for the transactionStatus property.
     */
     public function setTransactionStatus(?TransactionStatus $value): void {
@@ -475,7 +475,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the transactionType property value. Debit or credit classification for this wallet transaction.
+     * Sets the transactionType property value. Classifies a wallet transaction as a debit, credit, refund, adjustment, deposit, or other balance movement.
      * @param TransactionType|null $value Value to set for the transactionType property.
     */
     public function setTransactionType(?TransactionType $value): void {

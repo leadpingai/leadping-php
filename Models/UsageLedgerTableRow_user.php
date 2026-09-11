@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Identifier and display name of the related user.
+ * Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 */
 class UsageLedgerTableRow_user extends IdNamePair implements Parsable 
 {

@@ -69,7 +69,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     private ?DateTime $licenseRenewalDate = null;
     
     /**
-     * @var IdNamePair|null $organization Identifier and display name of the related organization.
+     * @var IdNamePair|null $organization Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?IdNamePair $organization = null;
     
@@ -84,7 +84,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     private ?DateTime $revokedAt = null;
     
     /**
-     * @var OrganizationMemberRole|null $role Role for this organization invitation.
+     * @var OrganizationMemberRole|null $role Identifies an organization member's access level and permission scope within Leadping.
     */
     private ?OrganizationMemberRole $role = null;
     
@@ -99,7 +99,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     private ?DateTime $sentAt = null;
     
     /**
-     * @var OrganizationInvitationStatus|null $status The current status for this organization invitation.
+     * @var OrganizationInvitationStatus|null $status Describes the lifecycle of an organization membership invitation from issuance through acceptance, expiration, or revocation.
     */
     private ?OrganizationInvitationStatus $status = null;
     
@@ -235,7 +235,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organization property value. Identifier and display name of the related organization.
+     * Gets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return IdNamePair|null
     */
     public function getOrganization(): ?IdNamePair {
@@ -259,7 +259,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the role property value. Role for this organization invitation.
+     * Gets the role property value. Identifies an organization member's access level and permission scope within Leadping.
      * @return OrganizationMemberRole|null
     */
     public function getRole(): ?OrganizationMemberRole {
@@ -283,7 +283,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the status property value. The current status for this organization invitation.
+     * Gets the status property value. Describes the lifecycle of an organization membership invitation from issuance through acceptance, expiration, or revocation.
      * @return OrganizationInvitationStatus|null
     */
     public function getStatus(): ?OrganizationInvitationStatus {
@@ -404,7 +404,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organization property value. Identifier and display name of the related organization.
+     * Sets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param IdNamePair|null $value Value to set for the organization property.
     */
     public function setOrganization(?IdNamePair $value): void {
@@ -428,7 +428,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the role property value. Role for this organization invitation.
+     * Sets the role property value. Identifies an organization member's access level and permission scope within Leadping.
      * @param OrganizationMemberRole|null $value Value to set for the role property.
     */
     public function setRole(?OrganizationMemberRole $value): void {
@@ -452,7 +452,7 @@ class OrganizationInvitationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the status property value. The current status for this organization invitation.
+     * Sets the status property value. Describes the lifecycle of an organization membership invitation from issuance through acceptance, expiration, or revocation.
      * @param OrganizationInvitationStatus|null $value Value to set for the status property.
     */
     public function setStatus(?OrganizationInvitationStatus $value): void {

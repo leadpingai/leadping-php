@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Uploaded EIN document reference used for organization verification.
+ * Extends an identifier-and-name resource reference with an optional string value used for display or selection metadata.
 */
 class OrganizationResponse_einDocument extends IdNameValue implements Parsable 
 {

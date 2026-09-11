@@ -14,7 +14,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var CustomerActivationHealth|null $activationHealth Activation health associated with this Leadping customer analytics.
+     * @var CustomerActivationHealth|null $activationHealth Summarizes an organization's progress and blockers across onboarding, billing, telephony, compliance, and launch readiness.
     */
     private ?CustomerActivationHealth $activationHealth = null;
     
@@ -24,12 +24,12 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var CustomerAutomationHealth|null $automationHealth Automation health associated with this Leadping customer analytics.
+     * @var CustomerAutomationHealth|null $automationHealth Summarizes automation coverage, execution success, failures, and workflows requiring organization attention.
     */
     private ?CustomerAutomationHealth $automationHealth = null;
     
     /**
-     * @var CustomerCommunicationUsage|null $communicationUsage Communication usage associated with this Leadping customer analytics.
+     * @var CustomerCommunicationUsage|null $communicationUsage Aggregates an organization's SMS, MMS, and calling activity, delivery outcomes, and billable usage over time.
     */
     private ?CustomerCommunicationUsage $communicationUsage = null;
     
@@ -44,7 +44,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     private ?array $leadSources = null;
     
     /**
-     * @var CustomerLeadTrend|null $leadTrend Lead trend associated with this Leadping customer analytics.
+     * @var CustomerLeadTrend|null $leadTrend Measures lead creation, qualification, and conversion activity within one reporting time bucket.
     */
     private ?CustomerLeadTrend $leadTrend = null;
     
@@ -54,17 +54,17 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     private ?array $needsAttention = null;
     
     /**
-     * @var AnalyticsDateRange|null $range Range associated with this Leadping customer analytics.
+     * @var AnalyticsDateRange|null $range Defines the inclusive reporting window and comparison window used to calculate Leadping analytics.
     */
     private ?AnalyticsDateRange $range = null;
     
     /**
-     * @var CustomerResponseMetrics|null $responseMetrics Response metrics associated with this Leadping customer analytics.
+     * @var CustomerResponseMetrics|null $responseMetrics Measures how quickly and consistently an organization responds to leads across supported communication channels.
     */
     private ?CustomerResponseMetrics $responseMetrics = null;
     
     /**
-     * @var CustomerAnalyticsSummary|null $summary Human-readable summary for this Leadping customer analytics.
+     * @var CustomerAnalyticsSummary|null $summary Summarizes an organization's primary lead, response, communication, and conversion KPIs for the selected period.
     */
     private ?CustomerAnalyticsSummary $summary = null;
     
@@ -85,7 +85,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the activationHealth property value. Activation health associated with this Leadping customer analytics.
+     * Gets the activationHealth property value. Summarizes an organization's progress and blockers across onboarding, billing, telephony, compliance, and launch readiness.
      * @return CustomerActivationHealth|null
     */
     public function getActivationHealth(): ?CustomerActivationHealth {
@@ -101,7 +101,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the automationHealth property value. Automation health associated with this Leadping customer analytics.
+     * Gets the automationHealth property value. Summarizes automation coverage, execution success, failures, and workflows requiring organization attention.
      * @return CustomerAutomationHealth|null
     */
     public function getAutomationHealth(): ?CustomerAutomationHealth {
@@ -109,7 +109,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the communicationUsage property value. Communication usage associated with this Leadping customer analytics.
+     * Gets the communicationUsage property value. Aggregates an organization's SMS, MMS, and calling activity, delivery outcomes, and billable usage over time.
      * @return CustomerCommunicationUsage|null
     */
     public function getCommunicationUsage(): ?CustomerCommunicationUsage {
@@ -153,7 +153,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the leadTrend property value. Lead trend associated with this Leadping customer analytics.
+     * Gets the leadTrend property value. Measures lead creation, qualification, and conversion activity within one reporting time bucket.
      * @return CustomerLeadTrend|null
     */
     public function getLeadTrend(): ?CustomerLeadTrend {
@@ -169,7 +169,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the range property value. Range associated with this Leadping customer analytics.
+     * Gets the range property value. Defines the inclusive reporting window and comparison window used to calculate Leadping analytics.
      * @return AnalyticsDateRange|null
     */
     public function getRange(): ?AnalyticsDateRange {
@@ -177,7 +177,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the responseMetrics property value. Response metrics associated with this Leadping customer analytics.
+     * Gets the responseMetrics property value. Measures how quickly and consistently an organization responds to leads across supported communication channels.
      * @return CustomerResponseMetrics|null
     */
     public function getResponseMetrics(): ?CustomerResponseMetrics {
@@ -185,7 +185,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the summary property value. Human-readable summary for this Leadping customer analytics.
+     * Gets the summary property value. Summarizes an organization's primary lead, response, communication, and conversion KPIs for the selected period.
      * @return CustomerAnalyticsSummary|null
     */
     public function getSummary(): ?CustomerAnalyticsSummary {
@@ -211,7 +211,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the activationHealth property value. Activation health associated with this Leadping customer analytics.
+     * Sets the activationHealth property value. Summarizes an organization's progress and blockers across onboarding, billing, telephony, compliance, and launch readiness.
      * @param CustomerActivationHealth|null $value Value to set for the activationHealth property.
     */
     public function setActivationHealth(?CustomerActivationHealth $value): void {
@@ -227,7 +227,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the automationHealth property value. Automation health associated with this Leadping customer analytics.
+     * Sets the automationHealth property value. Summarizes automation coverage, execution success, failures, and workflows requiring organization attention.
      * @param CustomerAutomationHealth|null $value Value to set for the automationHealth property.
     */
     public function setAutomationHealth(?CustomerAutomationHealth $value): void {
@@ -235,7 +235,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the communicationUsage property value. Communication usage associated with this Leadping customer analytics.
+     * Sets the communicationUsage property value. Aggregates an organization's SMS, MMS, and calling activity, delivery outcomes, and billable usage over time.
      * @param CustomerCommunicationUsage|null $value Value to set for the communicationUsage property.
     */
     public function setCommunicationUsage(?CustomerCommunicationUsage $value): void {
@@ -259,7 +259,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the leadTrend property value. Lead trend associated with this Leadping customer analytics.
+     * Sets the leadTrend property value. Measures lead creation, qualification, and conversion activity within one reporting time bucket.
      * @param CustomerLeadTrend|null $value Value to set for the leadTrend property.
     */
     public function setLeadTrend(?CustomerLeadTrend $value): void {
@@ -275,7 +275,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the range property value. Range associated with this Leadping customer analytics.
+     * Sets the range property value. Defines the inclusive reporting window and comparison window used to calculate Leadping analytics.
      * @param AnalyticsDateRange|null $value Value to set for the range property.
     */
     public function setRange(?AnalyticsDateRange $value): void {
@@ -283,7 +283,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the responseMetrics property value. Response metrics associated with this Leadping customer analytics.
+     * Sets the responseMetrics property value. Measures how quickly and consistently an organization responds to leads across supported communication channels.
      * @param CustomerResponseMetrics|null $value Value to set for the responseMetrics property.
     */
     public function setResponseMetrics(?CustomerResponseMetrics $value): void {
@@ -291,7 +291,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the summary property value. Human-readable summary for this Leadping customer analytics.
+     * Sets the summary property value. Summarizes an organization's primary lead, response, communication, and conversion KPIs for the selected period.
      * @param CustomerAnalyticsSummary|null $value Value to set for the summary property.
     */
     public function setSummary(?CustomerAnalyticsSummary $value): void {

@@ -43,12 +43,12 @@ class LeadContact implements AdditionalDataHolder, Parsable
     private ?string $lastName = null;
     
     /**
-     * @var LeadContact_phone|null $phone Phone details for the lead, user, or organization represented by this lead contact profile.
+     * @var LeadContact_phone|null $phone Public Leadping API schema for lead phone number data.
     */
     private ?LeadContact_phone $phone = null;
     
     /**
-     * @var LeadContact_streetAddress|null $streetAddress Postal street address for the lead contact profile.
+     * @var LeadContact_streetAddress|null $streetAddress Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
     */
     private ?LeadContact_streetAddress $streetAddress = null;
     
@@ -140,7 +140,7 @@ class LeadContact implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the phone property value. Phone details for the lead, user, or organization represented by this lead contact profile.
+     * Gets the phone property value. Public Leadping API schema for lead phone number data.
      * @return LeadContact_phone|null
     */
     public function getPhone(): ?LeadContact_phone {
@@ -148,7 +148,7 @@ class LeadContact implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the streetAddress property value. Postal street address for the lead contact profile.
+     * Gets the streetAddress property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
      * @return LeadContact_streetAddress|null
     */
     public function getStreetAddress(): ?LeadContact_streetAddress {
@@ -228,7 +228,7 @@ class LeadContact implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the phone property value. Phone details for the lead, user, or organization represented by this lead contact profile.
+     * Sets the phone property value. Public Leadping API schema for lead phone number data.
      * @param LeadContact_phone|null $value Value to set for the phone property.
     */
     public function setPhone(?LeadContact_phone $value): void {
@@ -236,7 +236,7 @@ class LeadContact implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the streetAddress property value. Postal street address for the lead contact profile.
+     * Sets the streetAddress property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
      * @param LeadContact_streetAddress|null $value Value to set for the streetAddress property.
     */
     public function setStreetAddress(?LeadContact_streetAddress $value): void {

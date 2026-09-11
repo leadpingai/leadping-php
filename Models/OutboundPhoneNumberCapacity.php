@@ -29,7 +29,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     private ?string $healthReason = null;
     
     /**
-     * @var PhoneNumberOutboundHealthStatus|null $healthStatus Current health status for this Leadping outbound phone number capacity.
+     * @var PhoneNumberOutboundHealthStatus|null $healthStatus Defines phone-number outbound health states used by pacing.
     */
     private ?PhoneNumberOutboundHealthStatus $healthStatus = null;
     
@@ -261,7 +261,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the healthStatus property value. Current health status for this Leadping outbound phone number capacity.
+     * Gets the healthStatus property value. Defines phone-number outbound health states used by pacing.
      * @return PhoneNumberOutboundHealthStatus|null
     */
     public function getHealthStatus(): ?PhoneNumberOutboundHealthStatus {
@@ -565,7 +565,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the healthStatus property value. Current health status for this Leadping outbound phone number capacity.
+     * Sets the healthStatus property value. Defines phone-number outbound health states used by pacing.
      * @param PhoneNumberOutboundHealthStatus|null $value Value to set for the healthStatus property.
     */
     public function setHealthStatus(?PhoneNumberOutboundHealthStatus $value): void {

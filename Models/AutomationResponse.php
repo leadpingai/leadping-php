@@ -89,7 +89,7 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     private ?string $name = null;
     
     /**
-     * @var AutomationResponse_organization|null $organization Organization summary connected to this automation configuration response.
+     * @var AutomationResponse_organization|null $organization Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?AutomationResponse_organization $organization = null;
     
@@ -109,7 +109,7 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     private ?array $triggers = null;
     
     /**
-     * @var AutomationResponse_user|null $user User summary connected to this automation configuration response.
+     * @var AutomationResponse_user|null $user Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?AutomationResponse_user $user = null;
     
@@ -291,7 +291,7 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the organization property value. Organization summary connected to this automation configuration response.
+     * Gets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return AutomationResponse_organization|null
     */
     public function getOrganization(): ?AutomationResponse_organization {
@@ -323,7 +323,7 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the user property value. User summary connected to this automation configuration response.
+     * Gets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return AutomationResponse_user|null
     */
     public function getUser(): ?AutomationResponse_user {
@@ -496,7 +496,7 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the organization property value. Organization summary connected to this automation configuration response.
+     * Sets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param AutomationResponse_organization|null $value Value to set for the organization property.
     */
     public function setOrganization(?AutomationResponse_organization $value): void {
@@ -528,7 +528,7 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the user property value. User summary connected to this automation configuration response.
+     * Sets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param AutomationResponse_user|null $value Value to set for the user property.
     */
     public function setUser(?AutomationResponse_user $value): void {

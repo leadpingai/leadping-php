@@ -73,7 +73,7 @@ class EligibleOutgoingNumberResponse implements AdditionalDataHolder, Parsable
     private ?string $reasonLabel = null;
     
     /**
-     * @var OutgoingNumberSelectionReason|null $selectionReason Reason Leadping selected this outbound sender number.
+     * @var OutgoingNumberSelectionReason|null $selectionReason Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
     */
     private ?OutgoingNumberSelectionReason $selectionReason = null;
     
@@ -224,7 +224,7 @@ class EligibleOutgoingNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the selectionReason property value. Reason Leadping selected this outbound sender number.
+     * Gets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
      * @return OutgoingNumberSelectionReason|null
     */
     public function getSelectionReason(): ?OutgoingNumberSelectionReason {
@@ -366,7 +366,7 @@ class EligibleOutgoingNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the selectionReason property value. Reason Leadping selected this outbound sender number.
+     * Sets the selectionReason property value. Explains why Leadping selected, rejected, or substituted an outgoing caller or messaging number.
      * @param OutgoingNumberSelectionReason|null $value Value to set for the selectionReason property.
     */
     public function setSelectionReason(?OutgoingNumberSelectionReason $value): void {

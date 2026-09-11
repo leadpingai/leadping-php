@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Leadping website record connected to this organization.
+ * Provides a compact API reference to another resource using its stable identifier and human-readable display name.
 */
 class OrganizationResponse_site extends IdNamePair implements Parsable 
 {

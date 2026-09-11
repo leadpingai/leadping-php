@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Caller-name data returned by the provider.
+ * Caller-name data returned by the phone lookup provider.
 */
 class PhoneLookup_callerName extends PhoneLookupCallerName implements Parsable 
 {

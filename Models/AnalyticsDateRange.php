@@ -19,7 +19,7 @@ class AnalyticsDateRange implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var int|null $bucketSize Bucket size associated with this Leadping analytics date range.
+     * @var int|null $bucketSize Selects the time interval used to aggregate points in a Leadping analytics trend series.
     */
     private ?int $bucketSize = null;
     
@@ -58,7 +58,7 @@ class AnalyticsDateRange implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the bucketSize property value. Bucket size associated with this Leadping analytics date range.
+     * Gets the bucketSize property value. Selects the time interval used to aggregate points in a Leadping analytics trend series.
      * @return int|null
     */
     public function getBucketSize(): ?int {
@@ -114,7 +114,7 @@ class AnalyticsDateRange implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the bucketSize property value. Bucket size associated with this Leadping analytics date range.
+     * Sets the bucketSize property value. Selects the time interval used to aggregate points in a Leadping analytics trend series.
      * @param int|null $value Value to set for the bucketSize property.
     */
     public function setBucketSize(?int $value): void {

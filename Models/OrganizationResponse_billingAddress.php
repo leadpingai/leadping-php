@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Postal address used for invoices, receipts, and payment processor billing records.
+ * Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
 */
 class OrganizationResponse_billingAddress extends StreetAddress implements Parsable 
 {

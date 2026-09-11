@@ -23,7 +23,7 @@ class OrganizationMemberRequest implements AdditionalDataHolder, Parsable
     private ?string $email = null;
     
     /**
-     * @var OrganizationMemberRole|null $role Organization role assigned to the user.
+     * @var OrganizationMemberRole|null $role Identifies an organization member's access level and permission scope within Leadping.
     */
     private ?OrganizationMemberRole $role = null;
     
@@ -78,7 +78,7 @@ class OrganizationMemberRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the role property value. Organization role assigned to the user.
+     * Gets the role property value. Identifies an organization member's access level and permission scope within Leadping.
      * @return OrganizationMemberRole|null
     */
     public function getRole(): ?OrganizationMemberRole {
@@ -121,7 +121,7 @@ class OrganizationMemberRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the role property value. Organization role assigned to the user.
+     * Sets the role property value. Identifies an organization member's access level and permission scope within Leadping.
      * @param OrganizationMemberRole|null $value Value to set for the role property.
     */
     public function setRole(?OrganizationMemberRole $value): void {

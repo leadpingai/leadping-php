@@ -19,7 +19,7 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var LeadStatusCategory|null $category LeadStatusChange category represented by the lead status.
+     * @var LeadStatusCategory|null $category Controlled lead status change categories used for reporting, automation, and analytics.
     */
     private ?LeadStatusCategory $category = null;
     
@@ -83,7 +83,7 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the category property value. LeadStatusChange category represented by the lead status.
+     * Gets the category property value. Controlled lead status change categories used for reporting, automation, and analytics.
      * @return LeadStatusCategory|null
     */
     public function getCategory(): ?LeadStatusCategory {
@@ -189,7 +189,7 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the category property value. LeadStatusChange category represented by the lead status.
+     * Sets the category property value. Controlled lead status change categories used for reporting, automation, and analytics.
      * @param LeadStatusCategory|null $value Value to set for the category property.
     */
     public function setCategory(?LeadStatusCategory $value): void {

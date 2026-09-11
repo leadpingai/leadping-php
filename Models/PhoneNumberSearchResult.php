@@ -18,7 +18,7 @@ class PhoneNumberSearchResult implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var PhoneNumberSearchResult_location|null $location Geographic location metadata for the phone number, lead, or lookup result.
+     * @var PhoneNumberSearchResult_location|null $location Public Leadping API schema for phone number location data.
     */
     private ?PhoneNumberSearchResult_location $location = null;
     
@@ -64,7 +64,7 @@ class PhoneNumberSearchResult implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
+     * Gets the location property value. Public Leadping API schema for phone number location data.
      * @return PhoneNumberSearchResult_location|null
     */
     public function getLocation(): ?PhoneNumberSearchResult_location {
@@ -98,7 +98,7 @@ class PhoneNumberSearchResult implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the location property value. Geographic location metadata for the phone number, lead, or lookup result.
+     * Sets the location property value. Public Leadping API schema for phone number location data.
      * @param PhoneNumberSearchResult_location|null $value Value to set for the location property.
     */
     public function setLocation(?PhoneNumberSearchResult_location $value): void {

@@ -23,7 +23,7 @@ class SourceCredentialIssueResponse implements AdditionalDataHolder, Parsable
     private ?string $secret = null;
     
     /**
-     * @var SourceResponse|null $source Source metadata safe for later retrieval.
+     * @var SourceResponse|null $source Describes lead source data returned by Leadping.
     */
     private ?SourceResponse $source = null;
     
@@ -72,7 +72,7 @@ class SourceCredentialIssueResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the source property value. Source metadata safe for later retrieval.
+     * Gets the source property value. Describes lead source data returned by Leadping.
      * @return SourceResponse|null
     */
     public function getSource(): ?SourceResponse {
@@ -106,7 +106,7 @@ class SourceCredentialIssueResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the source property value. Source metadata safe for later retrieval.
+     * Sets the source property value. Describes lead source data returned by Leadping.
      * @param SourceResponse|null $value Value to set for the source property.
     */
     public function setSource(?SourceResponse $value): void {

@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Complete portability data returned by Telnyx.
+ * Number-portability and routing data returned by Telnyx.
 */
 class PhoneLookup_portability extends PhoneLookupPortability implements Parsable 
 {

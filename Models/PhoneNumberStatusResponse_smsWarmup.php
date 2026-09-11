@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * SMS warmup status for this phone number.
+ * Describes SMS warmup status data returned by Leadping.
 */
 class PhoneNumberStatusResponse_smsWarmup extends SmsReadinessStatusResponse implements Parsable 
 {

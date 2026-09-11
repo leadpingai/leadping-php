@@ -39,12 +39,12 @@ class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable
     private ?DateTime $licenseRenewalDate = null;
     
     /**
-     * @var OrganizationMemberRole|null $role Role for this organization user.
+     * @var OrganizationMemberRole|null $role Identifies an organization member's access level and permission scope within Leadping.
     */
     private ?OrganizationMemberRole $role = null;
     
     /**
-     * @var IdNamePair|null $user Identifier and display name of the related user.
+     * @var IdNamePair|null $user Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?IdNamePair $user = null;
     
@@ -127,7 +127,7 @@ class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the role property value. Role for this organization user.
+     * Gets the role property value. Identifies an organization member's access level and permission scope within Leadping.
      * @return OrganizationMemberRole|null
     */
     public function getRole(): ?OrganizationMemberRole {
@@ -135,7 +135,7 @@ class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the user property value. Identifier and display name of the related user.
+     * Gets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return IdNamePair|null
     */
     public function getUser(): ?IdNamePair {
@@ -206,7 +206,7 @@ class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the role property value. Role for this organization user.
+     * Sets the role property value. Identifies an organization member's access level and permission scope within Leadping.
      * @param OrganizationMemberRole|null $value Value to set for the role property.
     */
     public function setRole(?OrganizationMemberRole $value): void {
@@ -214,7 +214,7 @@ class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the user property value. Identifier and display name of the related user.
+     * Sets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @param IdNamePair|null $value Value to set for the user property.
     */
     public function setUser(?IdNamePair $value): void {

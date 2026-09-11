@@ -48,7 +48,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     private ?int $leads = null;
     
     /**
-     * @var AnalyticsComparison|null $leadsComparison Date and time when this Leadping customer analytics summary was leads comparison.
+     * @var AnalyticsComparison|null $leadsComparison Compares a metric with the preceding period and reports its absolute and percentage change.
     */
     private ?AnalyticsComparison $leadsComparison = null;
     
@@ -202,7 +202,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the leadsComparison property value. Date and time when this Leadping customer analytics summary was leads comparison.
+     * Gets the leadsComparison property value. Compares a metric with the preceding period and reports its absolute and percentage change.
      * @return AnalyticsComparison|null
     */
     public function getLeadsComparison(): ?AnalyticsComparison {
@@ -371,7 +371,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the leadsComparison property value. Date and time when this Leadping customer analytics summary was leads comparison.
+     * Sets the leadsComparison property value. Compares a metric with the preceding period and reports its absolute and percentage change.
      * @param AnalyticsComparison|null $value Value to set for the leadsComparison property.
     */
     public function setLeadsComparison(?AnalyticsComparison $value): void {

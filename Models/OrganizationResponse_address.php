@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Postal address for the organization, lead, or contact represented by this organization profile response.
+ * Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
 */
 class OrganizationResponse_address extends StreetAddress implements Parsable 
 {
