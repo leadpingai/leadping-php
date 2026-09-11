@@ -34,6 +34,11 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     private ?DateTime $completedAt = null;
     
     /**
+     * @var AutomationRunRecord_conditionResults|null $conditionResults Results of condition nodes already visited by this run, preserved across waits and retries.
+    */
+    private ?AutomationRunRecord_conditionResults $conditionResults = null;
+    
+    /**
      * @var string|null $executionMode Execution mode used for automation preview or live workflow processing.
     */
     private ?string $executionMode = null;
@@ -82,6 +87,11 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
      * @var string|null $status Current lifecycle status for this automation run record in the Leadping API.
     */
     private ?string $status = null;
+    
+    /**
+     * @var string|null $triggerId Identifier of the trigger node selected when this run was queued.
+    */
+    private ?string $triggerId = null;
     
     /**
      * @var string|null $triggerType Automation trigger type that starts the workflow.
@@ -137,6 +147,14 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the conditionResults property value. Results of condition nodes already visited by this run, preserved across waits and retries.
+     * @return AutomationRunRecord_conditionResults|null
+    */
+    public function getConditionResults(): ?AutomationRunRecord_conditionResults {
+        return $this->conditionResults;
+    }
+
+    /**
      * Gets the executionMode property value. Execution mode used for automation preview or live workflow processing.
      * @return string|null
     */
@@ -162,6 +180,7 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
             'actions' => fn(ParseNode $n) => $o->setActions($n->getCollectionOfObjectValues([AutomationActionRunRecord::class, 'createFromDiscriminatorValue'])),
             'automationId' => fn(ParseNode $n) => $o->setAutomationId($n->getStringValue()),
             'completedAt' => fn(ParseNode $n) => $o->setCompletedAt($n->getDateTimeValue()),
+            'conditionResults' => fn(ParseNode $n) => $o->setConditionResults($n->getObjectValue([AutomationRunRecord_conditionResults::class, 'createFromDiscriminatorValue'])),
             'executionMode' => fn(ParseNode $n) => $o->setExecutionMode($n->getStringValue()),
             'failureCode' => fn(ParseNode $n) => $o->setFailureCode($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
@@ -172,6 +191,7 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
             'skippedReason' => fn(ParseNode $n) => $o->setSkippedReason($n->getStringValue()),
             'startedAt' => fn(ParseNode $n) => $o->setStartedAt($n->getDateTimeValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getStringValue()),
+            'triggerId' => fn(ParseNode $n) => $o->setTriggerId($n->getStringValue()),
             'triggerType' => fn(ParseNode $n) => $o->setTriggerType($n->getStringValue()),
         ];
     }
@@ -241,6 +261,14 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the triggerId property value. Identifier of the trigger node selected when this run was queued.
+     * @return string|null
+    */
+    public function getTriggerId(): ?string {
+        return $this->triggerId;
+    }
+
+    /**
      * Gets the triggerType property value. Automation trigger type that starts the workflow.
      * @return string|null
     */
@@ -256,6 +284,7 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
         $writer->writeCollectionOfObjectValues('actions', $this->getActions());
         $writer->writeStringValue('automationId', $this->getAutomationId());
         $writer->writeDateTimeValue('completedAt', $this->getCompletedAt());
+        $writer->writeObjectValue('conditionResults', $this->getConditionResults());
         $writer->writeStringValue('executionMode', $this->getExecutionMode());
         $writer->writeStringValue('failureCode', $this->getFailureCode());
         $writer->writeStringValue('id', $this->getId());
@@ -266,6 +295,7 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('skippedReason', $this->getSkippedReason());
         $writer->writeDateTimeValue('startedAt', $this->getStartedAt());
         $writer->writeStringValue('status', $this->getStatus());
+        $writer->writeStringValue('triggerId', $this->getTriggerId());
         $writer->writeStringValue('triggerType', $this->getTriggerType());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -300,6 +330,14 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     */
     public function setCompletedAt(?DateTime $value): void {
         $this->completedAt = $value;
+    }
+
+    /**
+     * Sets the conditionResults property value. Results of condition nodes already visited by this run, preserved across waits and retries.
+     * @param AutomationRunRecord_conditionResults|null $value Value to set for the conditionResults property.
+    */
+    public function setConditionResults(?AutomationRunRecord_conditionResults $value): void {
+        $this->conditionResults = $value;
     }
 
     /**
@@ -380,6 +418,14 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     */
     public function setStatus(?string $value): void {
         $this->status = $value;
+    }
+
+    /**
+     * Sets the triggerId property value. Identifier of the trigger node selected when this run was queued.
+     * @param string|null $value Value to set for the triggerId property.
+    */
+    public function setTriggerId(?string $value): void {
+        $this->triggerId = $value;
     }
 
     /**
