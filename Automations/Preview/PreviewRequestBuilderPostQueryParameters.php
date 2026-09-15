@@ -3,7 +3,7 @@
 namespace Leadping\OpenApiClient\Automations\Preview;
 
 /**
- * Previews automation execution for a sample lead, showing matched steps and messages without creating follow-up events.Set `validate_only` to return configuration validation without evaluating conditions or actions and without writing a test audit event.
+ * Preview matched automation steps and messages for a sample lead without creating follow-up events, or use validate_only to check the automation configuration.
 */
 class PreviewRequestBuilderPostQueryParameters 
 {

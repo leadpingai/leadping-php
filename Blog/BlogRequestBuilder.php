@@ -43,7 +43,7 @@ class BlogRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns the Leadping blog articles currently available to public readers.
+     * Retrieve the list of published Leadping blog articles through the public API. This endpoint returns articles available to readers without authentication.
      * @param BlogRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<array<BlogArticleResponse>|null>
      * @throws Exception
@@ -57,7 +57,7 @@ class BlogRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns the Leadping blog articles currently available to public readers.
+     * Retrieve the list of published Leadping blog articles through the public API. This endpoint returns articles available to readers without authentication.
      * @param BlogRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

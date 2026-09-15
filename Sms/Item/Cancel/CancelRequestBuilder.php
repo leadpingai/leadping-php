@@ -31,7 +31,7 @@ class CancelRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Cancels a scheduled SMS event before delivery, preserving the event record while preventing the queued message from being sent.The cancellation window remains open only while the SMS status is Scheduled and closes when delivery begins.
+     * Cancel a queued SMS message while its status is Scheduled to prevent sending and preserve the event record. Cancellation closes when message delivery begins.
      * @param CancelRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<SmsResponse|null>
      * @throws Exception
@@ -49,7 +49,7 @@ class CancelRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Cancels a scheduled SMS event before delivery, preserving the event record while preventing the queued message from being sent.The cancellation window remains open only while the SMS status is Scheduled and closes when delivery begins.
+     * Cancel a queued SMS message while its status is Scheduled to prevent sending and preserve the event record. Cancellation closes when message delivery begins.
      * @param CancelRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

@@ -32,7 +32,7 @@ class NotificationPreferencesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Replaces the notification channel and delivery preferences stored for the authenticated user.
+     * Update notification channel and delivery preferences for the authenticated Leadping user through the API without submitting unrelated user profile fields.
      * @param UserNotificationPreferences $body Describes user notification preferences data used in Leadping API requests and responses.
      * @param NotificationPreferencesRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<UserResponse|null>
@@ -49,7 +49,7 @@ class NotificationPreferencesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Replaces the notification channel and delivery preferences stored for the authenticated user.
+     * Update notification channel and delivery preferences for the authenticated Leadping user through the API without submitting unrelated user profile fields.
      * @param UserNotificationPreferences $body Describes user notification preferences data used in Leadping API requests and responses.
      * @param NotificationPreferencesRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

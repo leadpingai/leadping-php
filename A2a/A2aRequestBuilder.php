@@ -31,7 +31,7 @@ class A2aRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Accepts authenticated A2A JSON-RPC requests for Leadping's supported agent operations.
+     * Send authenticated A2A JSON-RPC requests to Leadping through the API to access supported agent operations and integrate them into your agent workflows.
      * @param A2aRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<StreamInterface|null>
      * @throws Exception
@@ -49,7 +49,7 @@ class A2aRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Accepts authenticated A2A JSON-RPC requests for Leadping's supported agent operations.
+     * Send authenticated A2A JSON-RPC requests to Leadping through the API to access supported agent operations and integrate them into your agent workflows.
      * @param A2aRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
