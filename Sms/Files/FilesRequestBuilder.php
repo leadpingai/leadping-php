@@ -1,6 +1,6 @@
 <?php
 
-namespace Leadping\OpenApiClient\Sms\Uploads;
+namespace Leadping\OpenApiClient\Sms\Files;
 
 use Exception;
 use Http\Promise\Promise;
@@ -13,17 +13,17 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
 
 /**
- * Builds and executes requests for operations under /sms/uploads
+ * Builds and executes requests for operations under /sms/files
 */
-class UploadsRequestBuilder extends BaseRequestBuilder 
+class FilesRequestBuilder extends BaseRequestBuilder 
 {
     /**
-     * Instantiates a new UploadsRequestBuilder and sets the default values.
+     * Instantiates a new FilesRequestBuilder and sets the default values.
      * @param array<string, mixed>|string $pathParametersOrRawUrl Path parameters for the request or a String representing the raw URL.
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/sms/uploads');
+        parent::__construct($requestAdapter, [], '{+baseurl}/sms/files');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {
@@ -34,11 +34,11 @@ class UploadsRequestBuilder extends BaseRequestBuilder
     /**
      * Uploads and validates one media attachment, returning the metadata needed to include the asset in a subsequent Leadping MMS send.
      * @param MultiPartBody $body The request body
-     * @param UploadsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param FilesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<MessageMediaAttachment|null>
      * @throws Exception
     */
-    public function post(MultiPartBody $body, ?UploadsRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
+    public function post(MultiPartBody $body, ?FilesRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toPostRequestInformation($body, $requestConfiguration);
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
@@ -52,10 +52,10 @@ class UploadsRequestBuilder extends BaseRequestBuilder
     /**
      * Uploads and validates one media attachment, returning the metadata needed to include the asset in a subsequent Leadping MMS send.
      * @param MultiPartBody $body The request body
-     * @param UploadsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param FilesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
-    public function toPostRequestInformation(MultiPartBody $body, ?UploadsRequestBuilderPostRequestConfiguration $requestConfiguration = null): RequestInformation {
+    public function toPostRequestInformation(MultiPartBody $body, ?FilesRequestBuilderPostRequestConfiguration $requestConfiguration = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
@@ -72,10 +72,10 @@ class UploadsRequestBuilder extends BaseRequestBuilder
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param string $rawUrl The raw URL to use for the request builder.
-     * @return UploadsRequestBuilder
+     * @return FilesRequestBuilder
     */
-    public function withUrl(string $rawUrl): UploadsRequestBuilder {
-        return new UploadsRequestBuilder($rawUrl, $this->requestAdapter);
+    public function withUrl(string $rawUrl): FilesRequestBuilder {
+        return new FilesRequestBuilder($rawUrl, $this->requestAdapter);
     }
 
 }
