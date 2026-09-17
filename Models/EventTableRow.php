@@ -34,6 +34,11 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var string|null $automationRunId Automation run ID opened from this automation event.
+    */
+    private ?string $automationRunId = null;
+    
+    /**
      * @var float|null $billableAmount Monetary amount billed for this Leadping communication or transaction.
     */
     private ?float $billableAmount = null;
@@ -302,6 +307,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the automationRunId property value. Automation run ID opened from this automation event.
+     * @return string|null
+    */
+    public function getAutomationRunId(): ?string {
+        return $this->automationRunId;
+    }
+
+    /**
      * Gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
      * @return float|null
     */
@@ -447,6 +460,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
             'actorDisplayName' => fn(ParseNode $n) => $o->setActorDisplayName($n->getStringValue()),
             'actorEmail' => fn(ParseNode $n) => $o->setActorEmail($n->getStringValue()),
             'actorUserId' => fn(ParseNode $n) => $o->setActorUserId($n->getStringValue()),
+            'automationRunId' => fn(ParseNode $n) => $o->setAutomationRunId($n->getStringValue()),
             'billableAmount' => fn(ParseNode $n) => $o->setBillableAmount($n->getFloatValue()),
             'billingStatus' => fn(ParseNode $n) => $o->setBillingStatus($n->getStringValue()),
             'blockedAt' => fn(ParseNode $n) => $o->setBlockedAt($n->getDateTimeValue()),
@@ -718,6 +732,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('actorDisplayName', $this->getActorDisplayName());
         $writer->writeStringValue('actorEmail', $this->getActorEmail());
         $writer->writeStringValue('actorUserId', $this->getActorUserId());
+        $writer->writeStringValue('automationRunId', $this->getAutomationRunId());
         $writer->writeFloatValue('billableAmount', $this->getBillableAmount());
         $writer->writeStringValue('billingStatus', $this->getBillingStatus());
         $writer->writeDateTimeValue('blockedAt', $this->getBlockedAt());
@@ -795,6 +810,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the automationRunId property value. Automation run ID opened from this automation event.
+     * @param string|null $value Value to set for the automationRunId property.
+    */
+    public function setAutomationRunId(?string $value): void {
+        $this->automationRunId = $value;
     }
 
     /**

@@ -79,6 +79,11 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     private ?DateTime $smsMinutelyResetsAt = null;
     
     /**
+     * @var OutboundPhoneNumberCapacity_smsRampDirection|null $smsRampDirection Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+    */
+    private ?OutboundPhoneNumberCapacity_smsRampDirection $smsRampDirection = null;
+    
+    /**
      * @var bool|null $smsRamping Indicates whether SMS limits for this phone number are still ramping up.
     */
     private ?bool $smsRamping = null;
@@ -142,6 +147,11 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
      * @var DateTime|null $voiceMinutelyResetsAt The next time voice capacity becomes available in the rolling minute window.
     */
     private ?DateTime $voiceMinutelyResetsAt = null;
+    
+    /**
+     * @var OutboundPhoneNumberCapacity_voiceRampDirection|null $voiceRampDirection Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+    */
+    private ?OutboundPhoneNumberCapacity_voiceRampDirection $voiceRampDirection = null;
     
     /**
      * @var bool|null $voiceRamping Indicates whether call limits for this phone number are still ramping up.
@@ -229,6 +239,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
             'smsLimitThisMinute' => fn(ParseNode $n) => $o->setSmsLimitThisMinute($n->getIntegerValue()),
             'smsLimitToday' => fn(ParseNode $n) => $o->setSmsLimitToday($n->getIntegerValue()),
             'smsMinutelyResetsAt' => fn(ParseNode $n) => $o->setSmsMinutelyResetsAt($n->getDateTimeValue()),
+            'smsRampDirection' => fn(ParseNode $n) => $o->setSmsRampDirection($n->getEnumValue(OutboundPhoneNumberCapacity_smsRampDirection::class)),
             'smsRamping' => fn(ParseNode $n) => $o->setSmsRamping($n->getBooleanValue()),
             'smsRemainingThisHour' => fn(ParseNode $n) => $o->setSmsRemainingThisHour($n->getIntegerValue()),
             'smsRemainingThisMinute' => fn(ParseNode $n) => $o->setSmsRemainingThisMinute($n->getIntegerValue()),
@@ -242,6 +253,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
             'voiceLimitThisMinute' => fn(ParseNode $n) => $o->setVoiceLimitThisMinute($n->getIntegerValue()),
             'voiceLimitToday' => fn(ParseNode $n) => $o->setVoiceLimitToday($n->getIntegerValue()),
             'voiceMinutelyResetsAt' => fn(ParseNode $n) => $o->setVoiceMinutelyResetsAt($n->getDateTimeValue()),
+            'voiceRampDirection' => fn(ParseNode $n) => $o->setVoiceRampDirection($n->getEnumValue(OutboundPhoneNumberCapacity_voiceRampDirection::class)),
             'voiceRamping' => fn(ParseNode $n) => $o->setVoiceRamping($n->getBooleanValue()),
             'voiceRemainingThisHour' => fn(ParseNode $n) => $o->setVoiceRemainingThisHour($n->getIntegerValue()),
             'voiceRemainingThisMinute' => fn(ParseNode $n) => $o->setVoiceRemainingThisMinute($n->getIntegerValue()),
@@ -338,6 +350,14 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     */
     public function getSmsMinutelyResetsAt(): ?DateTime {
         return $this->smsMinutelyResetsAt;
+    }
+
+    /**
+     * Gets the smsRampDirection property value. Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+     * @return OutboundPhoneNumberCapacity_smsRampDirection|null
+    */
+    public function getSmsRampDirection(): ?OutboundPhoneNumberCapacity_smsRampDirection {
+        return $this->smsRampDirection;
     }
 
     /**
@@ -445,6 +465,14 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the voiceRampDirection property value. Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+     * @return OutboundPhoneNumberCapacity_voiceRampDirection|null
+    */
+    public function getVoiceRampDirection(): ?OutboundPhoneNumberCapacity_voiceRampDirection {
+        return $this->voiceRampDirection;
+    }
+
+    /**
      * Gets the voiceRamping property value. Indicates whether call limits for this phone number are still ramping up.
      * @return bool|null
     */
@@ -517,6 +545,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
         $writer->writeIntegerValue('smsLimitThisMinute', $this->getSmsLimitThisMinute());
         $writer->writeIntegerValue('smsLimitToday', $this->getSmsLimitToday());
         $writer->writeDateTimeValue('smsMinutelyResetsAt', $this->getSmsMinutelyResetsAt());
+        $writer->writeEnumValue('smsRampDirection', $this->getSmsRampDirection());
         $writer->writeBooleanValue('smsRamping', $this->getSmsRamping());
         $writer->writeIntegerValue('smsRemainingThisHour', $this->getSmsRemainingThisHour());
         $writer->writeIntegerValue('smsRemainingThisMinute', $this->getSmsRemainingThisMinute());
@@ -530,6 +559,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
         $writer->writeIntegerValue('voiceLimitThisMinute', $this->getVoiceLimitThisMinute());
         $writer->writeIntegerValue('voiceLimitToday', $this->getVoiceLimitToday());
         $writer->writeDateTimeValue('voiceMinutelyResetsAt', $this->getVoiceMinutelyResetsAt());
+        $writer->writeEnumValue('voiceRampDirection', $this->getVoiceRampDirection());
         $writer->writeBooleanValue('voiceRamping', $this->getVoiceRamping());
         $writer->writeIntegerValue('voiceRemainingThisHour', $this->getVoiceRemainingThisHour());
         $writer->writeIntegerValue('voiceRemainingThisMinute', $this->getVoiceRemainingThisMinute());
@@ -645,6 +675,14 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the smsRampDirection property value. Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+     * @param OutboundPhoneNumberCapacity_smsRampDirection|null $value Value to set for the smsRampDirection property.
+    */
+    public function setSmsRampDirection(?OutboundPhoneNumberCapacity_smsRampDirection $value): void {
+        $this->smsRampDirection = $value;
+    }
+
+    /**
      * Sets the smsRamping property value. Indicates whether SMS limits for this phone number are still ramping up.
      * @param bool|null $value Value to set for the smsRamping property.
     */
@@ -746,6 +784,14 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     */
     public function setVoiceMinutelyResetsAt(?DateTime $value): void {
         $this->voiceMinutelyResetsAt = $value;
+    }
+
+    /**
+     * Sets the voiceRampDirection property value. Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+     * @param OutboundPhoneNumberCapacity_voiceRampDirection|null $value Value to set for the voiceRampDirection property.
+    */
+    public function setVoiceRampDirection(?OutboundPhoneNumberCapacity_voiceRampDirection $value): void {
+        $this->voiceRampDirection = $value;
     }
 
     /**

@@ -74,6 +74,16 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     private ?PhoneNumberRoutingMetadata $routing = null;
     
     /**
+     * @var bool|null $smsReady Whether provider, routing, and health checks allow SMS.
+    */
+    private ?bool $smsReady = null;
+    
+    /**
+     * @var bool|null $voiceReady Whether provider, routing, and health checks allow calls.
+    */
+    private ?bool $voiceReady = null;
+    
+    /**
      * @var PhoneNumberReadiness|null $warmup Messaging and calling warmup for a Leadping phone number.
     */
     private ?PhoneNumberReadiness $warmup = null;
@@ -136,6 +146,8 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([PhoneNumberResponse_organization::class, 'createFromDiscriminatorValue'])),
             'phoneIdentityId' => fn(ParseNode $n) => $o->setPhoneIdentityId($n->getStringValue()),
             'routing' => fn(ParseNode $n) => $o->setRouting($n->getObjectValue([PhoneNumberRoutingMetadata::class, 'createFromDiscriminatorValue'])),
+            'smsReady' => fn(ParseNode $n) => $o->setSmsReady($n->getBooleanValue()),
+            'voiceReady' => fn(ParseNode $n) => $o->setVoiceReady($n->getBooleanValue()),
             'warmup' => fn(ParseNode $n) => $o->setWarmup($n->getObjectValue([PhoneNumberReadiness::class, 'createFromDiscriminatorValue'])),
         ];
     }
@@ -213,6 +225,22 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the smsReady property value. Whether provider, routing, and health checks allow SMS.
+     * @return bool|null
+    */
+    public function getSmsReady(): ?bool {
+        return $this->smsReady;
+    }
+
+    /**
+     * Gets the voiceReady property value. Whether provider, routing, and health checks allow calls.
+     * @return bool|null
+    */
+    public function getVoiceReady(): ?bool {
+        return $this->voiceReady;
+    }
+
+    /**
      * Gets the warmup property value. Messaging and calling warmup for a Leadping phone number.
      * @return PhoneNumberReadiness|null
     */
@@ -236,6 +264,8 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
         $writer->writeObjectValue('organization', $this->getOrganization());
         $writer->writeStringValue('phoneIdentityId', $this->getPhoneIdentityId());
         $writer->writeObjectValue('routing', $this->getRouting());
+        $writer->writeBooleanValue('smsReady', $this->getSmsReady());
+        $writer->writeBooleanValue('voiceReady', $this->getVoiceReady());
         $writer->writeObjectValue('warmup', $this->getWarmup());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -334,6 +364,22 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     */
     public function setRouting(?PhoneNumberRoutingMetadata $value): void {
         $this->routing = $value;
+    }
+
+    /**
+     * Sets the smsReady property value. Whether provider, routing, and health checks allow SMS.
+     * @param bool|null $value Value to set for the smsReady property.
+    */
+    public function setSmsReady(?bool $value): void {
+        $this->smsReady = $value;
+    }
+
+    /**
+     * Sets the voiceReady property value. Whether provider, routing, and health checks allow calls.
+     * @param bool|null $value Value to set for the voiceReady property.
+    */
+    public function setVoiceReady(?bool $value): void {
+        $this->voiceReady = $value;
     }
 
     /**
