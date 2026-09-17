@@ -49,9 +49,29 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     private ?DateTime $endAt = null;
     
     /**
+     * @var int|null $humanResponses Manual provider-accepted SMS messages; automated messages are excluded.
+    */
+    private ?int $humanResponses = null;
+    
+    /**
      * @var string|null $label Human-readable label for this Leadping customer communication usage point.
     */
     private ?string $label = null;
+    
+    /**
+     * @var int|null $prospectReplies Received prospect messages excluding consent and help commands.
+    */
+    private ?int $prospectReplies = null;
+    
+    /**
+     * @var int|null $smsAttempted Messages whose send execution started; queued and scheduled messages are excluded.
+    */
+    private ?int $smsAttempted = null;
+    
+    /**
+     * @var int|null $smsDelivered Messages confirmed delivered, counted at delivery time.
+    */
+    private ?int $smsDelivered = null;
     
     /**
      * @var int|null $smsErrors Number of SMS messages that failed or were blocked in this time bucket.
@@ -64,7 +84,7 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     private ?int $smsReceived = null;
     
     /**
-     * @var int|null $smsSent Number of SMS messages sent during the reporting period.
+     * @var int|null $smsSent Provider-accepted outbound messages, counted at acceptance time (SmsSent is the compatibility field name).
     */
     private ?int $smsSent = null;
     
@@ -163,7 +183,11 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
             'callsPlaced' => fn(ParseNode $n) => $o->setCallsPlaced($n->getIntegerValue()),
             'callsReceived' => fn(ParseNode $n) => $o->setCallsReceived($n->getIntegerValue()),
             'endAt' => fn(ParseNode $n) => $o->setEndAt($n->getDateTimeValue()),
+            'humanResponses' => fn(ParseNode $n) => $o->setHumanResponses($n->getIntegerValue()),
             'label' => fn(ParseNode $n) => $o->setLabel($n->getStringValue()),
+            'prospectReplies' => fn(ParseNode $n) => $o->setProspectReplies($n->getIntegerValue()),
+            'smsAttempted' => fn(ParseNode $n) => $o->setSmsAttempted($n->getIntegerValue()),
+            'smsDelivered' => fn(ParseNode $n) => $o->setSmsDelivered($n->getIntegerValue()),
             'smsErrors' => fn(ParseNode $n) => $o->setSmsErrors($n->getIntegerValue()),
             'smsReceived' => fn(ParseNode $n) => $o->setSmsReceived($n->getIntegerValue()),
             'smsSent' => fn(ParseNode $n) => $o->setSmsSent($n->getIntegerValue()),
@@ -173,11 +197,43 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the humanResponses property value. Manual provider-accepted SMS messages; automated messages are excluded.
+     * @return int|null
+    */
+    public function getHumanResponses(): ?int {
+        return $this->humanResponses;
+    }
+
+    /**
      * Gets the label property value. Human-readable label for this Leadping customer communication usage point.
      * @return string|null
     */
     public function getLabel(): ?string {
         return $this->label;
+    }
+
+    /**
+     * Gets the prospectReplies property value. Received prospect messages excluding consent and help commands.
+     * @return int|null
+    */
+    public function getProspectReplies(): ?int {
+        return $this->prospectReplies;
+    }
+
+    /**
+     * Gets the smsAttempted property value. Messages whose send execution started; queued and scheduled messages are excluded.
+     * @return int|null
+    */
+    public function getSmsAttempted(): ?int {
+        return $this->smsAttempted;
+    }
+
+    /**
+     * Gets the smsDelivered property value. Messages confirmed delivered, counted at delivery time.
+     * @return int|null
+    */
+    public function getSmsDelivered(): ?int {
+        return $this->smsDelivered;
     }
 
     /**
@@ -197,7 +253,7 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the smsSent property value. Number of SMS messages sent during the reporting period.
+     * Gets the smsSent property value. Provider-accepted outbound messages, counted at acceptance time (SmsSent is the compatibility field name).
      * @return int|null
     */
     public function getSmsSent(): ?int {
@@ -231,7 +287,11 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
         $writer->writeIntegerValue('callsPlaced', $this->getCallsPlaced());
         $writer->writeIntegerValue('callsReceived', $this->getCallsReceived());
         $writer->writeDateTimeValue('endAt', $this->getEndAt());
+        $writer->writeIntegerValue('humanResponses', $this->getHumanResponses());
         $writer->writeStringValue('label', $this->getLabel());
+        $writer->writeIntegerValue('prospectReplies', $this->getProspectReplies());
+        $writer->writeIntegerValue('smsAttempted', $this->getSmsAttempted());
+        $writer->writeIntegerValue('smsDelivered', $this->getSmsDelivered());
         $writer->writeIntegerValue('smsErrors', $this->getSmsErrors());
         $writer->writeIntegerValue('smsReceived', $this->getSmsReceived());
         $writer->writeIntegerValue('smsSent', $this->getSmsSent());
@@ -297,11 +357,43 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the humanResponses property value. Manual provider-accepted SMS messages; automated messages are excluded.
+     * @param int|null $value Value to set for the humanResponses property.
+    */
+    public function setHumanResponses(?int $value): void {
+        $this->humanResponses = $value;
+    }
+
+    /**
      * Sets the label property value. Human-readable label for this Leadping customer communication usage point.
      * @param string|null $value Value to set for the label property.
     */
     public function setLabel(?string $value): void {
         $this->label = $value;
+    }
+
+    /**
+     * Sets the prospectReplies property value. Received prospect messages excluding consent and help commands.
+     * @param int|null $value Value to set for the prospectReplies property.
+    */
+    public function setProspectReplies(?int $value): void {
+        $this->prospectReplies = $value;
+    }
+
+    /**
+     * Sets the smsAttempted property value. Messages whose send execution started; queued and scheduled messages are excluded.
+     * @param int|null $value Value to set for the smsAttempted property.
+    */
+    public function setSmsAttempted(?int $value): void {
+        $this->smsAttempted = $value;
+    }
+
+    /**
+     * Sets the smsDelivered property value. Messages confirmed delivered, counted at delivery time.
+     * @param int|null $value Value to set for the smsDelivered property.
+    */
+    public function setSmsDelivered(?int $value): void {
+        $this->smsDelivered = $value;
     }
 
     /**
@@ -321,7 +413,7 @@ class CustomerCommunicationUsagePoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the smsSent property value. Number of SMS messages sent during the reporting period.
+     * Sets the smsSent property value. Provider-accepted outbound messages, counted at acceptance time (SmsSent is the compatibility field name).
      * @param int|null $value Value to set for the smsSent property.
     */
     public function setSmsSent(?int $value): void {

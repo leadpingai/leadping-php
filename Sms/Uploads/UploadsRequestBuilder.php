@@ -1,6 +1,6 @@
 <?php
 
-namespace Leadping\OpenApiClient\Sms\Media;
+namespace Leadping\OpenApiClient\Sms\Uploads;
 
 use Exception;
 use Http\Promise\Promise;
@@ -13,17 +13,17 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
 
 /**
- * Builds and executes requests for operations under /sms/media
+ * Builds and executes requests for operations under /sms/uploads
 */
-class MediaRequestBuilder extends BaseRequestBuilder 
+class UploadsRequestBuilder extends BaseRequestBuilder 
 {
     /**
-     * Instantiates a new MediaRequestBuilder and sets the default values.
+     * Instantiates a new UploadsRequestBuilder and sets the default values.
      * @param array<string, mixed>|string $pathParametersOrRawUrl Path parameters for the request or a String representing the raw URL.
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/sms/media');
+        parent::__construct($requestAdapter, [], '{+baseurl}/sms/uploads');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {
@@ -34,11 +34,11 @@ class MediaRequestBuilder extends BaseRequestBuilder
     /**
      * Uploads and validates one media attachment, returning the metadata needed to include the asset in a subsequent Leadping MMS send.
      * @param MultiPartBody $body The request body
-     * @param MediaRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param UploadsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<MessageMediaAttachment|null>
      * @throws Exception
     */
-    public function post(MultiPartBody $body, ?MediaRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
+    public function post(MultiPartBody $body, ?UploadsRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toPostRequestInformation($body, $requestConfiguration);
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
@@ -52,10 +52,10 @@ class MediaRequestBuilder extends BaseRequestBuilder
     /**
      * Uploads and validates one media attachment, returning the metadata needed to include the asset in a subsequent Leadping MMS send.
      * @param MultiPartBody $body The request body
-     * @param MediaRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param UploadsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
-    public function toPostRequestInformation(MultiPartBody $body, ?MediaRequestBuilderPostRequestConfiguration $requestConfiguration = null): RequestInformation {
+    public function toPostRequestInformation(MultiPartBody $body, ?UploadsRequestBuilderPostRequestConfiguration $requestConfiguration = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
@@ -72,10 +72,10 @@ class MediaRequestBuilder extends BaseRequestBuilder
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param string $rawUrl The raw URL to use for the request builder.
-     * @return MediaRequestBuilder
+     * @return UploadsRequestBuilder
     */
-    public function withUrl(string $rawUrl): MediaRequestBuilder {
-        return new MediaRequestBuilder($rawUrl, $this->requestAdapter);
+    public function withUrl(string $rawUrl): UploadsRequestBuilder {
+        return new UploadsRequestBuilder($rawUrl, $this->requestAdapter);
     }
 
 }

@@ -74,6 +74,11 @@ class AutomationWorkflowActionResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $skippedAt = null;
     
     /**
+     * @var AutomationWorkflowActionResponse_smsDelivery|null $smsDelivery Delivery outcome of the persisted SMS. Workflow steps advance on command acceptance, without waiting for delivery.
+    */
+    private ?AutomationWorkflowActionResponse_smsDelivery $smsDelivery = null;
+    
+    /**
      * @var DateTime|null $startedAt Date and time when the automation workflow action started.
     */
     private ?DateTime $startedAt = null;
@@ -190,6 +195,7 @@ class AutomationWorkflowActionResponse implements AdditionalDataHolder, Parsable
             'safeReason' => fn(ParseNode $n) => $o->setSafeReason($n->getStringValue()),
             'scheduledAt' => fn(ParseNode $n) => $o->setScheduledAt($n->getDateTimeValue()),
             'skippedAt' => fn(ParseNode $n) => $o->setSkippedAt($n->getDateTimeValue()),
+            'smsDelivery' => fn(ParseNode $n) => $o->setSmsDelivery($n->getObjectValue([AutomationWorkflowActionResponse_smsDelivery::class, 'createFromDiscriminatorValue'])),
             'startedAt' => fn(ParseNode $n) => $o->setStartedAt($n->getDateTimeValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getStringValue()),
             'statusDisplay' => fn(ParseNode $n) => $o->setStatusDisplay($n->getStringValue()),
@@ -246,6 +252,14 @@ class AutomationWorkflowActionResponse implements AdditionalDataHolder, Parsable
     */
     public function getSkippedAt(): ?DateTime {
         return $this->skippedAt;
+    }
+
+    /**
+     * Gets the smsDelivery property value. Delivery outcome of the persisted SMS. Workflow steps advance on command acceptance, without waiting for delivery.
+     * @return AutomationWorkflowActionResponse_smsDelivery|null
+    */
+    public function getSmsDelivery(): ?AutomationWorkflowActionResponse_smsDelivery {
+        return $this->smsDelivery;
     }
 
     /**
@@ -320,6 +334,7 @@ class AutomationWorkflowActionResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('safeReason', $this->getSafeReason());
         $writer->writeDateTimeValue('scheduledAt', $this->getScheduledAt());
         $writer->writeDateTimeValue('skippedAt', $this->getSkippedAt());
+        $writer->writeObjectValue('smsDelivery', $this->getSmsDelivery());
         $writer->writeDateTimeValue('startedAt', $this->getStartedAt());
         $writer->writeStringValue('status', $this->getStatus());
         $writer->writeStringValue('statusDisplay', $this->getStatusDisplay());
@@ -424,6 +439,14 @@ class AutomationWorkflowActionResponse implements AdditionalDataHolder, Parsable
     */
     public function setSkippedAt(?DateTime $value): void {
         $this->skippedAt = $value;
+    }
+
+    /**
+     * Sets the smsDelivery property value. Delivery outcome of the persisted SMS. Workflow steps advance on command acceptance, without waiting for delivery.
+     * @param AutomationWorkflowActionResponse_smsDelivery|null $value Value to set for the smsDelivery property.
+    */
+    public function setSmsDelivery(?AutomationWorkflowActionResponse_smsDelivery $value): void {
+        $this->smsDelivery = $value;
     }
 
     /**

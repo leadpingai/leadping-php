@@ -1,36 +1,28 @@
 <?php
 
-namespace Leadping\OpenApiClient\Analytics\My;
+namespace Leadping\OpenApiClient\Analytics\My\Export;
 
 use Exception;
 use Http\Promise\Promise;
-use Leadping\OpenApiClient\Analytics\My\Export\ExportRequestBuilder;
-use Leadping\OpenApiClient\Models\CustomerAnalyticsResponse;
 use Leadping\OpenApiClient\Models\ProblemDetails;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
+use Psr\Http\Message\StreamInterface;
 
 /**
- * Builds and executes requests for operations under /analytics/my
+ * Builds and executes requests for operations under /analytics/my/export
 */
-class MyRequestBuilder extends BaseRequestBuilder 
+class ExportRequestBuilder extends BaseRequestBuilder 
 {
     /**
-     * The export property
-    */
-    public function export(): ExportRequestBuilder {
-        return new ExportRequestBuilder($this->pathParameters, $this->requestAdapter);
-    }
-    
-    /**
-     * Instantiates a new MyRequestBuilder and sets the default values.
+     * Instantiates a new ExportRequestBuilder and sets the default values.
      * @param array<string, mixed>|string $pathParametersOrRawUrl Path parameters for the request or a String representing the raw URL.
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/analytics/my{?days*,endAt*,startAt*}');
+        parent::__construct($requestAdapter, [], '{+baseurl}/analytics/my/export{?days*,endAt*,startAt*}');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {
@@ -39,28 +31,29 @@ class MyRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns current-organization analytics for lead communication, including event volume, response metrics, and date-range filtering.
-     * @param MyRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return Promise<CustomerAnalyticsResponse|null>
+     * Downloads the current organization's analytics as a CSV file, using the same cohort, timestamps, and metric definitions as the analytics charts.
+     * @param ExportRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return Promise<StreamInterface|null>
      * @throws Exception
     */
-    public function get(?MyRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
+    public function get(?ExportRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
-                '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
-        return $this->requestAdapter->sendAsync($requestInfo, [CustomerAnalyticsResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
+        /** @var Promise<StreamInterface|null> $result */
+        $result = $this->requestAdapter->sendPrimitiveAsync($requestInfo, StreamInterface::class, $errorMappings);
+        return $result;
     }
 
     /**
-     * Returns current-organization analytics for lead communication, including event volume, response metrics, and date-range filtering.
-     * @param MyRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * Downloads the current organization's analytics as a CSV file, using the same cohort, timestamps, and metric definitions as the analytics charts.
+     * @param ExportRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
-    public function toGetRequestInformation(?MyRequestBuilderGetRequestConfiguration $requestConfiguration = null): RequestInformation {
+    public function toGetRequestInformation(?ExportRequestBuilderGetRequestConfiguration $requestConfiguration = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
@@ -72,17 +65,17 @@ class MyRequestBuilder extends BaseRequestBuilder
             }
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
-        $requestInfo->tryAddHeader('Accept', "application/json");
+        $requestInfo->tryAddHeader('Accept', "text/csv, application/problem+json");
         return $requestInfo;
     }
 
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param string $rawUrl The raw URL to use for the request builder.
-     * @return MyRequestBuilder
+     * @return ExportRequestBuilder
     */
-    public function withUrl(string $rawUrl): MyRequestBuilder {
-        return new MyRequestBuilder($rawUrl, $this->requestAdapter);
+    public function withUrl(string $rawUrl): ExportRequestBuilder {
+        return new ExportRequestBuilder($rawUrl, $this->requestAdapter);
     }
 
 }

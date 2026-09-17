@@ -34,6 +34,21 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
+     * @var string|null $leadAvatarUrl The associated lead's profile image URL, when available.
+    */
+    private ?string $leadAvatarUrl = null;
+    
+    /**
+     * @var string|null $leadEmail The associated lead's email address, used for Gravatar fallback.
+    */
+    private ?string $leadEmail = null;
+    
+    /**
+     * @var string|null $leadName Display name of the associated lead, when available.
+    */
+    private ?string $leadName = null;
+    
+    /**
      * @var string|null $normalizedEmail Suppressed email address normalized for matching.
     */
     private ?string $normalizedEmail = null;
@@ -128,6 +143,9 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
             'audit' => fn(ParseNode $n) => $o->setAudit($n->getCollectionOfObjectValues([SuppressionEntryAudit::class, 'createFromDiscriminatorValue'])),
             'channel' => fn(ParseNode $n) => $o->setChannel($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
+            'leadAvatarUrl' => fn(ParseNode $n) => $o->setLeadAvatarUrl($n->getStringValue()),
+            'leadEmail' => fn(ParseNode $n) => $o->setLeadEmail($n->getStringValue()),
+            'leadName' => fn(ParseNode $n) => $o->setLeadName($n->getStringValue()),
             'normalizedEmail' => fn(ParseNode $n) => $o->setNormalizedEmail($n->getStringValue()),
             'normalizedPhoneNumber' => fn(ParseNode $n) => $o->setNormalizedPhoneNumber($n->getStringValue()),
             'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
@@ -146,6 +164,30 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     */
     public function getId(): ?string {
         return $this->id;
+    }
+
+    /**
+     * Gets the leadAvatarUrl property value. The associated lead's profile image URL, when available.
+     * @return string|null
+    */
+    public function getLeadAvatarUrl(): ?string {
+        return $this->leadAvatarUrl;
+    }
+
+    /**
+     * Gets the leadEmail property value. The associated lead's email address, used for Gravatar fallback.
+     * @return string|null
+    */
+    public function getLeadEmail(): ?string {
+        return $this->leadEmail;
+    }
+
+    /**
+     * Gets the leadName property value. Display name of the associated lead, when available.
+     * @return string|null
+    */
+    public function getLeadName(): ?string {
+        return $this->leadName;
     }
 
     /**
@@ -228,6 +270,9 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
         $writer->writeCollectionOfObjectValues('audit', $this->getAudit());
         $writer->writeStringValue('channel', $this->getChannel());
         $writer->writeStringValue('id', $this->getId());
+        $writer->writeStringValue('leadAvatarUrl', $this->getLeadAvatarUrl());
+        $writer->writeStringValue('leadEmail', $this->getLeadEmail());
+        $writer->writeStringValue('leadName', $this->getLeadName());
         $writer->writeStringValue('normalizedEmail', $this->getNormalizedEmail());
         $writer->writeStringValue('normalizedPhoneNumber', $this->getNormalizedPhoneNumber());
         $writer->writeStringValue('organizationId', $this->getOrganizationId());
@@ -270,6 +315,30 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     */
     public function setId(?string $value): void {
         $this->id = $value;
+    }
+
+    /**
+     * Sets the leadAvatarUrl property value. The associated lead's profile image URL, when available.
+     * @param string|null $value Value to set for the leadAvatarUrl property.
+    */
+    public function setLeadAvatarUrl(?string $value): void {
+        $this->leadAvatarUrl = $value;
+    }
+
+    /**
+     * Sets the leadEmail property value. The associated lead's email address, used for Gravatar fallback.
+     * @param string|null $value Value to set for the leadEmail property.
+    */
+    public function setLeadEmail(?string $value): void {
+        $this->leadEmail = $value;
+    }
+
+    /**
+     * Sets the leadName property value. Display name of the associated lead, when available.
+     * @param string|null $value Value to set for the leadName property.
+    */
+    public function setLeadName(?string $value): void {
+        $this->leadName = $value;
     }
 
     /**

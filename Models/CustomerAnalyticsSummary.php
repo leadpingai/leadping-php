@@ -2,6 +2,7 @@
 
 namespace Leadping\OpenApiClient\Models;
 
+use DateTime;
 use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
@@ -43,6 +44,11 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     private ?int $callsReceived = null;
     
     /**
+     * @var int|null $humanResponses Manual provider-accepted SMS messages; automated messages are excluded.
+    */
+    private ?int $humanResponses = null;
+    
+    /**
      * @var int|null $leads Number of leads represented by this Leadping customer analytics summary.
     */
     private ?int $leads = null;
@@ -68,9 +74,54 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     private ?int $missedLeads = null;
     
     /**
-     * @var float|null $respondedWithinFiveMinutesPercent Responded within five minutes percent expressed as a percentage.
+     * @var DateTime|null $observedThrough Responses observed through this instant; min(report end plus five minutes, generation time).
+    */
+    private ?DateTime $observedThrough = null;
+    
+    /**
+     * @var float|null $overallFiveMinuteSlaPercent Timely human responses divided by all mature eligible leads, including unanswered leads.
+    */
+    private ?float $overallFiveMinuteSlaPercent = null;
+    
+    /**
+     * @var int|null $prospectReplies Received prospect messages excluding consent and help commands.
+    */
+    private ?int $prospectReplies = null;
+    
+    /**
+     * @var float|null $respondedWithinFiveMinutesPercent Conditional percentage: human responses within five minutes divided by responded leads only; not overall coverage.
     */
     private ?float $respondedWithinFiveMinutesPercent = null;
+    
+    /**
+     * @var int|null $slaEligibleLeads Non-deleted leads created in the cohort with a full five-minute observation window.
+    */
+    private ?int $slaEligibleLeads = null;
+    
+    /**
+     * @var int|null $slaPendingLeads Cohort leads younger than five minutes at ObservedThrough; excluded from SLA denominator.
+    */
+    private ?int $slaPendingLeads = null;
+    
+    /**
+     * @var int|null $slaTimelyLeads Mature eligible leads with a human response within exactly five minutes.
+    */
+    private ?int $slaTimelyLeads = null;
+    
+    /**
+     * @var int|null $slaUnrespondedLeads Mature eligible leads without a human response by ObservedThrough.
+    */
+    private ?int $slaUnrespondedLeads = null;
+    
+    /**
+     * @var int|null $smsAttempted Messages whose send execution started; queued and scheduled messages are excluded.
+    */
+    private ?int $smsAttempted = null;
+    
+    /**
+     * @var int|null $smsDelivered Messages confirmed delivered, counted at delivery time.
+    */
+    private ?int $smsDelivered = null;
     
     /**
      * @var int|null $smsReceived Number of SMS messages received during the reporting period.
@@ -78,7 +129,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     private ?int $smsReceived = null;
     
     /**
-     * @var int|null $smsSent Number of SMS messages sent during the reporting period.
+     * @var int|null $smsSent Provider-accepted outbound messages, counted at acceptance time (SmsSent is the compatibility field name).
     */
     private ?int $smsSent = null;
     
@@ -178,12 +229,22 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
             'callMinutes' => fn(ParseNode $n) => $o->setCallMinutes($n->getFloatValue()),
             'callsPlaced' => fn(ParseNode $n) => $o->setCallsPlaced($n->getIntegerValue()),
             'callsReceived' => fn(ParseNode $n) => $o->setCallsReceived($n->getIntegerValue()),
+            'humanResponses' => fn(ParseNode $n) => $o->setHumanResponses($n->getIntegerValue()),
             'leads' => fn(ParseNode $n) => $o->setLeads($n->getIntegerValue()),
             'leadsComparison' => fn(ParseNode $n) => $o->setLeadsComparison($n->getObjectValue([AnalyticsComparison::class, 'createFromDiscriminatorValue'])),
             'medianResponseMinutes' => fn(ParseNode $n) => $o->setMedianResponseMinutes($n->getFloatValue()),
             'missedCalls' => fn(ParseNode $n) => $o->setMissedCalls($n->getIntegerValue()),
             'missedLeads' => fn(ParseNode $n) => $o->setMissedLeads($n->getIntegerValue()),
+            'observedThrough' => fn(ParseNode $n) => $o->setObservedThrough($n->getDateTimeValue()),
+            'overallFiveMinuteSlaPercent' => fn(ParseNode $n) => $o->setOverallFiveMinuteSlaPercent($n->getFloatValue()),
+            'prospectReplies' => fn(ParseNode $n) => $o->setProspectReplies($n->getIntegerValue()),
             'respondedWithinFiveMinutesPercent' => fn(ParseNode $n) => $o->setRespondedWithinFiveMinutesPercent($n->getFloatValue()),
+            'slaEligibleLeads' => fn(ParseNode $n) => $o->setSlaEligibleLeads($n->getIntegerValue()),
+            'slaPendingLeads' => fn(ParseNode $n) => $o->setSlaPendingLeads($n->getIntegerValue()),
+            'slaTimelyLeads' => fn(ParseNode $n) => $o->setSlaTimelyLeads($n->getIntegerValue()),
+            'slaUnrespondedLeads' => fn(ParseNode $n) => $o->setSlaUnrespondedLeads($n->getIntegerValue()),
+            'smsAttempted' => fn(ParseNode $n) => $o->setSmsAttempted($n->getIntegerValue()),
+            'smsDelivered' => fn(ParseNode $n) => $o->setSmsDelivered($n->getIntegerValue()),
             'smsReceived' => fn(ParseNode $n) => $o->setSmsReceived($n->getIntegerValue()),
             'smsSent' => fn(ParseNode $n) => $o->setSmsSent($n->getIntegerValue()),
             'unreadMessages' => fn(ParseNode $n) => $o->setUnreadMessages($n->getIntegerValue()),
@@ -191,6 +252,14 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
             'walletBalance' => fn(ParseNode $n) => $o->setWalletBalance($n->getFloatValue()),
             'walletStatus' => fn(ParseNode $n) => $o->setWalletStatus($n->getStringValue()),
         ];
+    }
+
+    /**
+     * Gets the humanResponses property value. Manual provider-accepted SMS messages; automated messages are excluded.
+     * @return int|null
+    */
+    public function getHumanResponses(): ?int {
+        return $this->humanResponses;
     }
 
     /**
@@ -234,11 +303,83 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the respondedWithinFiveMinutesPercent property value. Responded within five minutes percent expressed as a percentage.
+     * Gets the observedThrough property value. Responses observed through this instant; min(report end plus five minutes, generation time).
+     * @return DateTime|null
+    */
+    public function getObservedThrough(): ?DateTime {
+        return $this->observedThrough;
+    }
+
+    /**
+     * Gets the overallFiveMinuteSlaPercent property value. Timely human responses divided by all mature eligible leads, including unanswered leads.
+     * @return float|null
+    */
+    public function getOverallFiveMinuteSlaPercent(): ?float {
+        return $this->overallFiveMinuteSlaPercent;
+    }
+
+    /**
+     * Gets the prospectReplies property value. Received prospect messages excluding consent and help commands.
+     * @return int|null
+    */
+    public function getProspectReplies(): ?int {
+        return $this->prospectReplies;
+    }
+
+    /**
+     * Gets the respondedWithinFiveMinutesPercent property value. Conditional percentage: human responses within five minutes divided by responded leads only; not overall coverage.
      * @return float|null
     */
     public function getRespondedWithinFiveMinutesPercent(): ?float {
         return $this->respondedWithinFiveMinutesPercent;
+    }
+
+    /**
+     * Gets the slaEligibleLeads property value. Non-deleted leads created in the cohort with a full five-minute observation window.
+     * @return int|null
+    */
+    public function getSlaEligibleLeads(): ?int {
+        return $this->slaEligibleLeads;
+    }
+
+    /**
+     * Gets the slaPendingLeads property value. Cohort leads younger than five minutes at ObservedThrough; excluded from SLA denominator.
+     * @return int|null
+    */
+    public function getSlaPendingLeads(): ?int {
+        return $this->slaPendingLeads;
+    }
+
+    /**
+     * Gets the slaTimelyLeads property value. Mature eligible leads with a human response within exactly five minutes.
+     * @return int|null
+    */
+    public function getSlaTimelyLeads(): ?int {
+        return $this->slaTimelyLeads;
+    }
+
+    /**
+     * Gets the slaUnrespondedLeads property value. Mature eligible leads without a human response by ObservedThrough.
+     * @return int|null
+    */
+    public function getSlaUnrespondedLeads(): ?int {
+        return $this->slaUnrespondedLeads;
+    }
+
+    /**
+     * Gets the smsAttempted property value. Messages whose send execution started; queued and scheduled messages are excluded.
+     * @return int|null
+    */
+    public function getSmsAttempted(): ?int {
+        return $this->smsAttempted;
+    }
+
+    /**
+     * Gets the smsDelivered property value. Messages confirmed delivered, counted at delivery time.
+     * @return int|null
+    */
+    public function getSmsDelivered(): ?int {
+        return $this->smsDelivered;
     }
 
     /**
@@ -250,7 +391,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the smsSent property value. Number of SMS messages sent during the reporting period.
+     * Gets the smsSent property value. Provider-accepted outbound messages, counted at acceptance time (SmsSent is the compatibility field name).
      * @return int|null
     */
     public function getSmsSent(): ?int {
@@ -299,12 +440,22 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
         $writer->writeFloatValue('callMinutes', $this->getCallMinutes());
         $writer->writeIntegerValue('callsPlaced', $this->getCallsPlaced());
         $writer->writeIntegerValue('callsReceived', $this->getCallsReceived());
+        $writer->writeIntegerValue('humanResponses', $this->getHumanResponses());
         $writer->writeIntegerValue('leads', $this->getLeads());
         $writer->writeObjectValue('leadsComparison', $this->getLeadsComparison());
         $writer->writeFloatValue('medianResponseMinutes', $this->getMedianResponseMinutes());
         $writer->writeIntegerValue('missedCalls', $this->getMissedCalls());
         $writer->writeIntegerValue('missedLeads', $this->getMissedLeads());
+        $writer->writeDateTimeValue('observedThrough', $this->getObservedThrough());
+        $writer->writeFloatValue('overallFiveMinuteSlaPercent', $this->getOverallFiveMinuteSlaPercent());
+        $writer->writeIntegerValue('prospectReplies', $this->getProspectReplies());
         $writer->writeFloatValue('respondedWithinFiveMinutesPercent', $this->getRespondedWithinFiveMinutesPercent());
+        $writer->writeIntegerValue('slaEligibleLeads', $this->getSlaEligibleLeads());
+        $writer->writeIntegerValue('slaPendingLeads', $this->getSlaPendingLeads());
+        $writer->writeIntegerValue('slaTimelyLeads', $this->getSlaTimelyLeads());
+        $writer->writeIntegerValue('slaUnrespondedLeads', $this->getSlaUnrespondedLeads());
+        $writer->writeIntegerValue('smsAttempted', $this->getSmsAttempted());
+        $writer->writeIntegerValue('smsDelivered', $this->getSmsDelivered());
         $writer->writeIntegerValue('smsReceived', $this->getSmsReceived());
         $writer->writeIntegerValue('smsSent', $this->getSmsSent());
         $writer->writeIntegerValue('unreadMessages', $this->getUnreadMessages());
@@ -363,6 +514,14 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the humanResponses property value. Manual provider-accepted SMS messages; automated messages are excluded.
+     * @param int|null $value Value to set for the humanResponses property.
+    */
+    public function setHumanResponses(?int $value): void {
+        $this->humanResponses = $value;
+    }
+
+    /**
      * Sets the leads property value. Number of leads represented by this Leadping customer analytics summary.
      * @param int|null $value Value to set for the leads property.
     */
@@ -403,11 +562,83 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the respondedWithinFiveMinutesPercent property value. Responded within five minutes percent expressed as a percentage.
+     * Sets the observedThrough property value. Responses observed through this instant; min(report end plus five minutes, generation time).
+     * @param DateTime|null $value Value to set for the observedThrough property.
+    */
+    public function setObservedThrough(?DateTime $value): void {
+        $this->observedThrough = $value;
+    }
+
+    /**
+     * Sets the overallFiveMinuteSlaPercent property value. Timely human responses divided by all mature eligible leads, including unanswered leads.
+     * @param float|null $value Value to set for the overallFiveMinuteSlaPercent property.
+    */
+    public function setOverallFiveMinuteSlaPercent(?float $value): void {
+        $this->overallFiveMinuteSlaPercent = $value;
+    }
+
+    /**
+     * Sets the prospectReplies property value. Received prospect messages excluding consent and help commands.
+     * @param int|null $value Value to set for the prospectReplies property.
+    */
+    public function setProspectReplies(?int $value): void {
+        $this->prospectReplies = $value;
+    }
+
+    /**
+     * Sets the respondedWithinFiveMinutesPercent property value. Conditional percentage: human responses within five minutes divided by responded leads only; not overall coverage.
      * @param float|null $value Value to set for the respondedWithinFiveMinutesPercent property.
     */
     public function setRespondedWithinFiveMinutesPercent(?float $value): void {
         $this->respondedWithinFiveMinutesPercent = $value;
+    }
+
+    /**
+     * Sets the slaEligibleLeads property value. Non-deleted leads created in the cohort with a full five-minute observation window.
+     * @param int|null $value Value to set for the slaEligibleLeads property.
+    */
+    public function setSlaEligibleLeads(?int $value): void {
+        $this->slaEligibleLeads = $value;
+    }
+
+    /**
+     * Sets the slaPendingLeads property value. Cohort leads younger than five minutes at ObservedThrough; excluded from SLA denominator.
+     * @param int|null $value Value to set for the slaPendingLeads property.
+    */
+    public function setSlaPendingLeads(?int $value): void {
+        $this->slaPendingLeads = $value;
+    }
+
+    /**
+     * Sets the slaTimelyLeads property value. Mature eligible leads with a human response within exactly five minutes.
+     * @param int|null $value Value to set for the slaTimelyLeads property.
+    */
+    public function setSlaTimelyLeads(?int $value): void {
+        $this->slaTimelyLeads = $value;
+    }
+
+    /**
+     * Sets the slaUnrespondedLeads property value. Mature eligible leads without a human response by ObservedThrough.
+     * @param int|null $value Value to set for the slaUnrespondedLeads property.
+    */
+    public function setSlaUnrespondedLeads(?int $value): void {
+        $this->slaUnrespondedLeads = $value;
+    }
+
+    /**
+     * Sets the smsAttempted property value. Messages whose send execution started; queued and scheduled messages are excluded.
+     * @param int|null $value Value to set for the smsAttempted property.
+    */
+    public function setSmsAttempted(?int $value): void {
+        $this->smsAttempted = $value;
+    }
+
+    /**
+     * Sets the smsDelivered property value. Messages confirmed delivered, counted at delivery time.
+     * @param int|null $value Value to set for the smsDelivered property.
+    */
+    public function setSmsDelivered(?int $value): void {
+        $this->smsDelivered = $value;
     }
 
     /**
@@ -419,7 +650,7 @@ class CustomerAnalyticsSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the smsSent property value. Number of SMS messages sent during the reporting period.
+     * Sets the smsSent property value. Provider-accepted outbound messages, counted at acceptance time (SmsSent is the compatibility field name).
      * @param int|null $value Value to set for the smsSent property.
     */
     public function setSmsSent(?int $value): void {

@@ -114,6 +114,11 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     private ?string $organizationName = null;
     
     /**
+     * @var CallEventTableRow_outboundSource|null $outboundSource Defines the source that requested outbound delivery.
+    */
+    private ?CallEventTableRow_outboundSource $outboundSource = null;
+    
+    /**
      * @var CallEventTableRow_status|null $status Describes the durable business outcome of a Leadping phone call after provider status normalization.
     */
     private ?CallEventTableRow_status $status = null;
@@ -291,6 +296,7 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getStringValue()),
             'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'organizationName' => fn(ParseNode $n) => $o->setOrganizationName($n->getStringValue()),
+            'outboundSource' => fn(ParseNode $n) => $o->setOutboundSource($n->getEnumValue(CallEventTableRow_outboundSource::class)),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(CallEventTableRow_status::class)),
             'statusReason' => fn(ParseNode $n) => $o->setStatusReason($n->getStringValue()),
             'toPhoneNumber' => fn(ParseNode $n) => $o->setToPhoneNumber($n->getStringValue()),
@@ -364,6 +370,14 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function getOrganizationName(): ?string {
         return $this->organizationName;
+    }
+
+    /**
+     * Gets the outboundSource property value. Defines the source that requested outbound delivery.
+     * @return CallEventTableRow_outboundSource|null
+    */
+    public function getOutboundSource(): ?CallEventTableRow_outboundSource {
+        return $this->outboundSource;
     }
 
     /**
@@ -454,6 +468,7 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('organization', $this->getOrganization());
         $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeStringValue('organizationName', $this->getOrganizationName());
+        $writer->writeEnumValue('outboundSource', $this->getOutboundSource());
         $writer->writeEnumValue('status', $this->getStatus());
         $writer->writeStringValue('statusReason', $this->getStatusReason());
         $writer->writeStringValue('toPhoneNumber', $this->getToPhoneNumber());
@@ -623,6 +638,14 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setOrganizationName(?string $value): void {
         $this->organizationName = $value;
+    }
+
+    /**
+     * Sets the outboundSource property value. Defines the source that requested outbound delivery.
+     * @param CallEventTableRow_outboundSource|null $value Value to set for the outboundSource property.
+    */
+    public function setOutboundSource(?CallEventTableRow_outboundSource $value): void {
+        $this->outboundSource = $value;
     }
 
     /**

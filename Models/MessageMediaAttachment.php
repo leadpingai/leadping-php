@@ -28,11 +28,6 @@ class MessageMediaAttachment implements AdditionalDataHolder, Parsable
     private ?string $fileName = null;
     
     /**
-     * @var string|null $mediaId The durable Media record containing this attachment's scanned bytes.
-    */
-    private ?string $mediaId = null;
-    
-    /**
      * @var string|null $sha256 SHA-256 digest of the media content, when available.
     */
     private ?string $sha256 = null;
@@ -41,6 +36,11 @@ class MessageMediaAttachment implements AdditionalDataHolder, Parsable
      * @var int|null $size Size of the media attachment in bytes.
     */
     private ?int $size = null;
+    
+    /**
+     * @var string|null $uploadId The durable Media record containing this attachment's scanned bytes.
+    */
+    private ?string $uploadId = null;
     
     /**
      * @var string|null $url URL from which the media attachment can be retrieved.
@@ -88,9 +88,9 @@ class MessageMediaAttachment implements AdditionalDataHolder, Parsable
         return  [
             'contentType' => fn(ParseNode $n) => $o->setContentType($n->getStringValue()),
             'fileName' => fn(ParseNode $n) => $o->setFileName($n->getStringValue()),
-            'mediaId' => fn(ParseNode $n) => $o->setMediaId($n->getStringValue()),
             'sha256' => fn(ParseNode $n) => $o->setSha256($n->getStringValue()),
             'size' => fn(ParseNode $n) => $o->setSize($n->getIntegerValue()),
+            'uploadId' => fn(ParseNode $n) => $o->setUploadId($n->getStringValue()),
             'url' => fn(ParseNode $n) => $o->setUrl($n->getStringValue()),
         ];
     }
@@ -101,14 +101,6 @@ class MessageMediaAttachment implements AdditionalDataHolder, Parsable
     */
     public function getFileName(): ?string {
         return $this->fileName;
-    }
-
-    /**
-     * Gets the mediaId property value. The durable Media record containing this attachment's scanned bytes.
-     * @return string|null
-    */
-    public function getMediaId(): ?string {
-        return $this->mediaId;
     }
 
     /**
@@ -128,6 +120,14 @@ class MessageMediaAttachment implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the uploadId property value. The durable Media record containing this attachment's scanned bytes.
+     * @return string|null
+    */
+    public function getUploadId(): ?string {
+        return $this->uploadId;
+    }
+
+    /**
      * Gets the url property value. URL from which the media attachment can be retrieved.
      * @return string|null
     */
@@ -142,9 +142,9 @@ class MessageMediaAttachment implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('contentType', $this->getContentType());
         $writer->writeStringValue('fileName', $this->getFileName());
-        $writer->writeStringValue('mediaId', $this->getMediaId());
         $writer->writeStringValue('sha256', $this->getSha256());
         $writer->writeIntegerValue('size', $this->getSize());
+        $writer->writeStringValue('uploadId', $this->getUploadId());
         $writer->writeStringValue('url', $this->getUrl());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -174,14 +174,6 @@ class MessageMediaAttachment implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the mediaId property value. The durable Media record containing this attachment's scanned bytes.
-     * @param string|null $value Value to set for the mediaId property.
-    */
-    public function setMediaId(?string $value): void {
-        $this->mediaId = $value;
-    }
-
-    /**
      * Sets the sha256 property value. SHA-256 digest of the media content, when available.
      * @param string|null $value Value to set for the sha256 property.
     */
@@ -195,6 +187,14 @@ class MessageMediaAttachment implements AdditionalDataHolder, Parsable
     */
     public function setSize(?int $value): void {
         $this->size = $value;
+    }
+
+    /**
+     * Sets the uploadId property value. The durable Media record containing this attachment's scanned bytes.
+     * @param string|null $value Value to set for the uploadId property.
+    */
+    public function setUploadId(?string $value): void {
+        $this->uploadId = $value;
     }
 
     /**

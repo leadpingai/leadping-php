@@ -79,6 +79,11 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
     private ?string $selectedConnectionId = null;
     
     /**
+     * @var AutomationActionRunRecord_smsDelivery|null $smsDelivery Delivery outcome of the persisted SMS. Workflow steps advance on command acceptance, without waiting for delivery.
+    */
+    private ?AutomationActionRunRecord_smsDelivery $smsDelivery = null;
+    
+    /**
      * @var DateTime|null $startedAt UTC timestamp when processing started for this automation action run record.
     */
     private ?DateTime $startedAt = null;
@@ -179,6 +184,7 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
             'processingAttempts' => fn(ParseNode $n) => $o->setProcessingAttempts($n->getIntegerValue()),
             'scheduledAt' => fn(ParseNode $n) => $o->setScheduledAt($n->getDateTimeValue()),
             'selectedConnectionId' => fn(ParseNode $n) => $o->setSelectedConnectionId($n->getStringValue()),
+            'smsDelivery' => fn(ParseNode $n) => $o->setSmsDelivery($n->getObjectValue([AutomationActionRunRecord_smsDelivery::class, 'createFromDiscriminatorValue'])),
             'startedAt' => fn(ParseNode $n) => $o->setStartedAt($n->getDateTimeValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getStringValue()),
         ];
@@ -233,6 +239,14 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the smsDelivery property value. Delivery outcome of the persisted SMS. Workflow steps advance on command acceptance, without waiting for delivery.
+     * @return AutomationActionRunRecord_smsDelivery|null
+    */
+    public function getSmsDelivery(): ?AutomationActionRunRecord_smsDelivery {
+        return $this->smsDelivery;
+    }
+
+    /**
      * Gets the startedAt property value. UTC timestamp when processing started for this automation action run record.
      * @return DateTime|null
     */
@@ -265,6 +279,7 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
         $writer->writeIntegerValue('processingAttempts', $this->getProcessingAttempts());
         $writer->writeDateTimeValue('scheduledAt', $this->getScheduledAt());
         $writer->writeStringValue('selectedConnectionId', $this->getSelectedConnectionId());
+        $writer->writeObjectValue('smsDelivery', $this->getSmsDelivery());
         $writer->writeDateTimeValue('startedAt', $this->getStartedAt());
         $writer->writeStringValue('status', $this->getStatus());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -372,6 +387,14 @@ class AutomationActionRunRecord implements AdditionalDataHolder, Parsable
     */
     public function setSelectedConnectionId(?string $value): void {
         $this->selectedConnectionId = $value;
+    }
+
+    /**
+     * Sets the smsDelivery property value. Delivery outcome of the persisted SMS. Workflow steps advance on command acceptance, without waiting for delivery.
+     * @param AutomationActionRunRecord_smsDelivery|null $value Value to set for the smsDelivery property.
+    */
+    public function setSmsDelivery(?AutomationActionRunRecord_smsDelivery $value): void {
+        $this->smsDelivery = $value;
     }
 
     /**
