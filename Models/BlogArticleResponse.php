@@ -114,6 +114,11 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     private ?string $title = null;
     
     /**
+     * @var DateTime|null $unpublishedAt The unpublishedAt property
+    */
+    private ?DateTime $unpublishedAt = null;
+    
+    /**
      * Instantiates a new BlogArticleResponse and sets the default values.
     */
     public function __construct() {
@@ -227,6 +232,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
             'seoTitle' => fn(ParseNode $n) => $o->setSeoTitle($n->getStringValue()),
             'slug' => fn(ParseNode $n) => $o->setSlug($n->getStringValue()),
             'title' => fn(ParseNode $n) => $o->setTitle($n->getStringValue()),
+            'unpublishedAt' => fn(ParseNode $n) => $o->setUnpublishedAt($n->getDateTimeValue()),
         ];
     }
 
@@ -319,6 +325,14 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the unpublishedAt property value. The unpublishedAt property
+     * @return DateTime|null
+    */
+    public function getUnpublishedAt(): ?DateTime {
+        return $this->unpublishedAt;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -342,6 +356,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('seoTitle', $this->getSeoTitle());
         $writer->writeStringValue('slug', $this->getSlug());
         $writer->writeStringValue('title', $this->getTitle());
+        $writer->writeDateTimeValue('unpublishedAt', $this->getUnpublishedAt());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -503,6 +518,14 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     */
     public function setTitle(?string $value): void {
         $this->title = $value;
+    }
+
+    /**
+     * Sets the unpublishedAt property value. The unpublishedAt property
+     * @param DateTime|null $value Value to set for the unpublishedAt property.
+    */
+    public function setUnpublishedAt(?DateTime $value): void {
+        $this->unpublishedAt = $value;
     }
 
 }

@@ -23,6 +23,11 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     private ?int $callsPossible = null;
     
     /**
+     * @var PhoneNumberStatusResponse_location|null $location Public Leadping API schema for phone number location data.
+    */
+    private ?PhoneNumberStatusResponse_location $location = null;
+    
+    /**
      * @var int|null $messagesPossible Indicates whether this phone number can currently send SMS messages.
     */
     private ?int $messagesPossible = null;
@@ -97,6 +102,7 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'callsPossible' => fn(ParseNode $n) => $o->setCallsPossible($n->getIntegerValue()),
+            'location' => fn(ParseNode $n) => $o->setLocation($n->getObjectValue([PhoneNumberStatusResponse_location::class, 'createFromDiscriminatorValue'])),
             'messagesPossible' => fn(ParseNode $n) => $o->setMessagesPossible($n->getIntegerValue()),
             'number' => fn(ParseNode $n) => $o->setNumber($n->getStringValue()),
             'optOutMetrics' => fn(ParseNode $n) => $o->setOptOutMetrics($n->getObjectValue([PhoneNumberOptOutMetricsResponse::class, 'createFromDiscriminatorValue'])),
@@ -105,6 +111,14 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
             'smsWarmup' => fn(ParseNode $n) => $o->setSmsWarmup($n->getObjectValue([PhoneNumberStatusResponse_smsWarmup::class, 'createFromDiscriminatorValue'])),
             'trafficMetrics' => fn(ParseNode $n) => $o->setTrafficMetrics($n->getObjectValue([PhoneNumberTrafficMetricsResponse::class, 'createFromDiscriminatorValue'])),
         ];
+    }
+
+    /**
+     * Gets the location property value. Public Leadping API schema for phone number location data.
+     * @return PhoneNumberStatusResponse_location|null
+    */
+    public function getLocation(): ?PhoneNumberStatusResponse_location {
+        return $this->location;
     }
 
     /**
@@ -169,6 +183,7 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeIntegerValue('callsPossible', $this->getCallsPossible());
+        $writer->writeObjectValue('location', $this->getLocation());
         $writer->writeIntegerValue('messagesPossible', $this->getMessagesPossible());
         $writer->writeStringValue('number', $this->getNumber());
         $writer->writeObjectValue('optOutMetrics', $this->getOptOutMetrics());
@@ -193,6 +208,14 @@ class PhoneNumberStatusResponse implements AdditionalDataHolder, Parsable
     */
     public function setCallsPossible(?int $value): void {
         $this->callsPossible = $value;
+    }
+
+    /**
+     * Sets the location property value. Public Leadping API schema for phone number location data.
+     * @param PhoneNumberStatusResponse_location|null $value Value to set for the location property.
+    */
+    public function setLocation(?PhoneNumberStatusResponse_location $value): void {
+        $this->location = $value;
     }
 
     /**
