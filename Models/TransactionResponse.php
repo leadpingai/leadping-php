@@ -64,6 +64,11 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
+     * @var bool|null $isDemo Indicates sample activity for app review that must not count toward real financial totals.
+    */
+    private ?bool $isDemo = null;
+    
+    /**
      * @var TransactionResponse_lead|null $lead Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?TransactionResponse_lead $lead = null;
@@ -196,6 +201,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
             'gatewayFeeAmount' => fn(ParseNode $n) => $o->setGatewayFeeAmount($n->getFloatValue()),
             'gatewayStatus' => fn(ParseNode $n) => $o->setGatewayStatus($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
+            'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'lead' => fn(ParseNode $n) => $o->setLead($n->getObjectValue([TransactionResponse_lead::class, 'createFromDiscriminatorValue'])),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'netAmount' => fn(ParseNode $n) => $o->setNetAmount($n->getFloatValue()),
@@ -230,6 +236,14 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     */
     public function getId(): ?string {
         return $this->id;
+    }
+
+    /**
+     * Gets the isDemo property value. Indicates sample activity for app review that must not count toward real financial totals.
+     * @return bool|null
+    */
+    public function getIsDemo(): ?bool {
+        return $this->isDemo;
     }
 
     /**
@@ -318,6 +332,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
         $writer->writeFloatValue('gatewayFeeAmount', $this->getGatewayFeeAmount());
         $writer->writeStringValue('gatewayStatus', $this->getGatewayStatus());
         $writer->writeStringValue('id', $this->getId());
+        $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeObjectValue('lead', $this->getLead());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeFloatValue('netAmount', $this->getNetAmount());
@@ -408,6 +423,14 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     */
     public function setId(?string $value): void {
         $this->id = $value;
+    }
+
+    /**
+     * Sets the isDemo property value. Indicates sample activity for app review that must not count toward real financial totals.
+     * @param bool|null $value Value to set for the isDemo property.
+    */
+    public function setIsDemo(?bool $value): void {
+        $this->isDemo = $value;
     }
 
     /**

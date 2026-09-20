@@ -1,0 +1,136 @@
+name: Release PHP SDK
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "README.md"
+      - "CODE_OF_CONDUCT.md"
+      - "CONTRIBUTING.md"
+      - "SECURITY.md"
+      - "LICENSE"
+      - "renovate.json"
+      - ".github/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GIT__TOKEN || secrets.GH__TOKEN || github.token }}
+
+      - name: Prepare version
+        id: version
+        run: |
+          set -euo pipefail
+
+          git fetch --tags --force
+          latest_tag="$(git tag --list 'v[0-9]*.[0-9]*.[0-9]*' --sort=-v:refname | awk '/^v[0-9]+\.[0-9]+\.[0-9]+$/ { print; exit }')"
+
+          if [ -z "${latest_tag}" ]; then
+            version="1.0.0"
+          else
+            base="${latest_tag#v}"
+            IFS='.' read -r major minor patch <<< "${base}"
+            version="${major}.${minor}.$((patch + 1))"
+          fi
+
+          if [[ ! "${version}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Version must look like 1.2.3."
+            exit 1
+          fi
+
+          tag="v${version}"
+          if git ls-remote --exit-code --tags origin "refs/tags/${tag}" >/dev/null 2>&1; then
+            echo "::error::Tag ${tag} already exists."
+            exit 1
+          fi
+
+          echo "version=${version}" >> "${GITHUB_OUTPUT}"
+          echo "tag=${tag}" >> "${GITHUB_OUTPUT}"
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          tools: composer
+
+      - name: Build package
+        run: |
+          composer validate --strict
+          composer install --no-interaction --no-progress --prefer-dist
+          composer dump-autoload --optimize --strict-psr
+          find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l
+
+      - name: Create release archive
+        env:
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          mkdir -p artifacts
+          git archive --format=tar.gz --output "artifacts/leadping-php-${TAG}.tar.gz" HEAD
+
+      - name: Push release tag
+        env:
+          TAG: ${{ steps.version.outputs.tag }}
+          GIT_EMAIL: ${{ secrets.GIT__EMAIL || 'support@leadping.ai' }}
+        run: |
+          set -euo pipefail
+
+          git config user.name "leadpingai-bot"
+          git config user.email "${GIT_EMAIL}"
+          git tag "${TAG}"
+          git push origin "${TAG}"
+
+      - name: Publish to Packagist
+        env:
+          PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
+          PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${PACKAGIST_USERNAME:-}" ] || [ -z "${PACKAGIST_TOKEN:-}" ]; then
+            echo "::error::PACKAGIST_USERNAME and PACKAGIST_TOKEN secrets are required."
+            exit 1
+          fi
+
+          repository_url="https://github.com/leadpingai/leadping-php"
+          package_metadata_url="https://packagist.org/packages/leadpingai/sdk.json"
+
+          if curl -fsSL "${package_metadata_url}" >/dev/null; then
+            endpoint="https://packagist.org/api/update-package"
+            payload="{\"repository\":\"${repository_url}\"}"
+          else
+            endpoint="https://packagist.org/api/create-package"
+            payload="{\"repository\":\"${repository_url}\"}"
+          fi
+
+          curl -fsSL \
+            -X POST \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${PACKAGIST_USERNAME}:${PACKAGIST_TOKEN}" \
+            -H "User-Agent: leadpingai/leadping-php-release (mailto=support@leadping.ai)" \
+            "${endpoint}" \
+            -d "${payload}"
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GH__TOKEN || secrets.GIT__TOKEN || github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          set -euo pipefail
+
+          gh release create "${TAG}" artifacts/* \
+            --title "${TAG}" \
+            --notes "Generated Leadping PHP SDK ${TAG}. Composer consumers can install this version with composer require leadpingai/sdk."

@@ -54,6 +54,11 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
+     * @var bool|null $isDemo Indicates sample activity for app review that must not count toward real financial totals.
+    */
+    private ?bool $isDemo = null;
+    
+    /**
      * @var TransactionTableRow_lead|null $lead Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?TransactionTableRow_lead $lead = null;
@@ -194,6 +199,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
+            'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'lead' => fn(ParseNode $n) => $o->setLead($n->getObjectValue([TransactionTableRow_lead::class, 'createFromDiscriminatorValue'])),
             'netAmount' => fn(ParseNode $n) => $o->setNetAmount($n->getFloatValue()),
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([TransactionTableRow_organization::class, 'createFromDiscriminatorValue'])),
@@ -214,6 +220,14 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     */
     public function getId(): ?string {
         return $this->id;
+    }
+
+    /**
+     * Gets the isDemo property value. Indicates sample activity for app review that must not count toward real financial totals.
+     * @return bool|null
+    */
+    public function getIsDemo(): ?bool {
+        return $this->isDemo;
     }
 
     /**
@@ -316,6 +330,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('description', $this->getDescription());
         $writer->writeStringValue('id', $this->getId());
+        $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeObjectValue('lead', $this->getLead());
         $writer->writeFloatValue('netAmount', $this->getNetAmount());
         $writer->writeObjectValue('organization', $this->getOrganization());
@@ -392,6 +407,14 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     */
     public function setId(?string $value): void {
         $this->id = $value;
+    }
+
+    /**
+     * Sets the isDemo property value. Indicates sample activity for app review that must not count toward real financial totals.
+     * @param bool|null $value Value to set for the isDemo property.
+    */
+    public function setIsDemo(?bool $value): void {
+        $this->isDemo = $value;
     }
 
     /**
