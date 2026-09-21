@@ -1,7 +1,7 @@
 name: Release PHP SDK
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: sdk-release
   cancel-in-progress: false
 
 on:
@@ -91,7 +91,7 @@ jobs:
           git config user.name "leadpingai-bot"
           git config user.email "${GIT_EMAIL}"
           git tag "${TAG}"
-          git push origin "${TAG}"
+          git push origin "refs/tags/${TAG}:refs/tags/${TAG}"
 
       - name: Publish to Packagist
         env:
@@ -131,6 +131,6 @@ jobs:
         run: |
           set -euo pipefail
 
-          gh release create "${TAG}" artifacts/* \
+          gh release create "${TAG}" --verify-tag artifacts/* \
             --title "${TAG}" \
             --notes "Generated Leadping PHP SDK ${TAG}. Composer consumers can install this version with composer require leadpingai/sdk."
