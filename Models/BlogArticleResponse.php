@@ -44,9 +44,19 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     private ?string $coverImageAlt = null;
     
     /**
+     * @var int|null $coverImageHeight The processed cover image height in pixels, when known.
+    */
+    private ?int $coverImageHeight = null;
+    
+    /**
      * @var string|null $coverImageUrl The coverImageUrl property
     */
     private ?string $coverImageUrl = null;
+    
+    /**
+     * @var int|null $coverImageWidth The processed cover image width in pixels, when known.
+    */
+    private ?int $coverImageWidth = null;
     
     /**
      * @var DateTime|null $createdAt The createdAt property
@@ -188,11 +198,27 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the coverImageHeight property value. The processed cover image height in pixels, when known.
+     * @return int|null
+    */
+    public function getCoverImageHeight(): ?int {
+        return $this->coverImageHeight;
+    }
+
+    /**
      * Gets the coverImageUrl property value. The coverImageUrl property
      * @return string|null
     */
     public function getCoverImageUrl(): ?string {
         return $this->coverImageUrl;
+    }
+
+    /**
+     * Gets the coverImageWidth property value. The processed cover image width in pixels, when known.
+     * @return int|null
+    */
+    public function getCoverImageWidth(): ?int {
+        return $this->coverImageWidth;
     }
 
     /**
@@ -223,7 +249,9 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
             'content' => fn(ParseNode $n) => $o->setContent($n->getStringValue()),
             'contentUpdatedAt' => fn(ParseNode $n) => $o->setContentUpdatedAt($n->getDateTimeValue()),
             'coverImageAlt' => fn(ParseNode $n) => $o->setCoverImageAlt($n->getStringValue()),
+            'coverImageHeight' => fn(ParseNode $n) => $o->setCoverImageHeight($n->getIntegerValue()),
             'coverImageUrl' => fn(ParseNode $n) => $o->setCoverImageUrl($n->getStringValue()),
+            'coverImageWidth' => fn(ParseNode $n) => $o->setCoverImageWidth($n->getIntegerValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'excerpt' => fn(ParseNode $n) => $o->setExcerpt($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
@@ -356,7 +384,9 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('content', $this->getContent());
         $writer->writeDateTimeValue('contentUpdatedAt', $this->getContentUpdatedAt());
         $writer->writeStringValue('coverImageAlt', $this->getCoverImageAlt());
+        $writer->writeIntegerValue('coverImageHeight', $this->getCoverImageHeight());
         $writer->writeStringValue('coverImageUrl', $this->getCoverImageUrl());
+        $writer->writeIntegerValue('coverImageWidth', $this->getCoverImageWidth());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('excerpt', $this->getExcerpt());
         $writer->writeStringValue('id', $this->getId());
@@ -424,11 +454,27 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the coverImageHeight property value. The processed cover image height in pixels, when known.
+     * @param int|null $value Value to set for the coverImageHeight property.
+    */
+    public function setCoverImageHeight(?int $value): void {
+        $this->coverImageHeight = $value;
+    }
+
+    /**
      * Sets the coverImageUrl property value. The coverImageUrl property
      * @param string|null $value Value to set for the coverImageUrl property.
     */
     public function setCoverImageUrl(?string $value): void {
         $this->coverImageUrl = $value;
+    }
+
+    /**
+     * Sets the coverImageWidth property value. The processed cover image width in pixels, when known.
+     * @param int|null $value Value to set for the coverImageWidth property.
+    */
+    public function setCoverImageWidth(?int $value): void {
+        $this->coverImageWidth = $value;
     }
 
     /**
