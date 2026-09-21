@@ -64,6 +64,11 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     private ?bool $isArchived = null;
     
     /**
+     * @var bool|null $isDemo The isDemo property
+    */
+    private ?bool $isDemo = null;
+    
+    /**
      * @var bool|null $isUnread Indicates whether the current user has unread activity in the conversation.
     */
     private ?bool $isUnread = null;
@@ -211,6 +216,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
             'firstName' => fn(ParseNode $n) => $o->setFirstName($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isArchived' => fn(ParseNode $n) => $o->setIsArchived($n->getBooleanValue()),
+            'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'isUnread' => fn(ParseNode $n) => $o->setIsUnread($n->getBooleanValue()),
             'lastEventAt' => fn(ParseNode $n) => $o->setLastEventAt($n->getDateTimeValue()),
             'lastEventIsInternalNote' => fn(ParseNode $n) => $o->setLastEventIsInternalNote($n->getBooleanValue()),
@@ -248,6 +254,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     */
     public function getIsArchived(): ?bool {
         return $this->isArchived;
+    }
+
+    /**
+     * Gets the isDemo property value. The isDemo property
+     * @return bool|null
+    */
+    public function getIsDemo(): ?bool {
+        return $this->isDemo;
     }
 
     /**
@@ -360,6 +374,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('firstName', $this->getFirstName());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isArchived', $this->getIsArchived());
+        $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeBooleanValue('isUnread', $this->getIsUnread());
         $writer->writeDateTimeValue('lastEventAt', $this->getLastEventAt());
         $writer->writeBooleanValue('lastEventIsInternalNote', $this->getLastEventIsInternalNote());
@@ -453,6 +468,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     */
     public function setIsArchived(?bool $value): void {
         $this->isArchived = $value;
+    }
+
+    /**
+     * Sets the isDemo property value. The isDemo property
+     * @param bool|null $value Value to set for the isDemo property.
+    */
+    public function setIsDemo(?bool $value): void {
+        $this->isDemo = $value;
     }
 
     /**

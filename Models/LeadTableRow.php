@@ -84,6 +84,11 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     private ?bool $isArchived = null;
     
     /**
+     * @var bool|null $isDemo The isDemo property
+    */
+    private ?bool $isDemo = null;
+    
+    /**
      * @var string|null $lastName Last name of the lead, user, or contact represented by this lead table row.
     */
     private ?string $lastName = null;
@@ -272,6 +277,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
             'firstName' => fn(ParseNode $n) => $o->setFirstName($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isArchived' => fn(ParseNode $n) => $o->setIsArchived($n->getBooleanValue()),
+            'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'lastName' => fn(ParseNode $n) => $o->setLastName($n->getStringValue()),
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([LeadTableRow_organization::class, 'createFromDiscriminatorValue'])),
             'phone' => fn(ParseNode $n) => $o->setPhone($n->getStringValue()),
@@ -310,6 +316,14 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     */
     public function getIsArchived(): ?bool {
         return $this->isArchived;
+    }
+
+    /**
+     * Gets the isDemo property value. The isDemo property
+     * @return bool|null
+    */
+    public function getIsDemo(): ?bool {
+        return $this->isDemo;
     }
 
     /**
@@ -434,6 +448,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('firstName', $this->getFirstName());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isArchived', $this->getIsArchived());
+        $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeStringValue('lastName', $this->getLastName());
         $writer->writeObjectValue('organization', $this->getOrganization());
         $writer->writeStringValue('phone', $this->getPhone());
@@ -560,6 +575,14 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     */
     public function setIsArchived(?bool $value): void {
         $this->isArchived = $value;
+    }
+
+    /**
+     * Sets the isDemo property value. The isDemo property
+     * @param bool|null $value Value to set for the isDemo property.
+    */
+    public function setIsDemo(?bool $value): void {
+        $this->isDemo = $value;
     }
 
     /**

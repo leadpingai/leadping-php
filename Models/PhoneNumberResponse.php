@@ -34,6 +34,11 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
+     * @var bool|null $isDemo The isDemo property
+    */
+    private ?bool $isDemo = null;
+    
+    /**
      * @var bool|null $leadpingOwned Indicates whether Leadping provisions and manages this phone number.
     */
     private ?bool $leadpingOwned = null;
@@ -138,6 +143,7 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
+            'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'leadpingOwned' => fn(ParseNode $n) => $o->setLeadpingOwned($n->getBooleanValue()),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
@@ -158,6 +164,14 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     */
     public function getId(): ?string {
         return $this->id;
+    }
+
+    /**
+     * Gets the isDemo property value. The isDemo property
+     * @return bool|null
+    */
+    public function getIsDemo(): ?bool {
+        return $this->isDemo;
     }
 
     /**
@@ -256,6 +270,7 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeStringValue('id', $this->getId());
+        $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeBooleanValue('leadpingOwned', $this->getLeadpingOwned());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('name', $this->getName());
@@ -300,6 +315,14 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     */
     public function setId(?string $value): void {
         $this->id = $value;
+    }
+
+    /**
+     * Sets the isDemo property value. The isDemo property
+     * @param bool|null $value Value to set for the isDemo property.
+    */
+    public function setIsDemo(?bool $value): void {
+        $this->isDemo = $value;
     }
 
     /**

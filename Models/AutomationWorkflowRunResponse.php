@@ -64,6 +64,11 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
+     * @var bool|null $isDemo The isDemo property
+    */
+    private ?bool $isDemo = null;
+    
+    /**
      * @var string|null $lastActionSummary Human-readable last action summary for this Leadping automation workflow run.
     */
     private ?string $lastActionSummary = null;
@@ -257,6 +262,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
             'events' => fn(ParseNode $n) => $o->setEvents($n->getCollectionOfObjectValues([AutomationWorkflowEventResponse::class, 'createFromDiscriminatorValue'])),
             'failedAt' => fn(ParseNode $n) => $o->setFailedAt($n->getDateTimeValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
+            'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'lastActionSummary' => fn(ParseNode $n) => $o->setLastActionSummary($n->getStringValue()),
             'lastErrorCode' => fn(ParseNode $n) => $o->setLastErrorCode($n->getStringValue()),
             'lastErrorMessage' => fn(ParseNode $n) => $o->setLastErrorMessage($n->getStringValue()),
@@ -284,6 +290,14 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     */
     public function getId(): ?string {
         return $this->id;
+    }
+
+    /**
+     * Gets the isDemo property value. The isDemo property
+     * @return bool|null
+    */
+    public function getIsDemo(): ?bool {
+        return $this->isDemo;
     }
 
     /**
@@ -444,6 +458,7 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
         $writer->writeCollectionOfObjectValues('events', $this->getEvents());
         $writer->writeDateTimeValue('failedAt', $this->getFailedAt());
         $writer->writeStringValue('id', $this->getId());
+        $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeStringValue('lastActionSummary', $this->getLastActionSummary());
         $writer->writeStringValue('lastErrorCode', $this->getLastErrorCode());
         $writer->writeStringValue('lastErrorMessage', $this->getLastErrorMessage());
@@ -543,6 +558,14 @@ class AutomationWorkflowRunResponse implements AdditionalDataHolder, Parsable
     */
     public function setId(?string $value): void {
         $this->id = $value;
+    }
+
+    /**
+     * Sets the isDemo property value. The isDemo property
+     * @param bool|null $value Value to set for the isDemo property.
+    */
+    public function setIsDemo(?bool $value): void {
+        $this->isDemo = $value;
     }
 
     /**

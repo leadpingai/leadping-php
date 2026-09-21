@@ -94,6 +94,11 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     private ?bool $isArchived = null;
     
     /**
+     * @var bool|null $isDemo The isDemo property
+    */
+    private ?bool $isDemo = null;
+    
+    /**
      * @var LeadMetadata|null $metadata Public Leadping API schema for lead attribution metadata data.
     */
     private ?LeadMetadata $metadata = null;
@@ -278,6 +283,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isArchived' => fn(ParseNode $n) => $o->setIsArchived($n->getBooleanValue()),
+            'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'metadata' => fn(ParseNode $n) => $o->setMetadata($n->getObjectValue([LeadMetadata::class, 'createFromDiscriminatorValue'])),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'phoneIdentity' => fn(ParseNode $n) => $o->setPhoneIdentity($n->getObjectValue([LeadResponse_phoneIdentity::class, 'createFromDiscriminatorValue'])),
@@ -302,6 +308,14 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     */
     public function getIsArchived(): ?bool {
         return $this->isArchived;
+    }
+
+    /**
+     * Gets the isDemo property value. The isDemo property
+     * @return bool|null
+    */
+    public function getIsDemo(): ?bool {
+        return $this->isDemo;
     }
 
     /**
@@ -380,6 +394,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isArchived', $this->getIsArchived());
+        $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeObjectValue('metadata', $this->getMetadata());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeObjectValue('phoneIdentity', $this->getPhoneIdentity());
@@ -516,6 +531,14 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     */
     public function setIsArchived(?bool $value): void {
         $this->isArchived = $value;
+    }
+
+    /**
+     * Sets the isDemo property value. The isDemo property
+     * @param bool|null $value Value to set for the isDemo property.
+    */
+    public function setIsDemo(?bool $value): void {
+        $this->isDemo = $value;
     }
 
     /**

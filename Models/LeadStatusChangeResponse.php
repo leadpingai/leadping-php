@@ -84,6 +84,11 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
+     * @var bool|null $isDemo The isDemo property
+    */
+    private ?bool $isDemo = null;
+    
+    /**
      * @var bool|null $isMissedCallFollowUp Whether this lead status change is missed call follow up.
     */
     private ?bool $isMissedCallFollowUp = null;
@@ -305,6 +310,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'followUpStatus' => fn(ParseNode $n) => $o->setFollowUpStatus($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
+            'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'isMissedCallFollowUp' => fn(ParseNode $n) => $o->setIsMissedCallFollowUp($n->getBooleanValue()),
             'leadAvatarUrl' => fn(ParseNode $n) => $o->setLeadAvatarUrl($n->getStringValue()),
             'leadEmail' => fn(ParseNode $n) => $o->setLeadEmail($n->getStringValue()),
@@ -340,6 +346,14 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     */
     public function getId(): ?string {
         return $this->id;
+    }
+
+    /**
+     * Gets the isDemo property value. The isDemo property
+     * @return bool|null
+    */
+    public function getIsDemo(): ?bool {
+        return $this->isDemo;
     }
 
     /**
@@ -504,6 +518,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('followUpStatus', $this->getFollowUpStatus());
         $writer->writeStringValue('id', $this->getId());
+        $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeBooleanValue('isMissedCallFollowUp', $this->getIsMissedCallFollowUp());
         $writer->writeStringValue('leadAvatarUrl', $this->getLeadAvatarUrl());
         $writer->writeStringValue('leadEmail', $this->getLeadEmail());
@@ -635,6 +650,14 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     */
     public function setId(?string $value): void {
         $this->id = $value;
+    }
+
+    /**
+     * Sets the isDemo property value. The isDemo property
+     * @param bool|null $value Value to set for the isDemo property.
+    */
+    public function setIsDemo(?bool $value): void {
+        $this->isDemo = $value;
     }
 
     /**

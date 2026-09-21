@@ -59,6 +59,11 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
+     * @var bool|null $isDemo The isDemo property
+    */
+    private ?bool $isDemo = null;
+    
+    /**
      * @var bool|null $isSystemManaged Indicates whether Leadping manages this automation configuration response automatically instead of a user.
     */
     private ?bool $isSystemManaged = null;
@@ -218,6 +223,7 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
+            'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'isSystemManaged' => fn(ParseNode $n) => $o->setIsSystemManaged($n->getBooleanValue()),
             'lastRunAt' => fn(ParseNode $n) => $o->setLastRunAt($n->getDateTimeValue()),
             'lastRunStatus' => fn(ParseNode $n) => $o->setLastRunStatus($n->getStringValue()),
@@ -240,6 +246,14 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     */
     public function getId(): ?string {
         return $this->id;
+    }
+
+    /**
+     * Gets the isDemo property value. The isDemo property
+     * @return bool|null
+    */
+    public function getIsDemo(): ?bool {
+        return $this->isDemo;
     }
 
     /**
@@ -359,6 +373,7 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('description', $this->getDescription());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeStringValue('id', $this->getId());
+        $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeBooleanValue('isSystemManaged', $this->getIsSystemManaged());
         $writer->writeDateTimeValue('lastRunAt', $this->getLastRunAt());
         $writer->writeStringValue('lastRunStatus', $this->getLastRunStatus());
@@ -445,6 +460,14 @@ class AutomationResponse implements AdditionalDataHolder, Parsable
     */
     public function setId(?string $value): void {
         $this->id = $value;
+    }
+
+    /**
+     * Sets the isDemo property value. The isDemo property
+     * @param bool|null $value Value to set for the isDemo property.
+    */
+    public function setIsDemo(?bool $value): void {
+        $this->isDemo = $value;
     }
 
     /**

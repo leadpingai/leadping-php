@@ -44,6 +44,11 @@ class PhoneNumberMessagingEventResponse implements AdditionalDataHolder, Parsabl
     private ?string $id = null;
     
     /**
+     * @var bool|null $isDemo The isDemo property
+    */
+    private ?bool $isDemo = null;
+    
+    /**
      * @var bool|null $isOptOut Indicates whether the recipient has opted out of further SMS communication.
     */
     private ?bool $isOptOut = null;
@@ -123,6 +128,7 @@ class PhoneNumberMessagingEventResponse implements AdditionalDataHolder, Parsabl
             'eventType' => fn(ParseNode $n) => $o->setEventType($n->getStringValue()),
             'fromPhoneNumber' => fn(ParseNode $n) => $o->setFromPhoneNumber($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
+            'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'isOptOut' => fn(ParseNode $n) => $o->setIsOptOut($n->getBooleanValue()),
             'label' => fn(ParseNode $n) => $o->setLabel($n->getStringValue()),
             'textPreview' => fn(ParseNode $n) => $o->setTextPreview($n->getStringValue()),
@@ -144,6 +150,14 @@ class PhoneNumberMessagingEventResponse implements AdditionalDataHolder, Parsabl
     */
     public function getId(): ?string {
         return $this->id;
+    }
+
+    /**
+     * Gets the isDemo property value. The isDemo property
+     * @return bool|null
+    */
+    public function getIsDemo(): ?bool {
+        return $this->isDemo;
     }
 
     /**
@@ -188,6 +202,7 @@ class PhoneNumberMessagingEventResponse implements AdditionalDataHolder, Parsabl
         $writer->writeStringValue('eventType', $this->getEventType());
         $writer->writeStringValue('fromPhoneNumber', $this->getFromPhoneNumber());
         $writer->writeStringValue('id', $this->getId());
+        $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeBooleanValue('isOptOut', $this->getIsOptOut());
         $writer->writeStringValue('label', $this->getLabel());
         $writer->writeStringValue('textPreview', $this->getTextPreview());
@@ -241,6 +256,14 @@ class PhoneNumberMessagingEventResponse implements AdditionalDataHolder, Parsabl
     */
     public function setId(?string $value): void {
         $this->id = $value;
+    }
+
+    /**
+     * Sets the isDemo property value. The isDemo property
+     * @param bool|null $value Value to set for the isDemo property.
+    */
+    public function setIsDemo(?bool $value): void {
+        $this->isDemo = $value;
     }
 
     /**

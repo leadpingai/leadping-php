@@ -54,6 +54,11 @@ class TagResponse implements AdditionalDataHolder, Parsable
     private ?bool $isArchived = null;
     
     /**
+     * @var bool|null $isDemo The isDemo property
+    */
+    private ?bool $isDemo = null;
+    
+    /**
      * @var DateTime|null $modifiedAt UTC timestamp when the resource was last modified, or null when it has not been updated.
     */
     private ?DateTime $modifiedAt = null;
@@ -151,6 +156,7 @@ class TagResponse implements AdditionalDataHolder, Parsable
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isArchived' => fn(ParseNode $n) => $o->setIsArchived($n->getBooleanValue()),
+            'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'normalizedName' => fn(ParseNode $n) => $o->setNormalizedName($n->getStringValue()),
@@ -172,6 +178,14 @@ class TagResponse implements AdditionalDataHolder, Parsable
     */
     public function getIsArchived(): ?bool {
         return $this->isArchived;
+    }
+
+    /**
+     * Gets the isDemo property value. The isDemo property
+     * @return bool|null
+    */
+    public function getIsDemo(): ?bool {
+        return $this->isDemo;
     }
 
     /**
@@ -218,6 +232,7 @@ class TagResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('description', $this->getDescription());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isArchived', $this->getIsArchived());
+        $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeStringValue('normalizedName', $this->getNormalizedName());
@@ -287,6 +302,14 @@ class TagResponse implements AdditionalDataHolder, Parsable
     */
     public function setIsArchived(?bool $value): void {
         $this->isArchived = $value;
+    }
+
+    /**
+     * Sets the isDemo property value. The isDemo property
+     * @param bool|null $value Value to set for the isDemo property.
+    */
+    public function setIsDemo(?bool $value): void {
+        $this->isDemo = $value;
     }
 
     /**

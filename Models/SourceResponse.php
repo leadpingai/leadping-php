@@ -95,6 +95,11 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
+     * @var bool|null $isDemo The isDemo property
+    */
+    private ?bool $isDemo = null;
+    
+    /**
      * @var DateTime|null $lastLeadReceivedAt UTC timestamp when this source most recently delivered a lead to Leadping.
     */
     private ?DateTime $lastLeadReceivedAt = null;
@@ -300,6 +305,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'firstLeadReceivedAt' => fn(ParseNode $n) => $o->setFirstLeadReceivedAt($n->getDateTimeValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
+            'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'lastLeadReceivedAt' => fn(ParseNode $n) => $o->setLastLeadReceivedAt($n->getDateTimeValue()),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'modifiedByUser' => fn(ParseNode $n) => $o->setModifiedByUser($n->getObjectValue([SourceResponse_modifiedByUser::class, 'createFromDiscriminatorValue'])),
@@ -324,6 +330,14 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     */
     public function getId(): ?string {
         return $this->id;
+    }
+
+    /**
+     * Gets the isDemo property value. The isDemo property
+     * @return bool|null
+    */
+    public function getIsDemo(): ?bool {
+        return $this->isDemo;
     }
 
     /**
@@ -402,6 +416,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeDateTimeValue('firstLeadReceivedAt', $this->getFirstLeadReceivedAt());
         $writer->writeStringValue('id', $this->getId());
+        $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeDateTimeValue('lastLeadReceivedAt', $this->getLastLeadReceivedAt());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeObjectValue('modifiedByUser', $this->getModifiedByUser());
@@ -538,6 +553,14 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     */
     public function setId(?string $value): void {
         $this->id = $value;
+    }
+
+    /**
+     * Sets the isDemo property value. The isDemo property
+     * @param bool|null $value Value to set for the isDemo property.
+    */
+    public function setIsDemo(?bool $value): void {
+        $this->isDemo = $value;
     }
 
     /**

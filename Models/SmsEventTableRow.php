@@ -119,6 +119,11 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     private ?bool $isAutomated = null;
     
     /**
+     * @var bool|null $isDemo The isDemo property
+    */
+    private ?bool $isDemo = null;
+    
+    /**
      * @var IdNamePair|null $lead Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?IdNamePair $lead = null;
@@ -402,6 +407,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
             'fromPhoneNumberId' => fn(ParseNode $n) => $o->setFromPhoneNumberId($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isAutomated' => fn(ParseNode $n) => $o->setIsAutomated($n->getBooleanValue()),
+            'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'lead' => fn(ParseNode $n) => $o->setLead($n->getObjectValue([IdNamePair::class, 'createFromDiscriminatorValue'])),
             'media' => fn(ParseNode $n) => $o->setMedia($n->getCollectionOfObjectValues([MessageMediaAttachment::class, 'createFromDiscriminatorValue'])),
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getStringValue()),
@@ -456,6 +462,14 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function getIsAutomated(): ?bool {
         return $this->isAutomated;
+    }
+
+    /**
+     * Gets the isDemo property value. The isDemo property
+     * @return bool|null
+    */
+    public function getIsDemo(): ?bool {
+        return $this->isDemo;
     }
 
     /**
@@ -651,6 +665,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('fromPhoneNumberId', $this->getFromPhoneNumberId());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isAutomated', $this->getIsAutomated());
+        $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeObjectValue('lead', $this->getLead());
         $writer->writeCollectionOfObjectValues('media', $this->getMedia());
         $writer->writeStringValue('organization', $this->getOrganization());
@@ -841,6 +856,14 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setIsAutomated(?bool $value): void {
         $this->isAutomated = $value;
+    }
+
+    /**
+     * Sets the isDemo property value. The isDemo property
+     * @param bool|null $value Value to set for the isDemo property.
+    */
+    public function setIsDemo(?bool $value): void {
+        $this->isDemo = $value;
     }
 
     /**

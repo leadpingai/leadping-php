@@ -29,6 +29,11 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
+     * @var bool|null $isDemo The isDemo property
+    */
+    private ?bool $isDemo = null;
+    
+    /**
      * @var DateTime|null $lastEnrichedAt The most recent time lookup data was enriched.
     */
     private ?DateTime $lastEnrichedAt = null;
@@ -104,6 +109,7 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
         return  [
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
+            'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'lastEnrichedAt' => fn(ParseNode $n) => $o->setLastEnrichedAt($n->getDateTimeValue()),
             'lookup' => fn(ParseNode $n) => $o->setLookup($n->getObjectValue([PhoneIdentityResponse_lookup::class, 'createFromDiscriminatorValue'])),
             'lookupActions' => fn(ParseNode $n) => $o->setLookupActions($n->getCollectionOfObjectValues([PhoneIdentityLookupAction::class, 'createFromDiscriminatorValue'])),
@@ -120,6 +126,14 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
     */
     public function getId(): ?string {
         return $this->id;
+    }
+
+    /**
+     * Gets the isDemo property value. The isDemo property
+     * @return bool|null
+    */
+    public function getIsDemo(): ?bool {
+        return $this->isDemo;
     }
 
     /**
@@ -185,6 +199,7 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('id', $this->getId());
+        $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeDateTimeValue('lastEnrichedAt', $this->getLastEnrichedAt());
         $writer->writeObjectValue('lookup', $this->getLookup());
         $writer->writeCollectionOfObjectValues('lookupActions', $this->getLookupActions());
@@ -217,6 +232,14 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
     */
     public function setId(?string $value): void {
         $this->id = $value;
+    }
+
+    /**
+     * Sets the isDemo property value. The isDemo property
+     * @param bool|null $value Value to set for the isDemo property.
+    */
+    public function setIsDemo(?bool $value): void {
+        $this->isDemo = $value;
     }
 
     /**

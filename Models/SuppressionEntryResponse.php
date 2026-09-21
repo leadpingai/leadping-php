@@ -34,6 +34,11 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
+     * @var bool|null $isDemo The isDemo property
+    */
+    private ?bool $isDemo = null;
+    
+    /**
      * @var string|null $leadAvatarUrl The associated lead's profile image URL, when available.
     */
     private ?string $leadAvatarUrl = null;
@@ -143,6 +148,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
             'audit' => fn(ParseNode $n) => $o->setAudit($n->getCollectionOfObjectValues([SuppressionEntryAudit::class, 'createFromDiscriminatorValue'])),
             'channel' => fn(ParseNode $n) => $o->setChannel($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
+            'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'leadAvatarUrl' => fn(ParseNode $n) => $o->setLeadAvatarUrl($n->getStringValue()),
             'leadEmail' => fn(ParseNode $n) => $o->setLeadEmail($n->getStringValue()),
             'leadName' => fn(ParseNode $n) => $o->setLeadName($n->getStringValue()),
@@ -164,6 +170,14 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     */
     public function getId(): ?string {
         return $this->id;
+    }
+
+    /**
+     * Gets the isDemo property value. The isDemo property
+     * @return bool|null
+    */
+    public function getIsDemo(): ?bool {
+        return $this->isDemo;
     }
 
     /**
@@ -270,6 +284,7 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
         $writer->writeCollectionOfObjectValues('audit', $this->getAudit());
         $writer->writeStringValue('channel', $this->getChannel());
         $writer->writeStringValue('id', $this->getId());
+        $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeStringValue('leadAvatarUrl', $this->getLeadAvatarUrl());
         $writer->writeStringValue('leadEmail', $this->getLeadEmail());
         $writer->writeStringValue('leadName', $this->getLeadName());
@@ -315,6 +330,14 @@ class SuppressionEntryResponse implements AdditionalDataHolder, Parsable
     */
     public function setId(?string $value): void {
         $this->id = $value;
+    }
+
+    /**
+     * Sets the isDemo property value. The isDemo property
+     * @param bool|null $value Value to set for the isDemo property.
+    */
+    public function setIsDemo(?bool $value): void {
+        $this->isDemo = $value;
     }
 
     /**

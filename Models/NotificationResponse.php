@@ -44,6 +44,11 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
+     * @var bool|null $isDemo The isDemo property
+    */
+    private ?bool $isDemo = null;
+    
+    /**
      * @var bool|null $isRead Whether this notification is read.
     */
     private ?bool $isRead = null;
@@ -166,6 +171,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'details' => fn(ParseNode $n) => $o->setDetails($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
+            'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'isRead' => fn(ParseNode $n) => $o->setIsRead($n->getBooleanValue()),
             'message' => fn(ParseNode $n) => $o->setMessage($n->getStringValue()),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
@@ -186,6 +192,14 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     */
     public function getId(): ?string {
         return $this->id;
+    }
+
+    /**
+     * Gets the isDemo property value. The isDemo property
+     * @return bool|null
+    */
+    public function getIsDemo(): ?bool {
+        return $this->isDemo;
     }
 
     /**
@@ -286,6 +300,7 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('details', $this->getDetails());
         $writer->writeStringValue('id', $this->getId());
+        $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeBooleanValue('isRead', $this->getIsRead());
         $writer->writeStringValue('message', $this->getMessage());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
@@ -346,6 +361,14 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     */
     public function setId(?string $value): void {
         $this->id = $value;
+    }
+
+    /**
+     * Sets the isDemo property value. The isDemo property
+     * @param bool|null $value Value to set for the isDemo property.
+    */
+    public function setIsDemo(?bool $value): void {
+        $this->isDemo = $value;
     }
 
     /**

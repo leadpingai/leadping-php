@@ -65,6 +65,11 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?array $identities = null;
     
     /**
+     * @var bool|null $isDemo The isDemo property
+    */
+    private ?bool $isDemo = null;
+    
+    /**
      * @var DateTime|null $lastLoggedInAt The date and time when this user last completed the Leadping sign-in flow.
     */
     private ?DateTime $lastLoggedInAt = null;
@@ -222,6 +227,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
             'firstName' => fn(ParseNode $n) => $o->setFirstName($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'identities' => fn(ParseNode $n) => $o->setIdentities($n->getCollectionOfObjectValues([UserIdentity::class, 'createFromDiscriminatorValue'])),
+            'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'lastLoggedInAt' => fn(ParseNode $n) => $o->setLastLoggedInAt($n->getDateTimeValue()),
             'lastName' => fn(ParseNode $n) => $o->setLastName($n->getStringValue()),
             'mobileDevicePreferences' => fn(ParseNode $n) => $o->setMobileDevicePreferences($n->getCollectionOfObjectValues([MobileDevicePreferences::class, 'createFromDiscriminatorValue'])),
@@ -268,6 +274,14 @@ class UserResponse implements AdditionalDataHolder, Parsable
     */
     public function getIdentities(): ?array {
         return $this->identities;
+    }
+
+    /**
+     * Gets the isDemo property value. The isDemo property
+     * @return bool|null
+    */
+    public function getIsDemo(): ?bool {
+        return $this->isDemo;
     }
 
     /**
@@ -396,6 +410,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('firstName', $this->getFirstName());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeCollectionOfObjectValues('identities', $this->getIdentities());
+        $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeDateTimeValue('lastLoggedInAt', $this->getLastLoggedInAt());
         $writer->writeStringValue('lastName', $this->getLastName());
         $writer->writeCollectionOfObjectValues('mobileDevicePreferences', $this->getMobileDevicePreferences());
@@ -491,6 +506,14 @@ class UserResponse implements AdditionalDataHolder, Parsable
     */
     public function setIdentities(?array $value): void {
         $this->identities = $value;
+    }
+
+    /**
+     * Sets the isDemo property value. The isDemo property
+     * @param bool|null $value Value to set for the isDemo property.
+    */
+    public function setIsDemo(?bool $value): void {
+        $this->isDemo = $value;
     }
 
     /**
