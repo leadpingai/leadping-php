@@ -84,6 +84,11 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     private ?bool $isPublished = null;
     
     /**
+     * @var DateTime|null $lastPublishedAt The lastPublishedAt property
+    */
+    private ?DateTime $lastPublishedAt = null;
+    
+    /**
      * @var string|null $metaDescription The metaDescription property
     */
     private ?string $metaDescription = null;
@@ -226,6 +231,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
             'imagesProcessing' => fn(ParseNode $n) => $o->setImagesProcessing($n->getBooleanValue()),
             'isFeatured' => fn(ParseNode $n) => $o->setIsFeatured($n->getBooleanValue()),
             'isPublished' => fn(ParseNode $n) => $o->setIsPublished($n->getBooleanValue()),
+            'lastPublishedAt' => fn(ParseNode $n) => $o->setLastPublishedAt($n->getDateTimeValue()),
             'metaDescription' => fn(ParseNode $n) => $o->setMetaDescription($n->getStringValue()),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'publishedAt' => fn(ParseNode $n) => $o->setPublishedAt($n->getDateTimeValue()),
@@ -274,6 +280,14 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     */
     public function getIsPublished(): ?bool {
         return $this->isPublished;
+    }
+
+    /**
+     * Gets the lastPublishedAt property value. The lastPublishedAt property
+     * @return DateTime|null
+    */
+    public function getLastPublishedAt(): ?DateTime {
+        return $this->lastPublishedAt;
     }
 
     /**
@@ -350,6 +364,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('imagesProcessing', $this->getImagesProcessing());
         $writer->writeBooleanValue('isFeatured', $this->getIsFeatured());
         $writer->writeBooleanValue('isPublished', $this->getIsPublished());
+        $writer->writeDateTimeValue('lastPublishedAt', $this->getLastPublishedAt());
         $writer->writeStringValue('metaDescription', $this->getMetaDescription());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeDateTimeValue('publishedAt', $this->getPublishedAt());
@@ -470,6 +485,14 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     */
     public function setIsPublished(?bool $value): void {
         $this->isPublished = $value;
+    }
+
+    /**
+     * Sets the lastPublishedAt property value. The lastPublishedAt property
+     * @param DateTime|null $value Value to set for the lastPublishedAt property.
+    */
+    public function setLastPublishedAt(?DateTime $value): void {
+        $this->lastPublishedAt = $value;
     }
 
     /**
