@@ -60,11 +60,6 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * @var array<UserIdentity>|null $identities The identities included with this user.
-    */
-    private ?array $identities = null;
-    
-    /**
      * @var bool|null $isDemo The isDemo property
     */
     private ?bool $isDemo = null;
@@ -226,7 +221,6 @@ class UserResponse implements AdditionalDataHolder, Parsable
             'email' => fn(ParseNode $n) => $o->setEmail($n->getStringValue()),
             'firstName' => fn(ParseNode $n) => $o->setFirstName($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
-            'identities' => fn(ParseNode $n) => $o->setIdentities($n->getCollectionOfObjectValues([UserIdentity::class, 'createFromDiscriminatorValue'])),
             'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'lastLoggedInAt' => fn(ParseNode $n) => $o->setLastLoggedInAt($n->getDateTimeValue()),
             'lastName' => fn(ParseNode $n) => $o->setLastName($n->getStringValue()),
@@ -266,14 +260,6 @@ class UserResponse implements AdditionalDataHolder, Parsable
     */
     public function getId(): ?string {
         return $this->id;
-    }
-
-    /**
-     * Gets the identities property value. The identities included with this user.
-     * @return array<UserIdentity>|null
-    */
-    public function getIdentities(): ?array {
-        return $this->identities;
     }
 
     /**
@@ -409,7 +395,6 @@ class UserResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('email', $this->getEmail());
         $writer->writeStringValue('firstName', $this->getFirstName());
         $writer->writeStringValue('id', $this->getId());
-        $writer->writeCollectionOfObjectValues('identities', $this->getIdentities());
         $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeDateTimeValue('lastLoggedInAt', $this->getLastLoggedInAt());
         $writer->writeStringValue('lastName', $this->getLastName());
@@ -498,14 +483,6 @@ class UserResponse implements AdditionalDataHolder, Parsable
     */
     public function setId(?string $value): void {
         $this->id = $value;
-    }
-
-    /**
-     * Sets the identities property value. The identities included with this user.
-     * @param array<UserIdentity>|null $value Value to set for the identities property.
-    */
-    public function setIdentities(?array $value): void {
-        $this->identities = $value;
     }
 
     /**
