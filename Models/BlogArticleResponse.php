@@ -114,6 +114,11 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $publishedAt = null;
     
     /**
+     * @var string|null $renderedHtml The renderedHtml property
+    */
+    private ?string $renderedHtml = null;
+    
+    /**
      * @var string|null $seoTitle The seoTitle property
     */
     private ?string $seoTitle = null;
@@ -263,6 +268,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
             'metaDescription' => fn(ParseNode $n) => $o->setMetaDescription($n->getStringValue()),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'publishedAt' => fn(ParseNode $n) => $o->setPublishedAt($n->getDateTimeValue()),
+            'renderedHtml' => fn(ParseNode $n) => $o->setRenderedHtml($n->getStringValue()),
             'seoTitle' => fn(ParseNode $n) => $o->setSeoTitle($n->getStringValue()),
             'slug' => fn(ParseNode $n) => $o->setSlug($n->getStringValue()),
             'title' => fn(ParseNode $n) => $o->setTitle($n->getStringValue()),
@@ -343,6 +349,14 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the renderedHtml property value. The renderedHtml property
+     * @return string|null
+    */
+    public function getRenderedHtml(): ?string {
+        return $this->renderedHtml;
+    }
+
+    /**
      * Gets the seoTitle property value. The seoTitle property
      * @return string|null
     */
@@ -398,6 +412,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('metaDescription', $this->getMetaDescription());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeDateTimeValue('publishedAt', $this->getPublishedAt());
+        $writer->writeStringValue('renderedHtml', $this->getRenderedHtml());
         $writer->writeStringValue('seoTitle', $this->getSeoTitle());
         $writer->writeStringValue('slug', $this->getSlug());
         $writer->writeStringValue('title', $this->getTitle());
@@ -563,6 +578,14 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     */
     public function setPublishedAt(?DateTime $value): void {
         $this->publishedAt = $value;
+    }
+
+    /**
+     * Sets the renderedHtml property value. The renderedHtml property
+     * @param string|null $value Value to set for the renderedHtml property.
+    */
+    public function setRenderedHtml(?string $value): void {
+        $this->renderedHtml = $value;
     }
 
     /**
