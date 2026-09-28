@@ -124,9 +124,34 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     private ?string $seoTitle = null;
     
     /**
+     * @var bool|null $shareOnFacebook Whether to create a Facebook post after publication.
+    */
+    private ?bool $shareOnFacebook = null;
+    
+    /**
+     * @var bool|null $shareOnInstagram Whether to create a Instagram post after publication.
+    */
+    private ?bool $shareOnInstagram = null;
+    
+    /**
+     * @var bool|null $shareOnLinkedIn Whether to create a LinkedIn post after publication.
+    */
+    private ?bool $shareOnLinkedIn = null;
+    
+    /**
+     * @var bool|null $shareOnX Whether to create a X post after publication.
+    */
+    private ?bool $shareOnX = null;
+    
+    /**
      * @var string|null $slug The slug property
     */
     private ?string $slug = null;
+    
+    /**
+     * @var array<BlogSocialPost>|null $socialPosts The socialPosts property
+    */
+    private ?array $socialPosts = null;
     
     /**
      * @var string|null $title The title property
@@ -270,7 +295,12 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
             'publishedAt' => fn(ParseNode $n) => $o->setPublishedAt($n->getDateTimeValue()),
             'renderedHtml' => fn(ParseNode $n) => $o->setRenderedHtml($n->getStringValue()),
             'seoTitle' => fn(ParseNode $n) => $o->setSeoTitle($n->getStringValue()),
+            'shareOnFacebook' => fn(ParseNode $n) => $o->setShareOnFacebook($n->getBooleanValue()),
+            'shareOnInstagram' => fn(ParseNode $n) => $o->setShareOnInstagram($n->getBooleanValue()),
+            'shareOnLinkedIn' => fn(ParseNode $n) => $o->setShareOnLinkedIn($n->getBooleanValue()),
+            'shareOnX' => fn(ParseNode $n) => $o->setShareOnX($n->getBooleanValue()),
             'slug' => fn(ParseNode $n) => $o->setSlug($n->getStringValue()),
+            'socialPosts' => fn(ParseNode $n) => $o->setSocialPosts($n->getCollectionOfObjectValues([BlogSocialPost::class, 'createFromDiscriminatorValue'])),
             'title' => fn(ParseNode $n) => $o->setTitle($n->getStringValue()),
             'unpublishedAt' => fn(ParseNode $n) => $o->setUnpublishedAt($n->getDateTimeValue()),
         ];
@@ -365,11 +395,51 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the shareOnFacebook property value. Whether to create a Facebook post after publication.
+     * @return bool|null
+    */
+    public function getShareOnFacebook(): ?bool {
+        return $this->shareOnFacebook;
+    }
+
+    /**
+     * Gets the shareOnInstagram property value. Whether to create a Instagram post after publication.
+     * @return bool|null
+    */
+    public function getShareOnInstagram(): ?bool {
+        return $this->shareOnInstagram;
+    }
+
+    /**
+     * Gets the shareOnLinkedIn property value. Whether to create a LinkedIn post after publication.
+     * @return bool|null
+    */
+    public function getShareOnLinkedIn(): ?bool {
+        return $this->shareOnLinkedIn;
+    }
+
+    /**
+     * Gets the shareOnX property value. Whether to create a X post after publication.
+     * @return bool|null
+    */
+    public function getShareOnX(): ?bool {
+        return $this->shareOnX;
+    }
+
+    /**
      * Gets the slug property value. The slug property
      * @return string|null
     */
     public function getSlug(): ?string {
         return $this->slug;
+    }
+
+    /**
+     * Gets the socialPosts property value. The socialPosts property
+     * @return array<BlogSocialPost>|null
+    */
+    public function getSocialPosts(): ?array {
+        return $this->socialPosts;
     }
 
     /**
@@ -414,7 +484,12 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('publishedAt', $this->getPublishedAt());
         $writer->writeStringValue('renderedHtml', $this->getRenderedHtml());
         $writer->writeStringValue('seoTitle', $this->getSeoTitle());
+        $writer->writeBooleanValue('shareOnFacebook', $this->getShareOnFacebook());
+        $writer->writeBooleanValue('shareOnInstagram', $this->getShareOnInstagram());
+        $writer->writeBooleanValue('shareOnLinkedIn', $this->getShareOnLinkedIn());
+        $writer->writeBooleanValue('shareOnX', $this->getShareOnX());
         $writer->writeStringValue('slug', $this->getSlug());
+        $writer->writeCollectionOfObjectValues('socialPosts', $this->getSocialPosts());
         $writer->writeStringValue('title', $this->getTitle());
         $writer->writeDateTimeValue('unpublishedAt', $this->getUnpublishedAt());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -597,11 +672,51 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the shareOnFacebook property value. Whether to create a Facebook post after publication.
+     * @param bool|null $value Value to set for the shareOnFacebook property.
+    */
+    public function setShareOnFacebook(?bool $value): void {
+        $this->shareOnFacebook = $value;
+    }
+
+    /**
+     * Sets the shareOnInstagram property value. Whether to create a Instagram post after publication.
+     * @param bool|null $value Value to set for the shareOnInstagram property.
+    */
+    public function setShareOnInstagram(?bool $value): void {
+        $this->shareOnInstagram = $value;
+    }
+
+    /**
+     * Sets the shareOnLinkedIn property value. Whether to create a LinkedIn post after publication.
+     * @param bool|null $value Value to set for the shareOnLinkedIn property.
+    */
+    public function setShareOnLinkedIn(?bool $value): void {
+        $this->shareOnLinkedIn = $value;
+    }
+
+    /**
+     * Sets the shareOnX property value. Whether to create a X post after publication.
+     * @param bool|null $value Value to set for the shareOnX property.
+    */
+    public function setShareOnX(?bool $value): void {
+        $this->shareOnX = $value;
+    }
+
+    /**
      * Sets the slug property value. The slug property
      * @param string|null $value Value to set for the slug property.
     */
     public function setSlug(?string $value): void {
         $this->slug = $value;
+    }
+
+    /**
+     * Sets the socialPosts property value. The socialPosts property
+     * @param array<BlogSocialPost>|null $value Value to set for the socialPosts property.
+    */
+    public function setSocialPosts(?array $value): void {
+        $this->socialPosts = $value;
     }
 
     /**
