@@ -144,7 +144,7 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     private ?string $subId = null;
     
     /**
-     * @var DateTime|null $trustedFormCheckedAt UTC timestamp when Leadping last successfully validated the TrustedForm certificate URL.
+     * @var DateTime|null $trustedFormCheckedAt UTC timestamp when Leadping last successfully checked the TrustedForm certificate URL availability.
     */
     private ?DateTime $trustedFormCheckedAt = null;
     
@@ -463,7 +463,7 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the trustedFormCheckedAt property value. UTC timestamp when Leadping last successfully validated the TrustedForm certificate URL.
+     * Gets the trustedFormCheckedAt property value. UTC timestamp when Leadping last successfully checked the TrustedForm certificate URL availability.
      * @return DateTime|null
     */
     public function getTrustedFormCheckedAt(): ?DateTime {
@@ -794,7 +794,7 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the trustedFormCheckedAt property value. UTC timestamp when Leadping last successfully validated the TrustedForm certificate URL.
+     * Sets the trustedFormCheckedAt property value. UTC timestamp when Leadping last successfully checked the TrustedForm certificate URL availability.
      * @param DateTime|null $value Value to set for the trustedFormCheckedAt property.
     */
     public function setTrustedFormCheckedAt(?DateTime $value): void {
