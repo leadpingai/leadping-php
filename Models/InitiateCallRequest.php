@@ -48,6 +48,11 @@ class InitiateCallRequest implements AdditionalDataHolder, Parsable
     private ?string $sourceId = null;
     
     /**
+     * @var bool|null $useBrowserPhone Connect the authenticated user's browser phone to the server-controlled destination call.
+    */
+    private ?bool $useBrowserPhone = null;
+    
+    /**
      * @var bool|null $wasManuallyOverridden Indicates whether a user manually overrode Leadping's automatic number selection for this phone call initiation request.
     */
     private ?bool $wasManuallyOverridden = null;
@@ -105,6 +110,7 @@ class InitiateCallRequest implements AdditionalDataHolder, Parsable
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
             'outboundIdempotencyKey' => fn(ParseNode $n) => $o->setOutboundIdempotencyKey($n->getStringValue()),
             'sourceId' => fn(ParseNode $n) => $o->setSourceId($n->getStringValue()),
+            'useBrowserPhone' => fn(ParseNode $n) => $o->setUseBrowserPhone($n->getBooleanValue()),
             'wasManuallyOverridden' => fn(ParseNode $n) => $o->setWasManuallyOverridden($n->getBooleanValue()),
         ];
     }
@@ -142,6 +148,14 @@ class InitiateCallRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the useBrowserPhone property value. Connect the authenticated user's browser phone to the server-controlled destination call.
+     * @return bool|null
+    */
+    public function getUseBrowserPhone(): ?bool {
+        return $this->useBrowserPhone;
+    }
+
+    /**
      * Gets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this phone call initiation request.
      * @return bool|null
     */
@@ -160,6 +174,7 @@ class InitiateCallRequest implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('leadId', $this->getLeadId());
         $writer->writeStringValue('outboundIdempotencyKey', $this->getOutboundIdempotencyKey());
         $writer->writeStringValue('sourceId', $this->getSourceId());
+        $writer->writeBooleanValue('useBrowserPhone', $this->getUseBrowserPhone());
         $writer->writeBooleanValue('wasManuallyOverridden', $this->getWasManuallyOverridden());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -218,6 +233,14 @@ class InitiateCallRequest implements AdditionalDataHolder, Parsable
     */
     public function setSourceId(?string $value): void {
         $this->sourceId = $value;
+    }
+
+    /**
+     * Sets the useBrowserPhone property value. Connect the authenticated user's browser phone to the server-controlled destination call.
+     * @param bool|null $value Value to set for the useBrowserPhone property.
+    */
+    public function setUseBrowserPhone(?bool $value): void {
+        $this->useBrowserPhone = $value;
     }
 
     /**

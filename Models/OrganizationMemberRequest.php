@@ -28,6 +28,11 @@ class OrganizationMemberRequest implements AdditionalDataHolder, Parsable
     private ?OrganizationMemberRole $role = null;
     
     /**
+     * @var OrganizationMemberRequest_stateEligibility|null $stateEligibility Defines the states an organization member can work; this is not verification of professional licensing.
+    */
+    private ?OrganizationMemberRequest_stateEligibility $stateEligibility = null;
+    
+    /**
      * @var string|null $userId User ID to add, update, or remove from the organization.
     */
     private ?string $userId = null;
@@ -73,6 +78,7 @@ class OrganizationMemberRequest implements AdditionalDataHolder, Parsable
         return  [
             'email' => fn(ParseNode $n) => $o->setEmail($n->getStringValue()),
             'role' => fn(ParseNode $n) => $o->setRole($n->getEnumValue(OrganizationMemberRole::class)),
+            'stateEligibility' => fn(ParseNode $n) => $o->setStateEligibility($n->getObjectValue([OrganizationMemberRequest_stateEligibility::class, 'createFromDiscriminatorValue'])),
             'userId' => fn(ParseNode $n) => $o->setUserId($n->getStringValue()),
         ];
     }
@@ -83,6 +89,14 @@ class OrganizationMemberRequest implements AdditionalDataHolder, Parsable
     */
     public function getRole(): ?OrganizationMemberRole {
         return $this->role;
+    }
+
+    /**
+     * Gets the stateEligibility property value. Defines the states an organization member can work; this is not verification of professional licensing.
+     * @return OrganizationMemberRequest_stateEligibility|null
+    */
+    public function getStateEligibility(): ?OrganizationMemberRequest_stateEligibility {
+        return $this->stateEligibility;
     }
 
     /**
@@ -100,6 +114,7 @@ class OrganizationMemberRequest implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('email', $this->getEmail());
         $writer->writeEnumValue('role', $this->getRole());
+        $writer->writeObjectValue('stateEligibility', $this->getStateEligibility());
         $writer->writeStringValue('userId', $this->getUserId());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -126,6 +141,14 @@ class OrganizationMemberRequest implements AdditionalDataHolder, Parsable
     */
     public function setRole(?OrganizationMemberRole $value): void {
         $this->role = $value;
+    }
+
+    /**
+     * Sets the stateEligibility property value. Defines the states an organization member can work; this is not verification of professional licensing.
+     * @param OrganizationMemberRequest_stateEligibility|null $value Value to set for the stateEligibility property.
+    */
+    public function setStateEligibility(?OrganizationMemberRequest_stateEligibility $value): void {
+        $this->stateEligibility = $value;
     }
 
     /**

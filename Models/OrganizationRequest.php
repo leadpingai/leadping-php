@@ -43,6 +43,11 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     private ?string $name = null;
     
     /**
+     * @var string|null $offer Main service or offer described during organization setup.
+    */
+    private ?string $offer = null;
+    
+    /**
      * @var string|null $phone Phone details for the lead, user, or organization represented by this organization profile request.
     */
     private ?string $phone = null;
@@ -51,6 +56,11 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
      * @var string|null $secondaryName Alternate organization name or DBA shown in Leadping.
     */
     private ?string $secondaryName = null;
+    
+    /**
+     * @var string|null $targetAudience Intended audience described during organization setup.
+    */
+    private ?string $targetAudience = null;
     
     /**
      * @var string|null $vertical Industry vertical used for lead routing, compliance review, and reporting.
@@ -122,8 +132,10 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
             'ein' => fn(ParseNode $n) => $o->setEin($n->getStringValue()),
             'isYoungerThan90' => fn(ParseNode $n) => $o->setIsYoungerThan90($n->getBooleanValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
+            'offer' => fn(ParseNode $n) => $o->setOffer($n->getStringValue()),
             'phone' => fn(ParseNode $n) => $o->setPhone($n->getStringValue()),
             'secondaryName' => fn(ParseNode $n) => $o->setSecondaryName($n->getStringValue()),
+            'targetAudience' => fn(ParseNode $n) => $o->setTargetAudience($n->getStringValue()),
             'vertical' => fn(ParseNode $n) => $o->setVertical($n->getStringValue()),
             'website' => fn(ParseNode $n) => $o->setWebsite($n->getStringValue()),
         ];
@@ -146,6 +158,14 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the offer property value. Main service or offer described during organization setup.
+     * @return string|null
+    */
+    public function getOffer(): ?string {
+        return $this->offer;
+    }
+
+    /**
      * Gets the phone property value. Phone details for the lead, user, or organization represented by this organization profile request.
      * @return string|null
     */
@@ -159,6 +179,14 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     */
     public function getSecondaryName(): ?string {
         return $this->secondaryName;
+    }
+
+    /**
+     * Gets the targetAudience property value. Intended audience described during organization setup.
+     * @return string|null
+    */
+    public function getTargetAudience(): ?string {
+        return $this->targetAudience;
     }
 
     /**
@@ -187,8 +215,10 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('ein', $this->getEin());
         $writer->writeBooleanValue('isYoungerThan90', $this->getIsYoungerThan90());
         $writer->writeStringValue('name', $this->getName());
+        $writer->writeStringValue('offer', $this->getOffer());
         $writer->writeStringValue('phone', $this->getPhone());
         $writer->writeStringValue('secondaryName', $this->getSecondaryName());
+        $writer->writeStringValue('targetAudience', $this->getTargetAudience());
         $writer->writeStringValue('vertical', $this->getVertical());
         $writer->writeStringValue('website', $this->getWebsite());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -243,6 +273,14 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the offer property value. Main service or offer described during organization setup.
+     * @param string|null $value Value to set for the offer property.
+    */
+    public function setOffer(?string $value): void {
+        $this->offer = $value;
+    }
+
+    /**
      * Sets the phone property value. Phone details for the lead, user, or organization represented by this organization profile request.
      * @param string|null $value Value to set for the phone property.
     */
@@ -256,6 +294,14 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     */
     public function setSecondaryName(?string $value): void {
         $this->secondaryName = $value;
+    }
+
+    /**
+     * Sets the targetAudience property value. Intended audience described during organization setup.
+     * @param string|null $value Value to set for the targetAudience property.
+    */
+    public function setTargetAudience(?string $value): void {
+        $this->targetAudience = $value;
     }
 
     /**

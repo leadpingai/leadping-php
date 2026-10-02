@@ -84,6 +84,11 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     private ?OrganizationMemberRole $role = null;
     
     /**
+     * @var OrganizationMemberStateEligibility|null $stateEligibility Defines the states an organization member can work; this is not verification of professional licensing.
+    */
+    private ?OrganizationMemberStateEligibility $stateEligibility = null;
+    
+    /**
      * @var IdNamePair|null $user Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?IdNamePair $user = null;
@@ -153,6 +158,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
             'removedAt' => fn(ParseNode $n) => $o->setRemovedAt($n->getDateTimeValue()),
             'removedByUserId' => fn(ParseNode $n) => $o->setRemovedByUserId($n->getStringValue()),
             'role' => fn(ParseNode $n) => $o->setRole($n->getEnumValue(OrganizationMemberRole::class)),
+            'stateEligibility' => fn(ParseNode $n) => $o->setStateEligibility($n->getObjectValue([OrganizationMemberStateEligibility::class, 'createFromDiscriminatorValue'])),
             'user' => fn(ParseNode $n) => $o->setUser($n->getObjectValue([IdNamePair::class, 'createFromDiscriminatorValue'])),
             'userEmail' => fn(ParseNode $n) => $o->setUserEmail($n->getStringValue()),
         ];
@@ -247,6 +253,14 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the stateEligibility property value. Defines the states an organization member can work; this is not verification of professional licensing.
+     * @return OrganizationMemberStateEligibility|null
+    */
+    public function getStateEligibility(): ?OrganizationMemberStateEligibility {
+        return $this->stateEligibility;
+    }
+
+    /**
      * Gets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return IdNamePair|null
     */
@@ -280,6 +294,7 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('removedAt', $this->getRemovedAt());
         $writer->writeStringValue('removedByUserId', $this->getRemovedByUserId());
         $writer->writeEnumValue('role', $this->getRole());
+        $writer->writeObjectValue('stateEligibility', $this->getStateEligibility());
         $writer->writeObjectValue('user', $this->getUser());
         $writer->writeStringValue('userEmail', $this->getUserEmail());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -395,6 +410,14 @@ class OrganizationMemberResponse implements AdditionalDataHolder, Parsable
     */
     public function setRole(?OrganizationMemberRole $value): void {
         $this->role = $value;
+    }
+
+    /**
+     * Sets the stateEligibility property value. Defines the states an organization member can work; this is not verification of professional licensing.
+     * @param OrganizationMemberStateEligibility|null $value Value to set for the stateEligibility property.
+    */
+    public function setStateEligibility(?OrganizationMemberStateEligibility $value): void {
+        $this->stateEligibility = $value;
     }
 
     /**
