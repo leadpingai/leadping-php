@@ -69,6 +69,16 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     private ?string $landingPage = null;
     
     /**
+     * @var string|null $leadpingConsentCertificateId Standalone Leadping Consent certificate identifier, accepted as an alternative to TrustedForm.
+    */
+    private ?string $leadpingConsentCertificateId = null;
+    
+    /**
+     * @var DateTime|null $leadpingConsentCheckedAt Server-issued timestamp for successful Leadping Consent evidence and recipient validation.
+    */
+    private ?DateTime $leadpingConsentCheckedAt = null;
+    
+    /**
      * @var string|null $organizationId Organization ID that owns this lead's attribution metadata.
     */
     private ?string $organizationId = null;
@@ -282,6 +292,8 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
             'ipAddress' => fn(ParseNode $n) => $o->setIpAddress($n->getStringValue()),
             'isImported' => fn(ParseNode $n) => $o->setIsImported($n->getBooleanValue()),
             'landingPage' => fn(ParseNode $n) => $o->setLandingPage($n->getStringValue()),
+            'leadpingConsentCertificateId' => fn(ParseNode $n) => $o->setLeadpingConsentCertificateId($n->getStringValue()),
+            'leadpingConsentCheckedAt' => fn(ParseNode $n) => $o->setLeadpingConsentCheckedAt($n->getDateTimeValue()),
             'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'origin' => fn(ParseNode $n) => $o->setOrigin($n->getStringValue()),
             'price' => fn(ParseNode $n) => $o->setPrice($n->getFloatValue()),
@@ -340,6 +352,22 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function getLandingPage(): ?string {
         return $this->landingPage;
+    }
+
+    /**
+     * Gets the leadpingConsentCertificateId property value. Standalone Leadping Consent certificate identifier, accepted as an alternative to TrustedForm.
+     * @return string|null
+    */
+    public function getLeadpingConsentCertificateId(): ?string {
+        return $this->leadpingConsentCertificateId;
+    }
+
+    /**
+     * Gets the leadpingConsentCheckedAt property value. Server-issued timestamp for successful Leadping Consent evidence and recipient validation.
+     * @return DateTime|null
+    */
+    public function getLeadpingConsentCheckedAt(): ?DateTime {
+        return $this->leadpingConsentCheckedAt;
     }
 
     /**
@@ -557,6 +585,8 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('ipAddress', $this->getIpAddress());
         $writer->writeBooleanValue('isImported', $this->getIsImported());
         $writer->writeStringValue('landingPage', $this->getLandingPage());
+        $writer->writeStringValue('leadpingConsentCertificateId', $this->getLeadpingConsentCertificateId());
+        $writer->writeDateTimeValue('leadpingConsentCheckedAt', $this->getLeadpingConsentCheckedAt());
         $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeStringValue('origin', $this->getOrigin());
         $writer->writeFloatValue('price', $this->getPrice());
@@ -671,6 +701,22 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function setLandingPage(?string $value): void {
         $this->landingPage = $value;
+    }
+
+    /**
+     * Sets the leadpingConsentCertificateId property value. Standalone Leadping Consent certificate identifier, accepted as an alternative to TrustedForm.
+     * @param string|null $value Value to set for the leadpingConsentCertificateId property.
+    */
+    public function setLeadpingConsentCertificateId(?string $value): void {
+        $this->leadpingConsentCertificateId = $value;
+    }
+
+    /**
+     * Sets the leadpingConsentCheckedAt property value. Server-issued timestamp for successful Leadping Consent evidence and recipient validation.
+     * @param DateTime|null $value Value to set for the leadpingConsentCheckedAt property.
+    */
+    public function setLeadpingConsentCheckedAt(?DateTime $value): void {
+        $this->leadpingConsentCheckedAt = $value;
     }
 
     /**

@@ -7,12 +7,12 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Describes trusted form certificate data used in Leadping API requests and responses.
+ * Describes Leadping Consent certificate data used in Leadping API requests and responses.
 */
-class UserNotificationPreferences_smsConsentTrustedFormCertificate extends TrustedFormCertificate implements Parsable 
+class UserNotificationPreferences_smsConsentCertificate extends LeadpingConsentCertificate implements Parsable 
 {
     /**
-     * Instantiates a new UserNotificationPreferences_smsConsentTrustedFormCertificate and sets the default values.
+     * Instantiates a new UserNotificationPreferences_smsConsentCertificate and sets the default values.
     */
     public function __construct() {
         parent::__construct();
@@ -21,10 +21,10 @@ class UserNotificationPreferences_smsConsentTrustedFormCertificate extends Trust
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
-     * @return UserNotificationPreferences_smsConsentTrustedFormCertificate
+     * @return UserNotificationPreferences_smsConsentCertificate
     */
-    public static function createFromDiscriminatorValue(ParseNode $parseNode): UserNotificationPreferences_smsConsentTrustedFormCertificate {
-        return new UserNotificationPreferences_smsConsentTrustedFormCertificate();
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): UserNotificationPreferences_smsConsentCertificate {
+        return new UserNotificationPreferences_smsConsentCertificate();
     }
 
     /**

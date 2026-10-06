@@ -125,7 +125,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     private ?SourceResponse_organization $organization = null;
     
     /**
-     * @var bool|null $requiresTrustedForm Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
+     * @var bool|null $requiresTrustedForm Indicates whether leads from this source must include a TrustedForm or Leadping Consent certificate for consent proof.
     */
     private ?bool $requiresTrustedForm = null;
     
@@ -381,7 +381,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
+     * Gets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm or Leadping Consent certificate for consent proof.
      * @return bool|null
     */
     public function getRequiresTrustedForm(): ?bool {
@@ -604,7 +604,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm certificate for consent proof.
+     * Sets the requiresTrustedForm property value. Indicates whether leads from this source must include a TrustedForm or Leadping Consent certificate for consent proof.
      * @param bool|null $value Value to set for the requiresTrustedForm property.
     */
     public function setRequiresTrustedForm(?bool $value): void {

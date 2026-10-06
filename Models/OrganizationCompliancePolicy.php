@@ -54,7 +54,7 @@ class OrganizationCompliancePolicy implements AdditionalDataHolder, Parsable
     private ?bool $requireSourceComplianceApproval = null;
     
     /**
-     * @var bool|null $requireTrustedFormForAutomations Whether this organization compliance policy requires TrustedForm for automations.
+     * @var bool|null $requireTrustedFormForAutomations Whether this organization compliance policy requires TrustedForm or Leadping Consent evidence for automations.
     */
     private ?bool $requireTrustedFormForAutomations = null;
     
@@ -171,7 +171,7 @@ class OrganizationCompliancePolicy implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the requireTrustedFormForAutomations property value. Whether this organization compliance policy requires TrustedForm for automations.
+     * Gets the requireTrustedFormForAutomations property value. Whether this organization compliance policy requires TrustedForm or Leadping Consent evidence for automations.
      * @return bool|null
     */
     public function getRequireTrustedFormForAutomations(): ?bool {
@@ -259,7 +259,7 @@ class OrganizationCompliancePolicy implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the requireTrustedFormForAutomations property value. Whether this organization compliance policy requires TrustedForm for automations.
+     * Sets the requireTrustedFormForAutomations property value. Whether this organization compliance policy requires TrustedForm or Leadping Consent evidence for automations.
      * @param bool|null $value Value to set for the requireTrustedFormForAutomations property.
     */
     public function setRequireTrustedFormForAutomations(?bool $value): void {

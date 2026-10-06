@@ -9,9 +9,9 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 /**
- * Describes trusted form certificate data used in Leadping API requests and responses.
+ * Describes Leadping Consent certificate data used in Leadping API requests and responses.
 */
-class TrustedFormCertificate implements AdditionalDataHolder, Parsable 
+class LeadpingConsentCertificate implements AdditionalDataHolder, Parsable 
 {
     /**
      * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -19,27 +19,22 @@ class TrustedFormCertificate implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var DateTime|null $createdAt UTC timestamp for created at on this TrustedForm certificate.
+     * @var DateTime|null $createdAt UTC timestamp for created at on this Leadping Consent certificate.
     */
     private ?DateTime $createdAt = null;
     
     /**
-     * @var string|null $id Unique Leadping identifier for this TrustedForm certificate.
+     * @var string|null $id Unique Leadping identifier for this Leadping Consent certificate.
     */
     private ?string $id = null;
     
     /**
-     * @var string|null $source Source for this TrustedForm certificate.
+     * @var string|null $source Source for this Leadping Consent certificate.
     */
     private ?string $source = null;
     
     /**
-     * @var string|null $url The URL associated with this TrustedForm certificate.
-    */
-    private ?string $url = null;
-    
-    /**
-     * Instantiates a new TrustedFormCertificate and sets the default values.
+     * Instantiates a new LeadpingConsentCertificate and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);
@@ -48,10 +43,10 @@ class TrustedFormCertificate implements AdditionalDataHolder, Parsable
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
-     * @return TrustedFormCertificate
+     * @return LeadpingConsentCertificate
     */
-    public static function createFromDiscriminatorValue(ParseNode $parseNode): TrustedFormCertificate {
-        return new TrustedFormCertificate();
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): LeadpingConsentCertificate {
+        return new LeadpingConsentCertificate();
     }
 
     /**
@@ -63,7 +58,7 @@ class TrustedFormCertificate implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the createdAt property value. UTC timestamp for created at on this TrustedForm certificate.
+     * Gets the createdAt property value. UTC timestamp for created at on this Leadping Consent certificate.
      * @return DateTime|null
     */
     public function getCreatedAt(): ?DateTime {
@@ -80,12 +75,11 @@ class TrustedFormCertificate implements AdditionalDataHolder, Parsable
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'source' => fn(ParseNode $n) => $o->setSource($n->getStringValue()),
-            'url' => fn(ParseNode $n) => $o->setUrl($n->getStringValue()),
         ];
     }
 
     /**
-     * Gets the id property value. Unique Leadping identifier for this TrustedForm certificate.
+     * Gets the id property value. Unique Leadping identifier for this Leadping Consent certificate.
      * @return string|null
     */
     public function getId(): ?string {
@@ -93,19 +87,11 @@ class TrustedFormCertificate implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the source property value. Source for this TrustedForm certificate.
+     * Gets the source property value. Source for this Leadping Consent certificate.
      * @return string|null
     */
     public function getSource(): ?string {
         return $this->source;
-    }
-
-    /**
-     * Gets the url property value. The URL associated with this TrustedForm certificate.
-     * @return string|null
-    */
-    public function getUrl(): ?string {
-        return $this->url;
     }
 
     /**
@@ -116,7 +102,6 @@ class TrustedFormCertificate implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeStringValue('source', $this->getSource());
-        $writer->writeStringValue('url', $this->getUrl());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -129,7 +114,7 @@ class TrustedFormCertificate implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the createdAt property value. UTC timestamp for created at on this TrustedForm certificate.
+     * Sets the createdAt property value. UTC timestamp for created at on this Leadping Consent certificate.
      * @param DateTime|null $value Value to set for the createdAt property.
     */
     public function setCreatedAt(?DateTime $value): void {
@@ -137,7 +122,7 @@ class TrustedFormCertificate implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. Unique Leadping identifier for this TrustedForm certificate.
+     * Sets the id property value. Unique Leadping identifier for this Leadping Consent certificate.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -145,19 +130,11 @@ class TrustedFormCertificate implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the source property value. Source for this TrustedForm certificate.
+     * Sets the source property value. Source for this Leadping Consent certificate.
      * @param string|null $value Value to set for the source property.
     */
     public function setSource(?string $value): void {
         $this->source = $value;
-    }
-
-    /**
-     * Sets the url property value. The URL associated with this TrustedForm certificate.
-     * @param string|null $value Value to set for the url property.
-    */
-    public function setUrl(?string $value): void {
-        $this->url = $value;
     }
 
 }

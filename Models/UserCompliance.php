@@ -43,9 +43,9 @@ class UserCompliance implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var array<TrustedFormCertificate>|null $trustedFormCertificates The TrustedForm certificates included with this user compliance.
+     * @var array<LeadpingConsentCertificate>|null $consentCertificates The Leadping Consent certificates included with this user compliance.
     */
-    private ?array $trustedFormCertificates = null;
+    private ?array $consentCertificates = null;
     
     /**
      * Instantiates a new UserCompliance and sets the default values.
@@ -112,6 +112,14 @@ class UserCompliance implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the consentCertificates property value. The Leadping Consent certificates included with this user compliance.
+     * @return array<LeadpingConsentCertificate>|null
+    */
+    public function getConsentCertificates(): ?array {
+        return $this->consentCertificates;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
@@ -123,16 +131,8 @@ class UserCompliance implements AdditionalDataHolder, Parsable
             'acceptedSms' => fn(ParseNode $n) => $o->setAcceptedSms($n->getBooleanValue()),
             'acceptedTerms' => fn(ParseNode $n) => $o->setAcceptedTerms($n->getBooleanValue()),
             'acceptedToSubscription' => fn(ParseNode $n) => $o->setAcceptedToSubscription($n->getBooleanValue()),
-            'trustedFormCertificates' => fn(ParseNode $n) => $o->setTrustedFormCertificates($n->getCollectionOfObjectValues([TrustedFormCertificate::class, 'createFromDiscriminatorValue'])),
+            'consentCertificates' => fn(ParseNode $n) => $o->setConsentCertificates($n->getCollectionOfObjectValues([LeadpingConsentCertificate::class, 'createFromDiscriminatorValue'])),
         ];
-    }
-
-    /**
-     * Gets the trustedFormCertificates property value. The TrustedForm certificates included with this user compliance.
-     * @return array<TrustedFormCertificate>|null
-    */
-    public function getTrustedFormCertificates(): ?array {
-        return $this->trustedFormCertificates;
     }
 
     /**
@@ -145,7 +145,7 @@ class UserCompliance implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('acceptedSms', $this->getAcceptedSms());
         $writer->writeBooleanValue('acceptedTerms', $this->getAcceptedTerms());
         $writer->writeBooleanValue('acceptedToSubscription', $this->getAcceptedToSubscription());
-        $writer->writeCollectionOfObjectValues('trustedFormCertificates', $this->getTrustedFormCertificates());
+        $writer->writeCollectionOfObjectValues('consentCertificates', $this->getConsentCertificates());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -198,11 +198,11 @@ class UserCompliance implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the trustedFormCertificates property value. The TrustedForm certificates included with this user compliance.
-     * @param array<TrustedFormCertificate>|null $value Value to set for the trustedFormCertificates property.
+     * Sets the consentCertificates property value. The Leadping Consent certificates included with this user compliance.
+     * @param array<LeadpingConsentCertificate>|null $value Value to set for the consentCertificates property.
     */
-    public function setTrustedFormCertificates(?array $value): void {
-        $this->trustedFormCertificates = $value;
+    public function setConsentCertificates(?array $value): void {
+        $this->consentCertificates = $value;
     }
 
 }
