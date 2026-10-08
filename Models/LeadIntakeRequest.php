@@ -70,6 +70,11 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     private ?string $gender = null;
     
     /**
+     * @var string|null $idempotencyKey Stable delivery key reused when retrying the same lead submission to this source.
+    */
+    private ?string $idempotencyKey = null;
+    
+    /**
      * @var string|null $landingPage Landing page URL where the lead submitted their information.
     */
     private ?string $landingPage = null;
@@ -289,6 +294,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
             'externalId' => fn(ParseNode $n) => $o->setExternalId($n->getStringValue()),
             'firstName' => fn(ParseNode $n) => $o->setFirstName($n->getStringValue()),
             'gender' => fn(ParseNode $n) => $o->setGender($n->getStringValue()),
+            'idempotencyKey' => fn(ParseNode $n) => $o->setIdempotencyKey($n->getStringValue()),
             'landingPage' => fn(ParseNode $n) => $o->setLandingPage($n->getStringValue()),
             'lastName' => fn(ParseNode $n) => $o->setLastName($n->getStringValue()),
             'phone' => fn(ParseNode $n) => $o->setPhone($n->getStringValue()),
@@ -343,6 +349,14 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     */
     public function getGender(): ?string {
         return $this->gender;
+    }
+
+    /**
+     * Gets the idempotencyKey property value. Stable delivery key reused when retrying the same lead submission to this source.
+     * @return string|null
+    */
+    public function getIdempotencyKey(): ?string {
+        return $this->idempotencyKey;
     }
 
     /**
@@ -544,6 +558,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('externalId', $this->getExternalId());
         $writer->writeStringValue('firstName', $this->getFirstName());
         $writer->writeStringValue('gender', $this->getGender());
+        $writer->writeStringValue('idempotencyKey', $this->getIdempotencyKey());
         $writer->writeStringValue('landingPage', $this->getLandingPage());
         $writer->writeStringValue('lastName', $this->getLastName());
         $writer->writeStringValue('phone', $this->getPhone());
@@ -656,6 +671,14 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     */
     public function setGender(?string $value): void {
         $this->gender = $value;
+    }
+
+    /**
+     * Sets the idempotencyKey property value. Stable delivery key reused when retrying the same lead submission to this source.
+     * @param string|null $value Value to set for the idempotencyKey property.
+    */
+    public function setIdempotencyKey(?string $value): void {
+        $this->idempotencyKey = $value;
     }
 
     /**

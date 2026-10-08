@@ -54,6 +54,11 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     private ?string $importBatchId = null;
     
     /**
+     * @var string|null $intakeIdempotencyKey Stable source operation key. Reuse for retries, and change for a new submission.
+    */
+    private ?string $intakeIdempotencyKey = null;
+    
+    /**
      * @var string|null $ipAddress IP address captured with the request for audit and compliance review.
     */
     private ?string $ipAddress = null;
@@ -289,6 +294,7 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
             'directPostPrice' => fn(ParseNode $n) => $o->setDirectPostPrice($n->getFloatValue()),
             'externalId' => fn(ParseNode $n) => $o->setExternalId($n->getStringValue()),
             'importBatchId' => fn(ParseNode $n) => $o->setImportBatchId($n->getStringValue()),
+            'intakeIdempotencyKey' => fn(ParseNode $n) => $o->setIntakeIdempotencyKey($n->getStringValue()),
             'ipAddress' => fn(ParseNode $n) => $o->setIpAddress($n->getStringValue()),
             'isImported' => fn(ParseNode $n) => $o->setIsImported($n->getBooleanValue()),
             'landingPage' => fn(ParseNode $n) => $o->setLandingPage($n->getStringValue()),
@@ -328,6 +334,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function getImportBatchId(): ?string {
         return $this->importBatchId;
+    }
+
+    /**
+     * Gets the intakeIdempotencyKey property value. Stable source operation key. Reuse for retries, and change for a new submission.
+     * @return string|null
+    */
+    public function getIntakeIdempotencyKey(): ?string {
+        return $this->intakeIdempotencyKey;
     }
 
     /**
@@ -582,6 +596,7 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
         $writer->writeFloatValue('directPostPrice', $this->getDirectPostPrice());
         $writer->writeStringValue('externalId', $this->getExternalId());
         $writer->writeStringValue('importBatchId', $this->getImportBatchId());
+        $writer->writeStringValue('intakeIdempotencyKey', $this->getIntakeIdempotencyKey());
         $writer->writeStringValue('ipAddress', $this->getIpAddress());
         $writer->writeBooleanValue('isImported', $this->getIsImported());
         $writer->writeStringValue('landingPage', $this->getLandingPage());
@@ -677,6 +692,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function setImportBatchId(?string $value): void {
         $this->importBatchId = $value;
+    }
+
+    /**
+     * Sets the intakeIdempotencyKey property value. Stable source operation key. Reuse for retries, and change for a new submission.
+     * @param string|null $value Value to set for the intakeIdempotencyKey property.
+    */
+    public function setIntakeIdempotencyKey(?string $value): void {
+        $this->intakeIdempotencyKey = $value;
     }
 
     /**
