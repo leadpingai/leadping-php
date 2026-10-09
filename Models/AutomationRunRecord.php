@@ -29,6 +29,11 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     private ?string $automationId = null;
     
     /**
+     * @var AutomationRunRecord_automationLineage|null $automationLineage Persisted origin of an automation run and the events produced by its actions.
+    */
+    private ?AutomationRunRecord_automationLineage $automationLineage = null;
+    
+    /**
      * @var DateTime|null $completedAt UTC timestamp when processing completed for this automation run record.
     */
     private ?DateTime $completedAt = null;
@@ -139,6 +144,14 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the automationLineage property value. Persisted origin of an automation run and the events produced by its actions.
+     * @return AutomationRunRecord_automationLineage|null
+    */
+    public function getAutomationLineage(): ?AutomationRunRecord_automationLineage {
+        return $this->automationLineage;
+    }
+
+    /**
      * Gets the completedAt property value. UTC timestamp when processing completed for this automation run record.
      * @return DateTime|null
     */
@@ -179,6 +192,7 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
         return  [
             'actions' => fn(ParseNode $n) => $o->setActions($n->getCollectionOfObjectValues([AutomationActionRunRecord::class, 'createFromDiscriminatorValue'])),
             'automationId' => fn(ParseNode $n) => $o->setAutomationId($n->getStringValue()),
+            'automationLineage' => fn(ParseNode $n) => $o->setAutomationLineage($n->getObjectValue([AutomationRunRecord_automationLineage::class, 'createFromDiscriminatorValue'])),
             'completedAt' => fn(ParseNode $n) => $o->setCompletedAt($n->getDateTimeValue()),
             'conditionResults' => fn(ParseNode $n) => $o->setConditionResults($n->getObjectValue([AutomationRunRecord_conditionResults::class, 'createFromDiscriminatorValue'])),
             'executionMode' => fn(ParseNode $n) => $o->setExecutionMode($n->getStringValue()),
@@ -283,6 +297,7 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeCollectionOfObjectValues('actions', $this->getActions());
         $writer->writeStringValue('automationId', $this->getAutomationId());
+        $writer->writeObjectValue('automationLineage', $this->getAutomationLineage());
         $writer->writeDateTimeValue('completedAt', $this->getCompletedAt());
         $writer->writeObjectValue('conditionResults', $this->getConditionResults());
         $writer->writeStringValue('executionMode', $this->getExecutionMode());
@@ -322,6 +337,14 @@ class AutomationRunRecord implements AdditionalDataHolder, Parsable
     */
     public function setAutomationId(?string $value): void {
         $this->automationId = $value;
+    }
+
+    /**
+     * Sets the automationLineage property value. Persisted origin of an automation run and the events produced by its actions.
+     * @param AutomationRunRecord_automationLineage|null $value Value to set for the automationLineage property.
+    */
+    public function setAutomationLineage(?AutomationRunRecord_automationLineage $value): void {
+        $this->automationLineage = $value;
     }
 
     /**
