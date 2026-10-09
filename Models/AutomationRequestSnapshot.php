@@ -78,6 +78,11 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
     private ?string $scope = null;
     
     /**
+     * @var string|null $timeZoneId Time zone used by workflow time and day conditions in preview and runtime. Defaults to UTC.
+    */
+    private ?string $timeZoneId = null;
+    
+    /**
      * @var array<AutomationTrigger>|null $triggers Automation triggers that can start this workflow.
     */
     private ?array $triggers = null;
@@ -178,6 +183,7 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'scope' => fn(ParseNode $n) => $o->setScope($n->getStringValue()),
+            'timeZoneId' => fn(ParseNode $n) => $o->setTimeZoneId($n->getStringValue()),
             'triggers' => fn(ParseNode $n) => $o->setTriggers($n->getCollectionOfObjectValues([AutomationTrigger::class, 'createFromDiscriminatorValue'])),
             'visibility' => fn(ParseNode $n) => $o->setVisibility($n->getStringValue()),
         ];
@@ -232,6 +238,14 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the timeZoneId property value. Time zone used by workflow time and day conditions in preview and runtime. Defaults to UTC.
+     * @return string|null
+    */
+    public function getTimeZoneId(): ?string {
+        return $this->timeZoneId;
+    }
+
+    /**
      * Gets the triggers property value. Automation triggers that can start this workflow.
      * @return array<AutomationTrigger>|null
     */
@@ -264,6 +278,7 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('name', $this->getName());
         $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeStringValue('scope', $this->getScope());
+        $writer->writeStringValue('timeZoneId', $this->getTimeZoneId());
         $writer->writeCollectionOfObjectValues('triggers', $this->getTriggers());
         $writer->writeStringValue('visibility', $this->getVisibility());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -371,6 +386,14 @@ class AutomationRequestSnapshot implements AdditionalDataHolder, Parsable
     */
     public function setScope(?string $value): void {
         $this->scope = $value;
+    }
+
+    /**
+     * Sets the timeZoneId property value. Time zone used by workflow time and day conditions in preview and runtime. Defaults to UTC.
+     * @param string|null $value Value to set for the timeZoneId property.
+    */
+    public function setTimeZoneId(?string $value): void {
+        $this->timeZoneId = $value;
     }
 
     /**
