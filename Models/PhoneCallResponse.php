@@ -104,6 +104,11 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $modifiedAt = null;
     
     /**
+     * @var string|null $organizationId The organization context required to handle this call on a mobile device.
+    */
+    private ?string $organizationId = null;
+    
+    /**
      * @var string|null $phoneNumber Phone number used by this phone call for calls, SMS, lookup, or routing.
     */
     private ?string $phoneNumber = null;
@@ -289,6 +294,7 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
             'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
+            'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'phoneNumber' => fn(ParseNode $n) => $o->setPhoneNumber($n->getStringValue()),
             'queuedAt' => fn(ParseNode $n) => $o->setQueuedAt($n->getDateTimeValue()),
             'ringingAt' => fn(ParseNode $n) => $o->setRingingAt($n->getDateTimeValue()),
@@ -348,6 +354,14 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     */
     public function getModifiedAt(): ?DateTime {
         return $this->modifiedAt;
+    }
+
+    /**
+     * Gets the organizationId property value. The organization context required to handle this call on a mobile device.
+     * @return string|null
+    */
+    public function getOrganizationId(): ?string {
+        return $this->organizationId;
     }
 
     /**
@@ -452,6 +466,7 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeStringValue('leadId', $this->getLeadId());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
+        $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeStringValue('phoneNumber', $this->getPhoneNumber());
         $writer->writeDateTimeValue('queuedAt', $this->getQueuedAt());
         $writer->writeDateTimeValue('ringingAt', $this->getRingingAt());
@@ -607,6 +622,14 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     */
     public function setModifiedAt(?DateTime $value): void {
         $this->modifiedAt = $value;
+    }
+
+    /**
+     * Sets the organizationId property value. The organization context required to handle this call on a mobile device.
+     * @param string|null $value Value to set for the organizationId property.
+    */
+    public function setOrganizationId(?string $value): void {
+        $this->organizationId = $value;
     }
 
     /**

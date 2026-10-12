@@ -23,6 +23,11 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     private ?int $automationCount = null;
     
     /**
+     * @var AnalyticsCoverage|null $coverage States whether missing historical evidence can make reported counts incomplete.
+    */
+    private ?AnalyticsCoverage $coverage = null;
+    
+    /**
      * @var int|null $enabledCount Total number of enabled records represented by this Leadping customer automation health.
     */
     private ?int $enabledCount = null;
@@ -90,6 +95,14 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the coverage property value. States whether missing historical evidence can make reported counts incomplete.
+     * @return AnalyticsCoverage|null
+    */
+    public function getCoverage(): ?AnalyticsCoverage {
+        return $this->coverage;
+    }
+
+    /**
      * Gets the enabledCount property value. Total number of enabled records represented by this Leadping customer automation health.
      * @return int|null
     */
@@ -129,6 +142,7 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'automationCount' => fn(ParseNode $n) => $o->setAutomationCount($n->getIntegerValue()),
+            'coverage' => fn(ParseNode $n) => $o->setCoverage($n->getObjectValue([AnalyticsCoverage::class, 'createFromDiscriminatorValue'])),
             'enabledCount' => fn(ParseNode $n) => $o->setEnabledCount($n->getIntegerValue()),
             'executions' => fn(ParseNode $n) => $o->setExecutions($n->getIntegerValue()),
             'failingAutomations' => fn(ParseNode $n) => $o->setFailingAutomations($n->getCollectionOfObjectValues([CustomerFailingAutomation::class, 'createFromDiscriminatorValue'])),
@@ -169,6 +183,7 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeIntegerValue('automationCount', $this->getAutomationCount());
+        $writer->writeObjectValue('coverage', $this->getCoverage());
         $writer->writeIntegerValue('enabledCount', $this->getEnabledCount());
         $writer->writeIntegerValue('executions', $this->getExecutions());
         $writer->writeCollectionOfObjectValues('failingAutomations', $this->getFailingAutomations());
@@ -193,6 +208,14 @@ class CustomerAutomationHealth implements AdditionalDataHolder, Parsable
     */
     public function setAutomationCount(?int $value): void {
         $this->automationCount = $value;
+    }
+
+    /**
+     * Sets the coverage property value. States whether missing historical evidence can make reported counts incomplete.
+     * @param AnalyticsCoverage|null $value Value to set for the coverage property.
+    */
+    public function setCoverage(?AnalyticsCoverage $value): void {
+        $this->coverage = $value;
     }
 
     /**

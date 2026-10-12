@@ -44,6 +44,21 @@ class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable
     private ?LeadStatusChangeRequest_category $category = null;
     
     /**
+     * @var bool|null $completeFollowUp Whether the scheduled follow-up is explicitly complete.
+    */
+    private ?bool $completeFollowUp = null;
+    
+    /**
+     * @var string|null $expectedCurrentStatusId Optional optimistic concurrency guard for the status currently displayed by the client.
+    */
+    private ?string $expectedCurrentStatusId = null;
+    
+    /**
+     * @var int|null $expectedRevision Optional revision guard, including when the lead has no persisted status history yet.
+    */
+    private ?int $expectedRevision = null;
+    
+    /**
      * @var string|null $followUpStatus The current follow up status for this lead status change.
     */
     private ?string $followUpStatus = null;
@@ -138,6 +153,30 @@ class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the completeFollowUp property value. Whether the scheduled follow-up is explicitly complete.
+     * @return bool|null
+    */
+    public function getCompleteFollowUp(): ?bool {
+        return $this->completeFollowUp;
+    }
+
+    /**
+     * Gets the expectedCurrentStatusId property value. Optional optimistic concurrency guard for the status currently displayed by the client.
+     * @return string|null
+    */
+    public function getExpectedCurrentStatusId(): ?string {
+        return $this->expectedCurrentStatusId;
+    }
+
+    /**
+     * Gets the expectedRevision property value. Optional revision guard, including when the lead has no persisted status history yet.
+     * @return int|null
+    */
+    public function getExpectedRevision(): ?int {
+        return $this->expectedRevision;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
@@ -149,6 +188,9 @@ class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable
             'appointmentStartAt' => fn(ParseNode $n) => $o->setAppointmentStartAt($n->getDateTimeValue()),
             'callbackAt' => fn(ParseNode $n) => $o->setCallbackAt($n->getDateTimeValue()),
             'category' => fn(ParseNode $n) => $o->setCategory($n->getEnumValue(LeadStatusChangeRequest_category::class)),
+            'completeFollowUp' => fn(ParseNode $n) => $o->setCompleteFollowUp($n->getBooleanValue()),
+            'expectedCurrentStatusId' => fn(ParseNode $n) => $o->setExpectedCurrentStatusId($n->getStringValue()),
+            'expectedRevision' => fn(ParseNode $n) => $o->setExpectedRevision($n->getIntegerValue()),
             'followUpStatus' => fn(ParseNode $n) => $o->setFollowUpStatus($n->getStringValue()),
             'notes' => fn(ParseNode $n) => $o->setNotes($n->getStringValue()),
             'outcome' => fn(ParseNode $n) => $o->setOutcome($n->getStringValue()),
@@ -216,6 +258,9 @@ class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('appointmentStartAt', $this->getAppointmentStartAt());
         $writer->writeDateTimeValue('callbackAt', $this->getCallbackAt());
         $writer->writeEnumValue('category', $this->getCategory());
+        $writer->writeBooleanValue('completeFollowUp', $this->getCompleteFollowUp());
+        $writer->writeStringValue('expectedCurrentStatusId', $this->getExpectedCurrentStatusId());
+        $writer->writeIntegerValue('expectedRevision', $this->getExpectedRevision());
         $writer->writeStringValue('followUpStatus', $this->getFollowUpStatus());
         $writer->writeStringValue('notes', $this->getNotes());
         $writer->writeStringValue('outcome', $this->getOutcome());
@@ -271,6 +316,30 @@ class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable
     */
     public function setCategory(?LeadStatusChangeRequest_category $value): void {
         $this->category = $value;
+    }
+
+    /**
+     * Sets the completeFollowUp property value. Whether the scheduled follow-up is explicitly complete.
+     * @param bool|null $value Value to set for the completeFollowUp property.
+    */
+    public function setCompleteFollowUp(?bool $value): void {
+        $this->completeFollowUp = $value;
+    }
+
+    /**
+     * Sets the expectedCurrentStatusId property value. Optional optimistic concurrency guard for the status currently displayed by the client.
+     * @param string|null $value Value to set for the expectedCurrentStatusId property.
+    */
+    public function setExpectedCurrentStatusId(?string $value): void {
+        $this->expectedCurrentStatusId = $value;
+    }
+
+    /**
+     * Sets the expectedRevision property value. Optional revision guard, including when the lead has no persisted status history yet.
+     * @param int|null $value Value to set for the expectedRevision property.
+    */
+    public function setExpectedRevision(?int $value): void {
+        $this->expectedRevision = $value;
     }
 
     /**

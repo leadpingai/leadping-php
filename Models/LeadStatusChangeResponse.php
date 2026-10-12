@@ -74,6 +74,11 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $createdAt = null;
     
     /**
+     * @var DateTime|null $followUpCompletedAt When this follow-up was completed; email/call activity alone does not complete it.
+    */
+    private ?DateTime $followUpCompletedAt = null;
+    
+    /**
      * @var string|null $followUpStatus The current follow up status for this lead status change.
     */
     private ?string $followUpStatus = null;
@@ -152,6 +157,11 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
      * @var string|null $relatedCallEventId The related call event ID associated with this lead status change.
     */
     private ?string $relatedCallEventId = null;
+    
+    /**
+     * @var int|null $revision Monotonic revision of the lead's current status and scheduling state.
+    */
+    private ?int $revision = null;
     
     /**
      * @var string|null $sourceId The source ID associated with this lead status change.
@@ -308,6 +318,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
             'changedByUserId' => fn(ParseNode $n) => $o->setChangedByUserId($n->getStringValue()),
             'changeSource' => fn(ParseNode $n) => $o->setChangeSource($n->getEnumValue(LeadStatusChangeResponse_changeSource::class)),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
+            'followUpCompletedAt' => fn(ParseNode $n) => $o->setFollowUpCompletedAt($n->getDateTimeValue()),
             'followUpStatus' => fn(ParseNode $n) => $o->setFollowUpStatus($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
@@ -324,12 +335,21 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
             'outcome' => fn(ParseNode $n) => $o->setOutcome($n->getStringValue()),
             'reason' => fn(ParseNode $n) => $o->setReason($n->getStringValue()),
             'relatedCallEventId' => fn(ParseNode $n) => $o->setRelatedCallEventId($n->getStringValue()),
+            'revision' => fn(ParseNode $n) => $o->setRevision($n->getIntegerValue()),
             'sourceId' => fn(ParseNode $n) => $o->setSourceId($n->getStringValue()),
             'taskDueAt' => fn(ParseNode $n) => $o->setTaskDueAt($n->getDateTimeValue()),
             'timestamp' => fn(ParseNode $n) => $o->setTimestamp($n->getDateTimeValue()),
             'type' => fn(ParseNode $n) => $o->setType($n->getStringValue()),
             'updatedAt' => fn(ParseNode $n) => $o->setUpdatedAt($n->getDateTimeValue()),
         ];
+    }
+
+    /**
+     * Gets the followUpCompletedAt property value. When this follow-up was completed; email/call activity alone does not complete it.
+     * @return DateTime|null
+    */
+    public function getFollowUpCompletedAt(): ?DateTime {
+        return $this->followUpCompletedAt;
     }
 
     /**
@@ -461,6 +481,14 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the revision property value. Monotonic revision of the lead's current status and scheduling state.
+     * @return int|null
+    */
+    public function getRevision(): ?int {
+        return $this->revision;
+    }
+
+    /**
      * Gets the sourceId property value. The source ID associated with this lead status change.
      * @return string|null
     */
@@ -516,6 +544,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('changedByUserId', $this->getChangedByUserId());
         $writer->writeEnumValue('changeSource', $this->getChangeSource());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
+        $writer->writeDateTimeValue('followUpCompletedAt', $this->getFollowUpCompletedAt());
         $writer->writeStringValue('followUpStatus', $this->getFollowUpStatus());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isDemo', $this->getIsDemo());
@@ -532,6 +561,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('outcome', $this->getOutcome());
         $writer->writeStringValue('reason', $this->getReason());
         $writer->writeStringValue('relatedCallEventId', $this->getRelatedCallEventId());
+        $writer->writeIntegerValue('revision', $this->getRevision());
         $writer->writeStringValue('sourceId', $this->getSourceId());
         $writer->writeDateTimeValue('taskDueAt', $this->getTaskDueAt());
         $writer->writeDateTimeValue('timestamp', $this->getTimestamp());
@@ -634,6 +664,14 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     */
     public function setCreatedAt(?DateTime $value): void {
         $this->createdAt = $value;
+    }
+
+    /**
+     * Sets the followUpCompletedAt property value. When this follow-up was completed; email/call activity alone does not complete it.
+     * @param DateTime|null $value Value to set for the followUpCompletedAt property.
+    */
+    public function setFollowUpCompletedAt(?DateTime $value): void {
+        $this->followUpCompletedAt = $value;
     }
 
     /**
@@ -762,6 +800,14 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     */
     public function setRelatedCallEventId(?string $value): void {
         $this->relatedCallEventId = $value;
+    }
+
+    /**
+     * Sets the revision property value. Monotonic revision of the lead's current status and scheduling state.
+     * @param int|null $value Value to set for the revision property.
+    */
+    public function setRevision(?int $value): void {
+        $this->revision = $value;
     }
 
     /**

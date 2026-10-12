@@ -44,6 +44,16 @@ class CurrentLeadStatusSummary implements AdditionalDataHolder, Parsable
     private ?string $displayName = null;
     
     /**
+     * @var DateTime|null $followUpCompletedAt When this follow-up was completed; email/call activity alone does not complete it.
+    */
+    private ?DateTime $followUpCompletedAt = null;
+    
+    /**
+     * @var DateTime|null $followUpDueAt The earliest callback or task time for the current status.
+    */
+    private ?DateTime $followUpDueAt = null;
+    
+    /**
      * @var string|null $id Unique Leadping identifier for this current lead status change summary.
     */
     private ?string $id = null;
@@ -52,6 +62,11 @@ class CurrentLeadStatusSummary implements AdditionalDataHolder, Parsable
      * @var string|null $outcome Current lead status change outcome assigned to the lead.
     */
     private ?string $outcome = null;
+    
+    /**
+     * @var int|null $revision Monotonic revision of the lead's current status and scheduling state.
+    */
+    private ?int $revision = null;
     
     /**
      * @var CurrentLeadStatusSummary_source|null $source Known sources that can change a lead's current lead status change.
@@ -134,10 +149,29 @@ class CurrentLeadStatusSummary implements AdditionalDataHolder, Parsable
             'changedByAutomationId' => fn(ParseNode $n) => $o->setChangedByAutomationId($n->getStringValue()),
             'changedByUserId' => fn(ParseNode $n) => $o->setChangedByUserId($n->getStringValue()),
             'displayName' => fn(ParseNode $n) => $o->setDisplayName($n->getStringValue()),
+            'followUpCompletedAt' => fn(ParseNode $n) => $o->setFollowUpCompletedAt($n->getDateTimeValue()),
+            'followUpDueAt' => fn(ParseNode $n) => $o->setFollowUpDueAt($n->getDateTimeValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'outcome' => fn(ParseNode $n) => $o->setOutcome($n->getStringValue()),
+            'revision' => fn(ParseNode $n) => $o->setRevision($n->getIntegerValue()),
             'source' => fn(ParseNode $n) => $o->setSource($n->getEnumValue(CurrentLeadStatusSummary_source::class)),
         ];
+    }
+
+    /**
+     * Gets the followUpCompletedAt property value. When this follow-up was completed; email/call activity alone does not complete it.
+     * @return DateTime|null
+    */
+    public function getFollowUpCompletedAt(): ?DateTime {
+        return $this->followUpCompletedAt;
+    }
+
+    /**
+     * Gets the followUpDueAt property value. The earliest callback or task time for the current status.
+     * @return DateTime|null
+    */
+    public function getFollowUpDueAt(): ?DateTime {
+        return $this->followUpDueAt;
     }
 
     /**
@@ -154,6 +188,14 @@ class CurrentLeadStatusSummary implements AdditionalDataHolder, Parsable
     */
     public function getOutcome(): ?string {
         return $this->outcome;
+    }
+
+    /**
+     * Gets the revision property value. Monotonic revision of the lead's current status and scheduling state.
+     * @return int|null
+    */
+    public function getRevision(): ?int {
+        return $this->revision;
     }
 
     /**
@@ -174,8 +216,11 @@ class CurrentLeadStatusSummary implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('changedByAutomationId', $this->getChangedByAutomationId());
         $writer->writeStringValue('changedByUserId', $this->getChangedByUserId());
         $writer->writeStringValue('displayName', $this->getDisplayName());
+        $writer->writeDateTimeValue('followUpCompletedAt', $this->getFollowUpCompletedAt());
+        $writer->writeDateTimeValue('followUpDueAt', $this->getFollowUpDueAt());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeStringValue('outcome', $this->getOutcome());
+        $writer->writeIntegerValue('revision', $this->getRevision());
         $writer->writeEnumValue('source', $this->getSource());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -229,6 +274,22 @@ class CurrentLeadStatusSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the followUpCompletedAt property value. When this follow-up was completed; email/call activity alone does not complete it.
+     * @param DateTime|null $value Value to set for the followUpCompletedAt property.
+    */
+    public function setFollowUpCompletedAt(?DateTime $value): void {
+        $this->followUpCompletedAt = $value;
+    }
+
+    /**
+     * Sets the followUpDueAt property value. The earliest callback or task time for the current status.
+     * @param DateTime|null $value Value to set for the followUpDueAt property.
+    */
+    public function setFollowUpDueAt(?DateTime $value): void {
+        $this->followUpDueAt = $value;
+    }
+
+    /**
      * Sets the id property value. Unique Leadping identifier for this current lead status change summary.
      * @param string|null $value Value to set for the id property.
     */
@@ -242,6 +303,14 @@ class CurrentLeadStatusSummary implements AdditionalDataHolder, Parsable
     */
     public function setOutcome(?string $value): void {
         $this->outcome = $value;
+    }
+
+    /**
+     * Sets the revision property value. Monotonic revision of the lead's current status and scheduling state.
+     * @param int|null $value Value to set for the revision property.
+    */
+    public function setRevision(?int $value): void {
+        $this->revision = $value;
     }
 
     /**

@@ -21,7 +21,7 @@ class MarkReadRequestBuilder extends BaseRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/conversations/{id}/mark-read');
+        parent::__construct($requestAdapter, [], '{+baseurl}/conversations/{id}/mark-read?eventVersion={eventVersion}');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {
@@ -30,7 +30,7 @@ class MarkReadRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Updates the conversation's read state for the current user's inbox and returns whether the conversation was found.
+     * Clears unread state only at the observed event version. Returns false if the conversation changed or is inaccessible.
      * @param MarkReadRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<bool|null>
      * @throws Exception
@@ -40,7 +40,6 @@ class MarkReadRequestBuilder extends BaseRequestBuilder
         $errorMappings = [
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
-                '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         /** @var Promise<bool|null> $result */
@@ -49,7 +48,7 @@ class MarkReadRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Updates the conversation's read state for the current user's inbox and returns whether the conversation was found.
+     * Clears unread state only at the observed event version. Returns false if the conversation changed or is inaccessible.
      * @param MarkReadRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -60,6 +59,9 @@ class MarkReadRequestBuilder extends BaseRequestBuilder
         $requestInfo->httpMethod = HttpMethod::POST;
         if ($requestConfiguration !== null) {
             $requestInfo->addHeaders($requestConfiguration->headers);
+            if ($requestConfiguration->queryParameters !== null) {
+                $requestInfo->setQueryParameters($requestConfiguration->queryParameters);
+            }
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
         $requestInfo->tryAddHeader('Accept', "text/plain;q=0.9");

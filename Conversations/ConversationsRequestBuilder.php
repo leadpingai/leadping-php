@@ -29,7 +29,7 @@ class ConversationsRequestBuilder extends BaseRequestBuilder
     
     /**
      * Gets an item from the Leadping/OpenApiClient.conversations.item collection
-     * @param string $id The ID of the conversation to mark as read.
+     * @param string $id The ID of the conversation to retrieve.
      * @return ConversationsItemRequestBuilder
     */
     public function byId(string $id): ConversationsItemRequestBuilder {

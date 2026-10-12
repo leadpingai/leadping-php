@@ -49,6 +49,11 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     private ?string $email = null;
     
     /**
+     * @var int|null $eventVersion Monotonic event boundary. Mark-read requests must send the version the reader observed.
+    */
+    private ?int $eventVersion = null;
+    
+    /**
      * @var string|null $firstName First name of the lead, user, or contact represented by this conversation response.
     */
     private ?string $firstName = null;
@@ -201,6 +206,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the eventVersion property value. Monotonic event boundary. Mark-read requests must send the version the reader observed.
+     * @return int|null
+    */
+    public function getEventVersion(): ?int {
+        return $this->eventVersion;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
@@ -213,6 +226,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
             'avatarUrl' => fn(ParseNode $n) => $o->setAvatarUrl($n->getStringValue()),
             'currentLeadStatus' => fn(ParseNode $n) => $o->setCurrentLeadStatus($n->getObjectValue([ConversationResponse_currentLeadStatus::class, 'createFromDiscriminatorValue'])),
             'email' => fn(ParseNode $n) => $o->setEmail($n->getStringValue()),
+            'eventVersion' => fn(ParseNode $n) => $o->setEventVersion($n->getIntegerValue()),
             'firstName' => fn(ParseNode $n) => $o->setFirstName($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isArchived' => fn(ParseNode $n) => $o->setIsArchived($n->getBooleanValue()),
@@ -371,6 +385,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('avatarUrl', $this->getAvatarUrl());
         $writer->writeObjectValue('currentLeadStatus', $this->getCurrentLeadStatus());
         $writer->writeStringValue('email', $this->getEmail());
+        $writer->writeIntegerValue('eventVersion', $this->getEventVersion());
         $writer->writeStringValue('firstName', $this->getFirstName());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isArchived', $this->getIsArchived());
@@ -444,6 +459,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     */
     public function setEmail(?string $value): void {
         $this->email = $value;
+    }
+
+    /**
+     * Sets the eventVersion property value. Monotonic event boundary. Mark-read requests must send the version the reader observed.
+     * @param int|null $value Value to set for the eventVersion property.
+    */
+    public function setEventVersion(?int $value): void {
+        $this->eventVersion = $value;
     }
 
     /**

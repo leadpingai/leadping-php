@@ -23,7 +23,7 @@ class Phone implements AdditionalDataHolder, Parsable
     private ?string $number = null;
     
     /**
-     * @var string|null $phoneIdentityId Identifier of the canonical phone identity stored by Leadping.
+     * @var string|null $phoneIdentityId Server-derived identifier of the canonical phone identity. Client-supplied linkage is ignored when creating or updating a lead.
     */
     private ?string $phoneIdentityId = null;
     
@@ -78,7 +78,7 @@ class Phone implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the phoneIdentityId property value. Identifier of the canonical phone identity stored by Leadping.
+     * Gets the phoneIdentityId property value. Server-derived identifier of the canonical phone identity. Client-supplied linkage is ignored when creating or updating a lead.
      * @return string|null
     */
     public function getPhoneIdentityId(): ?string {
@@ -121,7 +121,7 @@ class Phone implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the phoneIdentityId property value. Identifier of the canonical phone identity stored by Leadping.
+     * Sets the phoneIdentityId property value. Server-derived identifier of the canonical phone identity. Client-supplied linkage is ignored when creating or updating a lead.
      * @param string|null $value Value to set for the phoneIdentityId property.
     */
     public function setPhoneIdentityId(?string $value): void {

@@ -5,6 +5,7 @@ namespace Leadping\OpenApiClient\Leads;
 use Exception;
 use Http\Promise\Promise;
 use Leadping\OpenApiClient\Leads\All\AllRequestBuilder;
+use Leadping\OpenApiClient\Leads\FollowUps\FollowUpsRequestBuilder;
 use Leadping\OpenApiClient\Leads\Intake\IntakeRequestBuilder;
 use Leadping\OpenApiClient\Leads\Item\ItemRequestBuilder;
 use Leadping\OpenApiClient\Models\LeadRequest;
@@ -25,6 +26,13 @@ class LeadsRequestBuilder extends BaseRequestBuilder
     */
     public function all(): AllRequestBuilder {
         return new AllRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The followUps property
+    */
+    public function followUps(): FollowUpsRequestBuilder {
+        return new FollowUpsRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**

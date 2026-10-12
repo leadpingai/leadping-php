@@ -29,6 +29,11 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var string|null $conversationId The mobile conversation destination.
+    */
+    private ?string $conversationId = null;
+    
+    /**
      * @var DateTime|null $createdAt UTC timestamp when the resource was created.
     */
     private ?DateTime $createdAt = null;
@@ -54,6 +59,11 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     private ?bool $isRead = null;
     
     /**
+     * @var string|null $leadId The lead used to resolve the conversation.
+    */
+    private ?string $leadId = null;
+    
+    /**
      * @var string|null $message Message for this notification.
     */
     private ?string $message = null;
@@ -67,6 +77,11 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
      * @var string|null $name Human-readable display name of the resource.
     */
     private ?string $name = null;
+    
+    /**
+     * @var string|null $organizationId The organization selected before opening this notification.
+    */
+    private ?string $organizationId = null;
     
     /**
      * @var NotificationPriority|null $priority Ranks the urgency and presentation importance of a Leadping user notification.
@@ -144,6 +159,14 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the conversationId property value. The mobile conversation destination.
+     * @return string|null
+    */
+    public function getConversationId(): ?string {
+        return $this->conversationId;
+    }
+
+    /**
      * Gets the createdAt property value. UTC timestamp when the resource was created.
      * @return DateTime|null
     */
@@ -168,14 +191,17 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
         return  [
             'actionButtonText' => fn(ParseNode $n) => $o->setActionButtonText($n->getStringValue()),
             'actionUrl' => fn(ParseNode $n) => $o->setActionUrl($n->getStringValue()),
+            'conversationId' => fn(ParseNode $n) => $o->setConversationId($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'details' => fn(ParseNode $n) => $o->setDetails($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'isRead' => fn(ParseNode $n) => $o->setIsRead($n->getBooleanValue()),
+            'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
             'message' => fn(ParseNode $n) => $o->setMessage($n->getStringValue()),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
+            'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'priority' => fn(ParseNode $n) => $o->setPriority($n->getEnumValue(NotificationPriority::class)),
             'pushEnabled' => fn(ParseNode $n) => $o->setPushEnabled($n->getBooleanValue()),
             'readAt' => fn(ParseNode $n) => $o->setReadAt($n->getDateTimeValue()),
@@ -211,6 +237,14 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the leadId property value. The lead used to resolve the conversation.
+     * @return string|null
+    */
+    public function getLeadId(): ?string {
+        return $this->leadId;
+    }
+
+    /**
      * Gets the message property value. Message for this notification.
      * @return string|null
     */
@@ -232,6 +266,14 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     */
     public function getName(): ?string {
         return $this->name;
+    }
+
+    /**
+     * Gets the organizationId property value. The organization selected before opening this notification.
+     * @return string|null
+    */
+    public function getOrganizationId(): ?string {
+        return $this->organizationId;
     }
 
     /**
@@ -297,14 +339,17 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('actionButtonText', $this->getActionButtonText());
         $writer->writeStringValue('actionUrl', $this->getActionUrl());
+        $writer->writeStringValue('conversationId', $this->getConversationId());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('details', $this->getDetails());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeBooleanValue('isRead', $this->getIsRead());
+        $writer->writeStringValue('leadId', $this->getLeadId());
         $writer->writeStringValue('message', $this->getMessage());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('name', $this->getName());
+        $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeEnumValue('priority', $this->getPriority());
         $writer->writeBooleanValue('pushEnabled', $this->getPushEnabled());
         $writer->writeDateTimeValue('readAt', $this->getReadAt());
@@ -337,6 +382,14 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the conversationId property value. The mobile conversation destination.
+     * @param string|null $value Value to set for the conversationId property.
+    */
+    public function setConversationId(?string $value): void {
+        $this->conversationId = $value;
     }
 
     /**
@@ -380,6 +433,14 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the leadId property value. The lead used to resolve the conversation.
+     * @param string|null $value Value to set for the leadId property.
+    */
+    public function setLeadId(?string $value): void {
+        $this->leadId = $value;
+    }
+
+    /**
      * Sets the message property value. Message for this notification.
      * @param string|null $value Value to set for the message property.
     */
@@ -401,6 +462,14 @@ class NotificationResponse implements AdditionalDataHolder, Parsable
     */
     public function setName(?string $value): void {
         $this->name = $value;
+    }
+
+    /**
+     * Sets the organizationId property value. The organization selected before opening this notification.
+     * @param string|null $value Value to set for the organizationId property.
+    */
+    public function setOrganizationId(?string $value): void {
+        $this->organizationId = $value;
     }
 
     /**

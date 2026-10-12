@@ -259,6 +259,11 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     private ?DateTime $undeliverableAt = null;
     
     /**
+     * @var string|null $voicemailUrl Playable recording URL for voicemail events.
+    */
+    private ?string $voicemailUrl = null;
+    
+    /**
      * @var bool|null $wasManuallyOverridden Indicates whether a user manually overrode Leadping's automatic number selection for this event timeline table row.
     */
     private ?bool $wasManuallyOverridden = null;
@@ -510,6 +515,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
             'toPhoneNumber' => fn(ParseNode $n) => $o->setToPhoneNumber($n->getStringValue()),
             'trafficType' => fn(ParseNode $n) => $o->setTrafficType($n->getEnumValue(EventTableRow_trafficType::class)),
             'undeliverableAt' => fn(ParseNode $n) => $o->setUndeliverableAt($n->getDateTimeValue()),
+            'voicemailUrl' => fn(ParseNode $n) => $o->setVoicemailUrl($n->getStringValue()),
             'wasManuallyOverridden' => fn(ParseNode $n) => $o->setWasManuallyOverridden($n->getBooleanValue()),
         ];
     }
@@ -731,6 +737,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the voicemailUrl property value. Playable recording URL for voicemail events.
+     * @return string|null
+    */
+    public function getVoicemailUrl(): ?string {
+        return $this->voicemailUrl;
+    }
+
+    /**
      * Gets the wasManuallyOverridden property value. Indicates whether a user manually overrode Leadping's automatic number selection for this event timeline table row.
      * @return bool|null
     */
@@ -791,6 +805,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('toPhoneNumber', $this->getToPhoneNumber());
         $writer->writeEnumValue('trafficType', $this->getTrafficType());
         $writer->writeDateTimeValue('undeliverableAt', $this->getUndeliverableAt());
+        $writer->writeStringValue('voicemailUrl', $this->getVoicemailUrl());
         $writer->writeBooleanValue('wasManuallyOverridden', $this->getWasManuallyOverridden());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -1185,6 +1200,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setUndeliverableAt(?DateTime $value): void {
         $this->undeliverableAt = $value;
+    }
+
+    /**
+     * Sets the voicemailUrl property value. Playable recording URL for voicemail events.
+     * @param string|null $value Value to set for the voicemailUrl property.
+    */
+    public function setVoicemailUrl(?string $value): void {
+        $this->voicemailUrl = $value;
     }
 
     /**

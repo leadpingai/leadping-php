@@ -6,6 +6,7 @@ use Exception;
 use Http\Promise\Promise;
 use Leadping\OpenApiClient\Leads\Item\Archive\ArchiveRequestBuilder;
 use Leadping\OpenApiClient\Leads\Item\Assignment\AssignmentRequestBuilder;
+use Leadping\OpenApiClient\Leads\Item\FollowUp\FollowUpRequestBuilder;
 use Leadping\OpenApiClient\Leads\Item\Status\StatusRequestBuilder;
 use Leadping\OpenApiClient\Leads\Item\StatusHistory\StatusHistoryRequestBuilder;
 use Leadping\OpenApiClient\Leads\Item\Tags\TagsRequestBuilder;
@@ -36,6 +37,13 @@ class ItemRequestBuilder extends BaseRequestBuilder
     */
     public function assignment(): AssignmentRequestBuilder {
         return new AssignmentRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The followUp property
+    */
+    public function followUp(): FollowUpRequestBuilder {
+        return new FollowUpRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**
