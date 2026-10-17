@@ -89,6 +89,16 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     private ?bool $lastEventIsInternalNote = null;
     
     /**
+     * @var DateTime|null $lastInboundAt UTC timestamp of the latest inbound customer activity.
+    */
+    private ?DateTime $lastInboundAt = null;
+    
+    /**
+     * @var string|null $lastInboundSnippet Preview of the latest inbound customer activity, preserved across outbound updates.
+    */
+    private ?string $lastInboundSnippet = null;
+    
+    /**
      * @var string|null $lastName Last name of the lead, user, or contact represented by this conversation response.
     */
     private ?string $lastName = null;
@@ -109,6 +119,11 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     private ?string $leadPhoneNumber = null;
     
     /**
+     * @var bool|null $needsReply Whether a customer reply is awaiting a manual response or acknowledgement.
+    */
+    private ?bool $needsReply = null;
+    
+    /**
      * @var string|null $nextStep Recommended next step to move this conversation response forward.
     */
     private ?string $nextStep = null;
@@ -122,6 +137,11 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
      * @var ConversationResponse_phoneNumber|null $phoneNumber Extends an identifier-and-name resource reference with an optional string value used for display or selection metadata.
     */
     private ?ConversationResponse_phoneNumber $phoneNumber = null;
+    
+    /**
+     * @var int|null $replyVersion Monotonic inbound reply boundary used when marking a conversation handled.
+    */
+    private ?int $replyVersion = null;
     
     /**
      * @var ConversationResponse_status|null $status Defines the customer-facing operational status for an inbox conversation.
@@ -234,13 +254,17 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
             'isUnread' => fn(ParseNode $n) => $o->setIsUnread($n->getBooleanValue()),
             'lastEventAt' => fn(ParseNode $n) => $o->setLastEventAt($n->getDateTimeValue()),
             'lastEventIsInternalNote' => fn(ParseNode $n) => $o->setLastEventIsInternalNote($n->getBooleanValue()),
+            'lastInboundAt' => fn(ParseNode $n) => $o->setLastInboundAt($n->getDateTimeValue()),
+            'lastInboundSnippet' => fn(ParseNode $n) => $o->setLastInboundSnippet($n->getStringValue()),
             'lastName' => fn(ParseNode $n) => $o->setLastName($n->getStringValue()),
             'lastSnippet' => fn(ParseNode $n) => $o->setLastSnippet($n->getStringValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
             'leadPhoneNumber' => fn(ParseNode $n) => $o->setLeadPhoneNumber($n->getStringValue()),
+            'needsReply' => fn(ParseNode $n) => $o->setNeedsReply($n->getBooleanValue()),
             'nextStep' => fn(ParseNode $n) => $o->setNextStep($n->getStringValue()),
             'outboundPhoneNumberOverrideId' => fn(ParseNode $n) => $o->setOutboundPhoneNumberOverrideId($n->getStringValue()),
             'phoneNumber' => fn(ParseNode $n) => $o->setPhoneNumber($n->getObjectValue([ConversationResponse_phoneNumber::class, 'createFromDiscriminatorValue'])),
+            'replyVersion' => fn(ParseNode $n) => $o->setReplyVersion($n->getIntegerValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(ConversationResponse_status::class)),
             'statusReason' => fn(ParseNode $n) => $o->setStatusReason($n->getStringValue()),
         ];
@@ -303,6 +327,22 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the lastInboundAt property value. UTC timestamp of the latest inbound customer activity.
+     * @return DateTime|null
+    */
+    public function getLastInboundAt(): ?DateTime {
+        return $this->lastInboundAt;
+    }
+
+    /**
+     * Gets the lastInboundSnippet property value. Preview of the latest inbound customer activity, preserved across outbound updates.
+     * @return string|null
+    */
+    public function getLastInboundSnippet(): ?string {
+        return $this->lastInboundSnippet;
+    }
+
+    /**
      * Gets the lastName property value. Last name of the lead, user, or contact represented by this conversation response.
      * @return string|null
     */
@@ -335,6 +375,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the needsReply property value. Whether a customer reply is awaiting a manual response or acknowledgement.
+     * @return bool|null
+    */
+    public function getNeedsReply(): ?bool {
+        return $this->needsReply;
+    }
+
+    /**
      * Gets the nextStep property value. Recommended next step to move this conversation response forward.
      * @return string|null
     */
@@ -356,6 +404,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     */
     public function getPhoneNumber(): ?ConversationResponse_phoneNumber {
         return $this->phoneNumber;
+    }
+
+    /**
+     * Gets the replyVersion property value. Monotonic inbound reply boundary used when marking a conversation handled.
+     * @return int|null
+    */
+    public function getReplyVersion(): ?int {
+        return $this->replyVersion;
     }
 
     /**
@@ -393,13 +449,17 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('isUnread', $this->getIsUnread());
         $writer->writeDateTimeValue('lastEventAt', $this->getLastEventAt());
         $writer->writeBooleanValue('lastEventIsInternalNote', $this->getLastEventIsInternalNote());
+        $writer->writeDateTimeValue('lastInboundAt', $this->getLastInboundAt());
+        $writer->writeStringValue('lastInboundSnippet', $this->getLastInboundSnippet());
         $writer->writeStringValue('lastName', $this->getLastName());
         $writer->writeStringValue('lastSnippet', $this->getLastSnippet());
         $writer->writeStringValue('leadId', $this->getLeadId());
         $writer->writeStringValue('leadPhoneNumber', $this->getLeadPhoneNumber());
+        $writer->writeBooleanValue('needsReply', $this->getNeedsReply());
         $writer->writeStringValue('nextStep', $this->getNextStep());
         $writer->writeStringValue('outboundPhoneNumberOverrideId', $this->getOutboundPhoneNumberOverrideId());
         $writer->writeObjectValue('phoneNumber', $this->getPhoneNumber());
+        $writer->writeIntegerValue('replyVersion', $this->getReplyVersion());
         $writer->writeEnumValue('status', $this->getStatus());
         $writer->writeStringValue('statusReason', $this->getStatusReason());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -526,6 +586,22 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the lastInboundAt property value. UTC timestamp of the latest inbound customer activity.
+     * @param DateTime|null $value Value to set for the lastInboundAt property.
+    */
+    public function setLastInboundAt(?DateTime $value): void {
+        $this->lastInboundAt = $value;
+    }
+
+    /**
+     * Sets the lastInboundSnippet property value. Preview of the latest inbound customer activity, preserved across outbound updates.
+     * @param string|null $value Value to set for the lastInboundSnippet property.
+    */
+    public function setLastInboundSnippet(?string $value): void {
+        $this->lastInboundSnippet = $value;
+    }
+
+    /**
      * Sets the lastName property value. Last name of the lead, user, or contact represented by this conversation response.
      * @param string|null $value Value to set for the lastName property.
     */
@@ -558,6 +634,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the needsReply property value. Whether a customer reply is awaiting a manual response or acknowledgement.
+     * @param bool|null $value Value to set for the needsReply property.
+    */
+    public function setNeedsReply(?bool $value): void {
+        $this->needsReply = $value;
+    }
+
+    /**
      * Sets the nextStep property value. Recommended next step to move this conversation response forward.
      * @param string|null $value Value to set for the nextStep property.
     */
@@ -579,6 +663,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     */
     public function setPhoneNumber(?ConversationResponse_phoneNumber $value): void {
         $this->phoneNumber = $value;
+    }
+
+    /**
+     * Sets the replyVersion property value. Monotonic inbound reply boundary used when marking a conversation handled.
+     * @param int|null $value Value to set for the replyVersion property.
+    */
+    public function setReplyVersion(?int $value): void {
+        $this->replyVersion = $value;
     }
 
     /**

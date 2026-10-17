@@ -4,6 +4,7 @@ namespace Leadping\OpenApiClient\Conversations\Item;
 
 use Exception;
 use Http\Promise\Promise;
+use Leadping\OpenApiClient\Conversations\Item\MarkHandled\MarkHandledRequestBuilder;
 use Leadping\OpenApiClient\Conversations\Item\MarkRead\MarkReadRequestBuilder;
 use Leadping\OpenApiClient\Conversations\Item\OutboundReadiness\OutboundReadinessRequestBuilder;
 use Leadping\OpenApiClient\Models\ConversationResponse;
@@ -18,6 +19,13 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 */
 class ConversationsItemRequestBuilder extends BaseRequestBuilder 
 {
+    /**
+     * The markHandled property
+    */
+    public function markHandled(): MarkHandledRequestBuilder {
+        return new MarkHandledRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
     /**
      * The markRead property
     */

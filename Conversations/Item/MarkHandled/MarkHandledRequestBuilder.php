@@ -1,6 +1,6 @@
 <?php
 
-namespace Leadping\OpenApiClient\Notifications\Push\Installations\Item;
+namespace Leadping\OpenApiClient\Conversations\Item\MarkHandled;
 
 use Exception;
 use Http\Promise\Promise;
@@ -11,17 +11,17 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
 
 /**
- * Builds and executes requests for operations under /notifications/push/installations/{installationId}
+ * Builds and executes requests for operations under /conversations/{id}/mark-handled
 */
-class WithInstallationItemRequestBuilder extends BaseRequestBuilder 
+class MarkHandledRequestBuilder extends BaseRequestBuilder 
 {
     /**
-     * Instantiates a new WithInstallationItemRequestBuilder and sets the default values.
+     * Instantiates a new MarkHandledRequestBuilder and sets the default values.
      * @param array<string, mixed>|string $pathParametersOrRawUrl Path parameters for the request or a String representing the raw URL.
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/notifications/push/installations/{installationId}');
+        parent::__construct($requestAdapter, [], '{+baseurl}/conversations/{id}/mark-handled?replyVersion={replyVersion}');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {
@@ -30,15 +30,16 @@ class WithInstallationItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Removes a mobile push installation from the authenticated user's account so Leadping no longer sends notifications to that device.
-     * @param WithInstallationItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * Clears the reply requirement only at the observed reply version. Returns false if the reply version changed or the conversation is inaccessible.
+     * @param MarkHandledRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<bool|null>
      * @throws Exception
     */
-    public function delete(?WithInstallationItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null): Promise {
-        $requestInfo = $this->toDeleteRequestInformation($requestConfiguration);
+    public function post(?MarkHandledRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
+        $requestInfo = $this->toPostRequestInformation($requestConfiguration);
         $errorMappings = [
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         /** @var Promise<bool|null> $result */
@@ -47,17 +48,20 @@ class WithInstallationItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Removes a mobile push installation from the authenticated user's account so Leadping no longer sends notifications to that device.
-     * @param WithInstallationItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * Clears the reply requirement only at the observed reply version. Returns false if the reply version changed or the conversation is inaccessible.
+     * @param MarkHandledRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
-    public function toDeleteRequestInformation(?WithInstallationItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null): RequestInformation {
+    public function toPostRequestInformation(?MarkHandledRequestBuilderPostRequestConfiguration $requestConfiguration = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
-        $requestInfo->httpMethod = HttpMethod::DELETE;
+        $requestInfo->httpMethod = HttpMethod::POST;
         if ($requestConfiguration !== null) {
             $requestInfo->addHeaders($requestConfiguration->headers);
+            if ($requestConfiguration->queryParameters !== null) {
+                $requestInfo->setQueryParameters($requestConfiguration->queryParameters);
+            }
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
         $requestInfo->tryAddHeader('Accept', "text/plain;q=0.9");
@@ -67,10 +71,10 @@ class WithInstallationItemRequestBuilder extends BaseRequestBuilder
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param string $rawUrl The raw URL to use for the request builder.
-     * @return WithInstallationItemRequestBuilder
+     * @return MarkHandledRequestBuilder
     */
-    public function withUrl(string $rawUrl): WithInstallationItemRequestBuilder {
-        return new WithInstallationItemRequestBuilder($rawUrl, $this->requestAdapter);
+    public function withUrl(string $rawUrl): MarkHandledRequestBuilder {
+        return new MarkHandledRequestBuilder($rawUrl, $this->requestAdapter);
     }
 
 }
