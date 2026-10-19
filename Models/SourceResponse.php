@@ -20,11 +20,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var array<string>|null $allowedProducts Product allowlist used to accept or route leads from this source.
-    */
-    private ?array $allowedProducts = null;
-    
-    /**
      * @var array<string>|null $allowedStates State or region allowlist used to accept leads from this source.
     */
     private ?array $allowedStates = null;
@@ -38,6 +33,11 @@ class SourceResponse implements AdditionalDataHolder, Parsable
      * @var DateTime|null $apiKeyRotatedAt UTC timestamp when the source credential was most recently rotated.
     */
     private ?DateTime $apiKeyRotatedAt = null;
+    
+    /**
+     * @var bool|null $automaticPhoneLookup Whether to look up lead phone numbers during intake. When disabled, lookup is required before calling or texting.
+    */
+    private ?bool $automaticPhoneLookup = null;
     
     /**
      * @var bool|null $complianceApproved Indicates whether the organization or sender passed compliance review.
@@ -159,14 +159,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
-     * @return array<string>|null
-    */
-    public function getAllowedProducts(): ?array {
-        return $this->allowedProducts;
-    }
-
-    /**
      * Gets the allowedStates property value. State or region allowlist used to accept leads from this source.
      * @return array<string>|null
     */
@@ -188,6 +180,14 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     */
     public function getApiKeyRotatedAt(): ?DateTime {
         return $this->apiKeyRotatedAt;
+    }
+
+    /**
+     * Gets the automaticPhoneLookup property value. Whether to look up lead phone numbers during intake. When disabled, lookup is required before calling or texting.
+     * @return bool|null
+    */
+    public function getAutomaticPhoneLookup(): ?bool {
+        return $this->automaticPhoneLookup;
     }
 
     /**
@@ -269,14 +269,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'allowedProducts' => function (ParseNode $n) {
-                $val = $n->getCollectionOfPrimitiveValues();
-                if (is_array($val)) {
-                    TypeUtils::validateCollectionValues($val, 'string');
-                }
-                /** @var array<string>|null $val */
-                $this->setAllowedProducts($val);
-            },
             'allowedStates' => function (ParseNode $n) {
                 $val = $n->getCollectionOfPrimitiveValues();
                 if (is_array($val)) {
@@ -287,6 +279,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
             },
             'apiKeyPreview' => fn(ParseNode $n) => $o->setApiKeyPreview($n->getStringValue()),
             'apiKeyRotatedAt' => fn(ParseNode $n) => $o->setApiKeyRotatedAt($n->getDateTimeValue()),
+            'automaticPhoneLookup' => fn(ParseNode $n) => $o->setAutomaticPhoneLookup($n->getBooleanValue()),
             'complianceApproved' => fn(ParseNode $n) => $o->setComplianceApproved($n->getBooleanValue()),
             'costPerLead' => fn(ParseNode $n) => $o->setCostPerLead($n->getFloatValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
@@ -401,10 +394,10 @@ class SourceResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeCollectionOfPrimitiveValues('allowedProducts', $this->getAllowedProducts());
         $writer->writeCollectionOfPrimitiveValues('allowedStates', $this->getAllowedStates());
         $writer->writeStringValue('apiKeyPreview', $this->getApiKeyPreview());
         $writer->writeDateTimeValue('apiKeyRotatedAt', $this->getApiKeyRotatedAt());
+        $writer->writeBooleanValue('automaticPhoneLookup', $this->getAutomaticPhoneLookup());
         $writer->writeBooleanValue('complianceApproved', $this->getComplianceApproved());
         $writer->writeFloatValue('costPerLead', $this->getCostPerLead());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
@@ -436,14 +429,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
-     * @param array<string>|null $value Value to set for the allowedProducts property.
-    */
-    public function setAllowedProducts(?array $value): void {
-        $this->allowedProducts = $value;
-    }
-
-    /**
      * Sets the allowedStates property value. State or region allowlist used to accept leads from this source.
      * @param array<string>|null $value Value to set for the allowedStates property.
     */
@@ -465,6 +450,14 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     */
     public function setApiKeyRotatedAt(?DateTime $value): void {
         $this->apiKeyRotatedAt = $value;
+    }
+
+    /**
+     * Sets the automaticPhoneLookup property value. Whether to look up lead phone numbers during intake. When disabled, lookup is required before calling or texting.
+     * @param bool|null $value Value to set for the automaticPhoneLookup property.
+    */
+    public function setAutomaticPhoneLookup(?bool $value): void {
+        $this->automaticPhoneLookup = $value;
     }
 
     /**

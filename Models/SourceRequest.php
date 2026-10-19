@@ -19,14 +19,14 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var array<string>|null $allowedProducts Product allowlist used to accept or route leads from this source.
-    */
-    private ?array $allowedProducts = null;
-    
-    /**
      * @var array<string>|null $allowedStates State or region allowlist used to accept leads from this source.
     */
     private ?array $allowedStates = null;
+    
+    /**
+     * @var bool|null $automaticPhoneLookup Whether to look up lead phone numbers during intake. When disabled, lookup is required before calling or texting.
+    */
+    private ?bool $automaticPhoneLookup = null;
     
     /**
      * @var array<string>|null $defaultTagIds Tag IDs automatically assigned to leads created by this source.
@@ -78,19 +78,19 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
-     * @return array<string>|null
-    */
-    public function getAllowedProducts(): ?array {
-        return $this->allowedProducts;
-    }
-
-    /**
      * Gets the allowedStates property value. State or region allowlist used to accept leads from this source.
      * @return array<string>|null
     */
     public function getAllowedStates(): ?array {
         return $this->allowedStates;
+    }
+
+    /**
+     * Gets the automaticPhoneLookup property value. Whether to look up lead phone numbers during intake. When disabled, lookup is required before calling or texting.
+     * @return bool|null
+    */
+    public function getAutomaticPhoneLookup(): ?bool {
+        return $this->automaticPhoneLookup;
     }
 
     /**
@@ -124,14 +124,6 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'allowedProducts' => function (ParseNode $n) {
-                $val = $n->getCollectionOfPrimitiveValues();
-                if (is_array($val)) {
-                    TypeUtils::validateCollectionValues($val, 'string');
-                }
-                /** @var array<string>|null $val */
-                $this->setAllowedProducts($val);
-            },
             'allowedStates' => function (ParseNode $n) {
                 $val = $n->getCollectionOfPrimitiveValues();
                 if (is_array($val)) {
@@ -140,6 +132,7 @@ class SourceRequest implements AdditionalDataHolder, Parsable
                 /** @var array<string>|null $val */
                 $this->setAllowedStates($val);
             },
+            'automaticPhoneLookup' => fn(ParseNode $n) => $o->setAutomaticPhoneLookup($n->getBooleanValue()),
             'defaultTagIds' => function (ParseNode $n) {
                 $val = $n->getCollectionOfPrimitiveValues();
                 if (is_array($val)) {
@@ -183,8 +176,8 @@ class SourceRequest implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeCollectionOfPrimitiveValues('allowedProducts', $this->getAllowedProducts());
         $writer->writeCollectionOfPrimitiveValues('allowedStates', $this->getAllowedStates());
+        $writer->writeBooleanValue('automaticPhoneLookup', $this->getAutomaticPhoneLookup());
         $writer->writeCollectionOfPrimitiveValues('defaultTagIds', $this->getDefaultTagIds());
         $writer->writeCollectionOfPrimitiveValues('defaultTagNames', $this->getDefaultTagNames());
         $writer->writeStringValue('description', $this->getDescription());
@@ -202,19 +195,19 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
-     * @param array<string>|null $value Value to set for the allowedProducts property.
-    */
-    public function setAllowedProducts(?array $value): void {
-        $this->allowedProducts = $value;
-    }
-
-    /**
      * Sets the allowedStates property value. State or region allowlist used to accept leads from this source.
      * @param array<string>|null $value Value to set for the allowedStates property.
     */
     public function setAllowedStates(?array $value): void {
         $this->allowedStates = $value;
+    }
+
+    /**
+     * Sets the automaticPhoneLookup property value. Whether to look up lead phone numbers during intake. When disabled, lookup is required before calling or texting.
+     * @param bool|null $value Value to set for the automaticPhoneLookup property.
+    */
+    public function setAutomaticPhoneLookup(?bool $value): void {
+        $this->automaticPhoneLookup = $value;
     }
 
     /**

@@ -19,11 +19,6 @@ class OrganizationCompliancePolicy implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var array<string>|null $allowedProducts The allowed products included with this organization compliance policy.
-    */
-    private ?array $allowedProducts = null;
-    
-    /**
      * @var array<string>|null $allowedStates The allowed states included with this organization compliance policy.
     */
     private ?array $allowedStates = null;
@@ -83,14 +78,6 @@ class OrganizationCompliancePolicy implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the allowedProducts property value. The allowed products included with this organization compliance policy.
-     * @return array<string>|null
-    */
-    public function getAllowedProducts(): ?array {
-        return $this->allowedProducts;
-    }
-
-    /**
      * Gets the allowedStates property value. The allowed states included with this organization compliance policy.
      * @return array<string>|null
     */
@@ -113,14 +100,6 @@ class OrganizationCompliancePolicy implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'allowedProducts' => function (ParseNode $n) {
-                $val = $n->getCollectionOfPrimitiveValues();
-                if (is_array($val)) {
-                    TypeUtils::validateCollectionValues($val, 'string');
-                }
-                /** @var array<string>|null $val */
-                $this->setAllowedProducts($val);
-            },
             'allowedStates' => function (ParseNode $n) {
                 $val = $n->getCollectionOfPrimitiveValues();
                 if (is_array($val)) {
@@ -183,7 +162,6 @@ class OrganizationCompliancePolicy implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeCollectionOfPrimitiveValues('allowedProducts', $this->getAllowedProducts());
         $writer->writeCollectionOfPrimitiveValues('allowedStates', $this->getAllowedStates());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeBooleanValue('requireAgentLicenseState', $this->getRequireAgentLicenseState());
@@ -200,14 +178,6 @@ class OrganizationCompliancePolicy implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the allowedProducts property value. The allowed products included with this organization compliance policy.
-     * @param array<string>|null $value Value to set for the allowedProducts property.
-    */
-    public function setAllowedProducts(?array $value): void {
-        $this->allowedProducts = $value;
     }
 
     /**

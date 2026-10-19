@@ -20,11 +20,6 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var array<string>|null $allowedProducts Product allowlist used to accept or route leads from this source.
-    */
-    private ?array $allowedProducts = null;
-    
-    /**
      * @var array<string>|null $allowedStates State or region allowlist used to accept leads from this source.
     */
     private ?array $allowedStates = null;
@@ -48,6 +43,11 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
      * @var int|null $apiKeyTotalUses Total number of authenticated requests made with this source API key.
     */
     private ?int $apiKeyTotalUses = null;
+    
+    /**
+     * @var bool|null $automaticPhoneLookup Whether lead phone numbers are looked up automatically during intake.
+    */
+    private ?bool $automaticPhoneLookup = null;
     
     /**
      * @var bool|null $complianceApproved Indicates whether the organization or sender passed compliance review.
@@ -169,14 +169,6 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
-     * @return array<string>|null
-    */
-    public function getAllowedProducts(): ?array {
-        return $this->allowedProducts;
-    }
-
-    /**
      * Gets the allowedStates property value. State or region allowlist used to accept leads from this source.
      * @return array<string>|null
     */
@@ -214,6 +206,14 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     */
     public function getApiKeyTotalUses(): ?int {
         return $this->apiKeyTotalUses;
+    }
+
+    /**
+     * Gets the automaticPhoneLookup property value. Whether lead phone numbers are looked up automatically during intake.
+     * @return bool|null
+    */
+    public function getAutomaticPhoneLookup(): ?bool {
+        return $this->automaticPhoneLookup;
     }
 
     /**
@@ -287,14 +287,6 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'allowedProducts' => function (ParseNode $n) {
-                $val = $n->getCollectionOfPrimitiveValues();
-                if (is_array($val)) {
-                    TypeUtils::validateCollectionValues($val, 'string');
-                }
-                /** @var array<string>|null $val */
-                $this->setAllowedProducts($val);
-            },
             'allowedStates' => function (ParseNode $n) {
                 $val = $n->getCollectionOfPrimitiveValues();
                 if (is_array($val)) {
@@ -307,6 +299,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
             'apiKeyPreview' => fn(ParseNode $n) => $o->setApiKeyPreview($n->getStringValue()),
             'apiKeyRotatedAt' => fn(ParseNode $n) => $o->setApiKeyRotatedAt($n->getDateTimeValue()),
             'apiKeyTotalUses' => fn(ParseNode $n) => $o->setApiKeyTotalUses($n->getIntegerValue()),
+            'automaticPhoneLookup' => fn(ParseNode $n) => $o->setAutomaticPhoneLookup($n->getBooleanValue()),
             'complianceApproved' => fn(ParseNode $n) => $o->setComplianceApproved($n->getBooleanValue()),
             'costPerLead' => fn(ParseNode $n) => $o->setCostPerLead($n->getFloatValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
@@ -429,12 +422,12 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeCollectionOfPrimitiveValues('allowedProducts', $this->getAllowedProducts());
         $writer->writeCollectionOfPrimitiveValues('allowedStates', $this->getAllowedStates());
         $writer->writeDateTimeValue('apiKeyLastUsedAt', $this->getApiKeyLastUsedAt());
         $writer->writeStringValue('apiKeyPreview', $this->getApiKeyPreview());
         $writer->writeDateTimeValue('apiKeyRotatedAt', $this->getApiKeyRotatedAt());
         $writer->writeIntegerValue('apiKeyTotalUses', $this->getApiKeyTotalUses());
+        $writer->writeBooleanValue('automaticPhoneLookup', $this->getAutomaticPhoneLookup());
         $writer->writeBooleanValue('complianceApproved', $this->getComplianceApproved());
         $writer->writeFloatValue('costPerLead', $this->getCostPerLead());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
@@ -463,14 +456,6 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the allowedProducts property value. Product allowlist used to accept or route leads from this source.
-     * @param array<string>|null $value Value to set for the allowedProducts property.
-    */
-    public function setAllowedProducts(?array $value): void {
-        $this->allowedProducts = $value;
     }
 
     /**
@@ -511,6 +496,14 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     */
     public function setApiKeyTotalUses(?int $value): void {
         $this->apiKeyTotalUses = $value;
+    }
+
+    /**
+     * Sets the automaticPhoneLookup property value. Whether lead phone numbers are looked up automatically during intake.
+     * @param bool|null $value Value to set for the automaticPhoneLookup property.
+    */
+    public function setAutomaticPhoneLookup(?bool $value): void {
+        $this->automaticPhoneLookup = $value;
     }
 
     /**
