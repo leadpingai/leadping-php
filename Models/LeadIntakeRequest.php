@@ -40,6 +40,16 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     private ?string $city = null;
     
     /**
+     * @var LeadIntakeRequest_consentCertificateType|null $consentCertificateType The provider responsible for a lead's consent certificate.
+    */
+    private ?LeadIntakeRequest_consentCertificateType $consentCertificateType = null;
+    
+    /**
+     * @var string|null $consentCertificateUrl Certificate URL used as proof of consumer consent.
+    */
+    private ?string $consentCertificateUrl = null;
+    
+    /**
      * @var Date|null $dateOfBirth Lead date of birth supplied by intake sources and normalized into the lead profile.
     */
     private ?Date $dateOfBirth = null;
@@ -150,11 +160,6 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     private ?array $tagNames = null;
     
     /**
-     * @var string|null $trustedFormUrl TrustedForm certificate URL used as proof of consumer consent.
-    */
-    private ?string $trustedFormUrl = null;
-    
-    /**
      * @var string|null $utmCampaign UTM campaign parameter captured for lead attribution reporting.
     */
     private ?string $utmCampaign = null;
@@ -246,6 +251,22 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the consentCertificateType property value. The provider responsible for a lead's consent certificate.
+     * @return LeadIntakeRequest_consentCertificateType|null
+    */
+    public function getConsentCertificateType(): ?LeadIntakeRequest_consentCertificateType {
+        return $this->consentCertificateType;
+    }
+
+    /**
+     * Gets the consentCertificateUrl property value. Certificate URL used as proof of consumer consent.
+     * @return string|null
+    */
+    public function getConsentCertificateUrl(): ?string {
+        return $this->consentCertificateUrl;
+    }
+
+    /**
      * Gets the dateOfBirth property value. Lead date of birth supplied by intake sources and normalized into the lead profile.
      * @return Date|null
     */
@@ -288,6 +309,8 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
             'address2' => fn(ParseNode $n) => $o->setAddress2($n->getStringValue()),
             'birthDate' => fn(ParseNode $n) => $o->setBirthDate($n->getDateValue()),
             'city' => fn(ParseNode $n) => $o->setCity($n->getStringValue()),
+            'consentCertificateType' => fn(ParseNode $n) => $o->setConsentCertificateType($n->getEnumValue(LeadIntakeRequest_consentCertificateType::class)),
+            'consentCertificateUrl' => fn(ParseNode $n) => $o->setConsentCertificateUrl($n->getStringValue()),
             'dateOfBirth' => fn(ParseNode $n) => $o->setDateOfBirth($n->getDateValue()),
             'directPostPrice' => fn(ParseNode $n) => $o->setDirectPostPrice($n->getFloatValue()),
             'email' => fn(ParseNode $n) => $o->setEmail($n->getStringValue()),
@@ -324,7 +347,6 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
                 /** @var array<string>|null $val */
                 $this->setTagNames($val);
             },
-            'trustedFormUrl' => fn(ParseNode $n) => $o->setTrustedFormUrl($n->getStringValue()),
             'utmCampaign' => fn(ParseNode $n) => $o->setUtmCampaign($n->getStringValue()),
             'utmContent' => fn(ParseNode $n) => $o->setUtmContent($n->getStringValue()),
             'utmMedium' => fn(ParseNode $n) => $o->setUtmMedium($n->getStringValue()),
@@ -480,14 +502,6 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the trustedFormUrl property value. TrustedForm certificate URL used as proof of consumer consent.
-     * @return string|null
-    */
-    public function getTrustedFormUrl(): ?string {
-        return $this->trustedFormUrl;
-    }
-
-    /**
      * Gets the utmCampaign property value. UTM campaign parameter captured for lead attribution reporting.
      * @return string|null
     */
@@ -552,6 +566,8 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('address2', $this->getAddress2());
         $writer->writeDateValue('birthDate', $this->getBirthDate());
         $writer->writeStringValue('city', $this->getCity());
+        $writer->writeEnumValue('consentCertificateType', $this->getConsentCertificateType());
+        $writer->writeStringValue('consentCertificateUrl', $this->getConsentCertificateUrl());
         $writer->writeDateValue('dateOfBirth', $this->getDateOfBirth());
         $writer->writeFloatValue('directPostPrice', $this->getDirectPostPrice());
         $writer->writeStringValue('email', $this->getEmail());
@@ -574,7 +590,6 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('subId', $this->getSubId());
         $writer->writeCollectionOfPrimitiveValues('tagIds', $this->getTagIds());
         $writer->writeCollectionOfPrimitiveValues('tagNames', $this->getTagNames());
-        $writer->writeStringValue('trustedFormUrl', $this->getTrustedFormUrl());
         $writer->writeStringValue('utmCampaign', $this->getUtmCampaign());
         $writer->writeStringValue('utmContent', $this->getUtmContent());
         $writer->writeStringValue('utmMedium', $this->getUtmMedium());
@@ -623,6 +638,22 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     */
     public function setCity(?string $value): void {
         $this->city = $value;
+    }
+
+    /**
+     * Sets the consentCertificateType property value. The provider responsible for a lead's consent certificate.
+     * @param LeadIntakeRequest_consentCertificateType|null $value Value to set for the consentCertificateType property.
+    */
+    public function setConsentCertificateType(?LeadIntakeRequest_consentCertificateType $value): void {
+        $this->consentCertificateType = $value;
+    }
+
+    /**
+     * Sets the consentCertificateUrl property value. Certificate URL used as proof of consumer consent.
+     * @param string|null $value Value to set for the consentCertificateUrl property.
+    */
+    public function setConsentCertificateUrl(?string $value): void {
+        $this->consentCertificateUrl = $value;
     }
 
     /**
@@ -799,14 +830,6 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     */
     public function setTagNames(?array $value): void {
         $this->tagNames = $value;
-    }
-
-    /**
-     * Sets the trustedFormUrl property value. TrustedForm certificate URL used as proof of consumer consent.
-     * @param string|null $value Value to set for the trustedFormUrl property.
-    */
-    public function setTrustedFormUrl(?string $value): void {
-        $this->trustedFormUrl = $value;
     }
 
     /**

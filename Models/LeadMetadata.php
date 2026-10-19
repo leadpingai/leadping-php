@@ -34,6 +34,16 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     private ?string $complianceStatus = null;
     
     /**
+     * @var LeadMetadata_consentCertificateType|null $consentCertificateType The provider responsible for a lead's consent certificate.
+    */
+    private ?LeadMetadata_consentCertificateType $consentCertificateType = null;
+    
+    /**
+     * @var string|null $consentCertificateUrl Certificate URL used as proof of consumer consent.
+    */
+    private ?string $consentCertificateUrl = null;
+    
+    /**
      * @var DateTime|null $createdAt UTC timestamp when this lead attribution metadata was created.
     */
     private ?DateTime $createdAt = null;
@@ -72,11 +82,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
      * @var string|null $landingPage Landing page URL where the lead submitted their information.
     */
     private ?string $landingPage = null;
-    
-    /**
-     * @var string|null $leadpingConsentCertificateId Standalone Leadping Consent certificate identifier, accepted as an alternative to TrustedForm.
-    */
-    private ?string $leadpingConsentCertificateId = null;
     
     /**
      * @var DateTime|null $leadpingConsentCheckedAt Server-issued timestamp for successful Leadping Consent evidence and recipient validation.
@@ -162,11 +167,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
      * @var DateTime|null $trustedFormCheckedAt UTC timestamp when Leadping last successfully checked the TrustedForm certificate URL availability.
     */
     private ?DateTime $trustedFormCheckedAt = null;
-    
-    /**
-     * @var string|null $trustedFormUrl TrustedForm certificate URL used as proof of consumer consent.
-    */
-    private ?string $trustedFormUrl = null;
     
     /**
      * @var string|null $userAgent Browser or client user agent captured when this lead attribution metadata was submitted.
@@ -257,6 +257,22 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the consentCertificateType property value. The provider responsible for a lead's consent certificate.
+     * @return LeadMetadata_consentCertificateType|null
+    */
+    public function getConsentCertificateType(): ?LeadMetadata_consentCertificateType {
+        return $this->consentCertificateType;
+    }
+
+    /**
+     * Gets the consentCertificateUrl property value. Certificate URL used as proof of consumer consent.
+     * @return string|null
+    */
+    public function getConsentCertificateUrl(): ?string {
+        return $this->consentCertificateUrl;
+    }
+
+    /**
      * Gets the createdAt property value. UTC timestamp when this lead attribution metadata was created.
      * @return DateTime|null
     */
@@ -290,6 +306,8 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
             'assignedPhoneNumberId' => fn(ParseNode $n) => $o->setAssignedPhoneNumberId($n->getStringValue()),
             'complianceBlockedReason' => fn(ParseNode $n) => $o->setComplianceBlockedReason($n->getStringValue()),
             'complianceStatus' => fn(ParseNode $n) => $o->setComplianceStatus($n->getStringValue()),
+            'consentCertificateType' => fn(ParseNode $n) => $o->setConsentCertificateType($n->getEnumValue(LeadMetadata_consentCertificateType::class)),
+            'consentCertificateUrl' => fn(ParseNode $n) => $o->setConsentCertificateUrl($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'directPostPrice' => fn(ParseNode $n) => $o->setDirectPostPrice($n->getFloatValue()),
             'externalId' => fn(ParseNode $n) => $o->setExternalId($n->getStringValue()),
@@ -298,7 +316,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
             'ipAddress' => fn(ParseNode $n) => $o->setIpAddress($n->getStringValue()),
             'isImported' => fn(ParseNode $n) => $o->setIsImported($n->getBooleanValue()),
             'landingPage' => fn(ParseNode $n) => $o->setLandingPage($n->getStringValue()),
-            'leadpingConsentCertificateId' => fn(ParseNode $n) => $o->setLeadpingConsentCertificateId($n->getStringValue()),
             'leadpingConsentCheckedAt' => fn(ParseNode $n) => $o->setLeadpingConsentCheckedAt($n->getDateTimeValue()),
             'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'origin' => fn(ParseNode $n) => $o->setOrigin($n->getStringValue()),
@@ -316,7 +333,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
             'sourceMetadata' => fn(ParseNode $n) => $o->setSourceMetadata($n->getObjectValue([LeadMetadata_sourceMetadata::class, 'createFromDiscriminatorValue'])),
             'subId' => fn(ParseNode $n) => $o->setSubId($n->getStringValue()),
             'trustedFormCheckedAt' => fn(ParseNode $n) => $o->setTrustedFormCheckedAt($n->getDateTimeValue()),
-            'trustedFormUrl' => fn(ParseNode $n) => $o->setTrustedFormUrl($n->getStringValue()),
             'userAgent' => fn(ParseNode $n) => $o->setUserAgent($n->getStringValue()),
             'userId' => fn(ParseNode $n) => $o->setUserId($n->getStringValue()),
             'utmCampaign' => fn(ParseNode $n) => $o->setUtmCampaign($n->getStringValue()),
@@ -366,14 +382,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function getLandingPage(): ?string {
         return $this->landingPage;
-    }
-
-    /**
-     * Gets the leadpingConsentCertificateId property value. Standalone Leadping Consent certificate identifier, accepted as an alternative to TrustedForm.
-     * @return string|null
-    */
-    public function getLeadpingConsentCertificateId(): ?string {
-        return $this->leadpingConsentCertificateId;
     }
 
     /**
@@ -513,14 +521,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the trustedFormUrl property value. TrustedForm certificate URL used as proof of consumer consent.
-     * @return string|null
-    */
-    public function getTrustedFormUrl(): ?string {
-        return $this->trustedFormUrl;
-    }
-
-    /**
      * Gets the userAgent property value. Browser or client user agent captured when this lead attribution metadata was submitted.
      * @return string|null
     */
@@ -592,6 +592,8 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('assignedPhoneNumberId', $this->getAssignedPhoneNumberId());
         $writer->writeStringValue('complianceBlockedReason', $this->getComplianceBlockedReason());
         $writer->writeStringValue('complianceStatus', $this->getComplianceStatus());
+        $writer->writeEnumValue('consentCertificateType', $this->getConsentCertificateType());
+        $writer->writeStringValue('consentCertificateUrl', $this->getConsentCertificateUrl());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeFloatValue('directPostPrice', $this->getDirectPostPrice());
         $writer->writeStringValue('externalId', $this->getExternalId());
@@ -600,7 +602,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('ipAddress', $this->getIpAddress());
         $writer->writeBooleanValue('isImported', $this->getIsImported());
         $writer->writeStringValue('landingPage', $this->getLandingPage());
-        $writer->writeStringValue('leadpingConsentCertificateId', $this->getLeadpingConsentCertificateId());
         $writer->writeDateTimeValue('leadpingConsentCheckedAt', $this->getLeadpingConsentCheckedAt());
         $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeStringValue('origin', $this->getOrigin());
@@ -618,7 +619,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
         $writer->writeObjectValue('sourceMetadata', $this->getSourceMetadata());
         $writer->writeStringValue('subId', $this->getSubId());
         $writer->writeDateTimeValue('trustedFormCheckedAt', $this->getTrustedFormCheckedAt());
-        $writer->writeStringValue('trustedFormUrl', $this->getTrustedFormUrl());
         $writer->writeStringValue('userAgent', $this->getUserAgent());
         $writer->writeStringValue('userId', $this->getUserId());
         $writer->writeStringValue('utmCampaign', $this->getUtmCampaign());
@@ -660,6 +660,22 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function setComplianceStatus(?string $value): void {
         $this->complianceStatus = $value;
+    }
+
+    /**
+     * Sets the consentCertificateType property value. The provider responsible for a lead's consent certificate.
+     * @param LeadMetadata_consentCertificateType|null $value Value to set for the consentCertificateType property.
+    */
+    public function setConsentCertificateType(?LeadMetadata_consentCertificateType $value): void {
+        $this->consentCertificateType = $value;
+    }
+
+    /**
+     * Sets the consentCertificateUrl property value. Certificate URL used as proof of consumer consent.
+     * @param string|null $value Value to set for the consentCertificateUrl property.
+    */
+    public function setConsentCertificateUrl(?string $value): void {
+        $this->consentCertificateUrl = $value;
     }
 
     /**
@@ -724,14 +740,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function setLandingPage(?string $value): void {
         $this->landingPage = $value;
-    }
-
-    /**
-     * Sets the leadpingConsentCertificateId property value. Standalone Leadping Consent certificate identifier, accepted as an alternative to TrustedForm.
-     * @param string|null $value Value to set for the leadpingConsentCertificateId property.
-    */
-    public function setLeadpingConsentCertificateId(?string $value): void {
-        $this->leadpingConsentCertificateId = $value;
     }
 
     /**
@@ -868,14 +876,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function setTrustedFormCheckedAt(?DateTime $value): void {
         $this->trustedFormCheckedAt = $value;
-    }
-
-    /**
-     * Sets the trustedFormUrl property value. TrustedForm certificate URL used as proof of consumer consent.
-     * @param string|null $value Value to set for the trustedFormUrl property.
-    */
-    public function setTrustedFormUrl(?string $value): void {
-        $this->trustedFormUrl = $value;
     }
 
     /**

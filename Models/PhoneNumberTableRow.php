@@ -33,6 +33,11 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     private ?bool $isDemo = null;
     
     /**
+     * @var string|null $location City and state from the stored phone identity.
+    */
+    private ?string $location = null;
+    
+    /**
      * @var string|null $name Optional display label for this phone number table row in the Leadping API.
     */
     private ?string $name = null;
@@ -129,6 +134,7 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
+            'location' => fn(ParseNode $n) => $o->setLocation($n->getStringValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'number' => fn(ParseNode $n) => $o->setNumber($n->getStringValue()),
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getStringValue()),
@@ -157,6 +163,14 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     */
     public function getIsDemo(): ?bool {
         return $this->isDemo;
+    }
+
+    /**
+     * Gets the location property value. City and state from the stored phone identity.
+     * @return string|null
+    */
+    public function getLocation(): ?string {
+        return $this->location;
     }
 
     /**
@@ -255,6 +269,7 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isDemo', $this->getIsDemo());
+        $writer->writeStringValue('location', $this->getLocation());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeStringValue('number', $this->getNumber());
         $writer->writeStringValue('organization', $this->getOrganization());
@@ -299,6 +314,14 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     */
     public function setIsDemo(?bool $value): void {
         $this->isDemo = $value;
+    }
+
+    /**
+     * Sets the location property value. City and state from the stored phone identity.
+     * @param string|null $value Value to set for the location property.
+    */
+    public function setLocation(?string $value): void {
+        $this->location = $value;
     }
 
     /**

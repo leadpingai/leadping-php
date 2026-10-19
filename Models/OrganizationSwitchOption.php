@@ -44,6 +44,11 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     private ?bool $isCurrent = null;
     
     /**
+     * @var bool|null $isDemo The isDemo property
+    */
+    private ?bool $isDemo = null;
+    
+    /**
      * @var DateTime|null $lastUsedAt UTC timestamp for last used at on this organization switch option.
     */
     private ?DateTime $lastUsedAt = null;
@@ -130,6 +135,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
             'hasPaymentMethod' => fn(ParseNode $n) => $o->setHasPaymentMethod($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isCurrent' => fn(ParseNode $n) => $o->setIsCurrent($n->getBooleanValue()),
+            'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'lastUsedAt' => fn(ParseNode $n) => $o->setLastUsedAt($n->getDateTimeValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'needsAdminReview' => fn(ParseNode $n) => $o->setNeedsAdminReview($n->getBooleanValue()),
@@ -162,6 +168,14 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     */
     public function getIsCurrent(): ?bool {
         return $this->isCurrent;
+    }
+
+    /**
+     * Gets the isDemo property value. The isDemo property
+     * @return bool|null
+    */
+    public function getIsDemo(): ?bool {
+        return $this->isDemo;
     }
 
     /**
@@ -230,6 +244,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('hasPaymentMethod', $this->getHasPaymentMethod());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isCurrent', $this->getIsCurrent());
+        $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeDateTimeValue('lastUsedAt', $this->getLastUsedAt());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeBooleanValue('needsAdminReview', $this->getNeedsAdminReview());
@@ -286,6 +301,14 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     */
     public function setIsCurrent(?bool $value): void {
         $this->isCurrent = $value;
+    }
+
+    /**
+     * Sets the isDemo property value. The isDemo property
+     * @param bool|null $value Value to set for the isDemo property.
+    */
+    public function setIsDemo(?bool $value): void {
+        $this->isDemo = $value;
     }
 
     /**
