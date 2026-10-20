@@ -3,7 +3,7 @@
 namespace Leadping\OpenApiClient\Leads\FollowUps;
 
 /**
- * Returns a paginated list of current incomplete follow-ups accessible to the current user, with the option to include upcoming follow-ups.
+ * Returns a paginated list of current incomplete follow-ups with lead assignment and organization access enforced, with the option to include upcoming follow-ups.
 */
 class FollowUpsRequestBuilderGetQueryParameters 
 {

@@ -31,7 +31,7 @@ class FollowUpsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns a paginated list of current incomplete follow-ups accessible to the current user, with the option to include upcoming follow-ups.
+     * Returns a paginated list of current incomplete follow-ups with lead assignment and organization access enforced, with the option to include upcoming follow-ups.
      * @param FollowUpsRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<StreamInterface|null>
      * @throws Exception
@@ -49,7 +49,7 @@ class FollowUpsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns a paginated list of current incomplete follow-ups accessible to the current user, with the option to include upcoming follow-ups.
+     * Returns a paginated list of current incomplete follow-ups with lead assignment and organization access enforced, with the option to include upcoming follow-ups.
      * @param FollowUpsRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

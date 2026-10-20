@@ -32,7 +32,7 @@ class AssignmentRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Updates ownership of the specified lead after validating that the selected assignee is an active member of the current organization.
+     * Assigns the lead to an active member of the current organization, or returns it to the unassigned queue.
      * @param LeadAssignmentRequest $body Assigns an organization lead to an active organization member. A null user ID returns the lead to the unassigned queue.
      * @param AssignmentRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<LeadResponse|null>
@@ -51,7 +51,7 @@ class AssignmentRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Updates ownership of the specified lead after validating that the selected assignee is an active member of the current organization.
+     * Assigns the lead to an active member of the current organization, or returns it to the unassigned queue.
      * @param LeadAssignmentRequest $body Assigns an organization lead to an active organization member. A null user ID returns the lead to the unassigned queue.
      * @param AssignmentRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

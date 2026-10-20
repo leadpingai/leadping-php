@@ -34,7 +34,7 @@ class ApiKeysItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * The operation enforces organization ownership or platform-admin authorization and returns state suitable for membership, billing, and support workflows.
+     * Deletes the organization-owned API key without deleting the organization.The operation enforces organization ownership or platform-admin authorization and returns state suitable for membership, billing, and support workflows.
      * @param ApiKeysItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<OrganizationApiKeyRevokeResponse|null>
      * @throws Exception
@@ -86,7 +86,7 @@ class ApiKeysItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * The operation enforces organization ownership or platform-admin authorization and returns state suitable for membership, billing, and support workflows.
+     * Deletes the organization-owned API key without deleting the organization.The operation enforces organization ownership or platform-admin authorization and returns state suitable for membership, billing, and support workflows.
      * @param ApiKeysItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
