@@ -49,9 +49,19 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     private ?string $assignedToUserId = null;
     
     /**
+     * @var LeadResponse_company|null $company Business represented by a lead contact.
+    */
+    private ?LeadResponse_company $company = null;
+    
+    /**
      * @var LeadContact|null $contact Public Leadping API schema for lead contact profile data.
     */
     private ?LeadContact $contact = null;
+    
+    /**
+     * @var LeadResponse_contactPreferences|null $contactPreferences Preferred contact language, channel, and callback windows; does not grant consent.
+    */
+    private ?LeadResponse_contactPreferences $contactPreferences = null;
     
     /**
      * @var DateTime|null $createdAt UTC timestamp when the resource was created.
@@ -64,9 +74,9 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     private ?LeadResponse_currentLeadStatus $currentLeadStatus = null;
     
     /**
-     * @var LeadProfile|null $customer Public Leadping API schema for lead demographic profile data.
+     * @var LeadResponse_customFields|null $customFields Industry-specific JSON scalar or scalar-array answers; keys are stable field identifiers.
     */
-    private ?LeadProfile $customer = null;
+    private ?LeadResponse_customFields $customFields = null;
     
     /**
      * @var DateTime|null $deletedAt UTC timestamp when this lead was soft deleted.
@@ -79,7 +89,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     private ?string $deletedByUserId = null;
     
     /**
-     * @var bool|null $enabled Indicates whether this lead response is active and available in the Leadping API.
+     * @var bool|null $enabled Whether the lead is enabled.
     */
     private ?bool $enabled = null;
     
@@ -87,6 +97,11 @@ class LeadResponse implements AdditionalDataHolder, Parsable
      * @var string|null $id Stable unique identifier of the resource.
     */
     private ?string $id = null;
+    
+    /**
+     * @var LeadResponse_inquiry|null $inquiry The service or purchase requested by a lead.
+    */
+    private ?LeadResponse_inquiry $inquiry = null;
     
     /**
      * @var bool|null $isArchived Indicates whether the lead has been archived in Leadping.
@@ -127,6 +142,16 @@ class LeadResponse implements AdditionalDataHolder, Parsable
      * @var string|null $processingStatusReason Explanation when asynchronous lead processing is blocked or fails.
     */
     private ?string $processingStatusReason = null;
+    
+    /**
+     * @var LeadResponse_profile|null $profile Public Leadping API schema for lead demographic profile data.
+    */
+    private ?LeadResponse_profile $profile = null;
+    
+    /**
+     * @var LeadResponse_serviceAddress|null $serviceAddress Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+    */
+    private ?LeadResponse_serviceAddress $serviceAddress = null;
     
     /**
      * @var array<TagSummary>|null $tags Tags currently attached to this lead, source, or record.
@@ -206,11 +231,27 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the company property value. Business represented by a lead contact.
+     * @return LeadResponse_company|null
+    */
+    public function getCompany(): ?LeadResponse_company {
+        return $this->company;
+    }
+
+    /**
      * Gets the contact property value. Public Leadping API schema for lead contact profile data.
      * @return LeadContact|null
     */
     public function getContact(): ?LeadContact {
         return $this->contact;
+    }
+
+    /**
+     * Gets the contactPreferences property value. Preferred contact language, channel, and callback windows; does not grant consent.
+     * @return LeadResponse_contactPreferences|null
+    */
+    public function getContactPreferences(): ?LeadResponse_contactPreferences {
+        return $this->contactPreferences;
     }
 
     /**
@@ -230,11 +271,11 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the customer property value. Public Leadping API schema for lead demographic profile data.
-     * @return LeadProfile|null
+     * Gets the customFields property value. Industry-specific JSON scalar or scalar-array answers; keys are stable field identifiers.
+     * @return LeadResponse_customFields|null
     */
-    public function getCustomer(): ?LeadProfile {
-        return $this->customer;
+    public function getCustomFields(): ?LeadResponse_customFields {
+        return $this->customFields;
     }
 
     /**
@@ -254,7 +295,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the enabled property value. Indicates whether this lead response is active and available in the Leadping API.
+     * Gets the enabled property value. Whether the lead is enabled.
      * @return bool|null
     */
     public function getEnabled(): ?bool {
@@ -274,14 +315,17 @@ class LeadResponse implements AdditionalDataHolder, Parsable
             'archiveReason' => fn(ParseNode $n) => $o->setArchiveReason($n->getIntegerValue()),
             'assignedTo' => fn(ParseNode $n) => $o->setAssignedTo($n->getObjectValue([LeadResponse_assignedTo::class, 'createFromDiscriminatorValue'])),
             'assignedToUserId' => fn(ParseNode $n) => $o->setAssignedToUserId($n->getStringValue()),
+            'company' => fn(ParseNode $n) => $o->setCompany($n->getObjectValue([LeadResponse_company::class, 'createFromDiscriminatorValue'])),
             'contact' => fn(ParseNode $n) => $o->setContact($n->getObjectValue([LeadContact::class, 'createFromDiscriminatorValue'])),
+            'contactPreferences' => fn(ParseNode $n) => $o->setContactPreferences($n->getObjectValue([LeadResponse_contactPreferences::class, 'createFromDiscriminatorValue'])),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'currentLeadStatus' => fn(ParseNode $n) => $o->setCurrentLeadStatus($n->getObjectValue([LeadResponse_currentLeadStatus::class, 'createFromDiscriminatorValue'])),
-            'customer' => fn(ParseNode $n) => $o->setCustomer($n->getObjectValue([LeadProfile::class, 'createFromDiscriminatorValue'])),
+            'customFields' => fn(ParseNode $n) => $o->setCustomFields($n->getObjectValue([LeadResponse_customFields::class, 'createFromDiscriminatorValue'])),
             'deletedAt' => fn(ParseNode $n) => $o->setDeletedAt($n->getDateTimeValue()),
             'deletedByUserId' => fn(ParseNode $n) => $o->setDeletedByUserId($n->getStringValue()),
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
+            'inquiry' => fn(ParseNode $n) => $o->setInquiry($n->getObjectValue([LeadResponse_inquiry::class, 'createFromDiscriminatorValue'])),
             'isArchived' => fn(ParseNode $n) => $o->setIsArchived($n->getBooleanValue()),
             'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'metadata' => fn(ParseNode $n) => $o->setMetadata($n->getObjectValue([LeadMetadata::class, 'createFromDiscriminatorValue'])),
@@ -290,6 +334,8 @@ class LeadResponse implements AdditionalDataHolder, Parsable
             'processingStatus' => fn(ParseNode $n) => $o->setProcessingStatus($n->getEnumValue(LeadResponse_processingStatus::class)),
             'processingStatusChangedAt' => fn(ParseNode $n) => $o->setProcessingStatusChangedAt($n->getDateTimeValue()),
             'processingStatusReason' => fn(ParseNode $n) => $o->setProcessingStatusReason($n->getStringValue()),
+            'profile' => fn(ParseNode $n) => $o->setProfile($n->getObjectValue([LeadResponse_profile::class, 'createFromDiscriminatorValue'])),
+            'serviceAddress' => fn(ParseNode $n) => $o->setServiceAddress($n->getObjectValue([LeadResponse_serviceAddress::class, 'createFromDiscriminatorValue'])),
             'tags' => fn(ParseNode $n) => $o->setTags($n->getCollectionOfObjectValues([TagSummary::class, 'createFromDiscriminatorValue'])),
         ];
     }
@@ -300,6 +346,14 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     */
     public function getId(): ?string {
         return $this->id;
+    }
+
+    /**
+     * Gets the inquiry property value. The service or purchase requested by a lead.
+     * @return LeadResponse_inquiry|null
+    */
+    public function getInquiry(): ?LeadResponse_inquiry {
+        return $this->inquiry;
     }
 
     /**
@@ -367,6 +421,22 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the profile property value. Public Leadping API schema for lead demographic profile data.
+     * @return LeadResponse_profile|null
+    */
+    public function getProfile(): ?LeadResponse_profile {
+        return $this->profile;
+    }
+
+    /**
+     * Gets the serviceAddress property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+     * @return LeadResponse_serviceAddress|null
+    */
+    public function getServiceAddress(): ?LeadResponse_serviceAddress {
+        return $this->serviceAddress;
+    }
+
+    /**
      * Gets the tags property value. Tags currently attached to this lead, source, or record.
      * @return array<TagSummary>|null
     */
@@ -385,14 +455,17 @@ class LeadResponse implements AdditionalDataHolder, Parsable
         $writer->writeIntegerValue('archiveReason', $this->getArchiveReason());
         $writer->writeObjectValue('assignedTo', $this->getAssignedTo());
         $writer->writeStringValue('assignedToUserId', $this->getAssignedToUserId());
+        $writer->writeObjectValue('company', $this->getCompany());
         $writer->writeObjectValue('contact', $this->getContact());
+        $writer->writeObjectValue('contactPreferences', $this->getContactPreferences());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeObjectValue('currentLeadStatus', $this->getCurrentLeadStatus());
-        $writer->writeObjectValue('customer', $this->getCustomer());
+        $writer->writeObjectValue('customFields', $this->getCustomFields());
         $writer->writeDateTimeValue('deletedAt', $this->getDeletedAt());
         $writer->writeStringValue('deletedByUserId', $this->getDeletedByUserId());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeStringValue('id', $this->getId());
+        $writer->writeObjectValue('inquiry', $this->getInquiry());
         $writer->writeBooleanValue('isArchived', $this->getIsArchived());
         $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeObjectValue('metadata', $this->getMetadata());
@@ -401,6 +474,8 @@ class LeadResponse implements AdditionalDataHolder, Parsable
         $writer->writeEnumValue('processingStatus', $this->getProcessingStatus());
         $writer->writeDateTimeValue('processingStatusChangedAt', $this->getProcessingStatusChangedAt());
         $writer->writeStringValue('processingStatusReason', $this->getProcessingStatusReason());
+        $writer->writeObjectValue('profile', $this->getProfile());
+        $writer->writeObjectValue('serviceAddress', $this->getServiceAddress());
         $writer->writeCollectionOfObjectValues('tags', $this->getTags());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -462,11 +537,27 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the company property value. Business represented by a lead contact.
+     * @param LeadResponse_company|null $value Value to set for the company property.
+    */
+    public function setCompany(?LeadResponse_company $value): void {
+        $this->company = $value;
+    }
+
+    /**
      * Sets the contact property value. Public Leadping API schema for lead contact profile data.
      * @param LeadContact|null $value Value to set for the contact property.
     */
     public function setContact(?LeadContact $value): void {
         $this->contact = $value;
+    }
+
+    /**
+     * Sets the contactPreferences property value. Preferred contact language, channel, and callback windows; does not grant consent.
+     * @param LeadResponse_contactPreferences|null $value Value to set for the contactPreferences property.
+    */
+    public function setContactPreferences(?LeadResponse_contactPreferences $value): void {
+        $this->contactPreferences = $value;
     }
 
     /**
@@ -486,11 +577,11 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the customer property value. Public Leadping API schema for lead demographic profile data.
-     * @param LeadProfile|null $value Value to set for the customer property.
+     * Sets the customFields property value. Industry-specific JSON scalar or scalar-array answers; keys are stable field identifiers.
+     * @param LeadResponse_customFields|null $value Value to set for the customFields property.
     */
-    public function setCustomer(?LeadProfile $value): void {
-        $this->customer = $value;
+    public function setCustomFields(?LeadResponse_customFields $value): void {
+        $this->customFields = $value;
     }
 
     /**
@@ -510,7 +601,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the enabled property value. Indicates whether this lead response is active and available in the Leadping API.
+     * Sets the enabled property value. Whether the lead is enabled.
      * @param bool|null $value Value to set for the enabled property.
     */
     public function setEnabled(?bool $value): void {
@@ -523,6 +614,14 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     */
     public function setId(?string $value): void {
         $this->id = $value;
+    }
+
+    /**
+     * Sets the inquiry property value. The service or purchase requested by a lead.
+     * @param LeadResponse_inquiry|null $value Value to set for the inquiry property.
+    */
+    public function setInquiry(?LeadResponse_inquiry $value): void {
+        $this->inquiry = $value;
     }
 
     /**
@@ -587,6 +686,22 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     */
     public function setProcessingStatusReason(?string $value): void {
         $this->processingStatusReason = $value;
+    }
+
+    /**
+     * Sets the profile property value. Public Leadping API schema for lead demographic profile data.
+     * @param LeadResponse_profile|null $value Value to set for the profile property.
+    */
+    public function setProfile(?LeadResponse_profile $value): void {
+        $this->profile = $value;
+    }
+
+    /**
+     * Sets the serviceAddress property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+     * @param LeadResponse_serviceAddress|null $value Value to set for the serviceAddress property.
+    */
+    public function setServiceAddress(?LeadResponse_serviceAddress $value): void {
+        $this->serviceAddress = $value;
     }
 
     /**

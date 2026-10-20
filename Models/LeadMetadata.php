@@ -24,6 +24,21 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     private ?string $assignedPhoneNumberId = null;
     
     /**
+     * @var DateTime|null $capturedAt Timestamp when the source originally captured the inquiry.
+    */
+    private ?DateTime $capturedAt = null;
+    
+    /**
+     * @var string|null $captureIpAddress Source-reported IP address of the original visitor.
+    */
+    private ?string $captureIpAddress = null;
+    
+    /**
+     * @var string|null $captureUserAgent Source-reported user agent of the original visitor.
+    */
+    private ?string $captureUserAgent = null;
+    
+    /**
      * @var string|null $complianceBlockedReason Reason Leadping blocked this operation for compliance.
     */
     private ?string $complianceBlockedReason = null;
@@ -49,7 +64,12 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     private ?DateTime $createdAt = null;
     
     /**
-     * @var float|null $directPostPrice Direct-post price supplied by the lead source during intake.
+     * @var string|null $currency ISO 4217 currency code for the lead acquisition price.
+    */
+    private ?string $currency = null;
+    
+    /**
+     * @var float|null $directPostPrice Alias for price. When both are supplied, their amounts must agree.
     */
     private ?float $directPostPrice = null;
     
@@ -241,6 +261,30 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the capturedAt property value. Timestamp when the source originally captured the inquiry.
+     * @return DateTime|null
+    */
+    public function getCapturedAt(): ?DateTime {
+        return $this->capturedAt;
+    }
+
+    /**
+     * Gets the captureIpAddress property value. Source-reported IP address of the original visitor.
+     * @return string|null
+    */
+    public function getCaptureIpAddress(): ?string {
+        return $this->captureIpAddress;
+    }
+
+    /**
+     * Gets the captureUserAgent property value. Source-reported user agent of the original visitor.
+     * @return string|null
+    */
+    public function getCaptureUserAgent(): ?string {
+        return $this->captureUserAgent;
+    }
+
+    /**
      * Gets the complianceBlockedReason property value. Reason Leadping blocked this operation for compliance.
      * @return string|null
     */
@@ -281,7 +325,15 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
+     * Gets the currency property value. ISO 4217 currency code for the lead acquisition price.
+     * @return string|null
+    */
+    public function getCurrency(): ?string {
+        return $this->currency;
+    }
+
+    /**
+     * Gets the directPostPrice property value. Alias for price. When both are supplied, their amounts must agree.
      * @return float|null
     */
     public function getDirectPostPrice(): ?float {
@@ -304,11 +356,15 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'assignedPhoneNumberId' => fn(ParseNode $n) => $o->setAssignedPhoneNumberId($n->getStringValue()),
+            'capturedAt' => fn(ParseNode $n) => $o->setCapturedAt($n->getDateTimeValue()),
+            'captureIpAddress' => fn(ParseNode $n) => $o->setCaptureIpAddress($n->getStringValue()),
+            'captureUserAgent' => fn(ParseNode $n) => $o->setCaptureUserAgent($n->getStringValue()),
             'complianceBlockedReason' => fn(ParseNode $n) => $o->setComplianceBlockedReason($n->getStringValue()),
             'complianceStatus' => fn(ParseNode $n) => $o->setComplianceStatus($n->getStringValue()),
             'consentCertificateType' => fn(ParseNode $n) => $o->setConsentCertificateType($n->getEnumValue(LeadMetadata_consentCertificateType::class)),
             'consentCertificateUrl' => fn(ParseNode $n) => $o->setConsentCertificateUrl($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
+            'currency' => fn(ParseNode $n) => $o->setCurrency($n->getStringValue()),
             'directPostPrice' => fn(ParseNode $n) => $o->setDirectPostPrice($n->getFloatValue()),
             'externalId' => fn(ParseNode $n) => $o->setExternalId($n->getStringValue()),
             'importBatchId' => fn(ParseNode $n) => $o->setImportBatchId($n->getStringValue()),
@@ -590,11 +646,15 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('assignedPhoneNumberId', $this->getAssignedPhoneNumberId());
+        $writer->writeDateTimeValue('capturedAt', $this->getCapturedAt());
+        $writer->writeStringValue('captureIpAddress', $this->getCaptureIpAddress());
+        $writer->writeStringValue('captureUserAgent', $this->getCaptureUserAgent());
         $writer->writeStringValue('complianceBlockedReason', $this->getComplianceBlockedReason());
         $writer->writeStringValue('complianceStatus', $this->getComplianceStatus());
         $writer->writeEnumValue('consentCertificateType', $this->getConsentCertificateType());
         $writer->writeStringValue('consentCertificateUrl', $this->getConsentCertificateUrl());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
+        $writer->writeStringValue('currency', $this->getCurrency());
         $writer->writeFloatValue('directPostPrice', $this->getDirectPostPrice());
         $writer->writeStringValue('externalId', $this->getExternalId());
         $writer->writeStringValue('importBatchId', $this->getImportBatchId());
@@ -647,6 +707,30 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the capturedAt property value. Timestamp when the source originally captured the inquiry.
+     * @param DateTime|null $value Value to set for the capturedAt property.
+    */
+    public function setCapturedAt(?DateTime $value): void {
+        $this->capturedAt = $value;
+    }
+
+    /**
+     * Sets the captureIpAddress property value. Source-reported IP address of the original visitor.
+     * @param string|null $value Value to set for the captureIpAddress property.
+    */
+    public function setCaptureIpAddress(?string $value): void {
+        $this->captureIpAddress = $value;
+    }
+
+    /**
+     * Sets the captureUserAgent property value. Source-reported user agent of the original visitor.
+     * @param string|null $value Value to set for the captureUserAgent property.
+    */
+    public function setCaptureUserAgent(?string $value): void {
+        $this->captureUserAgent = $value;
+    }
+
+    /**
      * Sets the complianceBlockedReason property value. Reason Leadping blocked this operation for compliance.
      * @param string|null $value Value to set for the complianceBlockedReason property.
     */
@@ -687,7 +771,15 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
+     * Sets the currency property value. ISO 4217 currency code for the lead acquisition price.
+     * @param string|null $value Value to set for the currency property.
+    */
+    public function setCurrency(?string $value): void {
+        $this->currency = $value;
+    }
+
+    /**
+     * Sets the directPostPrice property value. Alias for price. When both are supplied, their amounts must agree.
      * @param float|null $value Value to set for the directPostPrice property.
     */
     public function setDirectPostPrice(?float $value): void {

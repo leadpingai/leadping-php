@@ -2,6 +2,7 @@
 
 namespace Leadping\OpenApiClient\Models;
 
+use DateTime;
 use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
@@ -35,9 +36,29 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     private ?Date $birthDate = null;
     
     /**
+     * @var DateTime|null $capturedAt Original source capture timestamp.
+    */
+    private ?DateTime $capturedAt = null;
+    
+    /**
+     * @var string|null $captureIpAddress Original visitor IP as reported by the source.
+    */
+    private ?string $captureIpAddress = null;
+    
+    /**
+     * @var string|null $captureUserAgent Original visitor user agent as reported by the source.
+    */
+    private ?string $captureUserAgent = null;
+    
+    /**
      * @var string|null $city City for the lead or organization postal address.
     */
     private ?string $city = null;
+    
+    /**
+     * @var LeadIntakeRequest_company|null $company Business represented by a lead contact.
+    */
+    private ?LeadIntakeRequest_company $company = null;
     
     /**
      * @var LeadIntakeRequest_consentCertificateType|null $consentCertificateType The provider responsible for a lead's consent certificate.
@@ -50,12 +71,32 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     private ?string $consentCertificateUrl = null;
     
     /**
+     * @var LeadIntakeRequest_contactPreferences|null $contactPreferences Preferred contact language, channel, and callback windows; does not grant consent.
+    */
+    private ?LeadIntakeRequest_contactPreferences $contactPreferences = null;
+    
+    /**
+     * @var string|null $country ISO 3166-1 alpha-2 contact address country code.
+    */
+    private ?string $country = null;
+    
+    /**
+     * @var string|null $currency ISO 4217 acquisition price currency.
+    */
+    private ?string $currency = null;
+    
+    /**
+     * @var LeadIntakeRequest_customFields|null $customFields Industry-specific JSON scalar or scalar-array answers; keys are stable field identifiers.
+    */
+    private ?LeadIntakeRequest_customFields $customFields = null;
+    
+    /**
      * @var Date|null $dateOfBirth Lead date of birth supplied by intake sources and normalized into the lead profile.
     */
     private ?Date $dateOfBirth = null;
     
     /**
-     * @var float|null $directPostPrice Direct-post price supplied by the lead source during intake.
+     * @var float|null $directPostPrice Alias for price. When both are supplied, their amounts must agree.
     */
     private ?float $directPostPrice = null;
     
@@ -85,6 +126,11 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     private ?string $idempotencyKey = null;
     
     /**
+     * @var LeadIntakeRequest_inquiry|null $inquiry The service or purchase requested by a lead.
+    */
+    private ?LeadIntakeRequest_inquiry $inquiry = null;
+    
+    /**
      * @var string|null $landingPage Landing page URL where the lead submitted their information.
     */
     private ?string $landingPage = null;
@@ -95,7 +141,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     private ?string $lastName = null;
     
     /**
-     * @var string|null $phone Phone details for the lead, user, or organization represented by this lead intake request.
+     * @var string|null $phone Contact phone number. Use E.164 with a leading + for international numbers.
     */
     private ?string $phone = null;
     
@@ -120,6 +166,16 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     private ?string $product = null;
     
     /**
+     * @var LeadIntakeRequest_profile|null $profile Public Leadping API schema for lead demographic profile data.
+    */
+    private ?LeadIntakeRequest_profile $profile = null;
+    
+    /**
+     * @var string|null $pubId Publisher identifier.
+    */
+    private ?string $pubId = null;
+    
+    /**
      * @var string|null $referrer Referring page or traffic source that sent the lead into Leadping.
     */
     private ?string $referrer = null;
@@ -133,6 +189,11 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
      * @var string|null $sellerLeadIdentifier Alternate seller-provided lead identifier used during intake normalization.
     */
     private ?string $sellerLeadIdentifier = null;
+    
+    /**
+     * @var LeadIntakeRequest_serviceAddress|null $serviceAddress Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+    */
+    private ?LeadIntakeRequest_serviceAddress $serviceAddress = null;
     
     /**
      * @var LeadIntakeRequest_sourceMetadata|null $sourceMetadata Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
@@ -158,6 +219,11 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
      * @var array<string>|null $tagNames Tag names assigned to this lead when matching existing tags by name.
     */
     private ?array $tagNames = null;
+    
+    /**
+     * @var string|null $timeZoneId Contact time zone identifier.
+    */
+    private ?string $timeZoneId = null;
     
     /**
      * @var string|null $utmCampaign UTM campaign parameter captured for lead attribution reporting.
@@ -243,11 +309,43 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the capturedAt property value. Original source capture timestamp.
+     * @return DateTime|null
+    */
+    public function getCapturedAt(): ?DateTime {
+        return $this->capturedAt;
+    }
+
+    /**
+     * Gets the captureIpAddress property value. Original visitor IP as reported by the source.
+     * @return string|null
+    */
+    public function getCaptureIpAddress(): ?string {
+        return $this->captureIpAddress;
+    }
+
+    /**
+     * Gets the captureUserAgent property value. Original visitor user agent as reported by the source.
+     * @return string|null
+    */
+    public function getCaptureUserAgent(): ?string {
+        return $this->captureUserAgent;
+    }
+
+    /**
      * Gets the city property value. City for the lead or organization postal address.
      * @return string|null
     */
     public function getCity(): ?string {
         return $this->city;
+    }
+
+    /**
+     * Gets the company property value. Business represented by a lead contact.
+     * @return LeadIntakeRequest_company|null
+    */
+    public function getCompany(): ?LeadIntakeRequest_company {
+        return $this->company;
     }
 
     /**
@@ -267,6 +365,38 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the contactPreferences property value. Preferred contact language, channel, and callback windows; does not grant consent.
+     * @return LeadIntakeRequest_contactPreferences|null
+    */
+    public function getContactPreferences(): ?LeadIntakeRequest_contactPreferences {
+        return $this->contactPreferences;
+    }
+
+    /**
+     * Gets the country property value. ISO 3166-1 alpha-2 contact address country code.
+     * @return string|null
+    */
+    public function getCountry(): ?string {
+        return $this->country;
+    }
+
+    /**
+     * Gets the currency property value. ISO 4217 acquisition price currency.
+     * @return string|null
+    */
+    public function getCurrency(): ?string {
+        return $this->currency;
+    }
+
+    /**
+     * Gets the customFields property value. Industry-specific JSON scalar or scalar-array answers; keys are stable field identifiers.
+     * @return LeadIntakeRequest_customFields|null
+    */
+    public function getCustomFields(): ?LeadIntakeRequest_customFields {
+        return $this->customFields;
+    }
+
+    /**
      * Gets the dateOfBirth property value. Lead date of birth supplied by intake sources and normalized into the lead profile.
      * @return Date|null
     */
@@ -275,7 +405,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
+     * Gets the directPostPrice property value. Alias for price. When both are supplied, their amounts must agree.
      * @return float|null
     */
     public function getDirectPostPrice(): ?float {
@@ -308,9 +438,17 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
             'address1' => fn(ParseNode $n) => $o->setAddress1($n->getStringValue()),
             'address2' => fn(ParseNode $n) => $o->setAddress2($n->getStringValue()),
             'birthDate' => fn(ParseNode $n) => $o->setBirthDate($n->getDateValue()),
+            'capturedAt' => fn(ParseNode $n) => $o->setCapturedAt($n->getDateTimeValue()),
+            'captureIpAddress' => fn(ParseNode $n) => $o->setCaptureIpAddress($n->getStringValue()),
+            'captureUserAgent' => fn(ParseNode $n) => $o->setCaptureUserAgent($n->getStringValue()),
             'city' => fn(ParseNode $n) => $o->setCity($n->getStringValue()),
+            'company' => fn(ParseNode $n) => $o->setCompany($n->getObjectValue([LeadIntakeRequest_company::class, 'createFromDiscriminatorValue'])),
             'consentCertificateType' => fn(ParseNode $n) => $o->setConsentCertificateType($n->getEnumValue(LeadIntakeRequest_consentCertificateType::class)),
             'consentCertificateUrl' => fn(ParseNode $n) => $o->setConsentCertificateUrl($n->getStringValue()),
+            'contactPreferences' => fn(ParseNode $n) => $o->setContactPreferences($n->getObjectValue([LeadIntakeRequest_contactPreferences::class, 'createFromDiscriminatorValue'])),
+            'country' => fn(ParseNode $n) => $o->setCountry($n->getStringValue()),
+            'currency' => fn(ParseNode $n) => $o->setCurrency($n->getStringValue()),
+            'customFields' => fn(ParseNode $n) => $o->setCustomFields($n->getObjectValue([LeadIntakeRequest_customFields::class, 'createFromDiscriminatorValue'])),
             'dateOfBirth' => fn(ParseNode $n) => $o->setDateOfBirth($n->getDateValue()),
             'directPostPrice' => fn(ParseNode $n) => $o->setDirectPostPrice($n->getFloatValue()),
             'email' => fn(ParseNode $n) => $o->setEmail($n->getStringValue()),
@@ -318,6 +456,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
             'firstName' => fn(ParseNode $n) => $o->setFirstName($n->getStringValue()),
             'gender' => fn(ParseNode $n) => $o->setGender($n->getStringValue()),
             'idempotencyKey' => fn(ParseNode $n) => $o->setIdempotencyKey($n->getStringValue()),
+            'inquiry' => fn(ParseNode $n) => $o->setInquiry($n->getObjectValue([LeadIntakeRequest_inquiry::class, 'createFromDiscriminatorValue'])),
             'landingPage' => fn(ParseNode $n) => $o->setLandingPage($n->getStringValue()),
             'lastName' => fn(ParseNode $n) => $o->setLastName($n->getStringValue()),
             'phone' => fn(ParseNode $n) => $o->setPhone($n->getStringValue()),
@@ -325,9 +464,12 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
             'postalCode' => fn(ParseNode $n) => $o->setPostalCode($n->getStringValue()),
             'price' => fn(ParseNode $n) => $o->setPrice($n->getFloatValue()),
             'product' => fn(ParseNode $n) => $o->setProduct($n->getStringValue()),
+            'profile' => fn(ParseNode $n) => $o->setProfile($n->getObjectValue([LeadIntakeRequest_profile::class, 'createFromDiscriminatorValue'])),
+            'pubId' => fn(ParseNode $n) => $o->setPubId($n->getStringValue()),
             'referrer' => fn(ParseNode $n) => $o->setReferrer($n->getStringValue()),
             'sellerLeadId' => fn(ParseNode $n) => $o->setSellerLeadId($n->getStringValue()),
             'sellerLeadIdentifier' => fn(ParseNode $n) => $o->setSellerLeadIdentifier($n->getStringValue()),
+            'serviceAddress' => fn(ParseNode $n) => $o->setServiceAddress($n->getObjectValue([LeadIntakeRequest_serviceAddress::class, 'createFromDiscriminatorValue'])),
             'sourceMetadata' => fn(ParseNode $n) => $o->setSourceMetadata($n->getObjectValue([LeadIntakeRequest_sourceMetadata::class, 'createFromDiscriminatorValue'])),
             'state' => fn(ParseNode $n) => $o->setState($n->getStringValue()),
             'subId' => fn(ParseNode $n) => $o->setSubId($n->getStringValue()),
@@ -347,6 +489,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
                 /** @var array<string>|null $val */
                 $this->setTagNames($val);
             },
+            'timeZoneId' => fn(ParseNode $n) => $o->setTimeZoneId($n->getStringValue()),
             'utmCampaign' => fn(ParseNode $n) => $o->setUtmCampaign($n->getStringValue()),
             'utmContent' => fn(ParseNode $n) => $o->setUtmContent($n->getStringValue()),
             'utmMedium' => fn(ParseNode $n) => $o->setUtmMedium($n->getStringValue()),
@@ -382,6 +525,14 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the inquiry property value. The service or purchase requested by a lead.
+     * @return LeadIntakeRequest_inquiry|null
+    */
+    public function getInquiry(): ?LeadIntakeRequest_inquiry {
+        return $this->inquiry;
+    }
+
+    /**
      * Gets the landingPage property value. Landing page URL where the lead submitted their information.
      * @return string|null
     */
@@ -398,7 +549,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the phone property value. Phone details for the lead, user, or organization represented by this lead intake request.
+     * Gets the phone property value. Contact phone number. Use E.164 with a leading + for international numbers.
      * @return string|null
     */
     public function getPhone(): ?string {
@@ -438,6 +589,22 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the profile property value. Public Leadping API schema for lead demographic profile data.
+     * @return LeadIntakeRequest_profile|null
+    */
+    public function getProfile(): ?LeadIntakeRequest_profile {
+        return $this->profile;
+    }
+
+    /**
+     * Gets the pubId property value. Publisher identifier.
+     * @return string|null
+    */
+    public function getPubId(): ?string {
+        return $this->pubId;
+    }
+
+    /**
      * Gets the referrer property value. Referring page or traffic source that sent the lead into Leadping.
      * @return string|null
     */
@@ -459,6 +626,14 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     */
     public function getSellerLeadIdentifier(): ?string {
         return $this->sellerLeadIdentifier;
+    }
+
+    /**
+     * Gets the serviceAddress property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+     * @return LeadIntakeRequest_serviceAddress|null
+    */
+    public function getServiceAddress(): ?LeadIntakeRequest_serviceAddress {
+        return $this->serviceAddress;
     }
 
     /**
@@ -499,6 +674,14 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     */
     public function getTagNames(): ?array {
         return $this->tagNames;
+    }
+
+    /**
+     * Gets the timeZoneId property value. Contact time zone identifier.
+     * @return string|null
+    */
+    public function getTimeZoneId(): ?string {
+        return $this->timeZoneId;
     }
 
     /**
@@ -565,9 +748,17 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('address1', $this->getAddress1());
         $writer->writeStringValue('address2', $this->getAddress2());
         $writer->writeDateValue('birthDate', $this->getBirthDate());
+        $writer->writeDateTimeValue('capturedAt', $this->getCapturedAt());
+        $writer->writeStringValue('captureIpAddress', $this->getCaptureIpAddress());
+        $writer->writeStringValue('captureUserAgent', $this->getCaptureUserAgent());
         $writer->writeStringValue('city', $this->getCity());
+        $writer->writeObjectValue('company', $this->getCompany());
         $writer->writeEnumValue('consentCertificateType', $this->getConsentCertificateType());
         $writer->writeStringValue('consentCertificateUrl', $this->getConsentCertificateUrl());
+        $writer->writeObjectValue('contactPreferences', $this->getContactPreferences());
+        $writer->writeStringValue('country', $this->getCountry());
+        $writer->writeStringValue('currency', $this->getCurrency());
+        $writer->writeObjectValue('customFields', $this->getCustomFields());
         $writer->writeDateValue('dateOfBirth', $this->getDateOfBirth());
         $writer->writeFloatValue('directPostPrice', $this->getDirectPostPrice());
         $writer->writeStringValue('email', $this->getEmail());
@@ -575,6 +766,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('firstName', $this->getFirstName());
         $writer->writeStringValue('gender', $this->getGender());
         $writer->writeStringValue('idempotencyKey', $this->getIdempotencyKey());
+        $writer->writeObjectValue('inquiry', $this->getInquiry());
         $writer->writeStringValue('landingPage', $this->getLandingPage());
         $writer->writeStringValue('lastName', $this->getLastName());
         $writer->writeStringValue('phone', $this->getPhone());
@@ -582,14 +774,18 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('postalCode', $this->getPostalCode());
         $writer->writeFloatValue('price', $this->getPrice());
         $writer->writeStringValue('product', $this->getProduct());
+        $writer->writeObjectValue('profile', $this->getProfile());
+        $writer->writeStringValue('pubId', $this->getPubId());
         $writer->writeStringValue('referrer', $this->getReferrer());
         $writer->writeStringValue('sellerLeadId', $this->getSellerLeadId());
         $writer->writeStringValue('sellerLeadIdentifier', $this->getSellerLeadIdentifier());
+        $writer->writeObjectValue('serviceAddress', $this->getServiceAddress());
         $writer->writeObjectValue('sourceMetadata', $this->getSourceMetadata());
         $writer->writeStringValue('state', $this->getState());
         $writer->writeStringValue('subId', $this->getSubId());
         $writer->writeCollectionOfPrimitiveValues('tagIds', $this->getTagIds());
         $writer->writeCollectionOfPrimitiveValues('tagNames', $this->getTagNames());
+        $writer->writeStringValue('timeZoneId', $this->getTimeZoneId());
         $writer->writeStringValue('utmCampaign', $this->getUtmCampaign());
         $writer->writeStringValue('utmContent', $this->getUtmContent());
         $writer->writeStringValue('utmMedium', $this->getUtmMedium());
@@ -633,11 +829,43 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the capturedAt property value. Original source capture timestamp.
+     * @param DateTime|null $value Value to set for the capturedAt property.
+    */
+    public function setCapturedAt(?DateTime $value): void {
+        $this->capturedAt = $value;
+    }
+
+    /**
+     * Sets the captureIpAddress property value. Original visitor IP as reported by the source.
+     * @param string|null $value Value to set for the captureIpAddress property.
+    */
+    public function setCaptureIpAddress(?string $value): void {
+        $this->captureIpAddress = $value;
+    }
+
+    /**
+     * Sets the captureUserAgent property value. Original visitor user agent as reported by the source.
+     * @param string|null $value Value to set for the captureUserAgent property.
+    */
+    public function setCaptureUserAgent(?string $value): void {
+        $this->captureUserAgent = $value;
+    }
+
+    /**
      * Sets the city property value. City for the lead or organization postal address.
      * @param string|null $value Value to set for the city property.
     */
     public function setCity(?string $value): void {
         $this->city = $value;
+    }
+
+    /**
+     * Sets the company property value. Business represented by a lead contact.
+     * @param LeadIntakeRequest_company|null $value Value to set for the company property.
+    */
+    public function setCompany(?LeadIntakeRequest_company $value): void {
+        $this->company = $value;
     }
 
     /**
@@ -657,6 +885,38 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the contactPreferences property value. Preferred contact language, channel, and callback windows; does not grant consent.
+     * @param LeadIntakeRequest_contactPreferences|null $value Value to set for the contactPreferences property.
+    */
+    public function setContactPreferences(?LeadIntakeRequest_contactPreferences $value): void {
+        $this->contactPreferences = $value;
+    }
+
+    /**
+     * Sets the country property value. ISO 3166-1 alpha-2 contact address country code.
+     * @param string|null $value Value to set for the country property.
+    */
+    public function setCountry(?string $value): void {
+        $this->country = $value;
+    }
+
+    /**
+     * Sets the currency property value. ISO 4217 acquisition price currency.
+     * @param string|null $value Value to set for the currency property.
+    */
+    public function setCurrency(?string $value): void {
+        $this->currency = $value;
+    }
+
+    /**
+     * Sets the customFields property value. Industry-specific JSON scalar or scalar-array answers; keys are stable field identifiers.
+     * @param LeadIntakeRequest_customFields|null $value Value to set for the customFields property.
+    */
+    public function setCustomFields(?LeadIntakeRequest_customFields $value): void {
+        $this->customFields = $value;
+    }
+
+    /**
      * Sets the dateOfBirth property value. Lead date of birth supplied by intake sources and normalized into the lead profile.
      * @param Date|null $value Value to set for the dateOfBirth property.
     */
@@ -665,7 +925,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the directPostPrice property value. Direct-post price supplied by the lead source during intake.
+     * Sets the directPostPrice property value. Alias for price. When both are supplied, their amounts must agree.
      * @param float|null $value Value to set for the directPostPrice property.
     */
     public function setDirectPostPrice(?float $value): void {
@@ -713,6 +973,14 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the inquiry property value. The service or purchase requested by a lead.
+     * @param LeadIntakeRequest_inquiry|null $value Value to set for the inquiry property.
+    */
+    public function setInquiry(?LeadIntakeRequest_inquiry $value): void {
+        $this->inquiry = $value;
+    }
+
+    /**
      * Sets the landingPage property value. Landing page URL where the lead submitted their information.
      * @param string|null $value Value to set for the landingPage property.
     */
@@ -729,7 +997,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the phone property value. Phone details for the lead, user, or organization represented by this lead intake request.
+     * Sets the phone property value. Contact phone number. Use E.164 with a leading + for international numbers.
      * @param string|null $value Value to set for the phone property.
     */
     public function setPhone(?string $value): void {
@@ -769,6 +1037,22 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the profile property value. Public Leadping API schema for lead demographic profile data.
+     * @param LeadIntakeRequest_profile|null $value Value to set for the profile property.
+    */
+    public function setProfile(?LeadIntakeRequest_profile $value): void {
+        $this->profile = $value;
+    }
+
+    /**
+     * Sets the pubId property value. Publisher identifier.
+     * @param string|null $value Value to set for the pubId property.
+    */
+    public function setPubId(?string $value): void {
+        $this->pubId = $value;
+    }
+
+    /**
      * Sets the referrer property value. Referring page or traffic source that sent the lead into Leadping.
      * @param string|null $value Value to set for the referrer property.
     */
@@ -790,6 +1074,14 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     */
     public function setSellerLeadIdentifier(?string $value): void {
         $this->sellerLeadIdentifier = $value;
+    }
+
+    /**
+     * Sets the serviceAddress property value. Describes a physical or mailing address using international locality, administrative-area, postal-code, and country fields.
+     * @param LeadIntakeRequest_serviceAddress|null $value Value to set for the serviceAddress property.
+    */
+    public function setServiceAddress(?LeadIntakeRequest_serviceAddress $value): void {
+        $this->serviceAddress = $value;
     }
 
     /**
@@ -830,6 +1122,14 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     */
     public function setTagNames(?array $value): void {
         $this->tagNames = $value;
+    }
+
+    /**
+     * Sets the timeZoneId property value. Contact time zone identifier.
+     * @param string|null $value Value to set for the timeZoneId property.
+    */
+    public function setTimeZoneId(?string $value): void {
+        $this->timeZoneId = $value;
     }
 
     /**

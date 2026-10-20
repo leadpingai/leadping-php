@@ -20,11 +20,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var array<string>|null $allowedStates State or region allowlist used to accept leads from this source.
-    */
-    private ?array $allowedStates = null;
-    
-    /**
      * @var string|null $apiKeyPreview Masked preview of the source API key for compact display.
     */
     private ?string $apiKeyPreview = null;
@@ -159,14 +154,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the allowedStates property value. State or region allowlist used to accept leads from this source.
-     * @return array<string>|null
-    */
-    public function getAllowedStates(): ?array {
-        return $this->allowedStates;
-    }
-
-    /**
      * Gets the apiKeyPreview property value. Masked preview of the source API key for compact display.
      * @return string|null
     */
@@ -269,14 +256,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'allowedStates' => function (ParseNode $n) {
-                $val = $n->getCollectionOfPrimitiveValues();
-                if (is_array($val)) {
-                    TypeUtils::validateCollectionValues($val, 'string');
-                }
-                /** @var array<string>|null $val */
-                $this->setAllowedStates($val);
-            },
             'apiKeyPreview' => fn(ParseNode $n) => $o->setApiKeyPreview($n->getStringValue()),
             'apiKeyRotatedAt' => fn(ParseNode $n) => $o->setApiKeyRotatedAt($n->getDateTimeValue()),
             'automaticPhoneLookup' => fn(ParseNode $n) => $o->setAutomaticPhoneLookup($n->getBooleanValue()),
@@ -394,7 +373,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeCollectionOfPrimitiveValues('allowedStates', $this->getAllowedStates());
         $writer->writeStringValue('apiKeyPreview', $this->getApiKeyPreview());
         $writer->writeDateTimeValue('apiKeyRotatedAt', $this->getApiKeyRotatedAt());
         $writer->writeBooleanValue('automaticPhoneLookup', $this->getAutomaticPhoneLookup());
@@ -426,14 +404,6 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the allowedStates property value. State or region allowlist used to accept leads from this source.
-     * @param array<string>|null $value Value to set for the allowedStates property.
-    */
-    public function setAllowedStates(?array $value): void {
-        $this->allowedStates = $value;
     }
 
     /**

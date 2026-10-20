@@ -4,7 +4,7 @@ namespace Leadping\OpenApiClient\Models;
 
 use Microsoft\Kiota\Abstractions\Enum;
 
-class LeadProfile_employmentType extends Enum {
+class LeadQualification_employmentType extends Enum {
     public const EMPLOYED = "Employed";
     public const PART_TIME = "PartTime";
     public const SELF_EMPLOYED = "SelfEmployed";

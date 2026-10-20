@@ -7,6 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
+use Microsoft\Kiota\Abstractions\Types\Time;
 
 /**
  * Describes user notification preferences data used in Leadping API requests and responses.
@@ -97,6 +98,26 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
      * @var bool|null $paymentFailedSmsEnabled Indicates whether payment failed SMS functionality is enabled for this Leadping user notification preferences.
     */
     private ?bool $paymentFailedSmsEnabled = null;
+    
+    /**
+     * @var bool|null $quietHoursEnabled Whether push and automation alerts wait until the user's daily quiet hours end.
+    */
+    private ?bool $quietHoursEnabled = null;
+    
+    /**
+     * @var Time|null $quietHoursEnd The exclusive local end of daily quiet hours.
+    */
+    private ?Time $quietHoursEnd = null;
+    
+    /**
+     * @var Time|null $quietHoursStart The inclusive local start of daily quiet hours.
+    */
+    private ?Time $quietHoursStart = null;
+    
+    /**
+     * @var string|null $quietHoursTimeZoneId The time zone used for quiet hours, including daylight saving changes.
+    */
+    private ?string $quietHoursTimeZoneId = null;
     
     /**
      * @var UserNotificationPreferences_smsConsentCertificate|null $smsConsentCertificate Describes Leadping Consent certificate data used in Leadping API requests and responses.
@@ -240,6 +261,10 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
             'newLeadSmsEnabled' => fn(ParseNode $n) => $o->setNewLeadSmsEnabled($n->getBooleanValue()),
             'paymentFailedEnabled' => fn(ParseNode $n) => $o->setPaymentFailedEnabled($n->getBooleanValue()),
             'paymentFailedSmsEnabled' => fn(ParseNode $n) => $o->setPaymentFailedSmsEnabled($n->getBooleanValue()),
+            'quietHoursEnabled' => fn(ParseNode $n) => $o->setQuietHoursEnabled($n->getBooleanValue()),
+            'quietHoursEnd' => fn(ParseNode $n) => $o->setQuietHoursEnd($n->getTimeValue()),
+            'quietHoursStart' => fn(ParseNode $n) => $o->setQuietHoursStart($n->getTimeValue()),
+            'quietHoursTimeZoneId' => fn(ParseNode $n) => $o->setQuietHoursTimeZoneId($n->getStringValue()),
             'smsConsentCertificate' => fn(ParseNode $n) => $o->setSmsConsentCertificate($n->getObjectValue([UserNotificationPreferences_smsConsentCertificate::class, 'createFromDiscriminatorValue'])),
             'smsConsentOptedIn' => fn(ParseNode $n) => $o->setSmsConsentOptedIn($n->getBooleanValue()),
             'smsConsentUpdatedAt' => fn(ParseNode $n) => $o->setSmsConsentUpdatedAt($n->getDateTimeValue()),
@@ -340,6 +365,38 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     */
     public function getPaymentFailedSmsEnabled(): ?bool {
         return $this->paymentFailedSmsEnabled;
+    }
+
+    /**
+     * Gets the quietHoursEnabled property value. Whether push and automation alerts wait until the user's daily quiet hours end.
+     * @return bool|null
+    */
+    public function getQuietHoursEnabled(): ?bool {
+        return $this->quietHoursEnabled;
+    }
+
+    /**
+     * Gets the quietHoursEnd property value. The exclusive local end of daily quiet hours.
+     * @return Time|null
+    */
+    public function getQuietHoursEnd(): ?Time {
+        return $this->quietHoursEnd;
+    }
+
+    /**
+     * Gets the quietHoursStart property value. The inclusive local start of daily quiet hours.
+     * @return Time|null
+    */
+    public function getQuietHoursStart(): ?Time {
+        return $this->quietHoursStart;
+    }
+
+    /**
+     * Gets the quietHoursTimeZoneId property value. The time zone used for quiet hours, including daylight saving changes.
+     * @return string|null
+    */
+    public function getQuietHoursTimeZoneId(): ?string {
+        return $this->quietHoursTimeZoneId;
     }
 
     /**
@@ -451,6 +508,10 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('newLeadSmsEnabled', $this->getNewLeadSmsEnabled());
         $writer->writeBooleanValue('paymentFailedEnabled', $this->getPaymentFailedEnabled());
         $writer->writeBooleanValue('paymentFailedSmsEnabled', $this->getPaymentFailedSmsEnabled());
+        $writer->writeBooleanValue('quietHoursEnabled', $this->getQuietHoursEnabled());
+        $writer->writeTimeValue('quietHoursEnd', $this->getQuietHoursEnd());
+        $writer->writeTimeValue('quietHoursStart', $this->getQuietHoursStart());
+        $writer->writeStringValue('quietHoursTimeZoneId', $this->getQuietHoursTimeZoneId());
         $writer->writeObjectValue('smsConsentCertificate', $this->getSmsConsentCertificate());
         $writer->writeBooleanValue('smsConsentOptedIn', $this->getSmsConsentOptedIn());
         $writer->writeDateTimeValue('smsConsentUpdatedAt', $this->getSmsConsentUpdatedAt());
@@ -599,6 +660,38 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     */
     public function setPaymentFailedSmsEnabled(?bool $value): void {
         $this->paymentFailedSmsEnabled = $value;
+    }
+
+    /**
+     * Sets the quietHoursEnabled property value. Whether push and automation alerts wait until the user's daily quiet hours end.
+     * @param bool|null $value Value to set for the quietHoursEnabled property.
+    */
+    public function setQuietHoursEnabled(?bool $value): void {
+        $this->quietHoursEnabled = $value;
+    }
+
+    /**
+     * Sets the quietHoursEnd property value. The exclusive local end of daily quiet hours.
+     * @param Time|null $value Value to set for the quietHoursEnd property.
+    */
+    public function setQuietHoursEnd(?Time $value): void {
+        $this->quietHoursEnd = $value;
+    }
+
+    /**
+     * Sets the quietHoursStart property value. The inclusive local start of daily quiet hours.
+     * @param Time|null $value Value to set for the quietHoursStart property.
+    */
+    public function setQuietHoursStart(?Time $value): void {
+        $this->quietHoursStart = $value;
+    }
+
+    /**
+     * Sets the quietHoursTimeZoneId property value. The time zone used for quiet hours, including daylight saving changes.
+     * @param string|null $value Value to set for the quietHoursTimeZoneId property.
+    */
+    public function setQuietHoursTimeZoneId(?string $value): void {
+        $this->quietHoursTimeZoneId = $value;
     }
 
     /**
