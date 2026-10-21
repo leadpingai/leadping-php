@@ -61,6 +61,11 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     private ?LeadIntakeRequest_company $company = null;
     
     /**
+     * @var bool|null $consentAttested Explicitly attests to SMS consent when consentCertificateType is Other. Allows manual texts only.
+    */
+    private ?bool $consentAttested = null;
+    
+    /**
      * @var LeadIntakeRequest_consentCertificateType|null $consentCertificateType The provider responsible for a lead's consent certificate.
     */
     private ?LeadIntakeRequest_consentCertificateType $consentCertificateType = null;
@@ -349,6 +354,14 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the consentAttested property value. Explicitly attests to SMS consent when consentCertificateType is Other. Allows manual texts only.
+     * @return bool|null
+    */
+    public function getConsentAttested(): ?bool {
+        return $this->consentAttested;
+    }
+
+    /**
      * Gets the consentCertificateType property value. The provider responsible for a lead's consent certificate.
      * @return LeadIntakeRequest_consentCertificateType|null
     */
@@ -443,6 +456,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
             'captureUserAgent' => fn(ParseNode $n) => $o->setCaptureUserAgent($n->getStringValue()),
             'city' => fn(ParseNode $n) => $o->setCity($n->getStringValue()),
             'company' => fn(ParseNode $n) => $o->setCompany($n->getObjectValue([LeadIntakeRequest_company::class, 'createFromDiscriminatorValue'])),
+            'consentAttested' => fn(ParseNode $n) => $o->setConsentAttested($n->getBooleanValue()),
             'consentCertificateType' => fn(ParseNode $n) => $o->setConsentCertificateType($n->getEnumValue(LeadIntakeRequest_consentCertificateType::class)),
             'consentCertificateUrl' => fn(ParseNode $n) => $o->setConsentCertificateUrl($n->getStringValue()),
             'contactPreferences' => fn(ParseNode $n) => $o->setContactPreferences($n->getObjectValue([LeadIntakeRequest_contactPreferences::class, 'createFromDiscriminatorValue'])),
@@ -753,6 +767,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('captureUserAgent', $this->getCaptureUserAgent());
         $writer->writeStringValue('city', $this->getCity());
         $writer->writeObjectValue('company', $this->getCompany());
+        $writer->writeBooleanValue('consentAttested', $this->getConsentAttested());
         $writer->writeEnumValue('consentCertificateType', $this->getConsentCertificateType());
         $writer->writeStringValue('consentCertificateUrl', $this->getConsentCertificateUrl());
         $writer->writeObjectValue('contactPreferences', $this->getContactPreferences());
@@ -866,6 +881,14 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     */
     public function setCompany(?LeadIntakeRequest_company $value): void {
         $this->company = $value;
+    }
+
+    /**
+     * Sets the consentAttested property value. Explicitly attests to SMS consent when consentCertificateType is Other. Allows manual texts only.
+     * @param bool|null $value Value to set for the consentAttested property.
+    */
+    public function setConsentAttested(?bool $value): void {
+        $this->consentAttested = $value;
     }
 
     /**

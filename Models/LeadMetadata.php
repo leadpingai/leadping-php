@@ -49,6 +49,11 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     private ?string $complianceStatus = null;
     
     /**
+     * @var bool|null $consentAttested User attestation of SMS consent from another source; does not establish independent verification.
+    */
+    private ?bool $consentAttested = null;
+    
+    /**
      * @var LeadMetadata_consentCertificateType|null $consentCertificateType The provider responsible for a lead's consent certificate.
     */
     private ?LeadMetadata_consentCertificateType $consentCertificateType = null;
@@ -57,6 +62,11 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
      * @var string|null $consentCertificateUrl Certificate URL used as proof of consumer consent.
     */
     private ?string $consentCertificateUrl = null;
+    
+    /**
+     * @var ConsentVerificationStatus|null $consentVerificationStatus Leadping's assessment of the supporting consent evidence.
+    */
+    private ?ConsentVerificationStatus $consentVerificationStatus = null;
     
     /**
      * @var DateTime|null $createdAt UTC timestamp when this lead attribution metadata was created.
@@ -301,6 +311,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the consentAttested property value. User attestation of SMS consent from another source; does not establish independent verification.
+     * @return bool|null
+    */
+    public function getConsentAttested(): ?bool {
+        return $this->consentAttested;
+    }
+
+    /**
      * Gets the consentCertificateType property value. The provider responsible for a lead's consent certificate.
      * @return LeadMetadata_consentCertificateType|null
     */
@@ -314,6 +332,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function getConsentCertificateUrl(): ?string {
         return $this->consentCertificateUrl;
+    }
+
+    /**
+     * Gets the consentVerificationStatus property value. Leadping's assessment of the supporting consent evidence.
+     * @return ConsentVerificationStatus|null
+    */
+    public function getConsentVerificationStatus(): ?ConsentVerificationStatus {
+        return $this->consentVerificationStatus;
     }
 
     /**
@@ -361,8 +387,10 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
             'captureUserAgent' => fn(ParseNode $n) => $o->setCaptureUserAgent($n->getStringValue()),
             'complianceBlockedReason' => fn(ParseNode $n) => $o->setComplianceBlockedReason($n->getStringValue()),
             'complianceStatus' => fn(ParseNode $n) => $o->setComplianceStatus($n->getStringValue()),
+            'consentAttested' => fn(ParseNode $n) => $o->setConsentAttested($n->getBooleanValue()),
             'consentCertificateType' => fn(ParseNode $n) => $o->setConsentCertificateType($n->getEnumValue(LeadMetadata_consentCertificateType::class)),
             'consentCertificateUrl' => fn(ParseNode $n) => $o->setConsentCertificateUrl($n->getStringValue()),
+            'consentVerificationStatus' => fn(ParseNode $n) => $o->setConsentVerificationStatus($n->getEnumValue(ConsentVerificationStatus::class)),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'currency' => fn(ParseNode $n) => $o->setCurrency($n->getStringValue()),
             'directPostPrice' => fn(ParseNode $n) => $o->setDirectPostPrice($n->getFloatValue()),
@@ -651,8 +679,10 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('captureUserAgent', $this->getCaptureUserAgent());
         $writer->writeStringValue('complianceBlockedReason', $this->getComplianceBlockedReason());
         $writer->writeStringValue('complianceStatus', $this->getComplianceStatus());
+        $writer->writeBooleanValue('consentAttested', $this->getConsentAttested());
         $writer->writeEnumValue('consentCertificateType', $this->getConsentCertificateType());
         $writer->writeStringValue('consentCertificateUrl', $this->getConsentCertificateUrl());
+        $writer->writeEnumValue('consentVerificationStatus', $this->getConsentVerificationStatus());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('currency', $this->getCurrency());
         $writer->writeFloatValue('directPostPrice', $this->getDirectPostPrice());
@@ -747,6 +777,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the consentAttested property value. User attestation of SMS consent from another source; does not establish independent verification.
+     * @param bool|null $value Value to set for the consentAttested property.
+    */
+    public function setConsentAttested(?bool $value): void {
+        $this->consentAttested = $value;
+    }
+
+    /**
      * Sets the consentCertificateType property value. The provider responsible for a lead's consent certificate.
      * @param LeadMetadata_consentCertificateType|null $value Value to set for the consentCertificateType property.
     */
@@ -760,6 +798,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function setConsentCertificateUrl(?string $value): void {
         $this->consentCertificateUrl = $value;
+    }
+
+    /**
+     * Sets the consentVerificationStatus property value. Leadping's assessment of the supporting consent evidence.
+     * @param ConsentVerificationStatus|null $value Value to set for the consentVerificationStatus property.
+    */
+    public function setConsentVerificationStatus(?ConsentVerificationStatus $value): void {
+        $this->consentVerificationStatus = $value;
     }
 
     /**
