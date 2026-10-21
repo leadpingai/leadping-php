@@ -199,6 +199,11 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     private ?DateTime $trustedFormCheckedAt = null;
     
     /**
+     * @var DateTime|null $trustedFormRejectedAt Server-issued timestamp when TrustedForm returned HTTP 400 or the certificate was already used by the organization; the evidence remains unverified.
+    */
+    private ?DateTime $trustedFormRejectedAt = null;
+    
+    /**
      * @var string|null $userAgent Browser or client user agent captured when this lead attribution metadata was submitted.
     */
     private ?string $userAgent = null;
@@ -417,6 +422,7 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
             'sourceMetadata' => fn(ParseNode $n) => $o->setSourceMetadata($n->getObjectValue([LeadMetadata_sourceMetadata::class, 'createFromDiscriminatorValue'])),
             'subId' => fn(ParseNode $n) => $o->setSubId($n->getStringValue()),
             'trustedFormCheckedAt' => fn(ParseNode $n) => $o->setTrustedFormCheckedAt($n->getDateTimeValue()),
+            'trustedFormRejectedAt' => fn(ParseNode $n) => $o->setTrustedFormRejectedAt($n->getDateTimeValue()),
             'userAgent' => fn(ParseNode $n) => $o->setUserAgent($n->getStringValue()),
             'userId' => fn(ParseNode $n) => $o->setUserId($n->getStringValue()),
             'utmCampaign' => fn(ParseNode $n) => $o->setUtmCampaign($n->getStringValue()),
@@ -605,6 +611,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the trustedFormRejectedAt property value. Server-issued timestamp when TrustedForm returned HTTP 400 or the certificate was already used by the organization; the evidence remains unverified.
+     * @return DateTime|null
+    */
+    public function getTrustedFormRejectedAt(): ?DateTime {
+        return $this->trustedFormRejectedAt;
+    }
+
+    /**
      * Gets the userAgent property value. Browser or client user agent captured when this lead attribution metadata was submitted.
      * @return string|null
     */
@@ -709,6 +723,7 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
         $writer->writeObjectValue('sourceMetadata', $this->getSourceMetadata());
         $writer->writeStringValue('subId', $this->getSubId());
         $writer->writeDateTimeValue('trustedFormCheckedAt', $this->getTrustedFormCheckedAt());
+        $writer->writeDateTimeValue('trustedFormRejectedAt', $this->getTrustedFormRejectedAt());
         $writer->writeStringValue('userAgent', $this->getUserAgent());
         $writer->writeStringValue('userId', $this->getUserId());
         $writer->writeStringValue('utmCampaign', $this->getUtmCampaign());
@@ -1014,6 +1029,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function setTrustedFormCheckedAt(?DateTime $value): void {
         $this->trustedFormCheckedAt = $value;
+    }
+
+    /**
+     * Sets the trustedFormRejectedAt property value. Server-issued timestamp when TrustedForm returned HTTP 400 or the certificate was already used by the organization; the evidence remains unverified.
+     * @param DateTime|null $value Value to set for the trustedFormRejectedAt property.
+    */
+    public function setTrustedFormRejectedAt(?DateTime $value): void {
+        $this->trustedFormRejectedAt = $value;
     }
 
     /**
