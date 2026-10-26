@@ -209,11 +209,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     private ?string $userAgent = null;
     
     /**
-     * @var string|null $userId User ID associated with this lead's attribution metadata.
-    */
-    private ?string $userId = null;
-    
-    /**
      * @var string|null $utmCampaign UTM campaign parameter captured for lead attribution reporting.
     */
     private ?string $utmCampaign = null;
@@ -424,7 +419,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
             'trustedFormCheckedAt' => fn(ParseNode $n) => $o->setTrustedFormCheckedAt($n->getDateTimeValue()),
             'trustedFormRejectedAt' => fn(ParseNode $n) => $o->setTrustedFormRejectedAt($n->getDateTimeValue()),
             'userAgent' => fn(ParseNode $n) => $o->setUserAgent($n->getStringValue()),
-            'userId' => fn(ParseNode $n) => $o->setUserId($n->getStringValue()),
             'utmCampaign' => fn(ParseNode $n) => $o->setUtmCampaign($n->getStringValue()),
             'utmContent' => fn(ParseNode $n) => $o->setUtmContent($n->getStringValue()),
             'utmMedium' => fn(ParseNode $n) => $o->setUtmMedium($n->getStringValue()),
@@ -627,14 +621,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the userId property value. User ID associated with this lead's attribution metadata.
-     * @return string|null
-    */
-    public function getUserId(): ?string {
-        return $this->userId;
-    }
-
-    /**
      * Gets the utmCampaign property value. UTM campaign parameter captured for lead attribution reporting.
      * @return string|null
     */
@@ -725,7 +711,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('trustedFormCheckedAt', $this->getTrustedFormCheckedAt());
         $writer->writeDateTimeValue('trustedFormRejectedAt', $this->getTrustedFormRejectedAt());
         $writer->writeStringValue('userAgent', $this->getUserAgent());
-        $writer->writeStringValue('userId', $this->getUserId());
         $writer->writeStringValue('utmCampaign', $this->getUtmCampaign());
         $writer->writeStringValue('utmContent', $this->getUtmContent());
         $writer->writeStringValue('utmMedium', $this->getUtmMedium());
@@ -1045,14 +1030,6 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function setUserAgent(?string $value): void {
         $this->userAgent = $value;
-    }
-
-    /**
-     * Sets the userId property value. User ID associated with this lead's attribution metadata.
-     * @param string|null $value Value to set for the userId property.
-    */
-    public function setUserId(?string $value): void {
-        $this->userId = $value;
     }
 
     /**

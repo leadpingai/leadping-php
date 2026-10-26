@@ -19,6 +19,11 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     private ?string $actorDisplayName = null;
     
     /**
+     * @var string|null $actorLeadId The lead who performed this action.
+    */
+    private ?string $actorLeadId = null;
+    
+    /**
      * @var string|null $actorUserId User ID for the actor that performed the action.
     */
     private ?string $actorUserId = null;
@@ -253,6 +258,14 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the actorLeadId property value. The lead who performed this action.
+     * @return string|null
+    */
+    public function getActorLeadId(): ?string {
+        return $this->actorLeadId;
+    }
+
+    /**
      * Gets the actorUserId property value. User ID for the actor that performed the action.
      * @return string|null
     */
@@ -388,6 +401,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'actorDisplayName' => fn(ParseNode $n) => $o->setActorDisplayName($n->getStringValue()),
+            'actorLeadId' => fn(ParseNode $n) => $o->setActorLeadId($n->getStringValue()),
             'actorUserId' => fn(ParseNode $n) => $o->setActorUserId($n->getStringValue()),
             'billableAmount' => fn(ParseNode $n) => $o->setBillableAmount($n->getFloatValue()),
             'billingStatus' => fn(ParseNode $n) => $o->setBillingStatus($n->getStringValue()),
@@ -646,6 +660,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('actorDisplayName', $this->getActorDisplayName());
+        $writer->writeStringValue('actorLeadId', $this->getActorLeadId());
         $writer->writeStringValue('actorUserId', $this->getActorUserId());
         $writer->writeFloatValue('billableAmount', $this->getBillableAmount());
         $writer->writeStringValue('billingStatus', $this->getBillingStatus());
@@ -696,6 +711,14 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setActorDisplayName(?string $value): void {
         $this->actorDisplayName = $value;
+    }
+
+    /**
+     * Sets the actorLeadId property value. The lead who performed this action.
+     * @param string|null $value Value to set for the actorLeadId property.
+    */
+    public function setActorLeadId(?string $value): void {
+        $this->actorLeadId = $value;
     }
 
     /**

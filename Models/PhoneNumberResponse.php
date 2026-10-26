@@ -39,11 +39,6 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     private ?bool $isDemo = null;
     
     /**
-     * @var bool|null $leadpingOwned Indicates whether Leadping provisions and manages this phone number.
-    */
-    private ?bool $leadpingOwned = null;
-    
-    /**
      * @var DateTime|null $modifiedAt UTC timestamp when the resource was last modified, or null when it has not been updated.
     */
     private ?DateTime $modifiedAt = null;
@@ -67,6 +62,11 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
      * @var PhoneNumberResponse_organization|null $organization Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?PhoneNumberResponse_organization $organization = null;
+    
+    /**
+     * @var PhoneNumberOwnership|null $ownership Identifies whose traffic a phone number serves, independently of provider control.
+    */
+    private ?PhoneNumberOwnership $ownership = null;
     
     /**
      * @var string|null $phoneIdentityId Identifier of the canonical phone identity for this number.
@@ -144,12 +144,12 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
-            'leadpingOwned' => fn(ParseNode $n) => $o->setLeadpingOwned($n->getBooleanValue()),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'number' => fn(ParseNode $n) => $o->setNumber($n->getStringValue()),
             'numberHealthEnabled' => fn(ParseNode $n) => $o->setNumberHealthEnabled($n->getBooleanValue()),
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([PhoneNumberResponse_organization::class, 'createFromDiscriminatorValue'])),
+            'ownership' => fn(ParseNode $n) => $o->setOwnership($n->getEnumValue(PhoneNumberOwnership::class)),
             'phoneIdentityId' => fn(ParseNode $n) => $o->setPhoneIdentityId($n->getStringValue()),
             'routing' => fn(ParseNode $n) => $o->setRouting($n->getObjectValue([PhoneNumberRoutingMetadata::class, 'createFromDiscriminatorValue'])),
             'smsReady' => fn(ParseNode $n) => $o->setSmsReady($n->getBooleanValue()),
@@ -172,14 +172,6 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     */
     public function getIsDemo(): ?bool {
         return $this->isDemo;
-    }
-
-    /**
-     * Gets the leadpingOwned property value. Indicates whether Leadping provisions and manages this phone number.
-     * @return bool|null
-    */
-    public function getLeadpingOwned(): ?bool {
-        return $this->leadpingOwned;
     }
 
     /**
@@ -220,6 +212,14 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     */
     public function getOrganization(): ?PhoneNumberResponse_organization {
         return $this->organization;
+    }
+
+    /**
+     * Gets the ownership property value. Identifies whose traffic a phone number serves, independently of provider control.
+     * @return PhoneNumberOwnership|null
+    */
+    public function getOwnership(): ?PhoneNumberOwnership {
+        return $this->ownership;
     }
 
     /**
@@ -271,12 +271,12 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isDemo', $this->getIsDemo());
-        $writer->writeBooleanValue('leadpingOwned', $this->getLeadpingOwned());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeStringValue('number', $this->getNumber());
         $writer->writeBooleanValue('numberHealthEnabled', $this->getNumberHealthEnabled());
         $writer->writeObjectValue('organization', $this->getOrganization());
+        $writer->writeEnumValue('ownership', $this->getOwnership());
         $writer->writeStringValue('phoneIdentityId', $this->getPhoneIdentityId());
         $writer->writeObjectValue('routing', $this->getRouting());
         $writer->writeBooleanValue('smsReady', $this->getSmsReady());
@@ -326,14 +326,6 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the leadpingOwned property value. Indicates whether Leadping provisions and manages this phone number.
-     * @param bool|null $value Value to set for the leadpingOwned property.
-    */
-    public function setLeadpingOwned(?bool $value): void {
-        $this->leadpingOwned = $value;
-    }
-
-    /**
      * Sets the modifiedAt property value. UTC timestamp when the resource was last modified, or null when it has not been updated.
      * @param DateTime|null $value Value to set for the modifiedAt property.
     */
@@ -371,6 +363,14 @@ class PhoneNumberResponse implements AdditionalDataHolder, Parsable
     */
     public function setOrganization(?PhoneNumberResponse_organization $value): void {
         $this->organization = $value;
+    }
+
+    /**
+     * Sets the ownership property value. Identifies whose traffic a phone number serves, independently of provider control.
+     * @param PhoneNumberOwnership|null $value Value to set for the ownership property.
+    */
+    public function setOwnership(?PhoneNumberOwnership $value): void {
+        $this->ownership = $value;
     }
 
     /**

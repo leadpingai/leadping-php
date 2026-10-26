@@ -129,6 +129,11 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $nextRetryAt = null;
     
     /**
+     * @var string|null $organizationId The organization receiving this message status update.
+    */
+    private ?string $organizationId = null;
+    
+    /**
      * @var string|null $outboundPhoneNumberId Phone number ID selected for outbound delivery.
     */
     private ?string $outboundPhoneNumberId = null;
@@ -373,6 +378,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
             'media' => fn(ParseNode $n) => $o->setMedia($n->getCollectionOfObjectValues([MessageMediaAttachment::class, 'createFromDiscriminatorValue'])),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'nextRetryAt' => fn(ParseNode $n) => $o->setNextRetryAt($n->getDateTimeValue()),
+            'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'outboundPhoneNumberId' => fn(ParseNode $n) => $o->setOutboundPhoneNumberId($n->getStringValue()),
             'queuedAt' => fn(ParseNode $n) => $o->setQueuedAt($n->getDateTimeValue()),
             'receivedAt' => fn(ParseNode $n) => $o->setReceivedAt($n->getDateTimeValue()),
@@ -454,6 +460,14 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     */
     public function getNextRetryAt(): ?DateTime {
         return $this->nextRetryAt;
+    }
+
+    /**
+     * Gets the organizationId property value. The organization receiving this message status update.
+     * @return string|null
+    */
+    public function getOrganizationId(): ?string {
+        return $this->organizationId;
     }
 
     /**
@@ -611,6 +625,7 @@ class SmsResponse implements AdditionalDataHolder, Parsable
         $writer->writeCollectionOfObjectValues('media', $this->getMedia());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeDateTimeValue('nextRetryAt', $this->getNextRetryAt());
+        $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeStringValue('outboundPhoneNumberId', $this->getOutboundPhoneNumberId());
         $writer->writeDateTimeValue('queuedAt', $this->getQueuedAt());
         $writer->writeDateTimeValue('receivedAt', $this->getReceivedAt());
@@ -812,6 +827,14 @@ class SmsResponse implements AdditionalDataHolder, Parsable
     */
     public function setNextRetryAt(?DateTime $value): void {
         $this->nextRetryAt = $value;
+    }
+
+    /**
+     * Sets the organizationId property value. The organization receiving this message status update.
+     * @param string|null $value Value to set for the organizationId property.
+    */
+    public function setOrganizationId(?string $value): void {
+        $this->organizationId = $value;
     }
 
     /**

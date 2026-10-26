@@ -24,6 +24,11 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     private ?bool $automaticPhoneLookup = null;
     
     /**
+     * @var int|null $dailyLeadLimit Maximum new leads accepted per UTC day. Null means unlimited; zero pauses intake.
+    */
+    private ?int $dailyLeadLimit = null;
+    
+    /**
      * @var array<string>|null $defaultTagIds Tag IDs automatically assigned to leads created by this source.
     */
     private ?array $defaultTagIds = null;
@@ -81,6 +86,14 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the dailyLeadLimit property value. Maximum new leads accepted per UTC day. Null means unlimited; zero pauses intake.
+     * @return int|null
+    */
+    public function getDailyLeadLimit(): ?int {
+        return $this->dailyLeadLimit;
+    }
+
+    /**
      * Gets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
      * @return array<string>|null
     */
@@ -112,6 +125,7 @@ class SourceRequest implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'automaticPhoneLookup' => fn(ParseNode $n) => $o->setAutomaticPhoneLookup($n->getBooleanValue()),
+            'dailyLeadLimit' => fn(ParseNode $n) => $o->setDailyLeadLimit($n->getIntegerValue()),
             'defaultTagIds' => function (ParseNode $n) {
                 $val = $n->getCollectionOfPrimitiveValues();
                 if (is_array($val)) {
@@ -156,6 +170,7 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeBooleanValue('automaticPhoneLookup', $this->getAutomaticPhoneLookup());
+        $writer->writeIntegerValue('dailyLeadLimit', $this->getDailyLeadLimit());
         $writer->writeCollectionOfPrimitiveValues('defaultTagIds', $this->getDefaultTagIds());
         $writer->writeCollectionOfPrimitiveValues('defaultTagNames', $this->getDefaultTagNames());
         $writer->writeStringValue('description', $this->getDescription());
@@ -178,6 +193,14 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     */
     public function setAutomaticPhoneLookup(?bool $value): void {
         $this->automaticPhoneLookup = $value;
+    }
+
+    /**
+     * Sets the dailyLeadLimit property value. Maximum new leads accepted per UTC day. Null means unlimited; zero pauses intake.
+     * @param int|null $value Value to set for the dailyLeadLimit property.
+    */
+    public function setDailyLeadLimit(?int $value): void {
+        $this->dailyLeadLimit = $value;
     }
 
     /**

@@ -100,7 +100,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     private ?bool $paymentFailedSmsEnabled = null;
     
     /**
-     * @var bool|null $quietHoursEnabled Whether push and automation alerts wait until the user's daily quiet hours end.
+     * @var bool|null $quietHoursEnabled Whether push, SMS, and automation alerts wait until the user's daily quiet hours end.
     */
     private ?bool $quietHoursEnabled = null;
     
@@ -368,7 +368,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the quietHoursEnabled property value. Whether push and automation alerts wait until the user's daily quiet hours end.
+     * Gets the quietHoursEnabled property value. Whether push, SMS, and automation alerts wait until the user's daily quiet hours end.
      * @return bool|null
     */
     public function getQuietHoursEnabled(): ?bool {
@@ -663,7 +663,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the quietHoursEnabled property value. Whether push and automation alerts wait until the user's daily quiet hours end.
+     * Sets the quietHoursEnabled property value. Whether push, SMS, and automation alerts wait until the user's daily quiet hours end.
      * @param bool|null $value Value to set for the quietHoursEnabled property.
     */
     public function setQuietHoursEnabled(?bool $value): void {

@@ -58,9 +58,9 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     private ?string $organizationId = null;
     
     /**
-     * @var string|null $ownership Ownership classification for this phone number, such as Leadping-owned or customer-owned.
+     * @var PhoneNumberOwnership|null $ownership Identifies whose traffic a phone number serves, independently of provider control.
     */
-    private ?string $ownership = null;
+    private ?PhoneNumberOwnership $ownership = null;
     
     /**
      * @var string|null $routingSummary Human-readable routing summary for this phone number.
@@ -139,7 +139,7 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
             'number' => fn(ParseNode $n) => $o->setNumber($n->getStringValue()),
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getStringValue()),
             'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
-            'ownership' => fn(ParseNode $n) => $o->setOwnership($n->getStringValue()),
+            'ownership' => fn(ParseNode $n) => $o->setOwnership($n->getEnumValue(PhoneNumberOwnership::class)),
             'routingSummary' => fn(ParseNode $n) => $o->setRoutingSummary($n->getStringValue()),
             'smsReady' => fn(ParseNode $n) => $o->setSmsReady($n->getBooleanValue()),
             'tenDlcCampaignStatus' => fn(ParseNode $n) => $o->setTenDlcCampaignStatus($n->getStringValue()),
@@ -206,10 +206,10 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the ownership property value. Ownership classification for this phone number, such as Leadping-owned or customer-owned.
-     * @return string|null
+     * Gets the ownership property value. Identifies whose traffic a phone number serves, independently of provider control.
+     * @return PhoneNumberOwnership|null
     */
-    public function getOwnership(): ?string {
+    public function getOwnership(): ?PhoneNumberOwnership {
         return $this->ownership;
     }
 
@@ -274,7 +274,7 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('number', $this->getNumber());
         $writer->writeStringValue('organization', $this->getOrganization());
         $writer->writeStringValue('organizationId', $this->getOrganizationId());
-        $writer->writeStringValue('ownership', $this->getOwnership());
+        $writer->writeEnumValue('ownership', $this->getOwnership());
         $writer->writeStringValue('routingSummary', $this->getRoutingSummary());
         $writer->writeBooleanValue('smsReady', $this->getSmsReady());
         $writer->writeStringValue('tenDlcCampaignStatus', $this->getTenDlcCampaignStatus());
@@ -357,10 +357,10 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the ownership property value. Ownership classification for this phone number, such as Leadping-owned or customer-owned.
-     * @param string|null $value Value to set for the ownership property.
+     * Sets the ownership property value. Identifies whose traffic a phone number serves, independently of provider control.
+     * @param PhoneNumberOwnership|null $value Value to set for the ownership property.
     */
-    public function setOwnership(?string $value): void {
+    public function setOwnership(?PhoneNumberOwnership $value): void {
         $this->ownership = $value;
     }
 

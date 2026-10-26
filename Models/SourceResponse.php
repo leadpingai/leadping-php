@@ -60,6 +60,11 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     private ?string $createdByUserEmail = null;
     
     /**
+     * @var int|null $dailyLeadLimit Maximum new leads accepted per UTC day. Null means unlimited; zero pauses intake.
+    */
+    private ?int $dailyLeadLimit = null;
+    
+    /**
      * @var array<string>|null $defaultTagIds Tag IDs automatically assigned to leads created by this source.
     */
     private ?array $defaultTagIds = null;
@@ -218,6 +223,14 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the dailyLeadLimit property value. Maximum new leads accepted per UTC day. Null means unlimited; zero pauses intake.
+     * @return int|null
+    */
+    public function getDailyLeadLimit(): ?int {
+        return $this->dailyLeadLimit;
+    }
+
+    /**
      * Gets the defaultTagIds property value. Tag IDs automatically assigned to leads created by this source.
      * @return array<string>|null
     */
@@ -264,6 +277,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'createdByUser' => fn(ParseNode $n) => $o->setCreatedByUser($n->getObjectValue([SourceResponse_createdByUser::class, 'createFromDiscriminatorValue'])),
             'createdByUserEmail' => fn(ParseNode $n) => $o->setCreatedByUserEmail($n->getStringValue()),
+            'dailyLeadLimit' => fn(ParseNode $n) => $o->setDailyLeadLimit($n->getIntegerValue()),
             'defaultTagIds' => function (ParseNode $n) {
                 $val = $n->getCollectionOfPrimitiveValues();
                 if (is_array($val)) {
@@ -381,6 +395,7 @@ class SourceResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeObjectValue('createdByUser', $this->getCreatedByUser());
         $writer->writeStringValue('createdByUserEmail', $this->getCreatedByUserEmail());
+        $writer->writeIntegerValue('dailyLeadLimit', $this->getDailyLeadLimit());
         $writer->writeCollectionOfPrimitiveValues('defaultTagIds', $this->getDefaultTagIds());
         $writer->writeCollectionOfObjectValues('defaultTags', $this->getDefaultTags());
         $writer->writeStringValue('description', $this->getDescription());
@@ -468,6 +483,14 @@ class SourceResponse implements AdditionalDataHolder, Parsable
     */
     public function setCreatedByUserEmail(?string $value): void {
         $this->createdByUserEmail = $value;
+    }
+
+    /**
+     * Sets the dailyLeadLimit property value. Maximum new leads accepted per UTC day. Null means unlimited; zero pauses intake.
+     * @param int|null $value Value to set for the dailyLeadLimit property.
+    */
+    public function setDailyLeadLimit(?int $value): void {
+        $this->dailyLeadLimit = $value;
     }
 
     /**

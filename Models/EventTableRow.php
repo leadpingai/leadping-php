@@ -24,6 +24,11 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     private ?string $actorEmail = null;
     
     /**
+     * @var string|null $actorLeadId The lead who performed this action.
+    */
+    private ?string $actorLeadId = null;
+    
+    /**
      * @var string|null $actorUserId User ID for the person or system that created this event timeline table row.
     */
     private ?string $actorUserId = null;
@@ -301,6 +306,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the actorLeadId property value. The lead who performed this action.
+     * @return string|null
+    */
+    public function getActorLeadId(): ?string {
+        return $this->actorLeadId;
+    }
+
+    /**
      * Gets the actorUserId property value. User ID for the person or system that created this event timeline table row.
      * @return string|null
     */
@@ -469,6 +482,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
         return  [
             'actorDisplayName' => fn(ParseNode $n) => $o->setActorDisplayName($n->getStringValue()),
             'actorEmail' => fn(ParseNode $n) => $o->setActorEmail($n->getStringValue()),
+            'actorLeadId' => fn(ParseNode $n) => $o->setActorLeadId($n->getStringValue()),
             'actorUserId' => fn(ParseNode $n) => $o->setActorUserId($n->getStringValue()),
             'automationRunId' => fn(ParseNode $n) => $o->setAutomationRunId($n->getStringValue()),
             'billableAmount' => fn(ParseNode $n) => $o->setBillableAmount($n->getFloatValue()),
@@ -759,6 +773,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('actorDisplayName', $this->getActorDisplayName());
         $writer->writeStringValue('actorEmail', $this->getActorEmail());
+        $writer->writeStringValue('actorLeadId', $this->getActorLeadId());
         $writer->writeStringValue('actorUserId', $this->getActorUserId());
         $writer->writeStringValue('automationRunId', $this->getAutomationRunId());
         $writer->writeFloatValue('billableAmount', $this->getBillableAmount());
@@ -824,6 +839,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setActorEmail(?string $value): void {
         $this->actorEmail = $value;
+    }
+
+    /**
+     * Sets the actorLeadId property value. The lead who performed this action.
+     * @param string|null $value Value to set for the actorLeadId property.
+    */
+    public function setActorLeadId(?string $value): void {
+        $this->actorLeadId = $value;
     }
 
     /**
