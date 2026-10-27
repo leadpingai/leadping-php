@@ -84,6 +84,11 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     private ?OrganizationSwitchOption_tenDlcStatus $tenDlcStatus = null;
     
     /**
+     * @var string|null $timeZoneId Default timezone for organization reporting and display when a user has no personal preference.
+    */
+    private ?string $timeZoneId = null;
+    
+    /**
      * Instantiates a new OrganizationSwitchOption and sets the default values.
     */
     public function __construct() {
@@ -143,6 +148,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
             'readyForCustomerTraffic' => fn(ParseNode $n) => $o->setReadyForCustomerTraffic($n->getBooleanValue()),
             'role' => fn(ParseNode $n) => $o->setRole($n->getEnumValue(OrganizationMemberRole::class)),
             'tenDlcStatus' => fn(ParseNode $n) => $o->setTenDlcStatus($n->getEnumValue(OrganizationSwitchOption_tenDlcStatus::class)),
+            'timeZoneId' => fn(ParseNode $n) => $o->setTimeZoneId($n->getStringValue()),
         ];
     }
 
@@ -235,6 +241,14 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the timeZoneId property value. Default timezone for organization reporting and display when a user has no personal preference.
+     * @return string|null
+    */
+    public function getTimeZoneId(): ?string {
+        return $this->timeZoneId;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -252,6 +266,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('readyForCustomerTraffic', $this->getReadyForCustomerTraffic());
         $writer->writeEnumValue('role', $this->getRole());
         $writer->writeEnumValue('tenDlcStatus', $this->getTenDlcStatus());
+        $writer->writeStringValue('timeZoneId', $this->getTimeZoneId());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -365,6 +380,14 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     */
     public function setTenDlcStatus(?OrganizationSwitchOption_tenDlcStatus $value): void {
         $this->tenDlcStatus = $value;
+    }
+
+    /**
+     * Sets the timeZoneId property value. Default timezone for organization reporting and display when a user has no personal preference.
+     * @param string|null $value Value to set for the timeZoneId property.
+    */
+    public function setTimeZoneId(?string $value): void {
+        $this->timeZoneId = $value;
     }
 
 }

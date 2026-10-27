@@ -40,6 +40,11 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     private ?int $apiKeyTotalUses = null;
     
     /**
+     * @var bool|null $automaticConsentValidation Whether to validate consent certificates during intake. Skipped validation leaves consent unverified.
+    */
+    private ?bool $automaticConsentValidation = null;
+    
+    /**
      * @var bool|null $automaticPhoneLookup Whether lead phone numbers are looked up automatically during intake.
     */
     private ?bool $automaticPhoneLookup = null;
@@ -196,6 +201,14 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the automaticConsentValidation property value. Whether to validate consent certificates during intake. Skipped validation leaves consent unverified.
+     * @return bool|null
+    */
+    public function getAutomaticConsentValidation(): ?bool {
+        return $this->automaticConsentValidation;
+    }
+
+    /**
      * Gets the automaticPhoneLookup property value. Whether lead phone numbers are looked up automatically during intake.
      * @return bool|null
     */
@@ -278,6 +291,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
             'apiKeyPreview' => fn(ParseNode $n) => $o->setApiKeyPreview($n->getStringValue()),
             'apiKeyRotatedAt' => fn(ParseNode $n) => $o->setApiKeyRotatedAt($n->getDateTimeValue()),
             'apiKeyTotalUses' => fn(ParseNode $n) => $o->setApiKeyTotalUses($n->getIntegerValue()),
+            'automaticConsentValidation' => fn(ParseNode $n) => $o->setAutomaticConsentValidation($n->getBooleanValue()),
             'automaticPhoneLookup' => fn(ParseNode $n) => $o->setAutomaticPhoneLookup($n->getBooleanValue()),
             'complianceApproved' => fn(ParseNode $n) => $o->setComplianceApproved($n->getBooleanValue()),
             'costPerLead' => fn(ParseNode $n) => $o->setCostPerLead($n->getFloatValue()),
@@ -405,6 +419,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('apiKeyPreview', $this->getApiKeyPreview());
         $writer->writeDateTimeValue('apiKeyRotatedAt', $this->getApiKeyRotatedAt());
         $writer->writeIntegerValue('apiKeyTotalUses', $this->getApiKeyTotalUses());
+        $writer->writeBooleanValue('automaticConsentValidation', $this->getAutomaticConsentValidation());
         $writer->writeBooleanValue('automaticPhoneLookup', $this->getAutomaticPhoneLookup());
         $writer->writeBooleanValue('complianceApproved', $this->getComplianceApproved());
         $writer->writeFloatValue('costPerLead', $this->getCostPerLead());
@@ -466,6 +481,14 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     */
     public function setApiKeyTotalUses(?int $value): void {
         $this->apiKeyTotalUses = $value;
+    }
+
+    /**
+     * Sets the automaticConsentValidation property value. Whether to validate consent certificates during intake. Skipped validation leaves consent unverified.
+     * @param bool|null $value Value to set for the automaticConsentValidation property.
+    */
+    public function setAutomaticConsentValidation(?bool $value): void {
+        $this->automaticConsentValidation = $value;
     }
 
     /**

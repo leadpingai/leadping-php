@@ -63,6 +63,11 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     private ?string $targetAudience = null;
     
     /**
+     * @var string|null $timeZoneId Default timezone for organization reporting and display when a user has no personal preference.
+    */
+    private ?string $timeZoneId = null;
+    
+    /**
      * @var string|null $vertical Industry vertical used for lead routing, compliance review, and reporting.
     */
     private ?string $vertical = null;
@@ -136,6 +141,7 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
             'phone' => fn(ParseNode $n) => $o->setPhone($n->getStringValue()),
             'secondaryName' => fn(ParseNode $n) => $o->setSecondaryName($n->getStringValue()),
             'targetAudience' => fn(ParseNode $n) => $o->setTargetAudience($n->getStringValue()),
+            'timeZoneId' => fn(ParseNode $n) => $o->setTimeZoneId($n->getStringValue()),
             'vertical' => fn(ParseNode $n) => $o->setVertical($n->getStringValue()),
             'website' => fn(ParseNode $n) => $o->setWebsite($n->getStringValue()),
         ];
@@ -190,6 +196,14 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the timeZoneId property value. Default timezone for organization reporting and display when a user has no personal preference.
+     * @return string|null
+    */
+    public function getTimeZoneId(): ?string {
+        return $this->timeZoneId;
+    }
+
+    /**
      * Gets the vertical property value. Industry vertical used for lead routing, compliance review, and reporting.
      * @return string|null
     */
@@ -219,6 +233,7 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('phone', $this->getPhone());
         $writer->writeStringValue('secondaryName', $this->getSecondaryName());
         $writer->writeStringValue('targetAudience', $this->getTargetAudience());
+        $writer->writeStringValue('timeZoneId', $this->getTimeZoneId());
         $writer->writeStringValue('vertical', $this->getVertical());
         $writer->writeStringValue('website', $this->getWebsite());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -302,6 +317,14 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     */
     public function setTargetAudience(?string $value): void {
         $this->targetAudience = $value;
+    }
+
+    /**
+     * Sets the timeZoneId property value. Default timezone for organization reporting and display when a user has no personal preference.
+     * @param string|null $value Value to set for the timeZoneId property.
+    */
+    public function setTimeZoneId(?string $value): void {
+        $this->timeZoneId = $value;
     }
 
     /**

@@ -64,6 +64,11 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     private ?string $consentCertificateUrl = null;
     
     /**
+     * @var DateTime|null $consentValidationSkippedAt Server-issued time at which the source policy skipped certificate validation for this consent snapshot.
+    */
+    private ?DateTime $consentValidationSkippedAt = null;
+    
+    /**
      * @var ConsentVerificationStatus|null $consentVerificationStatus Leadping's assessment of the supporting consent evidence.
     */
     private ?ConsentVerificationStatus $consentVerificationStatus = null;
@@ -335,6 +340,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the consentValidationSkippedAt property value. Server-issued time at which the source policy skipped certificate validation for this consent snapshot.
+     * @return DateTime|null
+    */
+    public function getConsentValidationSkippedAt(): ?DateTime {
+        return $this->consentValidationSkippedAt;
+    }
+
+    /**
      * Gets the consentVerificationStatus property value. Leadping's assessment of the supporting consent evidence.
      * @return ConsentVerificationStatus|null
     */
@@ -390,6 +403,7 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
             'consentAttested' => fn(ParseNode $n) => $o->setConsentAttested($n->getBooleanValue()),
             'consentCertificateType' => fn(ParseNode $n) => $o->setConsentCertificateType($n->getEnumValue(LeadMetadata_consentCertificateType::class)),
             'consentCertificateUrl' => fn(ParseNode $n) => $o->setConsentCertificateUrl($n->getStringValue()),
+            'consentValidationSkippedAt' => fn(ParseNode $n) => $o->setConsentValidationSkippedAt($n->getDateTimeValue()),
             'consentVerificationStatus' => fn(ParseNode $n) => $o->setConsentVerificationStatus($n->getEnumValue(ConsentVerificationStatus::class)),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'currency' => fn(ParseNode $n) => $o->setCurrency($n->getStringValue()),
@@ -682,6 +696,7 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('consentAttested', $this->getConsentAttested());
         $writer->writeEnumValue('consentCertificateType', $this->getConsentCertificateType());
         $writer->writeStringValue('consentCertificateUrl', $this->getConsentCertificateUrl());
+        $writer->writeDateTimeValue('consentValidationSkippedAt', $this->getConsentValidationSkippedAt());
         $writer->writeEnumValue('consentVerificationStatus', $this->getConsentVerificationStatus());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('currency', $this->getCurrency());
@@ -798,6 +813,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function setConsentCertificateUrl(?string $value): void {
         $this->consentCertificateUrl = $value;
+    }
+
+    /**
+     * Sets the consentValidationSkippedAt property value. Server-issued time at which the source policy skipped certificate validation for this consent snapshot.
+     * @param DateTime|null $value Value to set for the consentValidationSkippedAt property.
+    */
+    public function setConsentValidationSkippedAt(?DateTime $value): void {
+        $this->consentValidationSkippedAt = $value;
     }
 
     /**

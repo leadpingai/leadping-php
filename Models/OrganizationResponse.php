@@ -169,6 +169,11 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     private ?OrganizationResponse_subscriptionStatus $subscriptionStatus = null;
     
     /**
+     * @var string|null $timeZoneId Default timezone for organization reporting and display when a user has no personal preference.
+    */
+    private ?string $timeZoneId = null;
+    
+    /**
      * @var OrganizationResponse_user|null $user Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?OrganizationResponse_user $user = null;
@@ -388,6 +393,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
             'site' => fn(ParseNode $n) => $o->setSite($n->getObjectValue([OrganizationResponse_site::class, 'createFromDiscriminatorValue'])),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(OrganizationResponse_status::class)),
             'subscriptionStatus' => fn(ParseNode $n) => $o->setSubscriptionStatus($n->getEnumValue(OrganizationResponse_subscriptionStatus::class)),
+            'timeZoneId' => fn(ParseNode $n) => $o->setTimeZoneId($n->getStringValue()),
             'user' => fn(ParseNode $n) => $o->setUser($n->getObjectValue([OrganizationResponse_user::class, 'createFromDiscriminatorValue'])),
             'vertical' => fn(ParseNode $n) => $o->setVertical($n->getStringValue()),
             'website' => fn(ParseNode $n) => $o->setWebsite($n->getStringValue()),
@@ -491,6 +497,14 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the timeZoneId property value. Default timezone for organization reporting and display when a user has no personal preference.
+     * @return string|null
+    */
+    public function getTimeZoneId(): ?string {
+        return $this->timeZoneId;
+    }
+
+    /**
      * Gets the user property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return OrganizationResponse_user|null
     */
@@ -549,6 +563,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
         $writer->writeObjectValue('site', $this->getSite());
         $writer->writeEnumValue('status', $this->getStatus());
         $writer->writeEnumValue('subscriptionStatus', $this->getSubscriptionStatus());
+        $writer->writeStringValue('timeZoneId', $this->getTimeZoneId());
         $writer->writeObjectValue('user', $this->getUser());
         $writer->writeStringValue('vertical', $this->getVertical());
         $writer->writeStringValue('website', $this->getWebsite());
@@ -801,6 +816,14 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     */
     public function setSubscriptionStatus(?OrganizationResponse_subscriptionStatus $value): void {
         $this->subscriptionStatus = $value;
+    }
+
+    /**
+     * Sets the timeZoneId property value. Default timezone for organization reporting and display when a user has no personal preference.
+     * @param string|null $value Value to set for the timeZoneId property.
+    */
+    public function setTimeZoneId(?string $value): void {
+        $this->timeZoneId = $value;
     }
 
     /**

@@ -19,6 +19,11 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var bool|null $automaticConsentValidation Whether to validate consent certificates during intake. Skipped validation leaves consent unverified.
+    */
+    private ?bool $automaticConsentValidation = null;
+    
+    /**
      * @var bool|null $automaticPhoneLookup Whether to look up lead phone numbers during intake. When disabled, lookup is required before calling or texting.
     */
     private ?bool $automaticPhoneLookup = null;
@@ -78,6 +83,14 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the automaticConsentValidation property value. Whether to validate consent certificates during intake. Skipped validation leaves consent unverified.
+     * @return bool|null
+    */
+    public function getAutomaticConsentValidation(): ?bool {
+        return $this->automaticConsentValidation;
+    }
+
+    /**
      * Gets the automaticPhoneLookup property value. Whether to look up lead phone numbers during intake. When disabled, lookup is required before calling or texting.
      * @return bool|null
     */
@@ -124,6 +137,7 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'automaticConsentValidation' => fn(ParseNode $n) => $o->setAutomaticConsentValidation($n->getBooleanValue()),
             'automaticPhoneLookup' => fn(ParseNode $n) => $o->setAutomaticPhoneLookup($n->getBooleanValue()),
             'dailyLeadLimit' => fn(ParseNode $n) => $o->setDailyLeadLimit($n->getIntegerValue()),
             'defaultTagIds' => function (ParseNode $n) {
@@ -169,6 +183,7 @@ class SourceRequest implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeBooleanValue('automaticConsentValidation', $this->getAutomaticConsentValidation());
         $writer->writeBooleanValue('automaticPhoneLookup', $this->getAutomaticPhoneLookup());
         $writer->writeIntegerValue('dailyLeadLimit', $this->getDailyLeadLimit());
         $writer->writeCollectionOfPrimitiveValues('defaultTagIds', $this->getDefaultTagIds());
@@ -185,6 +200,14 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the automaticConsentValidation property value. Whether to validate consent certificates during intake. Skipped validation leaves consent unverified.
+     * @param bool|null $value Value to set for the automaticConsentValidation property.
+    */
+    public function setAutomaticConsentValidation(?bool $value): void {
+        $this->automaticConsentValidation = $value;
     }
 
     /**
