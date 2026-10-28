@@ -2,6 +2,7 @@
 
 namespace Leadping\OpenApiClient\Outbound;
 
+use Leadping\OpenApiClient\Outbound\Item\WithPhoneNumberItemRequestBuilder;
 use Leadping\OpenApiClient\Outbound\Overview\OverviewRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
@@ -18,6 +19,17 @@ class OutboundRequestBuilder extends BaseRequestBuilder
         return new OverviewRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
+    /**
+     * Gets an item from the Leadping/OpenApiClient.outbound.item collection
+     * @param string $phoneNumberId The ID of the phone number whose outbound capacity should be retrieved.
+     * @return WithPhoneNumberItemRequestBuilder
+    */
+    public function byPhoneNumberId(string $phoneNumberId): WithPhoneNumberItemRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['phoneNumberId'] = $phoneNumberId;
+        return new WithPhoneNumberItemRequestBuilder($urlTplParams, $this->requestAdapter);
+    }
+
     /**
      * Instantiates a new OutboundRequestBuilder and sets the default values.
      * @param array<string, mixed>|string $pathParametersOrRawUrl Path parameters for the request or a String representing the raw URL.

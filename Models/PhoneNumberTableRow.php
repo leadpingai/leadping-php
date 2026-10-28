@@ -68,6 +68,11 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     private ?string $routingSummary = null;
     
     /**
+     * @var PhoneNumberTableRow_smsRampDirection|null $smsRampDirection Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+    */
+    private ?PhoneNumberTableRow_smsRampDirection $smsRampDirection = null;
+    
+    /**
      * @var bool|null $smsReady Indicates whether SMS messaging is ready for this organization or phone number.
     */
     private ?bool $smsReady = null;
@@ -81,6 +86,11 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
      * @var string|null $type Type classification used to route and interpret this phone number table row in the Leadping API.
     */
     private ?string $type = null;
+    
+    /**
+     * @var PhoneNumberTableRow_voiceRampDirection|null $voiceRampDirection Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+    */
+    private ?PhoneNumberTableRow_voiceRampDirection $voiceRampDirection = null;
     
     /**
      * @var bool|null $voiceReady Indicates whether voice calling is ready for this organization or phone number.
@@ -141,9 +151,11 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
             'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'ownership' => fn(ParseNode $n) => $o->setOwnership($n->getEnumValue(PhoneNumberOwnership::class)),
             'routingSummary' => fn(ParseNode $n) => $o->setRoutingSummary($n->getStringValue()),
+            'smsRampDirection' => fn(ParseNode $n) => $o->setSmsRampDirection($n->getEnumValue(PhoneNumberTableRow_smsRampDirection::class)),
             'smsReady' => fn(ParseNode $n) => $o->setSmsReady($n->getBooleanValue()),
             'tenDlcCampaignStatus' => fn(ParseNode $n) => $o->setTenDlcCampaignStatus($n->getStringValue()),
             'type' => fn(ParseNode $n) => $o->setType($n->getStringValue()),
+            'voiceRampDirection' => fn(ParseNode $n) => $o->setVoiceRampDirection($n->getEnumValue(PhoneNumberTableRow_voiceRampDirection::class)),
             'voiceReady' => fn(ParseNode $n) => $o->setVoiceReady($n->getBooleanValue()),
             'warmup' => fn(ParseNode $n) => $o->setWarmup($n->getObjectValue([PhoneNumberReadiness::class, 'createFromDiscriminatorValue'])),
         ];
@@ -222,6 +234,14 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the smsRampDirection property value. Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+     * @return PhoneNumberTableRow_smsRampDirection|null
+    */
+    public function getSmsRampDirection(): ?PhoneNumberTableRow_smsRampDirection {
+        return $this->smsRampDirection;
+    }
+
+    /**
      * Gets the smsReady property value. Indicates whether SMS messaging is ready for this organization or phone number.
      * @return bool|null
     */
@@ -243,6 +263,14 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     */
     public function getType(): ?string {
         return $this->type;
+    }
+
+    /**
+     * Gets the voiceRampDirection property value. Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+     * @return PhoneNumberTableRow_voiceRampDirection|null
+    */
+    public function getVoiceRampDirection(): ?PhoneNumberTableRow_voiceRampDirection {
+        return $this->voiceRampDirection;
     }
 
     /**
@@ -276,9 +304,11 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeEnumValue('ownership', $this->getOwnership());
         $writer->writeStringValue('routingSummary', $this->getRoutingSummary());
+        $writer->writeEnumValue('smsRampDirection', $this->getSmsRampDirection());
         $writer->writeBooleanValue('smsReady', $this->getSmsReady());
         $writer->writeStringValue('tenDlcCampaignStatus', $this->getTenDlcCampaignStatus());
         $writer->writeStringValue('type', $this->getType());
+        $writer->writeEnumValue('voiceRampDirection', $this->getVoiceRampDirection());
         $writer->writeBooleanValue('voiceReady', $this->getVoiceReady());
         $writer->writeObjectValue('warmup', $this->getWarmup());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -373,6 +403,14 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the smsRampDirection property value. Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+     * @param PhoneNumberTableRow_smsRampDirection|null $value Value to set for the smsRampDirection property.
+    */
+    public function setSmsRampDirection(?PhoneNumberTableRow_smsRampDirection $value): void {
+        $this->smsRampDirection = $value;
+    }
+
+    /**
      * Sets the smsReady property value. Indicates whether SMS messaging is ready for this organization or phone number.
      * @param bool|null $value Value to set for the smsReady property.
     */
@@ -394,6 +432,14 @@ class PhoneNumberTableRow implements AdditionalDataHolder, Parsable
     */
     public function setType(?string $value): void {
         $this->type = $value;
+    }
+
+    /**
+     * Sets the voiceRampDirection property value. Indicates whether a phone number's channel capacity is increasing, decreasing, or stable.
+     * @param PhoneNumberTableRow_voiceRampDirection|null $value Value to set for the voiceRampDirection property.
+    */
+    public function setVoiceRampDirection(?PhoneNumberTableRow_voiceRampDirection $value): void {
+        $this->voiceRampDirection = $value;
     }
 
     /**

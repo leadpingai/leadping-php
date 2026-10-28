@@ -54,6 +54,16 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     private ?string $last4 = null;
     
     /**
+     * @var BillingPaymentMethodType|null $type Reusable payment types supported for immediate billing payments.
+    */
+    private ?BillingPaymentMethodType $type = null;
+    
+    /**
+     * @var string|null $walletName The wallet name when supplied by a digital wallet.
+    */
+    private ?string $walletName = null;
+    
+    /**
      * Instantiates a new StripePaymentMethodResponse and sets the default values.
     */
     public function __construct() {
@@ -123,6 +133,8 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isDefault' => fn(ParseNode $n) => $o->setIsDefault($n->getBooleanValue()),
             'last4' => fn(ParseNode $n) => $o->setLast4($n->getStringValue()),
+            'type' => fn(ParseNode $n) => $o->setType($n->getEnumValue(BillingPaymentMethodType::class)),
+            'walletName' => fn(ParseNode $n) => $o->setWalletName($n->getStringValue()),
         ];
     }
 
@@ -151,6 +163,22 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the type property value. Reusable payment types supported for immediate billing payments.
+     * @return BillingPaymentMethodType|null
+    */
+    public function getType(): ?BillingPaymentMethodType {
+        return $this->type;
+    }
+
+    /**
+     * Gets the walletName property value. The wallet name when supplied by a digital wallet.
+     * @return string|null
+    */
+    public function getWalletName(): ?string {
+        return $this->walletName;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -162,6 +190,8 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isDefault', $this->getIsDefault());
         $writer->writeStringValue('last4', $this->getLast4());
+        $writer->writeEnumValue('type', $this->getType());
+        $writer->writeStringValue('walletName', $this->getWalletName());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -227,6 +257,22 @@ class StripePaymentMethodResponse implements AdditionalDataHolder, Parsable
     */
     public function setLast4(?string $value): void {
         $this->last4 = $value;
+    }
+
+    /**
+     * Sets the type property value. Reusable payment types supported for immediate billing payments.
+     * @param BillingPaymentMethodType|null $value Value to set for the type property.
+    */
+    public function setType(?BillingPaymentMethodType $value): void {
+        $this->type = $value;
+    }
+
+    /**
+     * Sets the walletName property value. The wallet name when supplied by a digital wallet.
+     * @param string|null $value Value to set for the walletName property.
+    */
+    public function setWalletName(?string $value): void {
+        $this->walletName = $value;
     }
 
 }

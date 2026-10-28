@@ -59,6 +59,11 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     private ?DateTime $createdAt = null;
     
     /**
+     * @var string|null $description Stored description of the call event.
+    */
+    private ?string $description = null;
+    
+    /**
      * @var string|null $direction Communication direction for this call event table row, such as inbound or outbound.
     */
     private ?string $direction = null;
@@ -252,6 +257,14 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the description property value. Stored description of the call event.
+     * @return string|null
+    */
+    public function getDescription(): ?string {
+        return $this->description;
+    }
+
+    /**
      * Gets the direction property value. Communication direction for this call event table row, such as inbound or outbound.
      * @return string|null
     */
@@ -290,6 +303,7 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
             'consoleEntries' => fn(ParseNode $n) => $o->setConsoleEntries($n->getCollectionOfObjectValues([CommunicationConsoleEntry::class, 'createFromDiscriminatorValue'])),
             'conversationId' => fn(ParseNode $n) => $o->setConversationId($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
+            'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'direction' => fn(ParseNode $n) => $o->setDirection($n->getStringValue()),
             'duration' => fn(ParseNode $n) => $o->setDuration($n->getIntegerValue()),
             'endedAt' => fn(ParseNode $n) => $o->setEndedAt($n->getDateTimeValue()),
@@ -471,6 +485,7 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeCollectionOfObjectValues('consoleEntries', $this->getConsoleEntries());
         $writer->writeStringValue('conversationId', $this->getConversationId());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
+        $writer->writeStringValue('description', $this->getDescription());
         $writer->writeStringValue('direction', $this->getDirection());
         $writer->writeIntegerValue('duration', $this->getDuration());
         $writer->writeDateTimeValue('endedAt', $this->getEndedAt());
@@ -565,6 +580,14 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setCreatedAt(?DateTime $value): void {
         $this->createdAt = $value;
+    }
+
+    /**
+     * Sets the description property value. Stored description of the call event.
+     * @param string|null $value Value to set for the description property.
+    */
+    public function setDescription(?string $value): void {
+        $this->description = $value;
     }
 
     /**

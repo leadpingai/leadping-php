@@ -129,6 +129,11 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     private ?string $organizationId = null;
     
     /**
+     * @var string|null $organizationName Organization name captured at intake for searching lead attribution.
+    */
+    private ?string $organizationName = null;
+    
+    /**
      * @var string|null $origin System or workflow that created this event.
     */
     private ?string $origin = null;
@@ -192,6 +197,11 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
      * @var LeadMetadata_sourceMetadata|null $sourceMetadata Source-provided key-value metadata retained for lead attribution and integration troubleshooting.
     */
     private ?LeadMetadata_sourceMetadata $sourceMetadata = null;
+    
+    /**
+     * @var string|null $sourceName Source name captured at intake for searching lead attribution.
+    */
+    private ?string $sourceName = null;
     
     /**
      * @var string|null $subId Affiliate or publisher sub ID captured for lead attribution.
@@ -416,6 +426,7 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
             'landingPage' => fn(ParseNode $n) => $o->setLandingPage($n->getStringValue()),
             'leadpingConsentCheckedAt' => fn(ParseNode $n) => $o->setLeadpingConsentCheckedAt($n->getDateTimeValue()),
             'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
+            'organizationName' => fn(ParseNode $n) => $o->setOrganizationName($n->getStringValue()),
             'origin' => fn(ParseNode $n) => $o->setOrigin($n->getStringValue()),
             'price' => fn(ParseNode $n) => $o->setPrice($n->getFloatValue()),
             'product' => fn(ParseNode $n) => $o->setProduct($n->getStringValue()),
@@ -429,6 +440,7 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
             'smsOptInAt' => fn(ParseNode $n) => $o->setSmsOptInAt($n->getDateTimeValue()),
             'smsOptOutAt' => fn(ParseNode $n) => $o->setSmsOptOutAt($n->getDateTimeValue()),
             'sourceMetadata' => fn(ParseNode $n) => $o->setSourceMetadata($n->getObjectValue([LeadMetadata_sourceMetadata::class, 'createFromDiscriminatorValue'])),
+            'sourceName' => fn(ParseNode $n) => $o->setSourceName($n->getStringValue()),
             'subId' => fn(ParseNode $n) => $o->setSubId($n->getStringValue()),
             'trustedFormCheckedAt' => fn(ParseNode $n) => $o->setTrustedFormCheckedAt($n->getDateTimeValue()),
             'trustedFormRejectedAt' => fn(ParseNode $n) => $o->setTrustedFormRejectedAt($n->getDateTimeValue()),
@@ -496,6 +508,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function getOrganizationId(): ?string {
         return $this->organizationId;
+    }
+
+    /**
+     * Gets the organizationName property value. Organization name captured at intake for searching lead attribution.
+     * @return string|null
+    */
+    public function getOrganizationName(): ?string {
+        return $this->organizationName;
     }
 
     /**
@@ -600,6 +620,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function getSourceMetadata(): ?LeadMetadata_sourceMetadata {
         return $this->sourceMetadata;
+    }
+
+    /**
+     * Gets the sourceName property value. Source name captured at intake for searching lead attribution.
+     * @return string|null
+    */
+    public function getSourceName(): ?string {
+        return $this->sourceName;
     }
 
     /**
@@ -709,6 +737,7 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('landingPage', $this->getLandingPage());
         $writer->writeDateTimeValue('leadpingConsentCheckedAt', $this->getLeadpingConsentCheckedAt());
         $writer->writeStringValue('organizationId', $this->getOrganizationId());
+        $writer->writeStringValue('organizationName', $this->getOrganizationName());
         $writer->writeStringValue('origin', $this->getOrigin());
         $writer->writeFloatValue('price', $this->getPrice());
         $writer->writeStringValue('product', $this->getProduct());
@@ -722,6 +751,7 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('smsOptInAt', $this->getSmsOptInAt());
         $writer->writeDateTimeValue('smsOptOutAt', $this->getSmsOptOutAt());
         $writer->writeObjectValue('sourceMetadata', $this->getSourceMetadata());
+        $writer->writeStringValue('sourceName', $this->getSourceName());
         $writer->writeStringValue('subId', $this->getSubId());
         $writer->writeDateTimeValue('trustedFormCheckedAt', $this->getTrustedFormCheckedAt());
         $writer->writeDateTimeValue('trustedFormRejectedAt', $this->getTrustedFormRejectedAt());
@@ -920,6 +950,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the organizationName property value. Organization name captured at intake for searching lead attribution.
+     * @param string|null $value Value to set for the organizationName property.
+    */
+    public function setOrganizationName(?string $value): void {
+        $this->organizationName = $value;
+    }
+
+    /**
      * Sets the origin property value. System or workflow that created this event.
      * @param string|null $value Value to set for the origin property.
     */
@@ -1021,6 +1059,14 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function setSourceMetadata(?LeadMetadata_sourceMetadata $value): void {
         $this->sourceMetadata = $value;
+    }
+
+    /**
+     * Sets the sourceName property value. Source name captured at intake for searching lead attribution.
+     * @param string|null $value Value to set for the sourceName property.
+    */
+    public function setSourceName(?string $value): void {
+        $this->sourceName = $value;
     }
 
     /**

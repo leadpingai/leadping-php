@@ -7,6 +7,7 @@ use Http\Promise\Promise;
 use Leadping\OpenApiClient\Leads\Item\Archive\ArchiveRequestBuilder;
 use Leadping\OpenApiClient\Leads\Item\Assignment\AssignmentRequestBuilder;
 use Leadping\OpenApiClient\Leads\Item\FollowUp\FollowUpRequestBuilder;
+use Leadping\OpenApiClient\Leads\Item\PhoneLookup\PhoneLookupRequestBuilder;
 use Leadping\OpenApiClient\Leads\Item\Status\StatusRequestBuilder;
 use Leadping\OpenApiClient\Leads\Item\StatusHistory\StatusHistoryRequestBuilder;
 use Leadping\OpenApiClient\Leads\Item\Tags\TagsRequestBuilder;
@@ -44,6 +45,13 @@ class ItemRequestBuilder extends BaseRequestBuilder
     */
     public function followUp(): FollowUpRequestBuilder {
         return new FollowUpRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The phoneLookup property
+    */
+    public function phoneLookup(): PhoneLookupRequestBuilder {
+        return new PhoneLookupRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**
