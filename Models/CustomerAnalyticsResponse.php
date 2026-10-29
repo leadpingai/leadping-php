@@ -39,6 +39,11 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $generatedAt = null;
     
     /**
+     * @var CustomerLeadOutcomes|null $leadOutcomes Current outcomes for non-deleted, non-demo leads created in the selected period.
+    */
+    private ?CustomerLeadOutcomes $leadOutcomes = null;
+    
+    /**
      * @var array<CustomerLeadSourceBreakdown>|null $leadSources Collection of lead sources included with this Leadping customer analytics.
     */
     private ?array $leadSources = null;
@@ -127,6 +132,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
             'automationHealth' => fn(ParseNode $n) => $o->setAutomationHealth($n->getObjectValue([CustomerAutomationHealth::class, 'createFromDiscriminatorValue'])),
             'communicationUsage' => fn(ParseNode $n) => $o->setCommunicationUsage($n->getObjectValue([CustomerCommunicationUsage::class, 'createFromDiscriminatorValue'])),
             'generatedAt' => fn(ParseNode $n) => $o->setGeneratedAt($n->getDateTimeValue()),
+            'leadOutcomes' => fn(ParseNode $n) => $o->setLeadOutcomes($n->getObjectValue([CustomerLeadOutcomes::class, 'createFromDiscriminatorValue'])),
             'leadSources' => fn(ParseNode $n) => $o->setLeadSources($n->getCollectionOfObjectValues([CustomerLeadSourceBreakdown::class, 'createFromDiscriminatorValue'])),
             'leadTrend' => fn(ParseNode $n) => $o->setLeadTrend($n->getObjectValue([CustomerLeadTrend::class, 'createFromDiscriminatorValue'])),
             'needsAttention' => fn(ParseNode $n) => $o->setNeedsAttention($n->getCollectionOfObjectValues([CustomerNeedsAttentionItem::class, 'createFromDiscriminatorValue'])),
@@ -142,6 +148,14 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     */
     public function getGeneratedAt(): ?DateTime {
         return $this->generatedAt;
+    }
+
+    /**
+     * Gets the leadOutcomes property value. Current outcomes for non-deleted, non-demo leads created in the selected period.
+     * @return CustomerLeadOutcomes|null
+    */
+    public function getLeadOutcomes(): ?CustomerLeadOutcomes {
+        return $this->leadOutcomes;
     }
 
     /**
@@ -201,6 +215,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
         $writer->writeObjectValue('automationHealth', $this->getAutomationHealth());
         $writer->writeObjectValue('communicationUsage', $this->getCommunicationUsage());
         $writer->writeDateTimeValue('generatedAt', $this->getGeneratedAt());
+        $writer->writeObjectValue('leadOutcomes', $this->getLeadOutcomes());
         $writer->writeCollectionOfObjectValues('leadSources', $this->getLeadSources());
         $writer->writeObjectValue('leadTrend', $this->getLeadTrend());
         $writer->writeCollectionOfObjectValues('needsAttention', $this->getNeedsAttention());
@@ -248,6 +263,14 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     */
     public function setGeneratedAt(?DateTime $value): void {
         $this->generatedAt = $value;
+    }
+
+    /**
+     * Sets the leadOutcomes property value. Current outcomes for non-deleted, non-demo leads created in the selected period.
+     * @param CustomerLeadOutcomes|null $value Value to set for the leadOutcomes property.
+    */
+    public function setLeadOutcomes(?CustomerLeadOutcomes $value): void {
+        $this->leadOutcomes = $value;
     }
 
     /**

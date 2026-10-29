@@ -6,6 +6,7 @@ use Exception;
 use Http\Promise\Promise;
 use Leadping\OpenApiClient\Conversations\Item\MarkHandled\MarkHandledRequestBuilder;
 use Leadping\OpenApiClient\Conversations\Item\MarkRead\MarkReadRequestBuilder;
+use Leadping\OpenApiClient\Conversations\Item\MarkReplyNeeded\MarkReplyNeededRequestBuilder;
 use Leadping\OpenApiClient\Conversations\Item\OutboundReadiness\OutboundReadinessRequestBuilder;
 use Leadping\OpenApiClient\Models\ConversationResponse;
 use Leadping\OpenApiClient\Models\ProblemDetails;
@@ -31,6 +32,13 @@ class ConversationsItemRequestBuilder extends BaseRequestBuilder
     */
     public function markRead(): MarkReadRequestBuilder {
         return new MarkReadRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The markReplyNeeded property
+    */
+    public function markReplyNeeded(): MarkReplyNeededRequestBuilder {
+        return new MarkReplyNeededRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**
