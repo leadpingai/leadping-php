@@ -54,6 +54,11 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     private ?DateTime $lastUsedAt = null;
     
     /**
+     * @var int|null $memberCount Number of active members in this organization, excluding pending invitations.
+    */
+    private ?int $memberCount = null;
+    
+    /**
      * @var string|null $name The human-readable name shown for this organization switch option.
     */
     private ?string $name = null;
@@ -142,6 +147,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
             'isCurrent' => fn(ParseNode $n) => $o->setIsCurrent($n->getBooleanValue()),
             'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'lastUsedAt' => fn(ParseNode $n) => $o->setLastUsedAt($n->getDateTimeValue()),
+            'memberCount' => fn(ParseNode $n) => $o->setMemberCount($n->getIntegerValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'needsAdminReview' => fn(ParseNode $n) => $o->setNeedsAdminReview($n->getBooleanValue()),
             'organizationStatus' => fn(ParseNode $n) => $o->setOrganizationStatus($n->getEnumValue(OrganizationSwitchOption_organizationStatus::class)),
@@ -190,6 +196,14 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     */
     public function getLastUsedAt(): ?DateTime {
         return $this->lastUsedAt;
+    }
+
+    /**
+     * Gets the memberCount property value. Number of active members in this organization, excluding pending invitations.
+     * @return int|null
+    */
+    public function getMemberCount(): ?int {
+        return $this->memberCount;
     }
 
     /**
@@ -260,6 +274,7 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('isCurrent', $this->getIsCurrent());
         $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeDateTimeValue('lastUsedAt', $this->getLastUsedAt());
+        $writer->writeIntegerValue('memberCount', $this->getMemberCount());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeBooleanValue('needsAdminReview', $this->getNeedsAdminReview());
         $writer->writeEnumValue('organizationStatus', $this->getOrganizationStatus());
@@ -332,6 +347,14 @@ class OrganizationSwitchOption implements AdditionalDataHolder, Parsable
     */
     public function setLastUsedAt(?DateTime $value): void {
         $this->lastUsedAt = $value;
+    }
+
+    /**
+     * Sets the memberCount property value. Number of active members in this organization, excluding pending invitations.
+     * @param int|null $value Value to set for the memberCount property.
+    */
+    public function setMemberCount(?int $value): void {
+        $this->memberCount = $value;
     }
 
     /**

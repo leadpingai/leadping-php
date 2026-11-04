@@ -61,7 +61,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     private ?LeadIntakeRequest_company $company = null;
     
     /**
-     * @var bool|null $consentAttested Explicitly attests to SMS consent when consentCertificateType is Other. Allows manual texts only.
+     * @var bool|null $consentAttested Explicitly attests to SMS consent when consentCertificateType is Other. Allows manual calls and texts only.
     */
     private ?bool $consentAttested = null;
     
@@ -354,7 +354,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the consentAttested property value. Explicitly attests to SMS consent when consentCertificateType is Other. Allows manual texts only.
+     * Gets the consentAttested property value. Explicitly attests to SMS consent when consentCertificateType is Other. Allows manual calls and texts only.
      * @return bool|null
     */
     public function getConsentAttested(): ?bool {
@@ -884,7 +884,7 @@ class LeadIntakeRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the consentAttested property value. Explicitly attests to SMS consent when consentCertificateType is Other. Allows manual texts only.
+     * Sets the consentAttested property value. Explicitly attests to SMS consent when consentCertificateType is Other. Allows manual calls and texts only.
      * @param bool|null $value Value to set for the consentAttested property.
     */
     public function setConsentAttested(?bool $value): void {

@@ -38,6 +38,11 @@ class InitiateCallRequest implements AdditionalDataHolder, Parsable
     private ?string $leadId = null;
     
     /**
+     * @var bool|null $originateFromBrowser Approve a call for the Portal to originate through WebRTC instead of dialing from the server.
+    */
+    private ?bool $originateFromBrowser = null;
+    
+    /**
      * @var string|null $outboundIdempotencyKey Idempotency key used to prevent duplicate outbound delivery.
     */
     private ?string $outboundIdempotencyKey = null;
@@ -48,7 +53,7 @@ class InitiateCallRequest implements AdditionalDataHolder, Parsable
     private ?string $sourceId = null;
     
     /**
-     * @var bool|null $useBrowserPhone Connect the authenticated user's browser phone to the server-controlled destination call.
+     * @var bool|null $useBrowserPhone Connect the authenticated user's phone to a server-controlled destination call.
     */
     private ?bool $useBrowserPhone = null;
     
@@ -108,6 +113,7 @@ class InitiateCallRequest implements AdditionalDataHolder, Parsable
             'conversationId' => fn(ParseNode $n) => $o->setConversationId($n->getStringValue()),
             'fromPhoneNumberId' => fn(ParseNode $n) => $o->setFromPhoneNumberId($n->getStringValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
+            'originateFromBrowser' => fn(ParseNode $n) => $o->setOriginateFromBrowser($n->getBooleanValue()),
             'outboundIdempotencyKey' => fn(ParseNode $n) => $o->setOutboundIdempotencyKey($n->getStringValue()),
             'sourceId' => fn(ParseNode $n) => $o->setSourceId($n->getStringValue()),
             'useBrowserPhone' => fn(ParseNode $n) => $o->setUseBrowserPhone($n->getBooleanValue()),
@@ -132,6 +138,14 @@ class InitiateCallRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the originateFromBrowser property value. Approve a call for the Portal to originate through WebRTC instead of dialing from the server.
+     * @return bool|null
+    */
+    public function getOriginateFromBrowser(): ?bool {
+        return $this->originateFromBrowser;
+    }
+
+    /**
      * Gets the outboundIdempotencyKey property value. Idempotency key used to prevent duplicate outbound delivery.
      * @return string|null
     */
@@ -148,7 +162,7 @@ class InitiateCallRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the useBrowserPhone property value. Connect the authenticated user's browser phone to the server-controlled destination call.
+     * Gets the useBrowserPhone property value. Connect the authenticated user's phone to a server-controlled destination call.
      * @return bool|null
     */
     public function getUseBrowserPhone(): ?bool {
@@ -172,6 +186,7 @@ class InitiateCallRequest implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('conversationId', $this->getConversationId());
         $writer->writeStringValue('fromPhoneNumberId', $this->getFromPhoneNumberId());
         $writer->writeStringValue('leadId', $this->getLeadId());
+        $writer->writeBooleanValue('originateFromBrowser', $this->getOriginateFromBrowser());
         $writer->writeStringValue('outboundIdempotencyKey', $this->getOutboundIdempotencyKey());
         $writer->writeStringValue('sourceId', $this->getSourceId());
         $writer->writeBooleanValue('useBrowserPhone', $this->getUseBrowserPhone());
@@ -220,6 +235,14 @@ class InitiateCallRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the originateFromBrowser property value. Approve a call for the Portal to originate through WebRTC instead of dialing from the server.
+     * @param bool|null $value Value to set for the originateFromBrowser property.
+    */
+    public function setOriginateFromBrowser(?bool $value): void {
+        $this->originateFromBrowser = $value;
+    }
+
+    /**
      * Sets the outboundIdempotencyKey property value. Idempotency key used to prevent duplicate outbound delivery.
      * @param string|null $value Value to set for the outboundIdempotencyKey property.
     */
@@ -236,7 +259,7 @@ class InitiateCallRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the useBrowserPhone property value. Connect the authenticated user's browser phone to the server-controlled destination call.
+     * Sets the useBrowserPhone property value. Connect the authenticated user's phone to a server-controlled destination call.
      * @param bool|null $value Value to set for the useBrowserPhone property.
     */
     public function setUseBrowserPhone(?bool $value): void {

@@ -109,6 +109,11 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     private ?string $direction = null;
     
     /**
+     * @var int|null $durationSeconds Confirmed call talk time in seconds, when available.
+    */
+    private ?int $durationSeconds = null;
+    
+    /**
      * @var string|null $errorCode Machine-readable error code returned while processing this event timeline table row.
     */
     private ?string $errorCode = null;
@@ -442,6 +447,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the durationSeconds property value. Confirmed call talk time in seconds, when available.
+     * @return int|null
+    */
+    public function getDurationSeconds(): ?int {
+        return $this->durationSeconds;
+    }
+
+    /**
      * Gets the errorCode property value. Machine-readable error code returned while processing this event timeline table row.
      * @return string|null
     */
@@ -498,6 +511,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
             'deliveredAt' => fn(ParseNode $n) => $o->setDeliveredAt($n->getDateTimeValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'direction' => fn(ParseNode $n) => $o->setDirection($n->getStringValue()),
+            'durationSeconds' => fn(ParseNode $n) => $o->setDurationSeconds($n->getIntegerValue()),
             'errorCode' => fn(ParseNode $n) => $o->setErrorCode($n->getStringValue()),
             'eventCategory' => fn(ParseNode $n) => $o->setEventCategory($n->getStringValue()),
             'eventType' => fn(ParseNode $n) => $o->setEventType($n->getStringValue()),
@@ -789,6 +803,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('deliveredAt', $this->getDeliveredAt());
         $writer->writeStringValue('description', $this->getDescription());
         $writer->writeStringValue('direction', $this->getDirection());
+        $writer->writeIntegerValue('durationSeconds', $this->getDurationSeconds());
         $writer->writeStringValue('errorCode', $this->getErrorCode());
         $writer->writeStringValue('eventCategory', $this->getEventCategory());
         $writer->writeStringValue('eventType', $this->getEventType());
@@ -975,6 +990,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setDirection(?string $value): void {
         $this->direction = $value;
+    }
+
+    /**
+     * Sets the durationSeconds property value. Confirmed call talk time in seconds, when available.
+     * @param int|null $value Value to set for the durationSeconds property.
+    */
+    public function setDurationSeconds(?int $value): void {
+        $this->durationSeconds = $value;
     }
 
     /**

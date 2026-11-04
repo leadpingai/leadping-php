@@ -34,6 +34,11 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     private ?string $billingStatus = null;
     
     /**
+     * @var PhoneCallResponse_browserCallApproval|null $browserCallApproval Server-approved parameters for one outbound browser call.
+    */
+    private ?PhoneCallResponse_browserCallApproval $browserCallApproval = null;
+    
+    /**
      * @var string|null $callerId Caller ID phone number presented during the outbound call.
     */
     private ?string $callerId = null;
@@ -207,6 +212,14 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the browserCallApproval property value. Server-approved parameters for one outbound browser call.
+     * @return PhoneCallResponse_browserCallApproval|null
+    */
+    public function getBrowserCallApproval(): ?PhoneCallResponse_browserCallApproval {
+        return $this->browserCallApproval;
+    }
+
+    /**
      * Gets the callerId property value. Caller ID phone number presented during the outbound call.
      * @return string|null
     */
@@ -280,6 +293,7 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
             'answeredAt' => fn(ParseNode $n) => $o->setAnsweredAt($n->getDateTimeValue()),
             'billableAmount' => fn(ParseNode $n) => $o->setBillableAmount($n->getFloatValue()),
             'billingStatus' => fn(ParseNode $n) => $o->setBillingStatus($n->getStringValue()),
+            'browserCallApproval' => fn(ParseNode $n) => $o->setBrowserCallApproval($n->getObjectValue([PhoneCallResponse_browserCallApproval::class, 'createFromDiscriminatorValue'])),
             'callerId' => fn(ParseNode $n) => $o->setCallerId($n->getStringValue()),
             'campaignId' => fn(ParseNode $n) => $o->setCampaignId($n->getStringValue()),
             'consoleEntries' => fn(ParseNode $n) => $o->setConsoleEntries($n->getCollectionOfObjectValues([CommunicationConsoleEntry::class, 'createFromDiscriminatorValue'])),
@@ -452,6 +466,7 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('answeredAt', $this->getAnsweredAt());
         $writer->writeFloatValue('billableAmount', $this->getBillableAmount());
         $writer->writeStringValue('billingStatus', $this->getBillingStatus());
+        $writer->writeObjectValue('browserCallApproval', $this->getBrowserCallApproval());
         $writer->writeStringValue('callerId', $this->getCallerId());
         $writer->writeStringValue('campaignId', $this->getCampaignId());
         $writer->writeCollectionOfObjectValues('consoleEntries', $this->getConsoleEntries());
@@ -510,6 +525,14 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     */
     public function setBillingStatus(?string $value): void {
         $this->billingStatus = $value;
+    }
+
+    /**
+     * Sets the browserCallApproval property value. Server-approved parameters for one outbound browser call.
+     * @param PhoneCallResponse_browserCallApproval|null $value Value to set for the browserCallApproval property.
+    */
+    public function setBrowserCallApproval(?PhoneCallResponse_browserCallApproval $value): void {
+        $this->browserCallApproval = $value;
     }
 
     /**
