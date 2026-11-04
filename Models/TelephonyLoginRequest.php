@@ -23,6 +23,11 @@ class TelephonyLoginRequest implements AdditionalDataHolder, Parsable
     private ?TelephonyLoginRequest_device $device = null;
     
     /**
+     * @var bool|null $includeIncoming Includes credentials for receiving calls to the authenticated organization.
+    */
+    private ?bool $includeIncoming = null;
+    
+    /**
      * Instantiates a new TelephonyLoginRequest and sets the default values.
     */
     public function __construct() {
@@ -62,7 +67,16 @@ class TelephonyLoginRequest implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'device' => fn(ParseNode $n) => $o->setDevice($n->getObjectValue([TelephonyLoginRequest_device::class, 'createFromDiscriminatorValue'])),
+            'includeIncoming' => fn(ParseNode $n) => $o->setIncludeIncoming($n->getBooleanValue()),
         ];
+    }
+
+    /**
+     * Gets the includeIncoming property value. Includes credentials for receiving calls to the authenticated organization.
+     * @return bool|null
+    */
+    public function getIncludeIncoming(): ?bool {
+        return $this->includeIncoming;
     }
 
     /**
@@ -71,6 +85,7 @@ class TelephonyLoginRequest implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeObjectValue('device', $this->getDevice());
+        $writer->writeBooleanValue('includeIncoming', $this->getIncludeIncoming());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -88,6 +103,14 @@ class TelephonyLoginRequest implements AdditionalDataHolder, Parsable
     */
     public function setDevice(?TelephonyLoginRequest_device $value): void {
         $this->device = $value;
+    }
+
+    /**
+     * Sets the includeIncoming property value. Includes credentials for receiving calls to the authenticated organization.
+     * @param bool|null $value Value to set for the includeIncoming property.
+    */
+    public function setIncludeIncoming(?bool $value): void {
+        $this->includeIncoming = $value;
     }
 
 }

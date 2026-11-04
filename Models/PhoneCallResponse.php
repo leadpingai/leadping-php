@@ -44,6 +44,11 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     private ?string $callerId = null;
     
     /**
+     * @var string|null $callSessionId Provider session identity used to correlate device invitations and server lifecycle events.
+    */
+    private ?string $callSessionId = null;
+    
+    /**
      * @var string|null $campaignId Messaging campaign identifier associated with this phone call.
     */
     private ?string $campaignId = null;
@@ -102,6 +107,11 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
      * @var string|null $leadId Lead ID associated with the call conversation or outreach attempt.
     */
     private ?string $leadId = null;
+    
+    /**
+     * @var string|null $leadName The matched lead's display name, when the caller belongs to a known lead.
+    */
+    private ?string $leadName = null;
     
     /**
      * @var DateTime|null $modifiedAt UTC timestamp when the resource was last modified, or null when it has not been updated.
@@ -228,6 +238,14 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the callSessionId property value. Provider session identity used to correlate device invitations and server lifecycle events.
+     * @return string|null
+    */
+    public function getCallSessionId(): ?string {
+        return $this->callSessionId;
+    }
+
+    /**
      * Gets the campaignId property value. Messaging campaign identifier associated with this phone call.
      * @return string|null
     */
@@ -295,6 +313,7 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
             'billingStatus' => fn(ParseNode $n) => $o->setBillingStatus($n->getStringValue()),
             'browserCallApproval' => fn(ParseNode $n) => $o->setBrowserCallApproval($n->getObjectValue([PhoneCallResponse_browserCallApproval::class, 'createFromDiscriminatorValue'])),
             'callerId' => fn(ParseNode $n) => $o->setCallerId($n->getStringValue()),
+            'callSessionId' => fn(ParseNode $n) => $o->setCallSessionId($n->getStringValue()),
             'campaignId' => fn(ParseNode $n) => $o->setCampaignId($n->getStringValue()),
             'consoleEntries' => fn(ParseNode $n) => $o->setConsoleEntries($n->getCollectionOfObjectValues([CommunicationConsoleEntry::class, 'createFromDiscriminatorValue'])),
             'conversationId' => fn(ParseNode $n) => $o->setConversationId($n->getStringValue()),
@@ -307,6 +326,7 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
+            'leadName' => fn(ParseNode $n) => $o->setLeadName($n->getStringValue()),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'phoneNumber' => fn(ParseNode $n) => $o->setPhoneNumber($n->getStringValue()),
@@ -360,6 +380,14 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     */
     public function getLeadId(): ?string {
         return $this->leadId;
+    }
+
+    /**
+     * Gets the leadName property value. The matched lead's display name, when the caller belongs to a known lead.
+     * @return string|null
+    */
+    public function getLeadName(): ?string {
+        return $this->leadName;
     }
 
     /**
@@ -468,6 +496,7 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('billingStatus', $this->getBillingStatus());
         $writer->writeObjectValue('browserCallApproval', $this->getBrowserCallApproval());
         $writer->writeStringValue('callerId', $this->getCallerId());
+        $writer->writeStringValue('callSessionId', $this->getCallSessionId());
         $writer->writeStringValue('campaignId', $this->getCampaignId());
         $writer->writeCollectionOfObjectValues('consoleEntries', $this->getConsoleEntries());
         $writer->writeStringValue('conversationId', $this->getConversationId());
@@ -480,6 +509,7 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeStringValue('leadId', $this->getLeadId());
+        $writer->writeStringValue('leadName', $this->getLeadName());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeStringValue('phoneNumber', $this->getPhoneNumber());
@@ -541,6 +571,14 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     */
     public function setCallerId(?string $value): void {
         $this->callerId = $value;
+    }
+
+    /**
+     * Sets the callSessionId property value. Provider session identity used to correlate device invitations and server lifecycle events.
+     * @param string|null $value Value to set for the callSessionId property.
+    */
+    public function setCallSessionId(?string $value): void {
+        $this->callSessionId = $value;
     }
 
     /**
@@ -637,6 +675,14 @@ class PhoneCallResponse implements AdditionalDataHolder, Parsable
     */
     public function setLeadId(?string $value): void {
         $this->leadId = $value;
+    }
+
+    /**
+     * Sets the leadName property value. The matched lead's display name, when the caller belongs to a known lead.
+     * @param string|null $value Value to set for the leadName property.
+    */
+    public function setLeadName(?string $value): void {
+        $this->leadName = $value;
     }
 
     /**

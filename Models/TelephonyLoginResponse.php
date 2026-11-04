@@ -29,6 +29,16 @@ class TelephonyLoginResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $expiresAt = null;
     
     /**
+     * @var string|null $incomingPassword Password for the organization's incoming SIP connection, when requested and configured.
+    */
+    private ?string $incomingPassword = null;
+    
+    /**
+     * @var string|null $incomingUsername Username for the organization's incoming SIP connection, when requested and configured.
+    */
+    private ?string $incomingUsername = null;
+    
+    /**
      * @var string|null $password Password for this telephony login.
     */
     private ?string $password = null;
@@ -87,9 +97,27 @@ class TelephonyLoginResponse implements AdditionalDataHolder, Parsable
         return  [
             'callbackToken' => fn(ParseNode $n) => $o->setCallbackToken($n->getStringValue()),
             'expiresAt' => fn(ParseNode $n) => $o->setExpiresAt($n->getDateTimeValue()),
+            'incomingPassword' => fn(ParseNode $n) => $o->setIncomingPassword($n->getStringValue()),
+            'incomingUsername' => fn(ParseNode $n) => $o->setIncomingUsername($n->getStringValue()),
             'password' => fn(ParseNode $n) => $o->setPassword($n->getStringValue()),
             'username' => fn(ParseNode $n) => $o->setUsername($n->getStringValue()),
         ];
+    }
+
+    /**
+     * Gets the incomingPassword property value. Password for the organization's incoming SIP connection, when requested and configured.
+     * @return string|null
+    */
+    public function getIncomingPassword(): ?string {
+        return $this->incomingPassword;
+    }
+
+    /**
+     * Gets the incomingUsername property value. Username for the organization's incoming SIP connection, when requested and configured.
+     * @return string|null
+    */
+    public function getIncomingUsername(): ?string {
+        return $this->incomingUsername;
     }
 
     /**
@@ -115,6 +143,8 @@ class TelephonyLoginResponse implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('callbackToken', $this->getCallbackToken());
         $writer->writeDateTimeValue('expiresAt', $this->getExpiresAt());
+        $writer->writeStringValue('incomingPassword', $this->getIncomingPassword());
+        $writer->writeStringValue('incomingUsername', $this->getIncomingUsername());
         $writer->writeStringValue('password', $this->getPassword());
         $writer->writeStringValue('username', $this->getUsername());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -142,6 +172,22 @@ class TelephonyLoginResponse implements AdditionalDataHolder, Parsable
     */
     public function setExpiresAt(?DateTime $value): void {
         $this->expiresAt = $value;
+    }
+
+    /**
+     * Sets the incomingPassword property value. Password for the organization's incoming SIP connection, when requested and configured.
+     * @param string|null $value Value to set for the incomingPassword property.
+    */
+    public function setIncomingPassword(?string $value): void {
+        $this->incomingPassword = $value;
+    }
+
+    /**
+     * Sets the incomingUsername property value. Username for the organization's incoming SIP connection, when requested and configured.
+     * @param string|null $value Value to set for the incomingUsername property.
+    */
+    public function setIncomingUsername(?string $value): void {
+        $this->incomingUsername = $value;
     }
 
     /**

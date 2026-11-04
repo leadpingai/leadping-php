@@ -2,6 +2,8 @@
 
 namespace Leadping\OpenApiClient\Telephony;
 
+use Leadping\OpenApiClient\Telephony\Availability\AvailabilityRequestBuilder;
+use Leadping\OpenApiClient\Telephony\IncomingCaller\IncomingCallerRequestBuilder;
 use Leadping\OpenApiClient\Telephony\Login\LoginRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
@@ -11,6 +13,20 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 */
 class TelephonyRequestBuilder extends BaseRequestBuilder 
 {
+    /**
+     * The availability property
+    */
+    public function availability(): AvailabilityRequestBuilder {
+        return new AvailabilityRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The incomingCaller property
+    */
+    public function incomingCaller(): IncomingCallerRequestBuilder {
+        return new IncomingCallerRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
     /**
      * The login property
     */
