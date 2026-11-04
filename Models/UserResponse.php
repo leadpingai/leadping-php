@@ -20,6 +20,11 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var UserResponse_adminDemoPreferences|null $adminDemoPreferences Controls demo presentation for an individual platform admin.
+    */
+    private ?UserResponse_adminDemoPreferences $adminDemoPreferences = null;
+    
+    /**
      * @var UserResponse_billingPlan|null $billingPlan Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
     */
     private ?UserResponse_billingPlan $billingPlan = null;
@@ -159,6 +164,14 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the adminDemoPreferences property value. Controls demo presentation for an individual platform admin.
+     * @return UserResponse_adminDemoPreferences|null
+    */
+    public function getAdminDemoPreferences(): ?UserResponse_adminDemoPreferences {
+        return $this->adminDemoPreferences;
+    }
+
+    /**
      * Gets the billingPlan property value. Identifies the Leadping subscription plan that determines organization features, allowances, and billing behavior.
      * @return UserResponse_billingPlan|null
     */
@@ -213,6 +226,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'adminDemoPreferences' => fn(ParseNode $n) => $o->setAdminDemoPreferences($n->getObjectValue([UserResponse_adminDemoPreferences::class, 'createFromDiscriminatorValue'])),
             'billingPlan' => fn(ParseNode $n) => $o->setBillingPlan($n->getEnumValue(UserResponse_billingPlan::class)),
             'billingState' => fn(ParseNode $n) => $o->setBillingState($n->getObjectValue([UserResponse_billingState::class, 'createFromDiscriminatorValue'])),
             'compliance' => fn(ParseNode $n) => $o->setCompliance($n->getObjectValue([UserResponse_compliance::class, 'createFromDiscriminatorValue'])),
@@ -387,6 +401,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeObjectValue('adminDemoPreferences', $this->getAdminDemoPreferences());
         $writer->writeEnumValue('billingPlan', $this->getBillingPlan());
         $writer->writeObjectValue('billingState', $this->getBillingState());
         $writer->writeObjectValue('compliance', $this->getCompliance());
@@ -419,6 +434,14 @@ class UserResponse implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the adminDemoPreferences property value. Controls demo presentation for an individual platform admin.
+     * @param UserResponse_adminDemoPreferences|null $value Value to set for the adminDemoPreferences property.
+    */
+    public function setAdminDemoPreferences(?UserResponse_adminDemoPreferences $value): void {
+        $this->adminDemoPreferences = $value;
     }
 
     /**
