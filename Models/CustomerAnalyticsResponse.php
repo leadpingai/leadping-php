@@ -39,6 +39,11 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $generatedAt = null;
     
     /**
+     * @var bool|null $includesDemoData Whether the report includes demo data, subject to the current display preference.
+    */
+    private ?bool $includesDemoData = null;
+    
+    /**
      * @var CustomerLeadOutcomes|null $leadOutcomes Current outcomes for non-deleted, non-demo leads created in the selected period.
     */
     private ?CustomerLeadOutcomes $leadOutcomes = null;
@@ -132,6 +137,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
             'automationHealth' => fn(ParseNode $n) => $o->setAutomationHealth($n->getObjectValue([CustomerAutomationHealth::class, 'createFromDiscriminatorValue'])),
             'communicationUsage' => fn(ParseNode $n) => $o->setCommunicationUsage($n->getObjectValue([CustomerCommunicationUsage::class, 'createFromDiscriminatorValue'])),
             'generatedAt' => fn(ParseNode $n) => $o->setGeneratedAt($n->getDateTimeValue()),
+            'includesDemoData' => fn(ParseNode $n) => $o->setIncludesDemoData($n->getBooleanValue()),
             'leadOutcomes' => fn(ParseNode $n) => $o->setLeadOutcomes($n->getObjectValue([CustomerLeadOutcomes::class, 'createFromDiscriminatorValue'])),
             'leadSources' => fn(ParseNode $n) => $o->setLeadSources($n->getCollectionOfObjectValues([CustomerLeadSourceBreakdown::class, 'createFromDiscriminatorValue'])),
             'leadTrend' => fn(ParseNode $n) => $o->setLeadTrend($n->getObjectValue([CustomerLeadTrend::class, 'createFromDiscriminatorValue'])),
@@ -148,6 +154,14 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     */
     public function getGeneratedAt(): ?DateTime {
         return $this->generatedAt;
+    }
+
+    /**
+     * Gets the includesDemoData property value. Whether the report includes demo data, subject to the current display preference.
+     * @return bool|null
+    */
+    public function getIncludesDemoData(): ?bool {
+        return $this->includesDemoData;
     }
 
     /**
@@ -215,6 +229,7 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
         $writer->writeObjectValue('automationHealth', $this->getAutomationHealth());
         $writer->writeObjectValue('communicationUsage', $this->getCommunicationUsage());
         $writer->writeDateTimeValue('generatedAt', $this->getGeneratedAt());
+        $writer->writeBooleanValue('includesDemoData', $this->getIncludesDemoData());
         $writer->writeObjectValue('leadOutcomes', $this->getLeadOutcomes());
         $writer->writeCollectionOfObjectValues('leadSources', $this->getLeadSources());
         $writer->writeObjectValue('leadTrend', $this->getLeadTrend());
@@ -263,6 +278,14 @@ class CustomerAnalyticsResponse implements AdditionalDataHolder, Parsable
     */
     public function setGeneratedAt(?DateTime $value): void {
         $this->generatedAt = $value;
+    }
+
+    /**
+     * Sets the includesDemoData property value. Whether the report includes demo data, subject to the current display preference.
+     * @param bool|null $value Value to set for the includesDemoData property.
+    */
+    public function setIncludesDemoData(?bool $value): void {
+        $this->includesDemoData = $value;
     }
 
     /**
