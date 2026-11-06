@@ -14,6 +14,16 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class CallEventTableRow implements AdditionalDataHolder, Parsable 
 {
     /**
+     * @var string|null $actorDisplayName The recorded display name of the actor who performed this action.
+    */
+    private ?string $actorDisplayName = null;
+    
+    /**
+     * @var string|null $actorUserId The user who performed this action.
+    */
+    private ?string $actorUserId = null;
+    
+    /**
      * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     */
     private ?array $additionalData = null;
@@ -185,6 +195,22 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the actorDisplayName property value. The recorded display name of the actor who performed this action.
+     * @return string|null
+    */
+    public function getActorDisplayName(): ?string {
+        return $this->actorDisplayName;
+    }
+
+    /**
+     * Gets the actorUserId property value. The user who performed this action.
+     * @return string|null
+    */
+    public function getActorUserId(): ?string {
+        return $this->actorUserId;
+    }
+
+    /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>|null
     */
@@ -295,6 +321,8 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'actorDisplayName' => fn(ParseNode $n) => $o->setActorDisplayName($n->getStringValue()),
+            'actorUserId' => fn(ParseNode $n) => $o->setActorUserId($n->getStringValue()),
             'answeredAt' => fn(ParseNode $n) => $o->setAnsweredAt($n->getDateTimeValue()),
             'billableAmount' => fn(ParseNode $n) => $o->setBillableAmount($n->getFloatValue()),
             'billableSeconds' => fn(ParseNode $n) => $o->setBillableSeconds($n->getIntegerValue()),
@@ -477,6 +505,8 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeStringValue('actorDisplayName', $this->getActorDisplayName());
+        $writer->writeStringValue('actorUserId', $this->getActorUserId());
         $writer->writeDateTimeValue('answeredAt', $this->getAnsweredAt());
         $writer->writeFloatValue('billableAmount', $this->getBillableAmount());
         $writer->writeIntegerValue('billableSeconds', $this->getBillableSeconds());
@@ -508,6 +538,22 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('userName', $this->getUserName());
         $writer->writeStringValue('voicemailUrl', $this->getVoicemailUrl());
         $writer->writeAdditionalData($this->getAdditionalData());
+    }
+
+    /**
+     * Sets the actorDisplayName property value. The recorded display name of the actor who performed this action.
+     * @param string|null $value Value to set for the actorDisplayName property.
+    */
+    public function setActorDisplayName(?string $value): void {
+        $this->actorDisplayName = $value;
+    }
+
+    /**
+     * Sets the actorUserId property value. The user who performed this action.
+     * @param string|null $value Value to set for the actorUserId property.
+    */
+    public function setActorUserId(?string $value): void {
+        $this->actorUserId = $value;
     }
 
     /**
