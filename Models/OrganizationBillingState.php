@@ -54,6 +54,11 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     private ?DateTime $lastSubscriptionEventAt = null;
     
     /**
+     * @var int|null $numberHealthQuantity Number of billable phone numbers with Number Health enabled.
+    */
+    private ?int $numberHealthQuantity = null;
+    
+    /**
      * @var int|null $organizationMemberAssignedQuantity Number of user licenses currently assigned to organization members.
     */
     private ?int $organizationMemberAssignedQuantity = null;
@@ -145,6 +150,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
             'hasStripeCustomer' => fn(ParseNode $n) => $o->setHasStripeCustomer($n->getBooleanValue()),
             'lastPaymentMethodEventAt' => fn(ParseNode $n) => $o->setLastPaymentMethodEventAt($n->getDateTimeValue()),
             'lastSubscriptionEventAt' => fn(ParseNode $n) => $o->setLastSubscriptionEventAt($n->getDateTimeValue()),
+            'numberHealthQuantity' => fn(ParseNode $n) => $o->setNumberHealthQuantity($n->getIntegerValue()),
             'organizationMemberAssignedQuantity' => fn(ParseNode $n) => $o->setOrganizationMemberAssignedQuantity($n->getIntegerValue()),
             'organizationMemberQuantity' => fn(ParseNode $n) => $o->setOrganizationMemberQuantity($n->getIntegerValue()),
             'pendingBillingPlan' => fn(ParseNode $n) => $o->setPendingBillingPlan($n->getEnumValue(OrganizationBillingState_pendingBillingPlan::class)),
@@ -184,6 +190,14 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     */
     public function getLastSubscriptionEventAt(): ?DateTime {
         return $this->lastSubscriptionEventAt;
+    }
+
+    /**
+     * Gets the numberHealthQuantity property value. Number of billable phone numbers with Number Health enabled.
+     * @return int|null
+    */
+    public function getNumberHealthQuantity(): ?int {
+        return $this->numberHealthQuantity;
     }
 
     /**
@@ -246,6 +260,7 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('hasStripeCustomer', $this->getHasStripeCustomer());
         $writer->writeDateTimeValue('lastPaymentMethodEventAt', $this->getLastPaymentMethodEventAt());
         $writer->writeDateTimeValue('lastSubscriptionEventAt', $this->getLastSubscriptionEventAt());
+        $writer->writeIntegerValue('numberHealthQuantity', $this->getNumberHealthQuantity());
         $writer->writeIntegerValue('organizationMemberAssignedQuantity', $this->getOrganizationMemberAssignedQuantity());
         $writer->writeIntegerValue('organizationMemberQuantity', $this->getOrganizationMemberQuantity());
         $writer->writeEnumValue('pendingBillingPlan', $this->getPendingBillingPlan());
@@ -317,6 +332,14 @@ class OrganizationBillingState implements AdditionalDataHolder, Parsable
     */
     public function setLastSubscriptionEventAt(?DateTime $value): void {
         $this->lastSubscriptionEventAt = $value;
+    }
+
+    /**
+     * Sets the numberHealthQuantity property value. Number of billable phone numbers with Number Health enabled.
+     * @param int|null $value Value to set for the numberHealthQuantity property.
+    */
+    public function setNumberHealthQuantity(?int $value): void {
+        $this->numberHealthQuantity = $value;
     }
 
     /**

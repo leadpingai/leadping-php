@@ -54,6 +54,11 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     private ?OrganizationResponse_billingAddress $billingAddress = null;
     
     /**
+     * @var string|null $billingContactEmail Stored billing contact email for the organization.
+    */
+    private ?string $billingContactEmail = null;
+    
+    /**
      * @var string|null $billingName Name used for invoices, receipts, and payment processor billing records.
     */
     private ?string $billingName = null;
@@ -269,6 +274,14 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the billingContactEmail property value. Stored billing contact email for the organization.
+     * @return string|null
+    */
+    public function getBillingContactEmail(): ?string {
+        return $this->billingContactEmail;
+    }
+
+    /**
      * Gets the billingName property value. Name used for invoices, receipts, and payment processor billing records.
      * @return string|null
     */
@@ -370,6 +383,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
             'autoRefillEnabled' => fn(ParseNode $n) => $o->setAutoRefillEnabled($n->getBooleanValue()),
             'autoRefillTrigger' => fn(ParseNode $n) => $o->setAutoRefillTrigger($n->getFloatValue()),
             'billingAddress' => fn(ParseNode $n) => $o->setBillingAddress($n->getObjectValue([OrganizationResponse_billingAddress::class, 'createFromDiscriminatorValue'])),
+            'billingContactEmail' => fn(ParseNode $n) => $o->setBillingContactEmail($n->getStringValue()),
             'billingName' => fn(ParseNode $n) => $o->setBillingName($n->getStringValue()),
             'billingPlan' => fn(ParseNode $n) => $o->setBillingPlan($n->getEnumValue(OrganizationResponse_billingPlan::class)),
             'billingState' => fn(ParseNode $n) => $o->setBillingState($n->getObjectValue([OrganizationResponse_billingState::class, 'createFromDiscriminatorValue'])),
@@ -540,6 +554,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('autoRefillEnabled', $this->getAutoRefillEnabled());
         $writer->writeFloatValue('autoRefillTrigger', $this->getAutoRefillTrigger());
         $writer->writeObjectValue('billingAddress', $this->getBillingAddress());
+        $writer->writeStringValue('billingContactEmail', $this->getBillingContactEmail());
         $writer->writeStringValue('billingName', $this->getBillingName());
         $writer->writeEnumValue('billingPlan', $this->getBillingPlan());
         $writer->writeObjectValue('billingState', $this->getBillingState());
@@ -632,6 +647,14 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     */
     public function setBillingAddress(?OrganizationResponse_billingAddress $value): void {
         $this->billingAddress = $value;
+    }
+
+    /**
+     * Sets the billingContactEmail property value. Stored billing contact email for the organization.
+     * @param string|null $value Value to set for the billingContactEmail property.
+    */
+    public function setBillingContactEmail(?string $value): void {
+        $this->billingContactEmail = $value;
     }
 
     /**
