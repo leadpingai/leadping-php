@@ -59,6 +59,11 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     private ?bool $isDemo = null;
     
     /**
+     * @var bool|null $isUsageReservation Indicates a temporary credit hold, not a settled charge.
+    */
+    private ?bool $isUsageReservation = null;
+    
+    /**
      * @var TransactionTableRow_lead|null $lead Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?TransactionTableRow_lead $lead = null;
@@ -200,6 +205,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
+            'isUsageReservation' => fn(ParseNode $n) => $o->setIsUsageReservation($n->getBooleanValue()),
             'lead' => fn(ParseNode $n) => $o->setLead($n->getObjectValue([TransactionTableRow_lead::class, 'createFromDiscriminatorValue'])),
             'netAmount' => fn(ParseNode $n) => $o->setNetAmount($n->getFloatValue()),
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([TransactionTableRow_organization::class, 'createFromDiscriminatorValue'])),
@@ -228,6 +234,14 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     */
     public function getIsDemo(): ?bool {
         return $this->isDemo;
+    }
+
+    /**
+     * Gets the isUsageReservation property value. Indicates a temporary credit hold, not a settled charge.
+     * @return bool|null
+    */
+    public function getIsUsageReservation(): ?bool {
+        return $this->isUsageReservation;
     }
 
     /**
@@ -331,6 +345,7 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('description', $this->getDescription());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isDemo', $this->getIsDemo());
+        $writer->writeBooleanValue('isUsageReservation', $this->getIsUsageReservation());
         $writer->writeObjectValue('lead', $this->getLead());
         $writer->writeFloatValue('netAmount', $this->getNetAmount());
         $writer->writeObjectValue('organization', $this->getOrganization());
@@ -415,6 +430,14 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     */
     public function setIsDemo(?bool $value): void {
         $this->isDemo = $value;
+    }
+
+    /**
+     * Sets the isUsageReservation property value. Indicates a temporary credit hold, not a settled charge.
+     * @param bool|null $value Value to set for the isUsageReservation property.
+    */
+    public function setIsUsageReservation(?bool $value): void {
+        $this->isUsageReservation = $value;
     }
 
     /**
