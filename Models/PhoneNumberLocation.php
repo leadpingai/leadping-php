@@ -43,6 +43,11 @@ class PhoneNumberLocation implements AdditionalDataHolder, Parsable
     private ?string $countryCode = null;
     
     /**
+     * @var bool|null $isCoordinateApproximate Whether the coordinates represent an approximate phone-number region rather than a resolved city.
+    */
+    private ?bool $isCoordinateApproximate = null;
+    
+    /**
      * @var string|null $location Geographic location metadata for the phone number, lead, or lookup result.
     */
     private ?string $location = null;
@@ -138,11 +143,20 @@ class PhoneNumberLocation implements AdditionalDataHolder, Parsable
             'coordinate' => fn(ParseNode $n) => $o->setCoordinate($n->getObjectValue([PhoneNumberLocation_coordinate::class, 'createFromDiscriminatorValue'])),
             'coordinateSource' => fn(ParseNode $n) => $o->setCoordinateSource($n->getObjectValue([PhoneNumberLocation_coordinateSource::class, 'createFromDiscriminatorValue'])),
             'countryCode' => fn(ParseNode $n) => $o->setCountryCode($n->getStringValue()),
+            'isCoordinateApproximate' => fn(ParseNode $n) => $o->setIsCoordinateApproximate($n->getBooleanValue()),
             'location' => fn(ParseNode $n) => $o->setLocation($n->getStringValue()),
             'state' => fn(ParseNode $n) => $o->setState($n->getStringValue()),
             'timeZoneId' => fn(ParseNode $n) => $o->setTimeZoneId($n->getStringValue()),
             'timeZoneSource' => fn(ParseNode $n) => $o->setTimeZoneSource($n->getObjectValue([PhoneNumberLocation_timeZoneSource::class, 'createFromDiscriminatorValue'])),
         ];
+    }
+
+    /**
+     * Gets the isCoordinateApproximate property value. Whether the coordinates represent an approximate phone-number region rather than a resolved city.
+     * @return bool|null
+    */
+    public function getIsCoordinateApproximate(): ?bool {
+        return $this->isCoordinateApproximate;
     }
 
     /**
@@ -187,6 +201,7 @@ class PhoneNumberLocation implements AdditionalDataHolder, Parsable
         $writer->writeObjectValue('coordinate', $this->getCoordinate());
         $writer->writeObjectValue('coordinateSource', $this->getCoordinateSource());
         $writer->writeStringValue('countryCode', $this->getCountryCode());
+        $writer->writeBooleanValue('isCoordinateApproximate', $this->getIsCoordinateApproximate());
         $writer->writeStringValue('location', $this->getLocation());
         $writer->writeStringValue('state', $this->getState());
         $writer->writeStringValue('timeZoneId', $this->getTimeZoneId());
@@ -240,6 +255,14 @@ class PhoneNumberLocation implements AdditionalDataHolder, Parsable
     */
     public function setCountryCode(?string $value): void {
         $this->countryCode = $value;
+    }
+
+    /**
+     * Sets the isCoordinateApproximate property value. Whether the coordinates represent an approximate phone-number region rather than a resolved city.
+     * @param bool|null $value Value to set for the isCoordinateApproximate property.
+    */
+    public function setIsCoordinateApproximate(?bool $value): void {
+        $this->isCoordinateApproximate = $value;
     }
 
     /**

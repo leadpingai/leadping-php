@@ -5,6 +5,7 @@ namespace Leadping\OpenApiClient\Models;
 use Microsoft\Kiota\Abstractions\Enum;
 
 class SmsResponse_selectionReason extends Enum {
+    public const NEAREST_LOCATION = "NearestLocation";
     public const STICKY_CONVERSATION = "StickyConversation";
     public const LEAD_ASSIGNED = "LeadAssigned";
     public const CAMPAIGN_OR_SOURCE = "CampaignOrSource";

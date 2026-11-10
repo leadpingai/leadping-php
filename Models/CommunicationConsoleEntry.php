@@ -19,6 +19,11 @@ class CommunicationConsoleEntry implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var bool|null $adminOnly Restricts this diagnostic entry to platform administrators.
+    */
+    private ?bool $adminOnly = null;
+    
+    /**
      * @var string|null $id Unique identifier of this diagnostic console entry.
     */
     private ?string $id = null;
@@ -68,12 +73,21 @@ class CommunicationConsoleEntry implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the adminOnly property value. Restricts this diagnostic entry to platform administrators.
+     * @return bool|null
+    */
+    public function getAdminOnly(): ?bool {
+        return $this->adminOnly;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'adminOnly' => fn(ParseNode $n) => $o->setAdminOnly($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'message' => fn(ParseNode $n) => $o->setMessage($n->getStringValue()),
             'occurredAt' => fn(ParseNode $n) => $o->setOccurredAt($n->getDateTimeValue()),
@@ -127,6 +141,7 @@ class CommunicationConsoleEntry implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeBooleanValue('adminOnly', $this->getAdminOnly());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeStringValue('message', $this->getMessage());
         $writer->writeDateTimeValue('occurredAt', $this->getOccurredAt());
@@ -141,6 +156,14 @@ class CommunicationConsoleEntry implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the adminOnly property value. Restricts this diagnostic entry to platform administrators.
+     * @param bool|null $value Value to set for the adminOnly property.
+    */
+    public function setAdminOnly(?bool $value): void {
+        $this->adminOnly = $value;
     }
 
     /**
