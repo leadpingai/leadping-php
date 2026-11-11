@@ -39,7 +39,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     private ?string $avatarUrl = null;
     
     /**
-     * @var string|null $complianceStatus Stored compliance status of the associated lead; not a live call-readiness guarantee.
+     * @var string|null $complianceStatus Consent verification status of the associated lead; not a live call-readiness guarantee.
     */
     private ?string $complianceStatus = null;
     
@@ -215,7 +215,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the complianceStatus property value. Stored compliance status of the associated lead; not a live call-readiness guarantee.
+     * Gets the complianceStatus property value. Consent verification status of the associated lead; not a live call-readiness guarantee.
      * @return string|null
     */
     public function getComplianceStatus(): ?string {
@@ -521,7 +521,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the complianceStatus property value. Stored compliance status of the associated lead; not a live call-readiness guarantee.
+     * Sets the complianceStatus property value. Consent verification status of the associated lead; not a live call-readiness guarantee.
      * @param string|null $value Value to set for the complianceStatus property.
     */
     public function setComplianceStatus(?string $value): void {
