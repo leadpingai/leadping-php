@@ -29,6 +29,11 @@ class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
+     * @var DateTime|null $lastActiveAt UTC timestamp of the user's most recent activity in Leadping.
+    */
+    private ?DateTime $lastActiveAt = null;
+    
+    /**
      * @var string|null $licenseBillingStatus The billing status for this user's organization license.
     */
     private ?string $licenseBillingStatus = null;
@@ -99,6 +104,7 @@ class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable
         return  [
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
+            'lastActiveAt' => fn(ParseNode $n) => $o->setLastActiveAt($n->getDateTimeValue()),
             'licenseBillingStatus' => fn(ParseNode $n) => $o->setLicenseBillingStatus($n->getStringValue()),
             'licenseRenewalDate' => fn(ParseNode $n) => $o->setLicenseRenewalDate($n->getDateTimeValue()),
             'role' => fn(ParseNode $n) => $o->setRole($n->getEnumValue(OrganizationMemberRole::class)),
@@ -114,6 +120,14 @@ class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable
     */
     public function getId(): ?string {
         return $this->id;
+    }
+
+    /**
+     * Gets the lastActiveAt property value. UTC timestamp of the user's most recent activity in Leadping.
+     * @return DateTime|null
+    */
+    public function getLastActiveAt(): ?DateTime {
+        return $this->lastActiveAt;
     }
 
     /**
@@ -171,6 +185,7 @@ class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable
     public function serialize(SerializationWriter $writer): void {
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('id', $this->getId());
+        $writer->writeDateTimeValue('lastActiveAt', $this->getLastActiveAt());
         $writer->writeStringValue('licenseBillingStatus', $this->getLicenseBillingStatus());
         $writer->writeDateTimeValue('licenseRenewalDate', $this->getLicenseRenewalDate());
         $writer->writeEnumValue('role', $this->getRole());
@@ -202,6 +217,14 @@ class OrganizationMemberTableRow implements AdditionalDataHolder, Parsable
     */
     public function setId(?string $value): void {
         $this->id = $value;
+    }
+
+    /**
+     * Sets the lastActiveAt property value. UTC timestamp of the user's most recent activity in Leadping.
+     * @param DateTime|null $value Value to set for the lastActiveAt property.
+    */
+    public function setLastActiveAt(?DateTime $value): void {
+        $this->lastActiveAt = $value;
     }
 
     /**
