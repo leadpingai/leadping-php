@@ -39,6 +39,16 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     private ?string $avatarUrl = null;
     
     /**
+     * @var bool|null $canCallNow Current manual voice eligibility, including contact hours. Populated on individual conversation reads. Sender readiness and billing are checked when calling; null means eligibility has not been evaluated.
+    */
+    private ?bool $canCallNow = null;
+    
+    /**
+     * @var bool|null $canTextNow Current manual SMS eligibility, including contact hours. Populated on individual conversation reads. Sender readiness and billing are checked when sending; null means eligibility has not been evaluated.
+    */
+    private ?bool $canTextNow = null;
+    
+    /**
      * @var string|null $complianceStatus Consent verification status of the associated lead; not a live call-readiness guarantee.
     */
     private ?string $complianceStatus = null;
@@ -215,6 +225,22 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the canCallNow property value. Current manual voice eligibility, including contact hours. Populated on individual conversation reads. Sender readiness and billing are checked when calling; null means eligibility has not been evaluated.
+     * @return bool|null
+    */
+    public function getCanCallNow(): ?bool {
+        return $this->canCallNow;
+    }
+
+    /**
+     * Gets the canTextNow property value. Current manual SMS eligibility, including contact hours. Populated on individual conversation reads. Sender readiness and billing are checked when sending; null means eligibility has not been evaluated.
+     * @return bool|null
+    */
+    public function getCanTextNow(): ?bool {
+        return $this->canTextNow;
+    }
+
+    /**
      * Gets the complianceStatus property value. Consent verification status of the associated lead; not a live call-readiness guarantee.
      * @return string|null
     */
@@ -257,6 +283,8 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
             'archivedAt' => fn(ParseNode $n) => $o->setArchivedAt($n->getDateTimeValue()),
             'archiveReason' => fn(ParseNode $n) => $o->setArchiveReason($n->getIntegerValue()),
             'avatarUrl' => fn(ParseNode $n) => $o->setAvatarUrl($n->getStringValue()),
+            'canCallNow' => fn(ParseNode $n) => $o->setCanCallNow($n->getBooleanValue()),
+            'canTextNow' => fn(ParseNode $n) => $o->setCanTextNow($n->getBooleanValue()),
             'complianceStatus' => fn(ParseNode $n) => $o->setComplianceStatus($n->getStringValue()),
             'currentLeadStatus' => fn(ParseNode $n) => $o->setCurrentLeadStatus($n->getObjectValue([ConversationResponse_currentLeadStatus::class, 'createFromDiscriminatorValue'])),
             'email' => fn(ParseNode $n) => $o->setEmail($n->getStringValue()),
@@ -453,6 +481,8 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('archivedAt', $this->getArchivedAt());
         $writer->writeIntegerValue('archiveReason', $this->getArchiveReason());
         $writer->writeStringValue('avatarUrl', $this->getAvatarUrl());
+        $writer->writeBooleanValue('canCallNow', $this->getCanCallNow());
+        $writer->writeBooleanValue('canTextNow', $this->getCanTextNow());
         $writer->writeStringValue('complianceStatus', $this->getComplianceStatus());
         $writer->writeObjectValue('currentLeadStatus', $this->getCurrentLeadStatus());
         $writer->writeStringValue('email', $this->getEmail());
@@ -518,6 +548,22 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     */
     public function setAvatarUrl(?string $value): void {
         $this->avatarUrl = $value;
+    }
+
+    /**
+     * Sets the canCallNow property value. Current manual voice eligibility, including contact hours. Populated on individual conversation reads. Sender readiness and billing are checked when calling; null means eligibility has not been evaluated.
+     * @param bool|null $value Value to set for the canCallNow property.
+    */
+    public function setCanCallNow(?bool $value): void {
+        $this->canCallNow = $value;
+    }
+
+    /**
+     * Sets the canTextNow property value. Current manual SMS eligibility, including contact hours. Populated on individual conversation reads. Sender readiness and billing are checked when sending; null means eligibility has not been evaluated.
+     * @param bool|null $value Value to set for the canTextNow property.
+    */
+    public function setCanTextNow(?bool $value): void {
+        $this->canTextNow = $value;
     }
 
     /**
