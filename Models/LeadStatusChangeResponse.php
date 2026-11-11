@@ -89,7 +89,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * @var bool|null $isDemo The isDemo property
+     * @var bool|null $isDemo Whether this record belongs to demo data.
     */
     private ?bool $isDemo = null;
     
@@ -117,6 +117,11 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
      * @var string|null $leadName The display name of the lead associated with this lead status change.
     */
     private ?string $leadName = null;
+    
+    /**
+     * @var string|null $leadStatusId Configured organization status ID, independent of its display name and history entry ID.
+    */
+    private ?string $leadStatusId = null;
     
     /**
      * @var string|null $newLeadStatusChangeId Unique identifier of the new lead status change associated with this Leadping lead status change.
@@ -327,6 +332,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
             'leadEmail' => fn(ParseNode $n) => $o->setLeadEmail($n->getStringValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
             'leadName' => fn(ParseNode $n) => $o->setLeadName($n->getStringValue()),
+            'leadStatusId' => fn(ParseNode $n) => $o->setLeadStatusId($n->getStringValue()),
             'newLeadStatusChangeId' => fn(ParseNode $n) => $o->setNewLeadStatusChangeId($n->getStringValue()),
             'notes' => fn(ParseNode $n) => $o->setNotes($n->getStringValue()),
             'oldLeadStatusChangeId' => fn(ParseNode $n) => $o->setOldLeadStatusChangeId($n->getStringValue()),
@@ -369,7 +375,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the isDemo property value. The isDemo property
+     * Gets the isDemo property value. Whether this record belongs to demo data.
      * @return bool|null
     */
     public function getIsDemo(): ?bool {
@@ -414,6 +420,14 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     */
     public function getLeadName(): ?string {
         return $this->leadName;
+    }
+
+    /**
+     * Gets the leadStatusId property value. Configured organization status ID, independent of its display name and history entry ID.
+     * @return string|null
+    */
+    public function getLeadStatusId(): ?string {
+        return $this->leadStatusId;
     }
 
     /**
@@ -553,6 +567,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('leadEmail', $this->getLeadEmail());
         $writer->writeStringValue('leadId', $this->getLeadId());
         $writer->writeStringValue('leadName', $this->getLeadName());
+        $writer->writeStringValue('leadStatusId', $this->getLeadStatusId());
         $writer->writeStringValue('newLeadStatusChangeId', $this->getNewLeadStatusChangeId());
         $writer->writeStringValue('notes', $this->getNotes());
         $writer->writeStringValue('oldLeadStatusChangeId', $this->getOldLeadStatusChangeId());
@@ -691,7 +706,7 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the isDemo property value. The isDemo property
+     * Sets the isDemo property value. Whether this record belongs to demo data.
      * @param bool|null $value Value to set for the isDemo property.
     */
     public function setIsDemo(?bool $value): void {
@@ -736,6 +751,14 @@ class LeadStatusChangeResponse implements AdditionalDataHolder, Parsable
     */
     public function setLeadName(?string $value): void {
         $this->leadName = $value;
+    }
+
+    /**
+     * Sets the leadStatusId property value. Configured organization status ID, independent of its display name and history entry ID.
+     * @param string|null $value Value to set for the leadStatusId property.
+    */
+    public function setLeadStatusId(?string $value): void {
+        $this->leadStatusId = $value;
     }
 
     /**

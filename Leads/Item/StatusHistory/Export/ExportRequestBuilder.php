@@ -39,10 +39,12 @@ class ExportRequestBuilder extends BaseRequestBuilder
     public function get(?ExportRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
+                '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [LeadStatusChangeExportResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }

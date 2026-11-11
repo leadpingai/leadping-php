@@ -65,12 +65,12 @@ class UserResponse implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * @var bool|null $isDemo The isDemo property
+     * @var bool|null $isDemo Whether this record belongs to demo data.
     */
     private ?bool $isDemo = null;
     
     /**
-     * @var DateTime|null $lastActiveAt The lastActiveAt property
+     * @var DateTime|null $lastActiveAt UTC timestamp of the user's most recently recorded activity, when available.
     */
     private ?DateTime $lastActiveAt = null;
     
@@ -283,7 +283,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the isDemo property value. The isDemo property
+     * Gets the isDemo property value. Whether this record belongs to demo data.
      * @return bool|null
     */
     public function getIsDemo(): ?bool {
@@ -291,7 +291,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lastActiveAt property value. The lastActiveAt property
+     * Gets the lastActiveAt property value. UTC timestamp of the user's most recently recorded activity, when available.
      * @return DateTime|null
     */
     public function getLastActiveAt(): ?DateTime {
@@ -524,7 +524,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the isDemo property value. The isDemo property
+     * Sets the isDemo property value. Whether this record belongs to demo data.
      * @param bool|null $value Value to set for the isDemo property.
     */
     public function setIsDemo(?bool $value): void {
@@ -532,7 +532,7 @@ class UserResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lastActiveAt property value. The lastActiveAt property
+     * Sets the lastActiveAt property value. UTC timestamp of the user's most recently recorded activity, when available.
      * @param DateTime|null $value Value to set for the lastActiveAt property.
     */
     public function setLastActiveAt(?DateTime $value): void {

@@ -44,6 +44,7 @@ class HangupRequestBuilder extends BaseRequestBuilder
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [PhoneCallResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }

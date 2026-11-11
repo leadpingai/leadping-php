@@ -19,27 +19,27 @@ class BrowserCallApproval implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $callerNumber The callerNumber property
+     * @var string|null $callerNumber Approved caller ID phone number for this outbound call.
     */
     private ?string $callerNumber = null;
     
     /**
-     * @var string|null $clientState The clientState property
+     * @var string|null $clientState Opaque server-issued state to pass unchanged when initiating the approved call.
     */
     private ?string $clientState = null;
     
     /**
-     * @var string|null $destinationNumber The destinationNumber property
+     * @var string|null $destinationNumber Approved destination phone number for this outbound call.
     */
     private ?string $destinationNumber = null;
     
     /**
-     * @var DateTime|null $expiresAt The expiresAt property
+     * @var DateTime|null $expiresAt UTC timestamp after which this call approval is no longer valid.
     */
     private ?DateTime $expiresAt = null;
     
     /**
-     * @var int|null $maximumDurationSeconds The maximumDurationSeconds property
+     * @var int|null $maximumDurationSeconds Maximum permitted duration of the call, in seconds.
     */
     private ?int $maximumDurationSeconds = null;
     
@@ -68,7 +68,7 @@ class BrowserCallApproval implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the callerNumber property value. The callerNumber property
+     * Gets the callerNumber property value. Approved caller ID phone number for this outbound call.
      * @return string|null
     */
     public function getCallerNumber(): ?string {
@@ -76,7 +76,7 @@ class BrowserCallApproval implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the clientState property value. The clientState property
+     * Gets the clientState property value. Opaque server-issued state to pass unchanged when initiating the approved call.
      * @return string|null
     */
     public function getClientState(): ?string {
@@ -84,7 +84,7 @@ class BrowserCallApproval implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the destinationNumber property value. The destinationNumber property
+     * Gets the destinationNumber property value. Approved destination phone number for this outbound call.
      * @return string|null
     */
     public function getDestinationNumber(): ?string {
@@ -92,7 +92,7 @@ class BrowserCallApproval implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the expiresAt property value. The expiresAt property
+     * Gets the expiresAt property value. UTC timestamp after which this call approval is no longer valid.
      * @return DateTime|null
     */
     public function getExpiresAt(): ?DateTime {
@@ -115,7 +115,7 @@ class BrowserCallApproval implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the maximumDurationSeconds property value. The maximumDurationSeconds property
+     * Gets the maximumDurationSeconds property value. Maximum permitted duration of the call, in seconds.
      * @return int|null
     */
     public function getMaximumDurationSeconds(): ?int {
@@ -144,7 +144,7 @@ class BrowserCallApproval implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the callerNumber property value. The callerNumber property
+     * Sets the callerNumber property value. Approved caller ID phone number for this outbound call.
      * @param string|null $value Value to set for the callerNumber property.
     */
     public function setCallerNumber(?string $value): void {
@@ -152,7 +152,7 @@ class BrowserCallApproval implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the clientState property value. The clientState property
+     * Sets the clientState property value. Opaque server-issued state to pass unchanged when initiating the approved call.
      * @param string|null $value Value to set for the clientState property.
     */
     public function setClientState(?string $value): void {
@@ -160,7 +160,7 @@ class BrowserCallApproval implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the destinationNumber property value. The destinationNumber property
+     * Sets the destinationNumber property value. Approved destination phone number for this outbound call.
      * @param string|null $value Value to set for the destinationNumber property.
     */
     public function setDestinationNumber(?string $value): void {
@@ -168,7 +168,7 @@ class BrowserCallApproval implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the expiresAt property value. The expiresAt property
+     * Sets the expiresAt property value. UTC timestamp after which this call approval is no longer valid.
      * @param DateTime|null $value Value to set for the expiresAt property.
     */
     public function setExpiresAt(?DateTime $value): void {
@@ -176,7 +176,7 @@ class BrowserCallApproval implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the maximumDurationSeconds property value. The maximumDurationSeconds property
+     * Sets the maximumDurationSeconds property value. Maximum permitted duration of the call, in seconds.
      * @param int|null $value Value to set for the maximumDurationSeconds property.
     */
     public function setMaximumDurationSeconds(?int $value): void {

@@ -19,27 +19,27 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $authorName The authorName property
+     * @var string|null $authorName Public display name of the article author, when provided.
     */
     private ?string $authorName = null;
     
     /**
-     * @var string|null $category The category property
+     * @var string|null $category Editorial category assigned to the article, when present.
     */
     private ?string $category = null;
     
     /**
-     * @var string|null $content The content property
+     * @var string|null $content Saved article body before server-side rendering.
     */
     private ?string $content = null;
     
     /**
-     * @var DateTime|null $contentUpdatedAt The contentUpdatedAt property
+     * @var DateTime|null $contentUpdatedAt UTC timestamp of the most recent editorial content update.
     */
     private ?DateTime $contentUpdatedAt = null;
     
     /**
-     * @var string|null $coverImageAlt The coverImageAlt property
+     * @var string|null $coverImageAlt Alternative text describing the cover image.
     */
     private ?string $coverImageAlt = null;
     
@@ -49,7 +49,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     private ?int $coverImageHeight = null;
     
     /**
-     * @var string|null $coverImageUrl The coverImageUrl property
+     * @var string|null $coverImageUrl URL of the article's cover image, when available.
     */
     private ?string $coverImageUrl = null;
     
@@ -59,17 +59,17 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     private ?int $coverImageWidth = null;
     
     /**
-     * @var DateTime|null $createdAt The createdAt property
+     * @var DateTime|null $createdAt UTC timestamp when the article was created.
     */
     private ?DateTime $createdAt = null;
     
     /**
-     * @var string|null $excerpt The excerpt property
+     * @var string|null $excerpt Short plain-language preview of the article.
     */
     private ?string $excerpt = null;
     
     /**
-     * @var string|null $id The id property
+     * @var string|null $id Unique Leadping identifier of the blog article.
     */
     private ?string $id = null;
     
@@ -84,42 +84,42 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     private ?bool $imagesProcessing = null;
     
     /**
-     * @var bool|null $isFeatured The isFeatured property
+     * @var bool|null $isFeatured Whether the article is selected for featured placement.
     */
     private ?bool $isFeatured = null;
     
     /**
-     * @var bool|null $isPublished The isPublished property
+     * @var bool|null $isPublished Whether the article is currently published and available to public readers.
     */
     private ?bool $isPublished = null;
     
     /**
-     * @var DateTime|null $lastPublishedAt The lastPublishedAt property
+     * @var DateTime|null $lastPublishedAt UTC timestamp when the article last changed from unpublished to published.
     */
     private ?DateTime $lastPublishedAt = null;
     
     /**
-     * @var string|null $metaDescription The metaDescription property
+     * @var string|null $metaDescription Optional article description used in search-engine metadata.
     */
     private ?string $metaDescription = null;
     
     /**
-     * @var DateTime|null $modifiedAt The modifiedAt property
+     * @var DateTime|null $modifiedAt UTC timestamp when the article was last modified.
     */
     private ?DateTime $modifiedAt = null;
     
     /**
-     * @var DateTime|null $publishedAt The publishedAt property
+     * @var DateTime|null $publishedAt UTC publication timestamp shown for the article, when set.
     */
     private ?DateTime $publishedAt = null;
     
     /**
-     * @var string|null $renderedHtml The renderedHtml property
+     * @var string|null $renderedHtml Server-rendered and sanitized HTML for displaying the article.
     */
     private ?string $renderedHtml = null;
     
     /**
-     * @var string|null $seoTitle The seoTitle property
+     * @var string|null $seoTitle Optional title used in search-engine metadata.
     */
     private ?string $seoTitle = null;
     
@@ -144,22 +144,22 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     private ?bool $shareOnX = null;
     
     /**
-     * @var string|null $slug The slug property
+     * @var string|null $slug URL slug used to retrieve the published article.
     */
     private ?string $slug = null;
     
     /**
-     * @var array<BlogSocialPost>|null $socialPosts The socialPosts property
+     * @var array<BlogSocialPost>|null $socialPosts Publication attempts and provider post identifiers for each social platform.
     */
     private ?array $socialPosts = null;
     
     /**
-     * @var string|null $title The title property
+     * @var string|null $title Public title of the article.
     */
     private ?string $title = null;
     
     /**
-     * @var DateTime|null $unpublishedAt The unpublishedAt property
+     * @var DateTime|null $unpublishedAt UTC timestamp when the article last changed from published to unpublished.
     */
     private ?DateTime $unpublishedAt = null;
     
@@ -188,7 +188,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the authorName property value. The authorName property
+     * Gets the authorName property value. Public display name of the article author, when provided.
      * @return string|null
     */
     public function getAuthorName(): ?string {
@@ -196,7 +196,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the category property value. The category property
+     * Gets the category property value. Editorial category assigned to the article, when present.
      * @return string|null
     */
     public function getCategory(): ?string {
@@ -204,7 +204,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the content property value. The content property
+     * Gets the content property value. Saved article body before server-side rendering.
      * @return string|null
     */
     public function getContent(): ?string {
@@ -212,7 +212,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the contentUpdatedAt property value. The contentUpdatedAt property
+     * Gets the contentUpdatedAt property value. UTC timestamp of the most recent editorial content update.
      * @return DateTime|null
     */
     public function getContentUpdatedAt(): ?DateTime {
@@ -220,7 +220,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the coverImageAlt property value. The coverImageAlt property
+     * Gets the coverImageAlt property value. Alternative text describing the cover image.
      * @return string|null
     */
     public function getCoverImageAlt(): ?string {
@@ -236,7 +236,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the coverImageUrl property value. The coverImageUrl property
+     * Gets the coverImageUrl property value. URL of the article's cover image, when available.
      * @return string|null
     */
     public function getCoverImageUrl(): ?string {
@@ -252,7 +252,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the createdAt property value. The createdAt property
+     * Gets the createdAt property value. UTC timestamp when the article was created.
      * @return DateTime|null
     */
     public function getCreatedAt(): ?DateTime {
@@ -260,7 +260,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the excerpt property value. The excerpt property
+     * Gets the excerpt property value. Short plain-language preview of the article.
      * @return string|null
     */
     public function getExcerpt(): ?string {
@@ -307,7 +307,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The id property
+     * Gets the id property value. Unique Leadping identifier of the blog article.
      * @return string|null
     */
     public function getId(): ?string {
@@ -331,7 +331,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the isFeatured property value. The isFeatured property
+     * Gets the isFeatured property value. Whether the article is selected for featured placement.
      * @return bool|null
     */
     public function getIsFeatured(): ?bool {
@@ -339,7 +339,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the isPublished property value. The isPublished property
+     * Gets the isPublished property value. Whether the article is currently published and available to public readers.
      * @return bool|null
     */
     public function getIsPublished(): ?bool {
@@ -347,7 +347,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the lastPublishedAt property value. The lastPublishedAt property
+     * Gets the lastPublishedAt property value. UTC timestamp when the article last changed from unpublished to published.
      * @return DateTime|null
     */
     public function getLastPublishedAt(): ?DateTime {
@@ -355,7 +355,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the metaDescription property value. The metaDescription property
+     * Gets the metaDescription property value. Optional article description used in search-engine metadata.
      * @return string|null
     */
     public function getMetaDescription(): ?string {
@@ -363,7 +363,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the modifiedAt property value. The modifiedAt property
+     * Gets the modifiedAt property value. UTC timestamp when the article was last modified.
      * @return DateTime|null
     */
     public function getModifiedAt(): ?DateTime {
@@ -371,7 +371,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the publishedAt property value. The publishedAt property
+     * Gets the publishedAt property value. UTC publication timestamp shown for the article, when set.
      * @return DateTime|null
     */
     public function getPublishedAt(): ?DateTime {
@@ -379,7 +379,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the renderedHtml property value. The renderedHtml property
+     * Gets the renderedHtml property value. Server-rendered and sanitized HTML for displaying the article.
      * @return string|null
     */
     public function getRenderedHtml(): ?string {
@@ -387,7 +387,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the seoTitle property value. The seoTitle property
+     * Gets the seoTitle property value. Optional title used in search-engine metadata.
      * @return string|null
     */
     public function getSeoTitle(): ?string {
@@ -427,7 +427,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the slug property value. The slug property
+     * Gets the slug property value. URL slug used to retrieve the published article.
      * @return string|null
     */
     public function getSlug(): ?string {
@@ -435,7 +435,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the socialPosts property value. The socialPosts property
+     * Gets the socialPosts property value. Publication attempts and provider post identifiers for each social platform.
      * @return array<BlogSocialPost>|null
     */
     public function getSocialPosts(): ?array {
@@ -443,7 +443,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the title property value. The title property
+     * Gets the title property value. Public title of the article.
      * @return string|null
     */
     public function getTitle(): ?string {
@@ -451,7 +451,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the unpublishedAt property value. The unpublishedAt property
+     * Gets the unpublishedAt property value. UTC timestamp when the article last changed from published to unpublished.
      * @return DateTime|null
     */
     public function getUnpublishedAt(): ?DateTime {
@@ -504,7 +504,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the authorName property value. The authorName property
+     * Sets the authorName property value. Public display name of the article author, when provided.
      * @param string|null $value Value to set for the authorName property.
     */
     public function setAuthorName(?string $value): void {
@@ -512,7 +512,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the category property value. The category property
+     * Sets the category property value. Editorial category assigned to the article, when present.
      * @param string|null $value Value to set for the category property.
     */
     public function setCategory(?string $value): void {
@@ -520,7 +520,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the content property value. The content property
+     * Sets the content property value. Saved article body before server-side rendering.
      * @param string|null $value Value to set for the content property.
     */
     public function setContent(?string $value): void {
@@ -528,7 +528,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the contentUpdatedAt property value. The contentUpdatedAt property
+     * Sets the contentUpdatedAt property value. UTC timestamp of the most recent editorial content update.
      * @param DateTime|null $value Value to set for the contentUpdatedAt property.
     */
     public function setContentUpdatedAt(?DateTime $value): void {
@@ -536,7 +536,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the coverImageAlt property value. The coverImageAlt property
+     * Sets the coverImageAlt property value. Alternative text describing the cover image.
      * @param string|null $value Value to set for the coverImageAlt property.
     */
     public function setCoverImageAlt(?string $value): void {
@@ -552,7 +552,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the coverImageUrl property value. The coverImageUrl property
+     * Sets the coverImageUrl property value. URL of the article's cover image, when available.
      * @param string|null $value Value to set for the coverImageUrl property.
     */
     public function setCoverImageUrl(?string $value): void {
@@ -568,7 +568,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the createdAt property value. The createdAt property
+     * Sets the createdAt property value. UTC timestamp when the article was created.
      * @param DateTime|null $value Value to set for the createdAt property.
     */
     public function setCreatedAt(?DateTime $value): void {
@@ -576,7 +576,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the excerpt property value. The excerpt property
+     * Sets the excerpt property value. Short plain-language preview of the article.
      * @param string|null $value Value to set for the excerpt property.
     */
     public function setExcerpt(?string $value): void {
@@ -584,7 +584,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the id property value. The id property
+     * Sets the id property value. Unique Leadping identifier of the blog article.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
@@ -608,7 +608,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the isFeatured property value. The isFeatured property
+     * Sets the isFeatured property value. Whether the article is selected for featured placement.
      * @param bool|null $value Value to set for the isFeatured property.
     */
     public function setIsFeatured(?bool $value): void {
@@ -616,7 +616,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the isPublished property value. The isPublished property
+     * Sets the isPublished property value. Whether the article is currently published and available to public readers.
      * @param bool|null $value Value to set for the isPublished property.
     */
     public function setIsPublished(?bool $value): void {
@@ -624,7 +624,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the lastPublishedAt property value. The lastPublishedAt property
+     * Sets the lastPublishedAt property value. UTC timestamp when the article last changed from unpublished to published.
      * @param DateTime|null $value Value to set for the lastPublishedAt property.
     */
     public function setLastPublishedAt(?DateTime $value): void {
@@ -632,7 +632,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the metaDescription property value. The metaDescription property
+     * Sets the metaDescription property value. Optional article description used in search-engine metadata.
      * @param string|null $value Value to set for the metaDescription property.
     */
     public function setMetaDescription(?string $value): void {
@@ -640,7 +640,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the modifiedAt property value. The modifiedAt property
+     * Sets the modifiedAt property value. UTC timestamp when the article was last modified.
      * @param DateTime|null $value Value to set for the modifiedAt property.
     */
     public function setModifiedAt(?DateTime $value): void {
@@ -648,7 +648,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the publishedAt property value. The publishedAt property
+     * Sets the publishedAt property value. UTC publication timestamp shown for the article, when set.
      * @param DateTime|null $value Value to set for the publishedAt property.
     */
     public function setPublishedAt(?DateTime $value): void {
@@ -656,7 +656,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the renderedHtml property value. The renderedHtml property
+     * Sets the renderedHtml property value. Server-rendered and sanitized HTML for displaying the article.
      * @param string|null $value Value to set for the renderedHtml property.
     */
     public function setRenderedHtml(?string $value): void {
@@ -664,7 +664,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the seoTitle property value. The seoTitle property
+     * Sets the seoTitle property value. Optional title used in search-engine metadata.
      * @param string|null $value Value to set for the seoTitle property.
     */
     public function setSeoTitle(?string $value): void {
@@ -704,7 +704,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the slug property value. The slug property
+     * Sets the slug property value. URL slug used to retrieve the published article.
      * @param string|null $value Value to set for the slug property.
     */
     public function setSlug(?string $value): void {
@@ -712,7 +712,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the socialPosts property value. The socialPosts property
+     * Sets the socialPosts property value. Publication attempts and provider post identifiers for each social platform.
      * @param array<BlogSocialPost>|null $value Value to set for the socialPosts property.
     */
     public function setSocialPosts(?array $value): void {
@@ -720,7 +720,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the title property value. The title property
+     * Sets the title property value. Public title of the article.
      * @param string|null $value Value to set for the title property.
     */
     public function setTitle(?string $value): void {
@@ -728,7 +728,7 @@ class BlogArticleResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the unpublishedAt property value. The unpublishedAt property
+     * Sets the unpublishedAt property value. UTC timestamp when the article last changed from published to unpublished.
      * @param DateTime|null $value Value to set for the unpublishedAt property.
     */
     public function setUnpublishedAt(?DateTime $value): void {

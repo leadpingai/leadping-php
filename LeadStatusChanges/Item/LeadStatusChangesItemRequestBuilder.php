@@ -40,10 +40,13 @@ class LeadStatusChangesItemRequestBuilder extends BaseRequestBuilder
     public function delete(?LeadStatusChangesItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toDeleteRequestInformation($requestConfiguration);
         $errorMappings = [
+                '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '409' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendNoContentAsync($requestInfo, $errorMappings);
     }
@@ -57,10 +60,12 @@ class LeadStatusChangesItemRequestBuilder extends BaseRequestBuilder
     public function get(?LeadStatusChangesItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
+                '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [LeadStatusChangeResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
@@ -79,7 +84,10 @@ class LeadStatusChangesItemRequestBuilder extends BaseRequestBuilder
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '409' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '415' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [LeadStatusChangeResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }

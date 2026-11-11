@@ -4,12 +4,12 @@ namespace Leadping\OpenApiClient\Telephony\IncomingCaller;
 
 use Exception;
 use Http\Promise\Promise;
+use Leadping\OpenApiClient\Models\IncomingCallerResponse;
 use Leadping\OpenApiClient\Models\ProblemDetails;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
-use Psr\Http\Message\StreamInterface;
 
 /**
  * Builds and executes requests for operations under /telephony/incoming-caller
@@ -33,19 +33,20 @@ class IncomingCallerRequestBuilder extends BaseRequestBuilder
     /**
      * Finds a lead in the current organization by the caller's normalized primary phone number. Returns an empty lead identity when no matching lead exists.
      * @param IncomingCallerRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return Promise<StreamInterface|null>
+     * @return Promise<IncomingCallerResponse|null>
      * @throws Exception
     */
     public function get(?IncomingCallerRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
+                '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
-        /** @var Promise<StreamInterface|null> $result */
-        $result = $this->requestAdapter->sendPrimitiveAsync($requestInfo, StreamInterface::class, $errorMappings);
-        return $result;
+        return $this->requestAdapter->sendAsync($requestInfo, [IncomingCallerResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
 
     /**
@@ -65,7 +66,7 @@ class IncomingCallerRequestBuilder extends BaseRequestBuilder
             }
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
-        $requestInfo->tryAddHeader('Accept', "application/problem+json");
+        $requestInfo->tryAddHeader('Accept', "text/plain;q=0.9");
         return $requestInfo;
     }
 

@@ -24,12 +24,12 @@ class LeadFollowUpUpdateRequest implements AdditionalDataHolder, Parsable
     private ?DateTime $dueAt = null;
     
     /**
-     * @var int|null $expectedRevision The expectedRevision property
+     * @var int|null $expectedRevision Revision observed by the client; a mismatch causes a conflict instead of overwriting a newer follow-up.
     */
     private ?int $expectedRevision = null;
     
     /**
-     * @var string|null $expectedStatusId The expectedStatusId property
+     * @var string|null $expectedStatusId Identifier of the current status observed by the client; a mismatch causes a conflict.
     */
     private ?string $expectedStatusId = null;
     
@@ -66,7 +66,7 @@ class LeadFollowUpUpdateRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the expectedRevision property value. The expectedRevision property
+     * Gets the expectedRevision property value. Revision observed by the client; a mismatch causes a conflict instead of overwriting a newer follow-up.
      * @return int|null
     */
     public function getExpectedRevision(): ?int {
@@ -74,7 +74,7 @@ class LeadFollowUpUpdateRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the expectedStatusId property value. The expectedStatusId property
+     * Gets the expectedStatusId property value. Identifier of the current status observed by the client; a mismatch causes a conflict.
      * @return string|null
     */
     public function getExpectedStatusId(): ?string {
@@ -122,7 +122,7 @@ class LeadFollowUpUpdateRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the expectedRevision property value. The expectedRevision property
+     * Sets the expectedRevision property value. Revision observed by the client; a mismatch causes a conflict instead of overwriting a newer follow-up.
      * @param int|null $value Value to set for the expectedRevision property.
     */
     public function setExpectedRevision(?int $value): void {
@@ -130,7 +130,7 @@ class LeadFollowUpUpdateRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the expectedStatusId property value. The expectedStatusId property
+     * Sets the expectedStatusId property value. Identifier of the current status observed by the client; a mismatch causes a conflict.
      * @param string|null $value Value to set for the expectedStatusId property.
     */
     public function setExpectedStatusId(?string $value): void {

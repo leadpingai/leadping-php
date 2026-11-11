@@ -18,12 +18,12 @@ class AdminDemoPreferences implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var bool|null $showDemoData The showDemoData property
+     * @var bool|null $showDemoData Whether demo records are included in the administrator's views.
     */
     private ?bool $showDemoData = null;
     
     /**
-     * @var bool|null $showDemoMarkers The showDemoMarkers property
+     * @var bool|null $showDemoMarkers Whether demo records display a demo indicator.
     */
     private ?bool $showDemoMarkers = null;
     
@@ -64,7 +64,7 @@ class AdminDemoPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the showDemoData property value. The showDemoData property
+     * Gets the showDemoData property value. Whether demo records are included in the administrator's views.
      * @return bool|null
     */
     public function getShowDemoData(): ?bool {
@@ -72,7 +72,7 @@ class AdminDemoPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the showDemoMarkers property value. The showDemoMarkers property
+     * Gets the showDemoMarkers property value. Whether demo records display a demo indicator.
      * @return bool|null
     */
     public function getShowDemoMarkers(): ?bool {
@@ -98,7 +98,7 @@ class AdminDemoPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the showDemoData property value. The showDemoData property
+     * Sets the showDemoData property value. Whether demo records are included in the administrator's views.
      * @param bool|null $value Value to set for the showDemoData property.
     */
     public function setShowDemoData(?bool $value): void {
@@ -106,7 +106,7 @@ class AdminDemoPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the showDemoMarkers property value. The showDemoMarkers property
+     * Sets the showDemoMarkers property value. Whether demo records display a demo indicator.
      * @param bool|null $value Value to set for the showDemoMarkers property.
     */
     public function setShowDemoMarkers(?bool $value): void {

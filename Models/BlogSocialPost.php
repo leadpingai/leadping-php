@@ -19,22 +19,22 @@ class BlogSocialPost implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var DateTime|null $attemptedAt The attemptedAt property
+     * @var DateTime|null $attemptedAt UTC timestamp of the publication attempt, or null if no attempt has been recorded.
     */
     private ?DateTime $attemptedAt = null;
     
     /**
-     * @var string|null $error The error property
+     * @var string|null $error Details of the publication failure, when present.
     */
     private ?string $error = null;
     
     /**
-     * @var BlogSocialPlatform|null $platform The platform property
+     * @var BlogSocialPlatform|null $platform Social platform supported for publishing a blog article.
     */
     private ?BlogSocialPlatform $platform = null;
     
     /**
-     * @var string|null $postId The postId property
+     * @var string|null $postId Identifier assigned to the published post by the social platform, when available.
     */
     private ?string $postId = null;
     
@@ -63,7 +63,7 @@ class BlogSocialPost implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the attemptedAt property value. The attemptedAt property
+     * Gets the attemptedAt property value. UTC timestamp of the publication attempt, or null if no attempt has been recorded.
      * @return DateTime|null
     */
     public function getAttemptedAt(): ?DateTime {
@@ -71,7 +71,7 @@ class BlogSocialPost implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the error property value. The error property
+     * Gets the error property value. Details of the publication failure, when present.
      * @return string|null
     */
     public function getError(): ?string {
@@ -93,7 +93,7 @@ class BlogSocialPost implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the platform property value. The platform property
+     * Gets the platform property value. Social platform supported for publishing a blog article.
      * @return BlogSocialPlatform|null
     */
     public function getPlatform(): ?BlogSocialPlatform {
@@ -101,7 +101,7 @@ class BlogSocialPost implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the postId property value. The postId property
+     * Gets the postId property value. Identifier assigned to the published post by the social platform, when available.
      * @return string|null
     */
     public function getPostId(): ?string {
@@ -129,7 +129,7 @@ class BlogSocialPost implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the attemptedAt property value. The attemptedAt property
+     * Sets the attemptedAt property value. UTC timestamp of the publication attempt, or null if no attempt has been recorded.
      * @param DateTime|null $value Value to set for the attemptedAt property.
     */
     public function setAttemptedAt(?DateTime $value): void {
@@ -137,7 +137,7 @@ class BlogSocialPost implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the error property value. The error property
+     * Sets the error property value. Details of the publication failure, when present.
      * @param string|null $value Value to set for the error property.
     */
     public function setError(?string $value): void {
@@ -145,7 +145,7 @@ class BlogSocialPost implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the platform property value. The platform property
+     * Sets the platform property value. Social platform supported for publishing a blog article.
      * @param BlogSocialPlatform|null $value Value to set for the platform property.
     */
     public function setPlatform(?BlogSocialPlatform $value): void {
@@ -153,7 +153,7 @@ class BlogSocialPost implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the postId property value. The postId property
+     * Sets the postId property value. Identifier assigned to the published post by the social platform, when available.
      * @param string|null $value Value to set for the postId property.
     */
     public function setPostId(?string $value): void {

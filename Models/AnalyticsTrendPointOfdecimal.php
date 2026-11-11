@@ -19,7 +19,7 @@ class AnalyticsTrendPointOfdecimal implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var DateTime|null $endAt Date and time when this Leadping analytics trend point was end.
+     * @var DateTime|null $endAt Exclusive UTC end of the analytics time bucket.
     */
     private ?DateTime $endAt = null;
     
@@ -29,7 +29,7 @@ class AnalyticsTrendPointOfdecimal implements AdditionalDataHolder, Parsable
     private ?string $label = null;
     
     /**
-     * @var DateTime|null $startAt Date and time when this Leadping analytics trend point was start.
+     * @var DateTime|null $startAt Inclusive UTC start of the analytics time bucket.
     */
     private ?DateTime $startAt = null;
     
@@ -63,7 +63,7 @@ class AnalyticsTrendPointOfdecimal implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the endAt property value. Date and time when this Leadping analytics trend point was end.
+     * Gets the endAt property value. Exclusive UTC end of the analytics time bucket.
      * @return DateTime|null
     */
     public function getEndAt(): ?DateTime {
@@ -93,7 +93,7 @@ class AnalyticsTrendPointOfdecimal implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the startAt property value. Date and time when this Leadping analytics trend point was start.
+     * Gets the startAt property value. Inclusive UTC start of the analytics time bucket.
      * @return DateTime|null
     */
     public function getStartAt(): ?DateTime {
@@ -129,7 +129,7 @@ class AnalyticsTrendPointOfdecimal implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the endAt property value. Date and time when this Leadping analytics trend point was end.
+     * Sets the endAt property value. Exclusive UTC end of the analytics time bucket.
      * @param DateTime|null $value Value to set for the endAt property.
     */
     public function setEndAt(?DateTime $value): void {
@@ -145,7 +145,7 @@ class AnalyticsTrendPointOfdecimal implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the startAt property value. Date and time when this Leadping analytics trend point was start.
+     * Sets the startAt property value. Inclusive UTC start of the analytics time bucket.
      * @param DateTime|null $value Value to set for the startAt property.
     */
     public function setStartAt(?DateTime $value): void {

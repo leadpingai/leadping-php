@@ -19,17 +19,17 @@ class AnalyticsCoverage implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var DateTime|null $completeFrom The completeFrom property
+     * @var DateTime|null $completeFrom Earliest UTC timestamp from which evidence is complete, or null when no complete range is known.
     */
     private ?DateTime $completeFrom = null;
     
     /**
-     * @var string|null $detail The detail property
+     * @var string|null $detail Explanation of the available evidence and any gaps in coverage.
     */
     private ?string $detail = null;
     
     /**
-     * @var bool|null $isPartial The isPartial property
+     * @var bool|null $isPartial Whether missing historical evidence may make the reported metrics incomplete.
     */
     private ?bool $isPartial = null;
     
@@ -58,7 +58,7 @@ class AnalyticsCoverage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the completeFrom property value. The completeFrom property
+     * Gets the completeFrom property value. Earliest UTC timestamp from which evidence is complete, or null when no complete range is known.
      * @return DateTime|null
     */
     public function getCompleteFrom(): ?DateTime {
@@ -66,7 +66,7 @@ class AnalyticsCoverage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the detail property value. The detail property
+     * Gets the detail property value. Explanation of the available evidence and any gaps in coverage.
      * @return string|null
     */
     public function getDetail(): ?string {
@@ -87,7 +87,7 @@ class AnalyticsCoverage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the isPartial property value. The isPartial property
+     * Gets the isPartial property value. Whether missing historical evidence may make the reported metrics incomplete.
      * @return bool|null
     */
     public function getIsPartial(): ?bool {
@@ -114,7 +114,7 @@ class AnalyticsCoverage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the completeFrom property value. The completeFrom property
+     * Sets the completeFrom property value. Earliest UTC timestamp from which evidence is complete, or null when no complete range is known.
      * @param DateTime|null $value Value to set for the completeFrom property.
     */
     public function setCompleteFrom(?DateTime $value): void {
@@ -122,7 +122,7 @@ class AnalyticsCoverage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the detail property value. The detail property
+     * Sets the detail property value. Explanation of the available evidence and any gaps in coverage.
      * @param string|null $value Value to set for the detail property.
     */
     public function setDetail(?string $value): void {
@@ -130,7 +130,7 @@ class AnalyticsCoverage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the isPartial property value. The isPartial property
+     * Sets the isPartial property value. Whether missing historical evidence may make the reported metrics incomplete.
      * @param bool|null $value Value to set for the isPartial property.
     */
     public function setIsPartial(?bool $value): void {

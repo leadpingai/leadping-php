@@ -18,7 +18,7 @@ class LeadAssignmentRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $assignedToUserId The assignedToUserId property
+     * @var string|null $assignedToUserId Identifier of the active organization member to assign. Null returns the lead to the unassigned queue.
     */
     private ?string $assignedToUserId = null;
     
@@ -47,7 +47,7 @@ class LeadAssignmentRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the assignedToUserId property value. The assignedToUserId property
+     * Gets the assignedToUserId property value. Identifier of the active organization member to assign. Null returns the lead to the unassigned queue.
      * @return string|null
     */
     public function getAssignedToUserId(): ?string {
@@ -83,7 +83,7 @@ class LeadAssignmentRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the assignedToUserId property value. The assignedToUserId property
+     * Sets the assignedToUserId property value. Identifier of the active organization member to assign. Null returns the lead to the unassigned queue.
      * @param string|null $value Value to set for the assignedToUserId property.
     */
     public function setAssignedToUserId(?string $value): void {

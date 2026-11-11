@@ -40,10 +40,12 @@ class TagsItemRequestBuilder extends BaseRequestBuilder
     public function delete(?TagsItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toDeleteRequestInformation($requestConfiguration);
         $errorMappings = [
+                '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         /** @var Promise<bool|null> $result */
         $result = $this->requestAdapter->sendPrimitiveAsync($requestInfo, 'bool', $errorMappings);
@@ -64,7 +66,9 @@ class TagsItemRequestBuilder extends BaseRequestBuilder
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '415' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [TagResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }

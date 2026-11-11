@@ -52,6 +52,7 @@ class BlogRequestBuilder extends BaseRequestBuilder
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendCollectionAsync($requestInfo, [BlogArticleResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }

@@ -47,9 +47,12 @@ class NotificationsItemRequestBuilder extends BaseRequestBuilder
     public function get(?NotificationsItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
+                '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [NotificationResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }

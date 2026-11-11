@@ -59,6 +59,11 @@ class CurrentLeadStatusSummary implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
+     * @var string|null $leadStatusId Configured organization status ID, independent of its display name and history entry ID.
+    */
+    private ?string $leadStatusId = null;
+    
+    /**
      * @var string|null $outcome Current lead status change outcome assigned to the lead.
     */
     private ?string $outcome = null;
@@ -152,6 +157,7 @@ class CurrentLeadStatusSummary implements AdditionalDataHolder, Parsable
             'followUpCompletedAt' => fn(ParseNode $n) => $o->setFollowUpCompletedAt($n->getDateTimeValue()),
             'followUpDueAt' => fn(ParseNode $n) => $o->setFollowUpDueAt($n->getDateTimeValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
+            'leadStatusId' => fn(ParseNode $n) => $o->setLeadStatusId($n->getStringValue()),
             'outcome' => fn(ParseNode $n) => $o->setOutcome($n->getStringValue()),
             'revision' => fn(ParseNode $n) => $o->setRevision($n->getIntegerValue()),
             'source' => fn(ParseNode $n) => $o->setSource($n->getEnumValue(CurrentLeadStatusSummary_source::class)),
@@ -180,6 +186,14 @@ class CurrentLeadStatusSummary implements AdditionalDataHolder, Parsable
     */
     public function getId(): ?string {
         return $this->id;
+    }
+
+    /**
+     * Gets the leadStatusId property value. Configured organization status ID, independent of its display name and history entry ID.
+     * @return string|null
+    */
+    public function getLeadStatusId(): ?string {
+        return $this->leadStatusId;
     }
 
     /**
@@ -219,6 +233,7 @@ class CurrentLeadStatusSummary implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('followUpCompletedAt', $this->getFollowUpCompletedAt());
         $writer->writeDateTimeValue('followUpDueAt', $this->getFollowUpDueAt());
         $writer->writeStringValue('id', $this->getId());
+        $writer->writeStringValue('leadStatusId', $this->getLeadStatusId());
         $writer->writeStringValue('outcome', $this->getOutcome());
         $writer->writeIntegerValue('revision', $this->getRevision());
         $writer->writeEnumValue('source', $this->getSource());
@@ -295,6 +310,14 @@ class CurrentLeadStatusSummary implements AdditionalDataHolder, Parsable
     */
     public function setId(?string $value): void {
         $this->id = $value;
+    }
+
+    /**
+     * Sets the leadStatusId property value. Configured organization status ID, independent of its display name and history entry ID.
+     * @param string|null $value Value to set for the leadStatusId property.
+    */
+    public function setLeadStatusId(?string $value): void {
+        $this->leadStatusId = $value;
     }
 
     /**

@@ -34,6 +34,11 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     private ?OrganizationResponse_address $address = null;
     
     /**
+     * @var bool|null $automaticallyMarkLeadsCalled Automatically advances new leads after a confirmed outbound call attempt. Enabled by default.
+    */
+    private ?bool $automaticallyMarkLeadsCalled = null;
+    
+    /**
      * @var float|null $autoRefillAmount Wallet refill amount charged when automatic refill is triggered.
     */
     private ?float $autoRefillAmount = null;
@@ -79,6 +84,11 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     private ?string $billingTaxId = null;
     
     /**
+     * @var string|null $calledLeadStatusId Destination status for outbound call attempts. Null uses the built-in Called status.
+    */
+    private ?string $calledLeadStatusId = null;
+    
+    /**
      * @var OrganizationResponse_compliancePolicy|null $compliancePolicy Describes organization compliance policy data used in Leadping API requests and responses.
     */
     private ?OrganizationResponse_compliancePolicy $compliancePolicy = null;
@@ -119,7 +129,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * @var bool|null $isDemo The isDemo property
+     * @var bool|null $isDemo Whether this record belongs to demo data.
     */
     private ?bool $isDemo = null;
     
@@ -242,6 +252,14 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the automaticallyMarkLeadsCalled property value. Automatically advances new leads after a confirmed outbound call attempt. Enabled by default.
+     * @return bool|null
+    */
+    public function getAutomaticallyMarkLeadsCalled(): ?bool {
+        return $this->automaticallyMarkLeadsCalled;
+    }
+
+    /**
      * Gets the autoRefillAmount property value. Wallet refill amount charged when automatic refill is triggered.
      * @return float|null
     */
@@ -314,6 +332,14 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the calledLeadStatusId property value. Destination status for outbound call attempts. Null uses the built-in Called status.
+     * @return string|null
+    */
+    public function getCalledLeadStatusId(): ?string {
+        return $this->calledLeadStatusId;
+    }
+
+    /**
      * Gets the compliancePolicy property value. Describes organization compliance policy data used in Leadping API requests and responses.
      * @return OrganizationResponse_compliancePolicy|null
     */
@@ -379,6 +405,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
             'accountBalance' => fn(ParseNode $n) => $o->setAccountBalance($n->getFloatValue()),
             'activation' => fn(ParseNode $n) => $o->setActivation($n->getObjectValue([OrganizationResponse_activation::class, 'createFromDiscriminatorValue'])),
             'address' => fn(ParseNode $n) => $o->setAddress($n->getObjectValue([OrganizationResponse_address::class, 'createFromDiscriminatorValue'])),
+            'automaticallyMarkLeadsCalled' => fn(ParseNode $n) => $o->setAutomaticallyMarkLeadsCalled($n->getBooleanValue()),
             'autoRefillAmount' => fn(ParseNode $n) => $o->setAutoRefillAmount($n->getFloatValue()),
             'autoRefillEnabled' => fn(ParseNode $n) => $o->setAutoRefillEnabled($n->getBooleanValue()),
             'autoRefillTrigger' => fn(ParseNode $n) => $o->setAutoRefillTrigger($n->getFloatValue()),
@@ -388,6 +415,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
             'billingPlan' => fn(ParseNode $n) => $o->setBillingPlan($n->getEnumValue(OrganizationResponse_billingPlan::class)),
             'billingState' => fn(ParseNode $n) => $o->setBillingState($n->getObjectValue([OrganizationResponse_billingState::class, 'createFromDiscriminatorValue'])),
             'billingTaxId' => fn(ParseNode $n) => $o->setBillingTaxId($n->getStringValue()),
+            'calledLeadStatusId' => fn(ParseNode $n) => $o->setCalledLeadStatusId($n->getStringValue()),
             'compliancePolicy' => fn(ParseNode $n) => $o->setCompliancePolicy($n->getObjectValue([OrganizationResponse_compliancePolicy::class, 'createFromDiscriminatorValue'])),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
@@ -423,7 +451,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the isDemo property value. The isDemo property
+     * Gets the isDemo property value. Whether this record belongs to demo data.
      * @return bool|null
     */
     public function getIsDemo(): ?bool {
@@ -550,6 +578,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
         $writer->writeFloatValue('accountBalance', $this->getAccountBalance());
         $writer->writeObjectValue('activation', $this->getActivation());
         $writer->writeObjectValue('address', $this->getAddress());
+        $writer->writeBooleanValue('automaticallyMarkLeadsCalled', $this->getAutomaticallyMarkLeadsCalled());
         $writer->writeFloatValue('autoRefillAmount', $this->getAutoRefillAmount());
         $writer->writeBooleanValue('autoRefillEnabled', $this->getAutoRefillEnabled());
         $writer->writeFloatValue('autoRefillTrigger', $this->getAutoRefillTrigger());
@@ -559,6 +588,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
         $writer->writeEnumValue('billingPlan', $this->getBillingPlan());
         $writer->writeObjectValue('billingState', $this->getBillingState());
         $writer->writeStringValue('billingTaxId', $this->getBillingTaxId());
+        $writer->writeStringValue('calledLeadStatusId', $this->getCalledLeadStatusId());
         $writer->writeObjectValue('compliancePolicy', $this->getCompliancePolicy());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeStringValue('description', $this->getDescription());
@@ -615,6 +645,14 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     */
     public function setAddress(?OrganizationResponse_address $value): void {
         $this->address = $value;
+    }
+
+    /**
+     * Sets the automaticallyMarkLeadsCalled property value. Automatically advances new leads after a confirmed outbound call attempt. Enabled by default.
+     * @param bool|null $value Value to set for the automaticallyMarkLeadsCalled property.
+    */
+    public function setAutomaticallyMarkLeadsCalled(?bool $value): void {
+        $this->automaticallyMarkLeadsCalled = $value;
     }
 
     /**
@@ -690,6 +728,14 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the calledLeadStatusId property value. Destination status for outbound call attempts. Null uses the built-in Called status.
+     * @param string|null $value Value to set for the calledLeadStatusId property.
+    */
+    public function setCalledLeadStatusId(?string $value): void {
+        $this->calledLeadStatusId = $value;
+    }
+
+    /**
      * Sets the compliancePolicy property value. Describes organization compliance policy data used in Leadping API requests and responses.
      * @param OrganizationResponse_compliancePolicy|null $value Value to set for the compliancePolicy property.
     */
@@ -754,7 +800,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the isDemo property value. The isDemo property
+     * Sets the isDemo property value. Whether this record belongs to demo data.
      * @param bool|null $value Value to set for the isDemo property.
     */
     public function setIsDemo(?bool $value): void {

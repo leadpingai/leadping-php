@@ -18,12 +18,12 @@ class SpendLimitsRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var float|null $dailyLimit The dailyLimit property
+     * @var float|null $dailyLimit Daily usage budget in USD for the UTC calendar day. Null removes the limit; zero stops new paid usage.
     */
     private ?float $dailyLimit = null;
     
     /**
-     * @var float|null $monthlyLimit The monthlyLimit property
+     * @var float|null $monthlyLimit Monthly usage budget in USD for the UTC calendar month. Null removes the limit; zero stops new paid usage.
     */
     private ?float $monthlyLimit = null;
     
@@ -52,7 +52,7 @@ class SpendLimitsRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the dailyLimit property value. The dailyLimit property
+     * Gets the dailyLimit property value. Daily usage budget in USD for the UTC calendar day. Null removes the limit; zero stops new paid usage.
      * @return float|null
     */
     public function getDailyLimit(): ?float {
@@ -72,7 +72,7 @@ class SpendLimitsRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the monthlyLimit property value. The monthlyLimit property
+     * Gets the monthlyLimit property value. Monthly usage budget in USD for the UTC calendar month. Null removes the limit; zero stops new paid usage.
      * @return float|null
     */
     public function getMonthlyLimit(): ?float {
@@ -98,7 +98,7 @@ class SpendLimitsRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the dailyLimit property value. The dailyLimit property
+     * Sets the dailyLimit property value. Daily usage budget in USD for the UTC calendar day. Null removes the limit; zero stops new paid usage.
      * @param float|null $value Value to set for the dailyLimit property.
     */
     public function setDailyLimit(?float $value): void {
@@ -106,7 +106,7 @@ class SpendLimitsRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the monthlyLimit property value. The monthlyLimit property
+     * Sets the monthlyLimit property value. Monthly usage budget in USD for the UTC calendar month. Null removes the limit; zero stops new paid usage.
      * @param float|null $value Value to set for the monthlyLimit property.
     */
     public function setMonthlyLimit(?float $value): void {

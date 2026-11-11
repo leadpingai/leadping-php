@@ -41,7 +41,7 @@ class PaymentMethodsItemRequestBuilder extends BaseRequestBuilder
     /**
      * Deletes a payment method so it is no longer available for wallet funding, invoices, or billing account management.
      * @param PaymentMethodsItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return Promise<void|null>
+     * @return Promise<string|null>
      * @throws Exception
     */
     public function delete(?PaymentMethodsItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null): Promise {
@@ -52,8 +52,11 @@ class PaymentMethodsItemRequestBuilder extends BaseRequestBuilder
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
-        return $this->requestAdapter->sendNoContentAsync($requestInfo, $errorMappings);
+        /** @var Promise<string|null> $result */
+        $result = $this->requestAdapter->sendPrimitiveAsync($requestInfo, 'string', $errorMappings);
+        return $result;
     }
 
     /**
@@ -70,6 +73,7 @@ class PaymentMethodsItemRequestBuilder extends BaseRequestBuilder
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [StripePaymentMethodResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
@@ -88,7 +92,7 @@ class PaymentMethodsItemRequestBuilder extends BaseRequestBuilder
             $requestInfo->addHeaders($requestConfiguration->headers);
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
-        $requestInfo->tryAddHeader('Accept', "application/json, application/problem+json");
+        $requestInfo->tryAddHeader('Accept', "application/json");
         return $requestInfo;
     }
 

@@ -23,6 +23,16 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     private ?OrganizationRequest_address $address = null;
     
     /**
+     * @var bool|null $automaticallyMarkLeadsCalled Automatically advances new leads after a confirmed outbound call attempt. Enabled by default.
+    */
+    private ?bool $automaticallyMarkLeadsCalled = null;
+    
+    /**
+     * @var string|null $calledLeadStatusId Destination status for outbound call attempts. Null uses the built-in Called status.
+    */
+    private ?string $calledLeadStatusId = null;
+    
+    /**
      * @var string|null $description Human-readable description that explains this organization profile request to API users.
     */
     private ?string $description = null;
@@ -110,6 +120,22 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the automaticallyMarkLeadsCalled property value. Automatically advances new leads after a confirmed outbound call attempt. Enabled by default.
+     * @return bool|null
+    */
+    public function getAutomaticallyMarkLeadsCalled(): ?bool {
+        return $this->automaticallyMarkLeadsCalled;
+    }
+
+    /**
+     * Gets the calledLeadStatusId property value. Destination status for outbound call attempts. Null uses the built-in Called status.
+     * @return string|null
+    */
+    public function getCalledLeadStatusId(): ?string {
+        return $this->calledLeadStatusId;
+    }
+
+    /**
      * Gets the description property value. Human-readable description that explains this organization profile request to API users.
      * @return string|null
     */
@@ -133,6 +159,8 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'address' => fn(ParseNode $n) => $o->setAddress($n->getObjectValue([OrganizationRequest_address::class, 'createFromDiscriminatorValue'])),
+            'automaticallyMarkLeadsCalled' => fn(ParseNode $n) => $o->setAutomaticallyMarkLeadsCalled($n->getBooleanValue()),
+            'calledLeadStatusId' => fn(ParseNode $n) => $o->setCalledLeadStatusId($n->getStringValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'ein' => fn(ParseNode $n) => $o->setEin($n->getStringValue()),
             'isYoungerThan90' => fn(ParseNode $n) => $o->setIsYoungerThan90($n->getBooleanValue()),
@@ -225,6 +253,8 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeObjectValue('address', $this->getAddress());
+        $writer->writeBooleanValue('automaticallyMarkLeadsCalled', $this->getAutomaticallyMarkLeadsCalled());
+        $writer->writeStringValue('calledLeadStatusId', $this->getCalledLeadStatusId());
         $writer->writeStringValue('description', $this->getDescription());
         $writer->writeStringValue('ein', $this->getEin());
         $writer->writeBooleanValue('isYoungerThan90', $this->getIsYoungerThan90());
@@ -253,6 +283,22 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     */
     public function setAddress(?OrganizationRequest_address $value): void {
         $this->address = $value;
+    }
+
+    /**
+     * Sets the automaticallyMarkLeadsCalled property value. Automatically advances new leads after a confirmed outbound call attempt. Enabled by default.
+     * @param bool|null $value Value to set for the automaticallyMarkLeadsCalled property.
+    */
+    public function setAutomaticallyMarkLeadsCalled(?bool $value): void {
+        $this->automaticallyMarkLeadsCalled = $value;
+    }
+
+    /**
+     * Sets the calledLeadStatusId property value. Destination status for outbound call attempts. Null uses the built-in Called status.
+     * @param string|null $value Value to set for the calledLeadStatusId property.
+    */
+    public function setCalledLeadStatusId(?string $value): void {
+        $this->calledLeadStatusId = $value;
     }
 
     /**

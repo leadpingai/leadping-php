@@ -4,6 +4,7 @@ namespace Leadping\OpenApiClient\Conversations\Lead\Item;
 
 use Exception;
 use Http\Promise\Promise;
+use Leadping\OpenApiClient\Conversations\Lead\Item\Contactability\ContactabilityRequestBuilder;
 use Leadping\OpenApiClient\Models\PagedResultOfConversationResponse;
 use Leadping\OpenApiClient\Models\ProblemDetails;
 use Leadping\OpenApiClient\Models\RequestDataOptions;
@@ -17,6 +18,13 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 */
 class WithLeadItemRequestBuilder extends BaseRequestBuilder 
 {
+    /**
+     * The contactability property
+    */
+    public function contactability(): ContactabilityRequestBuilder {
+        return new ContactabilityRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
     /**
      * Instantiates a new WithLeadItemRequestBuilder and sets the default values.
      * @param array<string, mixed>|string $pathParametersOrRawUrl Path parameters for the request or a String representing the raw URL.
@@ -44,6 +52,8 @@ class WithLeadItemRequestBuilder extends BaseRequestBuilder
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '415' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];

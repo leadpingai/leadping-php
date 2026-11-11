@@ -19,32 +19,32 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var DateTime|null $endAt The endAt property
+     * @var DateTime|null $endAt Exclusive UTC end of the analytics bucket.
     */
     private ?DateTime $endAt = null;
     
     /**
-     * @var int|null $executions The executions property
+     * @var int|null $executions Number of automation executions in the bucket.
     */
     private ?int $executions = null;
     
     /**
-     * @var int|null $failureCount The failureCount property
+     * @var int|null $failureCount Number of failed automation executions in the bucket.
     */
     private ?int $failureCount = null;
     
     /**
-     * @var string|null $label The label property
+     * @var string|null $label Display label identifying the analytics bucket.
     */
     private ?string $label = null;
     
     /**
-     * @var DateTime|null $startAt The startAt property
+     * @var DateTime|null $startAt Inclusive UTC start of the analytics bucket.
     */
     private ?DateTime $startAt = null;
     
     /**
-     * @var int|null $successCount The successCount property
+     * @var int|null $successCount Number of successful automation executions in the bucket.
     */
     private ?int $successCount = null;
     
@@ -73,7 +73,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the endAt property value. The endAt property
+     * Gets the endAt property value. Exclusive UTC end of the analytics bucket.
      * @return DateTime|null
     */
     public function getEndAt(): ?DateTime {
@@ -81,7 +81,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the executions property value. The executions property
+     * Gets the executions property value. Number of automation executions in the bucket.
      * @return int|null
     */
     public function getExecutions(): ?int {
@@ -89,7 +89,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the failureCount property value. The failureCount property
+     * Gets the failureCount property value. Number of failed automation executions in the bucket.
      * @return int|null
     */
     public function getFailureCount(): ?int {
@@ -113,7 +113,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the label property value. The label property
+     * Gets the label property value. Display label identifying the analytics bucket.
      * @return string|null
     */
     public function getLabel(): ?string {
@@ -121,7 +121,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the startAt property value. The startAt property
+     * Gets the startAt property value. Inclusive UTC start of the analytics bucket.
      * @return DateTime|null
     */
     public function getStartAt(): ?DateTime {
@@ -129,7 +129,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the successCount property value. The successCount property
+     * Gets the successCount property value. Number of successful automation executions in the bucket.
      * @return int|null
     */
     public function getSuccessCount(): ?int {
@@ -159,7 +159,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the endAt property value. The endAt property
+     * Sets the endAt property value. Exclusive UTC end of the analytics bucket.
      * @param DateTime|null $value Value to set for the endAt property.
     */
     public function setEndAt(?DateTime $value): void {
@@ -167,7 +167,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the executions property value. The executions property
+     * Sets the executions property value. Number of automation executions in the bucket.
      * @param int|null $value Value to set for the executions property.
     */
     public function setExecutions(?int $value): void {
@@ -175,7 +175,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the failureCount property value. The failureCount property
+     * Sets the failureCount property value. Number of failed automation executions in the bucket.
      * @param int|null $value Value to set for the failureCount property.
     */
     public function setFailureCount(?int $value): void {
@@ -183,7 +183,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the label property value. The label property
+     * Sets the label property value. Display label identifying the analytics bucket.
      * @param string|null $value Value to set for the label property.
     */
     public function setLabel(?string $value): void {
@@ -191,7 +191,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the startAt property value. The startAt property
+     * Sets the startAt property value. Inclusive UTC start of the analytics bucket.
      * @param DateTime|null $value Value to set for the startAt property.
     */
     public function setStartAt(?DateTime $value): void {
@@ -199,7 +199,7 @@ class CustomerAutomationHealthPoint implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the successCount property value. The successCount property
+     * Sets the successCount property value. Number of successful automation executions in the bucket.
      * @param int|null $value Value to set for the successCount property.
     */
     public function setSuccessCount(?int $value): void {

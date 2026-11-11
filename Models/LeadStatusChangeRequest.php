@@ -64,6 +64,11 @@ class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable
     private ?string $followUpStatus = null;
     
     /**
+     * @var string|null $leadStatusId Configured organization status ID, independent of its display name and history entry ID.
+    */
+    private ?string $leadStatusId = null;
+    
+    /**
      * @var string|null $notes The operator or customer notes recorded for this lead status change.
     */
     private ?string $notes = null;
@@ -192,6 +197,7 @@ class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable
             'expectedCurrentStatusId' => fn(ParseNode $n) => $o->setExpectedCurrentStatusId($n->getStringValue()),
             'expectedRevision' => fn(ParseNode $n) => $o->setExpectedRevision($n->getIntegerValue()),
             'followUpStatus' => fn(ParseNode $n) => $o->setFollowUpStatus($n->getStringValue()),
+            'leadStatusId' => fn(ParseNode $n) => $o->setLeadStatusId($n->getStringValue()),
             'notes' => fn(ParseNode $n) => $o->setNotes($n->getStringValue()),
             'outcome' => fn(ParseNode $n) => $o->setOutcome($n->getStringValue()),
             'reason' => fn(ParseNode $n) => $o->setReason($n->getStringValue()),
@@ -206,6 +212,14 @@ class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable
     */
     public function getFollowUpStatus(): ?string {
         return $this->followUpStatus;
+    }
+
+    /**
+     * Gets the leadStatusId property value. Configured organization status ID, independent of its display name and history entry ID.
+     * @return string|null
+    */
+    public function getLeadStatusId(): ?string {
+        return $this->leadStatusId;
     }
 
     /**
@@ -262,6 +276,7 @@ class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('expectedCurrentStatusId', $this->getExpectedCurrentStatusId());
         $writer->writeIntegerValue('expectedRevision', $this->getExpectedRevision());
         $writer->writeStringValue('followUpStatus', $this->getFollowUpStatus());
+        $writer->writeStringValue('leadStatusId', $this->getLeadStatusId());
         $writer->writeStringValue('notes', $this->getNotes());
         $writer->writeStringValue('outcome', $this->getOutcome());
         $writer->writeStringValue('reason', $this->getReason());
@@ -348,6 +363,14 @@ class LeadStatusChangeRequest implements AdditionalDataHolder, Parsable
     */
     public function setFollowUpStatus(?string $value): void {
         $this->followUpStatus = $value;
+    }
+
+    /**
+     * Sets the leadStatusId property value. Configured organization status ID, independent of its display name and history entry ID.
+     * @param string|null $value Value to set for the leadStatusId property.
+    */
+    public function setLeadStatusId(?string $value): void {
+        $this->leadStatusId = $value;
     }
 
     /**

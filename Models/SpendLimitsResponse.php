@@ -19,37 +19,37 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var float|null $dailyLimit The dailyLimit property
+     * @var float|null $dailyLimit Daily usage budget in USD. Null means no daily limit; zero stops new paid usage.
     */
     private ?float $dailyLimit = null;
     
     /**
-     * @var DateTime|null $dailyResetsAt The dailyResetsAt property
+     * @var DateTime|null $dailyResetsAt UTC timestamp when the next calendar day begins and daily spending resets.
     */
     private ?DateTime $dailyResetsAt = null;
     
     /**
-     * @var float|null $dailySpent The dailySpent property
+     * @var float|null $dailySpent Settled usage spending in USD for the current UTC calendar day.
     */
     private ?float $dailySpent = null;
     
     /**
-     * @var float|null $monthlyLimit The monthlyLimit property
+     * @var float|null $monthlyLimit Monthly usage budget in USD. Null means no monthly limit; zero stops new paid usage.
     */
     private ?float $monthlyLimit = null;
     
     /**
-     * @var DateTime|null $monthlyResetsAt The monthlyResetsAt property
+     * @var DateTime|null $monthlyResetsAt UTC timestamp when the next calendar month begins and monthly spending resets.
     */
     private ?DateTime $monthlyResetsAt = null;
     
     /**
-     * @var float|null $monthlySpent The monthlySpent property
+     * @var float|null $monthlySpent Settled usage spending in USD for the current UTC calendar month.
     */
     private ?float $monthlySpent = null;
     
     /**
-     * @var float|null $reserved The reserved property
+     * @var float|null $reserved Pending usage reservations in USD.
     */
     private ?float $reserved = null;
     
@@ -78,7 +78,7 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the dailyLimit property value. The dailyLimit property
+     * Gets the dailyLimit property value. Daily usage budget in USD. Null means no daily limit; zero stops new paid usage.
      * @return float|null
     */
     public function getDailyLimit(): ?float {
@@ -86,7 +86,7 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the dailyResetsAt property value. The dailyResetsAt property
+     * Gets the dailyResetsAt property value. UTC timestamp when the next calendar day begins and daily spending resets.
      * @return DateTime|null
     */
     public function getDailyResetsAt(): ?DateTime {
@@ -94,7 +94,7 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the dailySpent property value. The dailySpent property
+     * Gets the dailySpent property value. Settled usage spending in USD for the current UTC calendar day.
      * @return float|null
     */
     public function getDailySpent(): ?float {
@@ -119,7 +119,7 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the monthlyLimit property value. The monthlyLimit property
+     * Gets the monthlyLimit property value. Monthly usage budget in USD. Null means no monthly limit; zero stops new paid usage.
      * @return float|null
     */
     public function getMonthlyLimit(): ?float {
@@ -127,7 +127,7 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the monthlyResetsAt property value. The monthlyResetsAt property
+     * Gets the monthlyResetsAt property value. UTC timestamp when the next calendar month begins and monthly spending resets.
      * @return DateTime|null
     */
     public function getMonthlyResetsAt(): ?DateTime {
@@ -135,7 +135,7 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the monthlySpent property value. The monthlySpent property
+     * Gets the monthlySpent property value. Settled usage spending in USD for the current UTC calendar month.
      * @return float|null
     */
     public function getMonthlySpent(): ?float {
@@ -143,7 +143,7 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the reserved property value. The reserved property
+     * Gets the reserved property value. Pending usage reservations in USD.
      * @return float|null
     */
     public function getReserved(): ?float {
@@ -174,7 +174,7 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the dailyLimit property value. The dailyLimit property
+     * Sets the dailyLimit property value. Daily usage budget in USD. Null means no daily limit; zero stops new paid usage.
      * @param float|null $value Value to set for the dailyLimit property.
     */
     public function setDailyLimit(?float $value): void {
@@ -182,7 +182,7 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the dailyResetsAt property value. The dailyResetsAt property
+     * Sets the dailyResetsAt property value. UTC timestamp when the next calendar day begins and daily spending resets.
      * @param DateTime|null $value Value to set for the dailyResetsAt property.
     */
     public function setDailyResetsAt(?DateTime $value): void {
@@ -190,7 +190,7 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the dailySpent property value. The dailySpent property
+     * Sets the dailySpent property value. Settled usage spending in USD for the current UTC calendar day.
      * @param float|null $value Value to set for the dailySpent property.
     */
     public function setDailySpent(?float $value): void {
@@ -198,7 +198,7 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the monthlyLimit property value. The monthlyLimit property
+     * Sets the monthlyLimit property value. Monthly usage budget in USD. Null means no monthly limit; zero stops new paid usage.
      * @param float|null $value Value to set for the monthlyLimit property.
     */
     public function setMonthlyLimit(?float $value): void {
@@ -206,7 +206,7 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the monthlyResetsAt property value. The monthlyResetsAt property
+     * Sets the monthlyResetsAt property value. UTC timestamp when the next calendar month begins and monthly spending resets.
      * @param DateTime|null $value Value to set for the monthlyResetsAt property.
     */
     public function setMonthlyResetsAt(?DateTime $value): void {
@@ -214,7 +214,7 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the monthlySpent property value. The monthlySpent property
+     * Sets the monthlySpent property value. Settled usage spending in USD for the current UTC calendar month.
      * @param float|null $value Value to set for the monthlySpent property.
     */
     public function setMonthlySpent(?float $value): void {
@@ -222,7 +222,7 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the reserved property value. The reserved property
+     * Sets the reserved property value. Pending usage reservations in USD.
      * @param float|null $value Value to set for the reserved property.
     */
     public function setReserved(?float $value): void {

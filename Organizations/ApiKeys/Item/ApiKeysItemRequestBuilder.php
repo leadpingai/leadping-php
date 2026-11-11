@@ -42,10 +42,12 @@ class ApiKeysItemRequestBuilder extends BaseRequestBuilder
     public function delete(?ApiKeysItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toDeleteRequestInformation($requestConfiguration);
         $errorMappings = [
+                '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [OrganizationApiKeyRevokeResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
@@ -59,10 +61,12 @@ class ApiKeysItemRequestBuilder extends BaseRequestBuilder
     public function get(?ApiKeysItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
+                '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [OrganizationApiKeyPreviewResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
@@ -80,7 +84,11 @@ class ApiKeysItemRequestBuilder extends BaseRequestBuilder
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '409' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '415' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
         return $this->requestAdapter->sendAsync($requestInfo, [OrganizationApiKeyIssueResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }

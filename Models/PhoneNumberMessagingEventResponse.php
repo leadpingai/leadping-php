@@ -44,7 +44,7 @@ class PhoneNumberMessagingEventResponse implements AdditionalDataHolder, Parsabl
     private ?string $id = null;
     
     /**
-     * @var bool|null $isDemo The isDemo property
+     * @var bool|null $isDemo Whether this record belongs to demo data.
     */
     private ?bool $isDemo = null;
     
@@ -153,7 +153,7 @@ class PhoneNumberMessagingEventResponse implements AdditionalDataHolder, Parsabl
     }
 
     /**
-     * Gets the isDemo property value. The isDemo property
+     * Gets the isDemo property value. Whether this record belongs to demo data.
      * @return bool|null
     */
     public function getIsDemo(): ?bool {
@@ -259,7 +259,7 @@ class PhoneNumberMessagingEventResponse implements AdditionalDataHolder, Parsabl
     }
 
     /**
-     * Sets the isDemo property value. The isDemo property
+     * Sets the isDemo property value. Whether this record belongs to demo data.
      * @param bool|null $value Value to set for the isDemo property.
     */
     public function setIsDemo(?bool $value): void {

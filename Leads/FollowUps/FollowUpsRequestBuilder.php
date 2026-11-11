@@ -4,12 +4,12 @@ namespace Leadping\OpenApiClient\Leads\FollowUps;
 
 use Exception;
 use Http\Promise\Promise;
+use Leadping\OpenApiClient\Models\PagedResultOfLeadFollowUpResponse;
 use Leadping\OpenApiClient\Models\ProblemDetails;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
-use Psr\Http\Message\StreamInterface;
 
 /**
  * Builds and executes requests for operations under /leads/follow-ups
@@ -33,19 +33,20 @@ class FollowUpsRequestBuilder extends BaseRequestBuilder
     /**
      * Returns a paginated list of current incomplete follow-ups with lead assignment and organization access enforced, with the option to include upcoming follow-ups.
      * @param FollowUpsRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return Promise<StreamInterface|null>
+     * @return Promise<PagedResultOfLeadFollowUpResponse|null>
      * @throws Exception
     */
     public function get(?FollowUpsRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
+                '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '401' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '403' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '404' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
+                '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
-        /** @var Promise<StreamInterface|null> $result */
-        $result = $this->requestAdapter->sendPrimitiveAsync($requestInfo, StreamInterface::class, $errorMappings);
-        return $result;
+        return $this->requestAdapter->sendAsync($requestInfo, [PagedResultOfLeadFollowUpResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
 
     /**
@@ -65,7 +66,7 @@ class FollowUpsRequestBuilder extends BaseRequestBuilder
             }
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
-        $requestInfo->tryAddHeader('Accept', "application/problem+json");
+        $requestInfo->tryAddHeader('Accept', "text/plain;q=0.9");
         return $requestInfo;
     }
 

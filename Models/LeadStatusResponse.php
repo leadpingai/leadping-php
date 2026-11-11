@@ -39,6 +39,16 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     private ?bool $isArchived = null;
     
     /**
+     * @var bool|null $isDefaultCalledStatus Whether this is the default destination for outbound call attempts.
+    */
+    private ?bool $isDefaultCalledStatus = null;
+    
+    /**
+     * @var bool|null $isInitialStatus Whether this is the built-in initial status for new leads.
+    */
+    private ?bool $isInitialStatus = null;
+    
+    /**
      * @var DateTime|null $modifiedAt Date and time when the lead status was last modified.
     */
     private ?DateTime $modifiedAt = null;
@@ -109,6 +119,8 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
             'color' => fn(ParseNode $n) => $o->setColor($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isArchived' => fn(ParseNode $n) => $o->setIsArchived($n->getBooleanValue()),
+            'isDefaultCalledStatus' => fn(ParseNode $n) => $o->setIsDefaultCalledStatus($n->getBooleanValue()),
+            'isInitialStatus' => fn(ParseNode $n) => $o->setIsInitialStatus($n->getBooleanValue()),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
@@ -130,6 +142,22 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     */
     public function getIsArchived(): ?bool {
         return $this->isArchived;
+    }
+
+    /**
+     * Gets the isDefaultCalledStatus property value. Whether this is the default destination for outbound call attempts.
+     * @return bool|null
+    */
+    public function getIsDefaultCalledStatus(): ?bool {
+        return $this->isDefaultCalledStatus;
+    }
+
+    /**
+     * Gets the isInitialStatus property value. Whether this is the built-in initial status for new leads.
+     * @return bool|null
+    */
+    public function getIsInitialStatus(): ?bool {
+        return $this->isInitialStatus;
     }
 
     /**
@@ -173,6 +201,8 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('color', $this->getColor());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isArchived', $this->getIsArchived());
+        $writer->writeBooleanValue('isDefaultCalledStatus', $this->getIsDefaultCalledStatus());
+        $writer->writeBooleanValue('isInitialStatus', $this->getIsInitialStatus());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeStringValue('organizationId', $this->getOrganizationId());
@@ -218,6 +248,22 @@ class LeadStatusResponse implements AdditionalDataHolder, Parsable
     */
     public function setIsArchived(?bool $value): void {
         $this->isArchived = $value;
+    }
+
+    /**
+     * Sets the isDefaultCalledStatus property value. Whether this is the default destination for outbound call attempts.
+     * @param bool|null $value Value to set for the isDefaultCalledStatus property.
+    */
+    public function setIsDefaultCalledStatus(?bool $value): void {
+        $this->isDefaultCalledStatus = $value;
+    }
+
+    /**
+     * Sets the isInitialStatus property value. Whether this is the built-in initial status for new leads.
+     * @param bool|null $value Value to set for the isInitialStatus property.
+    */
+    public function setIsInitialStatus(?bool $value): void {
+        $this->isInitialStatus = $value;
     }
 
     /**

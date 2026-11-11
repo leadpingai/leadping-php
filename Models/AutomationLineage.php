@@ -14,7 +14,7 @@ use Microsoft\Kiota\Abstractions\Types\TypeUtils;
 class AutomationLineage implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var string|null $actionId The actionId property
+     * @var string|null $actionId Identifier of the action that produced the event, when applicable.
     */
     private ?string $actionId = null;
     
@@ -29,17 +29,17 @@ class AutomationLineage implements AdditionalDataHolder, Parsable
     private ?array $automationIds = null;
     
     /**
-     * @var string|null $rootEventId The rootEventId property
+     * @var string|null $rootEventId Identifier of the original event that started the automation chain.
     */
     private ?string $rootEventId = null;
     
     /**
-     * @var string|null $runId The runId property
+     * @var string|null $runId Identifier of the automation run that produced the event.
     */
     private ?string $runId = null;
     
     /**
-     * @var string|null $triggerEventId The triggerEventId property
+     * @var string|null $triggerEventId Identifier of the event that directly triggered this run.
     */
     private ?string $triggerEventId = null;
     
@@ -60,7 +60,7 @@ class AutomationLineage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the actionId property value. The actionId property
+     * Gets the actionId property value. Identifier of the action that produced the event, when applicable.
      * @return string|null
     */
     public function getActionId(): ?string {
@@ -106,7 +106,7 @@ class AutomationLineage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the rootEventId property value. The rootEventId property
+     * Gets the rootEventId property value. Identifier of the original event that started the automation chain.
      * @return string|null
     */
     public function getRootEventId(): ?string {
@@ -114,7 +114,7 @@ class AutomationLineage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the runId property value. The runId property
+     * Gets the runId property value. Identifier of the automation run that produced the event.
      * @return string|null
     */
     public function getRunId(): ?string {
@@ -122,7 +122,7 @@ class AutomationLineage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the triggerEventId property value. The triggerEventId property
+     * Gets the triggerEventId property value. Identifier of the event that directly triggered this run.
      * @return string|null
     */
     public function getTriggerEventId(): ?string {
@@ -143,7 +143,7 @@ class AutomationLineage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the actionId property value. The actionId property
+     * Sets the actionId property value. Identifier of the action that produced the event, when applicable.
      * @param string|null $value Value to set for the actionId property.
     */
     public function setActionId(?string $value): void {
@@ -167,7 +167,7 @@ class AutomationLineage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the rootEventId property value. The rootEventId property
+     * Sets the rootEventId property value. Identifier of the original event that started the automation chain.
      * @param string|null $value Value to set for the rootEventId property.
     */
     public function setRootEventId(?string $value): void {
@@ -175,7 +175,7 @@ class AutomationLineage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the runId property value. The runId property
+     * Sets the runId property value. Identifier of the automation run that produced the event.
      * @param string|null $value Value to set for the runId property.
     */
     public function setRunId(?string $value): void {
@@ -183,7 +183,7 @@ class AutomationLineage implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the triggerEventId property value. The triggerEventId property
+     * Sets the triggerEventId property value. Identifier of the event that directly triggered this run.
      * @param string|null $value Value to set for the triggerEventId property.
     */
     public function setTriggerEventId(?string $value): void {
