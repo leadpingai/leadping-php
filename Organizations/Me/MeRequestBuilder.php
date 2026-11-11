@@ -9,6 +9,7 @@ use Leadping\OpenApiClient\Models\OrganizationResponse;
 use Leadping\OpenApiClient\Models\ProblemDetails;
 use Leadping\OpenApiClient\Organizations\Me\EscapedSwitch\SwitchRequestBuilder;
 use Leadping\OpenApiClient\Organizations\Me\Invitations\InvitationsRequestBuilder;
+use Leadping\OpenApiClient\Organizations\Me\LeadAssignees\LeadAssigneesRequestBuilder;
 use Leadping\OpenApiClient\Organizations\Me\Members\MembersRequestBuilder;
 use Leadping\OpenApiClient\Organizations\Me\Membership\MembershipRequestBuilder;
 use Leadping\OpenApiClient\Organizations\Me\OneZerodlc\OneZerodlcRequestBuilder;
@@ -35,6 +36,13 @@ class MeRequestBuilder extends BaseRequestBuilder
     */
     public function invitations(): InvitationsRequestBuilder {
         return new InvitationsRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The leadAssignees property
+    */
+    public function leadAssignees(): LeadAssigneesRequestBuilder {
+        return new LeadAssigneesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**

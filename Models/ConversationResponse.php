@@ -39,6 +39,11 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     private ?string $avatarUrl = null;
     
     /**
+     * @var string|null $complianceStatus Stored compliance status of the associated lead; not a live call-readiness guarantee.
+    */
+    private ?string $complianceStatus = null;
+    
+    /**
      * @var ConversationResponse_currentLeadStatus|null $currentLeadStatus Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
     */
     private ?ConversationResponse_currentLeadStatus $currentLeadStatus = null;
@@ -210,6 +215,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the complianceStatus property value. Stored compliance status of the associated lead; not a live call-readiness guarantee.
+     * @return string|null
+    */
+    public function getComplianceStatus(): ?string {
+        return $this->complianceStatus;
+    }
+
+    /**
      * Gets the currentLeadStatus property value. Summary schema for Leadping API current lead status change summary data used in dashboards and reports.
      * @return ConversationResponse_currentLeadStatus|null
     */
@@ -244,6 +257,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
             'archivedAt' => fn(ParseNode $n) => $o->setArchivedAt($n->getDateTimeValue()),
             'archiveReason' => fn(ParseNode $n) => $o->setArchiveReason($n->getIntegerValue()),
             'avatarUrl' => fn(ParseNode $n) => $o->setAvatarUrl($n->getStringValue()),
+            'complianceStatus' => fn(ParseNode $n) => $o->setComplianceStatus($n->getStringValue()),
             'currentLeadStatus' => fn(ParseNode $n) => $o->setCurrentLeadStatus($n->getObjectValue([ConversationResponse_currentLeadStatus::class, 'createFromDiscriminatorValue'])),
             'email' => fn(ParseNode $n) => $o->setEmail($n->getStringValue()),
             'eventVersion' => fn(ParseNode $n) => $o->setEventVersion($n->getIntegerValue()),
@@ -439,6 +453,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('archivedAt', $this->getArchivedAt());
         $writer->writeIntegerValue('archiveReason', $this->getArchiveReason());
         $writer->writeStringValue('avatarUrl', $this->getAvatarUrl());
+        $writer->writeStringValue('complianceStatus', $this->getComplianceStatus());
         $writer->writeObjectValue('currentLeadStatus', $this->getCurrentLeadStatus());
         $writer->writeStringValue('email', $this->getEmail());
         $writer->writeIntegerValue('eventVersion', $this->getEventVersion());
@@ -503,6 +518,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     */
     public function setAvatarUrl(?string $value): void {
         $this->avatarUrl = $value;
+    }
+
+    /**
+     * Sets the complianceStatus property value. Stored compliance status of the associated lead; not a live call-readiness guarantee.
+     * @param string|null $value Value to set for the complianceStatus property.
+    */
+    public function setComplianceStatus(?string $value): void {
+        $this->complianceStatus = $value;
     }
 
     /**

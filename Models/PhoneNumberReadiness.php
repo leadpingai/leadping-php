@@ -48,6 +48,11 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
     private ?PhoneNumberReadiness_state $state = null;
     
     /**
+     * @var PhoneNumberReadiness_trafficHealth|null $trafficHealth Hourly local reputation-risk estimate using 24-hour, seven-day, and thirty-day traffic evidence.
+    */
+    private ?PhoneNumberReadiness_trafficHealth $trafficHealth = null;
+    
+    /**
      * Instantiates a new PhoneNumberReadiness and sets the default values.
     */
     public function __construct() {
@@ -100,6 +105,7 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
             'healthStatus' => fn(ParseNode $n) => $o->setHealthStatus($n->getEnumValue(PhoneNumberReadiness_healthStatus::class)),
             'progressPercent' => fn(ParseNode $n) => $o->setProgressPercent($n->getIntegerValue()),
             'state' => fn(ParseNode $n) => $o->setState($n->getEnumValue(PhoneNumberReadiness_state::class)),
+            'trafficHealth' => fn(ParseNode $n) => $o->setTrafficHealth($n->getObjectValue([PhoneNumberReadiness_trafficHealth::class, 'createFromDiscriminatorValue'])),
         ];
     }
 
@@ -136,6 +142,14 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the trafficHealth property value. Hourly local reputation-risk estimate using 24-hour, seven-day, and thirty-day traffic evidence.
+     * @return PhoneNumberReadiness_trafficHealth|null
+    */
+    public function getTrafficHealth(): ?PhoneNumberReadiness_trafficHealth {
+        return $this->trafficHealth;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -146,6 +160,7 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
         $writer->writeEnumValue('healthStatus', $this->getHealthStatus());
         $writer->writeIntegerValue('progressPercent', $this->getProgressPercent());
         $writer->writeEnumValue('state', $this->getState());
+        $writer->writeObjectValue('trafficHealth', $this->getTrafficHealth());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -203,6 +218,14 @@ class PhoneNumberReadiness implements AdditionalDataHolder, Parsable
     */
     public function setState(?PhoneNumberReadiness_state $value): void {
         $this->state = $value;
+    }
+
+    /**
+     * Sets the trafficHealth property value. Hourly local reputation-risk estimate using 24-hour, seven-day, and thirty-day traffic evidence.
+     * @param PhoneNumberReadiness_trafficHealth|null $value Value to set for the trafficHealth property.
+    */
+    public function setTrafficHealth(?PhoneNumberReadiness_trafficHealth $value): void {
+        $this->trafficHealth = $value;
     }
 
 }
