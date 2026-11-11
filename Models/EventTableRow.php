@@ -244,6 +244,11 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     private ?string $summary = null;
     
     /**
+     * @var array<TagSummary>|null $tags Tags affected by this event, including their display colors.
+    */
+    private ?array $tags = null;
+    
+    /**
      * @var string|null $timelineCategory Timeline category used to group events for display and filtering.
     */
     private ?string $timelineCategory = null;
@@ -538,6 +543,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(EventTableRow_status::class)),
             'statusReason' => fn(ParseNode $n) => $o->setStatusReason($n->getStringValue()),
             'summary' => fn(ParseNode $n) => $o->setSummary($n->getStringValue()),
+            'tags' => fn(ParseNode $n) => $o->setTags($n->getCollectionOfObjectValues([TagSummary::class, 'createFromDiscriminatorValue'])),
             'timelineCategory' => fn(ParseNode $n) => $o->setTimelineCategory($n->getStringValue()),
             'timelineType' => fn(ParseNode $n) => $o->setTimelineType($n->getEnumValue(EventTimelineType::class)),
             'toPhoneNumber' => fn(ParseNode $n) => $o->setToPhoneNumber($n->getStringValue()),
@@ -725,6 +731,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the tags property value. Tags affected by this event, including their display colors.
+     * @return array<TagSummary>|null
+    */
+    public function getTags(): ?array {
+        return $this->tags;
+    }
+
+    /**
      * Gets the timelineCategory property value. Timeline category used to group events for display and filtering.
      * @return string|null
     */
@@ -830,6 +844,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeEnumValue('status', $this->getStatus());
         $writer->writeStringValue('statusReason', $this->getStatusReason());
         $writer->writeStringValue('summary', $this->getSummary());
+        $writer->writeCollectionOfObjectValues('tags', $this->getTags());
         $writer->writeStringValue('timelineCategory', $this->getTimelineCategory());
         $writer->writeEnumValue('timelineType', $this->getTimelineType());
         $writer->writeStringValue('toPhoneNumber', $this->getToPhoneNumber());
@@ -1206,6 +1221,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setSummary(?string $value): void {
         $this->summary = $value;
+    }
+
+    /**
+     * Sets the tags property value. Tags affected by this event, including their display colors.
+     * @param array<TagSummary>|null $value Value to set for the tags property.
+    */
+    public function setTags(?array $value): void {
+        $this->tags = $value;
     }
 
     /**
