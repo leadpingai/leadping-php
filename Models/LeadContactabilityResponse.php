@@ -18,6 +18,11 @@ class LeadContactabilityResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var string|null $callBlockedReason Customer-safe explanation when calling is unavailable.
+    */
+    private ?string $callBlockedReason = null;
+    
+    /**
      * @var bool|null $canCall Whether the lead can currently be called after evaluating applicable contact hours, suppression, and consent rules.
     */
     private ?bool $canCall = null;
@@ -26,6 +31,11 @@ class LeadContactabilityResponse implements AdditionalDataHolder, Parsable
      * @var bool|null $canText Whether the lead can currently be texted after evaluating applicable contact hours, suppression, and consent rules.
     */
     private ?bool $canText = null;
+    
+    /**
+     * @var string|null $textBlockedReason Customer-safe explanation when texting is unavailable.
+    */
+    private ?string $textBlockedReason = null;
     
     /**
      * Instantiates a new LeadContactabilityResponse and sets the default values.
@@ -52,6 +62,14 @@ class LeadContactabilityResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the callBlockedReason property value. Customer-safe explanation when calling is unavailable.
+     * @return string|null
+    */
+    public function getCallBlockedReason(): ?string {
+        return $this->callBlockedReason;
+    }
+
+    /**
      * Gets the canCall property value. Whether the lead can currently be called after evaluating applicable contact hours, suppression, and consent rules.
      * @return bool|null
     */
@@ -74,9 +92,19 @@ class LeadContactabilityResponse implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'callBlockedReason' => fn(ParseNode $n) => $o->setCallBlockedReason($n->getStringValue()),
             'canCall' => fn(ParseNode $n) => $o->setCanCall($n->getBooleanValue()),
             'canText' => fn(ParseNode $n) => $o->setCanText($n->getBooleanValue()),
+            'textBlockedReason' => fn(ParseNode $n) => $o->setTextBlockedReason($n->getStringValue()),
         ];
+    }
+
+    /**
+     * Gets the textBlockedReason property value. Customer-safe explanation when texting is unavailable.
+     * @return string|null
+    */
+    public function getTextBlockedReason(): ?string {
+        return $this->textBlockedReason;
     }
 
     /**
@@ -84,8 +112,10 @@ class LeadContactabilityResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeStringValue('callBlockedReason', $this->getCallBlockedReason());
         $writer->writeBooleanValue('canCall', $this->getCanCall());
         $writer->writeBooleanValue('canText', $this->getCanText());
+        $writer->writeStringValue('textBlockedReason', $this->getTextBlockedReason());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -95,6 +125,14 @@ class LeadContactabilityResponse implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the callBlockedReason property value. Customer-safe explanation when calling is unavailable.
+     * @param string|null $value Value to set for the callBlockedReason property.
+    */
+    public function setCallBlockedReason(?string $value): void {
+        $this->callBlockedReason = $value;
     }
 
     /**
@@ -111,6 +149,14 @@ class LeadContactabilityResponse implements AdditionalDataHolder, Parsable
     */
     public function setCanText(?bool $value): void {
         $this->canText = $value;
+    }
+
+    /**
+     * Sets the textBlockedReason property value. Customer-safe explanation when texting is unavailable.
+     * @param string|null $value Value to set for the textBlockedReason property.
+    */
+    public function setTextBlockedReason(?string $value): void {
+        $this->textBlockedReason = $value;
     }
 
 }
