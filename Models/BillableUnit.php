@@ -11,6 +11,7 @@ class BillableUnit extends Enum {
     public const MMS_MESSAGE = "mms_message";
     public const EMAIL_MESSAGE = "email_message";
     public const VOICE_MINUTE = "voice_minute";
+    public const CALL_ATTEMPT = "call_attempt";
     public const PHONE_NUMBER_MONTH = "phone_number_month";
     public const WARMUP_SMS_SEGMENT = "warmup_sms_segment";
     public const WARMUP_VOICE_MINUTE = "warmup_voice_minute";
