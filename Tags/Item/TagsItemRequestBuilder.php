@@ -87,7 +87,7 @@ class TagsItemRequestBuilder extends BaseRequestBuilder
             $requestInfo->addHeaders($requestConfiguration->headers);
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
-        $requestInfo->tryAddHeader('Accept', "text/plain;q=0.9");
+        $requestInfo->tryAddHeader('Accept', "application/json");
         return $requestInfo;
     }
 

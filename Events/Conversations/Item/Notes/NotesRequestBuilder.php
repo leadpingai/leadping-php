@@ -4,6 +4,7 @@ namespace Leadping\OpenApiClient\Events\Conversations\Item\Notes;
 
 use Exception;
 use Http\Promise\Promise;
+use Leadping\OpenApiClient\Events\Conversations\Item\Notes\Item\WithEventItemRequestBuilder;
 use Leadping\OpenApiClient\Models\CreateNoteRequest;
 use Leadping\OpenApiClient\Models\EventTableRow;
 use Leadping\OpenApiClient\Models\ProblemDetails;
@@ -17,6 +18,17 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 */
 class NotesRequestBuilder extends BaseRequestBuilder 
 {
+    /**
+     * Gets an item from the Leadping/OpenApiClient.events.conversations.item.notes.item collection
+     * @param string $eventId The note event identifier.
+     * @return WithEventItemRequestBuilder
+    */
+    public function byEventId(string $eventId): WithEventItemRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['eventId'] = $eventId;
+        return new WithEventItemRequestBuilder($urlTplParams, $this->requestAdapter);
+    }
+
     /**
      * Instantiates a new NotesRequestBuilder and sets the default values.
      * @param array<string, mixed>|string $pathParametersOrRawUrl Path parameters for the request or a String representing the raw URL.

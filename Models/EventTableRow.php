@@ -74,6 +74,11 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     private ?string $cancelReason = null;
     
     /**
+     * @var bool|null $canEditNote Whether the current user authored this editable note.
+    */
+    private ?bool $canEditNote = null;
+    
+    /**
      * @var string|null $complianceAction Compliance action applied to this message, lead, or sender.
     */
     private ?string $complianceAction = null;
@@ -167,6 +172,11 @@ class EventTableRow implements AdditionalDataHolder, Parsable
      * @var DateTime|null $nextRetryAt UTC timestamp when Leadping will retry this event timeline table row.
     */
     private ?DateTime $nextRetryAt = null;
+    
+    /**
+     * @var bool|null $noteEdited Whether the note has been edited.
+    */
+    private ?bool $noteEdited = null;
     
     /**
      * @var string|null $outboundPhoneNumberId Phone number ID selected for outbound delivery.
@@ -396,6 +406,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the canEditNote property value. Whether the current user authored this editable note.
+     * @return bool|null
+    */
+    public function getCanEditNote(): ?bool {
+        return $this->canEditNote;
+    }
+
+    /**
      * Gets the complianceAction property value. Compliance action applied to this message, lead, or sender.
      * @return string|null
     */
@@ -509,6 +527,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
             'campaignId' => fn(ParseNode $n) => $o->setCampaignId($n->getStringValue()),
             'canceledAt' => fn(ParseNode $n) => $o->setCanceledAt($n->getDateTimeValue()),
             'cancelReason' => fn(ParseNode $n) => $o->setCancelReason($n->getStringValue()),
+            'canEditNote' => fn(ParseNode $n) => $o->setCanEditNote($n->getBooleanValue()),
             'complianceAction' => fn(ParseNode $n) => $o->setComplianceAction($n->getStringValue()),
             'conversationId' => fn(ParseNode $n) => $o->setConversationId($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
@@ -528,6 +547,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
             'media' => fn(ParseNode $n) => $o->setMedia($n->getCollectionOfObjectValues([MessageMediaAttachment::class, 'createFromDiscriminatorValue'])),
             'nextRetryAt' => fn(ParseNode $n) => $o->setNextRetryAt($n->getDateTimeValue()),
+            'noteEdited' => fn(ParseNode $n) => $o->setNoteEdited($n->getBooleanValue()),
             'outboundPhoneNumberId' => fn(ParseNode $n) => $o->setOutboundPhoneNumberId($n->getStringValue()),
             'queuedAt' => fn(ParseNode $n) => $o->setQueuedAt($n->getDateTimeValue()),
             'receivedAt' => fn(ParseNode $n) => $o->setReceivedAt($n->getDateTimeValue()),
@@ -608,6 +628,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function getNextRetryAt(): ?DateTime {
         return $this->nextRetryAt;
+    }
+
+    /**
+     * Gets the noteEdited property value. Whether the note has been edited.
+     * @return bool|null
+    */
+    public function getNoteEdited(): ?bool {
+        return $this->noteEdited;
     }
 
     /**
@@ -810,6 +838,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('campaignId', $this->getCampaignId());
         $writer->writeDateTimeValue('canceledAt', $this->getCanceledAt());
         $writer->writeStringValue('cancelReason', $this->getCancelReason());
+        $writer->writeBooleanValue('canEditNote', $this->getCanEditNote());
         $writer->writeStringValue('complianceAction', $this->getComplianceAction());
         $writer->writeStringValue('conversationId', $this->getConversationId());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
@@ -829,6 +858,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('leadId', $this->getLeadId());
         $writer->writeCollectionOfObjectValues('media', $this->getMedia());
         $writer->writeDateTimeValue('nextRetryAt', $this->getNextRetryAt());
+        $writer->writeBooleanValue('noteEdited', $this->getNoteEdited());
         $writer->writeStringValue('outboundPhoneNumberId', $this->getOutboundPhoneNumberId());
         $writer->writeDateTimeValue('queuedAt', $this->getQueuedAt());
         $writer->writeDateTimeValue('receivedAt', $this->getReceivedAt());
@@ -949,6 +979,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setCancelReason(?string $value): void {
         $this->cancelReason = $value;
+    }
+
+    /**
+     * Sets the canEditNote property value. Whether the current user authored this editable note.
+     * @param bool|null $value Value to set for the canEditNote property.
+    */
+    public function setCanEditNote(?bool $value): void {
+        $this->canEditNote = $value;
     }
 
     /**
@@ -1101,6 +1139,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setNextRetryAt(?DateTime $value): void {
         $this->nextRetryAt = $value;
+    }
+
+    /**
+     * Sets the noteEdited property value. Whether the note has been edited.
+     * @param bool|null $value Value to set for the noteEdited property.
+    */
+    public function setNoteEdited(?bool $value): void {
+        $this->noteEdited = $value;
     }
 
     /**
