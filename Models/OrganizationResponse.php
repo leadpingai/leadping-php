@@ -34,6 +34,16 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     private ?OrganizationResponse_address $address = null;
     
     /**
+     * @var bool|null $automaticallyClearAppointmentSet Restores the previous status after the last upcoming appointment completes or becomes overdue.
+    */
+    private ?bool $automaticallyClearAppointmentSet = null;
+    
+    /**
+     * @var bool|null $automaticallyMarkAppointmentSet Sets the lead to Appointment set when an appointment is created.
+    */
+    private ?bool $automaticallyMarkAppointmentSet = null;
+    
+    /**
      * @var bool|null $automaticallyMarkLeadsCalled Automatically advances new leads after a confirmed outbound call attempt. Enabled by default.
     */
     private ?bool $automaticallyMarkLeadsCalled = null;
@@ -252,6 +262,22 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the automaticallyClearAppointmentSet property value. Restores the previous status after the last upcoming appointment completes or becomes overdue.
+     * @return bool|null
+    */
+    public function getAutomaticallyClearAppointmentSet(): ?bool {
+        return $this->automaticallyClearAppointmentSet;
+    }
+
+    /**
+     * Gets the automaticallyMarkAppointmentSet property value. Sets the lead to Appointment set when an appointment is created.
+     * @return bool|null
+    */
+    public function getAutomaticallyMarkAppointmentSet(): ?bool {
+        return $this->automaticallyMarkAppointmentSet;
+    }
+
+    /**
      * Gets the automaticallyMarkLeadsCalled property value. Automatically advances new leads after a confirmed outbound call attempt. Enabled by default.
      * @return bool|null
     */
@@ -405,6 +431,8 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
             'accountBalance' => fn(ParseNode $n) => $o->setAccountBalance($n->getFloatValue()),
             'activation' => fn(ParseNode $n) => $o->setActivation($n->getObjectValue([OrganizationResponse_activation::class, 'createFromDiscriminatorValue'])),
             'address' => fn(ParseNode $n) => $o->setAddress($n->getObjectValue([OrganizationResponse_address::class, 'createFromDiscriminatorValue'])),
+            'automaticallyClearAppointmentSet' => fn(ParseNode $n) => $o->setAutomaticallyClearAppointmentSet($n->getBooleanValue()),
+            'automaticallyMarkAppointmentSet' => fn(ParseNode $n) => $o->setAutomaticallyMarkAppointmentSet($n->getBooleanValue()),
             'automaticallyMarkLeadsCalled' => fn(ParseNode $n) => $o->setAutomaticallyMarkLeadsCalled($n->getBooleanValue()),
             'autoRefillAmount' => fn(ParseNode $n) => $o->setAutoRefillAmount($n->getFloatValue()),
             'autoRefillEnabled' => fn(ParseNode $n) => $o->setAutoRefillEnabled($n->getBooleanValue()),
@@ -578,6 +606,8 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
         $writer->writeFloatValue('accountBalance', $this->getAccountBalance());
         $writer->writeObjectValue('activation', $this->getActivation());
         $writer->writeObjectValue('address', $this->getAddress());
+        $writer->writeBooleanValue('automaticallyClearAppointmentSet', $this->getAutomaticallyClearAppointmentSet());
+        $writer->writeBooleanValue('automaticallyMarkAppointmentSet', $this->getAutomaticallyMarkAppointmentSet());
         $writer->writeBooleanValue('automaticallyMarkLeadsCalled', $this->getAutomaticallyMarkLeadsCalled());
         $writer->writeFloatValue('autoRefillAmount', $this->getAutoRefillAmount());
         $writer->writeBooleanValue('autoRefillEnabled', $this->getAutoRefillEnabled());
@@ -645,6 +675,22 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     */
     public function setAddress(?OrganizationResponse_address $value): void {
         $this->address = $value;
+    }
+
+    /**
+     * Sets the automaticallyClearAppointmentSet property value. Restores the previous status after the last upcoming appointment completes or becomes overdue.
+     * @param bool|null $value Value to set for the automaticallyClearAppointmentSet property.
+    */
+    public function setAutomaticallyClearAppointmentSet(?bool $value): void {
+        $this->automaticallyClearAppointmentSet = $value;
+    }
+
+    /**
+     * Sets the automaticallyMarkAppointmentSet property value. Sets the lead to Appointment set when an appointment is created.
+     * @param bool|null $value Value to set for the automaticallyMarkAppointmentSet property.
+    */
+    public function setAutomaticallyMarkAppointmentSet(?bool $value): void {
+        $this->automaticallyMarkAppointmentSet = $value;
     }
 
     /**
