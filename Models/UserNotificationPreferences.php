@@ -20,6 +20,26 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var bool|null $appointmentReminderEmailEnabled Email the assigned agent when a callback is due.
+    */
+    private ?bool $appointmentReminderEmailEnabled = null;
+    
+    /**
+     * @var bool|null $appointmentReminderEnabled Send push notifications for due callback appointments.
+    */
+    private ?bool $appointmentReminderEnabled = null;
+    
+    /**
+     * @var bool|null $appointmentReminderInAppEnabled Show callback reminder dialogs in the Portal.
+    */
+    private ?bool $appointmentReminderInAppEnabled = null;
+    
+    /**
+     * @var bool|null $appointmentReminderSmsEnabled Text the assigned agent when a callback is due, subject to SMS consent.
+    */
+    private ?bool $appointmentReminderSmsEnabled = null;
+    
+    /**
      * @var bool|null $automationFailedEmailEnabled Indicates whether automation failed email functionality is enabled for this Leadping user notification preferences.
     */
     private ?bool $automationFailedEmailEnabled = null;
@@ -100,7 +120,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     private ?bool $paymentFailedSmsEnabled = null;
     
     /**
-     * @var bool|null $quietHoursEnabled Whether push, SMS, and automation alerts wait until the user's daily quiet hours end.
+     * @var bool|null $quietHoursEnabled Whether notification delivery respects the user's daily quiet hours.
     */
     private ?bool $quietHoursEnabled = null;
     
@@ -108,6 +128,11 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
      * @var Time|null $quietHoursEnd The exclusive local end of daily quiet hours.
     */
     private ?Time $quietHoursEnd = null;
+    
+    /**
+     * @var bool|null $quietHoursQueueEnabled Queue notifications until quiet hours end; when false, skip their external delivery.
+    */
+    private ?bool $quietHoursQueueEnabled = null;
     
     /**
      * @var Time|null $quietHoursStart The inclusive local start of daily quiet hours.
@@ -199,6 +224,38 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the appointmentReminderEmailEnabled property value. Email the assigned agent when a callback is due.
+     * @return bool|null
+    */
+    public function getAppointmentReminderEmailEnabled(): ?bool {
+        return $this->appointmentReminderEmailEnabled;
+    }
+
+    /**
+     * Gets the appointmentReminderEnabled property value. Send push notifications for due callback appointments.
+     * @return bool|null
+    */
+    public function getAppointmentReminderEnabled(): ?bool {
+        return $this->appointmentReminderEnabled;
+    }
+
+    /**
+     * Gets the appointmentReminderInAppEnabled property value. Show callback reminder dialogs in the Portal.
+     * @return bool|null
+    */
+    public function getAppointmentReminderInAppEnabled(): ?bool {
+        return $this->appointmentReminderInAppEnabled;
+    }
+
+    /**
+     * Gets the appointmentReminderSmsEnabled property value. Text the assigned agent when a callback is due, subject to SMS consent.
+     * @return bool|null
+    */
+    public function getAppointmentReminderSmsEnabled(): ?bool {
+        return $this->appointmentReminderSmsEnabled;
+    }
+
+    /**
      * Gets the automationFailedEmailEnabled property value. Indicates whether automation failed email functionality is enabled for this Leadping user notification preferences.
      * @return bool|null
     */
@@ -245,6 +302,10 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'appointmentReminderEmailEnabled' => fn(ParseNode $n) => $o->setAppointmentReminderEmailEnabled($n->getBooleanValue()),
+            'appointmentReminderEnabled' => fn(ParseNode $n) => $o->setAppointmentReminderEnabled($n->getBooleanValue()),
+            'appointmentReminderInAppEnabled' => fn(ParseNode $n) => $o->setAppointmentReminderInAppEnabled($n->getBooleanValue()),
+            'appointmentReminderSmsEnabled' => fn(ParseNode $n) => $o->setAppointmentReminderSmsEnabled($n->getBooleanValue()),
             'automationFailedEmailEnabled' => fn(ParseNode $n) => $o->setAutomationFailedEmailEnabled($n->getBooleanValue()),
             'automationFailedEnabled' => fn(ParseNode $n) => $o->setAutomationFailedEnabled($n->getBooleanValue()),
             'automationFailedSmsEnabled' => fn(ParseNode $n) => $o->setAutomationFailedSmsEnabled($n->getBooleanValue()),
@@ -263,6 +324,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
             'paymentFailedSmsEnabled' => fn(ParseNode $n) => $o->setPaymentFailedSmsEnabled($n->getBooleanValue()),
             'quietHoursEnabled' => fn(ParseNode $n) => $o->setQuietHoursEnabled($n->getBooleanValue()),
             'quietHoursEnd' => fn(ParseNode $n) => $o->setQuietHoursEnd($n->getTimeValue()),
+            'quietHoursQueueEnabled' => fn(ParseNode $n) => $o->setQuietHoursQueueEnabled($n->getBooleanValue()),
             'quietHoursStart' => fn(ParseNode $n) => $o->setQuietHoursStart($n->getTimeValue()),
             'quietHoursTimeZoneId' => fn(ParseNode $n) => $o->setQuietHoursTimeZoneId($n->getStringValue()),
             'smsConsentCertificate' => fn(ParseNode $n) => $o->setSmsConsentCertificate($n->getObjectValue([UserNotificationPreferences_smsConsentCertificate::class, 'createFromDiscriminatorValue'])),
@@ -368,7 +430,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the quietHoursEnabled property value. Whether push, SMS, and automation alerts wait until the user's daily quiet hours end.
+     * Gets the quietHoursEnabled property value. Whether notification delivery respects the user's daily quiet hours.
      * @return bool|null
     */
     public function getQuietHoursEnabled(): ?bool {
@@ -381,6 +443,14 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     */
     public function getQuietHoursEnd(): ?Time {
         return $this->quietHoursEnd;
+    }
+
+    /**
+     * Gets the quietHoursQueueEnabled property value. Queue notifications until quiet hours end; when false, skip their external delivery.
+     * @return bool|null
+    */
+    public function getQuietHoursQueueEnabled(): ?bool {
+        return $this->quietHoursQueueEnabled;
     }
 
     /**
@@ -492,6 +562,10 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeBooleanValue('appointmentReminderEmailEnabled', $this->getAppointmentReminderEmailEnabled());
+        $writer->writeBooleanValue('appointmentReminderEnabled', $this->getAppointmentReminderEnabled());
+        $writer->writeBooleanValue('appointmentReminderInAppEnabled', $this->getAppointmentReminderInAppEnabled());
+        $writer->writeBooleanValue('appointmentReminderSmsEnabled', $this->getAppointmentReminderSmsEnabled());
         $writer->writeBooleanValue('automationFailedEmailEnabled', $this->getAutomationFailedEmailEnabled());
         $writer->writeBooleanValue('automationFailedEnabled', $this->getAutomationFailedEnabled());
         $writer->writeBooleanValue('automationFailedSmsEnabled', $this->getAutomationFailedSmsEnabled());
@@ -510,6 +584,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('paymentFailedSmsEnabled', $this->getPaymentFailedSmsEnabled());
         $writer->writeBooleanValue('quietHoursEnabled', $this->getQuietHoursEnabled());
         $writer->writeTimeValue('quietHoursEnd', $this->getQuietHoursEnd());
+        $writer->writeBooleanValue('quietHoursQueueEnabled', $this->getQuietHoursQueueEnabled());
         $writer->writeTimeValue('quietHoursStart', $this->getQuietHoursStart());
         $writer->writeStringValue('quietHoursTimeZoneId', $this->getQuietHoursTimeZoneId());
         $writer->writeObjectValue('smsConsentCertificate', $this->getSmsConsentCertificate());
@@ -532,6 +607,38 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the appointmentReminderEmailEnabled property value. Email the assigned agent when a callback is due.
+     * @param bool|null $value Value to set for the appointmentReminderEmailEnabled property.
+    */
+    public function setAppointmentReminderEmailEnabled(?bool $value): void {
+        $this->appointmentReminderEmailEnabled = $value;
+    }
+
+    /**
+     * Sets the appointmentReminderEnabled property value. Send push notifications for due callback appointments.
+     * @param bool|null $value Value to set for the appointmentReminderEnabled property.
+    */
+    public function setAppointmentReminderEnabled(?bool $value): void {
+        $this->appointmentReminderEnabled = $value;
+    }
+
+    /**
+     * Sets the appointmentReminderInAppEnabled property value. Show callback reminder dialogs in the Portal.
+     * @param bool|null $value Value to set for the appointmentReminderInAppEnabled property.
+    */
+    public function setAppointmentReminderInAppEnabled(?bool $value): void {
+        $this->appointmentReminderInAppEnabled = $value;
+    }
+
+    /**
+     * Sets the appointmentReminderSmsEnabled property value. Text the assigned agent when a callback is due, subject to SMS consent.
+     * @param bool|null $value Value to set for the appointmentReminderSmsEnabled property.
+    */
+    public function setAppointmentReminderSmsEnabled(?bool $value): void {
+        $this->appointmentReminderSmsEnabled = $value;
     }
 
     /**
@@ -663,7 +770,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the quietHoursEnabled property value. Whether push, SMS, and automation alerts wait until the user's daily quiet hours end.
+     * Sets the quietHoursEnabled property value. Whether notification delivery respects the user's daily quiet hours.
      * @param bool|null $value Value to set for the quietHoursEnabled property.
     */
     public function setQuietHoursEnabled(?bool $value): void {
@@ -676,6 +783,14 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     */
     public function setQuietHoursEnd(?Time $value): void {
         $this->quietHoursEnd = $value;
+    }
+
+    /**
+     * Sets the quietHoursQueueEnabled property value. Queue notifications until quiet hours end; when false, skip their external delivery.
+     * @param bool|null $value Value to set for the quietHoursQueueEnabled property.
+    */
+    public function setQuietHoursQueueEnabled(?bool $value): void {
+        $this->quietHoursQueueEnabled = $value;
     }
 
     /**

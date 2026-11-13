@@ -5,6 +5,7 @@ namespace Leadping\OpenApiClient\Models;
 use Microsoft\Kiota\Abstractions\Enum;
 
 class NotificationType extends Enum {
+    public const APPOINTMENT = "Appointment";
     public const GENERAL = "General";
     public const LEAD = "Lead";
     public const CALL = "Call";

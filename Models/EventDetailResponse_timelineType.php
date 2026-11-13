@@ -13,6 +13,7 @@ class EventDetailResponse_timelineType extends Enum {
     public const NOTE = "Note";
     public const LEAD_STATUS_CHANGE = "LeadStatusChange";
     public const LEAD_CREATED = "LeadCreated";
+    public const APPOINTMENT = "Appointment";
     public const LEAD_UPDATED = "LeadUpdated";
     public const NOTIFICATION = "Notification";
     public const PAYMENT = "Payment";

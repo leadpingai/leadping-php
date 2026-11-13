@@ -4,6 +4,7 @@ namespace Leadping\OpenApiClient;
 
 use Leadping\OpenApiClient\A2a\A2aRequestBuilder;
 use Leadping\OpenApiClient\Analytics\AnalyticsRequestBuilder;
+use Leadping\OpenApiClient\Appointments\AppointmentsRequestBuilder;
 use Leadping\OpenApiClient\Automations\AutomationsRequestBuilder;
 use Leadping\OpenApiClient\Blog\BlogRequestBuilder;
 use Leadping\OpenApiClient\Conversations\ConversationsRequestBuilder;
@@ -57,6 +58,13 @@ class LeadpingOpenApiClient extends BaseRequestBuilder
     */
     public function analytics(): AnalyticsRequestBuilder {
         return new AnalyticsRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The appointments property
+    */
+    public function appointments(): AppointmentsRequestBuilder {
+        return new AppointmentsRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**
