@@ -34,6 +34,11 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var SmsEventTableRow_automation|null $automation Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+    */
+    private ?SmsEventTableRow_automation $automation = null;
+    
+    /**
      * @var float|null $billableAmount Monetary amount billed for this Leadping communication or transaction.
     */
     private ?float $billableAmount = null;
@@ -282,6 +287,14 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the automation property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+     * @return SmsEventTableRow_automation|null
+    */
+    public function getAutomation(): ?SmsEventTableRow_automation {
+        return $this->automation;
+    }
+
+    /**
      * Gets the billableAmount property value. Monetary amount billed for this Leadping communication or transaction.
      * @return float|null
     */
@@ -403,6 +416,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
             'actorDisplayName' => fn(ParseNode $n) => $o->setActorDisplayName($n->getStringValue()),
             'actorLeadId' => fn(ParseNode $n) => $o->setActorLeadId($n->getStringValue()),
             'actorUserId' => fn(ParseNode $n) => $o->setActorUserId($n->getStringValue()),
+            'automation' => fn(ParseNode $n) => $o->setAutomation($n->getObjectValue([SmsEventTableRow_automation::class, 'createFromDiscriminatorValue'])),
             'billableAmount' => fn(ParseNode $n) => $o->setBillableAmount($n->getFloatValue()),
             'billingStatus' => fn(ParseNode $n) => $o->setBillingStatus($n->getStringValue()),
             'blockedAt' => fn(ParseNode $n) => $o->setBlockedAt($n->getDateTimeValue()),
@@ -662,6 +676,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('actorDisplayName', $this->getActorDisplayName());
         $writer->writeStringValue('actorLeadId', $this->getActorLeadId());
         $writer->writeStringValue('actorUserId', $this->getActorUserId());
+        $writer->writeObjectValue('automation', $this->getAutomation());
         $writer->writeFloatValue('billableAmount', $this->getBillableAmount());
         $writer->writeStringValue('billingStatus', $this->getBillingStatus());
         $writer->writeDateTimeValue('blockedAt', $this->getBlockedAt());
@@ -735,6 +750,14 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the automation property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
+     * @param SmsEventTableRow_automation|null $value Value to set for the automation property.
+    */
+    public function setAutomation(?SmsEventTableRow_automation $value): void {
+        $this->automation = $value;
     }
 
     /**
