@@ -10,6 +10,7 @@ use Leadping\OpenApiClient\Blog\BlogRequestBuilder;
 use Leadping\OpenApiClient\Conversations\ConversationsRequestBuilder;
 use Leadping\OpenApiClient\Events\EventsRequestBuilder;
 use Leadping\OpenApiClient\Feedback\FeedbackRequestBuilder;
+use Leadping\OpenApiClient\Invitations\InvitationsRequestBuilder;
 use Leadping\OpenApiClient\Leads\LeadsRequestBuilder;
 use Leadping\OpenApiClient\LeadStatusChanges\LeadStatusChangesRequestBuilder;
 use Leadping\OpenApiClient\LeadStatuses\LeadStatusesRequestBuilder;
@@ -100,6 +101,13 @@ class LeadpingOpenApiClient extends BaseRequestBuilder
     */
     public function feedback(): FeedbackRequestBuilder {
         return new FeedbackRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The invitations property
+    */
+    public function invitations(): InvitationsRequestBuilder {
+        return new InvitationsRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**
