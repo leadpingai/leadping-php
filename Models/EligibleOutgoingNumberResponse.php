@@ -83,6 +83,11 @@ class EligibleOutgoingNumberResponse implements AdditionalDataHolder, Parsable
     private ?string $sourceId = null;
     
     /**
+     * @var string|null $state Geographic state or region associated with the phone number.
+    */
+    private ?string $state = null;
+    
+    /**
      * @var string|null $teamId Organization ID used to determine this phone number's outbound eligibility.
     */
     private ?string $teamId = null;
@@ -155,6 +160,7 @@ class EligibleOutgoingNumberResponse implements AdditionalDataHolder, Parsable
             'reasonLabel' => fn(ParseNode $n) => $o->setReasonLabel($n->getStringValue()),
             'selectionReason' => fn(ParseNode $n) => $o->setSelectionReason($n->getEnumValue(OutgoingNumberSelectionReason::class)),
             'sourceId' => fn(ParseNode $n) => $o->setSourceId($n->getStringValue()),
+            'state' => fn(ParseNode $n) => $o->setState($n->getStringValue()),
             'teamId' => fn(ParseNode $n) => $o->setTeamId($n->getStringValue()),
         ];
     }
@@ -240,6 +246,14 @@ class EligibleOutgoingNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the state property value. Geographic state or region associated with the phone number.
+     * @return string|null
+    */
+    public function getState(): ?string {
+        return $this->state;
+    }
+
+    /**
      * Gets the teamId property value. Organization ID used to determine this phone number's outbound eligibility.
      * @return string|null
     */
@@ -265,6 +279,7 @@ class EligibleOutgoingNumberResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('reasonLabel', $this->getReasonLabel());
         $writer->writeEnumValue('selectionReason', $this->getSelectionReason());
         $writer->writeStringValue('sourceId', $this->getSourceId());
+        $writer->writeStringValue('state', $this->getState());
         $writer->writeStringValue('teamId', $this->getTeamId());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -379,6 +394,14 @@ class EligibleOutgoingNumberResponse implements AdditionalDataHolder, Parsable
     */
     public function setSourceId(?string $value): void {
         $this->sourceId = $value;
+    }
+
+    /**
+     * Sets the state property value. Geographic state or region associated with the phone number.
+     * @param string|null $value Value to set for the state property.
+    */
+    public function setState(?string $value): void {
+        $this->state = $value;
     }
 
     /**
