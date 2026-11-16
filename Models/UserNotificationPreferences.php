@@ -120,6 +120,21 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     private ?bool $paymentFailedSmsEnabled = null;
     
     /**
+     * @var bool|null $positiveSentimentEmailEnabled Email alerts when a lead's first text reply has positive sentiment.
+    */
+    private ?bool $positiveSentimentEmailEnabled = null;
+    
+    /**
+     * @var bool|null $positiveSentimentEnabled Send push alerts when a lead's first text reply has positive sentiment.
+    */
+    private ?bool $positiveSentimentEnabled = null;
+    
+    /**
+     * @var bool|null $positiveSentimentSmsEnabled Text alerts for positive first replies, subject to notification SMS consent.
+    */
+    private ?bool $positiveSentimentSmsEnabled = null;
+    
+    /**
      * @var bool|null $quietHoursEnabled Whether notification delivery respects the user's daily quiet hours.
     */
     private ?bool $quietHoursEnabled = null;
@@ -322,6 +337,9 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
             'newLeadSmsEnabled' => fn(ParseNode $n) => $o->setNewLeadSmsEnabled($n->getBooleanValue()),
             'paymentFailedEnabled' => fn(ParseNode $n) => $o->setPaymentFailedEnabled($n->getBooleanValue()),
             'paymentFailedSmsEnabled' => fn(ParseNode $n) => $o->setPaymentFailedSmsEnabled($n->getBooleanValue()),
+            'positiveSentimentEmailEnabled' => fn(ParseNode $n) => $o->setPositiveSentimentEmailEnabled($n->getBooleanValue()),
+            'positiveSentimentEnabled' => fn(ParseNode $n) => $o->setPositiveSentimentEnabled($n->getBooleanValue()),
+            'positiveSentimentSmsEnabled' => fn(ParseNode $n) => $o->setPositiveSentimentSmsEnabled($n->getBooleanValue()),
             'quietHoursEnabled' => fn(ParseNode $n) => $o->setQuietHoursEnabled($n->getBooleanValue()),
             'quietHoursEnd' => fn(ParseNode $n) => $o->setQuietHoursEnd($n->getTimeValue()),
             'quietHoursQueueEnabled' => fn(ParseNode $n) => $o->setQuietHoursQueueEnabled($n->getBooleanValue()),
@@ -427,6 +445,30 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     */
     public function getPaymentFailedSmsEnabled(): ?bool {
         return $this->paymentFailedSmsEnabled;
+    }
+
+    /**
+     * Gets the positiveSentimentEmailEnabled property value. Email alerts when a lead's first text reply has positive sentiment.
+     * @return bool|null
+    */
+    public function getPositiveSentimentEmailEnabled(): ?bool {
+        return $this->positiveSentimentEmailEnabled;
+    }
+
+    /**
+     * Gets the positiveSentimentEnabled property value. Send push alerts when a lead's first text reply has positive sentiment.
+     * @return bool|null
+    */
+    public function getPositiveSentimentEnabled(): ?bool {
+        return $this->positiveSentimentEnabled;
+    }
+
+    /**
+     * Gets the positiveSentimentSmsEnabled property value. Text alerts for positive first replies, subject to notification SMS consent.
+     * @return bool|null
+    */
+    public function getPositiveSentimentSmsEnabled(): ?bool {
+        return $this->positiveSentimentSmsEnabled;
     }
 
     /**
@@ -582,6 +624,9 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('newLeadSmsEnabled', $this->getNewLeadSmsEnabled());
         $writer->writeBooleanValue('paymentFailedEnabled', $this->getPaymentFailedEnabled());
         $writer->writeBooleanValue('paymentFailedSmsEnabled', $this->getPaymentFailedSmsEnabled());
+        $writer->writeBooleanValue('positiveSentimentEmailEnabled', $this->getPositiveSentimentEmailEnabled());
+        $writer->writeBooleanValue('positiveSentimentEnabled', $this->getPositiveSentimentEnabled());
+        $writer->writeBooleanValue('positiveSentimentSmsEnabled', $this->getPositiveSentimentSmsEnabled());
         $writer->writeBooleanValue('quietHoursEnabled', $this->getQuietHoursEnabled());
         $writer->writeTimeValue('quietHoursEnd', $this->getQuietHoursEnd());
         $writer->writeBooleanValue('quietHoursQueueEnabled', $this->getQuietHoursQueueEnabled());
@@ -767,6 +812,30 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     */
     public function setPaymentFailedSmsEnabled(?bool $value): void {
         $this->paymentFailedSmsEnabled = $value;
+    }
+
+    /**
+     * Sets the positiveSentimentEmailEnabled property value. Email alerts when a lead's first text reply has positive sentiment.
+     * @param bool|null $value Value to set for the positiveSentimentEmailEnabled property.
+    */
+    public function setPositiveSentimentEmailEnabled(?bool $value): void {
+        $this->positiveSentimentEmailEnabled = $value;
+    }
+
+    /**
+     * Sets the positiveSentimentEnabled property value. Send push alerts when a lead's first text reply has positive sentiment.
+     * @param bool|null $value Value to set for the positiveSentimentEnabled property.
+    */
+    public function setPositiveSentimentEnabled(?bool $value): void {
+        $this->positiveSentimentEnabled = $value;
+    }
+
+    /**
+     * Sets the positiveSentimentSmsEnabled property value. Text alerts for positive first replies, subject to notification SMS consent.
+     * @param bool|null $value Value to set for the positiveSentimentSmsEnabled property.
+    */
+    public function setPositiveSentimentSmsEnabled(?bool $value): void {
+        $this->positiveSentimentSmsEnabled = $value;
     }
 
     /**

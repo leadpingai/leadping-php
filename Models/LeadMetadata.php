@@ -164,6 +164,21 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     private ?string $sellerLeadId = null;
     
     /**
+     * @var LeadMetadata_sentiment|null $sentiment Interest expressed in the lead's first inbound text reply, independent of contact consent.
+    */
+    private ?LeadMetadata_sentiment $sentiment = null;
+    
+    /**
+     * @var DateTime|null $sentimentAnalyzedAt Completion time, including a first reply that has no positive or negative sentiment.
+    */
+    private ?DateTime $sentimentAnalyzedAt = null;
+    
+    /**
+     * @var string|null $sentimentMessageId First inbound SMS selected for sentiment analysis. Later replies cannot replace it.
+    */
+    private ?string $sentimentMessageId = null;
+    
+    /**
      * @var string|null $smsConsentPhoneNumber Phone number where SMS consent was captured or evaluated.
     */
     private ?string $smsConsentPhoneNumber = null;
@@ -433,6 +448,9 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
             'pubId' => fn(ParseNode $n) => $o->setPubId($n->getStringValue()),
             'referrer' => fn(ParseNode $n) => $o->setReferrer($n->getStringValue()),
             'sellerLeadId' => fn(ParseNode $n) => $o->setSellerLeadId($n->getStringValue()),
+            'sentiment' => fn(ParseNode $n) => $o->setSentiment($n->getEnumValue(LeadMetadata_sentiment::class)),
+            'sentimentAnalyzedAt' => fn(ParseNode $n) => $o->setSentimentAnalyzedAt($n->getDateTimeValue()),
+            'sentimentMessageId' => fn(ParseNode $n) => $o->setSentimentMessageId($n->getStringValue()),
             'smsConsentPhoneNumber' => fn(ParseNode $n) => $o->setSmsConsentPhoneNumber($n->getStringValue()),
             'smsConsentStatus' => fn(ParseNode $n) => $o->setSmsConsentStatus($n->getStringValue()),
             'smsHelpRequestedAt' => fn(ParseNode $n) => $o->setSmsHelpRequestedAt($n->getDateTimeValue()),
@@ -564,6 +582,30 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function getSellerLeadId(): ?string {
         return $this->sellerLeadId;
+    }
+
+    /**
+     * Gets the sentiment property value. Interest expressed in the lead's first inbound text reply, independent of contact consent.
+     * @return LeadMetadata_sentiment|null
+    */
+    public function getSentiment(): ?LeadMetadata_sentiment {
+        return $this->sentiment;
+    }
+
+    /**
+     * Gets the sentimentAnalyzedAt property value. Completion time, including a first reply that has no positive or negative sentiment.
+     * @return DateTime|null
+    */
+    public function getSentimentAnalyzedAt(): ?DateTime {
+        return $this->sentimentAnalyzedAt;
+    }
+
+    /**
+     * Gets the sentimentMessageId property value. First inbound SMS selected for sentiment analysis. Later replies cannot replace it.
+     * @return string|null
+    */
+    public function getSentimentMessageId(): ?string {
+        return $this->sentimentMessageId;
     }
 
     /**
@@ -744,6 +786,9 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('pubId', $this->getPubId());
         $writer->writeStringValue('referrer', $this->getReferrer());
         $writer->writeStringValue('sellerLeadId', $this->getSellerLeadId());
+        $writer->writeEnumValue('sentiment', $this->getSentiment());
+        $writer->writeDateTimeValue('sentimentAnalyzedAt', $this->getSentimentAnalyzedAt());
+        $writer->writeStringValue('sentimentMessageId', $this->getSentimentMessageId());
         $writer->writeStringValue('smsConsentPhoneNumber', $this->getSmsConsentPhoneNumber());
         $writer->writeStringValue('smsConsentStatus', $this->getSmsConsentStatus());
         $writer->writeDateTimeValue('smsHelpRequestedAt', $this->getSmsHelpRequestedAt());
@@ -1003,6 +1048,30 @@ class LeadMetadata implements AdditionalDataHolder, Parsable
     */
     public function setSellerLeadId(?string $value): void {
         $this->sellerLeadId = $value;
+    }
+
+    /**
+     * Sets the sentiment property value. Interest expressed in the lead's first inbound text reply, independent of contact consent.
+     * @param LeadMetadata_sentiment|null $value Value to set for the sentiment property.
+    */
+    public function setSentiment(?LeadMetadata_sentiment $value): void {
+        $this->sentiment = $value;
+    }
+
+    /**
+     * Sets the sentimentAnalyzedAt property value. Completion time, including a first reply that has no positive or negative sentiment.
+     * @param DateTime|null $value Value to set for the sentimentAnalyzedAt property.
+    */
+    public function setSentimentAnalyzedAt(?DateTime $value): void {
+        $this->sentimentAnalyzedAt = $value;
+    }
+
+    /**
+     * Sets the sentimentMessageId property value. First inbound SMS selected for sentiment analysis. Later replies cannot replace it.
+     * @param string|null $value Value to set for the sentimentMessageId property.
+    */
+    public function setSentimentMessageId(?string $value): void {
+        $this->sentimentMessageId = $value;
     }
 
     /**

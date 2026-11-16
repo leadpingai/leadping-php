@@ -129,6 +129,11 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     private ?string $processingStatusReason = null;
     
     /**
+     * @var LeadTableRow_sentiment|null $sentiment Interest expressed in the lead's first inbound text reply, independent of contact consent.
+    */
+    private ?LeadTableRow_sentiment $sentiment = null;
+    
+    /**
      * @var LeadTableRow_source|null $source Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?LeadTableRow_source $source = null;
@@ -286,6 +291,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
             'processingStatus' => fn(ParseNode $n) => $o->setProcessingStatus($n->getEnumValue(LeadTableRow_processingStatus::class)),
             'processingStatusChangedAt' => fn(ParseNode $n) => $o->setProcessingStatusChangedAt($n->getDateTimeValue()),
             'processingStatusReason' => fn(ParseNode $n) => $o->setProcessingStatusReason($n->getStringValue()),
+            'sentiment' => fn(ParseNode $n) => $o->setSentiment($n->getEnumValue(LeadTableRow_sentiment::class)),
             'source' => fn(ParseNode $n) => $o->setSource($n->getObjectValue([LeadTableRow_source::class, 'createFromDiscriminatorValue'])),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getStringValue()),
             'statusTone' => fn(ParseNode $n) => $o->setStatusTone($n->getStringValue()),
@@ -391,6 +397,14 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the sentiment property value. Interest expressed in the lead's first inbound text reply, independent of contact consent.
+     * @return LeadTableRow_sentiment|null
+    */
+    public function getSentiment(): ?LeadTableRow_sentiment {
+        return $this->sentiment;
+    }
+
+    /**
      * Gets the source property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return LeadTableRow_source|null
     */
@@ -457,6 +471,7 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
         $writer->writeEnumValue('processingStatus', $this->getProcessingStatus());
         $writer->writeDateTimeValue('processingStatusChangedAt', $this->getProcessingStatusChangedAt());
         $writer->writeStringValue('processingStatusReason', $this->getProcessingStatusReason());
+        $writer->writeEnumValue('sentiment', $this->getSentiment());
         $writer->writeObjectValue('source', $this->getSource());
         $writer->writeStringValue('status', $this->getStatus());
         $writer->writeStringValue('statusTone', $this->getStatusTone());
@@ -647,6 +662,14 @@ class LeadTableRow implements AdditionalDataHolder, Parsable
     */
     public function setProcessingStatusReason(?string $value): void {
         $this->processingStatusReason = $value;
+    }
+
+    /**
+     * Sets the sentiment property value. Interest expressed in the lead's first inbound text reply, independent of contact consent.
+     * @param LeadTableRow_sentiment|null $value Value to set for the sentiment property.
+    */
+    public function setSentiment(?LeadTableRow_sentiment $value): void {
+        $this->sentiment = $value;
     }
 
     /**
