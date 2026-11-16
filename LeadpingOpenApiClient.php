@@ -14,6 +14,7 @@ use Leadping\OpenApiClient\Invitations\InvitationsRequestBuilder;
 use Leadping\OpenApiClient\Leads\LeadsRequestBuilder;
 use Leadping\OpenApiClient\LeadStatusChanges\LeadStatusChangesRequestBuilder;
 use Leadping\OpenApiClient\LeadStatuses\LeadStatusesRequestBuilder;
+use Leadping\OpenApiClient\MessageTemplates\MessageTemplatesRequestBuilder;
 use Leadping\OpenApiClient\Notifications\NotificationsRequestBuilder;
 use Leadping\OpenApiClient\Organizations\OrganizationsRequestBuilder;
 use Leadping\OpenApiClient\Outbound\OutboundRequestBuilder;
@@ -129,6 +130,13 @@ class LeadpingOpenApiClient extends BaseRequestBuilder
     */
     public function leadStatuses(): LeadStatusesRequestBuilder {
         return new LeadStatusesRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The messageTemplates property
+    */
+    public function messageTemplates(): MessageTemplatesRequestBuilder {
+        return new MessageTemplatesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**
