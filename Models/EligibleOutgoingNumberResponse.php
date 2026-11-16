@@ -18,14 +18,29 @@ class EligibleOutgoingNumberResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var string|null $callUnavailableReason Explains why outbound calls are unavailable for this sender.
+    */
+    private ?string $callUnavailableReason = null;
+    
+    /**
      * @var string|null $campaignId Messaging campaign identifier associated with this eligible outgoing phone number.
     */
     private ?string $campaignId = null;
     
     /**
+     * @var bool|null $canCall Whether this sender is ready for outbound calls.
+    */
+    private ?bool $canCall = null;
+    
+    /**
      * @var bool|null $canSend Indicates whether Leadping can send outbound messages using this eligible outgoing phone number.
     */
     private ?bool $canSend = null;
+    
+    /**
+     * @var bool|null $canText Whether this sender is ready for outbound texts.
+    */
+    private ?bool $canText = null;
     
     /**
      * @var string|null $displayNumber Human-readable phone number shown in Leadping UI and API responses.
@@ -93,6 +108,11 @@ class EligibleOutgoingNumberResponse implements AdditionalDataHolder, Parsable
     private ?string $teamId = null;
     
     /**
+     * @var string|null $textUnavailableReason Explains why outbound texts are unavailable for this sender.
+    */
+    private ?string $textUnavailableReason = null;
+    
+    /**
      * Instantiates a new EligibleOutgoingNumberResponse and sets the default values.
     */
     public function __construct() {
@@ -117,6 +137,14 @@ class EligibleOutgoingNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the callUnavailableReason property value. Explains why outbound calls are unavailable for this sender.
+     * @return string|null
+    */
+    public function getCallUnavailableReason(): ?string {
+        return $this->callUnavailableReason;
+    }
+
+    /**
      * Gets the campaignId property value. Messaging campaign identifier associated with this eligible outgoing phone number.
      * @return string|null
     */
@@ -125,11 +153,27 @@ class EligibleOutgoingNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the canCall property value. Whether this sender is ready for outbound calls.
+     * @return bool|null
+    */
+    public function getCanCall(): ?bool {
+        return $this->canCall;
+    }
+
+    /**
      * Gets the canSend property value. Indicates whether Leadping can send outbound messages using this eligible outgoing phone number.
      * @return bool|null
     */
     public function getCanSend(): ?bool {
         return $this->canSend;
+    }
+
+    /**
+     * Gets the canText property value. Whether this sender is ready for outbound texts.
+     * @return bool|null
+    */
+    public function getCanText(): ?bool {
+        return $this->canText;
     }
 
     /**
@@ -147,8 +191,11 @@ class EligibleOutgoingNumberResponse implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'callUnavailableReason' => fn(ParseNode $n) => $o->setCallUnavailableReason($n->getStringValue()),
             'campaignId' => fn(ParseNode $n) => $o->setCampaignId($n->getStringValue()),
+            'canCall' => fn(ParseNode $n) => $o->setCanCall($n->getBooleanValue()),
             'canSend' => fn(ParseNode $n) => $o->setCanSend($n->getBooleanValue()),
+            'canText' => fn(ParseNode $n) => $o->setCanText($n->getBooleanValue()),
             'displayNumber' => fn(ParseNode $n) => $o->setDisplayNumber($n->getStringValue()),
             'healthLabel' => fn(ParseNode $n) => $o->setHealthLabel($n->getStringValue()),
             'healthStatus' => fn(ParseNode $n) => $o->setHealthStatus($n->getEnumValue(EligibleOutgoingNumberResponse_healthStatus::class)),
@@ -162,6 +209,7 @@ class EligibleOutgoingNumberResponse implements AdditionalDataHolder, Parsable
             'sourceId' => fn(ParseNode $n) => $o->setSourceId($n->getStringValue()),
             'state' => fn(ParseNode $n) => $o->setState($n->getStringValue()),
             'teamId' => fn(ParseNode $n) => $o->setTeamId($n->getStringValue()),
+            'textUnavailableReason' => fn(ParseNode $n) => $o->setTextUnavailableReason($n->getStringValue()),
         ];
     }
 
@@ -262,12 +310,23 @@ class EligibleOutgoingNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the textUnavailableReason property value. Explains why outbound texts are unavailable for this sender.
+     * @return string|null
+    */
+    public function getTextUnavailableReason(): ?string {
+        return $this->textUnavailableReason;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeStringValue('callUnavailableReason', $this->getCallUnavailableReason());
         $writer->writeStringValue('campaignId', $this->getCampaignId());
+        $writer->writeBooleanValue('canCall', $this->getCanCall());
         $writer->writeBooleanValue('canSend', $this->getCanSend());
+        $writer->writeBooleanValue('canText', $this->getCanText());
         $writer->writeStringValue('displayNumber', $this->getDisplayNumber());
         $writer->writeStringValue('healthLabel', $this->getHealthLabel());
         $writer->writeEnumValue('healthStatus', $this->getHealthStatus());
@@ -281,6 +340,7 @@ class EligibleOutgoingNumberResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('sourceId', $this->getSourceId());
         $writer->writeStringValue('state', $this->getState());
         $writer->writeStringValue('teamId', $this->getTeamId());
+        $writer->writeStringValue('textUnavailableReason', $this->getTextUnavailableReason());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -293,6 +353,14 @@ class EligibleOutgoingNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the callUnavailableReason property value. Explains why outbound calls are unavailable for this sender.
+     * @param string|null $value Value to set for the callUnavailableReason property.
+    */
+    public function setCallUnavailableReason(?string $value): void {
+        $this->callUnavailableReason = $value;
+    }
+
+    /**
      * Sets the campaignId property value. Messaging campaign identifier associated with this eligible outgoing phone number.
      * @param string|null $value Value to set for the campaignId property.
     */
@@ -301,11 +369,27 @@ class EligibleOutgoingNumberResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the canCall property value. Whether this sender is ready for outbound calls.
+     * @param bool|null $value Value to set for the canCall property.
+    */
+    public function setCanCall(?bool $value): void {
+        $this->canCall = $value;
+    }
+
+    /**
      * Sets the canSend property value. Indicates whether Leadping can send outbound messages using this eligible outgoing phone number.
      * @param bool|null $value Value to set for the canSend property.
     */
     public function setCanSend(?bool $value): void {
         $this->canSend = $value;
+    }
+
+    /**
+     * Sets the canText property value. Whether this sender is ready for outbound texts.
+     * @param bool|null $value Value to set for the canText property.
+    */
+    public function setCanText(?bool $value): void {
+        $this->canText = $value;
     }
 
     /**
@@ -410,6 +494,14 @@ class EligibleOutgoingNumberResponse implements AdditionalDataHolder, Parsable
     */
     public function setTeamId(?string $value): void {
         $this->teamId = $value;
+    }
+
+    /**
+     * Sets the textUnavailableReason property value. Explains why outbound texts are unavailable for this sender.
+     * @param string|null $value Value to set for the textUnavailableReason property.
+    */
+    public function setTextUnavailableReason(?string $value): void {
+        $this->textUnavailableReason = $value;
     }
 
 }
