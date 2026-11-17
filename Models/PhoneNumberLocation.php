@@ -2,6 +2,7 @@
 
 namespace Leadping\OpenApiClient\Models;
 
+use DateTime;
 use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
@@ -51,6 +52,11 @@ class PhoneNumberLocation implements AdditionalDataHolder, Parsable
      * @var string|null $location Geographic location metadata for the phone number, lead, or lookup result.
     */
     private ?string $location = null;
+    
+    /**
+     * @var DateTime|null $resolvedAt When local geography resolution completed, including when no geographic match exists. Prevents repeated resolution until an explicit rebuild or new carrier lookup.
+    */
+    private ?DateTime $resolvedAt = null;
     
     /**
      * @var string|null $state State, province, or region for the lead or organization postal address.
@@ -145,6 +151,7 @@ class PhoneNumberLocation implements AdditionalDataHolder, Parsable
             'countryCode' => fn(ParseNode $n) => $o->setCountryCode($n->getStringValue()),
             'isCoordinateApproximate' => fn(ParseNode $n) => $o->setIsCoordinateApproximate($n->getBooleanValue()),
             'location' => fn(ParseNode $n) => $o->setLocation($n->getStringValue()),
+            'resolvedAt' => fn(ParseNode $n) => $o->setResolvedAt($n->getDateTimeValue()),
             'state' => fn(ParseNode $n) => $o->setState($n->getStringValue()),
             'timeZoneId' => fn(ParseNode $n) => $o->setTimeZoneId($n->getStringValue()),
             'timeZoneSource' => fn(ParseNode $n) => $o->setTimeZoneSource($n->getObjectValue([PhoneNumberLocation_timeZoneSource::class, 'createFromDiscriminatorValue'])),
@@ -165,6 +172,14 @@ class PhoneNumberLocation implements AdditionalDataHolder, Parsable
     */
     public function getLocation(): ?string {
         return $this->location;
+    }
+
+    /**
+     * Gets the resolvedAt property value. When local geography resolution completed, including when no geographic match exists. Prevents repeated resolution until an explicit rebuild or new carrier lookup.
+     * @return DateTime|null
+    */
+    public function getResolvedAt(): ?DateTime {
+        return $this->resolvedAt;
     }
 
     /**
@@ -203,6 +218,7 @@ class PhoneNumberLocation implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('countryCode', $this->getCountryCode());
         $writer->writeBooleanValue('isCoordinateApproximate', $this->getIsCoordinateApproximate());
         $writer->writeStringValue('location', $this->getLocation());
+        $writer->writeDateTimeValue('resolvedAt', $this->getResolvedAt());
         $writer->writeStringValue('state', $this->getState());
         $writer->writeStringValue('timeZoneId', $this->getTimeZoneId());
         $writer->writeObjectValue('timeZoneSource', $this->getTimeZoneSource());
@@ -271,6 +287,14 @@ class PhoneNumberLocation implements AdditionalDataHolder, Parsable
     */
     public function setLocation(?string $value): void {
         $this->location = $value;
+    }
+
+    /**
+     * Sets the resolvedAt property value. When local geography resolution completed, including when no geographic match exists. Prevents repeated resolution until an explicit rebuild or new carrier lookup.
+     * @param DateTime|null $value Value to set for the resolvedAt property.
+    */
+    public function setResolvedAt(?DateTime $value): void {
+        $this->resolvedAt = $value;
     }
 
     /**
