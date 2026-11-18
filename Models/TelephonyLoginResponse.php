@@ -24,7 +24,7 @@ class TelephonyLoginResponse implements AdditionalDataHolder, Parsable
     private ?string $callbackToken = null;
     
     /**
-     * @var DateTime|null $expiresAt UTC timestamp for expires at on this telephony login.
+     * @var DateTime|null $expiresAt UTC deadline for refreshing this authorized phone login.
     */
     private ?DateTime $expiresAt = null;
     
@@ -81,7 +81,7 @@ class TelephonyLoginResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the expiresAt property value. UTC timestamp for expires at on this telephony login.
+     * Gets the expiresAt property value. UTC deadline for refreshing this authorized phone login.
      * @return DateTime|null
     */
     public function getExpiresAt(): ?DateTime {
@@ -167,7 +167,7 @@ class TelephonyLoginResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the expiresAt property value. UTC timestamp for expires at on this telephony login.
+     * Sets the expiresAt property value. UTC deadline for refreshing this authorized phone login.
      * @param DateTime|null $value Value to set for the expiresAt property.
     */
     public function setExpiresAt(?DateTime $value): void {

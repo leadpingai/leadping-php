@@ -15,6 +15,11 @@ use Microsoft\Kiota\Abstractions\Types\Time;
 class UserNotificationPreferences implements AdditionalDataHolder, Parsable 
 {
     /**
+     * @var bool|null $accountSmsAlertsEnabled The accountSmsAlertsEnabled property
+    */
+    private ?bool $accountSmsAlertsEnabled = null;
+    
+    /**
      * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     */
     private ?array $additionalData = null;
@@ -231,6 +236,14 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the accountSmsAlertsEnabled property value. The accountSmsAlertsEnabled property
+     * @return bool|null
+    */
+    public function getAccountSmsAlertsEnabled(): ?bool {
+        return $this->accountSmsAlertsEnabled;
+    }
+
+    /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>|null
     */
@@ -317,6 +330,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'accountSmsAlertsEnabled' => fn(ParseNode $n) => $o->setAccountSmsAlertsEnabled($n->getBooleanValue()),
             'appointmentReminderEmailEnabled' => fn(ParseNode $n) => $o->setAppointmentReminderEmailEnabled($n->getBooleanValue()),
             'appointmentReminderEnabled' => fn(ParseNode $n) => $o->setAppointmentReminderEnabled($n->getBooleanValue()),
             'appointmentReminderInAppEnabled' => fn(ParseNode $n) => $o->setAppointmentReminderInAppEnabled($n->getBooleanValue()),
@@ -604,6 +618,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeBooleanValue('accountSmsAlertsEnabled', $this->getAccountSmsAlertsEnabled());
         $writer->writeBooleanValue('appointmentReminderEmailEnabled', $this->getAppointmentReminderEmailEnabled());
         $writer->writeBooleanValue('appointmentReminderEnabled', $this->getAppointmentReminderEnabled());
         $writer->writeBooleanValue('appointmentReminderInAppEnabled', $this->getAppointmentReminderInAppEnabled());
@@ -644,6 +659,14 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('unreadSmsSmsEnabled', $this->getUnreadSmsSmsEnabled());
         $writer->writeBooleanValue('usageLimitHitEnabled', $this->getUsageLimitHitEnabled());
         $writer->writeAdditionalData($this->getAdditionalData());
+    }
+
+    /**
+     * Sets the accountSmsAlertsEnabled property value. The accountSmsAlertsEnabled property
+     * @param bool|null $value Value to set for the accountSmsAlertsEnabled property.
+    */
+    public function setAccountSmsAlertsEnabled(?bool $value): void {
+        $this->accountSmsAlertsEnabled = $value;
     }
 
     /**

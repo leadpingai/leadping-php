@@ -43,7 +43,7 @@ class InitiateCallRequest implements AdditionalDataHolder, Parsable
     private ?bool $originateFromBrowser = null;
     
     /**
-     * @var string|null $outboundIdempotencyKey Idempotency key used to prevent duplicate outbound delivery.
+     * @var string|null $outboundIdempotencyKey Reuse this key with the same call inputs when retrying an attempt. A replay returns the existing call without issuing another dial approval.
     */
     private ?string $outboundIdempotencyKey = null;
     
@@ -146,7 +146,7 @@ class InitiateCallRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the outboundIdempotencyKey property value. Idempotency key used to prevent duplicate outbound delivery.
+     * Gets the outboundIdempotencyKey property value. Reuse this key with the same call inputs when retrying an attempt. A replay returns the existing call without issuing another dial approval.
      * @return string|null
     */
     public function getOutboundIdempotencyKey(): ?string {
@@ -243,7 +243,7 @@ class InitiateCallRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the outboundIdempotencyKey property value. Idempotency key used to prevent duplicate outbound delivery.
+     * Sets the outboundIdempotencyKey property value. Reuse this key with the same call inputs when retrying an attempt. A replay returns the existing call without issuing another dial approval.
      * @param string|null $value Value to set for the outboundIdempotencyKey property.
     */
     public function setOutboundIdempotencyKey(?string $value): void {
