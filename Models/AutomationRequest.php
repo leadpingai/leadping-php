@@ -58,7 +58,7 @@ class AutomationRequest implements AdditionalDataHolder, Parsable
     private ?string $scope = null;
     
     /**
-     * @var string|null $timeZoneId Time zone used by workflow time and day conditions in preview and runtime. Defaults to UTC.
+     * @var string|null $timeZoneId Time zone used by workflow time and day conditions in preview and runtime. New workflows default to the organization�s time zone.
     */
     private ?string $timeZoneId = null;
     
@@ -188,7 +188,7 @@ class AutomationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the timeZoneId property value. Time zone used by workflow time and day conditions in preview and runtime. Defaults to UTC.
+     * Gets the timeZoneId property value. Time zone used by workflow time and day conditions in preview and runtime. New workflows default to the organization�s time zone.
      * @return string|null
     */
     public function getTimeZoneId(): ?string {
@@ -312,7 +312,7 @@ class AutomationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the timeZoneId property value. Time zone used by workflow time and day conditions in preview and runtime. Defaults to UTC.
+     * Sets the timeZoneId property value. Time zone used by workflow time and day conditions in preview and runtime. New workflows default to the organization�s time zone.
      * @param string|null $value Value to set for the timeZoneId property.
     */
     public function setTimeZoneId(?string $value): void {
