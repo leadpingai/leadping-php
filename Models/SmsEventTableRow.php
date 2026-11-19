@@ -139,6 +139,11 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     private ?IdNamePair $lead = null;
     
     /**
+     * @var string|null $leadAvatarUrl The leadAvatarUrl property
+    */
+    private ?string $leadAvatarUrl = null;
+    
+    /**
      * @var array<MessageMediaAttachment>|null $media Media attached to this SMS/MMS event.
     */
     private ?array $media = null;
@@ -437,6 +442,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
             'isAutomated' => fn(ParseNode $n) => $o->setIsAutomated($n->getBooleanValue()),
             'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'lead' => fn(ParseNode $n) => $o->setLead($n->getObjectValue([IdNamePair::class, 'createFromDiscriminatorValue'])),
+            'leadAvatarUrl' => fn(ParseNode $n) => $o->setLeadAvatarUrl($n->getStringValue()),
             'media' => fn(ParseNode $n) => $o->setMedia($n->getCollectionOfObjectValues([MessageMediaAttachment::class, 'createFromDiscriminatorValue'])),
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getStringValue()),
             'organizationName' => fn(ParseNode $n) => $o->setOrganizationName($n->getStringValue()),
@@ -506,6 +512,14 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function getLead(): ?IdNamePair {
         return $this->lead;
+    }
+
+    /**
+     * Gets the leadAvatarUrl property value. The leadAvatarUrl property
+     * @return string|null
+    */
+    public function getLeadAvatarUrl(): ?string {
+        return $this->leadAvatarUrl;
     }
 
     /**
@@ -697,6 +711,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('isAutomated', $this->getIsAutomated());
         $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeObjectValue('lead', $this->getLead());
+        $writer->writeStringValue('leadAvatarUrl', $this->getLeadAvatarUrl());
         $writer->writeCollectionOfObjectValues('media', $this->getMedia());
         $writer->writeStringValue('organization', $this->getOrganization());
         $writer->writeStringValue('organizationName', $this->getOrganizationName());
@@ -918,6 +933,14 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setLead(?IdNamePair $value): void {
         $this->lead = $value;
+    }
+
+    /**
+     * Sets the leadAvatarUrl property value. The leadAvatarUrl property
+     * @param string|null $value Value to set for the leadAvatarUrl property.
+    */
+    public function setLeadAvatarUrl(?string $value): void {
+        $this->leadAvatarUrl = $value;
     }
 
     /**

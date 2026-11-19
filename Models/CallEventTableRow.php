@@ -109,6 +109,11 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     private ?bool $isDemo = null;
     
     /**
+     * @var string|null $leadAvatarUrl The leadAvatarUrl property
+    */
+    private ?string $leadAvatarUrl = null;
+    
+    /**
      * @var string|null $leadId Lead ID associated with this call event.
     */
     private ?string $leadId = null;
@@ -339,6 +344,7 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
             'fromPhoneNumberId' => fn(ParseNode $n) => $o->setFromPhoneNumberId($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
+            'leadAvatarUrl' => fn(ParseNode $n) => $o->setLeadAvatarUrl($n->getStringValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
             'leadName' => fn(ParseNode $n) => $o->setLeadName($n->getStringValue()),
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getStringValue()),
@@ -386,6 +392,14 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function getIsDemo(): ?bool {
         return $this->isDemo;
+    }
+
+    /**
+     * Gets the leadAvatarUrl property value. The leadAvatarUrl property
+     * @return string|null
+    */
+    public function getLeadAvatarUrl(): ?string {
+        return $this->leadAvatarUrl;
     }
 
     /**
@@ -523,6 +537,7 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('fromPhoneNumberId', $this->getFromPhoneNumberId());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isDemo', $this->getIsDemo());
+        $writer->writeStringValue('leadAvatarUrl', $this->getLeadAvatarUrl());
         $writer->writeStringValue('leadId', $this->getLeadId());
         $writer->writeStringValue('leadName', $this->getLeadName());
         $writer->writeStringValue('organization', $this->getOrganization());
@@ -690,6 +705,14 @@ class CallEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setIsDemo(?bool $value): void {
         $this->isDemo = $value;
+    }
+
+    /**
+     * Sets the leadAvatarUrl property value. The leadAvatarUrl property
+     * @param string|null $value Value to set for the leadAvatarUrl property.
+    */
+    public function setLeadAvatarUrl(?string $value): void {
+        $this->leadAvatarUrl = $value;
     }
 
     /**
