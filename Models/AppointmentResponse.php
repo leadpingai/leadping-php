@@ -39,6 +39,11 @@ class AppointmentResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $dismissedAt = null;
     
     /**
+     * @var DateTime|null $endAt The endAt property
+    */
+    private ?DateTime $endAt = null;
+    
+    /**
      * @var array<AppointmentActivity>|null $history The history property
     */
     private ?array $history = null;
@@ -190,6 +195,14 @@ class AppointmentResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the endAt property value. The endAt property
+     * @return DateTime|null
+    */
+    public function getEndAt(): ?DateTime {
+        return $this->endAt;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
@@ -200,6 +213,7 @@ class AppointmentResponse implements AdditionalDataHolder, Parsable
             'assignedToUserId' => fn(ParseNode $n) => $o->setAssignedToUserId($n->getStringValue()),
             'createdAt' => fn(ParseNode $n) => $o->setCreatedAt($n->getDateTimeValue()),
             'dismissedAt' => fn(ParseNode $n) => $o->setDismissedAt($n->getDateTimeValue()),
+            'endAt' => fn(ParseNode $n) => $o->setEndAt($n->getDateTimeValue()),
             'history' => fn(ParseNode $n) => $o->setHistory($n->getCollectionOfObjectValues([AppointmentActivity::class, 'createFromDiscriminatorValue'])),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
@@ -383,6 +397,7 @@ class AppointmentResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('assignedToUserId', $this->getAssignedToUserId());
         $writer->writeDateTimeValue('createdAt', $this->getCreatedAt());
         $writer->writeDateTimeValue('dismissedAt', $this->getDismissedAt());
+        $writer->writeDateTimeValue('endAt', $this->getEndAt());
         $writer->writeCollectionOfObjectValues('history', $this->getHistory());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isDemo', $this->getIsDemo());
@@ -443,6 +458,14 @@ class AppointmentResponse implements AdditionalDataHolder, Parsable
     */
     public function setDismissedAt(?DateTime $value): void {
         $this->dismissedAt = $value;
+    }
+
+    /**
+     * Sets the endAt property value. The endAt property
+     * @param DateTime|null $value Value to set for the endAt property.
+    */
+    public function setEndAt(?DateTime $value): void {
+        $this->endAt = $value;
     }
 
     /**

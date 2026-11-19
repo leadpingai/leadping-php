@@ -39,6 +39,11 @@ class AppointmentActivity implements AdditionalDataHolder, Parsable
     private ?DateTime $at = null;
     
     /**
+     * @var DateTime|null $endAt The endAt property
+    */
+    private ?DateTime $endAt = null;
+    
+    /**
      * @var string|null $notes The notes property
     */
     private ?string $notes = null;
@@ -125,6 +130,14 @@ class AppointmentActivity implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the endAt property value. The endAt property
+     * @return DateTime|null
+    */
+    public function getEndAt(): ?DateTime {
+        return $this->endAt;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
@@ -135,6 +148,7 @@ class AppointmentActivity implements AdditionalDataHolder, Parsable
             'actorName' => fn(ParseNode $n) => $o->setActorName($n->getStringValue()),
             'assignedToName' => fn(ParseNode $n) => $o->setAssignedToName($n->getStringValue()),
             'at' => fn(ParseNode $n) => $o->setAt($n->getDateTimeValue()),
+            'endAt' => fn(ParseNode $n) => $o->setEndAt($n->getDateTimeValue()),
             'notes' => fn(ParseNode $n) => $o->setNotes($n->getStringValue()),
             'reminderAt' => fn(ParseNode $n) => $o->setReminderAt($n->getDateTimeValue()),
             'revision' => fn(ParseNode $n) => $o->setRevision($n->getIntegerValue()),
@@ -201,6 +215,7 @@ class AppointmentActivity implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('actorName', $this->getActorName());
         $writer->writeStringValue('assignedToName', $this->getAssignedToName());
         $writer->writeDateTimeValue('at', $this->getAt());
+        $writer->writeDateTimeValue('endAt', $this->getEndAt());
         $writer->writeStringValue('notes', $this->getNotes());
         $writer->writeDateTimeValue('reminderAt', $this->getReminderAt());
         $writer->writeIntegerValue('revision', $this->getRevision());
@@ -248,6 +263,14 @@ class AppointmentActivity implements AdditionalDataHolder, Parsable
     */
     public function setAt(?DateTime $value): void {
         $this->at = $value;
+    }
+
+    /**
+     * Sets the endAt property value. The endAt property
+     * @param DateTime|null $value Value to set for the endAt property.
+    */
+    public function setEndAt(?DateTime $value): void {
+        $this->endAt = $value;
     }
 
     /**

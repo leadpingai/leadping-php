@@ -4,6 +4,7 @@ namespace Leadping\OpenApiClient\Appointments;
 
 use Exception;
 use Http\Promise\Promise;
+use Leadping\OpenApiClient\Appointments\BookedTimes\BookedTimesRequestBuilder;
 use Leadping\OpenApiClient\Appointments\Item\AppointmentsItemRequestBuilder;
 use Leadping\OpenApiClient\Models\AppointmentRequest;
 use Leadping\OpenApiClient\Models\AppointmentResponse;
@@ -18,6 +19,13 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 */
 class AppointmentsRequestBuilder extends BaseRequestBuilder 
 {
+    /**
+     * The bookedTimes property
+    */
+    public function bookedTimes(): BookedTimesRequestBuilder {
+        return new BookedTimesRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
     /**
      * Gets an item from the Leadping/OpenApiClient.appointments.item collection
      * @param string $id The appointment identifier.

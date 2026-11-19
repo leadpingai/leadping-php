@@ -24,6 +24,11 @@ class AppointmentRequest implements AdditionalDataHolder, Parsable
     private ?string $assignedToUserId = null;
     
     /**
+     * @var DateTime|null $endAt The endAt property
+    */
+    private ?DateTime $endAt = null;
+    
+    /**
      * @var int|null $expectedRevision The expectedRevision property
     */
     private ?int $expectedRevision = null;
@@ -86,6 +91,14 @@ class AppointmentRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the endAt property value. The endAt property
+     * @return DateTime|null
+    */
+    public function getEndAt(): ?DateTime {
+        return $this->endAt;
+    }
+
+    /**
      * Gets the expectedRevision property value. The expectedRevision property
      * @return int|null
     */
@@ -101,6 +114,7 @@ class AppointmentRequest implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'assignedToUserId' => fn(ParseNode $n) => $o->setAssignedToUserId($n->getStringValue()),
+            'endAt' => fn(ParseNode $n) => $o->setEndAt($n->getDateTimeValue()),
             'expectedRevision' => fn(ParseNode $n) => $o->setExpectedRevision($n->getIntegerValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
             'notes' => fn(ParseNode $n) => $o->setNotes($n->getStringValue()),
@@ -156,6 +170,7 @@ class AppointmentRequest implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('assignedToUserId', $this->getAssignedToUserId());
+        $writer->writeDateTimeValue('endAt', $this->getEndAt());
         $writer->writeIntegerValue('expectedRevision', $this->getExpectedRevision());
         $writer->writeStringValue('leadId', $this->getLeadId());
         $writer->writeStringValue('notes', $this->getNotes());
@@ -179,6 +194,14 @@ class AppointmentRequest implements AdditionalDataHolder, Parsable
     */
     public function setAssignedToUserId(?string $value): void {
         $this->assignedToUserId = $value;
+    }
+
+    /**
+     * Sets the endAt property value. The endAt property
+     * @param DateTime|null $value Value to set for the endAt property.
+    */
+    public function setEndAt(?DateTime $value): void {
+        $this->endAt = $value;
     }
 
     /**
