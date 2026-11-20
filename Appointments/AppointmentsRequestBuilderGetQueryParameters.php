@@ -18,7 +18,7 @@ class AppointmentsRequestBuilderGetQueryParameters
     public ?bool $dueOnly = null;
     
     /**
-     * @var bool|null $includeClosed Whether to include completed and cancelled appointments. Ignored when dueOnly is true.
+     * @var bool|null $includeClosed Whether to include completed, cancelled, and archived appointments. Ignored when dueOnly is true.
     */
     public ?bool $includeClosed = null;
     
@@ -31,7 +31,7 @@ class AppointmentsRequestBuilderGetQueryParameters
      * Instantiates a new AppointmentsRequestBuilderGetQueryParameters and sets the default values.
      * @param bool|null $adminMode Whether to browse across organizations. Requires a platform administrator; due-only results remain limited to the current agent.
      * @param bool|null $dueOnly Whether to return only due, undismissed reminders assigned to the current agent.
-     * @param bool|null $includeClosed Whether to include completed and cancelled appointments. Ignored when dueOnly is true.
+     * @param bool|null $includeClosed Whether to include completed, cancelled, and archived appointments. Ignored when dueOnly is true.
      * @param string|null $leadId An optional lead identifier to filter appointments.
     */
     public function __construct(?bool $adminMode = null, ?bool $dueOnly = null, ?bool $includeClosed = null, ?string $leadId = null) {

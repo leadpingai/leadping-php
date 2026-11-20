@@ -29,11 +29,12 @@ class MyRequestBuilderPostRequestConfiguration extends BaseRequestConfiguration
     /**
      * Instantiates a new MyRequestBuilderPostQueryParameters.
      * @param string|null $archiveFilter Optional filter selecting active, archived, or all lead conversations.
-     * @param bool|null $contactable Whether to include only conversations with contactable leads.
+     * @param bool|null $contactable Whether to include only conversations where calling is available.
+     * @param bool|null $textingAvailable Whether to include only conversations where texting is available.
      * @return MyRequestBuilderPostQueryParameters
     */
-    public static function createQueryParameters(?string $archiveFilter = null, ?bool $contactable = null): MyRequestBuilderPostQueryParameters {
-        return new MyRequestBuilderPostQueryParameters($archiveFilter, $contactable);
+    public static function createQueryParameters(?string $archiveFilter = null, ?bool $contactable = null, ?bool $textingAvailable = null): MyRequestBuilderPostQueryParameters {
+        return new MyRequestBuilderPostQueryParameters($archiveFilter, $contactable, $textingAvailable);
     }
 
 }

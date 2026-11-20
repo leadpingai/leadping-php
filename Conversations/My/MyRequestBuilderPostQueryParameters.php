@@ -13,18 +13,25 @@ class MyRequestBuilderPostQueryParameters
     public ?string $archiveFilter = null;
     
     /**
-     * @var bool|null $contactable Whether to include only conversations with contactable leads.
+     * @var bool|null $contactable Whether to include only conversations where calling is available.
     */
     public ?bool $contactable = null;
     
     /**
+     * @var bool|null $textingAvailable Whether to include only conversations where texting is available.
+    */
+    public ?bool $textingAvailable = null;
+    
+    /**
      * Instantiates a new MyRequestBuilderPostQueryParameters and sets the default values.
      * @param string|null $archiveFilter Optional filter selecting active, archived, or all lead conversations.
-     * @param bool|null $contactable Whether to include only conversations with contactable leads.
+     * @param bool|null $contactable Whether to include only conversations where calling is available.
+     * @param bool|null $textingAvailable Whether to include only conversations where texting is available.
     */
-    public function __construct(?string $archiveFilter = null, ?bool $contactable = null) {
+    public function __construct(?string $archiveFilter = null, ?bool $contactable = null, ?bool $textingAvailable = null) {
         $this->archiveFilter = $archiveFilter;
         $this->contactable = $contactable;
+        $this->textingAvailable = $textingAvailable;
     }
 
 }

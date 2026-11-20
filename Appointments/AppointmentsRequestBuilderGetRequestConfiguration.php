@@ -30,7 +30,7 @@ class AppointmentsRequestBuilderGetRequestConfiguration extends BaseRequestConfi
      * Instantiates a new AppointmentsRequestBuilderGetQueryParameters.
      * @param bool|null $adminMode Whether to browse across organizations. Requires a platform administrator; due-only results remain limited to the current agent.
      * @param bool|null $dueOnly Whether to return only due, undismissed reminders assigned to the current agent.
-     * @param bool|null $includeClosed Whether to include completed and cancelled appointments. Ignored when dueOnly is true.
+     * @param bool|null $includeClosed Whether to include completed, cancelled, and archived appointments. Ignored when dueOnly is true.
      * @param string|null $leadId An optional lead identifier to filter appointments.
      * @return AppointmentsRequestBuilderGetQueryParameters
     */

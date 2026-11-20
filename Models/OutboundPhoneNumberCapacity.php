@@ -34,6 +34,11 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     private ?PhoneNumberOutboundHealthStatus $healthStatus = null;
     
     /**
+     * @var DateTime|null $nextReservationChangeAt Next time an active reservation starts or expires and may change the reported usage.
+    */
+    private ?DateTime $nextReservationChangeAt = null;
+    
+    /**
      * @var string|null $phoneNumber Phone number associated with this Leadping outbound phone number capacity.
     */
     private ?string $phoneNumber = null;
@@ -230,6 +235,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
             'capacityAvailable' => fn(ParseNode $n) => $o->setCapacityAvailable($n->getBooleanValue()),
             'healthReason' => fn(ParseNode $n) => $o->setHealthReason($n->getStringValue()),
             'healthStatus' => fn(ParseNode $n) => $o->setHealthStatus($n->getEnumValue(PhoneNumberOutboundHealthStatus::class)),
+            'nextReservationChangeAt' => fn(ParseNode $n) => $o->setNextReservationChangeAt($n->getDateTimeValue()),
             'phoneNumber' => fn(ParseNode $n) => $o->setPhoneNumber($n->getStringValue()),
             'phoneNumberId' => fn(ParseNode $n) => $o->setPhoneNumberId($n->getStringValue()),
             'smsApproved' => fn(ParseNode $n) => $o->setSmsApproved($n->getBooleanValue()),
@@ -278,6 +284,14 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     */
     public function getHealthStatus(): ?PhoneNumberOutboundHealthStatus {
         return $this->healthStatus;
+    }
+
+    /**
+     * Gets the nextReservationChangeAt property value. Next time an active reservation starts or expires and may change the reported usage.
+     * @return DateTime|null
+    */
+    public function getNextReservationChangeAt(): ?DateTime {
+        return $this->nextReservationChangeAt;
     }
 
     /**
@@ -536,6 +550,7 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('capacityAvailable', $this->getCapacityAvailable());
         $writer->writeStringValue('healthReason', $this->getHealthReason());
         $writer->writeEnumValue('healthStatus', $this->getHealthStatus());
+        $writer->writeDateTimeValue('nextReservationChangeAt', $this->getNextReservationChangeAt());
         $writer->writeStringValue('phoneNumber', $this->getPhoneNumber());
         $writer->writeStringValue('phoneNumberId', $this->getPhoneNumberId());
         $writer->writeBooleanValue('smsApproved', $this->getSmsApproved());
@@ -600,6 +615,14 @@ class OutboundPhoneNumberCapacity implements AdditionalDataHolder, Parsable
     */
     public function setHealthStatus(?PhoneNumberOutboundHealthStatus $value): void {
         $this->healthStatus = $value;
+    }
+
+    /**
+     * Sets the nextReservationChangeAt property value. Next time an active reservation starts or expires and may change the reported usage.
+     * @param DateTime|null $value Value to set for the nextReservationChangeAt property.
+    */
+    public function setNextReservationChangeAt(?DateTime $value): void {
+        $this->nextReservationChangeAt = $value;
     }
 
     /**
