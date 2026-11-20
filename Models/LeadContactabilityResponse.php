@@ -33,6 +33,11 @@ class LeadContactabilityResponse implements AdditionalDataHolder, Parsable
     private ?bool $canText = null;
     
     /**
+     * @var bool|null $smsLineRestricted Whether the stored phone lookup rules out texting this recipient.
+    */
+    private ?bool $smsLineRestricted = null;
+    
+    /**
      * @var string|null $textBlockedReason Customer-safe explanation when texting is unavailable.
     */
     private ?string $textBlockedReason = null;
@@ -95,8 +100,17 @@ class LeadContactabilityResponse implements AdditionalDataHolder, Parsable
             'callBlockedReason' => fn(ParseNode $n) => $o->setCallBlockedReason($n->getStringValue()),
             'canCall' => fn(ParseNode $n) => $o->setCanCall($n->getBooleanValue()),
             'canText' => fn(ParseNode $n) => $o->setCanText($n->getBooleanValue()),
+            'smsLineRestricted' => fn(ParseNode $n) => $o->setSmsLineRestricted($n->getBooleanValue()),
             'textBlockedReason' => fn(ParseNode $n) => $o->setTextBlockedReason($n->getStringValue()),
         ];
+    }
+
+    /**
+     * Gets the smsLineRestricted property value. Whether the stored phone lookup rules out texting this recipient.
+     * @return bool|null
+    */
+    public function getSmsLineRestricted(): ?bool {
+        return $this->smsLineRestricted;
     }
 
     /**
@@ -115,6 +129,7 @@ class LeadContactabilityResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('callBlockedReason', $this->getCallBlockedReason());
         $writer->writeBooleanValue('canCall', $this->getCanCall());
         $writer->writeBooleanValue('canText', $this->getCanText());
+        $writer->writeBooleanValue('smsLineRestricted', $this->getSmsLineRestricted());
         $writer->writeStringValue('textBlockedReason', $this->getTextBlockedReason());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -149,6 +164,14 @@ class LeadContactabilityResponse implements AdditionalDataHolder, Parsable
     */
     public function setCanText(?bool $value): void {
         $this->canText = $value;
+    }
+
+    /**
+     * Sets the smsLineRestricted property value. Whether the stored phone lookup rules out texting this recipient.
+     * @param bool|null $value Value to set for the smsLineRestricted property.
+    */
+    public function setSmsLineRestricted(?bool $value): void {
+        $this->smsLineRestricted = $value;
     }
 
     /**
