@@ -39,6 +39,11 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var string|null $automationName Name of the automation when it started.
+    */
+    private ?string $automationName = null;
+    
+    /**
      * @var string|null $automationRunId Automation run ID opened from this automation event.
     */
     private ?string $automationRunId = null;
@@ -350,6 +355,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the automationName property value. Name of the automation when it started.
+     * @return string|null
+    */
+    public function getAutomationName(): ?string {
+        return $this->automationName;
+    }
+
+    /**
      * Gets the automationRunId property value. Automation run ID opened from this automation event.
      * @return string|null
     */
@@ -520,6 +533,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
             'actorEmail' => fn(ParseNode $n) => $o->setActorEmail($n->getStringValue()),
             'actorLeadId' => fn(ParseNode $n) => $o->setActorLeadId($n->getStringValue()),
             'actorUserId' => fn(ParseNode $n) => $o->setActorUserId($n->getStringValue()),
+            'automationName' => fn(ParseNode $n) => $o->setAutomationName($n->getStringValue()),
             'automationRunId' => fn(ParseNode $n) => $o->setAutomationRunId($n->getStringValue()),
             'billableAmount' => fn(ParseNode $n) => $o->setBillableAmount($n->getFloatValue()),
             'billingStatus' => fn(ParseNode $n) => $o->setBillingStatus($n->getStringValue()),
@@ -831,6 +845,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('actorEmail', $this->getActorEmail());
         $writer->writeStringValue('actorLeadId', $this->getActorLeadId());
         $writer->writeStringValue('actorUserId', $this->getActorUserId());
+        $writer->writeStringValue('automationName', $this->getAutomationName());
         $writer->writeStringValue('automationRunId', $this->getAutomationRunId());
         $writer->writeFloatValue('billableAmount', $this->getBillableAmount());
         $writer->writeStringValue('billingStatus', $this->getBillingStatus());
@@ -923,6 +938,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the automationName property value. Name of the automation when it started.
+     * @param string|null $value Value to set for the automationName property.
+    */
+    public function setAutomationName(?string $value): void {
+        $this->automationName = $value;
     }
 
     /**
