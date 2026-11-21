@@ -124,6 +124,11 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     private ?string $lastSnippet = null;
     
     /**
+     * @var DateTime|null $lastSnippetAt Timestamp of the conversation activity shown in LastSnippet.
+    */
+    private ?DateTime $lastSnippetAt = null;
+    
+    /**
      * @var string|null $leadId Lead ID associated with this inbox conversation.
     */
     private ?string $leadId = null;
@@ -300,6 +305,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
             'lastInboundSnippet' => fn(ParseNode $n) => $o->setLastInboundSnippet($n->getStringValue()),
             'lastName' => fn(ParseNode $n) => $o->setLastName($n->getStringValue()),
             'lastSnippet' => fn(ParseNode $n) => $o->setLastSnippet($n->getStringValue()),
+            'lastSnippetAt' => fn(ParseNode $n) => $o->setLastSnippetAt($n->getDateTimeValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
             'leadPhoneNumber' => fn(ParseNode $n) => $o->setLeadPhoneNumber($n->getStringValue()),
             'needsReply' => fn(ParseNode $n) => $o->setNeedsReply($n->getBooleanValue()),
@@ -401,6 +407,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the lastSnippetAt property value. Timestamp of the conversation activity shown in LastSnippet.
+     * @return DateTime|null
+    */
+    public function getLastSnippetAt(): ?DateTime {
+        return $this->lastSnippetAt;
+    }
+
+    /**
      * Gets the leadId property value. Lead ID associated with this inbox conversation.
      * @return string|null
     */
@@ -498,6 +512,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('lastInboundSnippet', $this->getLastInboundSnippet());
         $writer->writeStringValue('lastName', $this->getLastName());
         $writer->writeStringValue('lastSnippet', $this->getLastSnippet());
+        $writer->writeDateTimeValue('lastSnippetAt', $this->getLastSnippetAt());
         $writer->writeStringValue('leadId', $this->getLeadId());
         $writer->writeStringValue('leadPhoneNumber', $this->getLeadPhoneNumber());
         $writer->writeBooleanValue('needsReply', $this->getNeedsReply());
@@ -684,6 +699,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     */
     public function setLastSnippet(?string $value): void {
         $this->lastSnippet = $value;
+    }
+
+    /**
+     * Sets the lastSnippetAt property value. Timestamp of the conversation activity shown in LastSnippet.
+     * @param DateTime|null $value Value to set for the lastSnippetAt property.
+    */
+    public function setLastSnippetAt(?DateTime $value): void {
+        $this->lastSnippetAt = $value;
     }
 
     /**
