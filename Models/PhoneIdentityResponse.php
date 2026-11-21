@@ -69,6 +69,11 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
     private ?PhoneIdentityResponse_providerEnrichment $providerEnrichment = null;
     
     /**
+     * @var bool|null $smsNotRoutable Whether Telnyx rejected SMS routing to this destination with error 40001.
+    */
+    private ?bool $smsNotRoutable = null;
+    
+    /**
      * Instantiates a new PhoneIdentityResponse and sets the default values.
     */
     public function __construct() {
@@ -117,6 +122,7 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'number' => fn(ParseNode $n) => $o->setNumber($n->getStringValue()),
             'providerEnrichment' => fn(ParseNode $n) => $o->setProviderEnrichment($n->getObjectValue([PhoneIdentityResponse_providerEnrichment::class, 'createFromDiscriminatorValue'])),
+            'smsNotRoutable' => fn(ParseNode $n) => $o->setSmsNotRoutable($n->getBooleanValue()),
         ];
     }
 
@@ -193,6 +199,14 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the smsNotRoutable property value. Whether Telnyx rejected SMS routing to this destination with error 40001.
+     * @return bool|null
+    */
+    public function getSmsNotRoutable(): ?bool {
+        return $this->smsNotRoutable;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -207,6 +221,7 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('name', $this->getName());
         $writer->writeStringValue('number', $this->getNumber());
         $writer->writeObjectValue('providerEnrichment', $this->getProviderEnrichment());
+        $writer->writeBooleanValue('smsNotRoutable', $this->getSmsNotRoutable());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -296,6 +311,14 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
     */
     public function setProviderEnrichment(?PhoneIdentityResponse_providerEnrichment $value): void {
         $this->providerEnrichment = $value;
+    }
+
+    /**
+     * Sets the smsNotRoutable property value. Whether Telnyx rejected SMS routing to this destination with error 40001.
+     * @param bool|null $value Value to set for the smsNotRoutable property.
+    */
+    public function setSmsNotRoutable(?bool $value): void {
+        $this->smsNotRoutable = $value;
     }
 
 }

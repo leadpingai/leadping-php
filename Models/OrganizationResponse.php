@@ -49,6 +49,11 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     private ?bool $automaticallyMarkLeadsCalled = null;
     
     /**
+     * @var bool|null $automaticallyMarkLeadsMessaged Automatically advances new leads when an outbound message is delivered.
+    */
+    private ?bool $automaticallyMarkLeadsMessaged = null;
+    
+    /**
      * @var float|null $autoRefillAmount Wallet refill amount charged when automatic refill is triggered.
     */
     private ?float $autoRefillAmount = null;
@@ -142,6 +147,11 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
      * @var bool|null $isDemo Whether this record belongs to demo data.
     */
     private ?bool $isDemo = null;
+    
+    /**
+     * @var string|null $messagedLeadStatusId Destination status for delivered outbound messages.
+    */
+    private ?string $messagedLeadStatusId = null;
     
     /**
      * @var DateTime|null $modifiedAt UTC timestamp when the resource was last modified, or null when it has not been updated.
@@ -283,6 +293,14 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     */
     public function getAutomaticallyMarkLeadsCalled(): ?bool {
         return $this->automaticallyMarkLeadsCalled;
+    }
+
+    /**
+     * Gets the automaticallyMarkLeadsMessaged property value. Automatically advances new leads when an outbound message is delivered.
+     * @return bool|null
+    */
+    public function getAutomaticallyMarkLeadsMessaged(): ?bool {
+        return $this->automaticallyMarkLeadsMessaged;
     }
 
     /**
@@ -434,6 +452,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
             'automaticallyClearAppointmentSet' => fn(ParseNode $n) => $o->setAutomaticallyClearAppointmentSet($n->getBooleanValue()),
             'automaticallyMarkAppointmentSet' => fn(ParseNode $n) => $o->setAutomaticallyMarkAppointmentSet($n->getBooleanValue()),
             'automaticallyMarkLeadsCalled' => fn(ParseNode $n) => $o->setAutomaticallyMarkLeadsCalled($n->getBooleanValue()),
+            'automaticallyMarkLeadsMessaged' => fn(ParseNode $n) => $o->setAutomaticallyMarkLeadsMessaged($n->getBooleanValue()),
             'autoRefillAmount' => fn(ParseNode $n) => $o->setAutoRefillAmount($n->getFloatValue()),
             'autoRefillEnabled' => fn(ParseNode $n) => $o->setAutoRefillEnabled($n->getBooleanValue()),
             'autoRefillTrigger' => fn(ParseNode $n) => $o->setAutoRefillTrigger($n->getFloatValue()),
@@ -453,6 +472,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
+            'messagedLeadStatusId' => fn(ParseNode $n) => $o->setMessagedLeadStatusId($n->getStringValue()),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'phone' => fn(ParseNode $n) => $o->setPhone($n->getStringValue()),
@@ -484,6 +504,14 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     */
     public function getIsDemo(): ?bool {
         return $this->isDemo;
+    }
+
+    /**
+     * Gets the messagedLeadStatusId property value. Destination status for delivered outbound messages.
+     * @return string|null
+    */
+    public function getMessagedLeadStatusId(): ?string {
+        return $this->messagedLeadStatusId;
     }
 
     /**
@@ -609,6 +637,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('automaticallyClearAppointmentSet', $this->getAutomaticallyClearAppointmentSet());
         $writer->writeBooleanValue('automaticallyMarkAppointmentSet', $this->getAutomaticallyMarkAppointmentSet());
         $writer->writeBooleanValue('automaticallyMarkLeadsCalled', $this->getAutomaticallyMarkLeadsCalled());
+        $writer->writeBooleanValue('automaticallyMarkLeadsMessaged', $this->getAutomaticallyMarkLeadsMessaged());
         $writer->writeFloatValue('autoRefillAmount', $this->getAutoRefillAmount());
         $writer->writeBooleanValue('autoRefillEnabled', $this->getAutoRefillEnabled());
         $writer->writeFloatValue('autoRefillTrigger', $this->getAutoRefillTrigger());
@@ -628,6 +657,7 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('enabled', $this->getEnabled());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isDemo', $this->getIsDemo());
+        $writer->writeStringValue('messagedLeadStatusId', $this->getMessagedLeadStatusId());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeStringValue('phone', $this->getPhone());
@@ -699,6 +729,14 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     */
     public function setAutomaticallyMarkLeadsCalled(?bool $value): void {
         $this->automaticallyMarkLeadsCalled = $value;
+    }
+
+    /**
+     * Sets the automaticallyMarkLeadsMessaged property value. Automatically advances new leads when an outbound message is delivered.
+     * @param bool|null $value Value to set for the automaticallyMarkLeadsMessaged property.
+    */
+    public function setAutomaticallyMarkLeadsMessaged(?bool $value): void {
+        $this->automaticallyMarkLeadsMessaged = $value;
     }
 
     /**
@@ -851,6 +889,14 @@ class OrganizationResponse implements AdditionalDataHolder, Parsable
     */
     public function setIsDemo(?bool $value): void {
         $this->isDemo = $value;
+    }
+
+    /**
+     * Sets the messagedLeadStatusId property value. Destination status for delivered outbound messages.
+     * @param string|null $value Value to set for the messagedLeadStatusId property.
+    */
+    public function setMessagedLeadStatusId(?string $value): void {
+        $this->messagedLeadStatusId = $value;
     }
 
     /**

@@ -38,6 +38,11 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     private ?bool $automaticallyMarkLeadsCalled = null;
     
     /**
+     * @var bool|null $automaticallyMarkLeadsMessaged Automatically advances new leads when an outbound message is delivered.
+    */
+    private ?bool $automaticallyMarkLeadsMessaged = null;
+    
+    /**
      * @var string|null $calledLeadStatusId Destination status for outbound call attempts. Null uses the built-in Called status.
     */
     private ?string $calledLeadStatusId = null;
@@ -56,6 +61,11 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
      * @var bool|null $isYoungerThan90 Whether the organization was formed less than 90 days ago.
     */
     private ?bool $isYoungerThan90 = null;
+    
+    /**
+     * @var string|null $messagedLeadStatusId Destination status for delivered outbound messages.
+    */
+    private ?string $messagedLeadStatusId = null;
     
     /**
      * @var string|null $name Primary organization name.
@@ -154,6 +164,14 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the automaticallyMarkLeadsMessaged property value. Automatically advances new leads when an outbound message is delivered.
+     * @return bool|null
+    */
+    public function getAutomaticallyMarkLeadsMessaged(): ?bool {
+        return $this->automaticallyMarkLeadsMessaged;
+    }
+
+    /**
      * Gets the calledLeadStatusId property value. Destination status for outbound call attempts. Null uses the built-in Called status.
      * @return string|null
     */
@@ -188,10 +206,12 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
             'automaticallyClearAppointmentSet' => fn(ParseNode $n) => $o->setAutomaticallyClearAppointmentSet($n->getBooleanValue()),
             'automaticallyMarkAppointmentSet' => fn(ParseNode $n) => $o->setAutomaticallyMarkAppointmentSet($n->getBooleanValue()),
             'automaticallyMarkLeadsCalled' => fn(ParseNode $n) => $o->setAutomaticallyMarkLeadsCalled($n->getBooleanValue()),
+            'automaticallyMarkLeadsMessaged' => fn(ParseNode $n) => $o->setAutomaticallyMarkLeadsMessaged($n->getBooleanValue()),
             'calledLeadStatusId' => fn(ParseNode $n) => $o->setCalledLeadStatusId($n->getStringValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'ein' => fn(ParseNode $n) => $o->setEin($n->getStringValue()),
             'isYoungerThan90' => fn(ParseNode $n) => $o->setIsYoungerThan90($n->getBooleanValue()),
+            'messagedLeadStatusId' => fn(ParseNode $n) => $o->setMessagedLeadStatusId($n->getStringValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'offer' => fn(ParseNode $n) => $o->setOffer($n->getStringValue()),
             'phone' => fn(ParseNode $n) => $o->setPhone($n->getStringValue()),
@@ -209,6 +229,14 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     */
     public function getIsYoungerThan90(): ?bool {
         return $this->isYoungerThan90;
+    }
+
+    /**
+     * Gets the messagedLeadStatusId property value. Destination status for delivered outbound messages.
+     * @return string|null
+    */
+    public function getMessagedLeadStatusId(): ?string {
+        return $this->messagedLeadStatusId;
     }
 
     /**
@@ -284,10 +312,12 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('automaticallyClearAppointmentSet', $this->getAutomaticallyClearAppointmentSet());
         $writer->writeBooleanValue('automaticallyMarkAppointmentSet', $this->getAutomaticallyMarkAppointmentSet());
         $writer->writeBooleanValue('automaticallyMarkLeadsCalled', $this->getAutomaticallyMarkLeadsCalled());
+        $writer->writeBooleanValue('automaticallyMarkLeadsMessaged', $this->getAutomaticallyMarkLeadsMessaged());
         $writer->writeStringValue('calledLeadStatusId', $this->getCalledLeadStatusId());
         $writer->writeStringValue('description', $this->getDescription());
         $writer->writeStringValue('ein', $this->getEin());
         $writer->writeBooleanValue('isYoungerThan90', $this->getIsYoungerThan90());
+        $writer->writeStringValue('messagedLeadStatusId', $this->getMessagedLeadStatusId());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeStringValue('offer', $this->getOffer());
         $writer->writeStringValue('phone', $this->getPhone());
@@ -340,6 +370,14 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Sets the automaticallyMarkLeadsMessaged property value. Automatically advances new leads when an outbound message is delivered.
+     * @param bool|null $value Value to set for the automaticallyMarkLeadsMessaged property.
+    */
+    public function setAutomaticallyMarkLeadsMessaged(?bool $value): void {
+        $this->automaticallyMarkLeadsMessaged = $value;
+    }
+
+    /**
      * Sets the calledLeadStatusId property value. Destination status for outbound call attempts. Null uses the built-in Called status.
      * @param string|null $value Value to set for the calledLeadStatusId property.
     */
@@ -369,6 +407,14 @@ class OrganizationRequest implements AdditionalDataHolder, Parsable
     */
     public function setIsYoungerThan90(?bool $value): void {
         $this->isYoungerThan90 = $value;
+    }
+
+    /**
+     * Sets the messagedLeadStatusId property value. Destination status for delivered outbound messages.
+     * @param string|null $value Value to set for the messagedLeadStatusId property.
+    */
+    public function setMessagedLeadStatusId(?string $value): void {
+        $this->messagedLeadStatusId = $value;
     }
 
     /**
