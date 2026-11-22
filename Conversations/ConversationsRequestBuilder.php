@@ -2,7 +2,7 @@
 
 namespace Leadping\OpenApiClient\Conversations;
 
-use Leadping\OpenApiClient\Conversations\Item\ConversationsItemRequestBuilder;
+use Leadping\OpenApiClient\Conversations\Item\ConversationItemRequestBuilder;
 use Leadping\OpenApiClient\Conversations\Lead\LeadRequestBuilder;
 use Leadping\OpenApiClient\Conversations\My\MyRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
@@ -29,13 +29,13 @@ class ConversationsRequestBuilder extends BaseRequestBuilder
     
     /**
      * Gets an item from the Leadping/OpenApiClient.conversations.item collection
-     * @param string $id The ID of the conversation to retrieve.
-     * @return ConversationsItemRequestBuilder
+     * @param string $conversationId The ID of the conversation to retrieve.
+     * @return ConversationItemRequestBuilder
     */
-    public function byId(string $id): ConversationsItemRequestBuilder {
+    public function byConversationId(string $conversationId): ConversationItemRequestBuilder {
         $urlTplParams = $this->pathParameters;
-        $urlTplParams['id'] = $id;
-        return new ConversationsItemRequestBuilder($urlTplParams, $this->requestAdapter);
+        $urlTplParams['conversation%2Did'] = $conversationId;
+        return new ConversationItemRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
     /**

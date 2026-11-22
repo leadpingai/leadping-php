@@ -19,6 +19,11 @@ class CurrentLeadStatusSummary implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var DateTime|null $callbackAt The promised callback time, independent of a general follow-up task.
+    */
+    private ?DateTime $callbackAt = null;
+    
+    /**
      * @var CurrentLeadStatusSummary_category|null $category Controlled lead status change categories used for reporting, automation, and analytics.
     */
     private ?CurrentLeadStatusSummary_category $category = null;
@@ -103,6 +108,14 @@ class CurrentLeadStatusSummary implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the callbackAt property value. The promised callback time, independent of a general follow-up task.
+     * @return DateTime|null
+    */
+    public function getCallbackAt(): ?DateTime {
+        return $this->callbackAt;
+    }
+
+    /**
      * Gets the category property value. Controlled lead status change categories used for reporting, automation, and analytics.
      * @return CurrentLeadStatusSummary_category|null
     */
@@ -149,6 +162,7 @@ class CurrentLeadStatusSummary implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'callbackAt' => fn(ParseNode $n) => $o->setCallbackAt($n->getDateTimeValue()),
             'category' => fn(ParseNode $n) => $o->setCategory($n->getEnumValue(CurrentLeadStatusSummary_category::class)),
             'changedAt' => fn(ParseNode $n) => $o->setChangedAt($n->getDateTimeValue()),
             'changedByAutomationId' => fn(ParseNode $n) => $o->setChangedByAutomationId($n->getStringValue()),
@@ -225,6 +239,7 @@ class CurrentLeadStatusSummary implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeDateTimeValue('callbackAt', $this->getCallbackAt());
         $writer->writeEnumValue('category', $this->getCategory());
         $writer->writeDateTimeValue('changedAt', $this->getChangedAt());
         $writer->writeStringValue('changedByAutomationId', $this->getChangedByAutomationId());
@@ -246,6 +261,14 @@ class CurrentLeadStatusSummary implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the callbackAt property value. The promised callback time, independent of a general follow-up task.
+     * @param DateTime|null $value Value to set for the callbackAt property.
+    */
+    public function setCallbackAt(?DateTime $value): void {
+        $this->callbackAt = $value;
     }
 
     /**

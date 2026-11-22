@@ -4,7 +4,7 @@ namespace Leadping\OpenApiClient\Conversations\My;
 
 use Exception;
 use Http\Promise\Promise;
-use Leadping\OpenApiClient\Models\PagedResultOfConversationResponse;
+use Leadping\OpenApiClient\Models\ConversationPage;
 use Leadping\OpenApiClient\Models\ProblemDetails;
 use Leadping\OpenApiClient\Models\RequestDataOptions;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
@@ -23,7 +23,7 @@ class MyRequestBuilder extends BaseRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/conversations/my{?archiveFilter*,contactable*,textingAvailable*}');
+        parent::__construct($requestAdapter, [], '{+baseurl}/conversations/my{?archiveFilter*,contactable*,priority*,textingAvailable*}');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {
@@ -35,7 +35,7 @@ class MyRequestBuilder extends BaseRequestBuilder
      * Lists the current user's lead conversations with paging and sorting for inbox views, recent follow-up, and communication history.
      * @param RequestDataOptions $body Defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
      * @param MyRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return Promise<PagedResultOfConversationResponse|null>
+     * @return Promise<ConversationPage|null>
      * @throws Exception
     */
     public function post(RequestDataOptions $body, ?MyRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
@@ -49,7 +49,7 @@ class MyRequestBuilder extends BaseRequestBuilder
                 '429' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
                 '500' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
         ];
-        return $this->requestAdapter->sendAsync($requestInfo, [PagedResultOfConversationResponse::class, 'createFromDiscriminatorValue'], $errorMappings);
+        return $this->requestAdapter->sendAsync($requestInfo, [ConversationPage::class, 'createFromDiscriminatorValue'], $errorMappings);
     }
 
     /**

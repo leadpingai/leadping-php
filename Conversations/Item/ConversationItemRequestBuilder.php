@@ -8,6 +8,7 @@ use Leadping\OpenApiClient\Conversations\Item\MarkHandled\MarkHandledRequestBuil
 use Leadping\OpenApiClient\Conversations\Item\MarkRead\MarkReadRequestBuilder;
 use Leadping\OpenApiClient\Conversations\Item\MarkReplyNeeded\MarkReplyNeededRequestBuilder;
 use Leadping\OpenApiClient\Conversations\Item\OutboundReadiness\OutboundReadinessRequestBuilder;
+use Leadping\OpenApiClient\Conversations\Item\Retry\RetryRequestBuilder;
 use Leadping\OpenApiClient\Models\ConversationResponse;
 use Leadping\OpenApiClient\Models\ProblemDetails;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
@@ -16,9 +17,9 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
 
 /**
- * Builds and executes requests for operations under /conversations/{id}
+ * Builds and executes requests for operations under /conversations/{conversation-id}
 */
-class ConversationsItemRequestBuilder extends BaseRequestBuilder 
+class ConversationItemRequestBuilder extends BaseRequestBuilder 
 {
     /**
      * The markHandled property
@@ -49,12 +50,19 @@ class ConversationsItemRequestBuilder extends BaseRequestBuilder
     }
     
     /**
-     * Instantiates a new ConversationsItemRequestBuilder and sets the default values.
+     * The retry property
+    */
+    public function retry(): RetryRequestBuilder {
+        return new RetryRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * Instantiates a new ConversationItemRequestBuilder and sets the default values.
      * @param array<string, mixed>|string $pathParametersOrRawUrl Path parameters for the request or a String representing the raw URL.
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/conversations/{id}');
+        parent::__construct($requestAdapter, [], '{+baseurl}/conversations/{conversation%2Did}');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {
@@ -64,11 +72,11 @@ class ConversationsItemRequestBuilder extends BaseRequestBuilder
 
     /**
      * Returns a conversation accessible to the current user, including its current event version for tracking inbox updates.
-     * @param ConversationsItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param ConversationItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<ConversationResponse|null>
      * @throws Exception
     */
-    public function get(?ConversationsItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
+    public function get(?ConversationItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         $errorMappings = [
                 '400' => [ProblemDetails::class, 'createFromDiscriminatorValue'],
@@ -83,10 +91,10 @@ class ConversationsItemRequestBuilder extends BaseRequestBuilder
 
     /**
      * Returns a conversation accessible to the current user, including its current event version for tracking inbox updates.
-     * @param ConversationsItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param ConversationItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
-    public function toGetRequestInformation(?ConversationsItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): RequestInformation {
+    public function toGetRequestInformation(?ConversationItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
@@ -102,10 +110,10 @@ class ConversationsItemRequestBuilder extends BaseRequestBuilder
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param string $rawUrl The raw URL to use for the request builder.
-     * @return ConversationsItemRequestBuilder
+     * @return ConversationItemRequestBuilder
     */
-    public function withUrl(string $rawUrl): ConversationsItemRequestBuilder {
-        return new ConversationsItemRequestBuilder($rawUrl, $this->requestAdapter);
+    public function withUrl(string $rawUrl): ConversationItemRequestBuilder {
+        return new ConversationItemRequestBuilder($rawUrl, $this->requestAdapter);
     }
 
 }

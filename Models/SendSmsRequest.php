@@ -45,6 +45,11 @@ class SendSmsRequest implements AdditionalDataHolder, Parsable
     private ?string $outboundIdempotencyKey = null;
     
     /**
+     * @var int|null $replyVersion Version of the incoming conversation reply displayed to the agent when composing this response.
+    */
+    private ?int $replyVersion = null;
+    
+    /**
      * @var DateTime|null $scheduledFor UTC timestamp when Leadping should send the SMS message.
     */
     private ?DateTime $scheduledFor = null;
@@ -128,6 +133,7 @@ class SendSmsRequest implements AdditionalDataHolder, Parsable
                 $this->setMediaUrls($val);
             },
             'outboundIdempotencyKey' => fn(ParseNode $n) => $o->setOutboundIdempotencyKey($n->getStringValue()),
+            'replyVersion' => fn(ParseNode $n) => $o->setReplyVersion($n->getIntegerValue()),
             'scheduledFor' => fn(ParseNode $n) => $o->setScheduledFor($n->getDateTimeValue()),
             'smsEventId' => fn(ParseNode $n) => $o->setSmsEventId($n->getStringValue()),
             'sourceId' => fn(ParseNode $n) => $o->setSourceId($n->getStringValue()),
@@ -158,6 +164,14 @@ class SendSmsRequest implements AdditionalDataHolder, Parsable
     */
     public function getOutboundIdempotencyKey(): ?string {
         return $this->outboundIdempotencyKey;
+    }
+
+    /**
+     * Gets the replyVersion property value. Version of the incoming conversation reply displayed to the agent when composing this response.
+     * @return int|null
+    */
+    public function getReplyVersion(): ?int {
+        return $this->replyVersion;
     }
 
     /**
@@ -210,6 +224,7 @@ class SendSmsRequest implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('fromPhoneNumberId', $this->getFromPhoneNumberId());
         $writer->writeCollectionOfPrimitiveValues('mediaUrls', $this->getMediaUrls());
         $writer->writeStringValue('outboundIdempotencyKey', $this->getOutboundIdempotencyKey());
+        $writer->writeIntegerValue('replyVersion', $this->getReplyVersion());
         $writer->writeDateTimeValue('scheduledFor', $this->getScheduledFor());
         $writer->writeStringValue('smsEventId', $this->getSmsEventId());
         $writer->writeStringValue('sourceId', $this->getSourceId());
@@ -264,6 +279,14 @@ class SendSmsRequest implements AdditionalDataHolder, Parsable
     */
     public function setOutboundIdempotencyKey(?string $value): void {
         $this->outboundIdempotencyKey = $value;
+    }
+
+    /**
+     * Sets the replyVersion property value. Version of the incoming conversation reply displayed to the agent when composing this response.
+     * @param int|null $value Value to set for the replyVersion property.
+    */
+    public function setReplyVersion(?int $value): void {
+        $this->replyVersion = $value;
     }
 
     /**

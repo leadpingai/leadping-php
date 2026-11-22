@@ -39,6 +39,11 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     private ?string $avatarUrl = null;
     
     /**
+     * @var DateTime|null $callRetryAt Rep-selected time for the next call attempt.
+    */
+    private ?DateTime $callRetryAt = null;
+    
+    /**
      * @var bool|null $canCallNow Current manual voice eligibility, including contact hours. Populated on individual conversation reads. Sender readiness and billing are checked when calling; null means eligibility has not been evaluated.
     */
     private ?bool $canCallNow = null;
@@ -77,6 +82,16 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
      * @var string|null $id Unique Leadping identifier for this conversation response.
     */
     private ?string $id = null;
+    
+    /**
+     * @var int|null $inboxAction The next action for a conversation, in inbox priority order.
+    */
+    private ?int $inboxAction = null;
+    
+    /**
+     * @var DateTime|null $inboxActionAt Customer reply time, due time, or request time explaining the action.
+    */
+    private ?DateTime $inboxActionAt = null;
     
     /**
      * @var bool|null $isArchived Indicates whether the Leadping conversation has been archived.
@@ -230,6 +245,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the callRetryAt property value. Rep-selected time for the next call attempt.
+     * @return DateTime|null
+    */
+    public function getCallRetryAt(): ?DateTime {
+        return $this->callRetryAt;
+    }
+
+    /**
      * Gets the canCallNow property value. Current manual voice eligibility, including contact hours. Populated on individual conversation reads. Sender readiness and billing are checked when calling; null means eligibility has not been evaluated.
      * @return bool|null
     */
@@ -288,6 +311,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
             'archivedAt' => fn(ParseNode $n) => $o->setArchivedAt($n->getDateTimeValue()),
             'archiveReason' => fn(ParseNode $n) => $o->setArchiveReason($n->getIntegerValue()),
             'avatarUrl' => fn(ParseNode $n) => $o->setAvatarUrl($n->getStringValue()),
+            'callRetryAt' => fn(ParseNode $n) => $o->setCallRetryAt($n->getDateTimeValue()),
             'canCallNow' => fn(ParseNode $n) => $o->setCanCallNow($n->getBooleanValue()),
             'canTextNow' => fn(ParseNode $n) => $o->setCanTextNow($n->getBooleanValue()),
             'complianceStatus' => fn(ParseNode $n) => $o->setComplianceStatus($n->getStringValue()),
@@ -296,6 +320,8 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
             'eventVersion' => fn(ParseNode $n) => $o->setEventVersion($n->getIntegerValue()),
             'firstName' => fn(ParseNode $n) => $o->setFirstName($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
+            'inboxAction' => fn(ParseNode $n) => $o->setInboxAction($n->getIntegerValue()),
+            'inboxActionAt' => fn(ParseNode $n) => $o->setInboxActionAt($n->getDateTimeValue()),
             'isArchived' => fn(ParseNode $n) => $o->setIsArchived($n->getBooleanValue()),
             'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'isUnread' => fn(ParseNode $n) => $o->setIsUnread($n->getBooleanValue()),
@@ -332,6 +358,22 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     */
     public function getId(): ?string {
         return $this->id;
+    }
+
+    /**
+     * Gets the inboxAction property value. The next action for a conversation, in inbox priority order.
+     * @return int|null
+    */
+    public function getInboxAction(): ?int {
+        return $this->inboxAction;
+    }
+
+    /**
+     * Gets the inboxActionAt property value. Customer reply time, due time, or request time explaining the action.
+     * @return DateTime|null
+    */
+    public function getInboxActionAt(): ?DateTime {
+        return $this->inboxActionAt;
     }
 
     /**
@@ -495,6 +537,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('archivedAt', $this->getArchivedAt());
         $writer->writeIntegerValue('archiveReason', $this->getArchiveReason());
         $writer->writeStringValue('avatarUrl', $this->getAvatarUrl());
+        $writer->writeDateTimeValue('callRetryAt', $this->getCallRetryAt());
         $writer->writeBooleanValue('canCallNow', $this->getCanCallNow());
         $writer->writeBooleanValue('canTextNow', $this->getCanTextNow());
         $writer->writeStringValue('complianceStatus', $this->getComplianceStatus());
@@ -503,6 +546,8 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
         $writer->writeIntegerValue('eventVersion', $this->getEventVersion());
         $writer->writeStringValue('firstName', $this->getFirstName());
         $writer->writeStringValue('id', $this->getId());
+        $writer->writeIntegerValue('inboxAction', $this->getInboxAction());
+        $writer->writeDateTimeValue('inboxActionAt', $this->getInboxActionAt());
         $writer->writeBooleanValue('isArchived', $this->getIsArchived());
         $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeBooleanValue('isUnread', $this->getIsUnread());
@@ -563,6 +608,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     */
     public function setAvatarUrl(?string $value): void {
         $this->avatarUrl = $value;
+    }
+
+    /**
+     * Sets the callRetryAt property value. Rep-selected time for the next call attempt.
+     * @param DateTime|null $value Value to set for the callRetryAt property.
+    */
+    public function setCallRetryAt(?DateTime $value): void {
+        $this->callRetryAt = $value;
     }
 
     /**
@@ -627,6 +680,22 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     */
     public function setId(?string $value): void {
         $this->id = $value;
+    }
+
+    /**
+     * Sets the inboxAction property value. The next action for a conversation, in inbox priority order.
+     * @param int|null $value Value to set for the inboxAction property.
+    */
+    public function setInboxAction(?int $value): void {
+        $this->inboxAction = $value;
+    }
+
+    /**
+     * Sets the inboxActionAt property value. Customer reply time, due time, or request time explaining the action.
+     * @param DateTime|null $value Value to set for the inboxActionAt property.
+    */
+    public function setInboxActionAt(?DateTime $value): void {
+        $this->inboxActionAt = $value;
     }
 
     /**

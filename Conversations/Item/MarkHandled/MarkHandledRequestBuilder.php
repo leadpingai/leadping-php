@@ -11,7 +11,7 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
 
 /**
- * Builds and executes requests for operations under /conversations/{id}/mark-handled
+ * Builds and executes requests for operations under /conversations/{conversation-id}/mark-handled
 */
 class MarkHandledRequestBuilder extends BaseRequestBuilder 
 {
@@ -21,7 +21,7 @@ class MarkHandledRequestBuilder extends BaseRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/conversations/{id}/mark-handled?replyVersion={replyVersion}');
+        parent::__construct($requestAdapter, [], '{+baseurl}/conversations/{conversation%2Did}/mark-handled?replyVersion={replyVersion}');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {

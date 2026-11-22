@@ -11,7 +11,7 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
 
 /**
- * Builds and executes requests for operations under /conversations/{id}/mark-reply-needed
+ * Builds and executes requests for operations under /conversations/{conversation-id}/mark-reply-needed
 */
 class MarkReplyNeededRequestBuilder extends BaseRequestBuilder 
 {
@@ -21,7 +21,7 @@ class MarkReplyNeededRequestBuilder extends BaseRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct($pathParametersOrRawUrl, RequestAdapter $requestAdapter) {
-        parent::__construct($requestAdapter, [], '{+baseurl}/conversations/{id}/mark-reply-needed?replyVersion={replyVersion}');
+        parent::__construct($requestAdapter, [], '{+baseurl}/conversations/{conversation%2Did}/mark-reply-needed?replyVersion={replyVersion}');
         if (is_array($pathParametersOrRawUrl)) {
             $this->pathParameters = $pathParametersOrRawUrl;
         } else {

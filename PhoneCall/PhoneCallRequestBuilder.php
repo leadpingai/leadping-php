@@ -4,6 +4,7 @@ namespace Leadping\OpenApiClient\PhoneCall;
 
 use Leadping\OpenApiClient\PhoneCall\Initiate\InitiateRequestBuilder;
 use Leadping\OpenApiClient\PhoneCall\Item\WithCallItemRequestBuilder;
+use Leadping\OpenApiClient\PhoneCall\Next\NextRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 
@@ -17,6 +18,13 @@ class PhoneCallRequestBuilder extends BaseRequestBuilder
     */
     public function initiate(): InitiateRequestBuilder {
         return new InitiateRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The next property
+    */
+    public function next(): NextRequestBuilder {
+        return new NextRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**
