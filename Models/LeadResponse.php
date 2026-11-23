@@ -94,6 +94,11 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     private ?bool $enabled = null;
     
     /**
+     * @var bool|null $hasSourceSmsConsent Whether the source covers SMS consent for the current recipient.
+    */
+    private ?bool $hasSourceSmsConsent = null;
+    
+    /**
      * @var string|null $id Stable unique identifier of the resource.
     */
     private ?string $id = null;
@@ -324,6 +329,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
             'deletedAt' => fn(ParseNode $n) => $o->setDeletedAt($n->getDateTimeValue()),
             'deletedByUserId' => fn(ParseNode $n) => $o->setDeletedByUserId($n->getStringValue()),
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
+            'hasSourceSmsConsent' => fn(ParseNode $n) => $o->setHasSourceSmsConsent($n->getBooleanValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'inquiry' => fn(ParseNode $n) => $o->setInquiry($n->getObjectValue([LeadResponse_inquiry::class, 'createFromDiscriminatorValue'])),
             'isArchived' => fn(ParseNode $n) => $o->setIsArchived($n->getBooleanValue()),
@@ -338,6 +344,14 @@ class LeadResponse implements AdditionalDataHolder, Parsable
             'serviceAddress' => fn(ParseNode $n) => $o->setServiceAddress($n->getObjectValue([LeadResponse_serviceAddress::class, 'createFromDiscriminatorValue'])),
             'tags' => fn(ParseNode $n) => $o->setTags($n->getCollectionOfObjectValues([TagSummary::class, 'createFromDiscriminatorValue'])),
         ];
+    }
+
+    /**
+     * Gets the hasSourceSmsConsent property value. Whether the source covers SMS consent for the current recipient.
+     * @return bool|null
+    */
+    public function getHasSourceSmsConsent(): ?bool {
+        return $this->hasSourceSmsConsent;
     }
 
     /**
@@ -464,6 +478,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('deletedAt', $this->getDeletedAt());
         $writer->writeStringValue('deletedByUserId', $this->getDeletedByUserId());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
+        $writer->writeBooleanValue('hasSourceSmsConsent', $this->getHasSourceSmsConsent());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeObjectValue('inquiry', $this->getInquiry());
         $writer->writeBooleanValue('isArchived', $this->getIsArchived());
@@ -606,6 +621,14 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     */
     public function setEnabled(?bool $value): void {
         $this->enabled = $value;
+    }
+
+    /**
+     * Sets the hasSourceSmsConsent property value. Whether the source covers SMS consent for the current recipient.
+     * @param bool|null $value Value to set for the hasSourceSmsConsent property.
+    */
+    public function setHasSourceSmsConsent(?bool $value): void {
+        $this->hasSourceSmsConsent = $value;
     }
 
     /**
