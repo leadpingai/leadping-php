@@ -2,6 +2,7 @@
 
 namespace Leadping\OpenApiClient\PhoneCall;
 
+use Leadping\OpenApiClient\PhoneCall\Dial\DialRequestBuilder;
 use Leadping\OpenApiClient\PhoneCall\Initiate\InitiateRequestBuilder;
 use Leadping\OpenApiClient\PhoneCall\Item\WithCallItemRequestBuilder;
 use Leadping\OpenApiClient\PhoneCall\Next\NextRequestBuilder;
@@ -13,6 +14,13 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 */
 class PhoneCallRequestBuilder extends BaseRequestBuilder 
 {
+    /**
+     * The dial property
+    */
+    public function dial(): DialRequestBuilder {
+        return new DialRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
     /**
      * The initiate property
     */

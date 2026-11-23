@@ -2,6 +2,7 @@
 
 namespace Leadping\OpenApiClient\Models;
 
+use DateTime;
 use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
@@ -31,6 +32,11 @@ class LeadContactabilityResponse implements AdditionalDataHolder, Parsable
      * @var bool|null $canText Whether the lead can currently be texted after evaluating applicable contact hours, suppression, and consent rules.
     */
     private ?bool $canText = null;
+    
+    /**
+     * @var DateTime|null $nextWindowChangeAt Next opening or closing of a contact window that can change this result.
+    */
+    private ?DateTime $nextWindowChangeAt = null;
     
     /**
      * @var bool|null $smsLineRestricted Whether the stored phone lookup rules out texting this recipient.
@@ -100,9 +106,18 @@ class LeadContactabilityResponse implements AdditionalDataHolder, Parsable
             'callBlockedReason' => fn(ParseNode $n) => $o->setCallBlockedReason($n->getStringValue()),
             'canCall' => fn(ParseNode $n) => $o->setCanCall($n->getBooleanValue()),
             'canText' => fn(ParseNode $n) => $o->setCanText($n->getBooleanValue()),
+            'nextWindowChangeAt' => fn(ParseNode $n) => $o->setNextWindowChangeAt($n->getDateTimeValue()),
             'smsLineRestricted' => fn(ParseNode $n) => $o->setSmsLineRestricted($n->getBooleanValue()),
             'textBlockedReason' => fn(ParseNode $n) => $o->setTextBlockedReason($n->getStringValue()),
         ];
+    }
+
+    /**
+     * Gets the nextWindowChangeAt property value. Next opening or closing of a contact window that can change this result.
+     * @return DateTime|null
+    */
+    public function getNextWindowChangeAt(): ?DateTime {
+        return $this->nextWindowChangeAt;
     }
 
     /**
@@ -129,6 +144,7 @@ class LeadContactabilityResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('callBlockedReason', $this->getCallBlockedReason());
         $writer->writeBooleanValue('canCall', $this->getCanCall());
         $writer->writeBooleanValue('canText', $this->getCanText());
+        $writer->writeDateTimeValue('nextWindowChangeAt', $this->getNextWindowChangeAt());
         $writer->writeBooleanValue('smsLineRestricted', $this->getSmsLineRestricted());
         $writer->writeStringValue('textBlockedReason', $this->getTextBlockedReason());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -164,6 +180,14 @@ class LeadContactabilityResponse implements AdditionalDataHolder, Parsable
     */
     public function setCanText(?bool $value): void {
         $this->canText = $value;
+    }
+
+    /**
+     * Sets the nextWindowChangeAt property value. Next opening or closing of a contact window that can change this result.
+     * @param DateTime|null $value Value to set for the nextWindowChangeAt property.
+    */
+    public function setNextWindowChangeAt(?DateTime $value): void {
+        $this->nextWindowChangeAt = $value;
     }
 
     /**
