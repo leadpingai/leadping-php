@@ -24,6 +24,11 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var bool|null $canRunForLead Whether the current user can start this automation for a selected inbox lead.
+    */
+    private ?bool $canRunForLead = null;
+    
+    /**
      * @var string|null $conditionSummary Human-readable summary of the automation condition evaluation.
     */
     private ?string $conditionSummary = null;
@@ -161,6 +166,14 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the canRunForLead property value. Whether the current user can start this automation for a selected inbox lead.
+     * @return bool|null
+    */
+    public function getCanRunForLead(): ?bool {
+        return $this->canRunForLead;
+    }
+
+    /**
      * Gets the conditionSummary property value. Human-readable summary of the automation condition evaluation.
      * @return string|null
     */
@@ -200,6 +213,7 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             'actionSummary' => fn(ParseNode $n) => $o->setActionSummary($n->getStringValue()),
+            'canRunForLead' => fn(ParseNode $n) => $o->setCanRunForLead($n->getBooleanValue()),
             'conditionSummary' => fn(ParseNode $n) => $o->setConditionSummary($n->getStringValue()),
             'createdByUserId' => fn(ParseNode $n) => $o->setCreatedByUserId($n->getStringValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
@@ -366,6 +380,7 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         $writer->writeStringValue('actionSummary', $this->getActionSummary());
+        $writer->writeBooleanValue('canRunForLead', $this->getCanRunForLead());
         $writer->writeStringValue('conditionSummary', $this->getConditionSummary());
         $writer->writeStringValue('createdByUserId', $this->getCreatedByUserId());
         $writer->writeStringValue('description', $this->getDescription());
@@ -404,6 +419,14 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the canRunForLead property value. Whether the current user can start this automation for a selected inbox lead.
+     * @param bool|null $value Value to set for the canRunForLead property.
+    */
+    public function setCanRunForLead(?bool $value): void {
+        $this->canRunForLead = $value;
     }
 
     /**

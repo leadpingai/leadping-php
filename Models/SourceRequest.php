@@ -54,6 +54,11 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     private ?string $name = null;
     
     /**
+     * @var bool|null $normalizeIncomingData Whether to normalize capitalization in incoming lead names and cities.
+    */
+    private ?bool $normalizeIncomingData = null;
+    
+    /**
      * @var bool|null $requiresTrustedForm Indicates whether leads from this source must include a TrustedForm or Leadping Consent certificate for consent proof.
     */
     private ?bool $requiresTrustedForm = null;
@@ -158,6 +163,7 @@ class SourceRequest implements AdditionalDataHolder, Parsable
             },
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
+            'normalizeIncomingData' => fn(ParseNode $n) => $o->setNormalizeIncomingData($n->getBooleanValue()),
             'requiresTrustedForm' => fn(ParseNode $n) => $o->setRequiresTrustedForm($n->getBooleanValue()),
         ];
     }
@@ -168,6 +174,14 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     */
     public function getName(): ?string {
         return $this->name;
+    }
+
+    /**
+     * Gets the normalizeIncomingData property value. Whether to normalize capitalization in incoming lead names and cities.
+     * @return bool|null
+    */
+    public function getNormalizeIncomingData(): ?bool {
+        return $this->normalizeIncomingData;
     }
 
     /**
@@ -190,6 +204,7 @@ class SourceRequest implements AdditionalDataHolder, Parsable
         $writer->writeCollectionOfPrimitiveValues('defaultTagNames', $this->getDefaultTagNames());
         $writer->writeStringValue('description', $this->getDescription());
         $writer->writeStringValue('name', $this->getName());
+        $writer->writeBooleanValue('normalizeIncomingData', $this->getNormalizeIncomingData());
         $writer->writeBooleanValue('requiresTrustedForm', $this->getRequiresTrustedForm());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -256,6 +271,14 @@ class SourceRequest implements AdditionalDataHolder, Parsable
     */
     public function setName(?string $value): void {
         $this->name = $value;
+    }
+
+    /**
+     * Sets the normalizeIncomingData property value. Whether to normalize capitalization in incoming lead names and cities.
+     * @param bool|null $value Value to set for the normalizeIncomingData property.
+    */
+    public function setNormalizeIncomingData(?bool $value): void {
+        $this->normalizeIncomingData = $value;
     }
 
     /**

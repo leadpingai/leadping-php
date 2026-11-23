@@ -4,7 +4,9 @@ namespace Leadping\OpenApiClient\Automations\Item;
 
 use Exception;
 use Http\Promise\Promise;
+use Leadping\OpenApiClient\Automations\Item\Leads\LeadsRequestBuilder;
 use Leadping\OpenApiClient\Automations\Item\Run\RunRequestBuilder;
+use Leadping\OpenApiClient\Automations\Item\RunForAudience\RunForAudienceRequestBuilder;
 use Leadping\OpenApiClient\Automations\Item\Runs\RunsRequestBuilder;
 use Leadping\OpenApiClient\Models\AutomationRequest;
 use Leadping\OpenApiClient\Models\AutomationResponse;
@@ -20,10 +22,24 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 class AutomationsItemRequestBuilder extends BaseRequestBuilder 
 {
     /**
+     * The leads property
+    */
+    public function leads(): LeadsRequestBuilder {
+        return new LeadsRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
      * The run property
     */
     public function run(): RunRequestBuilder {
         return new RunRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The runForAudience property
+    */
+    public function runForAudience(): RunForAudienceRequestBuilder {
+        return new RunForAudienceRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**

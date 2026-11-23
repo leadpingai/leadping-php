@@ -125,6 +125,11 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     private ?string $name = null;
     
     /**
+     * @var bool|null $normalizeIncomingData Whether to normalize capitalization in incoming lead names and cities.
+    */
+    private ?bool $normalizeIncomingData = null;
+    
+    /**
      * @var SourceTableRow_organization|null $organization Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?SourceTableRow_organization $organization = null;
@@ -315,6 +320,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'modifiedByUser' => fn(ParseNode $n) => $o->setModifiedByUser($n->getObjectValue([SourceTableRow_modifiedByUser::class, 'createFromDiscriminatorValue'])),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
+            'normalizeIncomingData' => fn(ParseNode $n) => $o->setNormalizeIncomingData($n->getBooleanValue()),
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([SourceTableRow_organization::class, 'createFromDiscriminatorValue'])),
             'organizationId' => fn(ParseNode $n) => $o->setOrganizationId($n->getStringValue()),
             'requiresTrustedForm' => fn(ParseNode $n) => $o->setRequiresTrustedForm($n->getBooleanValue()),
@@ -379,6 +385,14 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the normalizeIncomingData property value. Whether to normalize capitalization in incoming lead names and cities.
+     * @return bool|null
+    */
+    public function getNormalizeIncomingData(): ?bool {
+        return $this->normalizeIncomingData;
+    }
+
+    /**
      * Gets the organization property value. Provides a compact API reference to another resource using its stable identifier and human-readable display name.
      * @return SourceTableRow_organization|null
     */
@@ -436,6 +450,7 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeObjectValue('modifiedByUser', $this->getModifiedByUser());
         $writer->writeStringValue('name', $this->getName());
+        $writer->writeBooleanValue('normalizeIncomingData', $this->getNormalizeIncomingData());
         $writer->writeObjectValue('organization', $this->getOrganization());
         $writer->writeStringValue('organizationId', $this->getOrganizationId());
         $writer->writeBooleanValue('requiresTrustedForm', $this->getRequiresTrustedForm());
@@ -617,6 +632,14 @@ class SourceTableRow implements AdditionalDataHolder, Parsable
     */
     public function setName(?string $value): void {
         $this->name = $value;
+    }
+
+    /**
+     * Sets the normalizeIncomingData property value. Whether to normalize capitalization in incoming lead names and cities.
+     * @param bool|null $value Value to set for the normalizeIncomingData property.
+    */
+    public function setNormalizeIncomingData(?bool $value): void {
+        $this->normalizeIncomingData = $value;
     }
 
     /**

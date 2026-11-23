@@ -34,6 +34,11 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     private ?int $archiveReason = null;
     
     /**
+     * @var string|null $assignedToUserId The lead assignee used for inbox audience selection.
+    */
+    private ?string $assignedToUserId = null;
+    
+    /**
      * @var string|null $avatarUrl Optional profile image URL explicitly associated with the lead.
     */
     private ?string $avatarUrl = null;
@@ -144,6 +149,16 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     private ?DateTime $lastSnippetAt = null;
     
     /**
+     * @var DateTime|null $leadCreatedAt When the associated lead was created.
+    */
+    private ?DateTime $leadCreatedAt = null;
+    
+    /**
+     * @var bool|null $leadEnabled Whether the associated lead is enabled for selection.
+    */
+    private ?bool $leadEnabled = null;
+    
+    /**
      * @var string|null $leadId Lead ID associated with this inbox conversation.
     */
     private ?string $leadId = null;
@@ -237,6 +252,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the assignedToUserId property value. The lead assignee used for inbox audience selection.
+     * @return string|null
+    */
+    public function getAssignedToUserId(): ?string {
+        return $this->assignedToUserId;
+    }
+
+    /**
      * Gets the avatarUrl property value. Optional profile image URL explicitly associated with the lead.
      * @return string|null
     */
@@ -310,6 +333,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
             'activeOutboundPhoneNumberId' => fn(ParseNode $n) => $o->setActiveOutboundPhoneNumberId($n->getStringValue()),
             'archivedAt' => fn(ParseNode $n) => $o->setArchivedAt($n->getDateTimeValue()),
             'archiveReason' => fn(ParseNode $n) => $o->setArchiveReason($n->getIntegerValue()),
+            'assignedToUserId' => fn(ParseNode $n) => $o->setAssignedToUserId($n->getStringValue()),
             'avatarUrl' => fn(ParseNode $n) => $o->setAvatarUrl($n->getStringValue()),
             'callRetryAt' => fn(ParseNode $n) => $o->setCallRetryAt($n->getDateTimeValue()),
             'canCallNow' => fn(ParseNode $n) => $o->setCanCallNow($n->getBooleanValue()),
@@ -332,6 +356,8 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
             'lastName' => fn(ParseNode $n) => $o->setLastName($n->getStringValue()),
             'lastSnippet' => fn(ParseNode $n) => $o->setLastSnippet($n->getStringValue()),
             'lastSnippetAt' => fn(ParseNode $n) => $o->setLastSnippetAt($n->getDateTimeValue()),
+            'leadCreatedAt' => fn(ParseNode $n) => $o->setLeadCreatedAt($n->getDateTimeValue()),
+            'leadEnabled' => fn(ParseNode $n) => $o->setLeadEnabled($n->getBooleanValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
             'leadPhoneNumber' => fn(ParseNode $n) => $o->setLeadPhoneNumber($n->getStringValue()),
             'needsReply' => fn(ParseNode $n) => $o->setNeedsReply($n->getBooleanValue()),
@@ -457,6 +483,22 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the leadCreatedAt property value. When the associated lead was created.
+     * @return DateTime|null
+    */
+    public function getLeadCreatedAt(): ?DateTime {
+        return $this->leadCreatedAt;
+    }
+
+    /**
+     * Gets the leadEnabled property value. Whether the associated lead is enabled for selection.
+     * @return bool|null
+    */
+    public function getLeadEnabled(): ?bool {
+        return $this->leadEnabled;
+    }
+
+    /**
      * Gets the leadId property value. Lead ID associated with this inbox conversation.
      * @return string|null
     */
@@ -536,6 +578,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('activeOutboundPhoneNumberId', $this->getActiveOutboundPhoneNumberId());
         $writer->writeDateTimeValue('archivedAt', $this->getArchivedAt());
         $writer->writeIntegerValue('archiveReason', $this->getArchiveReason());
+        $writer->writeStringValue('assignedToUserId', $this->getAssignedToUserId());
         $writer->writeStringValue('avatarUrl', $this->getAvatarUrl());
         $writer->writeDateTimeValue('callRetryAt', $this->getCallRetryAt());
         $writer->writeBooleanValue('canCallNow', $this->getCanCallNow());
@@ -558,6 +601,8 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('lastName', $this->getLastName());
         $writer->writeStringValue('lastSnippet', $this->getLastSnippet());
         $writer->writeDateTimeValue('lastSnippetAt', $this->getLastSnippetAt());
+        $writer->writeDateTimeValue('leadCreatedAt', $this->getLeadCreatedAt());
+        $writer->writeBooleanValue('leadEnabled', $this->getLeadEnabled());
         $writer->writeStringValue('leadId', $this->getLeadId());
         $writer->writeStringValue('leadPhoneNumber', $this->getLeadPhoneNumber());
         $writer->writeBooleanValue('needsReply', $this->getNeedsReply());
@@ -600,6 +645,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     */
     public function setArchiveReason(?int $value): void {
         $this->archiveReason = $value;
+    }
+
+    /**
+     * Sets the assignedToUserId property value. The lead assignee used for inbox audience selection.
+     * @param string|null $value Value to set for the assignedToUserId property.
+    */
+    public function setAssignedToUserId(?string $value): void {
+        $this->assignedToUserId = $value;
     }
 
     /**
@@ -776,6 +829,22 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     */
     public function setLastSnippetAt(?DateTime $value): void {
         $this->lastSnippetAt = $value;
+    }
+
+    /**
+     * Sets the leadCreatedAt property value. When the associated lead was created.
+     * @param DateTime|null $value Value to set for the leadCreatedAt property.
+    */
+    public function setLeadCreatedAt(?DateTime $value): void {
+        $this->leadCreatedAt = $value;
+    }
+
+    /**
+     * Sets the leadEnabled property value. Whether the associated lead is enabled for selection.
+     * @param bool|null $value Value to set for the leadEnabled property.
+    */
+    public function setLeadEnabled(?bool $value): void {
+        $this->leadEnabled = $value;
     }
 
     /**

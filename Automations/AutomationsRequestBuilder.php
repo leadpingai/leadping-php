@@ -6,6 +6,7 @@ use Exception;
 use Http\Promise\Promise;
 use Leadping\OpenApiClient\Automations\All\AllRequestBuilder;
 use Leadping\OpenApiClient\Automations\Item\AutomationsItemRequestBuilder;
+use Leadping\OpenApiClient\Automations\LeadAudience\LeadAudienceRequestBuilder;
 use Leadping\OpenApiClient\Automations\Preview\PreviewRequestBuilder;
 use Leadping\OpenApiClient\Models\AutomationRequest;
 use Leadping\OpenApiClient\Models\AutomationResponse;
@@ -25,6 +26,13 @@ class AutomationsRequestBuilder extends BaseRequestBuilder
     */
     public function all(): AllRequestBuilder {
         return new AllRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
+     * The leadAudience property
+    */
+    public function leadAudience(): LeadAudienceRequestBuilder {
+        return new LeadAudienceRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**
