@@ -31,7 +31,7 @@ class AcceptRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Accept
+     * Accept a pending organization invitation in Leadping. Sign in as the invited recipient and submit the invitation ID to join the organization.
      * @param AcceptRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<StreamInterface|null>
      * @throws Exception
@@ -49,7 +49,7 @@ class AcceptRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Accept
+     * Accept a pending organization invitation in Leadping. Sign in as the invited recipient and submit the invitation ID to join the organization.
      * @param AcceptRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

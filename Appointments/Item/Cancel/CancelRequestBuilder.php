@@ -32,7 +32,7 @@ class CancelRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Cancels an appointment and invalidates unsent reminders using the expected revision.
+     * Cancel a Leadping callback appointment and invalidate reminders that have yet to be sent. Include the expected revision to detect concurrent changes.
      * @param AppointmentActionRequest $body Protects appointment actions against concurrent edits.
      * @param CancelRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<AppointmentResponse|null>
@@ -50,7 +50,7 @@ class CancelRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Cancels an appointment and invalidates unsent reminders using the expected revision.
+     * Cancel a Leadping callback appointment and invalidate reminders that have yet to be sent. Include the expected revision to detect concurrent changes.
      * @param AppointmentActionRequest $body Protects appointment actions against concurrent edits.
      * @param CancelRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

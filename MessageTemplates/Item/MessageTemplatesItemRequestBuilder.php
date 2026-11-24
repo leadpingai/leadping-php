@@ -32,7 +32,7 @@ class MessageTemplatesItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Permanently deletes an organization template.
+     * Permanently remove a message template from your Leadping organization by ID. To keep the template for later use, disable it with the update endpoint.
      * @param MessageTemplatesItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<bool|null>
      * @throws Exception
@@ -50,7 +50,7 @@ class MessageTemplatesItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Updates an organization template's name, message, and enabled state.
+     * Update a Leadping message template by ID. Change its name or message text, or enable or disable the template for use in your organization.
      * @param MessageTemplateRequest $body The editable fields of an organization message template.
      * @param MessageTemplatesItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<MessageTemplate|null>
@@ -67,7 +67,7 @@ class MessageTemplatesItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Permanently deletes an organization template.
+     * Permanently remove a message template from your Leadping organization by ID. To keep the template for later use, disable it with the update endpoint.
      * @param MessageTemplatesItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -85,7 +85,7 @@ class MessageTemplatesItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Updates an organization template's name, message, and enabled state.
+     * Update a Leadping message template by ID. Change its name or message text, or enable or disable the template for use in your organization.
      * @param MessageTemplateRequest $body The editable fields of an organization message template.
      * @param MessageTemplatesItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

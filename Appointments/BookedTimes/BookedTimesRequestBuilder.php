@@ -31,7 +31,7 @@ class BookedTimesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Gets occupied appointment times for a lead's selected assignee.
+     * Look up appointment times already booked for a lead’s selected assignee in Leadping before choosing a time for a new or rescheduled callback.
      * @param BookedTimesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<StreamInterface|null>
      * @throws Exception
@@ -49,7 +49,7 @@ class BookedTimesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Gets occupied appointment times for a lead's selected assignee.
+     * Look up appointment times already booked for a lead’s selected assignee in Leadping before choosing a time for a new or rescheduled callback.
      * @param BookedTimesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

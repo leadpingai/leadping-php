@@ -3,7 +3,7 @@
 namespace Leadping\OpenApiClient\Invitations;
 
 /**
- * Get
+ * List open, unexpired organization invitations for the signed-in recipient’s verified email address, or use an invitation token to look up one invite.
 */
 class InvitationsRequestBuilderGetQueryParameters 
 {

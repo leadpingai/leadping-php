@@ -42,7 +42,7 @@ class AvailabilityRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns whether the authenticated user can currently receive an incoming call.
+     * Check whether the signed-in Leadping user can receive an incoming call right now. Use the result to show their current availability in a calling workflow.
      * @param AvailabilityRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<bool|null>
      * @throws Exception
@@ -62,7 +62,7 @@ class AvailabilityRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns whether the authenticated user can currently receive an incoming call.
+     * Check whether the signed-in Leadping user can receive an incoming call right now. Use the result to show their current availability in a calling workflow.
      * @param AvailabilityRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

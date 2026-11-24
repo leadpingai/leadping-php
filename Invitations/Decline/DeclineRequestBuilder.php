@@ -32,7 +32,7 @@ class DeclineRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Decline with token
+     * Decline a Leadping organization invitation without signing in. Submit the token from the invitation link to identify the invite you want to decline.
      * @param OrganizationInvitationTokenRequest $body Supplies the secret invitation token from the recipient’s email link.
      * @param DeclineRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<StreamInterface|null>
@@ -49,7 +49,7 @@ class DeclineRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Decline with token
+     * Decline a Leadping organization invitation without signing in. Submit the token from the invitation link to identify the invite you want to decline.
      * @param OrganizationInvitationTokenRequest $body Supplies the secret invitation token from the recipient’s email link.
      * @param DeclineRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

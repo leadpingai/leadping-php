@@ -50,7 +50,7 @@ class SpendLimitsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Sets the current organization's daily and monthly usage limits in USD and returns the updated limits and UTC progress.A null limit removes that budget; a zero limit stops new paid usage.
+     * Set daily and monthly usage budgets in USD for your Leadping organization. Use null to remove a limit or zero to stop new paid usage.
      * @param SpendLimitsRequest $body Organization usage budgets in USD. Null removes a limit; zero stops new paid usage.
      * @param SpendLimitsRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<SpendLimitsResponse|null>
@@ -89,7 +89,7 @@ class SpendLimitsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Sets the current organization's daily and monthly usage limits in USD and returns the updated limits and UTC progress.A null limit removes that budget; a zero limit stops new paid usage.
+     * Set daily and monthly usage budgets in USD for your Leadping organization. Use null to remove a limit or zero to stop new paid usage.
      * @param SpendLimitsRequest $body Organization usage budgets in USD. Null removes a limit; zero stops new paid usage.
      * @param SpendLimitsRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

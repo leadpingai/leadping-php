@@ -3,7 +3,7 @@
 namespace Leadping\OpenApiClient\Appointments;
 
 /**
- * Returns appointments visible to the current user, with optional lead, reminder, and status filters.
+ * List callback appointments the signed-in user can access in Leadping. Filter by lead, reminder, or appointment status to narrow the results.
 */
 class AppointmentsRequestBuilderGetQueryParameters 
 {

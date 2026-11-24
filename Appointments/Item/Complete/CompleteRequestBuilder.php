@@ -32,7 +32,7 @@ class CompleteRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Marks an appointment as completed using the expected revision to detect concurrent changes.
+     * Mark a callback appointment as completed in Leadping. Supply the expected revision so the API can detect another user’s changes before recording completion.
      * @param AppointmentActionRequest $body Protects appointment actions against concurrent edits.
      * @param CompleteRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<AppointmentResponse|null>
@@ -50,7 +50,7 @@ class CompleteRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Marks an appointment as completed using the expected revision to detect concurrent changes.
+     * Mark a callback appointment as completed in Leadping. Supply the expected revision so the API can detect another user’s changes before recording completion.
      * @param AppointmentActionRequest $body Protects appointment actions against concurrent edits.
      * @param CompleteRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

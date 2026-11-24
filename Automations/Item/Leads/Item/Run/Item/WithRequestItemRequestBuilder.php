@@ -31,7 +31,7 @@ class WithRequestItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Queues a manual automation run for a lead. Reuse the request ID when retrying the same run.
+     * Queue a manual automation for a specific lead in Leadping. Reuse the same request ID if you retry so the retry refers to the original run.
      * @param WithRequestItemRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<AutomationRunRecord|null>
      * @throws Exception
@@ -47,7 +47,7 @@ class WithRequestItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Queues a manual automation run for a lead. Reuse the request ID when retrying the same run.
+     * Queue a manual automation for a specific lead in Leadping. Reuse the same request ID if you retry so the retry refers to the original run.
      * @param WithRequestItemRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

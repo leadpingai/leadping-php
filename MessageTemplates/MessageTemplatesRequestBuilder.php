@@ -44,7 +44,7 @@ class MessageTemplatesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Lists organization templates, including disabled templates.
+     * Retrieve your organization’s Leadping message templates in one request. The list includes enabled templates as well as templates that are currently disabled.
      * @param MessageTemplatesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<array<MessageTemplate>|null>
      * @throws Exception
@@ -60,7 +60,7 @@ class MessageTemplatesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Creates a disabled organization template.
+     * Create a reusable message template for your Leadping organization. New templates start disabled, so you can review the message before enabling it.
      * @param MessageTemplateRequest $body The editable fields of an organization message template.
      * @param MessageTemplatesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<MessageTemplate|null>
@@ -77,7 +77,7 @@ class MessageTemplatesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Lists organization templates, including disabled templates.
+     * Retrieve your organization’s Leadping message templates in one request. The list includes enabled templates as well as templates that are currently disabled.
      * @param MessageTemplatesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -95,7 +95,7 @@ class MessageTemplatesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Creates a disabled organization template.
+     * Create a reusable message template for your Leadping organization. New templates start disabled, so you can review the message before enabling it.
      * @param MessageTemplateRequest $body The editable fields of an organization message template.
      * @param MessageTemplatesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

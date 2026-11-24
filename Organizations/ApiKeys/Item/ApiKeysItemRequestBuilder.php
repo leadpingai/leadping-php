@@ -34,7 +34,7 @@ class ApiKeysItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Deletes the organization-owned API key without deleting the organization.The operation enforces organization ownership or platform-admin authorization and returns state suitable for membership, billing, and support workflows.
+     * Delete an organization-owned Leadping API key while keeping the organization intact. The request requires organization ownership or platform admin access.
      * @param ApiKeysItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<OrganizationApiKeyRevokeResponse|null>
      * @throws Exception
@@ -94,7 +94,7 @@ class ApiKeysItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Deletes the organization-owned API key without deleting the organization.The operation enforces organization ownership or platform-admin authorization and returns state suitable for membership, billing, and support workflows.
+     * Delete an organization-owned Leadping API key while keeping the organization intact. The request requires organization ownership or platform admin access.
      * @param ApiKeysItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

@@ -32,7 +32,7 @@ class WithEventItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * The event table row.
+     * Edit an internal note you authored in Leadping. Submit the revised note text and use the returned event row to display the updated entry in the timeline.
      * @param CreateNoteRequest $body Defines the input used for create note.
      * @param WithEventItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<EventTableRow|null>
@@ -51,7 +51,7 @@ class WithEventItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * The event table row.
+     * Edit an internal note you authored in Leadping. Submit the revised note text and use the returned event row to display the updated entry in the timeline.
      * @param CreateNoteRequest $body Defines the input used for create note.
      * @param WithEventItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

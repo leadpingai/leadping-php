@@ -51,7 +51,7 @@ class InvitationsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Get
+     * List open, unexpired organization invitations for the signed-in recipient’s verified email address, or use an invitation token to look up one invite.
      * @param InvitationsRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<array<OrganizationInvitationTableRow>|null>
      * @throws Exception
@@ -67,7 +67,7 @@ class InvitationsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Get
+     * List open, unexpired organization invitations for the signed-in recipient’s verified email address, or use an invitation token to look up one invite.
      * @param InvitationsRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

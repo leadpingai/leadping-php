@@ -52,7 +52,7 @@ class AppointmentsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns appointments visible to the current user, with optional lead, reminder, and status filters.
+     * List callback appointments the signed-in user can access in Leadping. Filter by lead, reminder, or appointment status to narrow the results.
      * @param AppointmentsRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<array<AppointmentResponse>|null>
      * @throws Exception
@@ -68,7 +68,7 @@ class AppointmentsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Schedules a callback appointment for a lead and configures its assigned agent and reminder.
+     * Schedule a callback for a lead through the Leadping API. Set the appointment time, assign the agent responsible for the call, and configure its reminder.
      * @param AppointmentRequest $body Creates or reschedules an agent's callback appointment.
      * @param AppointmentsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<AppointmentResponse|null>
@@ -85,7 +85,7 @@ class AppointmentsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns appointments visible to the current user, with optional lead, reminder, and status filters.
+     * List callback appointments the signed-in user can access in Leadping. Filter by lead, reminder, or appointment status to narrow the results.
      * @param AppointmentsRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -106,7 +106,7 @@ class AppointmentsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Schedules a callback appointment for a lead and configures its assigned agent and reminder.
+     * Schedule a callback for a lead through the Leadping API. Set the appointment time, assign the agent responsible for the call, and configure its reminder.
      * @param AppointmentRequest $body Creates or reschedules an agent's callback appointment.
      * @param AppointmentsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

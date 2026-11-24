@@ -64,7 +64,7 @@ class AppointmentsItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns an appointment and its history, subject to lead and organization access.
+     * Retrieve a callback appointment and its history by ID in Leadping. The signed-in user must have access to the associated lead and organization.
      * @param AppointmentsItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<AppointmentResponse|null>
      * @throws Exception
@@ -80,7 +80,7 @@ class AppointmentsItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Updates an appointment using the expected revision to detect concurrent changes.
+     * Edit an existing callback appointment in Leadping. Include the revision you last retrieved so the API can detect changes made since you viewed it.
      * @param AppointmentRequest $body Creates or reschedules an agent's callback appointment.
      * @param AppointmentsItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<AppointmentResponse|null>
@@ -97,7 +97,7 @@ class AppointmentsItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns an appointment and its history, subject to lead and organization access.
+     * Retrieve a callback appointment and its history by ID in Leadping. The signed-in user must have access to the associated lead and organization.
      * @param AppointmentsItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -115,7 +115,7 @@ class AppointmentsItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Updates an appointment using the expected revision to detect concurrent changes.
+     * Edit an existing callback appointment in Leadping. Include the revision you last retrieved so the API can detect changes made since you viewed it.
      * @param AppointmentRequest $body Creates or reschedules an agent's callback appointment.
      * @param AppointmentsItemRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

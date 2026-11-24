@@ -31,7 +31,7 @@ class RunForAudienceRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Queues a bulk run for the authorized lead audience.
+     * Queue a Leadping automation for a group of leads in one request. The bulk run uses the lead audience the current user is authorized to select.
      * @param AutomationAudienceRequest $body Runs an automation for a server-resolved audience, omitting leads the user unchecked.
      * @param RunForAudienceRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<bool|null>
@@ -50,7 +50,7 @@ class RunForAudienceRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Queues a bulk run for the authorized lead audience.
+     * Queue a Leadping automation for a group of leads in one request. The bulk run uses the lead audience the current user is authorized to select.
      * @param AutomationAudienceRequest $body Runs an automation for a server-resolved audience, omitting leads the user unchecked.
      * @param RunForAudienceRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

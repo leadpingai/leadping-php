@@ -31,7 +31,7 @@ class PhoneLookupRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Queues a phone identity lookup for a lead visible to the current user and returns the lead after the lookup request is accepted.The lookup runs asynchronously and incurs a charge.
+     * Queue a new, billable phone identity lookup for a lead you can access. The API returns the lead once the request is accepted and runs the lookup asynchronously.
      * @param PhoneLookupRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<LeadResponse|null>
      * @throws Exception
@@ -50,7 +50,7 @@ class PhoneLookupRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Queues a phone identity lookup for a lead visible to the current user and returns the lead after the lookup request is accepted.The lookup runs asynchronously and incurs a charge.
+     * Queue a new, billable phone identity lookup for a lead you can access. The API returns the lead once the request is accepted and runs the lookup asynchronously.
      * @param PhoneLookupRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

@@ -3,7 +3,7 @@
 namespace Leadping\OpenApiClient\Appointments\BookedTimes;
 
 /**
- * Gets occupied appointment times for a lead's selected assignee.
+ * Look up appointment times already booked for a lead’s selected assignee in Leadping before choosing a time for a new or rescheduled callback.
 */
 class BookedTimesRequestBuilderGetQueryParameters 
 {

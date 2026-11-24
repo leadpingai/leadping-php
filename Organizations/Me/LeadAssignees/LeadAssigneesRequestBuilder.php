@@ -31,7 +31,7 @@ class LeadAssigneesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns distinct users in the current organization, ordered by name, for selecting lead assignees.
+     * Retrieve active users in the current Leadping organization for a lead assignee filter. Each user appears once, and results are ordered by name.
      * @param LeadAssigneesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<array<IdNamePair>|null>
      * @throws Exception
@@ -49,7 +49,7 @@ class LeadAssigneesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Returns distinct users in the current organization, ordered by name, for selecting lead assignees.
+     * Retrieve active users in the current Leadping organization for a lead assignee filter. Each user appears once, and results are ordered by name.
      * @param LeadAssigneesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

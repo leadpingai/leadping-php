@@ -32,7 +32,7 @@ class RetryRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Updates the next manual call attempt if the observed retry time is still current.
+     * Set the next manual call time for a Leadping conversation. The update applies only if the retry time still matches the one you last saw.
      * @param CallRetryRequest $body The request body
      * @param RetryRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<StreamInterface|null>
@@ -51,7 +51,7 @@ class RetryRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Updates the next manual call attempt if the observed retry time is still current.
+     * Set the next manual call time for a Leadping conversation. The update applies only if the retry time still matches the one you last saw.
      * @param CallRetryRequest $body The request body
      * @param RetryRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

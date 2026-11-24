@@ -31,7 +31,7 @@ class LeadAudienceRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Counts the active leads selectable by the current user across the organization.
+     * Check how many active leads the signed-in user can select across the organization before queuing a bulk automation run in Leadping.
      * @param LeadAudienceRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<AutomationLeadAudience|null>
      * @throws Exception
@@ -47,7 +47,7 @@ class LeadAudienceRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Counts the active leads selectable by the current user across the organization.
+     * Check how many active leads the signed-in user can select across the organization before queuing a bulk automation run in Leadping.
      * @param LeadAudienceRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

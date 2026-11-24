@@ -32,7 +32,7 @@ class SnoozeRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Defers the reminder for ten minutes without moving the appointment, using the expected revision.
+     * Delay a Leadping appointment reminder by ten minutes while keeping the callback time unchanged. Send the expected revision to detect conflicting updates.
      * @param AppointmentActionRequest $body Protects appointment actions against concurrent edits.
      * @param SnoozeRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<AppointmentResponse|null>
@@ -50,7 +50,7 @@ class SnoozeRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Defers the reminder for ten minutes without moving the appointment, using the expected revision.
+     * Delay a Leadping appointment reminder by ten minutes while keeping the callback time unchanged. Send the expected revision to detect conflicting updates.
      * @param AppointmentActionRequest $body Protects appointment actions against concurrent edits.
      * @param SnoozeRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

@@ -32,7 +32,7 @@ class WithRequestItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Starts the next eligible call in the rep's filtered inbox.
+     * Start the next eligible call from a rep’s Leadping inbox. Supply the inbox filters so the next call comes from the leads in the rep’s current view.
      * @param RequestDataOptions $body Defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
      * @param WithRequestItemRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<StreamInterface|null>
@@ -51,7 +51,7 @@ class WithRequestItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Starts the next eligible call in the rep's filtered inbox.
+     * Start the next eligible call from a rep’s Leadping inbox. Supply the inbox filters so the next call comes from the leads in the rep’s current view.
      * @param RequestDataOptions $body Defines cursor pagination, sorting, search, exact-match filters, and range filters for a structured API query.
      * @param WithRequestItemRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

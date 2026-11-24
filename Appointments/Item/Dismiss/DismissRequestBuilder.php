@@ -32,7 +32,7 @@ class DismissRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Dismisses the reminder without completing the appointment, using the expected revision.
+     * Dismiss a callback reminder in Leadping while leaving the appointment open. Include the expected revision to apply the change to the reminder you reviewed.
      * @param AppointmentActionRequest $body Protects appointment actions against concurrent edits.
      * @param DismissRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<AppointmentResponse|null>
@@ -50,7 +50,7 @@ class DismissRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Dismisses the reminder without completing the appointment, using the expected revision.
+     * Dismiss a callback reminder in Leadping while leaving the appointment open. Include the expected revision to apply the change to the reminder you reviewed.
      * @param AppointmentActionRequest $body Protects appointment actions against concurrent edits.
      * @param DismissRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
