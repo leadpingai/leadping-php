@@ -89,7 +89,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * @var int|null $inboxAction The next action for a conversation, in inbox priority order.
+     * @var int|null $inboxAction The reason a conversation appears in the priority inbox.
     */
     private ?int $inboxAction = null;
     
@@ -112,6 +112,11 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
      * @var bool|null $isUnread Indicates whether the current user has unread activity in the conversation.
     */
     private ?bool $isUnread = null;
+    
+    /**
+     * @var DateTime|null $lastAgentReplyAt The lastAgentReplyAt property
+    */
+    private ?DateTime $lastAgentReplyAt = null;
     
     /**
      * @var DateTime|null $lastEventAt UTC timestamp when the most recent conversation event occurred.
@@ -187,6 +192,16 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
      * @var ConversationResponse_phoneNumber|null $phoneNumber Extends an identifier-and-name resource reference with an optional string value used for display or selection metadata.
     */
     private ?ConversationResponse_phoneNumber $phoneNumber = null;
+    
+    /**
+     * @var string|null $priorityLabel The priorityLabel property
+    */
+    private ?string $priorityLabel = null;
+    
+    /**
+     * @var string|null $priorityPreview The priorityPreview property
+    */
+    private ?string $priorityPreview = null;
     
     /**
      * @var int|null $replyVersion Monotonic inbound reply boundary used when marking a conversation handled.
@@ -349,6 +364,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
             'isArchived' => fn(ParseNode $n) => $o->setIsArchived($n->getBooleanValue()),
             'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'isUnread' => fn(ParseNode $n) => $o->setIsUnread($n->getBooleanValue()),
+            'lastAgentReplyAt' => fn(ParseNode $n) => $o->setLastAgentReplyAt($n->getDateTimeValue()),
             'lastEventAt' => fn(ParseNode $n) => $o->setLastEventAt($n->getDateTimeValue()),
             'lastEventIsInternalNote' => fn(ParseNode $n) => $o->setLastEventIsInternalNote($n->getBooleanValue()),
             'lastInboundAt' => fn(ParseNode $n) => $o->setLastInboundAt($n->getDateTimeValue()),
@@ -364,6 +380,8 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
             'nextStep' => fn(ParseNode $n) => $o->setNextStep($n->getStringValue()),
             'outboundPhoneNumberOverrideId' => fn(ParseNode $n) => $o->setOutboundPhoneNumberOverrideId($n->getStringValue()),
             'phoneNumber' => fn(ParseNode $n) => $o->setPhoneNumber($n->getObjectValue([ConversationResponse_phoneNumber::class, 'createFromDiscriminatorValue'])),
+            'priorityLabel' => fn(ParseNode $n) => $o->setPriorityLabel($n->getStringValue()),
+            'priorityPreview' => fn(ParseNode $n) => $o->setPriorityPreview($n->getStringValue()),
             'replyVersion' => fn(ParseNode $n) => $o->setReplyVersion($n->getIntegerValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(ConversationResponse_status::class)),
             'statusReason' => fn(ParseNode $n) => $o->setStatusReason($n->getStringValue()),
@@ -387,7 +405,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the inboxAction property value. The next action for a conversation, in inbox priority order.
+     * Gets the inboxAction property value. The reason a conversation appears in the priority inbox.
      * @return int|null
     */
     public function getInboxAction(): ?int {
@@ -424,6 +442,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     */
     public function getIsUnread(): ?bool {
         return $this->isUnread;
+    }
+
+    /**
+     * Gets the lastAgentReplyAt property value. The lastAgentReplyAt property
+     * @return DateTime|null
+    */
+    public function getLastAgentReplyAt(): ?DateTime {
+        return $this->lastAgentReplyAt;
     }
 
     /**
@@ -547,6 +573,22 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the priorityLabel property value. The priorityLabel property
+     * @return string|null
+    */
+    public function getPriorityLabel(): ?string {
+        return $this->priorityLabel;
+    }
+
+    /**
+     * Gets the priorityPreview property value. The priorityPreview property
+     * @return string|null
+    */
+    public function getPriorityPreview(): ?string {
+        return $this->priorityPreview;
+    }
+
+    /**
      * Gets the replyVersion property value. Monotonic inbound reply boundary used when marking a conversation handled.
      * @return int|null
     */
@@ -594,6 +636,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('isArchived', $this->getIsArchived());
         $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeBooleanValue('isUnread', $this->getIsUnread());
+        $writer->writeDateTimeValue('lastAgentReplyAt', $this->getLastAgentReplyAt());
         $writer->writeDateTimeValue('lastEventAt', $this->getLastEventAt());
         $writer->writeBooleanValue('lastEventIsInternalNote', $this->getLastEventIsInternalNote());
         $writer->writeDateTimeValue('lastInboundAt', $this->getLastInboundAt());
@@ -609,6 +652,8 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('nextStep', $this->getNextStep());
         $writer->writeStringValue('outboundPhoneNumberOverrideId', $this->getOutboundPhoneNumberOverrideId());
         $writer->writeObjectValue('phoneNumber', $this->getPhoneNumber());
+        $writer->writeStringValue('priorityLabel', $this->getPriorityLabel());
+        $writer->writeStringValue('priorityPreview', $this->getPriorityPreview());
         $writer->writeIntegerValue('replyVersion', $this->getReplyVersion());
         $writer->writeEnumValue('status', $this->getStatus());
         $writer->writeStringValue('statusReason', $this->getStatusReason());
@@ -736,7 +781,7 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the inboxAction property value. The next action for a conversation, in inbox priority order.
+     * Sets the inboxAction property value. The reason a conversation appears in the priority inbox.
      * @param int|null $value Value to set for the inboxAction property.
     */
     public function setInboxAction(?int $value): void {
@@ -773,6 +818,14 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     */
     public function setIsUnread(?bool $value): void {
         $this->isUnread = $value;
+    }
+
+    /**
+     * Sets the lastAgentReplyAt property value. The lastAgentReplyAt property
+     * @param DateTime|null $value Value to set for the lastAgentReplyAt property.
+    */
+    public function setLastAgentReplyAt(?DateTime $value): void {
+        $this->lastAgentReplyAt = $value;
     }
 
     /**
@@ -893,6 +946,22 @@ class ConversationResponse implements AdditionalDataHolder, Parsable
     */
     public function setPhoneNumber(?ConversationResponse_phoneNumber $value): void {
         $this->phoneNumber = $value;
+    }
+
+    /**
+     * Sets the priorityLabel property value. The priorityLabel property
+     * @param string|null $value Value to set for the priorityLabel property.
+    */
+    public function setPriorityLabel(?string $value): void {
+        $this->priorityLabel = $value;
+    }
+
+    /**
+     * Sets the priorityPreview property value. The priorityPreview property
+     * @param string|null $value Value to set for the priorityPreview property.
+    */
+    public function setPriorityPreview(?string $value): void {
+        $this->priorityPreview = $value;
     }
 
     /**

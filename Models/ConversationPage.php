@@ -43,6 +43,11 @@ class ConversationPage implements AdditionalDataHolder, Parsable
     private ?string $refreshAfter = null;
     
     /**
+     * @var ConversationPage_selectedConversation|null $selectedConversation Describes conversation data returned by Leadping.
+    */
+    private ?ConversationPage_selectedConversation $selectedConversation = null;
+    
+    /**
      * @var int|null $totalCount The totalCount property
     */
     private ?int $totalCount = null;
@@ -91,6 +96,7 @@ class ConversationPage implements AdditionalDataHolder, Parsable
             'needsReplyCount' => fn(ParseNode $n) => $o->setNeedsReplyCount($n->getIntegerValue()),
             'pageSize' => fn(ParseNode $n) => $o->setPageSize($n->getIntegerValue()),
             'refreshAfter' => fn(ParseNode $n) => $o->setRefreshAfter($n->getStringValue()),
+            'selectedConversation' => fn(ParseNode $n) => $o->setSelectedConversation($n->getObjectValue([ConversationPage_selectedConversation::class, 'createFromDiscriminatorValue'])),
             'totalCount' => fn(ParseNode $n) => $o->setTotalCount($n->getIntegerValue()),
         ];
     }
@@ -128,6 +134,14 @@ class ConversationPage implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the selectedConversation property value. Describes conversation data returned by Leadping.
+     * @return ConversationPage_selectedConversation|null
+    */
+    public function getSelectedConversation(): ?ConversationPage_selectedConversation {
+        return $this->selectedConversation;
+    }
+
+    /**
      * Gets the totalCount property value. The totalCount property
      * @return int|null
     */
@@ -145,6 +159,7 @@ class ConversationPage implements AdditionalDataHolder, Parsable
         $writer->writeIntegerValue('needsReplyCount', $this->getNeedsReplyCount());
         $writer->writeIntegerValue('pageSize', $this->getPageSize());
         $writer->writeStringValue('refreshAfter', $this->getRefreshAfter());
+        $writer->writeObjectValue('selectedConversation', $this->getSelectedConversation());
         $writer->writeIntegerValue('totalCount', $this->getTotalCount());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -195,6 +210,14 @@ class ConversationPage implements AdditionalDataHolder, Parsable
     */
     public function setRefreshAfter(?string $value): void {
         $this->refreshAfter = $value;
+    }
+
+    /**
+     * Sets the selectedConversation property value. Describes conversation data returned by Leadping.
+     * @param ConversationPage_selectedConversation|null $value Value to set for the selectedConversation property.
+    */
+    public function setSelectedConversation(?ConversationPage_selectedConversation $value): void {
+        $this->selectedConversation = $value;
     }
 
     /**

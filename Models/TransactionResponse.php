@@ -79,6 +79,11 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     private ?TransactionResponse_lead $lead = null;
     
     /**
+     * @var string|null $messageEventId Identifier of the message associated with an SMS or MMS usage entry.
+    */
+    private ?string $messageEventId = null;
+    
+    /**
      * @var DateTime|null $modifiedAt UTC timestamp when the resource was last modified, or null when it has not been updated.
     */
     private ?DateTime $modifiedAt = null;
@@ -209,6 +214,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
             'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'isUsageReservation' => fn(ParseNode $n) => $o->setIsUsageReservation($n->getBooleanValue()),
             'lead' => fn(ParseNode $n) => $o->setLead($n->getObjectValue([TransactionResponse_lead::class, 'createFromDiscriminatorValue'])),
+            'messageEventId' => fn(ParseNode $n) => $o->setMessageEventId($n->getStringValue()),
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'netAmount' => fn(ParseNode $n) => $o->setNetAmount($n->getFloatValue()),
             'notes' => fn(ParseNode $n) => $o->setNotes($n->getStringValue()),
@@ -266,6 +272,14 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     */
     public function getLead(): ?TransactionResponse_lead {
         return $this->lead;
+    }
+
+    /**
+     * Gets the messageEventId property value. Identifier of the message associated with an SMS or MMS usage entry.
+     * @return string|null
+    */
+    public function getMessageEventId(): ?string {
+        return $this->messageEventId;
     }
 
     /**
@@ -349,6 +363,7 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeBooleanValue('isUsageReservation', $this->getIsUsageReservation());
         $writer->writeObjectValue('lead', $this->getLead());
+        $writer->writeStringValue('messageEventId', $this->getMessageEventId());
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeFloatValue('netAmount', $this->getNetAmount());
         $writer->writeStringValue('notes', $this->getNotes());
@@ -462,6 +477,14 @@ class TransactionResponse implements AdditionalDataHolder, Parsable
     */
     public function setLead(?TransactionResponse_lead $value): void {
         $this->lead = $value;
+    }
+
+    /**
+     * Sets the messageEventId property value. Identifier of the message associated with an SMS or MMS usage entry.
+     * @param string|null $value Value to set for the messageEventId property.
+    */
+    public function setMessageEventId(?string $value): void {
+        $this->messageEventId = $value;
     }
 
     /**
