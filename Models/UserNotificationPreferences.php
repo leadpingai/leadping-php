@@ -220,6 +220,11 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     private ?bool $usageLimitHitEnabled = null;
     
     /**
+     * @var bool|null $walletDepletedSmsEnabled Text organization admins when their prepaid wallet runs out of funds.
+    */
+    private ?bool $walletDepletedSmsEnabled = null;
+    
+    /**
      * Instantiates a new UserNotificationPreferences and sets the default values.
     */
     public function __construct() {
@@ -370,6 +375,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
             'unreadSmsEnabled' => fn(ParseNode $n) => $o->setUnreadSmsEnabled($n->getBooleanValue()),
             'unreadSmsSmsEnabled' => fn(ParseNode $n) => $o->setUnreadSmsSmsEnabled($n->getBooleanValue()),
             'usageLimitHitEnabled' => fn(ParseNode $n) => $o->setUsageLimitHitEnabled($n->getBooleanValue()),
+            'walletDepletedSmsEnabled' => fn(ParseNode $n) => $o->setWalletDepletedSmsEnabled($n->getBooleanValue()),
         ];
     }
 
@@ -614,6 +620,14 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the walletDepletedSmsEnabled property value. Text organization admins when their prepaid wallet runs out of funds.
+     * @return bool|null
+    */
+    public function getWalletDepletedSmsEnabled(): ?bool {
+        return $this->walletDepletedSmsEnabled;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -658,6 +672,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('unreadSmsEnabled', $this->getUnreadSmsEnabled());
         $writer->writeBooleanValue('unreadSmsSmsEnabled', $this->getUnreadSmsSmsEnabled());
         $writer->writeBooleanValue('usageLimitHitEnabled', $this->getUsageLimitHitEnabled());
+        $writer->writeBooleanValue('walletDepletedSmsEnabled', $this->getWalletDepletedSmsEnabled());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -987,6 +1002,14 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     */
     public function setUsageLimitHitEnabled(?bool $value): void {
         $this->usageLimitHitEnabled = $value;
+    }
+
+    /**
+     * Sets the walletDepletedSmsEnabled property value. Text organization admins when their prepaid wallet runs out of funds.
+     * @param bool|null $value Value to set for the walletDepletedSmsEnabled property.
+    */
+    public function setWalletDepletedSmsEnabled(?bool $value): void {
+        $this->walletDepletedSmsEnabled = $value;
     }
 
 }
