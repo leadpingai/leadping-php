@@ -18,6 +18,11 @@ class ManualDialRequest implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var string|null $fromPhoneNumberId The outgoing number selected in the dialer.
+    */
+    private ?string $fromPhoneNumberId = null;
+    
+    /**
      * @var string|null $phoneNumber The destination phone number.
     */
     private ?string $phoneNumber = null;
@@ -53,8 +58,17 @@ class ManualDialRequest implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'fromPhoneNumberId' => fn(ParseNode $n) => $o->setFromPhoneNumberId($n->getStringValue()),
             'phoneNumber' => fn(ParseNode $n) => $o->setPhoneNumber($n->getStringValue()),
         ];
+    }
+
+    /**
+     * Gets the fromPhoneNumberId property value. The outgoing number selected in the dialer.
+     * @return string|null
+    */
+    public function getFromPhoneNumberId(): ?string {
+        return $this->fromPhoneNumberId;
     }
 
     /**
@@ -70,6 +84,7 @@ class ManualDialRequest implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeStringValue('fromPhoneNumberId', $this->getFromPhoneNumberId());
         $writer->writeStringValue('phoneNumber', $this->getPhoneNumber());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -80,6 +95,14 @@ class ManualDialRequest implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the fromPhoneNumberId property value. The outgoing number selected in the dialer.
+     * @param string|null $value Value to set for the fromPhoneNumberId property.
+    */
+    public function setFromPhoneNumberId(?string $value): void {
+        $this->fromPhoneNumberId = $value;
     }
 
     /**
