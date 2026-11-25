@@ -7,6 +7,7 @@ use Http\Promise\Promise;
 use Leadping\OpenApiClient\Models\ProblemDetails;
 use Leadping\OpenApiClient\Models\SuppressionEntryRequest;
 use Leadping\OpenApiClient\Models\SuppressionEntryResponse;
+use Leadping\OpenApiClient\Suppressions\Admin\AdminRequestBuilder;
 use Leadping\OpenApiClient\Suppressions\All\AllRequestBuilder;
 use Leadping\OpenApiClient\Suppressions\Check\CheckRequestBuilder;
 use Leadping\OpenApiClient\Suppressions\Item\SuppressionsItemRequestBuilder;
@@ -21,6 +22,13 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 */
 class SuppressionsRequestBuilder extends BaseRequestBuilder 
 {
+    /**
+     * The admin property
+    */
+    public function admin(): AdminRequestBuilder {
+        return new AdminRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
     /**
      * The all property
     */

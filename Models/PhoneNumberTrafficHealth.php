@@ -18,7 +18,7 @@ class PhoneNumberTrafficHealth implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var int|null $score The lower evaluated channel score, or null when neither channel has sufficient evidence.
+     * @var int|null $score Rounded average of the evaluated SMS and voice scores, or null when neither channel has sufficient evidence.
     */
     private ?int $score = null;
     
@@ -58,7 +58,7 @@ class PhoneNumberTrafficHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the score property value. The lower evaluated channel score, or null when neither channel has sufficient evidence.
+     * Gets the score property value. Rounded average of the evaluated SMS and voice scores, or null when neither channel has sufficient evidence.
      * @return int|null
     */
     public function getScore(): ?int {
@@ -83,7 +83,7 @@ class PhoneNumberTrafficHealth implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the score property value. The lower evaluated channel score, or null when neither channel has sufficient evidence.
+     * Sets the score property value. Rounded average of the evaluated SMS and voice scores, or null when neither channel has sufficient evidence.
      * @param int|null $value Value to set for the score property.
     */
     public function setScore(?int $value): void {
