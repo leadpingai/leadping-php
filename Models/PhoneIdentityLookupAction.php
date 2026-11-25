@@ -34,16 +34,6 @@ class PhoneIdentityLookupAction implements AdditionalDataHolder, Parsable
     private ?string $provider = null;
     
     /**
-     * @var float|null $providerCostAmount The provider cost incurred by this lookup action, in USD.
-    */
-    private ?float $providerCostAmount = null;
-    
-    /**
-     * @var string|null $providerPricingVersion The provider pricing version used to calculate the lookup cost.
-    */
-    private ?string $providerPricingVersion = null;
-    
-    /**
      * @var PhoneIdentityLookupActionStatus|null $status Identifies the outcome of a phone identity lookup action.
     */
     private ?PhoneIdentityLookupActionStatus $status = null;
@@ -87,8 +77,6 @@ class PhoneIdentityLookupAction implements AdditionalDataHolder, Parsable
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'occurredAt' => fn(ParseNode $n) => $o->setOccurredAt($n->getDateTimeValue()),
             'provider' => fn(ParseNode $n) => $o->setProvider($n->getStringValue()),
-            'providerCostAmount' => fn(ParseNode $n) => $o->setProviderCostAmount($n->getFloatValue()),
-            'providerPricingVersion' => fn(ParseNode $n) => $o->setProviderPricingVersion($n->getStringValue()),
             'status' => fn(ParseNode $n) => $o->setStatus($n->getEnumValue(PhoneIdentityLookupActionStatus::class)),
             'type' => fn(ParseNode $n) => $o->setType($n->getEnumValue(PhoneIdentityLookupActionType::class)),
         ];
@@ -119,22 +107,6 @@ class PhoneIdentityLookupAction implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the providerCostAmount property value. The provider cost incurred by this lookup action, in USD.
-     * @return float|null
-    */
-    public function getProviderCostAmount(): ?float {
-        return $this->providerCostAmount;
-    }
-
-    /**
-     * Gets the providerPricingVersion property value. The provider pricing version used to calculate the lookup cost.
-     * @return string|null
-    */
-    public function getProviderPricingVersion(): ?string {
-        return $this->providerPricingVersion;
-    }
-
-    /**
      * Gets the status property value. Identifies the outcome of a phone identity lookup action.
      * @return PhoneIdentityLookupActionStatus|null
     */
@@ -158,8 +130,6 @@ class PhoneIdentityLookupAction implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('id', $this->getId());
         $writer->writeDateTimeValue('occurredAt', $this->getOccurredAt());
         $writer->writeStringValue('provider', $this->getProvider());
-        $writer->writeFloatValue('providerCostAmount', $this->getProviderCostAmount());
-        $writer->writeStringValue('providerPricingVersion', $this->getProviderPricingVersion());
         $writer->writeEnumValue('status', $this->getStatus());
         $writer->writeEnumValue('type', $this->getType());
         $writer->writeAdditionalData($this->getAdditionalData());
@@ -195,22 +165,6 @@ class PhoneIdentityLookupAction implements AdditionalDataHolder, Parsable
     */
     public function setProvider(?string $value): void {
         $this->provider = $value;
-    }
-
-    /**
-     * Sets the providerCostAmount property value. The provider cost incurred by this lookup action, in USD.
-     * @param float|null $value Value to set for the providerCostAmount property.
-    */
-    public function setProviderCostAmount(?float $value): void {
-        $this->providerCostAmount = $value;
-    }
-
-    /**
-     * Sets the providerPricingVersion property value. The provider pricing version used to calculate the lookup cost.
-     * @param string|null $value Value to set for the providerPricingVersion property.
-    */
-    public function setProviderPricingVersion(?string $value): void {
-        $this->providerPricingVersion = $value;
     }
 
     /**

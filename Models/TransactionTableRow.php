@@ -69,11 +69,6 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     private ?TransactionTableRow_lead $lead = null;
     
     /**
-     * @var float|null $netAmount Net monetary amount after fees, credits, or adjustments.
-    */
-    private ?float $netAmount = null;
-    
-    /**
      * @var TransactionTableRow_organization|null $organization Provides a compact API reference to another resource using its stable identifier and human-readable display name.
     */
     private ?TransactionTableRow_organization $organization = null;
@@ -207,7 +202,6 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
             'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'isUsageReservation' => fn(ParseNode $n) => $o->setIsUsageReservation($n->getBooleanValue()),
             'lead' => fn(ParseNode $n) => $o->setLead($n->getObjectValue([TransactionTableRow_lead::class, 'createFromDiscriminatorValue'])),
-            'netAmount' => fn(ParseNode $n) => $o->setNetAmount($n->getFloatValue()),
             'organization' => fn(ParseNode $n) => $o->setOrganization($n->getObjectValue([TransactionTableRow_organization::class, 'createFromDiscriminatorValue'])),
             'paymentMethodDisplay' => fn(ParseNode $n) => $o->setPaymentMethodDisplay($n->getStringValue()),
             'pricingVersion' => fn(ParseNode $n) => $o->setPricingVersion($n->getStringValue()),
@@ -250,14 +244,6 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     */
     public function getLead(): ?TransactionTableRow_lead {
         return $this->lead;
-    }
-
-    /**
-     * Gets the netAmount property value. Net monetary amount after fees, credits, or adjustments.
-     * @return float|null
-    */
-    public function getNetAmount(): ?float {
-        return $this->netAmount;
     }
 
     /**
@@ -347,7 +333,6 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeBooleanValue('isUsageReservation', $this->getIsUsageReservation());
         $writer->writeObjectValue('lead', $this->getLead());
-        $writer->writeFloatValue('netAmount', $this->getNetAmount());
         $writer->writeObjectValue('organization', $this->getOrganization());
         $writer->writeStringValue('paymentMethodDisplay', $this->getPaymentMethodDisplay());
         $writer->writeStringValue('pricingVersion', $this->getPricingVersion());
@@ -446,14 +431,6 @@ class TransactionTableRow implements AdditionalDataHolder, Parsable
     */
     public function setLead(?TransactionTableRow_lead $value): void {
         $this->lead = $value;
-    }
-
-    /**
-     * Sets the netAmount property value. Net monetary amount after fees, credits, or adjustments.
-     * @param float|null $value Value to set for the netAmount property.
-    */
-    public function setNetAmount(?float $value): void {
-        $this->netAmount = $value;
     }
 
     /**

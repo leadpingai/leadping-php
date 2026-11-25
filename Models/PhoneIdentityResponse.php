@@ -64,11 +64,6 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
     private ?string $number = null;
     
     /**
-     * @var PhoneIdentityResponse_providerEnrichment|null $providerEnrichment Lossless provider snapshot retained with a phone identity for replay, audits, and fields added by providers later.
-    */
-    private ?PhoneIdentityResponse_providerEnrichment $providerEnrichment = null;
-    
-    /**
      * @var bool|null $smsNotRoutable Whether Telnyx rejected SMS routing to this destination with error 40001.
     */
     private ?bool $smsNotRoutable = null;
@@ -121,7 +116,6 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
             'modifiedAt' => fn(ParseNode $n) => $o->setModifiedAt($n->getDateTimeValue()),
             'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
             'number' => fn(ParseNode $n) => $o->setNumber($n->getStringValue()),
-            'providerEnrichment' => fn(ParseNode $n) => $o->setProviderEnrichment($n->getObjectValue([PhoneIdentityResponse_providerEnrichment::class, 'createFromDiscriminatorValue'])),
             'smsNotRoutable' => fn(ParseNode $n) => $o->setSmsNotRoutable($n->getBooleanValue()),
         ];
     }
@@ -191,14 +185,6 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the providerEnrichment property value. Lossless provider snapshot retained with a phone identity for replay, audits, and fields added by providers later.
-     * @return PhoneIdentityResponse_providerEnrichment|null
-    */
-    public function getProviderEnrichment(): ?PhoneIdentityResponse_providerEnrichment {
-        return $this->providerEnrichment;
-    }
-
-    /**
      * Gets the smsNotRoutable property value. Whether Telnyx rejected SMS routing to this destination with error 40001.
      * @return bool|null
     */
@@ -220,7 +206,6 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('modifiedAt', $this->getModifiedAt());
         $writer->writeStringValue('name', $this->getName());
         $writer->writeStringValue('number', $this->getNumber());
-        $writer->writeObjectValue('providerEnrichment', $this->getProviderEnrichment());
         $writer->writeBooleanValue('smsNotRoutable', $this->getSmsNotRoutable());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
@@ -303,14 +288,6 @@ class PhoneIdentityResponse implements AdditionalDataHolder, Parsable
     */
     public function setNumber(?string $value): void {
         $this->number = $value;
-    }
-
-    /**
-     * Sets the providerEnrichment property value. Lossless provider snapshot retained with a phone identity for replay, audits, and fields added by providers later.
-     * @param PhoneIdentityResponse_providerEnrichment|null $value Value to set for the providerEnrichment property.
-    */
-    public function setProviderEnrichment(?PhoneIdentityResponse_providerEnrichment $value): void {
-        $this->providerEnrichment = $value;
     }
 
     /**
