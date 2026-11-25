@@ -49,6 +49,11 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     private ?bool $enabled = null;
     
     /**
+     * @var int|null $enrolledLeadCount Distinct leads with an unfinished workflow in this automation.
+    */
+    private ?int $enrolledLeadCount = null;
+    
+    /**
      * @var string|null $healthSummary Human-readable health summary for this automation table row.
     */
     private ?string $healthSummary = null;
@@ -134,6 +139,11 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     private ?string $visibility = null;
     
     /**
+     * @var int|null $waitingLeadCount Enrolled leads with at least one waiting or scheduled workflow.
+    */
+    private ?int $waitingLeadCount = null;
+    
+    /**
      * Instantiates a new AutomationTableRow and sets the default values.
     */
     public function __construct() {
@@ -206,6 +216,14 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the enrolledLeadCount property value. Distinct leads with an unfinished workflow in this automation.
+     * @return int|null
+    */
+    public function getEnrolledLeadCount(): ?int {
+        return $this->enrolledLeadCount;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
@@ -218,6 +236,7 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
             'createdByUserId' => fn(ParseNode $n) => $o->setCreatedByUserId($n->getStringValue()),
             'description' => fn(ParseNode $n) => $o->setDescription($n->getStringValue()),
             'enabled' => fn(ParseNode $n) => $o->setEnabled($n->getBooleanValue()),
+            'enrolledLeadCount' => fn(ParseNode $n) => $o->setEnrolledLeadCount($n->getIntegerValue()),
             'healthSummary' => fn(ParseNode $n) => $o->setHealthSummary($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
@@ -235,6 +254,7 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
             'triggerType' => fn(ParseNode $n) => $o->setTriggerType($n->getStringValue()),
             'user' => fn(ParseNode $n) => $o->setUser($n->getObjectValue([AutomationTableRow_user::class, 'createFromDiscriminatorValue'])),
             'visibility' => fn(ParseNode $n) => $o->setVisibility($n->getStringValue()),
+            'waitingLeadCount' => fn(ParseNode $n) => $o->setWaitingLeadCount($n->getIntegerValue()),
         ];
     }
 
@@ -375,6 +395,14 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the waitingLeadCount property value. Enrolled leads with at least one waiting or scheduled workflow.
+     * @return int|null
+    */
+    public function getWaitingLeadCount(): ?int {
+        return $this->waitingLeadCount;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -385,6 +413,7 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('createdByUserId', $this->getCreatedByUserId());
         $writer->writeStringValue('description', $this->getDescription());
         $writer->writeBooleanValue('enabled', $this->getEnabled());
+        $writer->writeIntegerValue('enrolledLeadCount', $this->getEnrolledLeadCount());
         $writer->writeStringValue('healthSummary', $this->getHealthSummary());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isDemo', $this->getIsDemo());
@@ -402,6 +431,7 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('triggerType', $this->getTriggerType());
         $writer->writeObjectValue('user', $this->getUser());
         $writer->writeStringValue('visibility', $this->getVisibility());
+        $writer->writeIntegerValue('waitingLeadCount', $this->getWaitingLeadCount());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -459,6 +489,14 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     */
     public function setEnabled(?bool $value): void {
         $this->enabled = $value;
+    }
+
+    /**
+     * Sets the enrolledLeadCount property value. Distinct leads with an unfinished workflow in this automation.
+     * @param int|null $value Value to set for the enrolledLeadCount property.
+    */
+    public function setEnrolledLeadCount(?int $value): void {
+        $this->enrolledLeadCount = $value;
     }
 
     /**
@@ -595,6 +633,14 @@ class AutomationTableRow implements AdditionalDataHolder, Parsable
     */
     public function setVisibility(?string $value): void {
         $this->visibility = $value;
+    }
+
+    /**
+     * Sets the waitingLeadCount property value. Enrolled leads with at least one waiting or scheduled workflow.
+     * @param int|null $value Value to set for the waitingLeadCount property.
+    */
+    public function setWaitingLeadCount(?int $value): void {
+        $this->waitingLeadCount = $value;
     }
 
 }
