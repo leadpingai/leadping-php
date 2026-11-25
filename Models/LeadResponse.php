@@ -94,7 +94,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     private ?bool $enabled = null;
     
     /**
-     * @var bool|null $hasSourceSmsConsent Whether the source covers SMS consent for the current recipient.
+     * @var bool|null $hasSourceSmsConsent Whether the source provides consent for manual quote calls and manual or automated quote texts to this recipient.
     */
     private ?bool $hasSourceSmsConsent = null;
     
@@ -347,7 +347,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the hasSourceSmsConsent property value. Whether the source covers SMS consent for the current recipient.
+     * Gets the hasSourceSmsConsent property value. Whether the source provides consent for manual quote calls and manual or automated quote texts to this recipient.
      * @return bool|null
     */
     public function getHasSourceSmsConsent(): ?bool {
@@ -624,7 +624,7 @@ class LeadResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the hasSourceSmsConsent property value. Whether the source covers SMS consent for the current recipient.
+     * Sets the hasSourceSmsConsent property value. Whether the source provides consent for manual quote calls and manual or automated quote texts to this recipient.
      * @param bool|null $value Value to set for the hasSourceSmsConsent property.
     */
     public function setHasSourceSmsConsent(?bool $value): void {
