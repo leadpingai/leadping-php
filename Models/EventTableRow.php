@@ -39,7 +39,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $automationName Name of the automation when it started.
+     * @var string|null $automationName Name of the automation associated with this event.
     */
     private ?string $automationName = null;
     
@@ -355,7 +355,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the automationName property value. Name of the automation when it started.
+     * Gets the automationName property value. Name of the automation associated with this event.
      * @return string|null
     */
     public function getAutomationName(): ?string {
@@ -941,7 +941,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the automationName property value. Name of the automation when it started.
+     * Sets the automationName property value. Name of the automation associated with this event.
      * @param string|null $value Value to set for the automationName property.
     */
     public function setAutomationName(?string $value): void {

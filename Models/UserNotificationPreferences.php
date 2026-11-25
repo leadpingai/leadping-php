@@ -70,6 +70,11 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     private ?bool $billingSmsEnabled = null;
     
     /**
+     * @var bool|null $incomingMessageSoundEnabled Play a sound in the Portal when an incoming text message arrives.
+    */
+    private ?bool $incomingMessageSoundEnabled = null;
+    
+    /**
      * @var bool|null $lowWalletBalanceEmailEnabled Indicates whether low wallet balance email functionality is enabled for this Leadping user notification preferences.
     */
     private ?bool $lowWalletBalanceEmailEnabled = null;
@@ -345,6 +350,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
             'automationFailedSmsEnabled' => fn(ParseNode $n) => $o->setAutomationFailedSmsEnabled($n->getBooleanValue()),
             'billingEmailEnabled' => fn(ParseNode $n) => $o->setBillingEmailEnabled($n->getBooleanValue()),
             'billingSmsEnabled' => fn(ParseNode $n) => $o->setBillingSmsEnabled($n->getBooleanValue()),
+            'incomingMessageSoundEnabled' => fn(ParseNode $n) => $o->setIncomingMessageSoundEnabled($n->getBooleanValue()),
             'lowWalletBalanceEmailEnabled' => fn(ParseNode $n) => $o->setLowWalletBalanceEmailEnabled($n->getBooleanValue()),
             'lowWalletBalanceEnabled' => fn(ParseNode $n) => $o->setLowWalletBalanceEnabled($n->getBooleanValue()),
             'lowWalletBalanceSmsEnabled' => fn(ParseNode $n) => $o->setLowWalletBalanceSmsEnabled($n->getBooleanValue()),
@@ -377,6 +383,14 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
             'usageLimitHitEnabled' => fn(ParseNode $n) => $o->setUsageLimitHitEnabled($n->getBooleanValue()),
             'walletDepletedSmsEnabled' => fn(ParseNode $n) => $o->setWalletDepletedSmsEnabled($n->getBooleanValue()),
         ];
+    }
+
+    /**
+     * Gets the incomingMessageSoundEnabled property value. Play a sound in the Portal when an incoming text message arrives.
+     * @return bool|null
+    */
+    public function getIncomingMessageSoundEnabled(): ?bool {
+        return $this->incomingMessageSoundEnabled;
     }
 
     /**
@@ -642,6 +656,7 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
         $writer->writeBooleanValue('automationFailedSmsEnabled', $this->getAutomationFailedSmsEnabled());
         $writer->writeBooleanValue('billingEmailEnabled', $this->getBillingEmailEnabled());
         $writer->writeBooleanValue('billingSmsEnabled', $this->getBillingSmsEnabled());
+        $writer->writeBooleanValue('incomingMessageSoundEnabled', $this->getIncomingMessageSoundEnabled());
         $writer->writeBooleanValue('lowWalletBalanceEmailEnabled', $this->getLowWalletBalanceEmailEnabled());
         $writer->writeBooleanValue('lowWalletBalanceEnabled', $this->getLowWalletBalanceEnabled());
         $writer->writeBooleanValue('lowWalletBalanceSmsEnabled', $this->getLowWalletBalanceSmsEnabled());
@@ -762,6 +777,14 @@ class UserNotificationPreferences implements AdditionalDataHolder, Parsable
     */
     public function setBillingSmsEnabled(?bool $value): void {
         $this->billingSmsEnabled = $value;
+    }
+
+    /**
+     * Sets the incomingMessageSoundEnabled property value. Play a sound in the Portal when an incoming text message arrives.
+     * @param bool|null $value Value to set for the incomingMessageSoundEnabled property.
+    */
+    public function setIncomingMessageSoundEnabled(?bool $value): void {
+        $this->incomingMessageSoundEnabled = $value;
     }
 
     /**
