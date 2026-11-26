@@ -129,6 +129,11 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     private ?bool $isAutomated = null;
     
     /**
+     * @var bool|null $isBudgetDelayed Whether the scheduled send is waiting for spending capacity to reset.
+    */
+    private ?bool $isBudgetDelayed = null;
+    
+    /**
      * @var bool|null $isDemo Whether this record belongs to demo data.
     */
     private ?bool $isDemo = null;
@@ -440,6 +445,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
             'fromPhoneNumberId' => fn(ParseNode $n) => $o->setFromPhoneNumberId($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
             'isAutomated' => fn(ParseNode $n) => $o->setIsAutomated($n->getBooleanValue()),
+            'isBudgetDelayed' => fn(ParseNode $n) => $o->setIsBudgetDelayed($n->getBooleanValue()),
             'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'lead' => fn(ParseNode $n) => $o->setLead($n->getObjectValue([IdNamePair::class, 'createFromDiscriminatorValue'])),
             'leadAvatarUrl' => fn(ParseNode $n) => $o->setLeadAvatarUrl($n->getStringValue()),
@@ -496,6 +502,14 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function getIsAutomated(): ?bool {
         return $this->isAutomated;
+    }
+
+    /**
+     * Gets the isBudgetDelayed property value. Whether the scheduled send is waiting for spending capacity to reset.
+     * @return bool|null
+    */
+    public function getIsBudgetDelayed(): ?bool {
+        return $this->isBudgetDelayed;
     }
 
     /**
@@ -709,6 +723,7 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('fromPhoneNumberId', $this->getFromPhoneNumberId());
         $writer->writeStringValue('id', $this->getId());
         $writer->writeBooleanValue('isAutomated', $this->getIsAutomated());
+        $writer->writeBooleanValue('isBudgetDelayed', $this->getIsBudgetDelayed());
         $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeObjectValue('lead', $this->getLead());
         $writer->writeStringValue('leadAvatarUrl', $this->getLeadAvatarUrl());
@@ -917,6 +932,14 @@ class SmsEventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setIsAutomated(?bool $value): void {
         $this->isAutomated = $value;
+    }
+
+    /**
+     * Sets the isBudgetDelayed property value. Whether the scheduled send is waiting for spending capacity to reset.
+     * @param bool|null $value Value to set for the isBudgetDelayed property.
+    */
+    public function setIsBudgetDelayed(?bool $value): void {
+        $this->isBudgetDelayed = $value;
     }
 
     /**

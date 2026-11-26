@@ -19,6 +19,21 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
+     * @var float|null $callingLimit Optional calling budget in USD.
+    */
+    private ?float $callingLimit = null;
+    
+    /**
+     * @var SpendPeriod|null $callingPeriod Calendar period for an organization channel budget, in UTC.
+    */
+    private ?SpendPeriod $callingPeriod = null;
+    
+    /**
+     * @var float|null $callingUsed Settled calling charges this period plus pending calling reservations.
+    */
+    private ?float $callingUsed = null;
+    
+    /**
      * @var float|null $dailyLimit Daily usage budget in USD. Null means no daily limit; zero stops new paid usage.
     */
     private ?float $dailyLimit = null;
@@ -54,6 +69,21 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
     private ?float $reserved = null;
     
     /**
+     * @var float|null $textingLimit Optional texting budget in USD.
+    */
+    private ?float $textingLimit = null;
+    
+    /**
+     * @var SpendPeriod|null $textingPeriod Calendar period for an organization channel budget, in UTC.
+    */
+    private ?SpendPeriod $textingPeriod = null;
+    
+    /**
+     * @var float|null $textingUsed Settled texting charges this period plus pending texting reservations.
+    */
+    private ?float $textingUsed = null;
+    
+    /**
      * Instantiates a new SpendLimitsResponse and sets the default values.
     */
     public function __construct() {
@@ -75,6 +105,30 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
     */
     public function getAdditionalData(): ?array {
         return $this->additionalData;
+    }
+
+    /**
+     * Gets the callingLimit property value. Optional calling budget in USD.
+     * @return float|null
+    */
+    public function getCallingLimit(): ?float {
+        return $this->callingLimit;
+    }
+
+    /**
+     * Gets the callingPeriod property value. Calendar period for an organization channel budget, in UTC.
+     * @return SpendPeriod|null
+    */
+    public function getCallingPeriod(): ?SpendPeriod {
+        return $this->callingPeriod;
+    }
+
+    /**
+     * Gets the callingUsed property value. Settled calling charges this period plus pending calling reservations.
+     * @return float|null
+    */
+    public function getCallingUsed(): ?float {
+        return $this->callingUsed;
     }
 
     /**
@@ -108,6 +162,9 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
+            'callingLimit' => fn(ParseNode $n) => $o->setCallingLimit($n->getFloatValue()),
+            'callingPeriod' => fn(ParseNode $n) => $o->setCallingPeriod($n->getEnumValue(SpendPeriod::class)),
+            'callingUsed' => fn(ParseNode $n) => $o->setCallingUsed($n->getFloatValue()),
             'dailyLimit' => fn(ParseNode $n) => $o->setDailyLimit($n->getFloatValue()),
             'dailyResetsAt' => fn(ParseNode $n) => $o->setDailyResetsAt($n->getDateTimeValue()),
             'dailySpent' => fn(ParseNode $n) => $o->setDailySpent($n->getFloatValue()),
@@ -115,6 +172,9 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
             'monthlyResetsAt' => fn(ParseNode $n) => $o->setMonthlyResetsAt($n->getDateTimeValue()),
             'monthlySpent' => fn(ParseNode $n) => $o->setMonthlySpent($n->getFloatValue()),
             'reserved' => fn(ParseNode $n) => $o->setReserved($n->getFloatValue()),
+            'textingLimit' => fn(ParseNode $n) => $o->setTextingLimit($n->getFloatValue()),
+            'textingPeriod' => fn(ParseNode $n) => $o->setTextingPeriod($n->getEnumValue(SpendPeriod::class)),
+            'textingUsed' => fn(ParseNode $n) => $o->setTextingUsed($n->getFloatValue()),
         ];
     }
 
@@ -151,10 +211,37 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the textingLimit property value. Optional texting budget in USD.
+     * @return float|null
+    */
+    public function getTextingLimit(): ?float {
+        return $this->textingLimit;
+    }
+
+    /**
+     * Gets the textingPeriod property value. Calendar period for an organization channel budget, in UTC.
+     * @return SpendPeriod|null
+    */
+    public function getTextingPeriod(): ?SpendPeriod {
+        return $this->textingPeriod;
+    }
+
+    /**
+     * Gets the textingUsed property value. Settled texting charges this period plus pending texting reservations.
+     * @return float|null
+    */
+    public function getTextingUsed(): ?float {
+        return $this->textingUsed;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        $writer->writeFloatValue('callingLimit', $this->getCallingLimit());
+        $writer->writeEnumValue('callingPeriod', $this->getCallingPeriod());
+        $writer->writeFloatValue('callingUsed', $this->getCallingUsed());
         $writer->writeFloatValue('dailyLimit', $this->getDailyLimit());
         $writer->writeDateTimeValue('dailyResetsAt', $this->getDailyResetsAt());
         $writer->writeFloatValue('dailySpent', $this->getDailySpent());
@@ -162,6 +249,9 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
         $writer->writeDateTimeValue('monthlyResetsAt', $this->getMonthlyResetsAt());
         $writer->writeFloatValue('monthlySpent', $this->getMonthlySpent());
         $writer->writeFloatValue('reserved', $this->getReserved());
+        $writer->writeFloatValue('textingLimit', $this->getTextingLimit());
+        $writer->writeEnumValue('textingPeriod', $this->getTextingPeriod());
+        $writer->writeFloatValue('textingUsed', $this->getTextingUsed());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -171,6 +261,30 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
+    }
+
+    /**
+     * Sets the callingLimit property value. Optional calling budget in USD.
+     * @param float|null $value Value to set for the callingLimit property.
+    */
+    public function setCallingLimit(?float $value): void {
+        $this->callingLimit = $value;
+    }
+
+    /**
+     * Sets the callingPeriod property value. Calendar period for an organization channel budget, in UTC.
+     * @param SpendPeriod|null $value Value to set for the callingPeriod property.
+    */
+    public function setCallingPeriod(?SpendPeriod $value): void {
+        $this->callingPeriod = $value;
+    }
+
+    /**
+     * Sets the callingUsed property value. Settled calling charges this period plus pending calling reservations.
+     * @param float|null $value Value to set for the callingUsed property.
+    */
+    public function setCallingUsed(?float $value): void {
+        $this->callingUsed = $value;
     }
 
     /**
@@ -227,6 +341,30 @@ class SpendLimitsResponse implements AdditionalDataHolder, Parsable
     */
     public function setReserved(?float $value): void {
         $this->reserved = $value;
+    }
+
+    /**
+     * Sets the textingLimit property value. Optional texting budget in USD.
+     * @param float|null $value Value to set for the textingLimit property.
+    */
+    public function setTextingLimit(?float $value): void {
+        $this->textingLimit = $value;
+    }
+
+    /**
+     * Sets the textingPeriod property value. Calendar period for an organization channel budget, in UTC.
+     * @param SpendPeriod|null $value Value to set for the textingPeriod property.
+    */
+    public function setTextingPeriod(?SpendPeriod $value): void {
+        $this->textingPeriod = $value;
+    }
+
+    /**
+     * Sets the textingUsed property value. Settled texting charges this period plus pending texting reservations.
+     * @param float|null $value Value to set for the textingUsed property.
+    */
+    public function setTextingUsed(?float $value): void {
+        $this->textingUsed = $value;
     }
 
 }

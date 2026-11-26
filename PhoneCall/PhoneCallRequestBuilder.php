@@ -2,6 +2,7 @@
 
 namespace Leadping\OpenApiClient\PhoneCall;
 
+use Leadping\OpenApiClient\PhoneCall\Budget\BudgetRequestBuilder;
 use Leadping\OpenApiClient\PhoneCall\Dial\DialRequestBuilder;
 use Leadping\OpenApiClient\PhoneCall\Initiate\InitiateRequestBuilder;
 use Leadping\OpenApiClient\PhoneCall\Item\WithCallItemRequestBuilder;
@@ -14,6 +15,13 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 */
 class PhoneCallRequestBuilder extends BaseRequestBuilder 
 {
+    /**
+     * The budget property
+    */
+    public function budget(): BudgetRequestBuilder {
+        return new BudgetRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
     /**
      * The dial property
     */

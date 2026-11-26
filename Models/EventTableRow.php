@@ -159,6 +159,11 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
+     * @var bool|null $isBudgetDelayed Whether the scheduled send is waiting for spending capacity to reset.
+    */
+    private ?bool $isBudgetDelayed = null;
+    
+    /**
      * @var bool|null $isDemo Whether this record belongs to demo data.
     */
     private ?bool $isDemo = null;
@@ -557,6 +562,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
             'fromPhoneNumber' => fn(ParseNode $n) => $o->setFromPhoneNumber($n->getStringValue()),
             'fromPhoneNumberId' => fn(ParseNode $n) => $o->setFromPhoneNumberId($n->getStringValue()),
             'id' => fn(ParseNode $n) => $o->setId($n->getStringValue()),
+            'isBudgetDelayed' => fn(ParseNode $n) => $o->setIsBudgetDelayed($n->getBooleanValue()),
             'isDemo' => fn(ParseNode $n) => $o->setIsDemo($n->getBooleanValue()),
             'leadId' => fn(ParseNode $n) => $o->setLeadId($n->getStringValue()),
             'media' => fn(ParseNode $n) => $o->setMedia($n->getCollectionOfObjectValues([MessageMediaAttachment::class, 'createFromDiscriminatorValue'])),
@@ -610,6 +616,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function getId(): ?string {
         return $this->id;
+    }
+
+    /**
+     * Gets the isBudgetDelayed property value. Whether the scheduled send is waiting for spending capacity to reset.
+     * @return bool|null
+    */
+    public function getIsBudgetDelayed(): ?bool {
+        return $this->isBudgetDelayed;
     }
 
     /**
@@ -869,6 +883,7 @@ class EventTableRow implements AdditionalDataHolder, Parsable
         $writer->writeStringValue('fromPhoneNumber', $this->getFromPhoneNumber());
         $writer->writeStringValue('fromPhoneNumberId', $this->getFromPhoneNumberId());
         $writer->writeStringValue('id', $this->getId());
+        $writer->writeBooleanValue('isBudgetDelayed', $this->getIsBudgetDelayed());
         $writer->writeBooleanValue('isDemo', $this->getIsDemo());
         $writer->writeStringValue('leadId', $this->getLeadId());
         $writer->writeCollectionOfObjectValues('media', $this->getMedia());
@@ -1130,6 +1145,14 @@ class EventTableRow implements AdditionalDataHolder, Parsable
     */
     public function setId(?string $value): void {
         $this->id = $value;
+    }
+
+    /**
+     * Sets the isBudgetDelayed property value. Whether the scheduled send is waiting for spending capacity to reset.
+     * @param bool|null $value Value to set for the isBudgetDelayed property.
+    */
+    public function setIsBudgetDelayed(?bool $value): void {
+        $this->isBudgetDelayed = $value;
     }
 
     /**
